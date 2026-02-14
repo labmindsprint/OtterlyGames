@@ -45,9 +45,23 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
+    /* SCROLL PROGRESS BAR */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
+      z-index: 9999;
+      transition: width 0.1s ease-out;
+      border-radius: 0 2px 2px 0;
+      box-shadow: 0 0 10px rgba(196,181,253,0.5);
+    }
+
     /* NAV */
     .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed; top: 3px; left: 0; right: 0; z-index: 100;
       background: rgba(10,10,15,0.85); backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255,255,255,0.06); height: 64px;
     }
@@ -143,6 +157,68 @@
       color: var(--text-primary); border: 2px solid var(--dark-border); transition: all 0.3s;
     }
     .btn-outline:hover { border-color: var(--pastel-purple); color: var(--pastel-purple); transform: translateY(-2px); }
+
+    /* SCROLL INDICATOR */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      z-index: 10;
+    }
+    .scroll-indicator:hover { opacity: 1; }
+    .scroll-indicator span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .scroll-indicator .chevrons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    .scroll-indicator .chevron {
+      width: 20px;
+      height: 20px;
+      opacity: 0;
+      animation: chevronFade 2s ease-in-out infinite;
+    }
+    .scroll-indicator .chevron:nth-child(1) { animation-delay: 0s; }
+    .scroll-indicator .chevron:nth-child(2) { animation-delay: 0.15s; margin-top: -10px; }
+    .scroll-indicator .chevron::before {
+      content: '';
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-right: 2px solid var(--pastel-purple);
+      border-bottom: 2px solid var(--pastel-purple);
+      transform: rotate(45deg) translateX(-25%);
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+    @keyframes chevronFade {
+      0% { opacity: 0; }
+      25% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 0; }
+    }
+    /* Hide scroll indicator after scroll */
+    .scroll-indicator.hidden { opacity: 0; pointer-events: none; }
+    @media (max-height: 600px) {
+      .scroll-indicator { display: none; }
+    }
 
     /* ABOUT SECTION */
     .about-section {
@@ -462,6 +538,14 @@
     .fade-in-left.visible { opacity: 1; transform: translateX(0); }
     .fade-in-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* STAGGERED ANIMATIONS */
+    .stagger-1 { transition-delay: 0s; }
+    .stagger-2 { transition-delay: 0.1s; }
+    .stagger-3 { transition-delay: 0.2s; }
+    .stagger-4 { transition-delay: 0.3s; }
+    .stagger-5 { transition-delay: 0.4s; }
+    .stagger-6 { transition-delay: 0.5s; }
     .scroll-top {
       position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 90;
       width: 44px; height: 44px; border-radius: 50%;
@@ -493,6 +577,9 @@
     </div>
   </nav>
 
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
@@ -508,11 +595,17 @@
         <span style="color:var(--pastel-green);font-weight:600;">screen time wins</span>.<br>
         Games so fun, kids don’t realize they’re getting smarter.
       </p>
-    </div>
-  </section>
+    </div>    <!-- Scroll Indicator -->
+    <a href="#about" class="scroll-indicator" id="scrollIndicator">
+      <span>Scroll</span>
+      <div class="chevrons">
+        <div class="chevron"></div>
+        <div class="chevron"></div>
+      </div>
+    </a>  </section>
 
   <!-- ABOUT US -->
-  <section class="about-section">
+  <section class="about-section" id="about">
     <div class="about-inner">
       <div class="about-portrait fade-in-left">
         <img src="/images/Otter-mascot.png" alt="Otterly Games mascot">
@@ -534,10 +627,10 @@
           and was tested by real kids (including my own very honest critic).
         </p>
         <div class="about-values">
-          <div class="about-value"><span>🔒</span> Zero Data</div>
-          <div class="about-value"><span>✅</span> COPPA Certified</div>
-          <div class="about-value"><span>💝</span> Mom-Made</div>
-          <div class="about-value"><span>⭐</span> New & Growing</div>
+          <div class="about-value fade-in stagger-1"><span>🔒</span> Zero Data</div>
+          <div class="about-value fade-in stagger-2"><span>✅</span> COPPA Certified</div>
+          <div class="about-value fade-in stagger-3"><span>💝</span> Mom-Made</div>
+          <div class="about-value fade-in stagger-4"><span>⭐</span> New & Growing</div>
         </div>
       </div>
     </div>
@@ -664,8 +757,8 @@
         Math Tank — Coming Soon
       </span>
     </div>
-    <div class="dl-trust fade-in">
-      <span>🔒 Zero Data</span><span>✅ COPPA Certified</span><span>⭐ New & Growing</span><span>🦦 Mom-Made</span>
+    <div class="dl-trust">
+      <span class="fade-in stagger-1">🔒 Zero Data</span><span class="fade-in stagger-2">✅ COPPA Certified</span><span class="fade-in stagger-3">⭐ New & Growing</span><span class="fade-in stagger-4">🦦 Mom-Made</span>
     </div>
   </section>
 
@@ -674,18 +767,18 @@
     <div class="seo-inner">
       <h3 class="fade-in">Free Learning Tools</h3>
       <p class="fade-in">Practice anytime, right in your browser</p>
-      <div class="seo-grid fade-in">
-        <a href="/tools/math-quiz.html" class="seo-link">Math Quiz <small>Quick practice</small></a>
-        <a href="/tools/multiplication-table.html" class="seo-link">Times Tables <small>Interactive</small></a>
-        <a href="/tools/multiplication-practice.html" class="seo-link">Multiplication <small>Drills</small></a>
-        <a href="/tools/division-practice.html" class="seo-link">Division <small>Step by step</small></a>
-        <a href="/tools/long-division.html" class="seo-link">Long Division <small>Visual guide</small></a>
-        <a href="/tools/spelling-bee.html" class="seo-link">Spelling Bee <small>Words</small></a>
+      <div class="seo-grid">
+        <a href="/tools/math-quiz.html" class="seo-link fade-in stagger-1">Math Quiz <small>Quick practice</small></a>
+        <a href="/tools/multiplication-table.html" class="seo-link fade-in stagger-2">Times Tables <small>Interactive</small></a>
+        <a href="/tools/multiplication-practice.html" class="seo-link fade-in stagger-3">Multiplication <small>Drills</small></a>
+        <a href="/tools/division-practice.html" class="seo-link fade-in stagger-4">Division <small>Step by step</small></a>
+        <a href="/tools/long-division.html" class="seo-link fade-in stagger-5">Long Division <small>Visual guide</small></a>
+        <a href="/tools/spelling-bee.html" class="seo-link fade-in stagger-6">Spelling Bee <small>Words</small></a>
       </div>
-      <div class="seo-grid fade-in">
-        <a href="/blog/5-ways-to-make-math-fun-at-home.html" class="seo-link">5 Ways to Make Math Fun <small>Blog</small></a>
-        <a href="/blog/screen-time-that-actually-helps.html" class="seo-link">Screen Time That Helps <small>Blog</small></a>
-        <a href="/blog/why-my-kids-clock-struggle-inspired-an-app.html" class="seo-link">Why I Built Clock Master <small>Blog</small></a>
+      <div class="seo-grid">
+        <a href="/blog/5-ways-to-make-math-fun-at-home.html" class="seo-link fade-in stagger-1">5 Ways to Make Math Fun <small>Blog</small></a>
+        <a href="/blog/screen-time-that-actually-helps.html" class="seo-link fade-in stagger-2">Screen Time That Helps <small>Blog</small></a>
+        <a href="/blog/why-my-kids-clock-struggle-inspired-an-app.html" class="seo-link fade-in stagger-3">Why I Built Clock Master <small>Blog</small></a>
       </div>
     </div>
   </section>
@@ -706,7 +799,18 @@
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => obs.observe(el));
-    window.addEventListener('scroll', () => document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 500));
+    window.addEventListener('scroll', () => {
+      document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 500);
+      const scrollIndicator = document.getElementById('scrollIndicator');
+      if (scrollIndicator) scrollIndicator.classList.toggle('hidden', window.scrollY > 100);
+      // Scroll progress bar
+      const scrollProgress = document.getElementById('scrollProgress');
+      if (scrollProgress) {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (window.scrollY / docHeight) * 100;
+        scrollProgress.style.width = scrollPercent + '%';
+      }
+    });
 
     function switchGame(game) {
       document.querySelectorAll('.play-tab').forEach(t => t.classList.toggle('active', t.dataset.game === game));
@@ -729,5 +833,7 @@
       if (cf.style.display !== 'none') cf.src = cf.src; else mf.src = mf.src;
     }
   </script>
+  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+  <script>kofiWidgetOverlay.draw('mindsprintlab',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#0D9488','floating-chat.donateButton.text-color':'#fff'});</script>
 </body>
 </html>
