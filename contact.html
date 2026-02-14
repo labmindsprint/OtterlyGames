@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Otterly Games | Send Feedback</title>
+  <meta name="description" content="Get in touch with Otterly Games. Share feedback, report issues, or just say hi. We'd love to hear from you!">
+  <link rel="canonical" href="https://otterlygames.com/contact.html">
+  <meta property="og:title" content="Contact Otterly Games">
+  <meta property="og:description" content="Send us feedback, suggestions, or questions. We read every message!">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0a0a0f; color: #e8e8f0;
+      line-height: 1.6; overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: 'Nunito', sans-serif; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    img { max-width: 100%; display: block; }
+    :root {
+      --pastel-purple: #c4b5fd; --pastel-pink: #f9a8d4; --pastel-blue: #93c5fd;
+      --pastel-green: #86efac; --pastel-amber: #fcd34d;
+      --dark-bg: #0a0a0f; --dark-card: #141420; --dark-surface: #1a1a2e;
+      --dark-border: #2a2a3e; --text-primary: #f0f0f8; --text-secondary: #9898b0;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,15,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06); height: 64px;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; height: 100%;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: 'Nunito'; font-weight: 900; font-size: 1.3rem;
+    }
+    .nav-brand .brand-text {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .nav-brand img { width: 40px; height: 40px; border-radius: 50%; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--pastel-purple); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f !important; padding: 0.5rem 1.2rem; border-radius: 999px;
+      font-weight: 700; font-size: 0.85rem; transition: transform 0.2s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(196,181,253,0.3); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-secondary); border-radius: 2px; }
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; position: absolute; top: 64px; left: 0; right: 0;
+        background: rgba(10,10,15,0.97); padding: 1.5rem; flex-direction: column;
+        border-bottom: 1px solid var(--dark-border);
+      }
+      .nav-links.open { display: flex; }
+    }
+
+    /* Contact Section */
+    .contact-section {
+      max-width: 640px; margin: 0 auto; padding: 8rem 1.5rem 4rem;
+    }
+    .contact-header {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .contact-header h1 {
+      font-size: 2.5rem; margin-bottom: 1rem;
+    }
+    .contact-header p {
+      color: var(--text-secondary); font-size: 1.1rem;
+    }
+
+    /* Form Styles */
+    .contact-form {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--pastel-purple);
+      box-shadow: 0 0 0 3px rgba(196, 181, 253, 0.15);
+    }
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-secondary);
+      opacity: 0.7;
+    }
+    .form-group select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%239898b0' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(196, 181, 253, 0.3);
+    }
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .form-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
+    /* Success Message */
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .success-message.show {
+      display: block;
+    }
+    .success-message .icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    .success-message h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .success-message p {
+      color: var(--text-secondary);
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 1.5rem;
+      border-top: 1px solid var(--dark-border);
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+    footer a { color: var(--pastel-purple); }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .contact-header h1 { font-size: 2rem; }
+      .contact-form { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <span style="font-size: 1.8rem;">🦦</span>
+        <span class="brand-text">Otterly Games</span>
+      </a>
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps/clock-master.html">Clock Master</a>
+        <a href="/apps/math-tank.html">Math Tank</a>
+        <a href="/tools/">Free Tools</a>
+        <a href="/blog/">Blog</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html" class="active">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="contact-header">
+      <h1 class="gradient-text">Get in Touch</h1>
+      <p>Have feedback, questions, or just want to say hi? We'd love to hear from you!</p>
+    </div>
+
+    <div class="contact-form">
+      <!-- Form - Replace YOUR_FORM_ID with your Formspree form ID -->
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="topic">What's this about?</label>
+          <select id="topic" name="topic" required>
+            <option value="">Select a topic...</option>
+            <option value="feedback">General Feedback</option>
+            <option value="bug">Bug Report</option>
+            <option value="feature">Feature Request</option>
+            <option value="question">Question</option>
+            <option value="partnership">Partnership / Business</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+        </div>
+
+        <!-- Honeypot for spam protection -->
+        <input type="text" name="_gotcha" style="display:none">
+
+        <button type="submit" class="submit-btn">Send Message 🦦</button>
+      </form>
+
+      <div class="success-message" id="successMessage">
+        <div class="icon">✨</div>
+        <h2>Message Sent!</h2>
+        <p>Thanks for reaching out! We'll get back to you soon.</p>
+      </div>
+
+      <p class="form-note">We typically respond within 24-48 hours</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Otterly Games. Made with 🦦 by a mom who gets it.</p>
+    <p style="margin-top: 0.5rem;">
+      <a href="/privacy.html">Privacy Policy</a> · <a href="/about.html">About</a>
+    </p>
+  </footer>
+
+  <script>
+    // Handle form submission with Formspree
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = form.querySelector('.submit-btn');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          successMessage.classList.add('show');
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        alert('Oops! Something went wrong. Please try again or email us directly.');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
