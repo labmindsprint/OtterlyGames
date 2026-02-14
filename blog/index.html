@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Otter Side — Blog | Parenting, Learning & Games — Otterly Games</title>
+  <meta name="description" content="The Otter Side: A blog about parenting, kid academics, and educational gaming. Real stories from a mom building learning apps for children.">
+  <link rel="canonical" href="https://otterlygames.com/blog/">
+  <meta property="og:title" content="The Otter Side — Parenting & Education Blog">
+  <meta property="og:description" content="Real stories from a mom building educational games. Parenting tips, math tricks, and honest screen time advice.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0a0a0f; color: #e8e8f0;
+      line-height: 1.6; overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: 'Nunito', sans-serif; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    img { max-width: 100%; display: block; }
+    :root {
+      --pastel-purple: #c4b5fd; --pastel-pink: #f9a8d4; --pastel-blue: #93c5fd;
+      --pastel-green: #86efac; --pastel-amber: #fcd34d;
+      --dark-bg: #0a0a0f; --dark-card: #141420; --dark-surface: #1a1a2e;
+      --dark-border: #2a2a3e; --text-primary: #f0f0f8; --text-secondary: #9898b0;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,15,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06); height: 64px;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; height: 100%;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: 'Nunito'; font-weight: 900; font-size: 1.3rem;
+    }
+    .nav-brand .brand-text {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .nav-brand img { width: 40px; height: 40px; border-radius: 50%; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--pastel-purple); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f !important; padding: 0.5rem 1.2rem; border-radius: 999px;
+      font-weight: 700; font-size: 0.85rem; transition: transform 0.2s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(196,181,253,0.3); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-secondary); border-radius: 2px; }
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; position: absolute; top: 64px; left: 0; right: 0;
+        background: rgba(10,10,15,0.97); padding: 1.5rem; flex-direction: column;
+        border-bottom: 1px solid var(--dark-border);
+      }
+      .nav-links.open { display: flex; }
+    }
+
+    /* Hero */
+    .blog-hero {
+      position: relative; min-height: 420px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 7rem 1.5rem 3rem; overflow: hidden;
+    }
+    .blog-hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: url('/images/Blog.png') center/cover no-repeat;
+    }
+    .blog-hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,15,0.3) 0%, rgba(10,10,15,0.8) 65%, #0a0a0f 100%);
+    }
+    .blog-hero-content {
+      position: relative; z-index: 1; max-width: 600px;
+    }
+    .blog-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 0.75rem;
+    }
+    .blog-hero p {
+      font-size: 1.05rem; color: var(--text-secondary); max-width: 480px; margin: 0 auto;
+    }
+
+    /* Blog listing */
+    .blog-main {
+      padding: 3rem 1.5rem 4rem;
+      max-width: 800px; margin: 0 auto;
+    }
+    .blog-card {
+      display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem;
+      align-items: start;
+      padding: 1.5rem; background: var(--dark-card);
+      border: 1px solid var(--dark-border); border-radius: 1rem;
+      margin-bottom: 1rem; transition: all 0.3s; cursor: pointer;
+    }
+    .blog-card:hover {
+      border-color: var(--pastel-purple); transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+    .blog-card-emoji {
+      width: 100px; height: 100px; border-radius: 12px;
+      background: var(--dark-surface);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+    }
+    .blog-card-body { }
+    .blog-card-cat {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      padding: 0.2rem 0.6rem; border-radius: 999px;
+      margin-bottom: 0.5rem;
+    }
+    .blog-card-cat.story { background: rgba(196,181,253,0.15); color: var(--pastel-purple); }
+    .blog-card-cat.tips { background: rgba(134,239,172,0.15); color: var(--pastel-green); }
+    .blog-card-cat.digital { background: rgba(249,168,212,0.15); color: var(--pastel-pink); }
+    .blog-card h3 {
+      font-size: 1.1rem; font-weight: 800; color: var(--text-primary);
+      margin-bottom: 0.4rem; line-height: 1.3;
+    }
+    .blog-card p {
+      font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;
+      margin-bottom: 0.6rem;
+    }
+    .blog-meta {
+      font-size: 0.75rem; color: #6a6a80;
+      display: flex; gap: 0.5rem; align-items: center;
+    }
+    @media (max-width: 600px) {
+      .blog-card { grid-template-columns: 1fr; }
+      .blog-card-emoji { width: 60px; height: 60px; font-size: 1.5rem; }
+    }
+
+    /* Footer */
+    .footer {
+      padding: 2rem 1.5rem; background: var(--dark-bg);
+      border-top: 1px solid var(--dark-border);
+      text-align: center; font-size: 0.85rem; color: var(--text-secondary);
+    }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .footer-links a { color: #8888a0; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--pastel-purple); }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="/images/Otter-mascot.png" alt="Otterly Games">
+        <span class="brand-text">Otterly Games</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="navLinks">
+        <a href="/#games">Games</a>
+        <a href="/tools/">Tools</a>
+        <a href="/blog/" class="active">Blog</a>
+        <a href="/about.html">About</a>
+        <a href="/#games" class="nav-cta">Get Our Games →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="blog-hero">
+    <div class="blog-hero-bg"></div>
+    <div class="blog-hero-content">
+      <h1 class="fade-in">The <span class="gradient-text">Otter</span> Side</h1>
+      <p class="fade-in">Parenting, learning, and everything in between. Real stories from a mom building educational games.</p>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  <div class="blog-main">
+    <a href="why-my-kids-clock-struggle-inspired-an-app.html" class="blog-card fade-in">
+      <div class="blog-card-emoji">🕐</div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat story">Our Story</span>
+        <h3>Why My Kid's Struggle with Clocks Inspired Me to Build an App</h3>
+        <p>It started with a tearful homework session. My child couldn't read an analog clock, and I couldn't find the right app to help. So I built one.</p>
+        <div class="blog-meta"><span>🦦 Otterly Games</span><span>·</span><span>Feb 10, 2026</span><span>·</span><span>5 min read</span></div>
+      </div>
+    </a>
+    <a href="5-ways-to-make-math-fun-at-home.html" class="blog-card fade-in">
+      <div class="blog-card-emoji">🧮</div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat tips">Parenting Tips</span>
+        <h3>5 Ways to Make Math Fun at Home (That Actually Work)</h3>
+        <p>Forget boring flashcards. Here are five tried-and-tested ways to turn math time into the best part of your child's day.</p>
+        <div class="blog-meta"><span>🦦 Otterly Games</span><span>·</span><span>Feb 7, 2026</span><span>·</span><span>7 min read</span></div>
+      </div>
+    </a>
+    <a href="screen-time-that-actually-helps.html" class="blog-card fade-in">
+      <div class="blog-card-emoji">📱</div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat digital">Digital Parenting</span>
+        <h3>Screen Time That Actually Helps: A Mom's Honest Guide</h3>
+        <p>As a mom who builds educational apps, I still worry about screen time. Here's what I've learned about making it work for your family.</p>
+        <div class="blog-meta"><span>🦦 Otterly Games</span><span>·</span><span>Feb 3, 2026</span><span>·</span><span>6 min read</span></div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a>
+    </div>
+    <p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# IDE
+.idea/
+*.swp
+*.swo
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Source code folders (not needed for site hosting)
+ClockMaster-main/
+Math-Tank-main/
+Gaming Brand Site Creation/
+
+# Backup files
+*-backup.html

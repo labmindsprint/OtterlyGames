@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock Master - Feature Graphic Export</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #1a1a2e;
+      padding: 20px;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    h1 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    .instructions {
+      color: #a0a0a0;
+      margin-bottom: 20px;
+      text-align: center;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    .graphic-container {
+      border: 3px solid #667eea;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+    }
+    .dimensions {
+      color: #667eea;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+    .export-btn {
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .export-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+    canvas {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 Clock Master - Feature Graphic</h1>
+  <p class="instructions">
+    This is the 1024x500 feature graphic for Google Play Store.<br>
+    Click the button below to download as PNG, or right-click the image and "Save as" to save the SVG.
+  </p>
+  
+  <div class="graphic-container">
+    <img id="feature-img" src="feature-graphic.svg" width="1024" height="500" alt="Clock Master Feature Graphic">
+  </div>
+  
+  <p class="dimensions">Dimensions: 1024 × 500 pixels</p>
+  
+  <button class="export-btn" onclick="downloadPNG()">📥 Download as PNG</button>
+  
+  <canvas id="canvas" width="1024" height="500"></canvas>
+  
+  <script>
+    function downloadPNG() {
+      const img = document.getElementById('feature-img');
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Create a new image to ensure it's fully loaded
+      const tempImg = new Image();
+      tempImg.crossOrigin = 'anonymous';
+      tempImg.onload = function() {
+        // Draw the SVG onto canvas
+        ctx.drawImage(tempImg, 0, 0, 1024, 500);
+        
+        // Convert to PNG and download
+        const link = document.createElement('a');
+        link.download = 'clock-master-feature-graphic.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      };
+      tempImg.src = img.src;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+{
+  "name": "Time Quest - Learn Clock with Fun!",
+  "short_name": "Time Quest",
+  "description": "Gamified clock-learning app for children aged 4-9 with racing games and astronomy exploration",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "fullscreen"],
+  "background_color": "#60A5FA",
+  "theme_color": "#A78BFA",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "categories": ["education", "games", "kids", "entertainment"],
+  "iarc_rating_id": "",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-180.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/home.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Home Screen with fun navigation"
+    },
+    {
+      "src": "/screenshots/lesson.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Interactive clock lessons"
+    },
+    {
+      "src": "/screenshots/race.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Exciting time race game"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Learning",
+      "short_name": "Learn",
+      "description": "Jump into clock lessons",
+      "url": "/?screen=lesson",
+      "icons": [{ "src": "/icon-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Time Race",
+      "short_name": "Race",
+      "description": "Play the time racing game",
+      "url": "/?screen=race",
+      "icons": [{ "src": "/icon-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Explore Universe",
+      "short_name": "Explore",
+      "description": "Discover planets and stars",
+      "url": "/?screen=astronomy",
+      "icons": [{ "src": "/icon-192.svg", "sizes": "192x192" }]
+    }
+  ],
+  "related_applications": [],
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}

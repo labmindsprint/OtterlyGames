@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://otterlygames.com/sitemap.xml
+
+# Otterly Games - Educational games for kids
+# Built by a mom, for families 🦦

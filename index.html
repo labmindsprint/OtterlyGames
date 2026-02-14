@@ -1,0 +1,733 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Otterly Games — Where Learning Gets Wild</title>
+  <meta name="description" content="Educational games kids actually beg to play. Built by a mom. Zero data collected. COPPA certified. Otter-powered learning fun.">
+  <meta name="keywords" content="educational games for kids, math games, clock learning app, multiplication game, kids learning app">
+  <link rel="canonical" href="https://otterlygames.com/">
+  <meta property="og:title" content="Otterly Games — Where Learning Gets Wild">
+  <meta property="og:description" content="Educational games kids actually beg to play. Zero data. COPPA certified. Mom-made.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0a0a0f;
+      color: #e8e8f0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: 'Nunito', sans-serif; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    img { max-width: 100%; display: block; }
+
+    :root {
+      --pastel-purple: #c4b5fd;
+      --pastel-pink: #f9a8d4;
+      --pastel-blue: #93c5fd;
+      --pastel-green: #86efac;
+      --pastel-amber: #fcd34d;
+      --dark-bg: #0a0a0f;
+      --dark-card: #141420;
+      --dark-surface: #1a1a2e;
+      --dark-border: #2a2a3e;
+      --text-primary: #f0f0f8;
+      --text-secondary: #9898b0;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,15,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06); height: 64px;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; height: 100%;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: 'Nunito'; font-weight: 900; font-size: 1.3rem;
+    }
+    .nav-brand .brand-text {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .nav-brand img { width: 40px; height: 40px; border-radius: 50%; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--pastel-purple); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f !important; padding: 0.5rem 1.2rem; border-radius: 999px;
+      font-weight: 700; font-size: 0.85rem; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(196,181,253,0.3); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-secondary); border-radius: 2px; }
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; position: absolute; top: 64px; left: 0; right: 0;
+        background: rgba(10,10,15,0.97); padding: 1.5rem; flex-direction: column;
+        border-bottom: 1px solid var(--dark-border);
+      }
+      .nav-links.open { display: flex; }
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 6rem 1.5rem 4rem; position: relative; overflow: hidden;
+      background: radial-gradient(ellipse at 30% 20%, rgba(196,181,253,0.08) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(249,168,212,0.06) 0%, transparent 50%),
+                  var(--dark-bg);
+    }
+    .hero::before, .hero::after {
+      content: '✦'; position: absolute; opacity: 0.25; animation: float 6s ease-in-out infinite;
+    }
+    .hero::before { top: 20%; left: 15%; color: var(--pastel-purple); font-size: 1.2rem; animation-delay: -2s; }
+    .hero::after { top: 35%; right: 12%; color: var(--pastel-pink); font-size: 0.8rem; animation-delay: -4s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+    }
+    .hero-content { max-width: 800px; position: relative; z-index: 1; }
+    .hero-mascot {
+      width: 200px; height: 200px; margin: 0 auto 2rem;
+      animation: mascotBounce 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 40px rgba(196,181,253,0.3));
+    }
+    .hero-mascot img { width: 100%; height: 100%; object-fit: contain; }
+    @keyframes mascotBounce {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+    }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 1rem; background: var(--dark-surface);
+      border: 1px solid var(--dark-border); border-radius: 999px;
+      font-size: 0.8rem; font-weight: 600; color: var(--pastel-green); margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 900; line-height: 1.05;
+      margin-bottom: 1.5rem; color: var(--text-primary);
+    }
+    .hero-sub {
+      font-size: 1.15rem; color: var(--text-secondary);
+      max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7;
+    }
+    .hero-sub strong { color: var(--pastel-amber); font-weight: 700; }
+    .hero-sub em { color: var(--pastel-purple); font-style: normal; font-weight: 600; }
+    .hero-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-glow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 2rem; border-radius: 999px; font-weight: 700; font-size: 1rem;
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f; transition: all 0.3s; box-shadow: 0 0 30px rgba(196,181,253,0.2);
+    }
+    .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(196,181,253,0.35); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 2rem; border-radius: 999px; font-weight: 600; font-size: 1rem;
+      color: var(--text-primary); border: 2px solid var(--dark-border); transition: all 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--pastel-purple); color: var(--pastel-purple); transform: translateY(-2px); }
+
+    /* ABOUT SECTION */
+    .about-section {
+      padding: 5rem 1.5rem;
+      background: var(--dark-card);
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .about-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center;
+    }
+    .about-portrait {
+      width: 160px; height: 160px; border-radius: 50%; overflow: hidden;
+      border: 3px solid var(--dark-border); flex-shrink: 0;
+      box-shadow: 0 0 40px rgba(196,181,253,0.1);
+    }
+    .about-portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .about-text { }
+    .about-text h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900;
+      margin-bottom: 1rem; line-height: 1.2;
+    }
+    .about-text p {
+      font-size: 1rem; color: var(--text-secondary); line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .about-text p strong { color: var(--text-primary); }
+    .about-text p em { color: var(--pastel-purple); font-style: normal; }
+    .about-values {
+      display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem;
+    }
+    .about-value {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1rem; background: var(--dark-surface);
+      border: 1px solid var(--dark-border); border-radius: 999px;
+      font-size: 0.85rem; font-weight: 600; color: var(--text-secondary);
+    }
+    .about-value span { font-size: 1.1rem; }
+    @media (max-width: 768px) {
+      .about-inner { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
+      .about-portrait { margin: 0 auto; width: 120px; height: 120px; }
+      .about-values { justify-content: center; }
+    }
+
+    /* GAME SECTIONS — Full-bleed background image */
+    .game-section {
+      position: relative; overflow: hidden;
+      min-height: 700px;
+      display: flex; align-items: center;
+    }
+    /* Background image */
+    .game-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background-size: cover; background-position: center;
+    }
+    .game-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.75) 40%, rgba(10,10,15,0.4) 100%);
+    }
+    .game-section.math-section .game-bg::after {
+      background: linear-gradient(270deg, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.75) 40%, rgba(10,10,15,0.4) 100%);
+    }
+    .game-inner {
+      max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;
+      display: grid; grid-template-columns: auto 1fr; gap: 3.5rem;
+      align-items: center; position: relative; z-index: 1; width: 100%;
+    }
+    .game-section.math-section .game-inner {
+      grid-template-columns: 1fr auto;
+    }
+    /* Phone on left */
+    .game-phone {
+      width: 220px; height: 465px;
+      background: #111; border-radius: 28px; position: relative; flex-shrink: 0;
+      box-shadow:
+        inset 0 0 0 2px #2a2a2a,
+        0 0 0 1px rgba(255,255,255,0.05),
+        0 20px 60px rgba(0,0,0,0.6),
+        0 0 40px rgba(196,181,253,0.08);
+    }
+    .game-phone::before {
+      content: ''; position: absolute; right: -2px; top: 80px;
+      width: 2px; height: 32px; background: #222; border-radius: 0 2px 2px 0;
+    }
+    .game-phone::after {
+      content: ''; position: absolute; left: -2px; top: 70px;
+      width: 2px; height: 22px; background: #222; border-radius: 2px 0 0 2px;
+      box-shadow: 0 32px 0 #222;
+    }
+    .game-phone-screen {
+      position: absolute; top: 5px; left: 5px; right: 5px; bottom: 5px;
+      background: #000; border-radius: 23px; overflow: hidden;
+    }
+    .game-phone-camera {
+      position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+      width: 7px; height: 7px; background: #1a1a1a; border-radius: 50%; z-index: 5;
+    }
+    .game-phone-home {
+      position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
+      width: 60px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; z-index: 5;
+    }
+    .game-phone .gp-scaler {
+      position: absolute; top: 0; left: 0;
+      width: 412px; height: 915px;
+      transform-origin: top left;
+      transform: scale(0.51);
+    }
+    .game-phone .gp-iframe {
+      width: 412px; height: 915px; border: none;
+    }
+    /* Info panel */
+    .game-info { position: relative; z-index: 2; }
+    .game-tag {
+      display: inline-block; padding: 0.35rem 0.9rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.05em; margin-bottom: 1rem;
+    }
+    .game-tag.purple { background: rgba(196,181,253,0.2); color: var(--pastel-purple); }
+    .game-tag.pink { background: rgba(249,168,212,0.2); color: var(--pastel-pink); }
+    .game-info h2 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900;
+      margin-bottom: 0.75rem; line-height: 1.05;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+    .game-pun {
+      font-size: 1.05rem; font-style: italic; color: var(--pastel-amber);
+      margin-bottom: 1.25rem; font-weight: 600;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.5);
+    }
+    .game-desc {
+      font-size: 1rem; color: var(--text-secondary); line-height: 1.7;
+      margin-bottom: 1.5rem; max-width: 500px;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+    }
+    .game-features { list-style: none; margin-bottom: 2rem; }
+    .game-features li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      padding: 0.5rem 0; font-size: 0.95rem; color: var(--text-secondary);
+    }
+    .feat-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+      background: rgba(255,255,255,0.08);
+    }
+    .game-features li strong { color: var(--text-primary); }
+    .game-play-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem; border-radius: 999px; font-weight: 700;
+      font-size: 1rem; transition: all 0.3s;
+    }
+    .game-play-btn.purple {
+      background: var(--pastel-purple); color: #0a0a0f;
+      box-shadow: 0 0 30px rgba(196,181,253,0.25);
+    }
+    .game-play-btn.pink {
+      background: var(--pastel-pink); color: #0a0a0f;
+      box-shadow: 0 0 30px rgba(249,168,212,0.25);
+    }
+    .game-play-btn:hover { transform: translateY(-2px) scale(1.03); filter: brightness(1.1); }
+
+    @media (max-width: 900px) {
+      .game-section { min-height: auto; }
+      .game-bg::after,
+      .game-section.math-section .game-bg::after {
+        background: linear-gradient(180deg, rgba(10,10,15,0.5) 0%, rgba(10,10,15,0.92) 50%, rgba(10,10,15,0.97) 100%);
+      }
+      .game-inner,
+      .game-section.math-section .game-inner {
+        grid-template-columns: 1fr; padding: 3rem 1.5rem;
+        text-align: center; gap: 2rem;
+      }
+      .game-phone { margin: 0 auto; width: 200px; height: 425px; }
+      .game-phone .gp-scaler { transform: scale(0.46); }
+      .game-info { order: 2; }
+      .game-features { text-align: left; max-width: 400px; margin: 0 auto 2rem; }
+      .game-desc { margin-left: auto; margin-right: auto; }
+    }
+    @media (min-width: 1200px) {
+      .game-phone { width: 260px; height: 550px; border-radius: 34px; }
+      .game-phone-screen { top: 7px; left: 7px; right: 7px; bottom: 7px; border-radius: 27px; }
+      .game-phone .gp-scaler { transform: scale(0.597); }
+    }
+
+    /* PLAY SECTION */
+    .play-section {
+      padding: 6rem 1.5rem;
+      background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-card) 100%);
+      text-align: center;
+    }
+    .play-header h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; margin-bottom: 0.5rem; }
+    .play-header p { color: var(--text-secondary); margin-bottom: 2rem; }
+    .play-tabs { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 2.5rem; }
+    .play-tab {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.4rem; border-radius: 999px; font-weight: 700; font-size: 0.9rem;
+      background: var(--dark-surface); color: var(--text-secondary);
+      border: 1px solid var(--dark-border); transition: all 0.25s;
+    }
+    .play-tab:hover { border-color: var(--pastel-purple); color: var(--pastel-purple); }
+    .play-tab.active {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f; border-color: transparent; box-shadow: 0 0 20px rgba(196,181,253,0.2);
+    }
+    .play-phone-wrap { display: flex; flex-direction: column; align-items: center; }
+    .play-phone {
+      width: 280px; height: 590px; background: #111; border-radius: 32px; position: relative;
+      box-shadow: inset 0 0 0 2px #2a2a2a, 0 0 0 1px rgba(255,255,255,0.05),
+        0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(196,181,253,0.08);
+    }
+    .play-phone::before {
+      content: ''; position: absolute; right: -2.5px; top: 100px;
+      width: 2.5px; height: 40px; background: #222; border-radius: 0 2px 2px 0;
+    }
+    .play-phone::after {
+      content: ''; position: absolute; left: -2.5px; top: 85px;
+      width: 2.5px; height: 28px; background: #222; border-radius: 2px 0 0 2px;
+      box-shadow: 0 40px 0 #222;
+    }
+    .play-screen {
+      position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px;
+      background: #000; border-radius: 26px; overflow: hidden;
+    }
+    .play-camera {
+      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+      width: 8px; height: 8px; background: #1a1a1a; border-radius: 50%; z-index: 5;
+    }
+    .play-home-bar {
+      position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; z-index: 5;
+    }
+    .iframe-scaler {
+      position: absolute; top: 0; left: 0;
+      width: 412px; height: 915px; transform-origin: top left; transform: scale(0.65);
+    }
+    .play-iframe { width: 412px; height: 915px; border: none; }
+    .play-overlay {
+      position: absolute; inset: 0; z-index: 10;
+      background: rgba(10,10,15,0.9); border-radius: 26px;
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 1.5rem; color: white; animation: fadeUp 0.4s ease;
+    }
+    .play-overlay.show { display: flex; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .play-overlay h3 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+    .play-overlay p { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+    .overlay-dl {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.6rem 1.3rem; background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f; border-radius: 999px; font-weight: 700; font-size: 0.85rem;
+      margin-bottom: 0.5rem; transition: 0.2s;
+    }
+    .overlay-dl:hover { transform: scale(1.05); }
+    .overlay-skip {
+      padding: 0.4rem 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px;
+      color: rgba(255,255,255,0.5); font-size: 0.75rem; transition: 0.2s;
+    }
+    .overlay-skip:hover { border-color: rgba(255,255,255,0.4); color: white; }
+    .play-caption { margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.4rem; }
+    @media (min-width: 640px) {
+      .play-phone { width: 340px; height: 720px; border-radius: 40px; }
+      .play-screen { top: 8px; left: 8px; right: 8px; bottom: 8px; border-radius: 32px; }
+      .play-overlay { border-radius: 32px; }
+      .iframe-scaler { transform: scale(0.786); }
+      .play-camera { top: 14px; width: 10px; height: 10px; }
+      .play-home-bar { bottom: 7px; width: 100px; height: 4px; }
+    }
+
+    /* DOWNLOAD */
+    .download-section {
+      padding: 6rem 1.5rem; background: var(--dark-surface); text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .download-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(196,181,253,0.06), transparent 70%); pointer-events: none;
+    }
+    .download-section h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; margin-bottom: 0.5rem; position: relative; }
+    .download-section > p { color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 400px; margin-left: auto; margin-right: auto; position: relative; }
+    .store-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; position: relative; }
+    .store-btn {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.85rem 1.6rem; background: var(--dark-bg);
+      border: 1px solid var(--dark-border); border-radius: 14px;
+      font-weight: 700; font-size: 0.95rem; color: var(--text-primary); transition: all 0.25s;
+    }
+    .store-btn:hover { border-color: var(--pastel-purple); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+    .store-btn svg { width: 24px; height: 24px; }
+    .dl-trust { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; font-size: 0.85rem; color: var(--text-secondary); position: relative; }
+    .dl-trust span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* SEO */
+    .seo-section { padding: 4rem 1.5rem; background: var(--dark-bg); border-top: 1px solid var(--dark-border); }
+    .seo-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+    .seo-inner h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.4rem; color: var(--text-primary); }
+    .seo-inner > p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .seo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.6rem; margin-bottom: 1.5rem; }
+    .seo-link {
+      display: block; padding: 0.7rem 0.8rem; background: var(--dark-card);
+      border: 1px solid var(--dark-border); border-radius: 10px;
+      font-weight: 600; font-size: 0.85rem; color: var(--text-secondary); transition: all 0.2s;
+    }
+    .seo-link:hover { border-color: var(--pastel-purple); color: var(--pastel-purple); }
+    .seo-link small { display: block; font-weight: 400; color: #5a5a70; font-size: 0.75rem; margin-top: 0.15rem; }
+
+    /* FOOTER */
+    .footer { padding: 2rem 1.5rem; background: var(--dark-bg); border-top: 1px solid var(--dark-border); text-align: center; font-size: 0.85rem; color: var(--text-secondary); }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .footer-links a { color: #8888a0; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--pastel-purple); }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+    .fade-in-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+    .scroll-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 90;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--dark-surface); border: 1px solid var(--dark-border);
+      color: var(--pastel-purple); display: none; align-items: center; justify-content: center;
+      font-size: 1.1rem; transition: 0.3s;
+    }
+    .scroll-top.show { display: flex; }
+    .scroll-top:hover { background: var(--pastel-purple); color: #0a0a0f; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="/images/Otter-mascot.png" alt="Otterly Games">
+        <span class="brand-text">Otterly Games</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="navLinks">
+        <a href="#games">Games</a>
+        <a href="/tools/">Tools</a>
+        <a href="/blog/">Blog</a>
+        <a href="/about.html">About</a>
+        <a href="#games" class="nav-cta">Get Our Games →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-mascot fade-in">
+        <img src="/images/Otter-mascot.png" alt="Otterly — your learning buddy">
+      </div>
+      <h1 class="fade-in"><span class="gradient-text">Otterly</span> Smart.</h1>
+      <p class="hero-sub fade-in" style="font-size:1.2rem; margin-bottom:1rem;">
+        Learning like no <span class="gradient-text" style="font-weight:700;">otter</span>.
+      </p>
+      <p class="hero-sub fade-in" style="margin-top:0; font-size:0.95rem; max-width:440px;">
+        A mom turned <span style="color:var(--pastel-amber);font-weight:600;">screen time guilt</span> into
+        <span style="color:var(--pastel-green);font-weight:600;">screen time wins</span>.<br>
+        Games so fun, kids don’t realize they’re getting smarter.
+      </p>
+    </div>
+  </section>
+
+  <!-- ABOUT US -->
+  <section class="about-section">
+    <div class="about-inner">
+      <div class="about-portrait fade-in-left">
+        <img src="/images/Otter-mascot.png" alt="Otterly Games mascot">
+      </div>
+      <div class="about-text fade-in-right">
+        <h2>A Mom Who <span class="gradient-text">Gets It</span></h2>
+        <p>
+          It started with a struggle every parent knows. My son was in tears over reading a clock.
+          Multiplication felt like a punishment. And I was drowning in <strong>screen time guilt</strong> — 
+          handing them a tablet just to get 20 minutes of peace, knowing they were learning nothing.
+        </p>
+        <p>
+          So I built what I wished existed: games that are <em>genuinely fun</em> and <em>genuinely educational</em>. 
+          No dark patterns. No data harvesting. No manipulative monetization. 
+          Just honest games made with love, designed to help kids learn without realizing it.
+        </p>
+        <p>
+          Every game is <strong>COPPA certified</strong>, collects <strong>zero personal data</strong>, 
+          and was tested by real kids (including my own very honest critic).
+        </p>
+        <div class="about-values">
+          <div class="about-value"><span>🔒</span> Zero Data</div>
+          <div class="about-value"><span>✅</span> COPPA Certified</div>
+          <div class="about-value"><span>💝</span> Mom-Made</div>
+          <div class="about-value"><span>⭐</span> New & Growing</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOCK MASTER -->
+  <section class="game-section clock-section" id="games">
+    <div class="game-bg" style="background-image: url('/images/Otter-race.jpeg')"></div>
+    <div class="game-inner">
+      <div class="game-phone fade-in-left" onclick="switchGame('clock')" style="cursor:pointer">
+        <div class="game-phone-screen">
+          <div class="game-phone-camera"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#f97316,#ec4899);display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:23px;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;">🏎️</div>
+            <div style="color:white;font-weight:800;font-size:1.1rem;font-family:Nunito,sans-serif;">Clock Master</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.8rem;margin-bottom:1rem;">Time Race</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.5rem 1.5rem;border-radius:999px;color:white;font-weight:700;font-size:0.85rem;">▶ Tap to Play</div>
+          </div>
+          <div class="game-phone-home"></div>
+        </div>
+      </div>
+      <div class="game-info fade-in-right">
+        <span class="game-tag purple">Clock Master</span>
+        <h2>Time to<br>Race!</h2>
+        <p class="game-pun">"Why was the clock always stressed? It was <em>ticked</em> off!" 🕐</p>
+        <p class="game-desc">
+          Let's be honest — teaching kids to read a clock is <em>otterly</em> painful.
+          "No sweetie, the short hand is hours..." Sound familiar?
+          We turned that struggle into a racing game. Every correct answer
+          gives your car a speed boost. Suddenly kids WANT to know what 3:45 looks like.
+        </p>
+        <ul class="game-features">
+          <li><span class="feat-icon">🏎️</span><span><strong>Race to learn</strong> — Answer clock questions to boost speed</span></li>
+          <li><span class="feat-icon">📈</span><span><strong>4 difficulty levels</strong> — From hours to minutes & seconds</span></li>
+          <li><span class="feat-icon">🚀</span><span><strong>Space tracks</strong> — Race through planets as you level up</span></li>
+          <li><span class="feat-icon">🎨</span><span><strong>Car shop</strong> — Earn coins, unlock cool rides</span></li>
+        </ul>
+        <a href="#play" class="game-play-btn purple" onclick="switchGame('clock')">▶ Try Clock Master</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATH TANK -->
+  <section class="game-section math-section">
+    <div class="game-bg" style="background-image: url('/images/Otter-tank.png')"></div>
+    <div class="game-inner">
+      <div class="game-info fade-in-left">
+        <span class="game-tag pink">Math Tank</span>
+        <h2>Multiply.<br>Divide.<br>Conquer.</h2>
+        <p class="game-pun">"What do you call an otter good at math? An <em>otter-matic</em> calculator!" 🎯</p>
+        <p class="game-desc">
+          Times tables don't have to be torture sessions. In Math Tank,
+          every correct answer fires a missile at enemy tanks.
+          Get it wrong? You take damage. Kids get so competitive they
+          don't realize they're drilling 7×8 for the 50th time.
+          That's <em>otterly</em> genius.
+        </p>
+        <ul class="game-features">
+          <li><span class="feat-icon">💥</span><span><strong>Battle mode</strong> — Solve to shoot, miss and take damage</span></li>
+          <li><span class="feat-icon">🧠</span><span><strong>Adaptive difficulty</strong> — Easy, Medium, Hard, God mode</span></li>
+          <li><span class="feat-icon">🏆</span><span><strong>Daily quests</strong> — Fresh challenges keep kids coming back</span></li>
+          <li><span class="feat-icon">🌌</span><span><strong>Save the Universe</strong> — Epic story mode through space</span></li>
+        </ul>
+        <a href="#play" class="game-play-btn pink" onclick="switchGame('math')">▶ Try Math Tank</a>
+      </div>
+      <div class="game-phone fade-in-right" onclick="switchGame('math')" style="cursor:pointer">
+        <div class="game-phone-screen">
+          <div class="game-phone-camera"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1a2e,#3b1a5e);display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:23px;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;">🎯</div>
+            <div style="color:white;font-weight:800;font-size:1.1rem;font-family:Nunito,sans-serif;">Math Tank</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.8rem;margin-bottom:1rem;">Battle Mode</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.5rem 1.5rem;border-radius:999px;color:white;font-weight:700;font-size:0.85rem;">▶ Tap to Play</div>
+          </div>
+          <div class="game-phone-home"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAY SECTION -->
+  <section class="play-section" id="play">
+    <div class="play-header">
+      <h2 class="fade-in">Try It <span class="gradient-text">Right Now</span></h2>
+      <p class="fade-in">Pick a game. Play it. Exactly like on your phone.</p>
+    </div>
+    <div class="play-tabs fade-in">
+      <button class="play-tab active" data-game="clock" onclick="switchGame('clock')">🕐 Clock Master</button>
+      <button class="play-tab" data-game="math" onclick="switchGame('math')">🎯 Math Tank</button>
+    </div>
+    <div class="play-phone-wrap fade-in">
+      <div class="play-phone">
+        <div class="play-screen">
+          <div class="play-camera"></div>
+          <div class="iframe-scaler">
+            <iframe id="clock-frame" src="/games/clockmaster/?mode=race" class="play-iframe" allow="autoplay" title="Clock Master"></iframe>
+            <iframe id="math-frame" src="/games/mathtank/?mode=battle" class="play-iframe" style="display:none" allow="autoplay" title="Math Tank"></iframe>
+          </div>
+          <div class="play-overlay" id="gameOverlay">
+            <div style="font-size:2.5rem;margin-bottom:0.5rem">🎉</div>
+            <h3>Great Round!</h3>
+            <p>Download the app for achievements, progress tracking & more</p>
+            <a class="overlay-dl" href="https://play.google.com/store/apps/details?id=com.clockmaster.timeforjuniors" target="_blank" rel="noopener" onclick="closeOverlay()">📲 Get the App</a>
+            <button class="overlay-skip" onclick="dismissOverlay()">Keep Playing</button>
+          </div>
+          <div class="play-home-bar"></div>
+        </div>
+      </div>
+      <p class="play-caption">📱 Pixel-perfect — same experience as the app</p>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section class="download-section" id="download">
+    <h2 class="fade-in">Get the <span class="gradient-text">Full Experience</span></h2>
+    <p class="fade-in">All levels, progress tracking, achievements — on your device.</p>
+    <div class="store-buttons fade-in">
+      <a href="https://play.google.com/store/apps/details?id=com.clockmaster.timeforjuniors&pcampaignid=web_share" target="_blank" rel="noopener" class="store-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
+        Clock Master — Google Play
+      </a>
+      <span class="store-btn" style="opacity:0.6; cursor:default;">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
+        Math Tank — Coming Soon
+      </span>
+    </div>
+    <div class="dl-trust fade-in">
+      <span>🔒 Zero Data</span><span>✅ COPPA Certified</span><span>⭐ New & Growing</span><span>🦦 Mom-Made</span>
+    </div>
+  </section>
+
+  <!-- SEO -->
+  <section class="seo-section">
+    <div class="seo-inner">
+      <h3 class="fade-in">Free Learning Tools</h3>
+      <p class="fade-in">Practice anytime, right in your browser</p>
+      <div class="seo-grid fade-in">
+        <a href="/tools/math-quiz.html" class="seo-link">Math Quiz <small>Quick practice</small></a>
+        <a href="/tools/multiplication-table.html" class="seo-link">Times Tables <small>Interactive</small></a>
+        <a href="/tools/multiplication-practice.html" class="seo-link">Multiplication <small>Drills</small></a>
+        <a href="/tools/division-practice.html" class="seo-link">Division <small>Step by step</small></a>
+        <a href="/tools/long-division.html" class="seo-link">Long Division <small>Visual guide</small></a>
+        <a href="/tools/spelling-bee.html" class="seo-link">Spelling Bee <small>Words</small></a>
+      </div>
+      <div class="seo-grid fade-in">
+        <a href="/blog/5-ways-to-make-math-fun-at-home.html" class="seo-link">5 Ways to Make Math Fun <small>Blog</small></a>
+        <a href="/blog/screen-time-that-actually-helps.html" class="seo-link">Screen Time That Helps <small>Blog</small></a>
+        <a href="/blog/why-my-kids-clock-struggle-inspired-an-app.html" class="seo-link">Why I Built Clock Master <small>Blog</small></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a>
+    </div>
+    <p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => obs.observe(el));
+    window.addEventListener('scroll', () => document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 500));
+
+    function switchGame(game) {
+      document.querySelectorAll('.play-tab').forEach(t => t.classList.toggle('active', t.dataset.game === game));
+      document.getElementById('clock-frame').style.display = game === 'clock' ? 'block' : 'none';
+      document.getElementById('math-frame').style.display = game === 'math' ? 'block' : 'none';
+      document.getElementById('gameOverlay').classList.remove('show');
+      document.getElementById('play').scrollIntoView({ behavior: 'smooth' });
+    }
+    let roundsPlayed = 0;
+    window.addEventListener('message', e => {
+      if (e.data && e.data.type === 'gameEnd') {
+        roundsPlayed++;
+        if (roundsPlayed >= 1) setTimeout(() => document.getElementById('gameOverlay').classList.add('show'), 1500);
+      }
+    });
+    function closeOverlay() { document.getElementById('gameOverlay').classList.remove('show'); }
+    function dismissOverlay() {
+      document.getElementById('gameOverlay').classList.remove('show');
+      const cf = document.getElementById('clock-frame'), mf = document.getElementById('math-frame');
+      if (cf.style.display !== 'none') cf.src = cf.src; else mf.src = mf.src;
+    }
+  </script>
+</body>
+</html>

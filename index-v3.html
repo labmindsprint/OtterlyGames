@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Otterly Games — Educational Games for Kids</title>
+  <meta name="description" content="Fun educational games for kids aged 4-9. Math Tank and Clock Master — safe, ad-free learning through play.">
+  <meta name="keywords" content="educational games for kids, math games, clock learning app, multiplication game, kids learning app">
+  <link rel="canonical" href="https://otterlygames.com/">
+  <meta property="og:title" content="Otterly Games — Play Now, Learn Forever">
+  <meta property="og:description" content="Try our educational games instantly. No download needed!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://otterlygames.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #1E293B;
+      background: #FAFBFC;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: 'Nunito', sans-serif; line-height: 1.2; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    img { max-width: 100%; display: block; }
+
+    /* --- NAV --- */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      height: 64px;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; height: 100%;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.25rem;
+      color: #0D9488;
+    }
+    .nav-brand svg { width: 36px; height: 36px; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a {
+      font-size: 0.9rem; font-weight: 500; color: #475569;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #0D9488; }
+    .nav-cta-btn {
+      background: #0D9488; color: #fff !important; padding: 0.5rem 1.2rem;
+      border-radius: 999px; font-weight: 600; font-size: 0.85rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta-btn:hover { background: #0F766E; transform: translateY(-1px); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: #334155; border-radius: 2px; transition: 0.3s; }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; position: absolute; top: 64px; left: 0; right: 0;
+        background: white; padding: 1.5rem; flex-direction: column;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-bottom: 1px solid #E2E8F0;
+      }
+      .nav-links.open { display: flex; }
+    }
+
+    /* --- HERO --- */
+    .hero {
+      padding: 7rem 1.5rem 3rem;
+      text-align: center;
+      background: linear-gradient(180deg, #F0FDFA 0%, #FAFBFC 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(13,148,136,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -80px; left: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(245,158,11,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 1rem; background: rgba(13,148,136,0.08);
+      border-radius: 999px; font-size: 0.8rem; font-weight: 600;
+      color: #0D9488; margin-bottom: 1.25rem;
+      border: 1px solid rgba(13,148,136,0.15);
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      font-weight: 900; color: #1E293B;
+      margin-bottom: 1rem; position: relative;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #0D9488, #14B8A6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.15rem; color: #64748B;
+      max-width: 480px; margin: 0 auto 2rem;
+    }
+    .hero-actions {
+      display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 1.75rem; background: #0D9488; color: #fff;
+      border-radius: 999px; font-weight: 700; font-size: 1rem;
+      transition: all 0.25s; box-shadow: 0 4px 15px rgba(13,148,136,0.3);
+    }
+    .btn-primary:hover { background: #0F766E; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(13,148,136,0.35); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 1.75rem; background: white; color: #1E293B;
+      border-radius: 999px; font-weight: 600; font-size: 1rem;
+      border: 2px solid #E2E8F0; transition: all 0.25s;
+    }
+    .btn-secondary:hover { border-color: #0D9488; color: #0D9488; transform: translateY(-2px); }
+
+    /* --- GAME SECTION --- */
+    .games-section {
+      padding: 4rem 1.5rem;
+      background: linear-gradient(180deg, #FAFBFC 0%, #F0FDFA 50%, #FAFBFC 100%);
+    }
+    .games-section .section-header {
+      text-align: center; margin-bottom: 2.5rem;
+    }
+    .games-section .section-header h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 0.5rem;
+    }
+    .games-section .section-header p {
+      color: #64748B; font-size: 1rem; max-width: 450px; margin: 0 auto;
+    }
+
+    /* Game Tabs */
+    .game-tabs {
+      display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 2rem;
+    }
+    .game-tab {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.7rem 1.5rem; border-radius: 999px;
+      font-weight: 700; font-size: 0.95rem;
+      background: white; color: #475569;
+      border: 2px solid #E2E8F0;
+      transition: all 0.25s;
+    }
+    .game-tab:hover { border-color: #0D9488; color: #0D9488; }
+    .game-tab.active {
+      background: #0D9488; color: white; border-color: #0D9488;
+      box-shadow: 0 4px 15px rgba(13,148,136,0.25);
+    }
+    .game-tab-icon { font-size: 1.3rem; }
+
+    /* Phone Container */
+    .phone-container {
+      display: flex; flex-direction: column; align-items: center;
+    }
+
+    /* Pixel 7 Phone */
+    .pixel-phone {
+      width: 280px; height: 590px;
+      background: #111; border-radius: 32px;
+      position: relative;
+      box-shadow:
+        inset 0 0 0 2px #2a2a2a,
+        0 0 0 1px rgba(0,0,0,0.3),
+        0 25px 60px rgba(0,0,0,0.3),
+        0 5px 20px rgba(0,0,0,0.15);
+    }
+    /* Power button */
+    .pixel-phone::before {
+      content: ''; position: absolute;
+      right: -2.5px; top: 100px;
+      width: 2.5px; height: 40px;
+      background: #222; border-radius: 0 2px 2px 0;
+    }
+    /* Volume buttons */
+    .pixel-phone::after {
+      content: ''; position: absolute;
+      left: -2.5px; top: 85px;
+      width: 2.5px; height: 28px;
+      background: #222; border-radius: 2px 0 0 2px;
+      box-shadow: 0 40px 0 #222;
+    }
+    .pixel-screen {
+      position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px;
+      background: #000; border-radius: 26px; overflow: hidden;
+    }
+    .pixel-camera {
+      position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+      width: 8px; height: 8px; background: #1a1a1a;
+      border-radius: 50%; z-index: 5;
+      box-shadow: inset 0 0 2px rgba(255,255,255,0.1);
+    }
+    .pixel-home {
+      position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 3px; background: rgba(255,255,255,0.25);
+      border-radius: 2px; z-index: 5;
+    }
+    .game-iframe {
+      width: 100%; height: 100%; border: none;
+    }
+
+    /* Download overlay on phone */
+    .game-overlay {
+      position: absolute; inset: 0; z-index: 10;
+      background: rgba(0,0,0,0.85);
+      border-radius: 26px;
+      display: none; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 1.5rem; color: white;
+      animation: fadeUp 0.4s ease;
+    }
+    .game-overlay.show { display: flex; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .game-overlay h3 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+    .game-overlay p { font-size: 0.8rem; color: rgba(255,255,255,0.65); margin-bottom: 1.2rem; line-height: 1.4; }
+    .overlay-download {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.65rem 1.4rem; background: #0D9488; color: white;
+      border-radius: 999px; font-weight: 700; font-size: 0.85rem;
+      margin-bottom: 0.6rem; transition: 0.2s;
+    }
+    .overlay-download:hover { background: #14B8A6; transform: scale(1.05); }
+    .overlay-dismiss {
+      padding: 0.45rem 1rem; border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px; color: rgba(255,255,255,0.6);
+      font-size: 0.75rem; transition: 0.2s;
+    }
+    .overlay-dismiss:hover { border-color: rgba(255,255,255,0.5); color: white; }
+
+    .phone-caption {
+      margin-top: 1rem; font-size: 0.85rem; color: #94A3B8;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+
+    /* Tablet+ phone size */
+    @media (min-width: 640px) {
+      .pixel-phone { width: 340px; height: 720px; border-radius: 40px; }
+      .pixel-screen { top: 8px; left: 8px; right: 8px; bottom: 8px; border-radius: 32px; }
+      .game-overlay { border-radius: 32px; }
+      .pixel-camera { top: 14px; width: 10px; height: 10px; }
+      .pixel-home { bottom: 7px; width: 100px; height: 4px; }
+    }
+
+    /* --- FEATURES --- */
+    .features {
+      padding: 4rem 1.5rem;
+      background: #fff;
+    }
+    .features-inner {
+      max-width: 1000px; margin: 0 auto;
+    }
+    .features-header {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .features-header h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 0.5rem;
+    }
+    .features-header p { color: #64748B; max-width: 400px; margin: 0 auto; }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .feature-card {
+      padding: 1.75rem; border-radius: 1rem;
+      background: #FAFBFC; border: 1px solid #F1F5F9;
+      transition: all 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      border-color: #E2E8F0;
+    }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1rem;
+    }
+    .feature-icon.teal { background: rgba(13,148,136,0.1); }
+    .feature-icon.amber { background: rgba(245,158,11,0.1); }
+    .feature-icon.pink { background: rgba(251,113,133,0.1); }
+    .feature-icon.purple { background: rgba(167,139,250,0.1); }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .feature-card p { font-size: 0.9rem; color: #64748B; line-height: 1.5; }
+
+    /* --- GAMES DETAIL --- */
+    .game-showcase {
+      padding: 4rem 1.5rem;
+      background: linear-gradient(180deg, #fff 0%, #F0FDFA 100%);
+    }
+    .showcase-inner { max-width: 1000px; margin: 0 auto; }
+    .showcase-card {
+      display: flex; align-items: center; gap: 3rem;
+      margin-bottom: 3rem; padding: 2rem;
+      background: white; border-radius: 1.5rem;
+      border: 1px solid #F1F5F9;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .showcase-card:nth-child(even) { flex-direction: row-reverse; }
+    .showcase-visual {
+      flex-shrink: 0; width: 200px; height: 200px;
+      border-radius: 1.5rem; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 5rem;
+    }
+    .showcase-visual.clock-bg {
+      background: linear-gradient(135deg, #A78BFA, #7C3AED);
+    }
+    .showcase-visual.math-bg {
+      background: linear-gradient(135deg, #FB7185, #E11D48);
+    }
+    .showcase-info h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .showcase-info p { color: #64748B; font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.6; }
+    .showcase-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .showcase-tag {
+      padding: 0.3rem 0.75rem; background: #F0FDFA; color: #0D9488;
+      border-radius: 999px; font-size: 0.8rem; font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .showcase-card, .showcase-card:nth-child(even) {
+        flex-direction: column; text-align: center; gap: 1.5rem;
+      }
+      .showcase-visual { width: 140px; height: 140px; font-size: 3.5rem; margin: 0 auto; }
+      .showcase-tags { justify-content: center; }
+    }
+
+    /* --- DOWNLOAD CTA --- */
+    .download-section {
+      padding: 4rem 1.5rem;
+      background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+      text-align: center; color: white;
+    }
+    .download-section h2 {
+      font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; margin-bottom: 0.5rem;
+    }
+    .download-section p {
+      color: #94A3B8; margin-bottom: 2rem; max-width: 450px; margin-left: auto; margin-right: auto;
+    }
+    .download-buttons {
+      display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+    .store-btn {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.8rem 1.5rem; background: white; color: #1E293B;
+      border-radius: 12px; font-weight: 700; font-size: 0.95rem;
+      transition: all 0.25s;
+    }
+    .store-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+    .store-btn svg { width: 24px; height: 24px; }
+    .download-trust {
+      display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+      font-size: 0.85rem; color: #64748B;
+    }
+    .download-trust span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* --- FOOTER --- */
+    .footer {
+      padding: 2.5rem 1.5rem 1.5rem;
+      background: #0F172A; color: #94A3B8;
+      text-align: center; font-size: 0.85rem;
+    }
+    .footer-links {
+      display: flex; justify-content: center; gap: 1.5rem;
+      flex-wrap: wrap; margin-bottom: 1rem;
+    }
+    .footer-links a { color: #CBD5E1; transition: color 0.2s; }
+    .footer-links a:hover { color: #14B8A6; }
+    .footer-copy { color: #475569; }
+
+    /* --- TOOLS/BLOG LINKS for SEO --- */
+    .seo-section {
+      padding: 3rem 1.5rem;
+      background: #F8FAFC;
+    }
+    .seo-inner {
+      max-width: 1000px; margin: 0 auto; text-align: center;
+    }
+    .seo-inner h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .seo-inner > p { color: #64748B; margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .seo-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem; margin-bottom: 2rem;
+    }
+    .seo-link {
+      display: block; padding: 0.8rem 1rem; background: white;
+      border-radius: 10px; border: 1px solid #F1F5F9;
+      font-weight: 600; font-size: 0.9rem; color: #334155;
+      transition: all 0.2s;
+    }
+    .seo-link:hover { border-color: #0D9488; color: #0D9488; transform: translateY(-2px); }
+    .seo-link small { display: block; font-weight: 400; color: #94A3B8; font-size: 0.8rem; margin-top: 0.2rem; }
+
+    /* --- ANIMATIONS --- */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* --- SCROLL TO TOP --- */
+    .scroll-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 90;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: #0D9488; color: white;
+      display: none; align-items: center; justify-content: center;
+      font-size: 1.2rem; box-shadow: 0 4px 15px rgba(13,148,136,0.3);
+      transition: 0.3s;
+    }
+    .scroll-top.show { display: flex; }
+    .scroll-top:hover { transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="#0D9488"/>
+          <ellipse cx="20" cy="22" rx="12" ry="10" fill="#5EEAD4"/>
+          <circle cx="15" cy="18" r="2.5" fill="#1E293B"/>
+          <circle cx="25" cy="18" r="2.5" fill="#1E293B"/>
+          <circle cx="15.8" cy="17.2" r="0.8" fill="#FFF"/>
+          <circle cx="25.8" cy="17.2" r="0.8" fill="#FFF"/>
+          <ellipse cx="20" cy="23" rx="3" ry="2" fill="#1E293B"/>
+          <ellipse cx="20" cy="24" rx="2" ry="1" fill="#F9A8D4"/>
+          <circle cx="12" cy="12" r="4" fill="#0D9488"/>
+          <circle cx="28" cy="12" r="4" fill="#0D9488"/>
+          <circle cx="12" cy="12" r="2.5" fill="#5EEAD4"/>
+          <circle cx="28" cy="12" r="2.5" fill="#5EEAD4"/>
+        </svg>
+        Otterly Games
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="/about.html">Our Story</a>
+        <a href="/tools/">Free Tools</a>
+        <a href="/blog/">Blog</a>
+        <a href="#download" class="nav-cta-btn">Get the Apps</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge fade-in">🛡️ Safe · Ad-Free · Mom-Made</div>
+    <h1 class="fade-in"><em>Play Now.</em> Learn Forever.</h1>
+    <p class="hero-sub fade-in">Educational games that kids actually love. Try them right here — no download needed.</p>
+    <div class="hero-actions fade-in">
+      <a href="#play" class="btn-primary">▶ Try the Games</a>
+      <a href="#download" class="btn-secondary">📱 Download Free</a>
+    </div>
+  </section>
+
+  <!-- PLAY SECTION -->
+  <section class="games-section" id="play">
+    <div class="section-header">
+      <h2 class="fade-in">Try It Right Now</h2>
+      <p class="fade-in">Pick a game and play — exactly like on your phone</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="game-tabs fade-in">
+      <button class="game-tab active" data-game="clock" onclick="switchGame('clock')">
+        <span class="game-tab-icon">🕐</span> Clock Master
+      </button>
+      <button class="game-tab" data-game="math" onclick="switchGame('math')">
+        <span class="game-tab-icon">🎯</span> Math Tank
+      </button>
+    </div>
+
+    <!-- Phone Mockup -->
+    <div class="phone-container fade-in">
+      <div class="pixel-phone">
+        <div class="pixel-screen">
+          <div class="pixel-camera"></div>
+          <iframe
+            id="clock-frame"
+            src="/games/clockmaster/?mode=race"
+            class="game-iframe"
+            allow="autoplay"
+            title="Clock Master"
+          ></iframe>
+          <iframe
+            id="math-frame"
+            src="/games/mathtank/?mode=battle"
+            class="game-iframe"
+            style="display:none"
+            allow="autoplay"
+            title="Math Tank"
+          ></iframe>
+          <!-- Download overlay -->
+          <div class="game-overlay" id="gameOverlay">
+            <div style="font-size:2.5rem;margin-bottom:0.5rem">🎉</div>
+            <h3>Great Round!</h3>
+            <p>Download the app for progress tracking, achievements, and more levels</p>
+            <a class="overlay-download" href="#download" onclick="closeOverlay()">📲 Get the App</a>
+            <button class="overlay-dismiss" onclick="dismissOverlay()">Keep Playing</button>
+          </div>
+          <div class="pixel-home"></div>
+        </div>
+      </div>
+      <p class="phone-caption">📱 Experience it just like on your phone</p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="features-inner">
+       <div class="features-header">
+        <h2 class="fade-in">Why Parents Love Us</h2>
+        <p class="fade-in">Built by a mom who gets it</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon teal">🛡️</div>
+          <h3>Zero Data Collection</h3>
+          <p>No accounts, no tracking, no personal data. Ever. Your child's privacy is sacred.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon amber">🚫</div>
+          <h3>Completely Ad-Free</h3>
+          <p>No ads, no in-app purchases that trick kids. Just pure learning fun.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon pink">🧠</div>
+          <h3>Learn Through Play</h3>
+          <p>Games designed around actual curriculum standards. Fun that's genuinely educational.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon purple">👩‍👧</div>
+          <h3>Mom-Made</h3>
+          <p>Created by a parent, for parents. We understand the screen time guilt — so we fixed it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAME SHOWCASE -->
+  <section class="game-showcase">
+    <div class="showcase-inner">
+      <div class="showcase-card fade-in">
+        <div class="showcase-visual clock-bg">🏎️</div>
+        <div class="showcase-info">
+          <h3>Clock Master</h3>
+          <p>Race against time — literally! Kids learn to read analog clocks while racing cars through space. Choose difficulty levels from simple hours to minutes and seconds.</p>
+          <div class="showcase-tags">
+            <span class="showcase-tag">Ages 4-9</span>
+            <span class="showcase-tag">Time Telling</span>
+            <span class="showcase-tag">Racing</span>
+          </div>
+        </div>
+      </div>
+      <div class="showcase-card fade-in">
+        <div class="showcase-visual math-bg">🎯</div>
+        <div class="showcase-info">
+          <h3>Math Tank</h3>
+          <p>Battle enemies by solving multiplication and division problems. Load your cannon with the right answer and blast through levels while mastering math facts.</p>
+          <div class="showcase-tags">
+            <span class="showcase-tag">Ages 5-10</span>
+            <span class="showcase-tag">Multiplication</span>
+            <span class="showcase-tag">Division</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD CTA -->
+  <section class="download-section" id="download">
+    <h2 class="fade-in">Get the Full Experience</h2>
+    <p class="fade-in">All levels, progress tracking, and achievements — completely free</p>
+    <div class="download-buttons fade-in">
+      <a href="#" class="store-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+        App Store
+      </a>
+      <a href="#" class="store-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
+        Google Play
+      </a>
+    </div>
+    <div class="download-trust fade-in">
+      <span>✅ Free</span>
+      <span>🛡️ No Data</span>
+      <span>🚫 No Ads</span>
+      <span>⭐ 4.8 Rating</span>
+    </div>
+  </section>
+
+  <!-- SEO TOOLS & BLOG -->
+  <section class="seo-section">
+    <div class="seo-inner">
+      <h2 class="fade-in">Free Learning Tools</h2>
+      <p class="fade-in">Practice anytime, right in your browser</p>
+      <div class="seo-grid fade-in">
+        <a href="/tools/math-quiz.html" class="seo-link">Math Quiz <small>Quick practice</small></a>
+        <a href="/tools/multiplication-table.html" class="seo-link">Times Tables <small>Interactive chart</small></a>
+        <a href="/tools/multiplication-practice.html" class="seo-link">Multiplication <small>Drill practice</small></a>
+        <a href="/tools/division-practice.html" class="seo-link">Division <small>Step by step</small></a>
+        <a href="/tools/long-division.html" class="seo-link">Long Division <small>Visual guide</small></a>
+        <a href="/tools/spelling-bee.html" class="seo-link">Spelling Bee <small>Word practice</small></a>
+      </div>
+      <div class="seo-grid fade-in">
+        <a href="/blog/5-ways-to-make-math-fun-at-home.html" class="seo-link">5 Ways to Make Math Fun <small>Blog</small></a>
+        <a href="/blog/screen-time-that-actually-helps.html" class="seo-link">Screen Time That Helps <small>Blog</small></a>
+        <a href="/blog/why-my-kids-clock-struggle-inspired-an-app.html" class="seo-link">Why I Built Clock Master <small>Blog</small></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/tools/">Tools</a>
+      <a href="/blog/">Blog</a>
+    </div>
+    <p class="footer-copy">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script>
+    // Nav toggle
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Scroll to top button
+    window.addEventListener('scroll', () => {
+      document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+    });
+
+    // Game switching
+    function switchGame(game) {
+      document.querySelectorAll('.game-tab').forEach(t => t.classList.toggle('active', t.dataset.game === game));
+      document.getElementById('clock-frame').style.display = game === 'clock' ? 'block' : 'none';
+      document.getElementById('math-frame').style.display = game === 'math' ? 'block' : 'none';
+      document.getElementById('gameOverlay').classList.remove('show');
+    }
+
+    // Listen for game end from iframes
+    let roundsPlayed = 0;
+    window.addEventListener('message', function(e) {
+      if (e.data && e.data.type === 'gameEnd') {
+        roundsPlayed++;
+        if (roundsPlayed >= 1) {
+          setTimeout(() => document.getElementById('gameOverlay').classList.add('show'), 1500);
+        }
+      }
+    });
+
+    function closeOverlay() {
+      document.getElementById('gameOverlay').classList.remove('show');
+    }
+    function dismissOverlay() {
+      document.getElementById('gameOverlay').classList.remove('show');
+      // Reload current game
+      var cf = document.getElementById('clock-frame');
+      var mf = document.getElementById('math-frame');
+      if (cf.style.display !== 'none') cf.src = cf.src;
+      else mf.src = mf.src;
+    }
+  </script>
+</body>
+</html>

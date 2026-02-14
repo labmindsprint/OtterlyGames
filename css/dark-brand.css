@@ -1,0 +1,259 @@
+/* ============================================================================
+   OTTERLY GAMES — Dark Brand Theme Override
+   Applied on top of style.css to match homepage dark pastel theme
+   ============================================================================ */
+
+:root {
+  --pastel-purple: #c4b5fd;
+  --pastel-pink: #f9a8d4;
+  --pastel-blue: #93c5fd;
+  --pastel-green: #86efac;
+  --pastel-amber: #fcd34d;
+  --dark-bg: #0a0a0f;
+  --dark-card: #141420;
+  --dark-surface: #1a1a2e;
+  --dark-border: #2a2a3e;
+  --text-primary: #f0f0f8;
+  --text-secondary: #9898b0;
+}
+
+/* --- Base overrides --- */
+body {
+  background: var(--dark-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+/* --- Nav --- */
+.nav {
+  background: rgba(10,10,15,0.85) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+.nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important; }
+.nav-brand {
+  color: var(--pastel-purple) !important;
+  font-weight: 900 !important;
+  font-family: 'Nunito', sans-serif !important;
+  font-size: 1.3rem !important;
+}
+.nav-brand .brand-text,
+.footer-brand .brand-text {
+  background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), #93c5fd) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-weight: 900 !important;
+  font-family: 'Nunito', sans-serif !important;
+  letter-spacing: 0.01em !important;
+}
+.nav-brand svg { display: none !important; }
+.nav-brand img {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: block !important;
+}
+.nav-link { color: var(--text-secondary) !important; }
+.nav-link:hover, .nav-link.active { color: var(--pastel-purple) !important; }
+.nav-link::after { background: var(--pastel-purple) !important; }
+.nav-cta {
+  background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink)) !important;
+  color: #0a0a0f !important;
+}
+.nav-cta:hover {
+  box-shadow: 0 4px 20px rgba(196,181,253,0.3) !important;
+}
+/* Mobile nav */
+@media (max-width: 768px) {
+  .nav-links {
+    background: rgba(10,10,15,0.97) !important;
+    border-bottom: 1px solid var(--dark-border) !important;
+  }
+}
+
+/* --- Sections --- */
+.section {
+  background: var(--dark-bg) !important;
+}
+.section:nth-child(even),
+section[style*="background:var(--white)"],
+section[style*="background: var(--white)"] {
+  background: var(--dark-card) !important;
+}
+
+/* --- Typography --- */
+.section-title, h1, h2, h3 {
+  color: var(--text-primary) !important;
+}
+.section-subtitle, .section p, p {
+  color: var(--text-secondary) !important;
+}
+.section-badge {
+  background: var(--dark-surface) !important;
+  border: 1px solid var(--dark-border) !important;
+  color: var(--pastel-green) !important;
+}
+.text-gradient {
+  background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* --- Cards --- */
+.value-card, .app-card, .blog-card, .tool-card, .feature-card {
+  background: var(--dark-card) !important;
+  border: 1px solid var(--dark-border) !important;
+  color: var(--text-primary) !important;
+}
+.value-card:hover, .app-card:hover, .blog-card:hover, .tool-card:hover {
+  border-color: var(--pastel-purple) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3) !important;
+}
+.value-card h3, .app-card h3, .tool-card h3 {
+  color: var(--text-primary) !important;
+}
+.value-card p, .app-card p, .tool-card p {
+  color: var(--text-secondary) !important;
+}
+
+/* --- Blog cards --- */
+.blog-card-body h3 { color: var(--text-primary) !important; }
+.blog-card-body p { color: var(--text-secondary) !important; }
+.blog-card-body .blog-meta { color: #6868808 !important; }
+.blog-card-img {
+  background: var(--dark-surface) !important;
+}
+
+/* --- App cards --- */
+.app-card-body { background: var(--dark-card) !important; }
+.app-card-age { color: var(--pastel-purple) !important; }
+.app-card-tagline { color: var(--pastel-amber) !important; }
+
+/* --- Tool cards --- */
+.tool-card {
+  background: var(--dark-card) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+.tool-card:hover {
+  border-color: var(--pastel-purple) !important;
+}
+.tool-card-icon {
+  background: var(--dark-surface) !important;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+  background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink)) !important;
+  color: #0a0a0f !important;
+  box-shadow: 0 0 20px rgba(196,181,253,0.15) !important;
+}
+.btn-primary:hover {
+  box-shadow: 0 0 30px rgba(196,181,253,0.25) !important;
+}
+.btn-secondary {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  border: 2px solid var(--dark-border) !important;
+}
+.btn-secondary:hover {
+  border-color: var(--pastel-purple) !important;
+  color: var(--pastel-purple) !important;
+}
+.btn-coral {
+  background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-purple)) !important;
+  color: #0a0a0f !important;
+}
+
+/* --- Hero sections --- */
+.about-hero, .blog-hero, .tool-page-hero, .legal-page {
+  background: radial-gradient(ellipse at 30% 20%, rgba(196,181,253,0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(249,168,212,0.06) 0%, transparent 50%),
+              var(--dark-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+/* --- About story --- */
+.about-story {
+  color: var(--text-secondary) !important;
+}
+.about-story p { color: var(--text-secondary) !important; }
+.about-story h2 { color: var(--text-primary) !important; }
+.about-story strong { color: var(--text-primary) !important; }
+.about-story em { color: var(--pastel-purple) !important; }
+
+/* --- Blog content --- */
+.blog-content {
+  color: var(--text-secondary) !important;
+}
+.blog-content h2, .blog-content h3 { color: var(--text-primary) !important; }
+.blog-content strong { color: var(--text-primary) !important; }
+.blog-content a { color: var(--pastel-purple) !important; }
+.blog-content blockquote {
+  border-left-color: var(--pastel-purple) !important;
+  background: var(--dark-surface) !important;
+  color: var(--text-secondary) !important;
+}
+.blog-content ul li, .blog-content ol li {
+  color: var(--text-secondary) !important;
+}
+
+/* --- Legal page --- */
+.legal-page h1, .legal-page h2, .legal-page h3 {
+  color: var(--text-primary) !important;
+}
+.legal-page p, .legal-page li {
+  color: var(--text-secondary) !important;
+}
+.legal-page strong { color: var(--text-primary) !important; }
+
+/* --- CTA section --- */
+.cta-section {
+  background: var(--dark-surface) !important;
+  color: var(--text-primary) !important;
+}
+.cta-section p { color: var(--text-secondary) !important; }
+
+/* --- Values grid --- */
+.values-grid .value-card {
+  background: var(--dark-card) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+/* --- Footer --- */
+.footer {
+  background: var(--dark-bg) !important;
+  border-top: 1px solid var(--dark-border) !important;
+  color: var(--text-secondary) !important;
+}
+.footer-brand a, .footer h4 { color: var(--text-primary) !important; }
+.footer-brand p { color: var(--text-secondary) !important; }
+.footer a { color: #8888a0 !important; }
+.footer a:hover { color: var(--pastel-purple) !important; }
+.footer-bottom {
+  border-top: 1px solid var(--dark-border) !important;
+  color: #4a4a60 !important;
+}
+.footer-grid { border-bottom: none !important; }
+
+/* --- Misc --- */
+hr { border-color: var(--dark-border) !important; }
+.stagger > * { background: var(--dark-card) !important; }
+
+/* Tools page specific */
+.tools-grid .tool-card {
+  background: var(--dark-card) !important;
+}
+
+/* Blog listing */
+.blog-listing .blog-card {
+  background: var(--dark-card) !important;
+  border: 1px solid var(--dark-border) !important;
+}
+
+/* Dividers and borders */
+.section + .section { border-top: 1px solid var(--dark-border) !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--dark-bg); }
+::-webkit-scrollbar-thumb { background: var(--dark-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a5e; }

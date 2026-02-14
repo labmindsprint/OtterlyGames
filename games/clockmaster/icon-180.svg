@@ -1,0 +1,93 @@
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-180" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="shine-180" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#fff;stop-opacity:0.05"/>
+    </linearGradient>
+    <radialGradient id="clock-180" cx="40%" cy="40%">
+      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#fff;stop-opacity:0.08"/>
+    </radialGradient>
+    <filter id="shadow-180">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3.6"/>
+      <feOffset dx="1.8" dy="2.7" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.15"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-180">
+      <feGaussianBlur stdDeviation="1.4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="180" height="180" rx="40" fill="url(#bg-180)"/>
+  <circle cx="36" cy="45" r="27" fill="white" opacity="0.05"/>
+  <circle cx="144" cy="126" r="22" fill="white" opacity="0.05"/>
+  <rect width="180" height="180" rx="40" fill="url(#shine-180)"/>
+  
+  <!-- Clock face -->
+  <g filter="url(#shadow-180)">
+    <circle cx="90" cy="90" r="65" fill="white" opacity="0.15"/>
+    <circle cx="90" cy="90" r="57" fill="url(#clock-180)"/>
+    <circle cx="90" cy="90" r="57" fill="none" stroke="white" stroke-width="0.7" opacity="0.4"/>
+    <circle cx="90" cy="90" r="65" fill="none" stroke="white" stroke-width="0.56" opacity="0.3"/>
+  </g>
+  
+  <!-- Hour markers -->
+  <circle cx="90" cy="41" r="2.2" fill="white" opacity="0.6" filter="url(#glow-180)"/>
+  <circle cx="139" cy="90" r="2.2" fill="white" opacity="0.6" filter="url(#glow-180)"/>
+  <circle cx="90" cy="139" r="2.2" fill="white" opacity="0.6" filter="url(#glow-180)"/>
+  <circle cx="41" cy="90" r="2.2" fill="white" opacity="0.6" filter="url(#glow-180)"/>
+  
+  <!-- Minor markers -->
+  <circle cx="115" cy="46" r="1.1" fill="white" opacity="0.3"/>
+  <circle cx="134" cy="65" r="1.1" fill="white" opacity="0.3"/>
+  <circle cx="134" cy="115" r="1.1" fill="white" opacity="0.3"/>
+  <circle cx="115" cy="134" r="1.1" fill="white" opacity="0.3"/>
+  <circle cx="65" cy="134" r="1.1" fill="white" opacity="0.3"/>
+  <circle cx="46" cy="115" r="1.1" fill="white" opacity="0.3"/>
+  <circle cx="46" cy="65" r="1.1" fill="white" opacity="0.3"/>
+  <circle cx="65" cy="46" r="1.1" fill="white" opacity="0.3"/>
+  
+  <!-- Decorative bubble -->
+  <g transform="translate(129,51) rotate(-35)" opacity="0.9" filter="url(#shadow-180)">
+    <ellipse cx="0" cy="0" rx="8.1" ry="12.6" fill="white" opacity="0.25"/>
+    <circle cx="0" cy="-2.7" r="3.2" fill="white" opacity="0.5"/>
+    <ellipse cx="0" cy="15" rx="4.5" ry="6.3" fill="#fbbf24" opacity="0.4"/>
+  </g>
+  
+  <!-- Hour hand (pointing ~8 o'clock) -->
+  <g transform="translate(90,90) rotate(120)">
+    <rect x="-1.4" y="-43" width="2.8" height="47" rx="1.4" fill="white" opacity="0.7" filter="url(#glow-180)"/>
+    <circle cx="0" cy="-43" r="3.2" fill="white" opacity="0.8"/>
+  </g>
+  
+  <!-- Minute hand (pointing ~2 o'clock) -->
+  <g transform="translate(90,90) rotate(-30)">
+    <rect x="-1.8" y="-29" width="3.6" height="33" rx="1.8" fill="white" opacity="0.6" filter="url(#glow-180)"/>
+    <circle cx="0" cy="-29" r="3.6" fill="white" opacity="0.7"/>
+  </g>
+  
+  <!-- Center hub -->
+  <circle cx="90" cy="90" r="6.3" fill="white" opacity="0.2" filter="url(#shadow-180)"/>
+  <circle cx="90" cy="90" r="4.5" fill="white" opacity="0.5"/>
+  <circle cx="88.6" cy="88.6" r="2.2" fill="white" opacity="0.6"/>
+  
+  <!-- Stars -->
+  <circle cx="45" cy="36" r="2.7" fill="white" opacity="0.4" filter="url(#glow-180)"/>
+  <circle cx="135" cy="63" r="2.2" fill="white" opacity="0.4" filter="url(#glow-180)"/>
+  <circle cx="54" cy="135" r="3.2" fill="white" opacity="0.4" filter="url(#glow-180)"/>
+  
+  <!-- Label bar -->
+  <g transform="translate(90,158)">
+    <rect x="-72" y="-9" width="144" height="18" rx="9" fill="white" opacity="0.15" filter="url(#shadow-180)"/>
+    <rect x="-72" y="-9" width="144" height="18" rx="9" fill="none" stroke="white" stroke-width="0.56" opacity="0.3"/>
+    <text x="0" y="0.9" text-anchor="middle" dominant-baseline="middle" fill="#000" font-size="13.5" font-weight="800" font-family="system-ui,-apple-system,sans-serif" opacity="0.3" letter-spacing="0.36">CLOCK MASTER</text>
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="13.5" font-weight="800" font-family="system-ui,-apple-system,sans-serif" letter-spacing="0.36">CLOCK MASTER</text>
+  </g>
+</svg>

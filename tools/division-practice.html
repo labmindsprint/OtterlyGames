@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Division Practice for Kids | Division Tables Drill — Otterly Games</title>
+  <meta name="description" content="Free division practice for kids. Study division tables ÷2 to ÷12, then practice. No remainders, no timer.">
+  <meta name="keywords" content="division practice, division tables, learn division, free division drill, division quiz for kids">
+  <link rel="canonical" href="https://otterlygames.com/tools/division-practice.html">
+  <meta property="og:title" content="Free Division Practice — Study & Drill Division Tables">
+  <meta property="og:description" content="Study any division table from ÷2 to ÷12, then practice with typed answers. No remainders, no timer, no pressure.">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Division Practice","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"},"description":"Free division table study and drill for kids aged 4-9. No remainders."}
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0a0a0f; color: #f0f0f8;
+      line-height: 1.6; overflow-x: hidden;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+    h1, h2, h3, h4 { font-family: 'Nunito', sans-serif; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    img { max-width: 100%; display: block; }
+    :root {
+      --pastel-purple: #c4b5fd; --pastel-pink: #f9a8d4; --pastel-blue: #93c5fd;
+      --pastel-green: #86efac; --pastel-amber: #fcd34d;
+      --dark-bg: #0a0a0f; --dark-card: #141420; --dark-surface: #1a1a2e;
+      --dark-border: #2a2a3e; --text-primary: #f0f0f8; --text-secondary: #9898b0;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,15,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06); height: 64px;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; height: 100%;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: 'Nunito'; font-weight: 900; font-size: 1.3rem;
+    }
+    .nav-brand .brand-text {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .nav-brand img { width: 40px; height: 40px; border-radius: 50%; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--pastel-purple); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f !important; padding: 0.5rem 1.2rem; border-radius: 999px;
+      font-weight: 700; font-size: 0.85rem; transition: transform 0.2s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(196,181,253,0.3); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-secondary); border-radius: 2px; transition: 0.3s; }
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; position: absolute; top: 64px; left: 0; right: 0;
+        background: rgba(10,10,15,0.97); padding: 1.5rem; flex-direction: column;
+        border-bottom: 1px solid var(--dark-border);
+      }
+      .nav-links.open { display: flex; }
+    }
+
+    /* ── Hero ── */
+    .hero-section {
+      padding: 6.5rem 1.5rem 2rem; text-align: center;
+      background: linear-gradient(180deg, rgba(26,26,46,0.5) 0%, var(--dark-bg) 100%);
+    }
+    .breadcrumbs {
+      font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;
+    }
+    .breadcrumbs a { color: var(--pastel-purple); }
+    .breadcrumbs a:hover { text-decoration: underline; }
+    .breadcrumbs span { margin: 0 0.4rem; opacity: 0.5; }
+    .hero-section h1 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900;
+      margin-bottom: 0.6rem;
+    }
+    .hero-section p {
+      font-size: 1.05rem; color: var(--text-secondary);
+      max-width: 580px; margin: 0 auto;
+    }
+
+    /* ── Container ── */
+    .container { max-width: 700px; margin: 0 auto; padding: 0 1.5rem; }
+    .main-content { flex: 1; padding-bottom: 3rem; }
+
+    /* ── Table Selector ── */
+    .table-selector {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      justify-content: center; margin-bottom: 1rem;
+    }
+    .table-btn {
+      width: 52px; height: 48px; border-radius: 12px;
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      color: var(--text-secondary); font-weight: 600; font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+    .table-btn:hover { border-color: var(--pastel-purple); color: var(--text-primary); }
+    .table-btn.active {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f; border-color: transparent; font-weight: 800;
+      box-shadow: 0 4px 16px rgba(196,181,253,0.25);
+      transform: scale(1.05);
+    }
+    .all-tables-wrap { text-align: center; margin-bottom: 1.5rem; }
+    .all-tables-toggle {
+      height: 48px; padding: 0 1.5rem; border-radius: 12px;
+      background: var(--dark-surface); border: 1px solid var(--dark-border);
+      color: var(--text-secondary); font-weight: 600; font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    .all-tables-toggle:hover { border-color: var(--pastel-amber); color: var(--pastel-amber); }
+    .all-tables-toggle.active {
+      background: linear-gradient(135deg, var(--pastel-amber), #f59e0b);
+      color: #0a0a0f; border-color: transparent; font-weight: 800;
+      box-shadow: 0 4px 16px rgba(252,211,77,0.25);
+    }
+
+    /* ── Mode Toggle ── */
+    .mode-toggle {
+      display: flex; gap: 0; margin-bottom: 1.5rem;
+      background: var(--dark-card); border-radius: 14px;
+      border: 1px solid var(--dark-border); overflow: hidden;
+    }
+    .mode-btn {
+      flex: 1; padding: 0.75rem 1rem; font-weight: 600; font-size: 0.95rem;
+      color: var(--text-secondary); transition: all 0.25s ease;
+    }
+    .mode-btn.active {
+      color: #0a0a0f;
+      background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-purple));
+    }
+    .mode-btn:not(.active):hover { color: var(--text-primary); }
+
+    /* ── Study Grid ── */
+    .study-card {
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem;
+      animation: fadeIn 0.35s ease;
+    }
+    .study-title {
+      font-family: 'Nunito'; font-weight: 800; font-size: 1.3rem;
+      margin-bottom: 1rem; text-align: center;
+    }
+    .study-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.5rem;
+    }
+    .study-item {
+      background: var(--dark-surface); border: 1px solid var(--dark-border);
+      border-radius: 10px; padding: 0.65rem 0.75rem;
+      font-size: 1.05rem; font-weight: 500; text-align: center;
+      transition: all 0.2s;
+    }
+    .study-item:hover {
+      border-color: var(--pastel-purple);
+      background: rgba(196,181,253,0.08);
+    }
+    .study-item .eq-result {
+      color: var(--pastel-green); font-weight: 700;
+    }
+
+    /* ── Score Bar ── */
+    .score-bar {
+      display: flex; justify-content: center; gap: 1rem;
+      margin-bottom: 1.25rem; flex-wrap: wrap;
+    }
+    .score-item {
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: 12px; padding: 0.5rem 1.1rem;
+      text-align: center; min-width: 85px;
+    }
+    .score-label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+    .score-value { font-family: 'Nunito'; font-weight: 900; font-size: 1.4rem; }
+    .score-correct .score-value { color: var(--pastel-green); }
+    .score-total .score-value { color: var(--pastel-blue); }
+    .score-streak .score-value { color: var(--pastel-amber); }
+
+    /* ── Practice Question ── */
+    .practice-card {
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: 16px; padding: 2rem 1.5rem; text-align: center;
+      animation: fadeIn 0.35s ease; margin-bottom: 1.5rem;
+    }
+    .question-display {
+      font-family: 'Nunito'; font-weight: 900;
+      font-size: clamp(2rem, 8vw, 3.2rem);
+      margin-bottom: 1.25rem; letter-spacing: 0.02em;
+    }
+    .question-display .q-num { color: var(--pastel-purple); }
+    .question-display .q-op { color: var(--pastel-pink); margin: 0 0.15em; }
+    .question-display .q-eq { color: var(--text-secondary); margin-left: 0.15em; }
+
+    /* ── Answer Display ── */
+    .answer-display {
+      background: var(--dark-surface); border: 2px solid var(--dark-border);
+      border-radius: 14px; padding: 0.75rem 1.5rem;
+      font-family: 'Nunito'; font-weight: 800; font-size: 2rem;
+      min-height: 60px; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem; transition: border-color 0.2s;
+      min-width: 160px; max-width: 280px;
+      color: var(--text-primary);
+    }
+    .answer-display.focus { border-color: var(--pastel-purple); }
+    .answer-display .cursor {
+      display: inline-block; width: 2px; height: 1.5em;
+      background: var(--pastel-purple); margin-left: 2px;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ── Numpad ── */
+    .numpad {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem; max-width: 320px; margin: 0 auto 1rem;
+    }
+    .numpad-btn {
+      height: 56px; border-radius: 12px;
+      background: var(--dark-surface); border: 1px solid var(--dark-border);
+      color: var(--text-primary); font-size: 1.3rem; font-weight: 700;
+      transition: all 0.15s ease; font-family: 'Nunito';
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .numpad-btn:hover { background: rgba(196,181,253,0.12); border-color: var(--pastel-purple); }
+    .numpad-btn:active { transform: scale(0.95); background: rgba(196,181,253,0.2); }
+    .numpad-btn.clear-btn {
+      color: var(--pastel-pink); font-size: 1rem; font-weight: 600;
+      font-family: 'Inter';
+    }
+    .numpad-btn.check-btn {
+      background: linear-gradient(135deg, var(--pastel-green), #4ade80);
+      color: #0a0a0f; font-size: 1rem; font-weight: 800;
+      font-family: 'Nunito'; border: none;
+    }
+    .numpad-btn.check-btn:hover { box-shadow: 0 4px 16px rgba(134,239,172,0.3); }
+
+    /* ── Feedback ── */
+    .feedback-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none; opacity: 0; transition: opacity 0.3s;
+    }
+    .feedback-overlay.show { opacity: 1; }
+    .feedback-content {
+      background: var(--dark-card); border: 2px solid var(--dark-border);
+      border-radius: 20px; padding: 2rem 2.5rem; text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      transform: scale(0.8); transition: transform 0.3s ease;
+    }
+    .feedback-overlay.show .feedback-content { transform: scale(1); }
+    .feedback-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+    .feedback-text { font-family: 'Nunito'; font-weight: 800; font-size: 1.3rem; }
+    .feedback-correct { border-color: var(--pastel-green); }
+    .feedback-correct .feedback-text { color: var(--pastel-green); }
+    .feedback-wrong { border-color: var(--pastel-pink); }
+    .feedback-wrong .feedback-text { color: var(--pastel-pink); }
+    .feedback-answer { color: var(--text-secondary); font-size: 1rem; margin-top: 0.3rem; font-weight: 500; }
+
+    /* ── Celebration ── */
+    .celebration-overlay {
+      position: fixed; inset: 0; z-index: 300;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none; opacity: 0; transition: opacity 0.4s;
+      background: rgba(10,10,15,0.6);
+    }
+    .celebration-overlay.show { opacity: 1; }
+    .celebration-content {
+      background: var(--dark-card); border: 2px solid var(--pastel-amber);
+      border-radius: 24px; padding: 2.5rem 3rem; text-align: center;
+      box-shadow: 0 0 60px rgba(252,211,77,0.15);
+      transform: scale(0.7); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .celebration-overlay.show .celebration-content { transform: scale(1); }
+    .celebration-emoji { font-size: 3.5rem; margin-bottom: 0.5rem; }
+    .celebration-text { font-family: 'Nunito'; font-weight: 900; font-size: 1.5rem; color: var(--pastel-amber); }
+    .celebration-sub { color: var(--text-secondary); font-size: 0.95rem; margin-top: 0.3rem; }
+
+    /* ── Promo ── */
+    .tool-promo {
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: 16px; padding: 1.5rem; text-align: center;
+      margin-top: 1.5rem;
+    }
+    .tool-promo h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+    .tool-promo p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; }
+    .btn-primary {
+      display: inline-block; padding: 0.65rem 1.5rem; border-radius: 999px;
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f; font-weight: 700; font-size: 0.9rem; transition: all 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(196,181,253,0.3); }
+
+    /* ── Reset Button ── */
+    .reset-row { text-align: center; margin-top: 0.75rem; }
+    .reset-btn {
+      font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;
+      padding: 0.4rem 1rem; border-radius: 8px; transition: color 0.2s;
+      background: none; border: none;
+    }
+    .reset-btn:hover { color: var(--pastel-pink); }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid var(--dark-border);
+      padding: 2rem 1.5rem; text-align: center; margin-top: auto;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .footer-links a { color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--pastel-purple); }
+
+    /* ── Animations ── */
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
+    .shake { animation: shake 0.4s ease; }
+
+    /* ── Confetti ── */
+    .confetti {
+      position: fixed; top: -10px; z-index: 400; pointer-events: none;
+      width: 10px; height: 10px; border-radius: 2px;
+      animation: confettiFall linear forwards;
+    }
+    @keyframes confettiFall {
+      to { top: 110vh; transform: rotate(720deg); opacity: 0; }
+    }
+
+    /* ── Mobile refinements ── */
+    @media (max-width: 480px) {
+      .table-btn { width: 46px; height: 44px; font-size: 0.85rem; border-radius: 10px; }
+      .numpad-btn { height: 52px; font-size: 1.2rem; }
+      .question-display { font-size: 2rem; }
+      .answer-display { font-size: 1.6rem; min-width: 130px; }
+      .score-bar { gap: 0.5rem; }
+      .score-item { min-width: 75px; padding: 0.4rem 0.7rem; }
+      .practice-card { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="/images/Otter-mascot.png" alt="Otterly Games">
+        <span class="brand-text">Otterly Games</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="navLinks">
+        <a href="/#games">Games</a>
+        <a href="/tools/" class="active">Tools</a>
+        <a href="/blog/">Blog</a>
+        <a href="/about.html">About</a>
+        <a href="/#games" class="nav-cta">Get Our Games →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-section">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a> <span>/</span> Division Practice
+    </div>
+    <h1><span class="gradient-text">➗ Division Practice</span></h1>
+    <p>Study any division table from ÷2 to ÷12, then practise with typed answers. No remainders, no timer, no pressure!</p>
+  </section>
+
+  <!-- Main App -->
+  <div class="main-content">
+    <div class="container">
+
+      <!-- Table Selector -->
+      <div class="table-selector" id="tableSelector"></div>
+      <div class="all-tables-wrap">
+        <button class="all-tables-toggle" id="allTablesBtn">🎲 All Tables (Random)</button>
+      </div>
+
+      <!-- Mode Toggle -->
+      <div class="mode-toggle">
+        <button class="mode-btn active" id="studyModeBtn">📖 Study</button>
+        <button class="mode-btn" id="practiceModeBtn">✏️ Practice</button>
+      </div>
+
+      <!-- Study View -->
+      <div id="studyView">
+        <div class="study-card">
+          <h2 class="study-title" id="studyTitle">÷2 Division Table</h2>
+          <div class="study-grid" id="studyGrid"></div>
+        </div>
+      </div>
+
+      <!-- Practice View -->
+      <div id="practiceView" style="display:none;">
+        <div class="score-bar">
+          <div class="score-item score-correct">
+            <div class="score-label">Correct</div>
+            <div class="score-value" id="scoreCorrect">0</div>
+          </div>
+          <div class="score-item score-total">
+            <div class="score-label">Total</div>
+            <div class="score-value" id="scoreTotal">0</div>
+          </div>
+          <div class="score-item score-streak">
+            <div class="score-label">Streak 🔥</div>
+            <div class="score-value" id="scoreStreak">0</div>
+          </div>
+        </div>
+        <div class="practice-card" id="practiceCard">
+          <div class="question-display" id="questionDisplay"></div>
+          <div class="answer-display" id="answerDisplay"><span class="cursor"></span></div>
+          <div class="numpad" id="numpad">
+            <button class="numpad-btn" data-val="1">1</button>
+            <button class="numpad-btn" data-val="2">2</button>
+            <button class="numpad-btn" data-val="3">3</button>
+            <button class="numpad-btn" data-val="4">4</button>
+            <button class="numpad-btn" data-val="5">5</button>
+            <button class="numpad-btn" data-val="6">6</button>
+            <button class="numpad-btn" data-val="7">7</button>
+            <button class="numpad-btn" data-val="8">8</button>
+            <button class="numpad-btn" data-val="9">9</button>
+            <button class="numpad-btn clear-btn" data-val="clear">Clear</button>
+            <button class="numpad-btn" data-val="0">0</button>
+            <button class="numpad-btn check-btn" data-val="check">Check ✓</button>
+          </div>
+          <div class="reset-row">
+            <button class="reset-btn" id="resetBtn">↺ Reset Score</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Promo -->
+      <div class="tool-promo">
+        <h3>🦦 Love this? Try Math Tank!</h3>
+        <p>Turn math into epic tank battles. Answer questions to fire missiles at pirate tanks!</p>
+        <a href="/apps/math-tank.html" class="btn-primary">Learn About Math Tank →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feedback Overlay -->
+  <div class="feedback-overlay" id="feedbackOverlay">
+    <div class="feedback-content" id="feedbackContent">
+      <div class="feedback-icon" id="feedbackIcon"></div>
+      <div class="feedback-text" id="feedbackText"></div>
+      <div class="feedback-answer" id="feedbackAnswer"></div>
+    </div>
+  </div>
+
+  <!-- Celebration Overlay -->
+  <div class="celebration-overlay" id="celebrationOverlay">
+    <div class="celebration-content">
+      <div class="celebration-emoji" id="celebrationEmoji">🎉</div>
+      <div class="celebration-text" id="celebrationText"></div>
+      <div class="celebration-sub" id="celebrationSub"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a>
+    </div>
+    <p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p>
+  </footer>
+
+  <script>
+  (function() {
+    'use strict';
+
+    // ── State ──
+    var selectedTable = 2;
+    var allTablesMode = false;
+    var mode = 'study';
+    var currentAnswer = '';
+    var correctCount = 0;
+    var totalCount = 0;
+    var streak = 0;
+    var currentDividend = 0;
+    var currentDivisor = 0;
+    var isLocked = false;
+
+    // ── DOM refs ──
+    var tableSelector = document.getElementById('tableSelector');
+    var allTablesBtn = document.getElementById('allTablesBtn');
+    var studyModeBtn = document.getElementById('studyModeBtn');
+    var practiceModeBtn = document.getElementById('practiceModeBtn');
+    var studyView = document.getElementById('studyView');
+    var practiceView = document.getElementById('practiceView');
+    var studyTitle = document.getElementById('studyTitle');
+    var studyGrid = document.getElementById('studyGrid');
+    var questionDisplay = document.getElementById('questionDisplay');
+    var answerDisplay = document.getElementById('answerDisplay');
+    var scoreCorrect = document.getElementById('scoreCorrect');
+    var scoreTotal = document.getElementById('scoreTotal');
+    var scoreStreak = document.getElementById('scoreStreak');
+    var feedbackOverlay = document.getElementById('feedbackOverlay');
+    var feedbackContent = document.getElementById('feedbackContent');
+    var feedbackIcon = document.getElementById('feedbackIcon');
+    var feedbackText = document.getElementById('feedbackText');
+    var feedbackAnswer = document.getElementById('feedbackAnswer');
+    var celebrationOverlay = document.getElementById('celebrationOverlay');
+    var celebrationEmoji = document.getElementById('celebrationEmoji');
+    var celebrationText = document.getElementById('celebrationText');
+    var celebrationSub = document.getElementById('celebrationSub');
+    var resetBtn = document.getElementById('resetBtn');
+    var practiceCard = document.getElementById('practiceCard');
+
+    // ── Nav toggle ──
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // ── Build table selector (÷2 through ÷12) ──
+    for (var i = 2; i <= 12; i++) {
+      var btn = document.createElement('button');
+      btn.className = 'table-btn' + (i === 2 ? ' active' : '');
+      btn.textContent = '\u00f7' + i;
+      btn.setAttribute('data-table', i);
+      btn.addEventListener('click', (function(num) {
+        return function() {
+          if (allTablesMode) toggleAllTables();
+          selectTable(num);
+        };
+      })(i));
+      tableSelector.appendChild(btn);
+    }
+
+    // ── Select table ──
+    function selectTable(num) {
+      selectedTable = num;
+      var btns = document.querySelectorAll('.table-btn');
+      for (var j = 0; j < btns.length; j++) {
+        btns[j].classList.toggle('active', parseInt(btns[j].getAttribute('data-table')) === num);
+      }
+      if (mode === 'study') renderStudy();
+      if (mode === 'practice') generateQuestion();
+    }
+
+    // ── Toggle all tables ──
+    allTablesBtn.addEventListener('click', toggleAllTables);
+    function toggleAllTables() {
+      allTablesMode = !allTablesMode;
+      allTablesBtn.classList.toggle('active', allTablesMode);
+      var btns = document.querySelectorAll('.table-btn');
+      for (var j = 0; j < btns.length; j++) {
+        btns[j].classList.remove('active');
+        btns[j].style.opacity = allTablesMode ? '0.45' : '1';
+        btns[j].style.pointerEvents = allTablesMode ? 'none' : 'auto';
+      }
+      if (!allTablesMode) {
+        selectTable(selectedTable);
+      } else {
+        if (mode === 'study') renderStudyAll();
+        if (mode === 'practice') generateQuestion();
+      }
+    }
+
+    // ── Mode switch ──
+    studyModeBtn.addEventListener('click', function() { switchMode('study'); });
+    practiceModeBtn.addEventListener('click', function() { switchMode('practice'); });
+
+    function switchMode(newMode) {
+      mode = newMode;
+      studyModeBtn.classList.toggle('active', mode === 'study');
+      practiceModeBtn.classList.toggle('active', mode === 'practice');
+      studyView.style.display = mode === 'study' ? 'block' : 'none';
+      practiceView.style.display = mode === 'practice' ? 'block' : 'none';
+      if (mode === 'study') {
+        allTablesMode ? renderStudyAll() : renderStudy();
+      }
+      if (mode === 'practice') {
+        generateQuestion();
+      }
+    }
+
+    // ── Render study view ──
+    // For divisor N: N×1 ÷ N = 1, N×2 ÷ N = 2, … N×12 ÷ N = 12
+    function renderStudy() {
+      studyTitle.textContent = '\u00f7' + selectedTable + ' Division Table';
+      studyGrid.innerHTML = '';
+      for (var k = 1; k <= 12; k++) {
+        var dividend = selectedTable * k;
+        var item = document.createElement('div');
+        item.className = 'study-item';
+        item.innerHTML = dividend + ' &divide; ' + selectedTable + ' = <span class="eq-result">' + k + '</span>';
+        studyGrid.appendChild(item);
+      }
+    }
+
+    function renderStudyAll() {
+      studyTitle.textContent = 'All Division Tables (\u00f72 \u2013 \u00f712)';
+      studyGrid.innerHTML = '';
+      for (var t = 2; t <= 12; t++) {
+        for (var k = 1; k <= 12; k++) {
+          var dividend = t * k;
+          var item = document.createElement('div');
+          item.className = 'study-item';
+          item.innerHTML = dividend + ' &divide; ' + t + ' = <span class="eq-result">' + k + '</span>';
+          studyGrid.appendChild(item);
+        }
+      }
+    }
+
+    // ── Generate question ──
+    // Pick a divisor, pick a quotient 1-12, dividend = divisor × quotient
+    function generateQuestion() {
+      var divisor = allTablesMode ? (Math.floor(Math.random() * 11) + 2) : selectedTable;
+      var quotient = Math.floor(Math.random() * 12) + 1;
+      var dividend = divisor * quotient;
+      if (dividend === currentDividend && divisor === currentDivisor) {
+        return generateQuestion();
+      }
+      currentDividend = dividend;
+      currentDivisor = divisor;
+      currentAnswer = '';
+      updateAnswerDisplay();
+      questionDisplay.innerHTML =
+        '<span class="q-num">' + currentDividend + '</span>' +
+        '<span class="q-op">&divide;</span>' +
+        '<span class="q-num">' + currentDivisor + '</span>' +
+        '<span class="q-eq"> = ?</span>';
+    }
+
+    // ── Answer display ──
+    function updateAnswerDisplay() {
+      answerDisplay.innerHTML = (currentAnswer || '') + '<span class="cursor"></span>';
+    }
+
+    // ── Numpad ──
+    document.getElementById('numpad').addEventListener('click', function(e) {
+      var btn = e.target.closest('.numpad-btn');
+      if (!btn || isLocked) return;
+      var val = btn.getAttribute('data-val');
+
+      if (val === 'clear') {
+        currentAnswer = '';
+        updateAnswerDisplay();
+        return;
+      }
+      if (val === 'check') {
+        checkAnswer();
+        return;
+      }
+      if (currentAnswer.length < 3) {
+        currentAnswer += val;
+        updateAnswerDisplay();
+      }
+    });
+
+    // ── Keyboard support ──
+    document.addEventListener('keydown', function(e) {
+      if (mode !== 'practice' || isLocked) return;
+      if (e.key >= '0' && e.key <= '9') {
+        if (currentAnswer.length < 3) {
+          currentAnswer += e.key;
+          updateAnswerDisplay();
+        }
+      } else if (e.key === 'Backspace') {
+        currentAnswer = currentAnswer.slice(0, -1);
+        updateAnswerDisplay();
+      } else if (e.key === 'Enter') {
+        checkAnswer();
+      }
+    });
+
+    // ── Check answer ──
+    function checkAnswer() {
+      if (currentAnswer === '') return;
+      var correct = currentDividend / currentDivisor;
+      var userAnswer = parseInt(currentAnswer, 10);
+      totalCount++;
+      var isCorrect = (userAnswer === correct);
+
+      if (isCorrect) {
+        correctCount++;
+        streak++;
+        showFeedback(true, correct);
+      } else {
+        streak = 0;
+        showFeedback(false, correct);
+      }
+      updateScores();
+    }
+
+    // ── Update scores ──
+    function updateScores() {
+      scoreCorrect.textContent = correctCount;
+      scoreTotal.textContent = totalCount;
+      scoreStreak.textContent = streak;
+    }
+
+    // ── Show feedback ──
+    function showFeedback(isCorrect, correctAnswer) {
+      isLocked = true;
+      feedbackContent.className = 'feedback-content ' + (isCorrect ? 'feedback-correct' : 'feedback-wrong');
+
+      if (isCorrect) {
+        var messages = ['Correct!', 'Great job!', 'Nailed it!', 'Perfect!', 'You got it!', 'Awesome!', 'Brilliant!'];
+        feedbackIcon.textContent = '\u2713';
+        feedbackText.textContent = messages[Math.floor(Math.random() * messages.length)];
+        feedbackAnswer.textContent = currentDividend + ' \u00f7 ' + currentDivisor + ' = ' + correctAnswer;
+      } else {
+        var encouragements = [
+          'Almost! The answer is ' + correctAnswer,
+          'Not quite \u2014 it\u2019s ' + correctAnswer,
+          'So close! It\u2019s ' + correctAnswer,
+          'Keep trying! The answer is ' + correctAnswer,
+          'Good effort! It\u2019s ' + correctAnswer
+        ];
+        feedbackIcon.textContent = '\u2717';
+        feedbackText.textContent = encouragements[Math.floor(Math.random() * encouragements.length)];
+        feedbackAnswer.textContent = currentDividend + ' \u00f7 ' + currentDivisor + ' = ' + correctAnswer;
+        practiceCard.classList.add('shake');
+        setTimeout(function() { practiceCard.classList.remove('shake'); }, 400);
+      }
+
+      feedbackOverlay.classList.add('show');
+
+      var delay = isCorrect ? 900 : 1600;
+      setTimeout(function() {
+        feedbackOverlay.classList.remove('show');
+        isLocked = false;
+        if (isCorrect && streak > 0 && streak % 5 === 0) {
+          showCelebration(streak);
+        } else {
+          generateQuestion();
+        }
+      }, delay);
+    }
+
+    // ── Celebration ──
+    function showCelebration(streakNum) {
+      var celebrations = [
+        { emoji: '\ud83d\udd25', text: streakNum + ' in a row!', sub: 'You\u2019re on fire!' },
+        { emoji: '\u2b50', text: 'Amazing streak!', sub: streakNum + ' correct answers!' },
+        { emoji: '\ud83c\udfc6', text: 'Incredible!', sub: streakNum + '-answer streak!' },
+        { emoji: '\ud83c\udf89', text: 'Wow, ' + streakNum + '!', sub: 'Keep that streak going!' },
+        { emoji: '\ud83d\ude80', text: streakNum + ' streak!', sub: 'Unstoppable!' }
+      ];
+      var c = celebrations[Math.floor(Math.random() * celebrations.length)];
+      celebrationEmoji.textContent = c.emoji;
+      celebrationText.textContent = c.text;
+      celebrationSub.textContent = c.sub;
+      celebrationOverlay.classList.add('show');
+      spawnConfetti();
+
+      setTimeout(function() {
+        celebrationOverlay.classList.remove('show');
+        generateQuestion();
+      }, 2000);
+    }
+
+    // ── Confetti ──
+    function spawnConfetti() {
+      var colors = ['#c4b5fd', '#f9a8d4', '#93c5fd', '#86efac', '#fcd34d', '#f472b6', '#818cf8'];
+      for (var i = 0; i < 40; i++) {
+        var el = document.createElement('div');
+        el.className = 'confetti';
+        el.style.left = (Math.random() * 100) + 'vw';
+        el.style.background = colors[Math.floor(Math.random() * colors.length)];
+        el.style.width = (6 + Math.random() * 8) + 'px';
+        el.style.height = (6 + Math.random() * 8) + 'px';
+        el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        el.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+        el.style.animationDelay = (Math.random() * 0.5) + 's';
+        el.style.opacity = String(0.8 + Math.random() * 0.2);
+        document.body.appendChild(el);
+        (function(elem) {
+          setTimeout(function() { if (elem.parentNode) elem.parentNode.removeChild(elem); }, 4000);
+        })(el);
+      }
+    }
+
+    // ── Reset ──
+    resetBtn.addEventListener('click', function() {
+      correctCount = 0;
+      totalCount = 0;
+      streak = 0;
+      updateScores();
+      generateQuestion();
+    });
+
+    // ── Init ──
+    renderStudy();
+    generateQuestion();
+
+  })();
+  </script>
+</body>
+</html>
