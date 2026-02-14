@@ -223,7 +223,12 @@ section[style*="background: var(--white)"] {
   background: var(--dark-bg) !important;
   border-top: 1px solid var(--dark-border) !important;
   color: var(--text-secondary) !important;
+  padding: 2rem 1.5rem !important;
+  text-align: center !important;
 }
+.footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.footer-links a { color: #8888a0 !important; }
+.footer-links a:hover { color: var(--pastel-purple) !important; }
 .footer-brand a, .footer h4 { color: var(--text-primary) !important; }
 .footer-brand p { color: var(--text-secondary) !important; }
 .footer a { color: #8888a0 !important; }

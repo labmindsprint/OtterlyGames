@@ -3,47 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Multiplication Table 1-12 | Times Tables Practice — Otterly Games</title>
-  <meta name="description" content="Free interactive multiplication table from 1 to 12. Highlight any times table, hover to see the equation. Perfect for kids learning multiplication. No download needed.">
-  <meta name="keywords" content="multiplication table, times tables, multiplication chart, free multiplication practice, times table 1 to 12">
+  <title>Interactive Multiplication Table 1-12 | Free Times Table Chart — Otterly Games</title>
+  <meta name="description" content="Interactive 12×12 multiplication table. Tap any number to highlight its table. Study and learn times tables visually. Free, no download.">
   <link rel="canonical" href="https://otterlygames.com/tools/multiplication-table.html">
-  <meta property="og:title" content="Free Multiplication Table 1-12 — Interactive Times Tables">
-  <meta property="og:description" content="Interactive 12×12 multiplication chart. Click any table to highlight it. Free, no download.">
-  <link rel="stylesheet" href="../css/style.css">
+  <meta property="og:title" content="Interactive Multiplication Table 1-12 | Free Times Table Chart">
+  <meta property="og:description" content="Interactive 12×12 multiplication table. Tap any number to highlight its table. Free, no download.">
+  <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Interactive Multiplication Table 1-12">
+  <meta name="twitter:description" content="Interactive 12×12 multiplication table. Tap any number to highlight its table.">
+  <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="pinterest-rich-pin" content="true">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Multiplication Table","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"}}</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f8;line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+    h1,h2,h3{font-family:'Nunito',sans-serif}a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer;border:none;background:none}img{max-width:100%;display:block}
+    :root{--pp:#c4b5fd;--pk:#f9a8d4;--pb:#93c5fd;--pg:#86efac;--pa:#fcd34d;--db:#0a0a0f;--dc:#141420;--ds:#1a1a2e;--dbr:#2a2a3e;--t1:#f0f0f8;--t2:#9898b0}
+    .gt{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);height:64px}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:100%}
+    .nav-brand{display:flex;align-items:center;gap:.6rem;font-family:'Nunito';font-weight:900;font-size:1.3rem}
+    .nav-brand .brand-text{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav-brand img{width:40px;height:40px;border-radius:50%}
+    .nav-links{display:flex;align-items:center;gap:1.5rem}.nav-links a{font-size:.9rem;font-weight:500;color:var(--t2);transition:color .2s}.nav-links a:hover,.nav-links a.active{color:var(--pp)}
+    .nav-cta{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f!important;padding:.5rem 1.2rem;border-radius:999px;font-weight:700;font-size:.85rem}
+    .nav-toggle{display:none;flex-direction:column;gap:5px;padding:.5rem}.nav-toggle span{display:block;width:22px;height:2px;background:var(--t2);border-radius:2px}
+    @media(max-width:768px){.nav-toggle{display:flex}.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(10,10,15,.97);padding:1.5rem;flex-direction:column;border-bottom:1px solid var(--dbr)}.nav-links.open{display:flex}}
+    .hero{padding:6.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(26,26,46,.5) 0%,var(--db) 100%)}
+    .hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;margin-bottom:.6rem}.hero p{font-size:1rem;color:var(--t2);max-width:560px;margin:0 auto}
+    .main{flex:1;max-width:700px;margin:0 auto;padding:2rem 1rem 3rem;width:100%}
+    .highlight-info{text-align:center;font-size:1rem;font-weight:700;margin-bottom:1rem;min-height:1.5rem;color:var(--pa)}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:1.5rem}
+    table{border-collapse:collapse;width:100%;min-width:500px}
+    th,td{width:calc(100%/13);text-align:center;padding:.4rem;font-size:clamp(.7rem,2vw,.9rem);font-weight:600;border:1px solid var(--dbr);transition:all .15s}
+    th{background:var(--ds);color:var(--pp);font-weight:800;position:sticky;top:0}
+    th:first-child{background:var(--dc)}
+    td{background:var(--dc);color:var(--t2);cursor:pointer}
+    td:first-child{background:var(--ds);color:var(--pp);font-weight:800;cursor:default}
+    td:hover:not(:first-child){background:var(--ds);color:var(--t1)}
+    td.hl{background:rgba(196,181,253,.15)!important;color:var(--t1)!important;font-weight:700}
+    td.hl-header{background:var(--pp)!important;color:#0a0a0f!important;font-weight:900}
+    .sel-btns{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;margin-bottom:1rem}
+    .sel-btn{padding:.4rem .9rem;border-radius:999px;font-weight:700;font-size:.8rem;background:var(--dc);border:1px solid var(--dbr);color:var(--t2);transition:.2s}
+    .sel-btn:hover{border-color:var(--pp);color:var(--t1)}.sel-btn.active{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;border-color:transparent}
+    .promo{text-align:center;padding:2rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:1rem}.promo h3{font-size:1.1rem;margin-bottom:.3rem}.promo p{color:var(--t2);font-size:.9rem;margin-bottom:1rem}
+    .promo a{display:inline-block;padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.85rem;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f}
+    .footer{padding:2rem 1.5rem;background:var(--db);border-top:1px solid var(--dbr);text-align:center;font-size:.85rem;color:var(--t2);margin-top:auto}
+    .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}.footer-links a{color:#8888a0}.footer-links a:hover{color:var(--pp)}
+  </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Multiplication Table","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"},"description":"Free interactive multiplication table from 1 to 12 for kids"}
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Multiplication Table"}]}
   </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
 </head>
 <body>
-  <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="20" fill="#0D9488"/><ellipse cx="20" cy="22" rx="12" ry="10" fill="#5EEAD4"/><circle cx="15" cy="18" r="2.5" fill="#1E293B"/><circle cx="25" cy="18" r="2.5" fill="#1E293B"/><circle cx="15.8" cy="17.2" r="0.8" fill="#FFF"/><circle cx="25.8" cy="17.2" r="0.8" fill="#FFF"/><ellipse cx="20" cy="23" rx="3" ry="2" fill="#1E293B"/><ellipse cx="20" cy="24" rx="2" ry="1" fill="#F9A8D4"/><circle cx="12" cy="12" r="4" fill="#0D9488"/><circle cx="28" cy="12" r="4" fill="#0D9488"/><circle cx="12" cy="12" r="2.5" fill="#5EEAD4"/><circle cx="28" cy="12" r="2.5" fill="#5EEAD4"/></svg>Otterly Games</a><button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button><div class="nav-links"><a href="/#games" class="nav-link">Our Games</a><a href="/tools/" class="nav-link active">Free Tools</a><a href="/blog/" class="nav-link">Blog</a><a href="/about.html" class="nav-link">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
-
-  <section class="tool-page-hero">
-    <div class="container">
-      <div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a> <span>/</span> Multiplication Table</div>
-      <h1 class="section-title">✖️ Multiplication Table</h1>
-      <p class="section-subtitle" style="max-width:600px;margin:0 auto;">Interactive 12×12 times table. Click a table number to highlight it. Hover over any cell to see the full equation.</p>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:2rem;">
-    <div class="container">
-      <div class="tool-interactive">
-        <div class="tool-controls" id="times-table-controls"></div>
-        <div id="times-table-container" style="overflow-x:auto;"></div>
-      </div>
-
-      <div class="tool-promo">
-        <h3>🦦 Love multiplication? Try Math Tank!</h3>
-        <p>Turn times tables into epic tank battles. Fire missiles by solving math problems!</p>
-        <a href="/apps/math-tank.html" class="btn btn-primary btn-sm">Learn About Math Tank →</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="/" class="nav-brand"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36"><circle cx="20" cy="20" r="20" fill="#0D9488"/><ellipse cx="20" cy="22" rx="12" ry="10" fill="#5EEAD4"/><circle cx="15" cy="18" r="2.5" fill="#1E293B"/><circle cx="25" cy="18" r="2.5" fill="#1E293B"/><circle cx="15.8" cy="17.2" r="0.8" fill="#FFF"/><circle cx="25.8" cy="17.2" r="0.8" fill="#FFF"/><ellipse cx="20" cy="23" rx="3" ry="2" fill="#1E293B"/></svg>Otterly Games</a><p>Otterly Smart. Learning Through Play.</p></div><div><h4>Games</h4><ul><li><a href="/apps/clock-master.html">Clock Master</a></li><li><a href="/apps/math-tank.html">Math Tank</a></li></ul></div><div><h4>Free Tools</h4><ul><li><a href="/tools/multiplication-table.html">Multiplication Table</a></li><li><a href="/tools/math-quiz.html">Math Quiz</a></li><li><a href="/tools/spelling-bee.html">Spelling Bee</a></li><li><a href="/tools/calculator.html">Calculator</a></li></ul></div><div><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/blog/">Blog</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="https://ko-fi.com/mindsprintlab"  target="_blank" rel="noopener">Support Us ☕</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 Otterly Games. Made with 🦦 by a mom who gets it.</span><a href="/privacy.html">Privacy Policy</a></div></div></footer>
-  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-  <script>kofiWidgetOverlay.draw('mindsprintlab',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#0D9488','floating-chat.donateButton.text-color':'#fff'});</script>
-  <script src="../js/main.js"></script>
+  <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button><div class="nav-links" id="navLinks"><a href="/#games">Games</a><a href="/tools/" class="active">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
+  <section class="hero"><h1>📋 <span class="gt">Times</span> Table</h1><p>Interactive 12×12 multiplication chart — tap any number to highlight its table</p></section>
+  <div class="main">
+    <div class="sel-btns" id="selBtns"></div>
+    <div class="highlight-info" id="hlInfo">Tap a number to highlight its table</div>
+    <div class="table-wrap"><table id="tbl"></table></div>
+    <div class="promo"><h3>🦦 Master the tables? Try Math Tank!</h3><p>Battle enemies by solving multiplication problems!</p><a href="/apps/math-tank.html">Learn About Math Tank →</a></div>
+  </div>
+  <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
+  <script>
+    document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
+    let activeTable=0;
+    function buildTable(){
+      const t=document.getElementById('tbl');let h='<tr><th>×</th>';
+      for(let i=1;i<=12;i++)h+=`<th>${i}</th>`;h+='</tr>';
+      for(let r=1;r<=12;r++){h+=`<tr><td>${r}</td>`;for(let c=1;c<=12;c++)h+=`<td data-r="${r}" data-c="${c}" onclick="cellClick(${r},${c})">${r*c}</td>`;h+='</tr>'}
+      t.innerHTML=h;
+    }
+    function buildBtns(){
+      const b=document.getElementById('selBtns');let h='<button class="sel-btn" onclick="highlight(0)">All</button>';
+      for(let i=1;i<=12;i++)h+=`<button class="sel-btn" onclick="highlight(${i})">${i}×</button>`;
+      b.innerHTML=h;
+    }
+    function highlight(n){
+      activeTable=n;
+      document.querySelectorAll('.sel-btn').forEach((b,i)=>b.classList.toggle('active',i===(n===0?0:n)));
+      document.querySelectorAll('td[data-r]').forEach(td=>{
+        const r=+td.dataset.r,c=+td.dataset.c;
+        td.classList.remove('hl','hl-header');
+        if(n>0&&(r===n||c===n))td.classList.add('hl');
+        if(n>0&&(r===n&&c===0||r===0&&c===n))td.classList.add('hl-header');
+      });
+      // Also highlight row/col headers
+      document.querySelectorAll('th').forEach((th,i)=>{if(i>0)th.style.background=n>0&&i===n?'var(--pp)':'';th.style.color=n>0&&i===n?'#0a0a0f':''});
+      document.querySelectorAll('td:first-child').forEach((td,i)=>{if(i>=0){const row=i+1;td.style.background=n>0&&row===n?'var(--pp)':'';td.style.color=n>0&&row===n?'#0a0a0f':''}});
+      document.getElementById('hlInfo').textContent=n>0?`Showing ${n}× table`:'Tap a number to highlight its table';
+    }
+    function cellClick(r,c){
+      document.getElementById('hlInfo').innerHTML=`<span style="color:var(--pg)">${r} × ${c} = ${r*c}</span>`;
+    }
+    buildTable();buildBtns();
+  </script>
 </body>
 </html>

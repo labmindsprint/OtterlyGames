@@ -8,6 +8,13 @@
   <link rel="canonical" href="https://otterlygames.com/contact.html">
   <meta property="og:title" content="Contact Otterly Games">
   <meta property="og:description" content="Send us feedback, suggestions, or questions. We read every message!">
+  <meta property="og:image" content="https://otterlygames.com/images/Otter-mascot.png">
+  <meta property="og:url" content="https://otterlygames.com/contact.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Otterly Games">
+  <meta name="twitter:description" content="Send us feedback, suggestions, or questions. We read every message!">
+  <meta name="twitter:image" content="https://otterlygames.com/images/Otter-mascot.png">
+  <meta name="pinterest-rich-pin" content="true">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -188,41 +195,46 @@
     }
 
     /* Footer */
-    footer {
+    .footer {
       padding: 2rem 1.5rem;
       border-top: 1px solid var(--dark-border);
       text-align: center;
       font-size: 0.875rem;
       color: var(--text-secondary);
     }
-    footer a { color: var(--pastel-purple); }
-    footer a:hover { text-decoration: underline; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .footer-links a { color: #8888a0; }
+    .footer-links a:hover { color: var(--pastel-purple); }
 
     @media (max-width: 480px) {
       .contact-header h1 { font-size: 2rem; }
       .contact-form { padding: 1.5rem; }
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="/" class="nav-brand">
-        <span style="font-size: 1.8rem;">🦦</span>
+        <img src="/images/Otter-mascot.png" alt="Otterly Games" style="width:40px;height:40px;border-radius:50%">
         <span class="brand-text">Otterly Games</span>
       </a>
-      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/apps/clock-master.html">Clock Master</a>
-        <a href="/apps/math-tank.html">Math Tank</a>
-        <a href="/tools/">Free Tools</a>
+      <div class="nav-links" id="navLinks">
+        <a href="/#games">Games</a>
+        <a href="/tools/">Tools</a>
         <a href="/blog/">Blog</a>
         <a href="/about.html">About</a>
         <a href="/contact.html" class="active">Contact</a>
+        <a href="/#games" class="nav-cta">Get Our Games →</a>
       </div>
     </div>
   </nav>
@@ -282,15 +294,16 @@
   </section>
 
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Otterly Games. Made with 🦦 by a mom who gets it.</p>
-    <p style="margin-top: 0.5rem;">
-      <a href="/privacy.html">Privacy Policy</a> · <a href="/about.html">About</a>
-    </p>
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/">Home</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a>
+    </div>
+    <p style="color:#4a4a60">&copy; 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p>
   </footer>
 
   <script>
-    // Handle form submission with Formspree
+    document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+
     const form = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
 
@@ -323,6 +336,6 @@
     });
   </script>
   <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-  <script>kofiWidgetOverlay.draw('mindsprintlab',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#0D9488','floating-chat.donateButton.text-color':'#fff'});</script>
+  <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
 </body>
 </html>

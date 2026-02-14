@@ -3,67 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Kid Calculator | Simple Calculator for Children — Otterly Games</title>
-  <meta name="description" content="Free, simple, colorful calculator for kids. Add, subtract, multiply, and divide. Perfect for homework help. No download needed.">
-  <meta name="keywords" content="simple calculator for kids, kid calculator, children calculator, math calculator, homework calculator">
+  <title>Kid-Friendly Calculator | Free Online — Otterly Games</title>
+  <meta name="description" content="A simple, colorful calculator for kids. Big buttons, easy to use. Perfect for checking homework.">
   <link rel="canonical" href="https://otterlygames.com/tools/calculator.html">
-  <meta property="og:title" content="Free Kid Calculator — Simple & Colorful">
-  <meta property="og:description" content="A big, colorful, easy-to-use calculator designed for kids. Perfect for homework and exploring numbers.">
-  <link rel="stylesheet" href="../css/style.css">
+  <meta property="og:title" content="Kid-Friendly Calculator | Free Online">
+  <meta property="og:description" content="A simple, colorful calculator for kids. Big buttons, easy to use. Perfect for checking homework.">
+  <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kid-Friendly Calculator">
+  <meta name="twitter:description" content="A simple, colorful calculator for kids. Big buttons, easy to use.">
+  <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="pinterest-rich-pin" content="true">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Kid Calculator","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"}}</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f8;line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+    h1,h2,h3{font-family:'Nunito',sans-serif}a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer;border:none;background:none}img{max-width:100%;display:block}
+    :root{--pp:#c4b5fd;--pk:#f9a8d4;--pb:#93c5fd;--pg:#86efac;--pa:#fcd34d;--db:#0a0a0f;--dc:#141420;--ds:#1a1a2e;--dbr:#2a2a3e;--t1:#f0f0f8;--t2:#9898b0}
+    .gt{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);height:64px}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:100%}
+    .nav-brand{display:flex;align-items:center;gap:.6rem;font-family:'Nunito';font-weight:900;font-size:1.3rem}
+    .nav-brand .brand-text{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav-brand img{width:40px;height:40px;border-radius:50%}
+    .nav-links{display:flex;align-items:center;gap:1.5rem}.nav-links a{font-size:.9rem;font-weight:500;color:var(--t2);transition:color .2s}.nav-links a:hover,.nav-links a.active{color:var(--pp)}
+    .nav-cta{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f!important;padding:.5rem 1.2rem;border-radius:999px;font-weight:700;font-size:.85rem}
+    .nav-toggle{display:none;flex-direction:column;gap:5px;padding:.5rem}.nav-toggle span{display:block;width:22px;height:2px;background:var(--t2);border-radius:2px}
+    @media(max-width:768px){.nav-toggle{display:flex}.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(10,10,15,.97);padding:1.5rem;flex-direction:column;border-bottom:1px solid var(--dbr)}.nav-links.open{display:flex}}
+    .hero{padding:6.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(26,26,46,.5) 0%,var(--db) 100%)}
+    .hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;margin-bottom:.6rem}.hero p{font-size:1rem;color:var(--t2);max-width:560px;margin:0 auto}
+    .main{flex:1;max-width:360px;margin:0 auto;padding:2rem 1.5rem 3rem;width:100%}
+    .calc{background:var(--dc);border:1px solid var(--dbr);border-radius:1.5rem;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+    .display{background:var(--ds);border:1px solid var(--dbr);border-radius:1rem;padding:1rem;text-align:right;margin-bottom:1rem;min-height:5rem;display:flex;flex-direction:column;justify-content:flex-end}
+    .display-expr{font-size:.9rem;color:var(--t2);min-height:1.2rem;word-break:break-all}
+    .display-val{font-size:2.5rem;font-weight:900;color:var(--t1);word-break:break-all}
+    .calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+    .calc-btn{height:60px;border-radius:14px;font-size:1.3rem;font-weight:700;transition:.15s;border:1px solid var(--dbr)}
+    .calc-btn:active{transform:scale(.93)}
+    .calc-btn.num{background:var(--ds);color:var(--t1)}.calc-btn.num:hover{background:#252540}
+    .calc-btn.op{background:rgba(196,181,253,.12);color:var(--pp)}.calc-btn.op:hover{background:rgba(196,181,253,.2)}
+    .calc-btn.eq{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;font-size:1.5rem;border-color:transparent}.calc-btn.eq:hover{filter:brightness(1.1)}
+    .calc-btn.clear{background:rgba(249,168,212,.12);color:var(--pk)}.calc-btn.clear:hover{background:rgba(249,168,212,.2)}
+    .calc-btn.zero{grid-column:span 2}
+    .calc-btn.back{font-size:1rem}
+    .footer{padding:2rem 1.5rem;background:var(--db);border-top:1px solid var(--dbr);text-align:center;font-size:.85rem;color:var(--t2);margin-top:auto}
+    .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}.footer-links a{color:#8888a0}.footer-links a:hover{color:var(--pp)}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Kid Calculator"}]}
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
 </head>
 <body>
-  <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="20" fill="#0D9488"/><ellipse cx="20" cy="22" rx="12" ry="10" fill="#5EEAD4"/><circle cx="15" cy="18" r="2.5" fill="#1E293B"/><circle cx="25" cy="18" r="2.5" fill="#1E293B"/><circle cx="15.8" cy="17.2" r="0.8" fill="#FFF"/><circle cx="25.8" cy="17.2" r="0.8" fill="#FFF"/><ellipse cx="20" cy="23" rx="3" ry="2" fill="#1E293B"/><ellipse cx="20" cy="24" rx="2" ry="1" fill="#F9A8D4"/><circle cx="12" cy="12" r="4" fill="#0D9488"/><circle cx="28" cy="12" r="4" fill="#0D9488"/><circle cx="12" cy="12" r="2.5" fill="#5EEAD4"/><circle cx="28" cy="12" r="2.5" fill="#5EEAD4"/></svg>Otterly Games</a><button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button><div class="nav-links"><a href="/#games" class="nav-link">Our Games</a><a href="/tools/" class="nav-link active">Free Tools</a><a href="/blog/" class="nav-link">Blog</a><a href="/about.html" class="nav-link">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
-
-  <section class="tool-page-hero">
-    <div class="container">
-      <div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a> <span>/</span> Kid Calculator</div>
-      <h1 class="section-title">🔢 Kid Calculator</h1>
-      <p class="section-subtitle" style="max-width:600px;margin:0 auto;">A simple, colorful calculator. Big buttons, easy to use. Great for checking homework or exploring numbers!</p>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:2rem;">
-    <div class="container">
-      <div class="tool-interactive" style="max-width:400px;">
-        <div class="calc-display" id="calc-display">0</div>
-        <div class="calc-grid">
-          <button class="calc-btn clear" onclick="calcClear()">C</button>
-          <button class="calc-btn operator" onclick="calcOp('÷')">÷</button>
-          <button class="calc-btn operator" onclick="calcOp('×')">×</button>
-          <button class="calc-btn operator" onclick="calcOp('-')">−</button>
-
-          <button class="calc-btn number" onclick="calcInput('7')">7</button>
-          <button class="calc-btn number" onclick="calcInput('8')">8</button>
-          <button class="calc-btn number" onclick="calcInput('9')">9</button>
-          <button class="calc-btn operator" onclick="calcOp('+')">+</button>
-
-          <button class="calc-btn number" onclick="calcInput('4')">4</button>
-          <button class="calc-btn number" onclick="calcInput('5')">5</button>
-          <button class="calc-btn number" onclick="calcInput('6')">6</button>
-          <button class="calc-btn number" onclick="calcInput('0')">0</button>
-
-          <button class="calc-btn number" onclick="calcInput('1')">1</button>
-          <button class="calc-btn number" onclick="calcInput('2')">2</button>
-          <button class="calc-btn number" onclick="calcInput('3')">3</button>
-          <button class="calc-btn number" onclick="calcInput('.')">.</button>
-
-          <button class="calc-btn equals" onclick="calcEquals()">=</button>
-          <button class="calc-btn clear" onclick="calcClear()" style="grid-column:span 2;">Clear</button>
-        </div>
-      </div>
-
-      <div class="tool-promo">
-        <h3>🦦 Ready for more math fun?</h3>
-        <p>Our Math Tank app turns multiplication and division into an exciting battle game!</p>
-        <a href="/apps/math-tank.html" class="btn btn-primary btn-sm">Learn About Math Tank →</a>
+  <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button><div class="nav-links" id="navLinks"><a href="/#games">Games</a><a href="/tools/" class="active">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
+  <section class="hero"><h1>🔢 <span class="gt">Kid</span> Calculator</h1><p>Simple, colorful, and easy to use — perfect for homework</p></section>
+  <div class="main">
+    <div class="calc">
+      <div class="display"><div class="display-expr" id="expr"></div><div class="display-val" id="val">0</div></div>
+      <div class="calc-grid">
+        <button class="calc-btn clear" onclick="clearAll()">C</button>
+        <button class="calc-btn clear back" onclick="backspace()">⌫</button>
+        <button class="calc-btn op" onclick="setOp('%')">%</button>
+        <button class="calc-btn op" onclick="setOp('÷')">÷</button>
+        <button class="calc-btn num" onclick="numPress('7')">7</button>
+        <button class="calc-btn num" onclick="numPress('8')">8</button>
+        <button class="calc-btn num" onclick="numPress('9')">9</button>
+        <button class="calc-btn op" onclick="setOp('×')">×</button>
+        <button class="calc-btn num" onclick="numPress('4')">4</button>
+        <button class="calc-btn num" onclick="numPress('5')">5</button>
+        <button class="calc-btn num" onclick="numPress('6')">6</button>
+        <button class="calc-btn op" onclick="setOp('−')">−</button>
+        <button class="calc-btn num" onclick="numPress('1')">1</button>
+        <button class="calc-btn num" onclick="numPress('2')">2</button>
+        <button class="calc-btn num" onclick="numPress('3')">3</button>
+        <button class="calc-btn op" onclick="setOp('+')">+</button>
+        <button class="calc-btn num zero" onclick="numPress('0')">0</button>
+        <button class="calc-btn num" onclick="numPress('.')">.</button>
+        <button class="calc-btn eq" onclick="calculate()">=</button>
       </div>
     </div>
-  </section>
-
-  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="/" class="nav-brand"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36"><circle cx="20" cy="20" r="20" fill="#0D9488"/><ellipse cx="20" cy="22" rx="12" ry="10" fill="#5EEAD4"/><circle cx="15" cy="18" r="2.5" fill="#1E293B"/><circle cx="25" cy="18" r="2.5" fill="#1E293B"/><circle cx="15.8" cy="17.2" r="0.8" fill="#FFF"/><circle cx="25.8" cy="17.2" r="0.8" fill="#FFF"/><ellipse cx="20" cy="23" rx="3" ry="2" fill="#1E293B"/></svg>Otterly Games</a><p>Otterly Smart. Learning Through Play.</p></div><div><h4>Games</h4><ul><li><a href="/apps/clock-master.html">Clock Master</a></li><li><a href="/apps/math-tank.html">Math Tank</a></li></ul></div><div><h4>Free Tools</h4><ul><li><a href="/tools/multiplication-table.html">Multiplication Table</a></li><li><a href="/tools/math-quiz.html">Math Quiz</a></li><li><a href="/tools/spelling-bee.html">Spelling Bee</a></li><li><a href="/tools/calculator.html">Calculator</a></li></ul></div><div><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/blog/">Blog</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="https://ko-fi.com/mindsprintlab"  target="_blank" rel="noopener">Support Us ☕</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 Otterly Games. Made with 🦦 by a mom who gets it.</span><a href="/privacy.html">Privacy Policy</a></div></div></footer>
-  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-  <script>kofiWidgetOverlay.draw('mindsprintlab',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#0D9488','floating-chat.donateButton.text-color':'#fff'});</script>
-  <script src="../js/main.js"></script>
+  </div>
+  <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
+  <script>
+    document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
+    let current='0',prev='',op='',justCalc=false;
+    function update(){
+      document.getElementById('val').textContent=current.length>12?current.slice(0,12)+'…':current;
+      document.getElementById('expr').textContent=prev&&op?`${prev} ${op}`:'';
+    }
+    function numPress(n){
+      if(justCalc){current='0';justCalc=false}
+      if(n==='.'&&current.includes('.'))return;
+      if(current==='0'&&n!=='.')current=n;
+      else if(current.length<12)current+=n;
+      update();
+    }
+    function setOp(o){
+      if(current==='Oops!'){clearAll();return}
+      if(prev&&op&&!justCalc)calculate();
+      prev=current;op=o;current='0';justCalc=false;update();
+    }
+    function calculate(){
+      if(!prev||!op)return;
+      const a=parseFloat(prev),b=parseFloat(current);let r=0;
+      if(op==='+')r=a+b;else if(op==='−')r=a-b;else if(op==='×')r=a*b;
+      else if(op==='÷')r=b===0?'Oops!':a/b;else if(op==='%')r=a*(b/100);
+      if(typeof r==='number'){r=parseFloat(r.toPrecision(10));current=String(r)}else current=r;
+      prev='';op='';justCalc=true;update();
+    }
+    function clearAll(){current='0';prev='';op='';justCalc=false;update()}
+    function backspace(){if(justCalc)return;current=current.length>1?current.slice(0,-1):'0';update()}
+    document.addEventListener('keydown',e=>{
+      if(e.key>='0'&&e.key<='9'||e.key==='.')numPress(e.key);
+      else if(e.key==='+')setOp('+');else if(e.key==='-')setOp('−');
+      else if(e.key==='*')setOp('×');else if(e.key==='/')setOp('÷');
+      else if(e.key==='%')setOp('%');
+      else if(e.key==='Enter'||e.key==='=')calculate();
+      else if(e.key==='Backspace')backspace();
+      else if(e.key==='Escape')clearAll();
+    });
+    update();
+  </script>
 </body>
 </html>

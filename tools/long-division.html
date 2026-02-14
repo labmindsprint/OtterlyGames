@@ -3,45 +3,145 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Long Division Practice for Kids | Bracket Division — Otterly Games</title>
-  <meta name="description" content="Practice long division step by step with remainders. Enter the tens digit, ones digit, and remainder. Free interactive tool for kids learning the bracket method.">
-  <meta name="keywords" content="long division practice, bracket division, division with remainders, division for kids, long division steps">
+  <title>Free Long Division Practice | Step-by-Step — Otterly Games</title>
+  <meta name="description" content="Learn long division step by step. Practice bracket division with remainders. Visual step-by-step guide for kids.">
   <link rel="canonical" href="https://otterlygames.com/tools/long-division.html">
-  <meta property="og:title" content="Free Long Division Practice — Step-by-Step with Remainders">
-  <meta property="og:description" content="Practice bracket long division with step-by-step hints. Divisors 2-5, two-digit quotients, and remainders.">
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Long Division Practice","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"},"description":"Interactive long division practice with remainders for kids"}
-  </script>
-  <link rel="stylesheet" href="../css/style.css">
+  <meta property="og:title" content="Free Long Division Practice | Step-by-Step">
+  <meta property="og:description" content="Learn long division step by step. Practice bracket division with remainders. Free for kids.">
+  <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Long Division — Step-by-Step">
+  <meta name="twitter:description" content="Learn long division step by step. Practice bracket division with remainders.">
+  <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="pinterest-rich-pin" content="true">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Long Division","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"}}</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f8;line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+    h1,h2,h3{font-family:'Nunito',sans-serif}a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer;border:none;background:none}img{max-width:100%;display:block}
+    :root{--pp:#c4b5fd;--pk:#f9a8d4;--pb:#93c5fd;--pg:#86efac;--pa:#fcd34d;--db:#0a0a0f;--dc:#141420;--ds:#1a1a2e;--dbr:#2a2a3e;--t1:#f0f0f8;--t2:#9898b0}
+    .gt{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);height:64px}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:100%}
+    .nav-brand{display:flex;align-items:center;gap:.6rem;font-family:'Nunito';font-weight:900;font-size:1.3rem}
+    .nav-brand .brand-text{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav-brand img{width:40px;height:40px;border-radius:50%}
+    .nav-links{display:flex;align-items:center;gap:1.5rem}.nav-links a{font-size:.9rem;font-weight:500;color:var(--t2);transition:color .2s}.nav-links a:hover,.nav-links a.active{color:var(--pp)}
+    .nav-cta{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f!important;padding:.5rem 1.2rem;border-radius:999px;font-weight:700;font-size:.85rem}
+    .nav-toggle{display:none;flex-direction:column;gap:5px;padding:.5rem}.nav-toggle span{display:block;width:22px;height:2px;background:var(--t2);border-radius:2px}
+    @media(max-width:768px){.nav-toggle{display:flex}.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(10,10,15,.97);padding:1.5rem;flex-direction:column;border-bottom:1px solid var(--dbr)}.nav-links.open{display:flex}}
+    .hero{padding:6.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(26,26,46,.5) 0%,var(--db) 100%)}
+    .hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;margin-bottom:.6rem}.hero p{font-size:1rem;color:var(--t2);max-width:560px;margin:0 auto}
+    .main{flex:1;max-width:600px;margin:0 auto;padding:2rem 1.5rem 3rem;width:100%}
+    .problem-box{background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;padding:2rem;text-align:center;margin-bottom:1.5rem}
+    .div-display{font-family:'Courier New',monospace;font-size:clamp(1.8rem,6vw,2.5rem);font-weight:700;margin-bottom:1.5rem;display:flex;align-items:flex-start;justify-content:center;gap:.2rem}
+    .div-bracket{display:flex;flex-direction:column;align-items:flex-start}
+    .div-quotient{border-bottom:none;min-height:1.5em;letter-spacing:.3em;color:var(--pg);font-weight:900}
+    .div-dividend{border-top:3px solid var(--pp);border-left:3px solid var(--pp);border-top-left-radius:8px;padding:.2em .4em;letter-spacing:.2em}
+    .div-divisor{padding:.2em .3em;align-self:center;color:var(--pb)}
+    .step-box{background:var(--ds);border:1px solid var(--dbr);border-radius:.75rem;padding:1rem;margin-bottom:1rem;text-align:center}
+    .step-label{font-size:.8rem;color:var(--pp);font-weight:700;text-transform:uppercase;margin-bottom:.3rem}.step-prompt{font-size:1.1rem;font-weight:700;margin-bottom:.3rem}.step-hint{font-size:.85rem;color:var(--t2)}
+    .answer-box{font-size:2rem;font-weight:800;min-height:3rem;background:var(--ds);border:2px solid var(--dbr);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:1rem auto;width:fit-content;min-width:150px;padding:.5rem 1rem}
+    .cursor{display:inline-block;width:2px;height:1.5em;background:var(--pp);animation:blink 1s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;max-width:280px;margin:0 auto 1rem}
+    .num-btn{height:52px;border-radius:12px;font-size:1.2rem;font-weight:700;background:var(--ds);border:1px solid var(--dbr);color:var(--t1);transition:.15s}
+    .num-btn:hover{background:var(--dc);border-color:var(--pp)}.num-btn:active{transform:scale(.95)}
+    .num-btn.clear{color:var(--pk)}.num-btn.check{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;border-color:transparent}
+    .feedback{text-align:center;font-size:1rem;font-weight:700;min-height:1.5rem;margin-bottom:.5rem}.feedback.ok{color:var(--pg)}.feedback.no{color:var(--pk)}
+    .stats{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.5rem;font-weight:600;font-size:.9rem;color:var(--t2)}.stats strong{color:var(--t1)}
+    .new-btn{display:block;margin:1rem auto 0;padding:.7rem 1.8rem;border-radius:999px;font-weight:700;background:var(--ds);border:1px solid var(--dbr);color:var(--t1);transition:.2s}.new-btn:hover{border-color:var(--pp);color:var(--pp)}
+    .promo{text-align:center;padding:2rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:2rem}.promo h3{font-size:1.1rem;margin-bottom:.3rem}.promo p{color:var(--t2);font-size:.9rem;margin-bottom:1rem}
+    .promo a{display:inline-block;padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.85rem;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f}
+    .footer{padding:2rem 1.5rem;background:var(--db);border-top:1px solid var(--dbr);text-align:center;font-size:.85rem;color:var(--t2);margin-top:auto}
+    .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}.footer-links a{color:#8888a0}.footer-links a:hover{color:var(--pp)}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Long Division"}]}
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
 </head>
 <body>
-  <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="20" fill="#0D9488"/><ellipse cx="20" cy="22" rx="12" ry="10" fill="#5EEAD4"/><circle cx="15" cy="18" r="2.5" fill="#1E293B"/><circle cx="25" cy="18" r="2.5" fill="#1E293B"/><circle cx="15.8" cy="17.2" r="0.8" fill="#FFF"/><circle cx="25.8" cy="17.2" r="0.8" fill="#FFF"/><ellipse cx="20" cy="23" rx="3" ry="2" fill="#1E293B"/><ellipse cx="20" cy="24" rx="2" ry="1" fill="#F9A8D4"/><circle cx="12" cy="12" r="4" fill="#0D9488"/><circle cx="28" cy="12" r="4" fill="#0D9488"/><circle cx="12" cy="12" r="2.5" fill="#5EEAD4"/><circle cx="28" cy="12" r="2.5" fill="#5EEAD4"/></svg>Otterly Games</a><button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button><div class="nav-links"><a href="/#games" class="nav-link">Our Games</a><a href="/tools/" class="nav-link active">Free Tools</a><a href="/blog/" class="nav-link">Blog</a><a href="/about.html" class="nav-link">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
-
-  <section class="tool-page-hero">
-    <div class="container">
-      <div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a> <span>/</span> Long Division</div>
-      <h1 class="section-title">📐 Long Division</h1>
-      <p class="section-subtitle" style="max-width:640px;margin:0 auto;">Practice bracket long division step by step. Work out the tens digit, ones digit, and remainder — with helpful hints along the way. From Math Tank's lesson mode!</p>
+  <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button><div class="nav-links" id="navLinks"><a href="/#games">Games</a><a href="/tools/" class="active">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
+  <section class="hero"><h1>📐 <span class="gt">Long</span> Division</h1><p>Step-by-step bracket division — find the quotient digit by digit</p></section>
+  <div class="main">
+    <div class="stats"><span>✅ <strong id="ct">0</strong></span><span>🔥 Streak <strong id="sk">0</strong></span></div>
+    <div class="problem-box">
+      <div class="div-display" id="divDisp"></div>
+      <div class="step-box" id="stepBox"></div>
     </div>
-  </section>
-
-  <section class="section" style="padding-top:2rem;">
-    <div class="container">
-      <div class="tool-interactive" style="max-width:500px;">
-        <div id="long-div-area"></div>
-      </div>
-      <div class="tool-promo">
-        <h3>🦦 Want animated lessons first?</h3>
-        <p>Math Tank teaches long division with step-by-step animations before practice. Plus tank battles!</p>
-        <a href="/apps/math-tank.html" class="btn btn-primary btn-sm">Learn About Math Tank →</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="/" class="nav-brand"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36"><circle cx="20" cy="20" r="20" fill="#0D9488"/><ellipse cx="20" cy="22" rx="12" ry="10" fill="#5EEAD4"/><circle cx="15" cy="18" r="2.5" fill="#1E293B"/><circle cx="25" cy="18" r="2.5" fill="#1E293B"/><circle cx="15.8" cy="17.2" r="0.8" fill="#FFF"/><circle cx="25.8" cy="17.2" r="0.8" fill="#FFF"/><ellipse cx="20" cy="23" rx="3" ry="2" fill="#1E293B"/></svg>Otterly Games</a><p>Otterly Smart. Learning Through Play.</p></div><div><h4>Games</h4><ul><li><a href="/apps/clock-master.html">Clock Master</a></li><li><a href="/apps/math-tank.html">Math Tank</a></li></ul></div><div><h4>Free Tools</h4><ul><li><a href="/tools/multiplication-table.html">Multiplication Table</a></li><li><a href="/tools/multiplication-practice.html">Multiplication Practice</a></li><li><a href="/tools/division-practice.html">Division Practice</a></li><li><a href="/tools/column-multiplication.html">Column Multiplication</a></li><li><a href="/tools/long-division.html">Long Division</a></li><li><a href="/tools/math-quiz.html">Math Quiz</a></li><li><a href="/tools/spelling-bee.html">Spelling Bee</a></li><li><a href="/tools/calculator.html">Calculator</a></li></ul></div><div><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/blog/">Blog</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="https://ko-fi.com/mindsprintlab"  target="_blank" rel="noopener">Support Us ☕</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 Otterly Games. Made with 🦦 by a mom who gets it.</span><a href="/privacy.html">Privacy Policy</a></div></div></footer>
-  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-  <script>kofiWidgetOverlay.draw('mindsprintlab',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#0D9488','floating-chat.donateButton.text-color':'#fff'});</script>
-  <script src="../js/main.js"></script>
+    <div class="feedback" id="fb"></div>
+    <div class="answer-box" id="ans"><span class="cursor"></span></div>
+    <div class="numpad" id="np"></div>
+    <button class="new-btn" onclick="newProblem()">New Problem →</button>
+    <div class="promo"><h3>🦦 Love this? Try Math Tank!</h3><p>Division skills power your missiles in epic space battles!</p><a href="/apps/math-tank.html">Learn About Math Tank →</a></div>
+  </div>
+  <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
+  <script>
+    document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
+    let divisor=0,dividend=0,quotient=0,remainder=0,step=0,steps=[],solved=0,streak=0,input='';
+    function gen(){
+      divisor=2+Math.floor(Math.random()*8); // 2-9
+      quotient=11+Math.floor(Math.random()*9); // 11-19 (2-digit quotient)
+      remainder=Math.floor(Math.random()*divisor); // 0 to divisor-1
+      dividend=divisor*quotient+remainder;
+      const qTens=Math.floor(quotient/10),qOnes=quotient%10;
+      const firstChunk=Math.floor(dividend/10); // tens digits to divide first
+      const firstQ=Math.floor(firstChunk/divisor);
+      const firstR=firstChunk-firstQ*divisor;
+      const bringDown=firstR*10+(dividend%10);
+      const secondQ=Math.floor(bringDown/divisor);
+      const finalR=bringDown-secondQ*divisor;
+      steps=[
+        {p:`${divisor} goes into ${firstChunk} how many times?`,h:`How many times does ${divisor} fit into ${firstChunk}?`,a:firstQ},
+        {p:`Bring down ${dividend%10}. ${divisor} goes into ${bringDown} how many times?`,h:`${firstChunk} - ${firstQ*divisor} = ${firstR}, bring down ${dividend%10} → ${bringDown} ÷ ${divisor} = ?`,a:secondQ},
+        {p:`What is the remainder?`,h:`${bringDown} - ${secondQ*divisor} = ?`,a:finalR}
+      ];
+      step=0;
+    }
+    function renderDiv(){
+      const d=document.getElementById('divDisp');
+      let qStr='';
+      if(step>=1) qStr+=steps[0].a;
+      if(step>=2) qStr+=String(steps[1].a);
+      if(!qStr) qStr='? ?';
+      d.innerHTML=`<span class="div-divisor">${divisor}</span><div class="div-bracket"><span class="div-quotient">${qStr}</span><span class="div-dividend">${dividend}</span></div>`;
+    }
+    function renderStep(){
+      const s=document.getElementById('stepBox');
+      if(step<steps.length){
+        s.innerHTML=`<div class="step-label">Step ${step+1} of ${steps.length}</div><div class="step-prompt">${steps[step].p}</div><div class="step-hint">${steps[step].h}</div>`;
+      } else {
+        const r=steps[2].a;
+        s.innerHTML=`<div class="step-prompt" style="color:var(--pg)">✅ ${dividend} ÷ ${divisor} = ${quotient}${r>0?' R'+r:''}</div><div class="step-hint">Great job! Try another.</div>`;
+      }
+    }
+    function renderAns(){document.getElementById('ans').innerHTML=input||'<span class="cursor"></span>'}
+    function renderNP(){let h='';for(let i=1;i<=9;i++)h+=`<button class="num-btn" onclick="press('${i}')">${i}</button>`;h+=`<button class="num-btn clear" onclick="clr()">C</button><button class="num-btn" onclick="press('0')">0</button><button class="num-btn check" onclick="chk()">Check ✓</button>`;document.getElementById('np').innerHTML=h}
+    function press(n){if(input.length<4){input+=n;renderAns()}}
+    function clr(){input='';renderAns();document.getElementById('fb').textContent='';document.getElementById('fb').className='feedback'}
+    function chk(){
+      if(!input&&step<steps.length&&steps[step].a!==0) return;
+      if(step>=steps.length) return;
+      const fb=document.getElementById('fb');const val=input===''?0:parseInt(input);
+      if(val===steps[step].a){
+        fb.textContent='✅ Correct!';fb.className='feedback ok';step++;input='';
+        if(step>=steps.length){solved++;streak++;document.getElementById('ct').textContent=solved;document.getElementById('sk').textContent=streak}
+        setTimeout(()=>{renderDiv();renderStep();renderAns();if(step<steps.length){fb.textContent='';fb.className='feedback'}},700);
+      } else {
+        fb.textContent=`Not quite! The answer is ${steps[step].a}`;fb.className='feedback no';streak=0;document.getElementById('sk').textContent=0;input='';
+        setTimeout(()=>renderAns(),100);
+        setTimeout(()=>{step++;renderDiv();renderStep();fb.textContent='';fb.className='feedback'},2200);
+      }
+    }
+    function newProblem(){input='';document.getElementById('fb').textContent='';document.getElementById('fb').className='feedback';gen();renderDiv();renderStep();renderAns()}
+    document.addEventListener('keydown',e=>{if(e.key>='0'&&e.key<='9')press(e.key);else if(e.key==='Backspace'){e.preventDefault();input=input.slice(0,-1);renderAns()}else if(e.key==='Enter')chk()});
+    renderNP();newProblem();
+  </script>
 </body>
 </html>

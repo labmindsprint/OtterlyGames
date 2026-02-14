@@ -3,48 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Math Speed Quiz for Kids | Timed Math Challenge — Otterly Games</title>
-  <meta name="description" content="Free 30-second math speed quiz for kids. Practice multiplication, division, and addition with 3 difficulty levels. No download needed — play right in your browser.">
-  <meta name="keywords" content="math quiz for kids, multiplication quiz, math speed test, free math game, timed math challenge">
+  <title>Math Speed Quiz for Kids | 30-Second Challenge — Otterly Games</title>
+  <meta name="description" content="Free 30-second math speed quiz. Easy, Medium, and Hard modes. Beat your high score with multiplication, division, and more!">
   <link rel="canonical" href="https://otterlygames.com/tools/math-quiz.html">
-  <meta property="og:title" content="Free Math Speed Quiz for Kids — 30 Second Challenge">
-  <meta property="og:description" content="How many math questions can you answer in 30 seconds? Free timed quiz with 3 difficulty levels.">
-  <link rel="stylesheet" href="../css/style.css">
+  <meta property="og:title" content="Math Speed Quiz for Kids | 30-Second Challenge">
+  <meta property="og:description" content="Free 30-second math speed quiz. Easy, Medium, and Hard modes. Beat your high score!">
+  <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Math Speed Quiz — 30-Second Challenge">
+  <meta name="twitter:description" content="Free 30-second math speed quiz. Easy, Medium, and Hard modes. Beat your high score!">
+  <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="pinterest-rich-pin" content="true">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Math Speed Quiz","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"}}</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f8;line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+    h1,h2,h3{font-family:'Nunito',sans-serif}a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer;border:none;background:none}img{max-width:100%;display:block}
+    :root{--pp:#c4b5fd;--pk:#f9a8d4;--pb:#93c5fd;--pg:#86efac;--pa:#fcd34d;--db:#0a0a0f;--dc:#141420;--ds:#1a1a2e;--dbr:#2a2a3e;--t1:#f0f0f8;--t2:#9898b0}
+    .gt{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);height:64px}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:100%}
+    .nav-brand{display:flex;align-items:center;gap:.6rem;font-family:'Nunito';font-weight:900;font-size:1.3rem}
+    .nav-brand .brand-text{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav-brand img{width:40px;height:40px;border-radius:50%}
+    .nav-links{display:flex;align-items:center;gap:1.5rem}.nav-links a{font-size:.9rem;font-weight:500;color:var(--t2);transition:color .2s}.nav-links a:hover,.nav-links a.active{color:var(--pp)}
+    .nav-cta{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f!important;padding:.5rem 1.2rem;border-radius:999px;font-weight:700;font-size:.85rem}
+    .nav-toggle{display:none;flex-direction:column;gap:5px;padding:.5rem}.nav-toggle span{display:block;width:22px;height:2px;background:var(--t2);border-radius:2px}
+    @media(max-width:768px){.nav-toggle{display:flex}.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(10,10,15,.97);padding:1.5rem;flex-direction:column;border-bottom:1px solid var(--dbr)}.nav-links.open{display:flex}}
+    .hero{padding:6.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(26,26,46,.5) 0%,var(--db) 100%)}
+    .hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;margin-bottom:.6rem}.hero p{font-size:1rem;color:var(--t2);max-width:560px;margin:0 auto}
+    .main{flex:1;max-width:500px;margin:0 auto;padding:2rem 1.5rem 3rem;width:100%}
+    .mode-btns{display:flex;gap:.5rem;justify-content:center;margin-bottom:1.5rem}
+    .mode-btn{padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.85rem;background:var(--dc);border:1px solid var(--dbr);color:var(--t2);transition:.2s}
+    .mode-btn:hover{border-color:var(--pp)}.mode-btn.active{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;border-color:transparent}
+    .game-box{background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;padding:2rem;text-align:center;margin-bottom:1.5rem}
+    .timer-bar{height:8px;background:var(--ds);border-radius:4px;overflow:hidden;margin-bottom:1.5rem}.timer-fill{height:100%;background:linear-gradient(90deg,var(--pg),var(--pa));border-radius:4px;transition:width .1s linear}
+    .timer-text{font-size:.85rem;color:var(--pa);font-weight:700;margin-bottom:.5rem}
+    .question{font-size:clamp(2rem,8vw,3rem);font-weight:900;margin:1rem 0}
+    .answer-box{font-size:2rem;font-weight:800;min-height:3rem;background:var(--ds);border:2px solid var(--dbr);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:1rem auto;width:fit-content;min-width:150px;padding:.5rem 1rem}
+    .cursor{display:inline-block;width:2px;height:1.5em;background:var(--pp);animation:blink 1s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;max-width:280px;margin:0 auto 1rem}
+    .num-btn{height:52px;border-radius:12px;font-size:1.2rem;font-weight:700;background:var(--ds);border:1px solid var(--dbr);color:var(--t1);transition:.15s}
+    .num-btn:hover{background:var(--dc);border-color:var(--pp)}.num-btn:active{transform:scale(.95)}
+    .num-btn.clear{color:var(--pk)}.num-btn.check{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;border-color:transparent}
+    .score-display{font-size:1.2rem;font-weight:800;margin-bottom:.5rem}
+    .start-btn{display:block;margin:1rem auto;padding:.9rem 2.5rem;border-radius:999px;font-weight:800;font-size:1.1rem;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;transition:.2s}.start-btn:hover{transform:translateY(-2px);box-shadow:0 0 25px rgba(196,181,253,.3)}
+    .results{text-align:center}.results h2{font-size:1.8rem;margin-bottom:1rem}.results .stat{margin:.5rem 0;font-size:1rem;color:var(--t2)}.results .stat strong{color:var(--t1)}
+    .feedback{text-align:center;font-size:1rem;font-weight:700;min-height:1.5rem}.feedback.ok{color:var(--pg)}.feedback.no{color:var(--pk)}
+    .footer{padding:2rem 1.5rem;background:var(--db);border-top:1px solid var(--dbr);text-align:center;font-size:.85rem;color:var(--t2);margin-top:auto}
+    .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}.footer-links a{color:#8888a0}.footer-links a:hover{color:var(--pp)}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Math Speed Quiz"}]}
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
 </head>
 <body>
-  <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40"><circle cx="20" cy="20" r="20" fill="#0D9488"/><ellipse cx="20" cy="22" rx="12" ry="10" fill="#5EEAD4"/><circle cx="15" cy="18" r="2.5" fill="#1E293B"/><circle cx="25" cy="18" r="2.5" fill="#1E293B"/><circle cx="15.8" cy="17.2" r="0.8" fill="#FFF"/><circle cx="25.8" cy="17.2" r="0.8" fill="#FFF"/><ellipse cx="20" cy="23" rx="3" ry="2" fill="#1E293B"/><ellipse cx="20" cy="24" rx="2" ry="1" fill="#F9A8D4"/><circle cx="12" cy="12" r="4" fill="#0D9488"/><circle cx="28" cy="12" r="4" fill="#0D9488"/><circle cx="12" cy="12" r="2.5" fill="#5EEAD4"/><circle cx="28" cy="12" r="2.5" fill="#5EEAD4"/></svg>Otterly Games</a><button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button><div class="nav-links"><a href="/#games" class="nav-link">Our Games</a><a href="/tools/" class="nav-link active">Free Tools</a><a href="/blog/" class="nav-link">Blog</a><a href="/about.html" class="nav-link">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
-
-  <section class="tool-page-hero">
-    <div class="container">
-      <div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a> <span>/</span> Math Speed Quiz</div>
-      <h1 class="section-title">⚡ Math Speed Quiz</h1>
-      <p class="section-subtitle" style="max-width:600px;margin:0 auto;">How many math questions can you answer in 30 seconds? Choose your difficulty and go!</p>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:2rem;">
-    <div class="container">
-      <div class="tool-interactive">
-        <div class="tool-controls" id="quiz-controls">
-          <button class="tool-btn active" data-difficulty="easy" onclick="setQuizDifficulty('easy')">Easy (×1-10)</button>
-          <button class="tool-btn" data-difficulty="medium" onclick="setQuizDifficulty('medium')">Medium (+÷)</button>
-          <button class="tool-btn" data-difficulty="hard" onclick="setQuizDifficulty('hard')">Hard (Big Numbers)</button>
-        </div>
-        <div id="quiz-area"></div>
-      </div>
-
-      <div class="tool-promo">
-        <h3>🦦 Love math challenges? Try Math Tank!</h3>
-        <p>Battle pirate tanks by solving multiplication and division problems. 10 unique missiles, 90 space levels!</p>
-        <a href="/apps/math-tank.html" class="btn btn-primary btn-sm">Learn About Math Tank →</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="/" class="nav-brand"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36"><circle cx="20" cy="20" r="20" fill="#0D9488"/><ellipse cx="20" cy="22" rx="12" ry="10" fill="#5EEAD4"/><circle cx="15" cy="18" r="2.5" fill="#1E293B"/><circle cx="25" cy="18" r="2.5" fill="#1E293B"/><circle cx="15.8" cy="17.2" r="0.8" fill="#FFF"/><circle cx="25.8" cy="17.2" r="0.8" fill="#FFF"/><ellipse cx="20" cy="23" rx="3" ry="2" fill="#1E293B"/></svg>Otterly Games</a><p>Otterly Smart. Learning Through Play.</p></div><div><h4>Games</h4><ul><li><a href="/apps/clock-master.html">Clock Master</a></li><li><a href="/apps/math-tank.html">Math Tank</a></li></ul></div><div><h4>Free Tools</h4><ul><li><a href="/tools/multiplication-table.html">Multiplication Table</a></li><li><a href="/tools/math-quiz.html">Math Quiz</a></li><li><a href="/tools/spelling-bee.html">Spelling Bee</a></li><li><a href="/tools/calculator.html">Calculator</a></li></ul></div><div><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/blog/">Blog</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="https://ko-fi.com/mindsprintlab"  target="_blank" rel="noopener">Support Us ☕</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 Otterly Games. Made with 🦦 by a mom who gets it.</span><a href="/privacy.html">Privacy Policy</a></div></div></footer>
-  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-  <script>kofiWidgetOverlay.draw('mindsprintlab',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#0D9488','floating-chat.donateButton.text-color':'#fff'});</script>
-  <script src="../js/main.js"></script>
+  <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button><div class="nav-links" id="navLinks"><a href="/#games">Games</a><a href="/tools/" class="active">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
+  <section class="hero"><h1>⚡ <span class="gt">Speed</span> Quiz</h1><p>30-second math challenge — how many can you answer?</p></section>
+  <div class="main">
+    <div class="mode-btns"><button class="mode-btn active" onclick="setMode('easy')">Easy</button><button class="mode-btn" onclick="setMode('medium')">Medium</button><button class="mode-btn" onclick="setMode('hard')">Hard</button></div>
+    <div class="game-box" id="gameBox"></div>
+  </div>
+  <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
+  <script>
+    document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
+    let mode='easy',state='idle',timer=null,timeLeft=30,score=0,total=0,bestStreak=0,streak=0,qa={q:'',a:0},input='',highScores={easy:0,medium:0,hard:0};
+    function setMode(m){mode=m;document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===m));if(state==='idle')renderIdle()}
+    function genQ(){
+      let a,b,op,ans;
+      if(mode==='easy'){a=2+Math.floor(Math.random()*10);b=2+Math.floor(Math.random()*10);op='×';ans=a*b}
+      else if(mode==='medium'){
+        if(Math.random()<.5){a=2+Math.floor(Math.random()*10);b=2+Math.floor(Math.random()*10);op='×';ans=a*b}
+        else{b=2+Math.floor(Math.random()*9);ans=2+Math.floor(Math.random()*10);a=b*ans;op='÷'}
+      } else {
+        const r=Math.random();
+        if(r<.33){a=10+Math.floor(Math.random()*40);b=2+Math.floor(Math.random()*9);op='×';ans=a*b}
+        else if(r<.66){a=10+Math.floor(Math.random()*90);b=10+Math.floor(Math.random()*90);op='+';ans=a+b}
+        else{b=10+Math.floor(Math.random()*50);a=b+10+Math.floor(Math.random()*50);op='−';ans=a-b}
+      }
+      qa={q:`${a} ${op} ${b}`,a:ans};
+    }
+    function renderIdle(){
+      const hs=highScores[mode];
+      document.getElementById('gameBox').innerHTML=`
+        <div style="font-size:3rem;margin-bottom:1rem">⚡</div>
+        <h2>30-Second Challenge</h2>
+        <p style="color:var(--t2);margin-bottom:.5rem">${mode==='easy'?'Multiplication (2-12)':mode==='medium'?'Multiplication & Division':'Big numbers, +, −, ×'}</p>
+        ${hs>0?`<p style="color:var(--pa);font-weight:700">🏆 Best: ${hs}</p>`:''}
+        <button class="start-btn" onclick="startGame()">Start! →</button>`;
+    }
+    function renderGame(){
+      document.getElementById('gameBox').innerHTML=`
+        <div class="timer-text">⏱ ${timeLeft}s</div>
+        <div class="timer-bar"><div class="timer-fill" id="timerFill" style="width:${(timeLeft/30)*100}%"></div></div>
+        <div class="score-display">Score: <strong>${score}</strong></div>
+        <div class="question">${qa.q} = ?</div>
+        <div class="answer-box" id="ans">${input||'<span class="cursor"></span>'}</div>
+        <div class="feedback" id="fb"></div>
+        <div class="numpad">${[1,2,3,4,5,6,7,8,9].map(i=>`<button class="num-btn" onclick="press('${i}')">${i}</button>`).join('')}<button class="num-btn clear" onclick="clr()">C</button><button class="num-btn" onclick="press('0')">0</button><button class="num-btn check" onclick="chk()">✓</button></div>`;
+    }
+    function startGame(){
+      state='playing';score=0;total=0;bestStreak=0;streak=0;timeLeft=30;input='';
+      genQ();renderGame();
+      timer=setInterval(()=>{
+        timeLeft--;
+        const fill=document.getElementById('timerFill');if(fill)fill.style.width=`${(timeLeft/30)*100}%`;
+        const tt=document.querySelector('.timer-text');if(tt)tt.textContent=`⏱ ${timeLeft}s`;
+        if(timeLeft<=0){clearInterval(timer);endGame()}
+      },1000);
+    }
+    function endGame(){
+      state='idle';if(score>highScores[mode])highScores[mode]=score;
+      document.getElementById('gameBox').innerHTML=`
+        <div class="results">
+          <h2>🎉 Time's Up!</h2>
+          <div class="stat">Score: <strong style="font-size:2rem;color:var(--pa)">${score}</strong></div>
+          <div class="stat">Questions: <strong>${total}</strong></div>
+          <div class="stat">Best Streak: <strong>${bestStreak}</strong> 🔥</div>
+          <div class="stat">Accuracy: <strong>${total>0?Math.round(score/total*100):0}%</strong></div>
+          ${score>0&&score>=highScores[mode]?'<div style="color:var(--pg);font-weight:800;margin-top:.5rem">🏆 New High Score!</div>':''}
+          <button class="start-btn" onclick="startGame()" style="margin-top:1.5rem">Play Again →</button>
+        </div>`;
+    }
+    function press(n){if(state!=='playing')return;if(input.length<5){input+=n;const a=document.getElementById('ans');if(a)a.textContent=input}}
+    function clr(){input='';const a=document.getElementById('ans');if(a)a.innerHTML='<span class="cursor"></span>';const fb=document.getElementById('fb');if(fb){fb.textContent='';fb.className='feedback'}}
+    function chk(){
+      if(state!=='playing'||!input)return;total++;
+      const fb=document.getElementById('fb');
+      if(parseInt(input)===qa.a){
+        score++;streak++;if(streak>bestStreak)bestStreak=streak;
+        if(fb){fb.textContent='✅';fb.className='feedback ok'}
+      } else {
+        streak=0;if(fb){fb.textContent=`${qa.a}`;fb.className='feedback no'}
+      }
+      input='';genQ();setTimeout(()=>{if(state==='playing')renderGame()},500);
+    }
+    document.addEventListener('keydown',e=>{if(state==='playing'){if(e.key>='0'&&e.key<='9')press(e.key);else if(e.key==='Backspace'){e.preventDefault();input=input.slice(0,-1);const a=document.getElementById('ans');if(a)a.innerHTML=input||'<span class="cursor"></span>'}else if(e.key==='Enter')chk()}else if(e.key==='Enter'&&state==='idle')startGame()});
+    renderIdle();
+  </script>
 </body>
 </html>

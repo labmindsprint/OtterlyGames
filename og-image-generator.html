@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OG Image Generator — Otterly Games</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #1a1a2e;
+      color: #f0f0f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 { font-family: 'Nunito', sans-serif; margin-bottom: 0.5rem; }
+    p.inst {
+      color: #9898b0;
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .save-btn {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 0.8rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #c4b5fd, #f9a8d4, #93c5fd);
+      color: #0a0a0f;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      transition: transform 0.2s;
+    }
+    .save-btn:hover { transform: scale(1.05); }
+    .status { color: #86efac; margin-bottom: 1rem; font-size: 0.9rem; min-height: 1.4em; }
+    canvas {
+      border: 1px solid #2a2a3e;
+      max-width: 90vw;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🦦 OG Image Generator</h1>
+  <p class="inst">
+    Click <strong>Save as PNG</strong> to download your social sharing image (1200×630px).<br>
+    Then move the downloaded file into your <code>images/</code> folder.
+  </p>
+  <div class="status" id="status">Loading mascot image...</div>
+  <button class="save-btn" id="saveBtn" onclick="saveImage()" disabled>💾 Save as PNG</button>
+  <canvas id="canvas" width="1200" height="630"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const statusEl = document.getElementById('status');
+    const saveBtn = document.getElementById('saveBtn');
+
+    // Load mascot image
+    const mascotImg = new Image();
+    mascotImg.onload = () => {
+      statusEl.textContent = '✅ Mascot loaded! Ready to save.';
+      saveBtn.disabled = false;
+      drawCard();
+    };
+    mascotImg.onerror = () => {
+      statusEl.textContent = '⚠️ Could not load mascot — drawing without it. Make sure this file is next to the images/ folder.';
+      saveBtn.disabled = false;
+      drawCard();
+    };
+    mascotImg.src = 'images/Otter-mascot.png';
+
+    function drawCard() {
+      const W = 1200, H = 630;
+
+      // === BACKGROUND ===
+      ctx.fillStyle = '#0a0a0f';
+      ctx.fillRect(0, 0, W, H);
+
+      // === AMBIENT GLOW BLOBS ===
+      drawGlow(150, 80, 280, 'rgba(196,181,253,0.12)');
+      drawGlow(950, 480, 250, 'rgba(249,168,212,0.10)');
+      drawGlow(600, 300, 200, 'rgba(147,197,253,0.08)');
+
+      // === GRID PATTERN ===
+      ctx.strokeStyle = 'rgba(255,255,255,0.025)';
+      ctx.lineWidth = 1;
+      for (let x = 0; x < W; x += 40) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+      }
+      for (let y = 0; y < H; y += 40) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+      }
+
+      // === CORNER ACCENTS ===
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = 'rgba(196,181,253,0.25)';
+      ctx.beginPath(); ctx.moveTo(0, 80); ctx.lineTo(0, 0); ctx.lineTo(80, 0); ctx.stroke();
+      ctx.strokeStyle = 'rgba(249,168,212,0.25)';
+      ctx.beginPath(); ctx.moveTo(W, H - 135); ctx.lineTo(W, H - 55); ctx.lineTo(W - 80, H - 55); ctx.stroke();
+
+      // === MASCOT ===
+      const mascotX = 280, mascotY = 275, mascotR = 115;
+
+      // Glow behind mascot
+      drawGlow(mascotX, mascotY, mascotR + 50, 'rgba(196,181,253,0.08)');
+
+      // Circle bg + border
+      ctx.beginPath();
+      ctx.arc(mascotX, mascotY, mascotR, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,0.04)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(196,181,253,0.35)';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      // Draw mascot (clipped to circle)
+      if (mascotImg.complete && mascotImg.naturalWidth > 0) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(mascotX, mascotY, mascotR - 5, 0, Math.PI * 2);
+        ctx.clip();
+        const imgSize = (mascotR - 5) * 2;
+        ctx.drawImage(mascotImg, mascotX - mascotR + 5, mascotY - mascotR + 5, imgSize, imgSize);
+        ctx.restore();
+      }
+
+      // === TEXT ===
+      const textX = 450;
+
+      // "Otterly Games" with gradient
+      ctx.save();
+      const brandGrad = ctx.createLinearGradient(textX, 180, textX + 520, 260);
+      brandGrad.addColorStop(0, '#c4b5fd');
+      brandGrad.addColorStop(0.5, '#f9a8d4');
+      brandGrad.addColorStop(1, '#93c5fd');
+      ctx.fillStyle = brandGrad;
+      ctx.font = '900 72px Nunito, sans-serif';
+      ctx.fillText('Otterly Games', textX, 235);
+      ctx.restore();
+
+      // "Otterly Smart!"
+      ctx.fillStyle = '#e8e8f0';
+      ctx.font = '700 36px Nunito, sans-serif';
+      ctx.fillText('Otterly Smart!', textX, 290);
+
+      // Sub text
+      ctx.fillStyle = '#9898b0';
+      ctx.font = '500 18px Inter, system-ui, sans-serif';
+      ctx.fillText('Educational games kids actually beg to play', textX, 335);
+
+      // === BADGES ===
+      const badges = [
+        { text: '🎮  Fun Games', color: '#c4b5fd' },
+        { text: '🔒  Zero Data', color: '#f9a8d4' },
+        { text: '👩‍👧  Mom-Made', color: '#93c5fd' }
+      ];
+      let badgeX = textX;
+      ctx.font = '700 14px Nunito, sans-serif';
+      badges.forEach(badge => {
+        const tw = ctx.measureText(badge.text).width;
+        const bw = tw + 28;
+        const bh = 34;
+        const by = 360;
+
+        roundRect(ctx, badgeX, by, bw, bh, 17);
+        ctx.fillStyle = 'rgba(255,255,255,0.05)';
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        ctx.fillStyle = badge.color;
+        ctx.fillText(badge.text, badgeX + 14, by + 23);
+
+        badgeX += bw + 14;
+      });
+
+      // === BOTTOM BAR ===
+      ctx.fillStyle = 'rgba(20,20,32,0.85)';
+      ctx.fillRect(0, H - 55, W, 55);
+      ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(0, H - 55); ctx.lineTo(W, H - 55); ctx.stroke();
+
+      ctx.fillStyle = '#9898b0';
+      ctx.font = '500 16px Inter, system-ui, sans-serif';
+      ctx.fillText('otterlygames.com', 80, H - 22);
+
+      ctx.font = '24px serif';
+      ctx.fillText('🦦', W - 110, H - 18);
+    }
+
+    function drawGlow(x, y, r, color) {
+      const grad = ctx.createRadialGradient(x, y, 0, x, y, r);
+      grad.addColorStop(0, color);
+      grad.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad;
+      ctx.fillRect(x - r, y - r, r * 2, r * 2);
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    function saveImage() {
+      const link = document.createElement('a');
+      link.download = 'og-default.png';
+      link.href = canvas.toDataURL('image/png');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      statusEl.textContent = '✅ Downloaded! Move og-default.png into your images/ folder.';
+    }
+  </script>
+</body>
+</html>

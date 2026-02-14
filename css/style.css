@@ -985,6 +985,22 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 800; lin
   padding: var(--space-3xl) 0 var(--space-xl);
 }
 
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  padding: 0 1.5rem;
+}
+.footer-links a {
+  color: #8888a0;
+  font-size: 0.9rem;
+}
+.footer-links a:hover {
+  color: var(--primary, #c4b5fd);
+}
+
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;

@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Ko-fi Overlay: intercept all ko-fi links to open the widget panel ---
   document.addEventListener('click', (e) => {
-    const link = e.target.closest('a[href*="ko-fi.com/mindsprintlab"]');
+    const link = e.target.closest('a[href*="ko-fi.com/otterly_games"]');
     if (!link) return;
     e.preventDefault();
     // Try to open the overlay widget panel
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       // Fallback: re-draw the widget (forces it to show)
-      kofiWidgetOverlay.draw('mindsprintlab', {
+      kofiWidgetOverlay.draw('otterly_games', {
         'type': 'floating-chat',
         'floating-chat.donateButton.text': 'Support me',
         'floating-chat.donateButton.background-color': '#0D9488',
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     } else {
       // Widget script didn't load — open in new tab as fallback
-      window.open('https://ko-fi.com/mindsprintlab', '_blank');
+      window.open('https://ko-fi.com/otterly_games', '_blank');
     }
   });
 });
