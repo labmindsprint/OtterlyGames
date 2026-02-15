@@ -15,15 +15,19 @@
   <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
   <meta name="pinterest-rich-pin" content="true">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Column Multiplication","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Column Multiplication"}]}</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-    body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f8;line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
-    h1,h2,h3{font-family:'Nunito',sans-serif}a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer;border:none;background:none}img{max-width:100%;display:block}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f8;min-height:100vh;display:flex;flex-direction:column}
+    h1,h2,h3{font-family:'Nunito',sans-serif}a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer;border:none;background:none}
     :root{--pp:#c4b5fd;--pk:#f9a8d4;--pb:#93c5fd;--pg:#86efac;--pa:#fcd34d;--db:#0a0a0f;--dc:#141420;--ds:#1a1a2e;--dbr:#2a2a3e;--t1:#f0f0f8;--t2:#9898b0}
     .gt{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);height:64px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);height:64px}
     .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:100%}
     .nav-brand{display:flex;align-items:center;gap:.6rem;font-family:'Nunito';font-weight:900;font-size:1.3rem}
     .nav-brand .brand-text{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -34,112 +38,399 @@
     @media(max-width:768px){.nav-toggle{display:flex}.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(10,10,15,.97);padding:1.5rem;flex-direction:column;border-bottom:1px solid var(--dbr)}.nav-links.open{display:flex}}
     .hero{padding:6.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(26,26,46,.5) 0%,var(--db) 100%)}
     .hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;margin-bottom:.6rem}.hero p{font-size:1rem;color:var(--t2);max-width:560px;margin:0 auto}
-    .main{flex:1;max-width:600px;margin:0 auto;padding:2rem 1.5rem 3rem;width:100%}
-    .diff-btns{display:flex;gap:.5rem;justify-content:center;margin-bottom:1.5rem}
-    .diff-btn{padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.85rem;background:var(--dc);border:1px solid var(--dbr);color:var(--t2);transition:.2s}
+    .main{flex:1;max-width:520px;margin:0 auto;padding:1.5rem 1rem 3rem;width:100%}
+
+    /* Difficulty */
+    .diff-row{display:flex;gap:.5rem;justify-content:center;margin-bottom:1.25rem}
+    .diff-btn{padding:.55rem 1.3rem;border-radius:999px;font-weight:700;font-size:.85rem;background:var(--dc);border:1px solid var(--dbr);color:var(--t2);transition:.2s}
     .diff-btn:hover{border-color:var(--pp);color:var(--t1)}.diff-btn.active{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;border-color:transparent}
-    .problem-box{background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;padding:2rem;text-align:center;margin-bottom:1.5rem}
-    .col-display{font-family:'Courier New',monospace;font-size:clamp(1.6rem,5vw,2.2rem);font-weight:700;line-height:1.8;text-align:right;max-width:250px;margin:0 auto 1.5rem}
-    .col-row{display:block}.carry-row{color:var(--pa);font-size:.65em}.op-row{color:var(--pp)}.line-row{border-bottom:3px solid var(--pp);margin-bottom:.3rem}.result-row{color:var(--pg);font-weight:900}.partial-row{color:var(--pb);opacity:.85}
-    .step-box{background:var(--ds);border:1px solid var(--dbr);border-radius:.75rem;padding:1rem;margin-bottom:1rem;text-align:center}
-    .step-label{font-size:.8rem;color:var(--pp);font-weight:700;text-transform:uppercase;margin-bottom:.3rem}.step-prompt{font-size:1.1rem;font-weight:700;margin-bottom:.3rem}.step-hint{font-size:.85rem;color:var(--t2)}
-    .answer-box{font-size:2rem;font-weight:800;min-height:3rem;background:var(--ds);border:2px solid var(--dbr);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:1rem auto;width:fit-content;min-width:150px;padding:.5rem 1rem}
-    .cursor{display:inline-block;width:2px;height:1.5em;background:var(--pp);animation:blink 1s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-    .numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;max-width:280px;margin:0 auto 1rem}
-    .num-btn{height:52px;border-radius:12px;font-size:1.2rem;font-weight:700;background:var(--ds);border:1px solid var(--dbr);color:var(--t1);transition:.15s}
-    .num-btn:hover{background:var(--dc);border-color:var(--pp)}.num-btn:active{transform:scale(.95)}
-    .num-btn.clear{color:var(--pk)}.num-btn.check{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;border-color:transparent}
-    .feedback{text-align:center;font-size:1rem;font-weight:700;min-height:1.5rem;margin-bottom:.5rem}.feedback.ok{color:var(--pg)}.feedback.no{color:var(--pk)}
-    .stats{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.5rem;font-weight:600;font-size:.9rem;color:var(--t2)}.stats strong{color:var(--t1)}
-    .new-btn{display:block;margin:1rem auto 0;padding:.7rem 1.8rem;border-radius:999px;font-weight:700;background:var(--ds);border:1px solid var(--dbr);color:var(--t1);transition:.2s}.new-btn:hover{border-color:var(--pp);color:var(--pp)}
-    .promo{text-align:center;padding:2rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:2rem}.promo h3{font-size:1.1rem;margin-bottom:.3rem}.promo p{color:var(--t2);font-size:.9rem;margin-bottom:1rem}
+
+    /* Game Card */
+    .gc{background:var(--dc);border:2px solid #6d28d9;border-radius:1.25rem;padding:1.5rem;position:relative;box-shadow:0 0 40px rgba(109,40,217,.15)}
+    .gc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
+    .gc-score{font-size:.95rem;font-weight:700;color:var(--t2)}.gc-score strong{color:var(--t1)}
+    .gc-stars{font-size:1.2rem;letter-spacing:2px}.gc-stars .filled{color:var(--pa)}.gc-stars .empty{color:#333}
+    .gc-bar{width:100%;height:6px;background:var(--ds);border-radius:3px;margin-bottom:1.25rem;overflow:hidden}
+    .gc-bar-fill{height:100%;background:linear-gradient(90deg,#6d28d9,var(--pk));border-radius:3px;transition:width .4s ease}
+
+    /* Problem */
+    .gc-problem{text-align:center;margin-bottom:1rem}
+    .gc-problem h2{font-size:1.5rem;font-weight:900;margin-bottom:.2rem}
+    .gc-problem p{font-size:.85rem;color:var(--t2)}
+
+    /* Workspace */
+    .ws{background:rgba(109,40,217,.12);border:1.5px solid rgba(109,40,217,.3);border-radius:1rem;padding:1.25rem .75rem;margin-bottom:1rem;overflow-x:auto}
+    .ws-grid{display:flex;flex-direction:column;align-items:flex-end;gap:2px;margin:0 auto;width:fit-content;min-width:160px}
+    .ws-row{display:flex;align-items:center;gap:4px;justify-content:flex-end}
+    .ws-cell{width:40px;height:42px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-family:'Nunito',sans-serif;font-size:1.25rem;font-weight:800;flex-shrink:0}
+    .ws-num{border:2px solid rgba(99,102,241,.4);color:var(--pb);background:rgba(99,102,241,.08)}
+    .ws-op{width:24px;color:var(--pp);font-size:1.2rem;font-weight:700;border:none;display:inline-flex;align-items:center;justify-content:center}
+    .ws-carry{width:24px;height:24px;font-size:.75rem;font-weight:800;color:var(--pa);border:1.5px solid rgba(252,211,77,.3);border-radius:6px;background:rgba(252,211,77,.08);display:inline-flex;align-items:center;justify-content:center}
+    .ws-carry-sp{width:24px;height:24px}
+    .ws-line{height:3px;background:var(--pp);border-radius:2px;margin:4px 0;width:100%;opacity:.6}
+    .ws-res{border:2px solid rgba(134,239,172,.3);color:var(--pg);background:rgba(134,239,172,.06)}
+    .ws-res.active{border-color:var(--pa);color:var(--pa);background:rgba(252,211,77,.1);box-shadow:0 0 12px rgba(252,211,77,.2);animation:pulse 1.5s infinite}
+    @keyframes pulse{0%,100%{box-shadow:0 0 12px rgba(252,211,77,.2)}50%{box-shadow:0 0 20px rgba(252,211,77,.35)}}
+    .ws-partial{border:2px solid rgba(147,197,253,.25);color:var(--pb);background:rgba(147,197,253,.05)}
+    .ws-partial.active{border-color:var(--pa);color:var(--pa);background:rgba(252,211,77,.1);box-shadow:0 0 12px rgba(252,211,77,.2);animation:pulse 1.5s infinite}
+    .ws-faded{opacity:.3}
+
+    /* Prompt */
+    .gc-prompt{text-align:center;font-size:1.05rem;font-weight:700;margin-bottom:.25rem;color:var(--t1);min-height:1.4em}
+    .gc-hint{text-align:center;font-size:.85rem;color:var(--t2);margin-bottom:.75rem;min-height:1.2em}
+    .gc-fb{text-align:center;font-size:1rem;font-weight:700;min-height:1.5rem;margin-bottom:.5rem}
+    .gc-fb.ok{color:var(--pg)}.gc-fb.no{color:var(--pk)}
+
+    /* Numpad */
+    .gc-numpad{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:.75rem}
+    .np-btn{height:48px;border-radius:10px;font-size:1.15rem;font-weight:700;background:var(--ds);border:1.5px solid var(--dbr);color:var(--t1);transition:.15s;display:flex;align-items:center;justify-content:center}
+    .np-btn:hover{background:var(--dc);border-color:var(--pp)}.np-btn:active{transform:scale(.93)}
+    .np-btn.np-clear{color:var(--pk);font-size:.85rem}.np-btn.np-back{color:var(--t2);font-size:.95rem}
+    .gc-check{display:block;width:100%;padding:.85rem;border-radius:12px;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#059669,#10b981);border:none;cursor:pointer;transition:.2s;margin-bottom:.5rem}
+    .gc-check:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(5,150,105,.3)}.gc-check:active{transform:scale(.98)}
+    .gc-check:disabled{opacity:.5;cursor:default;transform:none;box-shadow:none}
+
+    /* Complete */
+    .gc-complete{text-align:center;padding:1rem 0}
+    .gc-complete h3{font-size:1.3rem;color:var(--pg);margin-bottom:.3rem}
+    .gc-complete p{color:var(--t2);font-size:.9rem;margin-bottom:.75rem}
+    .gc-next{padding:.7rem 2rem;border-radius:999px;font-weight:700;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;font-size:.95rem;transition:.2s}
+    .gc-next:hover{transform:scale(1.05)}
+    .round-end{text-align:center;padding:2rem 1rem}
+    .round-end h2{font-size:1.8rem;margin-bottom:.5rem}
+    .round-end .big-stars{font-size:2rem;letter-spacing:4px;margin-bottom:.5rem}
+    .round-end p{color:var(--t2);margin-bottom:1rem}
+
+    .promo{text-align:center;padding:2rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:1.5rem}.promo h3{font-size:1.1rem;margin-bottom:.3rem}.promo p{color:var(--t2);font-size:.9rem;margin-bottom:1rem}
     .promo a{display:inline-block;padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.85rem;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f}
     .footer{padding:2rem 1.5rem;background:var(--db);border-top:1px solid var(--dbr);text-align:center;font-size:.85rem;color:var(--t2);margin-top:auto}
-    .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}.footer-links a{color:#8888a0;transition:color .2s}.footer-links a:hover{color:var(--pp)}
-    @keyframes pop{0%{transform:scale(0) translate(-50%,-50%)}50%{transform:scale(1.15) translate(-50%,-50%)}100%{transform:scale(1) translate(-50%,-50%)}}
-    .celeb{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,10,15,.92);padding:2rem 3rem;border-radius:1.5rem;border:2px solid var(--pp);z-index:200;text-align:center;animation:pop .4s ease;transform-origin:top left}
+    .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}.footer-links a{color:#8888a0}.footer-links a:hover{color:var(--pp)}
+    @keyframes pop{0%{transform:scale(.8);opacity:0}50%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+    .pop-in{animation:pop .4s ease}
   </style>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Column Multiplication"}]}
-  </script>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
 </head>
 <body>
   <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button><div class="nav-links" id="navLinks"><a href="/#games">Games</a><a href="/tools/" class="active">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
-  <section class="hero"><h1>📊 <span class="gt">Column</span> Multiplication</h1><p>Learn the traditional column method step by step with visual carries</p></section>
+  <section class="hero"><h1>📊 <span class="gt">Column</span> Multiplication</h1><p>Step-by-step column method — fill in each digit, just like the Math Tank app!</p></section>
   <div class="main">
-    <div class="diff-btns"><button class="diff-btn active" onclick="setDiff('easy')">Easy (2×1)</button><button class="diff-btn" onclick="setDiff('medium')">Medium (2×2)</button></div>
-    <div class="stats"><span>✅ <strong id="ct">0</strong></span><span>🔥 Streak <strong id="sk">0</strong></span></div>
-    <div class="problem-box"><div class="col-display" id="colDisp"></div><div class="step-box" id="stepBox"></div></div>
-    <div class="feedback" id="fb"></div>
-    <div class="answer-box" id="ans"><span class="cursor"></span></div>
-    <div class="numpad" id="np"></div>
-    <button class="new-btn" onclick="newProblem()">New Problem →</button>
+    <div class="diff-row">
+      <button class="diff-btn active" id="diffEasy" onclick="setDiff('easy')">Easy (2×1)</button>
+      <button class="diff-btn" id="diffMed" onclick="setDiff('medium')">Medium (2×2)</button>
+    </div>
+    <div class="gc" id="gameCard"></div>
     <div class="promo"><h3>🦦 Love this? Try Math Tank!</h3><p>Column multiplication comes alive in epic tank battles!</p><a href="/apps/math-tank.html">Learn About Math Tank →</a></div>
   </div>
   <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
+
   <script>
     document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
-    let diff='easy',a=0,b=0,step=0,steps=[],solved=0,streak=0,input='';
-    function setDiff(d){diff=d;document.querySelectorAll('.diff-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase().includes(d)));newProblem()}
-    function gen(){
+
+    const ROUND=5;
+    let diff='easy',a,b,step,steps,input='',correct=0,problemNum=0,roundDone=false;
+
+    function setDiff(d){
+      diff=d;
+      document.getElementById('diffEasy').classList.toggle('active',d==='easy');
+      document.getElementById('diffMed').classList.toggle('active',d==='medium');
+      startRound();
+    }
+
+    function generate(){
       if(diff==='easy'){
-        a=10+Math.floor(Math.random()*40);b=2+Math.floor(Math.random()*8);
-        const om=b*(a%10),ow=om%10,c=Math.floor(om/10),tm=b*Math.floor(a/10)+c;
-        steps=[{p:`${b} × ${a%10} = ?`,h:'Multiply the ones digit',a:om},{p:c>0?`${b} × ${Math.floor(a/10)} + ${c} carry = ?`:`${b} × ${Math.floor(a/10)} = ?`,h:c>0?'Multiply tens, add carry':'Multiply the tens digit',a:tm}];
+        a=10+Math.floor(Math.random()*40); // 10-49
+        b=2+Math.floor(Math.random()*8);   // 2-9
+        const aOnes=a%10, aTens=Math.floor(a/10);
+        const onesProduct=b*aOnes;
+        const onesWrite=onesProduct%10;
+        const carry1=Math.floor(onesProduct/10);
+        const tensResult=b*aTens+carry1;
+        steps=[
+          {prompt:`What is ${b} × ${aOnes}?`,hint:'Multiply the ones digit',answer:onesProduct},
+          {prompt:carry1>0?`What is ${b} × ${aTens} + ${carry1}?`:`What is ${b} × ${aTens}?`,hint:carry1>0?'Multiply tens, add the carry':'Multiply the tens digit',answer:tensResult}
+        ];
       } else {
-        a=11+Math.floor(Math.random()*39);b=11+Math.floor(Math.random()*9);
-        const bo=b%10,bt=Math.floor(b/10),p1=a*bo,p2=a*bt*10;
-        steps=[{p:`${a} × ${bo} = ?`,h:`Multiply by ones digit of ${b}`,a:p1},{p:`${a} × ${bt}0 = ?`,h:`Multiply by tens digit (${a}×${bt}, then add 0)`,a:p2},{p:`${p1} + ${p2} = ?`,h:'Add the partial products',a:a*b}];
+        a=11+Math.floor(Math.random()*39); // 11-49
+        b=11+Math.floor(Math.random()*9);  // 11-19
+        const bOnes=b%10, bTens=Math.floor(b/10);
+        const p1=a*bOnes;
+        const p1Ones=p1%10, p1Carry=Math.floor((bOnes*(a%10))/10);
+        const p1Tens=bOnes*Math.floor(a/10)+p1Carry;
+        const p2=a*bTens;
+        const p2Val=a*bTens;
+        const result=a*b;
+        const c2=Math.floor((bTens*(a%10))/10);
+        steps=[
+          {prompt:`What is ${bOnes} × ${a%10}?`,hint:`Ones × ones`,answer:bOnes*(a%10)},
+          {prompt:p1Carry>0?`What is ${bOnes} × ${Math.floor(a/10)} + ${p1Carry}?`:`What is ${bOnes} × ${Math.floor(a/10)}?`,hint:p1Carry>0?'Ones × tens, add carry':'Ones × tens',answer:bOnes*Math.floor(a/10)+p1Carry},
+          {prompt:`What is ${bTens} × ${a%10}?`,hint:`Tens × ones`,answer:bTens*(a%10)},
+          {prompt:c2>0?`What is ${bTens} × ${Math.floor(a/10)} + ${c2}?`:`What is ${bTens} × ${Math.floor(a/10)}?`,hint:c2>0?'Tens × tens, add carry':'Tens × tens',answer:bTens*Math.floor(a/10)+c2},
+          {prompt:`What is ${p1} + ${p2Val*10}?`,hint:'Add the partial products',answer:result}
+        ];
       }
-      step=0;
+      step=0; input='';
     }
-    function renderCol(){
-      const d=document.getElementById('colDisp');let h='';
+
+    function starsHTML(){
+      let s='';
+      for(let i=0;i<ROUND;i++) s+=`<span class="${i<correct?'filled':'empty'}">${i<correct?'★':'☆'}</span>`;
+      return s;
+    }
+
+    function digits(n,len){const s=String(n);const arr=[];for(let i=0;i<len;i++){const idx=s.length-len+i;arr.push(idx>=0?s[idx]:'');} return arr;}
+
+    function renderWorkspace(){
+      const aTens=Math.floor(a/10),aOnes=a%10;
+      let h='<div class="ws-grid">';
+
       if(diff==='easy'){
-        if(step>0){const c=Math.floor(b*(a%10)/10);if(c>0)h+=`<span class="col-row carry-row">${' '.repeat(String(a).length-1)}${c}</span>`}
-        h+=`<span class="col-row">${a}</span><span class="col-row op-row">× ${(' ').repeat(String(a).length-String(b).length)}${b}</span><span class="col-row line-row">&nbsp;</span>`;
-        if(step>=steps.length)h+=`<span class="col-row result-row">${a*b}</span>`;
-        else if(step===1)h+=`<span class="col-row result-row">_${(b*(a%10))%10}</span>`;
-        else h+=`<span class="col-row" style="color:var(--t2)">??</span>`;
+        const product=a*b;
+        const onesProduct=b*aOnes;
+        const carry1=Math.floor(onesProduct/10);
+        const onesWrite=onesProduct%10;
+        const tensResult=b*aTens+carry1;
+        const resDigits=digits(product,3);
+
+        // Carry row (shown after step 0)
+        if(step>=1 && carry1>0){
+          h+='<div class="ws-row">';
+          h+='<div class="ws-carry-sp"></div>';
+          h+=`<div class="ws-carry">${carry1}</div>`;
+          h+='<div class="ws-carry-sp"></div>';
+          h+='</div>';
+        }
+        // Top number
+        h+='<div class="ws-row">';
+        h+=`<div class="ws-cell ws-num">${aTens}</div>`;
+        h+=`<div class="ws-cell ws-num">${aOnes}</div>`;
+        h+='</div>';
+        // × row
+        h+='<div class="ws-row">';
+        h+='<div class="ws-op">×</div>';
+        h+=`<div class="ws-cell ws-num">${b}</div>`;
+        h+='</div>';
+        // Line
+        h+='<div class="ws-line"></div>';
+        // Result row
+        h+='<div class="ws-row">';
+        if(step>=2){
+          // Complete
+          const rd=digits(product,String(product).length);
+          rd.forEach(d=>h+=`<div class="ws-cell ws-res">${d}</div>`);
+        } else if(step===1){
+          // Ones digit filled, rest unknown
+          if(tensResult>=10){
+            h+='<div class="ws-cell ws-res active">?</div>';
+          }
+          h+='<div class="ws-cell ws-res active">?</div>';
+          h+=`<div class="ws-cell ws-res">${onesWrite}</div>`;
+        } else {
+          // All unknown
+          h+='<div class="ws-cell ws-res active">?</div>';
+          h+='<div class="ws-cell ws-res active">?</div>';
+        }
+        h+='</div>';
       } else {
-        h+=`<span class="col-row">${a}</span><span class="col-row op-row">× ${b}</span><span class="col-row line-row">&nbsp;</span>`;
-        if(step>=1)h+=`<span class="col-row partial-row">${a*(b%10)}</span>`;
-        if(step>=2)h+=`<span class="col-row partial-row">${a*Math.floor(b/10)*10}</span>`;
-        if(step>=2)h+=`<span class="col-row line-row">&nbsp;</span>`;
-        if(step>=3)h+=`<span class="col-row result-row">${a*b}</span>`;
+        // Medium: 2×2
+        const bOnes=b%10,bTens=Math.floor(b/10);
+        const p1=a*bOnes;
+        const p2=a*bTens;
+        const p1OnesProduct=bOnes*aOnes;
+        const c1=Math.floor(p1OnesProduct/10);
+        const p2OnesProduct=bTens*aOnes;
+        const c2=Math.floor(p2OnesProduct/10);
+        const product=a*b;
+
+        // Carry row for partial product 1 (after step 0)
+        if(step>=1 && c1>0){
+          h+='<div class="ws-row">';
+          h+='<div class="ws-carry-sp"></div>';
+          h+=`<div class="ws-carry">${c1}</div>`;
+          h+='<div class="ws-carry-sp"></div>';
+          h+='</div>';
+        }
+        // Top number
+        h+='<div class="ws-row">';
+        h+=`<div class="ws-cell ws-num">${aTens}</div>`;
+        h+=`<div class="ws-cell ws-num">${aOnes}</div>`;
+        h+='</div>';
+        // × row
+        h+='<div class="ws-row">';
+        h+='<div class="ws-op">×</div>';
+        h+=`<div class="ws-cell ws-num">${bTens}</div>`;
+        h+=`<div class="ws-cell ws-num">${bOnes}</div>`;
+        h+='</div>';
+        // Line
+        h+='<div class="ws-line"></div>';
+
+        // Partial product 1
+        if(step>=2){
+          const pd=digits(p1,String(p1).length);
+          h+='<div class="ws-row">';
+          pd.forEach(d=>h+=`<div class="ws-cell ws-partial">${d}</div>`);
+          h+='</div>';
+        } else if(step>=0 && step<2){
+          h+='<div class="ws-row">';
+          const p1Len=String(p1).length;
+          for(let i=0;i<p1Len;i++){
+            if(step===0){
+              h+='<div class="ws-cell ws-partial ws-faded">?</div>';
+            } else {
+              // step 1: ones digit filled
+              if(i===p1Len-1) h+=`<div class="ws-cell ws-partial">${p1OnesProduct%10}</div>`;
+              else h+='<div class="ws-cell ws-partial active">?</div>';
+            }
+          }
+          h+='</div>';
+        }
+
+        // Carry row for partial product 2 (after step 2)
+        if(step>=3 && c2>0){
+          h+='<div class="ws-row">';
+          h+='<div class="ws-carry-sp"></div>';
+          h+=`<div class="ws-carry">${c2}</div>`;
+          h+='<div class="ws-carry-sp"></div>';
+          h+='<div class="ws-carry-sp"></div>';
+          h+='</div>';
+        }
+
+        // Partial product 2
+        if(step>=2){
+          if(step>=4){
+            const pd=digits(p2,String(p2).length);
+            h+='<div class="ws-row">';
+            pd.forEach(d=>h+=`<div class="ws-cell ws-partial">${d}</div>`);
+            h+='<div class="ws-cell ws-partial" style="opacity:.4">0</div>';
+            h+='</div>';
+          } else if(step>=2){
+            h+='<div class="ws-row">';
+            const p2Len=String(p2).length;
+            if(step===2){
+              for(let i=0;i<p2Len;i++) h+='<div class="ws-cell ws-partial ws-faded">?</div>';
+            } else {
+              // step 3: ones of p2 filled
+              for(let i=0;i<p2Len;i++){
+                if(i===p2Len-1) h+=`<div class="ws-cell ws-partial">${p2OnesProduct%10}</div>`;
+                else h+='<div class="ws-cell ws-partial active">?</div>';
+              }
+            }
+            h+='<div class="ws-cell ws-partial" style="opacity:.4">0</div>';
+            h+='</div>';
+          }
+          // Second line
+          h+='<div class="ws-line"></div>';
+        }
+
+        // Final result
+        if(step>=4){
+          h+='<div class="ws-row">';
+          if(step>=5){
+            const rd=digits(product,String(product).length);
+            rd.forEach(d=>h+=`<div class="ws-cell ws-res">${d}</div>`);
+          } else {
+            const rLen=String(product).length;
+            for(let i=0;i<rLen;i++) h+='<div class="ws-cell ws-res active">?</div>';
+          }
+          h+='</div>';
+        }
       }
-      d.innerHTML=h;
+
+      h+='</div>';
+      return h;
     }
-    function renderStep(){
-      const s=document.getElementById('stepBox');
-      if(step<steps.length){s.innerHTML=`<div class="step-label">Step ${step+1} of ${steps.length}</div><div class="step-prompt">${steps[step].p}</div><div class="step-hint">${steps[step].h}</div>`}
-      else{s.innerHTML=`<div class="step-prompt" style="color:var(--pg)">✅ ${a} × ${b} = ${a*b}</div><div class="step-hint">Great job! Try another problem.</div>`}
-    }
-    function renderAns(){document.getElementById('ans').innerHTML=input||'<span class="cursor"></span>'}
-    function renderNP(){let h='';for(let i=1;i<=9;i++)h+=`<button class="num-btn" onclick="press('${i}')">${i}</button>`;h+=`<button class="num-btn clear" onclick="clr()">C</button><button class="num-btn" onclick="press('0')">0</button><button class="num-btn check" onclick="chk()">Check ✓</button>`;document.getElementById('np').innerHTML=h}
-    function press(n){if(input.length<6){input+=n;renderAns()}}
-    function clr(){input='';renderAns();document.getElementById('fb').textContent='';document.getElementById('fb').className='feedback'}
-    function chk(){
-      if(!input||step>=steps.length)return;const fb=document.getElementById('fb');
-      if(parseInt(input)===steps[step].a){
-        fb.textContent='✅ Correct!';fb.className='feedback ok';step++;input='';
-        if(step>=steps.length){solved++;streak++;document.getElementById('ct').textContent=solved;document.getElementById('sk').textContent=streak;if(streak%3===0)showC()}
-        setTimeout(()=>{renderCol();renderStep();renderAns();if(step<steps.length){fb.textContent='';fb.className='feedback'}},700);
+
+    function render(){
+      const gc=document.getElementById('gameCard');
+      if(roundDone){
+        gc.innerHTML=`<div class="round-end pop-in">
+          <h2>🎉 Round Complete!</h2>
+          <div class="big-stars">${starsHTML()}</div>
+          <p>You got <strong>${correct}</strong> out of <strong>${ROUND}</strong> correct!</p>
+          <button class="gc-next" onclick="startRound()">New Round →</button>
+        </div>`;
+        return;
+      }
+      const totalSteps=steps.length;
+      const isComplete=step>=totalSteps;
+      let h='';
+      // Header
+      h+=`<div class="gc-head"><div class="gc-score">Correct: <strong>${correct}</strong>/${ROUND}</div><div class="gc-stars">${starsHTML()}</div></div>`;
+      h+=`<div class="gc-bar"><div class="gc-bar-fill" style="width:${(problemNum/ROUND)*100}%"></div></div>`;
+      // Problem
+      h+=`<div class="gc-problem"><h2>${a} × ${b} = ?</h2><p>${diff==='easy'?'2-digit × 1-digit':'2-digit × 2-digit'}</p></div>`;
+      // Workspace
+      h+=`<div class="ws">${renderWorkspace()}</div>`;
+
+      if(!isComplete){
+        const info=steps[step];
+        h+=`<div class="gc-prompt">${info.prompt}</div>`;
+        h+=`<div class="gc-hint">${info.hint}</div>`;
+        h+='<div class="gc-fb" id="fb"></div>';
+        // Numpad
+        h+='<div class="gc-numpad">';
+        for(let i=0;i<=9;i++) h+=`<button class="np-btn" onclick="press('${i}')">${i}</button>`;
+        h+='</div>';
+        h+='<div style="display:flex;gap:8px;margin-bottom:.5rem">';
+        h+='<button class="np-btn np-clear" style="flex:1" onclick="clearInput()">Clear</button>';
+        h+='<button class="np-btn np-back" style="flex:1" onclick="backspace()">⌫</button>';
+        h+='</div>';
+        // Input display
+        h+=`<div style="text-align:center;font-size:1.6rem;font-weight:800;min-height:2.2rem;margin-bottom:.75rem;color:var(--pa)">${input||'<span style="color:var(--t2)">—</span>'}</div>`;
+        h+=`<button class="gc-check" onclick="checkAnswer()">Check Answer ✓</button>`;
       } else {
-        fb.textContent=`Almost! The answer is ${steps[step].a}`;fb.className='feedback no';streak=0;document.getElementById('sk').textContent=0;input='';let hadError=true;
-        setTimeout(()=>renderAns(),100);
-        setTimeout(()=>{step++;if(step>=steps.length&&!hadError){solved++;document.getElementById('ct').textContent=solved}renderCol();renderStep();fb.textContent='';fb.className='feedback'},2200);
+        h+=`<div class="gc-complete pop-in"><h3>✅ ${a} × ${b} = ${a*b}</h3>
+          <p>Great job!</p>
+          <button class="gc-next" onclick="nextProblem()">Next Problem →</button></div>`;
+      }
+      gc.innerHTML=h;
+    }
+
+    function press(n){
+      if(step>=steps.length||roundDone)return;
+      if(input.length<5){input+=n;render()}
+    }
+    function clearInput(){input='';render();const f=document.getElementById('fb');if(f){f.textContent='';f.className='gc-fb'}}
+    function backspace(){input=input.slice(0,-1);render()}
+
+    function checkAnswer(){
+      if(step>=steps.length||roundDone)return;
+      const info=steps[step];
+      if(!input&&info.answer!==0)return;
+      const val=input===''?0:parseInt(input);
+      const fb=document.getElementById('fb');
+      if(!fb)return;
+      if(val===info.answer){
+        fb.textContent='✅ Correct!';fb.className='gc-fb ok';
+        step++; input='';
+        if(step>=steps.length){correct++;problemNum++;}
+        setTimeout(()=>{
+          if(problemNum>=ROUND&&step>=steps.length){roundDone=true;}
+          render();
+        },600);
+      } else {
+        fb.textContent=`✗ The answer is ${info.answer}`;fb.className='gc-fb no';
+        input='';
+        setTimeout(()=>{
+          step++; input='';
+          if(step>=steps.length){problemNum++;}
+          if(problemNum>=ROUND&&step>=steps.length){roundDone=true;}
+          render();
+        },1800);
       }
     }
-    function newProblem(){input='';document.getElementById('fb').textContent='';document.getElementById('fb').className='feedback';gen();renderCol();renderStep();renderAns()}
-    function showC(){const d=document.createElement('div');d.className='celeb';d.innerHTML=`<h2>🎉 ${streak} in a row!</h2><p style="color:var(--t2)">Keep going!</p>`;document.body.appendChild(d);setTimeout(()=>d.remove(),1800)}
-    document.addEventListener('keydown',e=>{if(e.key>='0'&&e.key<='9')press(e.key);else if(e.key==='Backspace'){e.preventDefault();input=input.slice(0,-1);renderAns()}else if(e.key==='Enter')chk()});
-    renderNP();newProblem();
+
+    function nextProblem(){
+      if(problemNum>=ROUND){roundDone=true;render();return;}
+      generate();render();
+    }
+    function startRound(){correct=0;problemNum=0;roundDone=false;generate();render()}
+
+    document.addEventListener('keydown',e=>{
+      if(e.key>='0'&&e.key<='9')press(e.key);
+      else if(e.key==='Backspace'){e.preventDefault();backspace()}
+      else if(e.key==='Enter')checkAnswer();
+    });
+
+    generate();render();
   </script>
 </body>
 </html>

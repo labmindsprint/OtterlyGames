@@ -15,15 +15,19 @@
   <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
   <meta name="pinterest-rich-pin" content="true">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Long Division","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Long Division"}]}</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-    body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f8;line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
-    h1,h2,h3{font-family:'Nunito',sans-serif}a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer;border:none;background:none}img{max-width:100%;display:block}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f8;min-height:100vh;display:flex;flex-direction:column}
+    h1,h2,h3{font-family:'Nunito',sans-serif}a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer;border:none;background:none}
     :root{--pp:#c4b5fd;--pk:#f9a8d4;--pb:#93c5fd;--pg:#86efac;--pa:#fcd34d;--db:#0a0a0f;--dc:#141420;--ds:#1a1a2e;--dbr:#2a2a3e;--t1:#f0f0f8;--t2:#9898b0}
     .gt{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);height:64px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);height:64px}
     .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:100%}
     .nav-brand{display:flex;align-items:center;gap:.6rem;font-family:'Nunito';font-weight:900;font-size:1.3rem}
     .nav-brand .brand-text{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -34,114 +38,259 @@
     @media(max-width:768px){.nav-toggle{display:flex}.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(10,10,15,.97);padding:1.5rem;flex-direction:column;border-bottom:1px solid var(--dbr)}.nav-links.open{display:flex}}
     .hero{padding:6.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(26,26,46,.5) 0%,var(--db) 100%)}
     .hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;margin-bottom:.6rem}.hero p{font-size:1rem;color:var(--t2);max-width:560px;margin:0 auto}
-    .main{flex:1;max-width:600px;margin:0 auto;padding:2rem 1.5rem 3rem;width:100%}
-    .problem-box{background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;padding:2rem;text-align:center;margin-bottom:1.5rem}
-    .div-display{font-family:'Courier New',monospace;font-size:clamp(1.8rem,6vw,2.5rem);font-weight:700;margin-bottom:1.5rem;display:flex;align-items:flex-start;justify-content:center;gap:.2rem}
-    .div-bracket{display:flex;flex-direction:column;align-items:flex-start}
-    .div-quotient{border-bottom:none;min-height:1.5em;letter-spacing:.3em;color:var(--pg);font-weight:900}
-    .div-dividend{border-top:3px solid var(--pp);border-left:3px solid var(--pp);border-top-left-radius:8px;padding:.2em .4em;letter-spacing:.2em}
-    .div-divisor{padding:.2em .3em;align-self:center;color:var(--pb)}
-    .step-box{background:var(--ds);border:1px solid var(--dbr);border-radius:.75rem;padding:1rem;margin-bottom:1rem;text-align:center}
-    .step-label{font-size:.8rem;color:var(--pp);font-weight:700;text-transform:uppercase;margin-bottom:.3rem}.step-prompt{font-size:1.1rem;font-weight:700;margin-bottom:.3rem}.step-hint{font-size:.85rem;color:var(--t2)}
-    .answer-box{font-size:2rem;font-weight:800;min-height:3rem;background:var(--ds);border:2px solid var(--dbr);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:1rem auto;width:fit-content;min-width:150px;padding:.5rem 1rem}
-    .cursor{display:inline-block;width:2px;height:1.5em;background:var(--pp);animation:blink 1s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-    .numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;max-width:280px;margin:0 auto 1rem}
-    .num-btn{height:52px;border-radius:12px;font-size:1.2rem;font-weight:700;background:var(--ds);border:1px solid var(--dbr);color:var(--t1);transition:.15s}
-    .num-btn:hover{background:var(--dc);border-color:var(--pp)}.num-btn:active{transform:scale(.95)}
-    .num-btn.clear{color:var(--pk)}.num-btn.check{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;border-color:transparent}
-    .feedback{text-align:center;font-size:1rem;font-weight:700;min-height:1.5rem;margin-bottom:.5rem}.feedback.ok{color:var(--pg)}.feedback.no{color:var(--pk)}
-    .stats{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.5rem;font-weight:600;font-size:.9rem;color:var(--t2)}.stats strong{color:var(--t1)}
-    .new-btn{display:block;margin:1rem auto 0;padding:.7rem 1.8rem;border-radius:999px;font-weight:700;background:var(--ds);border:1px solid var(--dbr);color:var(--t1);transition:.2s}.new-btn:hover{border-color:var(--pp);color:var(--pp)}
-    .promo{text-align:center;padding:2rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:2rem}.promo h3{font-size:1.1rem;margin-bottom:.3rem}.promo p{color:var(--t2);font-size:.9rem;margin-bottom:1rem}
+    .main{flex:1;max-width:520px;margin:0 auto;padding:1.5rem 1rem 3rem;width:100%}
+
+    /* Game Card */
+    .gc{background:var(--dc);border:2px solid #6d28d9;border-radius:1.25rem;padding:1.5rem;position:relative;box-shadow:0 0 40px rgba(109,40,217,.15)}
+    .gc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
+    .gc-score{font-size:.95rem;font-weight:700;color:var(--t2)}.gc-score strong{color:var(--t1)}
+    .gc-stars{font-size:1.2rem;letter-spacing:2px}
+    .gc-stars .filled{color:var(--pa)}.gc-stars .empty{color:#333}
+    .gc-bar{width:100%;height:6px;background:var(--ds);border-radius:3px;margin-bottom:1.25rem;overflow:hidden}
+    .gc-bar-fill{height:100%;background:linear-gradient(90deg,#6d28d9,var(--pk));border-radius:3px;transition:width .4s ease}
+
+    /* Problem */
+    .gc-problem{text-align:center;margin-bottom:1rem}
+    .gc-problem h2{font-size:1.6rem;font-weight:900;margin-bottom:.2rem}
+    .gc-problem p{font-size:.85rem;color:var(--t2)}
+
+    /* Workspace */
+    .ws{background:rgba(109,40,217,.12);border:1.5px solid rgba(109,40,217,.3);border-radius:1rem;padding:1.25rem 1rem;margin-bottom:1rem;overflow-x:auto}
+    .ws-row{display:flex;align-items:center;justify-content:center;gap:4px;min-height:44px}
+    .ws-sp{width:52px;flex-shrink:0}
+    .ws-cell{width:42px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;flex-shrink:0}
+    .ws-q{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.25);color:#fff}
+    .ws-q.filled{border-color:rgba(255,255,255,.5);color:#fff}
+    .ws-q.active{border-color:var(--pa);background:rgba(252,211,77,.12);color:var(--pa);box-shadow:0 0 14px rgba(252,211,77,.25);animation:pulse 1.5s infinite}
+    @keyframes pulse{0%,100%{box-shadow:0 0 14px rgba(252,211,77,.25)}50%{box-shadow:0 0 22px rgba(252,211,77,.4)}}
+    .ws-dv{border:2px solid rgba(99,102,241,.5);color:var(--pb);background:rgba(99,102,241,.08)}
+    .ws-divisor{color:var(--pb);font-size:1.3rem;font-weight:800;font-family:'Nunito',sans-serif;width:42px;text-align:center;flex-shrink:0}
+    .ws-bracket{display:inline-flex;gap:4px;border-top:3px solid #7c3aed;border-left:3px solid #7c3aed;border-top-left-radius:12px;padding:6px 8px 4px 10px}
+    .ws-sub{color:var(--pa);font-size:1.1rem;font-weight:700;font-family:'Nunito',sans-serif;text-align:center}
+    .ws-sub-row{padding-left:52px}
+    .ws-line{height:2px;background:var(--pp);margin:2px 0;opacity:.5;width:90px;margin-left:auto;margin-right:auto}
+    .ws-mid{font-size:1.15rem;font-weight:700;font-family:'Nunito',sans-serif;color:var(--t1);width:42px;text-align:center}
+    .ws-rem-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+    .ws-rem-label{font-size:.95rem;font-weight:700;color:var(--t2)}
+    .ws-rem-cell{width:42px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800}
+    .ws-rem-cell.active{border:2px solid #fb923c;background:rgba(251,146,60,.12);color:#fb923c;box-shadow:0 0 14px rgba(251,146,60,.25);animation:pulse-o 1.5s infinite}
+    @keyframes pulse-o{0%,100%{box-shadow:0 0 14px rgba(251,146,60,.25)}50%{box-shadow:0 0 22px rgba(251,146,60,.4)}}
+    .ws-rem-cell.filled{border:2px solid var(--pg);color:var(--pg);background:rgba(134,239,172,.1)}
+    .ws-rem-hint{font-size:.8rem;color:var(--t2);width:100%;text-align:center;margin-top:2px}
+
+    /* Prompt */
+    .gc-prompt{text-align:center;font-size:1.05rem;font-weight:700;margin-bottom:.25rem;color:var(--t1);min-height:1.4em}
+    .gc-hint{text-align:center;font-size:.85rem;color:var(--t2);margin-bottom:.75rem;min-height:1.2em}
+
+    /* Feedback */
+    .gc-fb{text-align:center;font-size:1rem;font-weight:700;min-height:1.5rem;margin-bottom:.5rem}
+    .gc-fb.ok{color:var(--pg)}.gc-fb.no{color:var(--pk)}
+
+    /* Numpad */
+    .gc-numpad{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:.75rem}
+    .np-btn{height:48px;border-radius:10px;font-size:1.15rem;font-weight:700;background:var(--ds);border:1.5px solid var(--dbr);color:var(--t1);transition:.15s;display:flex;align-items:center;justify-content:center}
+    .np-btn:hover{background:var(--dc);border-color:var(--pp)}.np-btn:active{transform:scale(.93)}
+    .np-btn.np-clear{color:var(--pk);font-size:.85rem}.np-btn.np-back{color:var(--t2);font-size:.95rem}
+
+    /* Check Button */
+    .gc-check{display:block;width:100%;padding:.85rem;border-radius:12px;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#059669,#10b981);border:none;cursor:pointer;transition:.2s;margin-bottom:.5rem}
+    .gc-check:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(5,150,105,.3)}
+    .gc-check:active{transform:scale(.98)}
+    .gc-check:disabled{opacity:.5;cursor:default;transform:none;box-shadow:none}
+
+    /* Complete state */
+    .gc-complete{text-align:center;padding:1rem 0}
+    .gc-complete h3{font-size:1.3rem;color:var(--pg);margin-bottom:.3rem}
+    .gc-complete p{color:var(--t2);font-size:.9rem;margin-bottom:.75rem}
+    .gc-next{padding:.7rem 2rem;border-radius:999px;font-weight:700;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;font-size:.95rem;transition:.2s}
+    .gc-next:hover{transform:scale(1.05)}
+
+    /* Round end */
+    .round-end{text-align:center;padding:2rem 1rem}
+    .round-end h2{font-size:1.8rem;margin-bottom:.5rem}
+    .round-end .big-stars{font-size:2rem;letter-spacing:4px;margin-bottom:.5rem}
+    .round-end p{color:var(--t2);margin-bottom:1rem}
+
+    /* Promo */
+    .promo{text-align:center;padding:2rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:1.5rem}.promo h3{font-size:1.1rem;margin-bottom:.3rem}.promo p{color:var(--t2);font-size:.9rem;margin-bottom:1rem}
     .promo a{display:inline-block;padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.85rem;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f}
     .footer{padding:2rem 1.5rem;background:var(--db);border-top:1px solid var(--dbr);text-align:center;font-size:.85rem;color:var(--t2);margin-top:auto}
     .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}.footer-links a{color:#8888a0}.footer-links a:hover{color:var(--pp)}
+    @keyframes pop{0%{transform:scale(.8);opacity:0}50%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+    .pop-in{animation:pop .4s ease}
   </style>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Long Division"}]}
-  </script>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
 </head>
 <body>
   <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button><div class="nav-links" id="navLinks"><a href="/#games">Games</a><a href="/tools/" class="active">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
-  <section class="hero"><h1>📐 <span class="gt">Long</span> Division</h1><p>Step-by-step bracket division — find the quotient digit by digit</p></section>
+  <section class="hero"><h1>📐 <span class="gt">Long</span> Division</h1><p>Step-by-step bracket division — fill in each digit, just like the Math Tank app!</p></section>
   <div class="main">
-    <div class="stats"><span>✅ <strong id="ct">0</strong></span><span>🔥 Streak <strong id="sk">0</strong></span></div>
-    <div class="problem-box">
-      <div class="div-display" id="divDisp"></div>
-      <div class="step-box" id="stepBox"></div>
-    </div>
-    <div class="feedback" id="fb"></div>
-    <div class="answer-box" id="ans"><span class="cursor"></span></div>
-    <div class="numpad" id="np"></div>
-    <button class="new-btn" onclick="newProblem()">New Problem →</button>
-    <div class="promo"><h3>🦦 Love this? Try Math Tank!</h3><p>Division skills power your missiles in epic space battles!</p><a href="/apps/math-tank.html">Learn About Math Tank →</a></div>
+    <div class="gc" id="gameCard"></div>
+    <div class="promo"><h3>🦦 Love this? Try Math Tank!</h3><p>Long division powers your missiles in epic space battles!</p><a href="/apps/math-tank.html">Learn About Math Tank →</a></div>
   </div>
   <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
+
   <script>
     document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
-    let divisor=0,dividend=0,quotient=0,remainder=0,step=0,steps=[],solved=0,streak=0,input='';
-    function gen(){
-      divisor=2+Math.floor(Math.random()*8); // 2-9
-      quotient=11+Math.floor(Math.random()*9); // 11-19 (2-digit quotient)
-      remainder=Math.floor(Math.random()*divisor); // 0 to divisor-1
-      dividend=divisor*quotient+remainder;
-      const qTens=Math.floor(quotient/10),qOnes=quotient%10;
-      const firstChunk=Math.floor(dividend/10); // tens digits to divide first
-      const firstQ=Math.floor(firstChunk/divisor);
-      const firstR=firstChunk-firstQ*divisor;
-      const bringDown=firstR*10+(dividend%10);
-      const secondQ=Math.floor(bringDown/divisor);
-      const finalR=bringDown-secondQ*divisor;
-      steps=[
-        {p:`${divisor} goes into ${firstChunk} how many times?`,h:`How many times does ${divisor} fit into ${firstChunk}?`,a:firstQ},
-        {p:`Bring down ${dividend%10}. ${divisor} goes into ${bringDown} how many times?`,h:`${firstChunk} - ${firstQ*divisor} = ${firstR}, bring down ${dividend%10} → ${bringDown} ÷ ${divisor} = ?`,a:secondQ},
-        {p:`What is the remainder?`,h:`${bringDown} - ${secondQ*divisor} = ?`,a:finalR}
-      ];
-      step=0;
+
+    const ROUND=5;
+    let divisor,dividend,A,B,Q1,P1,R1,bringDown,Q2,P2,finalR;
+    let step=0,input='',correct=0,problemNum=0,roundDone=false;
+
+    function generate(){
+      divisor=2+Math.floor(Math.random()*8);
+      let f=divisor+Math.floor(Math.random()*(10-divisor));
+      B=Math.floor(Math.random()*10);
+      A=f; dividend=A*10+B;
+      Q1=Math.floor(A/divisor); P1=divisor*Q1; R1=A-P1;
+      bringDown=R1*10+B;
+      Q2=Math.floor(bringDown/divisor); P2=divisor*Q2;
+      finalR=bringDown-P2;
+      step=0; input='';
     }
-    function renderDiv(){
-      const d=document.getElementById('divDisp');
-      let qStr='';
-      if(step>=1) qStr+=steps[0].a;
-      if(step>=2) qStr+=String(steps[1].a);
-      if(!qStr) qStr='? ?';
-      d.innerHTML=`<span class="div-divisor">${divisor}</span><div class="div-bracket"><span class="div-quotient">${qStr}</span><span class="div-dividend">${dividend}</span></div>`;
+
+    function starsHTML(){
+      let s='';
+      for(let i=0;i<ROUND;i++) s+=`<span class="${i<correct?'filled':'empty'}">${i<correct?'★':'☆'}</span>`;
+      return s;
     }
-    function renderStep(){
-      const s=document.getElementById('stepBox');
-      if(step<steps.length){
-        s.innerHTML=`<div class="step-label">Step ${step+1} of ${steps.length}</div><div class="step-prompt">${steps[step].p}</div><div class="step-hint">${steps[step].h}</div>`;
+
+    function getStepInfo(){
+      if(step===0) return {prompt:`How many times does ${divisor} go into ${A}?`,hint:`Think: ${divisor} × ? ≤ ${A}`,answer:Q1};
+      if(step===1) return {prompt:`How many times does ${divisor} go into ${bringDown}?`,hint:`Think: ${divisor} × ? ≤ ${bringDown}`,answer:Q2};
+      if(step===2) return {prompt:`What's the remainder?`,hint:`${bringDown} − ${P2} = ?`,answer:finalR};
+      return null;
+    }
+
+    function renderWorkspace(){
+      let h='';
+      // Quotient row
+      h+='<div class="ws-row" style="padding-left:56px">';
+      if(step>0) h+=`<div class="ws-cell ws-q filled">${Q1}</div>`;
+      else h+=`<div class="ws-cell ws-q active">${input||'?'}</div>`;
+      if(step>1) h+=`<div class="ws-cell ws-q filled">${Q2}</div>`;
+      else if(step===1) h+=`<div class="ws-cell ws-q active">${input||'?'}</div>`;
+      else h+='<div class="ws-cell ws-q">?</div>';
+      h+='</div>';
+      // Bracket + Dividend
+      h+='<div class="ws-row">';
+      h+=`<div class="ws-divisor">${divisor}</div>`;
+      h+=`<div class="ws-bracket"><div class="ws-cell ws-dv">${A}</div><div class="ws-cell ws-dv">${B}</div></div>`;
+      h+='</div>';
+      // After Q1: show subtraction + bring down
+      if(step>=1){
+        h+=`<div class="ws-row ws-sub-row"><div class="ws-sub">−${P1}</div></div>`;
+        h+='<div class="ws-line"></div>';
+        h+=`<div class="ws-row" style="padding-left:56px"><div class="ws-mid">${R1}</div><div class="ws-mid">${B}</div></div>`;
+      }
+      // After Q2: show subtraction
+      if(step>=2){
+        let p2Str=String(P2);
+        h+=`<div class="ws-row ws-sub-row"><div class="ws-sub">−${P2}</div></div>`;
+        h+='<div class="ws-line"></div>';
+        // Remainder
+        h+='<div class="ws-rem-row">';
+        h+='<span class="ws-rem-label">Remainder:</span>';
+        if(step>2) h+=`<div class="ws-rem-cell filled">${finalR}</div>`;
+        else h+=`<div class="ws-rem-cell active">${input||'?'}</div>`;
+        h+='</div>';
+        if(step===2) h+='<div class="ws-rem-hint">What\'s left over?</div>';
+      }
+      return h;
+    }
+
+    function render(){
+      const gc=document.getElementById('gameCard');
+      if(roundDone){
+        gc.innerHTML=`<div class="round-end pop-in">
+          <h2>🎉 Round Complete!</h2>
+          <div class="big-stars">${starsHTML()}</div>
+          <p>You got <strong>${correct}</strong> out of <strong>${ROUND}</strong> correct!</p>
+          <button class="gc-next" onclick="startRound()">New Round →</button>
+        </div>`;
+        return;
+      }
+      const info=getStepInfo();
+      const isComplete=step>=3;
+      let h='';
+      // Header
+      h+=`<div class="gc-head"><div class="gc-score">Correct: <strong>${correct}</strong>/${ROUND}</div><div class="gc-stars">${starsHTML()}</div></div>`;
+      h+=`<div class="gc-bar"><div class="gc-bar-fill" style="width:${(problemNum/ROUND)*100}%"></div></div>`;
+      // Problem
+      h+=`<div class="gc-problem"><h2>${dividend} ÷ ${divisor} = ?</h2><p>Two-digit quotient!</p></div>`;
+      // Workspace
+      h+=`<div class="ws">${renderWorkspace()}</div>`;
+      if(!isComplete){
+        // Prompt + Hint
+        h+=`<div class="gc-prompt">${info.prompt}</div>`;
+        h+=`<div class="gc-hint">${info.hint}</div>`;
+        // Feedback
+        h+='<div class="gc-fb" id="fb"></div>';
+        // Numpad
+        h+='<div class="gc-numpad">';
+        for(let i=0;i<=9;i++) h+=`<button class="np-btn" onclick="press('${i}')">${i}</button>`;
+        h+='</div>';
+        // Action buttons row
+        h+='<div style="display:flex;gap:8px;margin-bottom:.5rem">';
+        h+='<button class="np-btn np-clear" style="flex:1" onclick="clearInput()">Clear</button>';
+        h+='<button class="np-btn np-back" style="flex:1" onclick="backspace()">⌫</button>';
+        h+='</div>';
+        h+=`<button class="gc-check" onclick="checkAnswer()">Check Answer ✓</button>`;
       } else {
-        const r=steps[2].a;
-        s.innerHTML=`<div class="step-prompt" style="color:var(--pg)">✅ ${dividend} ÷ ${divisor} = ${quotient}${r>0?' R'+r:''}</div><div class="step-hint">Great job! Try another.</div>`;
+        // Complete
+        h+=`<div class="gc-complete pop-in"><h3>✅ ${dividend} ÷ ${divisor} = ${Q1}${Q2}${finalR>0?' R'+finalR:''}</h3>
+          <p>Great job!</p>
+          <button class="gc-next" onclick="nextProblem()">Next Problem →</button></div>`;
+      }
+      gc.innerHTML=h;
+    }
+
+    function press(n){
+      if(step>=3||roundDone)return;
+      if(input.length<3){input+=n;render()}
+    }
+    function clearInput(){input='';render();const f=document.getElementById('fb');if(f){f.textContent='';f.className='gc-fb'}}
+    function backspace(){input=input.slice(0,-1);render()}
+
+    function checkAnswer(){
+      if(step>=3||roundDone)return;
+      const info=getStepInfo();
+      if(!input&&info.answer!==0)return;
+      const val=input===''?0:parseInt(input);
+      const fb=document.getElementById('fb');
+      if(!fb)return;
+      if(val===info.answer){
+        fb.textContent='✅ Correct!';fb.className='gc-fb ok';
+        step++; input='';
+        if(step>=3){correct++;problemNum++;}
+        setTimeout(()=>{
+          if(problemNum>=ROUND&&step>=3){roundDone=true;}
+          render();
+        },600);
+      } else {
+        fb.textContent=`✗ The answer is ${info.answer}`;fb.className='gc-fb no';
+        input='';
+        setTimeout(()=>{
+          step++; input='';
+          if(step>=3){problemNum++;}
+          if(problemNum>=ROUND&&step>=3){roundDone=true;}
+          render();
+        },1800);
       }
     }
-    function renderAns(){document.getElementById('ans').innerHTML=input||'<span class="cursor"></span>'}
-    function renderNP(){let h='';for(let i=1;i<=9;i++)h+=`<button class="num-btn" onclick="press('${i}')">${i}</button>`;h+=`<button class="num-btn clear" onclick="clr()">C</button><button class="num-btn" onclick="press('0')">0</button><button class="num-btn check" onclick="chk()">Check ✓</button>`;document.getElementById('np').innerHTML=h}
-    function press(n){if(input.length<4){input+=n;renderAns()}}
-    function clr(){input='';renderAns();document.getElementById('fb').textContent='';document.getElementById('fb').className='feedback'}
-    function chk(){
-      if(!input&&step<steps.length&&steps[step].a!==0) return;
-      if(step>=steps.length) return;
-      const fb=document.getElementById('fb');const val=input===''?0:parseInt(input);
-      if(val===steps[step].a){
-        fb.textContent='✅ Correct!';fb.className='feedback ok';step++;input='';
-        if(step>=steps.length){solved++;streak++;document.getElementById('ct').textContent=solved;document.getElementById('sk').textContent=streak}
-        setTimeout(()=>{renderDiv();renderStep();renderAns();if(step<steps.length){fb.textContent='';fb.className='feedback'}},700);
-      } else {
-        fb.textContent=`Not quite! The answer is ${steps[step].a}`;fb.className='feedback no';streak=0;document.getElementById('sk').textContent=0;input='';
-        setTimeout(()=>renderAns(),100);
-        setTimeout(()=>{step++;renderDiv();renderStep();fb.textContent='';fb.className='feedback'},2200);
-      }
+
+    function nextProblem(){
+      if(problemNum>=ROUND){roundDone=true;render();return;}
+      generate();render();
     }
-    function newProblem(){input='';document.getElementById('fb').textContent='';document.getElementById('fb').className='feedback';gen();renderDiv();renderStep();renderAns()}
-    document.addEventListener('keydown',e=>{if(e.key>='0'&&e.key<='9')press(e.key);else if(e.key==='Backspace'){e.preventDefault();input=input.slice(0,-1);renderAns()}else if(e.key==='Enter')chk()});
-    renderNP();newProblem();
+    function startRound(){correct=0;problemNum=0;roundDone=false;generate();render()}
+
+    document.addEventListener('keydown',e=>{
+      if(e.key>='0'&&e.key<='9')press(e.key);
+      else if(e.key==='Backspace'){e.preventDefault();backspace()}
+      else if(e.key==='Enter')checkAnswer();
+    });
+
+    generate();render();
   </script>
 </body>
 </html>
