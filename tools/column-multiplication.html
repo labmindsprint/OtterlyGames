@@ -16,6 +16,8 @@
   <meta name="pinterest-rich-pin" content="true">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Column Multiplication","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Column Multiplication"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is column multiplication?","acceptedAnswer":{"@type":"Answer","text":"Column multiplication (also called long multiplication) is a written method for multiplying larger numbers. You stack the numbers, multiply each digit of the bottom number by the top number to create partial products, then add the partial products together to find the answer."}},{"@type":"Question","name":"How do carries work in column multiplication?","acceptedAnswer":{"@type":"Answer","text":"When multiplying two digits gives a result of 10 or more, you write the ones digit below the line and 'carry' the tens digit to the next column on the left. That carried number gets added to the next multiplication result. For example, 7 × 8 = 56: write 6 and carry 5."}},{"@type":"Question","name":"When do children learn column multiplication?","acceptedAnswer":{"@type":"Answer","text":"Children typically start learning column multiplication around ages 8–10 (Year 4 in the UK, Grade 3 in the US). They begin with multiplying a 2-digit number by a 1-digit number before progressing to 2-digit by 2-digit multiplication."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to Do Column Multiplication Step by Step","description":"Learn the column multiplication method with carries and partial products using our free interactive tool.","step":[{"@type":"HowToStep","position":1,"name":"Write the numbers","text":"Write the two numbers one above the other, lining up the ones, tens and hundreds columns. Draw a line underneath."},{"@type":"HowToStep","position":2,"name":"Multiply by the ones digit","text":"Multiply each digit of the top number by the ones digit of the bottom number, working right to left. Carry any tens digits to the next column."},{"@type":"HowToStep","position":3,"name":"Multiply by the tens digit","text":"If the bottom number has a tens digit, write a zero placeholder then multiply each digit of the top number by the tens digit, again carrying as needed."},{"@type":"HowToStep","position":4,"name":"Add the partial products","text":"Add the two partial product rows together column by column, carrying where necessary, to get the final answer."}]}</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
@@ -25,9 +27,10 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f8;min-height:100vh;display:flex;flex-direction:column}
     h1,h2,h3{font-family:'Nunito',sans-serif}a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer;border:none;background:none}
+    input{font-family:inherit}
     :root{--pp:#c4b5fd;--pk:#f9a8d4;--pb:#93c5fd;--pg:#86efac;--pa:#fcd34d;--db:#0a0a0f;--dc:#141420;--ds:#1a1a2e;--dbr:#2a2a3e;--t1:#f0f0f8;--t2:#9898b0}
     .gt{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);height:64px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);height:64px}
     .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:100%}
     .nav-brand{display:flex;align-items:center;gap:.6rem;font-family:'Nunito';font-weight:900;font-size:1.3rem}
     .nav-brand .brand-text{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -41,396 +44,478 @@
     .main{flex:1;max-width:520px;margin:0 auto;padding:1.5rem 1rem 3rem;width:100%}
 
     /* Difficulty */
-    .diff-row{display:flex;gap:.5rem;justify-content:center;margin-bottom:1.25rem}
-    .diff-btn{padding:.55rem 1.3rem;border-radius:999px;font-weight:700;font-size:.85rem;background:var(--dc);border:1px solid var(--dbr);color:var(--t2);transition:.2s}
+    .diff-row{display:flex;gap:.5rem;justify-content:center;margin-bottom:1rem}
+    .diff-btn{padding:.5rem 1.2rem;border-radius:999px;font-weight:700;font-size:.82rem;background:var(--dc);border:1px solid var(--dbr);color:var(--t2);transition:.2s}
     .diff-btn:hover{border-color:var(--pp);color:var(--t1)}.diff-btn.active{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;border-color:transparent}
 
     /* Game Card */
-    .gc{background:var(--dc);border:2px solid #6d28d9;border-radius:1.25rem;padding:1.5rem;position:relative;box-shadow:0 0 40px rgba(109,40,217,.15)}
-    .gc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
-    .gc-score{font-size:.95rem;font-weight:700;color:var(--t2)}.gc-score strong{color:var(--t1)}
-    .gc-stars{font-size:1.2rem;letter-spacing:2px}.gc-stars .filled{color:var(--pa)}.gc-stars .empty{color:#333}
-    .gc-bar{width:100%;height:6px;background:var(--ds);border-radius:3px;margin-bottom:1.25rem;overflow:hidden}
+    .gc{background:var(--dc);border:2px solid #6d28d9;border-radius:1.25rem;padding:1.25rem;box-shadow:0 0 40px rgba(109,40,217,.15)}
+    .gc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+    .gc-score{font-size:.9rem;font-weight:700;color:var(--t2)}.gc-score strong{color:var(--t1)}
+    .gc-stars{font-size:1.1rem;letter-spacing:2px}.gc-stars .filled{color:var(--pa)}.gc-stars .empty{color:#333}
+    .gc-bar{width:100%;height:5px;background:var(--ds);border-radius:3px;margin-bottom:1rem;overflow:hidden}
     .gc-bar-fill{height:100%;background:linear-gradient(90deg,#6d28d9,var(--pk));border-radius:3px;transition:width .4s ease}
-
-    /* Problem */
-    .gc-problem{text-align:center;margin-bottom:1rem}
-    .gc-problem h2{font-size:1.5rem;font-weight:900;margin-bottom:.2rem}
-    .gc-problem p{font-size:.85rem;color:var(--t2)}
+    .gc-problem{text-align:center;margin-bottom:.75rem}
+    .gc-problem h2{font-size:1.5rem;font-weight:900;margin-bottom:.15rem}
+    .gc-problem p{font-size:.8rem;color:var(--t2)}
 
     /* Workspace */
-    .ws{background:rgba(109,40,217,.12);border:1.5px solid rgba(109,40,217,.3);border-radius:1rem;padding:1.25rem .75rem;margin-bottom:1rem;overflow-x:auto}
-    .ws-grid{display:flex;flex-direction:column;align-items:flex-end;gap:2px;margin:0 auto;width:fit-content;min-width:160px}
-    .ws-row{display:flex;align-items:center;gap:4px;justify-content:flex-end}
-    .ws-cell{width:40px;height:42px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-family:'Nunito',sans-serif;font-size:1.25rem;font-weight:800;flex-shrink:0}
-    .ws-num{border:2px solid rgba(99,102,241,.4);color:var(--pb);background:rgba(99,102,241,.08)}
-    .ws-op{width:24px;color:var(--pp);font-size:1.2rem;font-weight:700;border:none;display:inline-flex;align-items:center;justify-content:center}
-    .ws-carry{width:24px;height:24px;font-size:.75rem;font-weight:800;color:var(--pa);border:1.5px solid rgba(252,211,77,.3);border-radius:6px;background:rgba(252,211,77,.08);display:inline-flex;align-items:center;justify-content:center}
-    .ws-carry-sp{width:24px;height:24px}
-    .ws-line{height:3px;background:var(--pp);border-radius:2px;margin:4px 0;width:100%;opacity:.6}
-    .ws-res{border:2px solid rgba(134,239,172,.3);color:var(--pg);background:rgba(134,239,172,.06)}
-    .ws-res.active{border-color:var(--pa);color:var(--pa);background:rgba(252,211,77,.1);box-shadow:0 0 12px rgba(252,211,77,.2);animation:pulse 1.5s infinite}
-    @keyframes pulse{0%,100%{box-shadow:0 0 12px rgba(252,211,77,.2)}50%{box-shadow:0 0 20px rgba(252,211,77,.35)}}
-    .ws-partial{border:2px solid rgba(147,197,253,.25);color:var(--pb);background:rgba(147,197,253,.05)}
-    .ws-partial.active{border-color:var(--pa);color:var(--pa);background:rgba(252,211,77,.1);box-shadow:0 0 12px rgba(252,211,77,.2);animation:pulse 1.5s infinite}
-    .ws-faded{opacity:.3}
+    .ws{background:rgba(30,41,59,.9);border-radius:.75rem;padding:1rem;margin-bottom:.75rem}
+    .ws-grid{display:flex;flex-direction:column;align-items:flex-end;gap:2px;margin:0 auto;width:fit-content}
+    .ws-row{display:flex;align-items:center;gap:3px;justify-content:flex-end}
+    .ws-cell{width:38px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-family:'Nunito',sans-serif;font-size:1.25rem;font-weight:800;flex-shrink:0}
+    .ws-num{border:2px solid rgba(99,102,241,.4);color:#60a5fa;background:rgba(99,102,241,.08)}
+    .ws-op{width:24px;color:var(--pp);font-size:1.15rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;border:none}
+    .ws-carry{width:22px;height:22px;font-size:.7rem;font-weight:800;color:var(--pa);border:1.5px solid rgba(252,211,77,.3);border-radius:6px;background:rgba(252,211,77,.08);display:inline-flex;align-items:center;justify-content:center}
+    .ws-carry-sp{width:22px;height:22px}
+    .ws-line{height:3px;background:var(--pp);border-radius:2px;margin:4px 0;width:100%;opacity:.5}
+    .ws-label{font-size:.65rem;color:var(--t2);margin-left:6px;font-weight:600;white-space:nowrap}
 
-    /* Prompt */
-    .gc-prompt{text-align:center;font-size:1.05rem;font-weight:700;margin-bottom:.25rem;color:var(--t1);min-height:1.4em}
-    .gc-hint{text-align:center;font-size:.85rem;color:var(--t2);margin-bottom:.75rem;min-height:1.2em}
-    .gc-fb{text-align:center;font-size:1rem;font-weight:700;min-height:1.5rem;margin-bottom:.5rem}
+    /* Digit inputs */
+    .d-in{width:38px;height:40px;border:3px solid rgba(74,222,128,.5);background:#fff;color:#7c3aed;border-radius:8px;text-align:center;font-size:1.3rem;font-weight:800;font-family:'Nunito',sans-serif;outline:none}
+    .d-in:focus{border-color:var(--pa);box-shadow:0 0 12px rgba(252,211,77,.4)}
+    .d-in:disabled{opacity:.35;background:#e5e7eb;cursor:default}
+    .d-in::placeholder{color:rgba(124,58,237,.3);font-weight:700}
+    .d-in.cyan-b{border-color:rgba(34,211,238,.5)}
+    .d-in.yellow-b{border-color:rgba(250,204,21,.5)}
+    .d-in.green-b{border-color:rgba(74,222,128,.5)}
+    .d-in.placeholder-0{background:#f1f5f9;color:rgba(100,116,139,.5);border-color:rgba(148,163,184,.3);font-size:1.1rem}
+
+    .gc-hint{text-align:center;font-size:.82rem;color:var(--t2);min-height:1.1em;margin-bottom:.4rem}
+    .gc-fb{text-align:center;font-size:.95rem;font-weight:700;min-height:1.4rem;margin-bottom:.4rem}
     .gc-fb.ok{color:var(--pg)}.gc-fb.no{color:var(--pk)}
+    .gc-check{display:block;width:100%;padding:.8rem;border-radius:12px;font-size:1rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#059669,#10b981);border:none;cursor:pointer;transition:.2s}
+    .gc-check:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(5,150,105,.3)}
+    .gc-check:active{transform:scale(.98)}
 
-    /* Numpad */
-    .gc-numpad{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:.75rem}
-    .np-btn{height:48px;border-radius:10px;font-size:1.15rem;font-weight:700;background:var(--ds);border:1.5px solid var(--dbr);color:var(--t1);transition:.15s;display:flex;align-items:center;justify-content:center}
-    .np-btn:hover{background:var(--dc);border-color:var(--pp)}.np-btn:active{transform:scale(.93)}
-    .np-btn.np-clear{color:var(--pk);font-size:.85rem}.np-btn.np-back{color:var(--t2);font-size:.95rem}
-    .gc-check{display:block;width:100%;padding:.85rem;border-radius:12px;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#059669,#10b981);border:none;cursor:pointer;transition:.2s;margin-bottom:.5rem}
-    .gc-check:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(5,150,105,.3)}.gc-check:active{transform:scale(.98)}
-    .gc-check:disabled{opacity:.5;cursor:default;transform:none;box-shadow:none}
-
-    /* Complete */
-    .gc-complete{text-align:center;padding:1rem 0}
-    .gc-complete h3{font-size:1.3rem;color:var(--pg);margin-bottom:.3rem}
-    .gc-complete p{color:var(--t2);font-size:.9rem;margin-bottom:.75rem}
-    .gc-next{padding:.7rem 2rem;border-radius:999px;font-weight:700;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;font-size:.95rem;transition:.2s}
+    .gc-complete{text-align:center;padding:.75rem 0}
+    .gc-complete h3{font-size:1.2rem;color:var(--pg);margin-bottom:.25rem}
+    .gc-complete p{color:var(--t2);font-size:.85rem;margin-bottom:.6rem}
+    .gc-next{padding:.6rem 1.8rem;border-radius:999px;font-weight:700;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;font-size:.9rem;transition:.2s}
     .gc-next:hover{transform:scale(1.05)}
-    .round-end{text-align:center;padding:2rem 1rem}
-    .round-end h2{font-size:1.8rem;margin-bottom:.5rem}
-    .round-end .big-stars{font-size:2rem;letter-spacing:4px;margin-bottom:.5rem}
-    .round-end p{color:var(--t2);margin-bottom:1rem}
+    .round-end{text-align:center;padding:1.5rem .75rem}
+    .round-end h2{font-size:1.6rem;margin-bottom:.4rem}
+    .round-end .big-stars{font-size:1.8rem;letter-spacing:4px;margin-bottom:.4rem}
+    .round-end p{color:var(--t2);margin-bottom:.75rem}
 
-    .promo{text-align:center;padding:2rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:1.5rem}.promo h3{font-size:1.1rem;margin-bottom:.3rem}.promo p{color:var(--t2);font-size:.9rem;margin-bottom:1rem}
-    .promo a{display:inline-block;padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.85rem;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f}
-    .footer{padding:2rem 1.5rem;background:var(--db);border-top:1px solid var(--dbr);text-align:center;font-size:.85rem;color:var(--t2);margin-top:auto}
-    .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}.footer-links a{color:#8888a0}.footer-links a:hover{color:var(--pp)}
+    .promo{text-align:center;padding:1.5rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:1.5rem}.promo h3{font-size:1.05rem;margin-bottom:.25rem}.promo p{color:var(--t2);font-size:.85rem;margin-bottom:.75rem}
+    .promo a{display:inline-block;padding:.55rem 1.3rem;border-radius:999px;font-weight:700;font-size:.82rem;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f}
+    .footer{padding:1.5rem;background:var(--db);border-top:1px solid var(--dbr);text-align:center;font-size:.8rem;color:var(--t2);margin-top:auto}
+    .footer-links{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;margin-bottom:.75rem}.footer-links a{color:#8888a0}.footer-links a:hover{color:var(--pp)}
     @keyframes pop{0%{transform:scale(.8);opacity:0}50%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
     .pop-in{animation:pop .4s ease}
   </style>
 </head>
 <body>
   <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button><div class="nav-links" id="navLinks"><a href="/#games">Games</a><a href="/tools/" class="active">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
+  <noscript><div style="max-width:600px;margin:6rem auto 2rem;padding:2rem;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;text-align:center;color:#f0f0f8;font-family:sans-serif"><h2 style="margin-bottom:.5rem">📊 Column Multiplication</h2><p style="color:#9898b0;margin-bottom:.5rem">This interactive column multiplication tool lets you practise step-by-step multiplication with carries and partial products — just like on paper.</p><p style="color:#9898b0">Please <strong>enable JavaScript</strong> in your browser to use this tool.</p></div></noscript>
   <section class="hero"><h1>📊 <span class="gt">Column</span> Multiplication</h1><p>Step-by-step column method — fill in each digit, just like the Math Tank app!</p></section>
   <div class="main">
+    <a href="/tools/" style="display:inline-flex;align-items:center;gap:.4rem;color:#9898b0;font-size:.85rem;font-weight:600;margin-bottom:.75rem;transition:color .2s;text-decoration:none" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='#9898b0'">← All Tools</a>
     <div class="diff-row">
-      <button class="diff-btn active" id="diffEasy" onclick="setDiff('easy')">Easy (2×1)</button>
-      <button class="diff-btn" id="diffMed" onclick="setDiff('medium')">Medium (2×2)</button>
+      <button class="diff-btn active" id="dE" onclick="setDiff('easy')">Easy (2×1)</button>
+      <button class="diff-btn" id="dM" onclick="setDiff('medium')">Medium (2×2)</button>
     </div>
     <div class="gc" id="gameCard"></div>
     <div class="promo"><h3>🦦 Love this? Try Math Tank!</h3><p>Column multiplication comes alive in epic tank battles!</p><a href="/apps/math-tank.html">Learn About Math Tank →</a></div>
   </div>
-  <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
+  <section style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">What Is Column Multiplication?</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Column multiplication — sometimes called <strong style="color:#c4b5fd">long multiplication</strong> — is the standard written method for multiplying multi-digit numbers. Numbers are stacked vertically and multiplied digit by digit, producing partial products that are added together for the final answer.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">This tool uses individual digit cells with carry slots, so children fill in each part of the calculation exactly as they would on paper, building muscle memory for the method.</p>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">How Carries Work</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">When a digit-by-digit multiplication gives a product of 10 or more, the tens digit is "carried" to the next column. For example, 7 × 8 = 56: write 6 in the current column and carry 5 to the left.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">Carries are one of the most common stumbling blocks. Practising with immediate visual feedback helps children spot carry mistakes instantly, rather than only discovering them at the end.</p>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Tips for Teaching Column Multiplication</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Start with <em>Easy mode</em> (2-digit × 1-digit) to build confidence with the layout. Once your child can handle carries comfortably, move to <em>Medium mode</em> (2-digit × 2-digit) which introduces partial products.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7">Encourage your child to check their work by estimating first — "Is 38 × 7 closer to 200 or 300?" — then comparing the estimate with the final answer. Estimation builds number sense alongside the written method.</p>
+  </section>
+  <div style="max-width:700px;margin:1.5rem auto 2rem;padding:0 1.5rem">
+    <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem;text-align:center">📚 Related Tools</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem">
+      <a href="/tools/long-division.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">📐</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Long Division</div><div style="font-size:.78rem;color:#9898b0">Step-by-step bracket division</div></a>
+      <a href="/tools/multiplication-practice.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">✖️</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Times Tables</div><div style="font-size:.78rem;color:#9898b0">Master ×2 through ×12</div></a>
+      <a href="/tools/multiplication-table.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">📋</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Multiplication Table</div><div style="font-size:.78rem;color:#9898b0">Interactive 12×12 grid</div></a>
+    </div>
+  </div>
+  <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p>© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
 
   <script>
     document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
 
     const ROUND=5;
-    let diff='easy',a,b,step,steps,input='',correct=0,problemNum=0,roundDone=false;
+    let diff='easy',a,b,correct=0,pNum=0,roundDone=false,done=false;
 
     function setDiff(d){
       diff=d;
-      document.getElementById('diffEasy').classList.toggle('active',d==='easy');
-      document.getElementById('diffMed').classList.toggle('active',d==='medium');
+      document.getElementById('dE').classList.toggle('active',d==='easy');
+      document.getElementById('dM').classList.toggle('active',d==='medium');
       startRound();
     }
 
-    function generate(){
+    function gen(){
       if(diff==='easy'){
-        a=10+Math.floor(Math.random()*40); // 10-49
-        b=2+Math.floor(Math.random()*8);   // 2-9
-        const aOnes=a%10, aTens=Math.floor(a/10);
-        const onesProduct=b*aOnes;
-        const onesWrite=onesProduct%10;
-        const carry1=Math.floor(onesProduct/10);
-        const tensResult=b*aTens+carry1;
-        steps=[
-          {prompt:`What is ${b} × ${aOnes}?`,hint:'Multiply the ones digit',answer:onesProduct},
-          {prompt:carry1>0?`What is ${b} × ${aTens} + ${carry1}?`:`What is ${b} × ${aTens}?`,hint:carry1>0?'Multiply tens, add the carry':'Multiply the tens digit',answer:tensResult}
-        ];
+        a=10+Math.floor(Math.random()*40); b=2+Math.floor(Math.random()*8);
       } else {
-        a=11+Math.floor(Math.random()*39); // 11-49
-        b=11+Math.floor(Math.random()*9);  // 11-19
-        const bOnes=b%10, bTens=Math.floor(b/10);
-        const p1=a*bOnes;
-        const p1Ones=p1%10, p1Carry=Math.floor((bOnes*(a%10))/10);
-        const p1Tens=bOnes*Math.floor(a/10)+p1Carry;
-        const p2=a*bTens;
-        const p2Val=a*bTens;
-        const result=a*b;
-        const c2=Math.floor((bTens*(a%10))/10);
-        steps=[
-          {prompt:`What is ${bOnes} × ${a%10}?`,hint:`Ones × ones`,answer:bOnes*(a%10)},
-          {prompt:p1Carry>0?`What is ${bOnes} × ${Math.floor(a/10)} + ${p1Carry}?`:`What is ${bOnes} × ${Math.floor(a/10)}?`,hint:p1Carry>0?'Ones × tens, add carry':'Ones × tens',answer:bOnes*Math.floor(a/10)+p1Carry},
-          {prompt:`What is ${bTens} × ${a%10}?`,hint:`Tens × ones`,answer:bTens*(a%10)},
-          {prompt:c2>0?`What is ${bTens} × ${Math.floor(a/10)} + ${c2}?`:`What is ${bTens} × ${Math.floor(a/10)}?`,hint:c2>0?'Tens × tens, add carry':'Tens × tens',answer:bTens*Math.floor(a/10)+c2},
-          {prompt:`What is ${p1} + ${p2Val*10}?`,hint:'Add the partial products',answer:result}
-        ];
+        a=11+Math.floor(Math.random()*9); b=11+Math.floor(Math.random()*9);
       }
-      step=0; input='';
+      done=false;
     }
 
-    function starsHTML(){
-      let s='';
-      for(let i=0;i<ROUND;i++) s+=`<span class="${i<correct?'filled':'empty'}">${i<correct?'★':'☆'}</span>`;
-      return s;
-    }
-
-    function digits(n,len){const s=String(n);const arr=[];for(let i=0;i<len;i++){const idx=s.length-len+i;arr.push(idx>=0?s[idx]:'');} return arr;}
-
-    function renderWorkspace(){
-      const aTens=Math.floor(a/10),aOnes=a%10;
-      let h='<div class="ws-grid">';
-
-      if(diff==='easy'){
-        const product=a*b;
-        const onesProduct=b*aOnes;
-        const carry1=Math.floor(onesProduct/10);
-        const onesWrite=onesProduct%10;
-        const tensResult=b*aTens+carry1;
-        const resDigits=digits(product,3);
-
-        // Carry row (shown after step 0)
-        if(step>=1 && carry1>0){
-          h+='<div class="ws-row">';
-          h+='<div class="ws-carry-sp"></div>';
-          h+=`<div class="ws-carry">${carry1}</div>`;
-          h+='<div class="ws-carry-sp"></div>';
-          h+='</div>';
-        }
-        // Top number
-        h+='<div class="ws-row">';
-        h+=`<div class="ws-cell ws-num">${aTens}</div>`;
-        h+=`<div class="ws-cell ws-num">${aOnes}</div>`;
-        h+='</div>';
-        // × row
-        h+='<div class="ws-row">';
-        h+='<div class="ws-op">×</div>';
-        h+=`<div class="ws-cell ws-num">${b}</div>`;
-        h+='</div>';
-        // Line
-        h+='<div class="ws-line"></div>';
-        // Result row
-        h+='<div class="ws-row">';
-        if(step>=2){
-          // Complete
-          const rd=digits(product,String(product).length);
-          rd.forEach(d=>h+=`<div class="ws-cell ws-res">${d}</div>`);
-        } else if(step===1){
-          // Ones digit filled, rest unknown
-          if(tensResult>=10){
-            h+='<div class="ws-cell ws-res active">?</div>';
-          }
-          h+='<div class="ws-cell ws-res active">?</div>';
-          h+=`<div class="ws-cell ws-res">${onesWrite}</div>`;
-        } else {
-          // All unknown
-          h+='<div class="ws-cell ws-res active">?</div>';
-          h+='<div class="ws-cell ws-res active">?</div>';
-        }
-        h+='</div>';
-      } else {
-        // Medium: 2×2
-        const bOnes=b%10,bTens=Math.floor(b/10);
-        const p1=a*bOnes;
-        const p2=a*bTens;
-        const p1OnesProduct=bOnes*aOnes;
-        const c1=Math.floor(p1OnesProduct/10);
-        const p2OnesProduct=bTens*aOnes;
-        const c2=Math.floor(p2OnesProduct/10);
-        const product=a*b;
-
-        // Carry row for partial product 1 (after step 0)
-        if(step>=1 && c1>0){
-          h+='<div class="ws-row">';
-          h+='<div class="ws-carry-sp"></div>';
-          h+=`<div class="ws-carry">${c1}</div>`;
-          h+='<div class="ws-carry-sp"></div>';
-          h+='</div>';
-        }
-        // Top number
-        h+='<div class="ws-row">';
-        h+=`<div class="ws-cell ws-num">${aTens}</div>`;
-        h+=`<div class="ws-cell ws-num">${aOnes}</div>`;
-        h+='</div>';
-        // × row
-        h+='<div class="ws-row">';
-        h+='<div class="ws-op">×</div>';
-        h+=`<div class="ws-cell ws-num">${bTens}</div>`;
-        h+=`<div class="ws-cell ws-num">${bOnes}</div>`;
-        h+='</div>';
-        // Line
-        h+='<div class="ws-line"></div>';
-
-        // Partial product 1
-        if(step>=2){
-          const pd=digits(p1,String(p1).length);
-          h+='<div class="ws-row">';
-          pd.forEach(d=>h+=`<div class="ws-cell ws-partial">${d}</div>`);
-          h+='</div>';
-        } else if(step>=0 && step<2){
-          h+='<div class="ws-row">';
-          const p1Len=String(p1).length;
-          for(let i=0;i<p1Len;i++){
-            if(step===0){
-              h+='<div class="ws-cell ws-partial ws-faded">?</div>';
-            } else {
-              // step 1: ones digit filled
-              if(i===p1Len-1) h+=`<div class="ws-cell ws-partial">${p1OnesProduct%10}</div>`;
-              else h+='<div class="ws-cell ws-partial active">?</div>';
-            }
-          }
-          h+='</div>';
-        }
-
-        // Carry row for partial product 2 (after step 2)
-        if(step>=3 && c2>0){
-          h+='<div class="ws-row">';
-          h+='<div class="ws-carry-sp"></div>';
-          h+=`<div class="ws-carry">${c2}</div>`;
-          h+='<div class="ws-carry-sp"></div>';
-          h+='<div class="ws-carry-sp"></div>';
-          h+='</div>';
-        }
-
-        // Partial product 2
-        if(step>=2){
-          if(step>=4){
-            const pd=digits(p2,String(p2).length);
-            h+='<div class="ws-row">';
-            pd.forEach(d=>h+=`<div class="ws-cell ws-partial">${d}</div>`);
-            h+='<div class="ws-cell ws-partial" style="opacity:.4">0</div>';
-            h+='</div>';
-          } else if(step>=2){
-            h+='<div class="ws-row">';
-            const p2Len=String(p2).length;
-            if(step===2){
-              for(let i=0;i<p2Len;i++) h+='<div class="ws-cell ws-partial ws-faded">?</div>';
-            } else {
-              // step 3: ones of p2 filled
-              for(let i=0;i<p2Len;i++){
-                if(i===p2Len-1) h+=`<div class="ws-cell ws-partial">${p2OnesProduct%10}</div>`;
-                else h+='<div class="ws-cell ws-partial active">?</div>';
-              }
-            }
-            h+='<div class="ws-cell ws-partial" style="opacity:.4">0</div>';
-            h+='</div>';
-          }
-          // Second line
-          h+='<div class="ws-line"></div>';
-        }
-
-        // Final result
-        if(step>=4){
-          h+='<div class="ws-row">';
-          if(step>=5){
-            const rd=digits(product,String(product).length);
-            rd.forEach(d=>h+=`<div class="ws-cell ws-res">${d}</div>`);
-          } else {
-            const rLen=String(product).length;
-            for(let i=0;i<rLen;i++) h+='<div class="ws-cell ws-res active">?</div>';
-          }
-          h+='</div>';
-        }
-      }
-
-      h+='</div>';
-      return h;
+    function stars(){
+      let s='';for(let i=0;i<ROUND;i++) s+='<span class="'+(i<correct?'filled':'empty')+'">'+(i<correct?'★':'☆')+'</span>';return s;
     }
 
     function render(){
       const gc=document.getElementById('gameCard');
       if(roundDone){
-        gc.innerHTML=`<div class="round-end pop-in">
-          <h2>🎉 Round Complete!</h2>
-          <div class="big-stars">${starsHTML()}</div>
-          <p>You got <strong>${correct}</strong> out of <strong>${ROUND}</strong> correct!</p>
-          <button class="gc-next" onclick="startRound()">New Round →</button>
-        </div>`;
+        gc.innerHTML='<div class="round-end pop-in"><h2>🎉 Round Complete!</h2><div class="big-stars">'+stars()+'</div><p>You got <strong>'+correct+'</strong> out of <strong>'+ROUND+'</strong> correct!</p><button class="gc-next" onclick="startRound()">New Round →</button></div>';
         return;
       }
-      const totalSteps=steps.length;
-      const isComplete=step>=totalSteps;
       let h='';
-      // Header
-      h+=`<div class="gc-head"><div class="gc-score">Correct: <strong>${correct}</strong>/${ROUND}</div><div class="gc-stars">${starsHTML()}</div></div>`;
-      h+=`<div class="gc-bar"><div class="gc-bar-fill" style="width:${(problemNum/ROUND)*100}%"></div></div>`;
-      // Problem
-      h+=`<div class="gc-problem"><h2>${a} × ${b} = ?</h2><p>${diff==='easy'?'2-digit × 1-digit':'2-digit × 2-digit'}</p></div>`;
-      // Workspace
-      h+=`<div class="ws">${renderWorkspace()}</div>`;
+      h+='<div class="gc-head"><div class="gc-score">Correct: <strong>'+correct+'</strong>/'+ROUND+'</div><div class="gc-stars">'+stars()+'</div></div>';
+      h+='<div class="gc-bar"><div class="gc-bar-fill" style="width:'+(pNum/ROUND*100)+'%"></div></div>';
+      h+='<div class="gc-problem"><h2>'+a+' × '+b+' = ?</h2><p>'+(diff==='easy'?'2-digit × 1-digit':'2-digit × 2-digit')+'</p></div>';
 
-      if(!isComplete){
-        const info=steps[step];
-        h+=`<div class="gc-prompt">${info.prompt}</div>`;
-        h+=`<div class="gc-hint">${info.hint}</div>`;
-        h+='<div class="gc-fb" id="fb"></div>';
-        // Numpad
-        h+='<div class="gc-numpad">';
-        for(let i=0;i<=9;i++) h+=`<button class="np-btn" onclick="press('${i}')">${i}</button>`;
-        h+='</div>';
-        h+='<div style="display:flex;gap:8px;margin-bottom:.5rem">';
-        h+='<button class="np-btn np-clear" style="flex:1" onclick="clearInput()">Clear</button>';
-        h+='<button class="np-btn np-back" style="flex:1" onclick="backspace()">⌫</button>';
-        h+='</div>';
-        // Input display
-        h+=`<div style="text-align:center;font-size:1.6rem;font-weight:800;min-height:2.2rem;margin-bottom:.75rem;color:var(--pa)">${input||'<span style="color:var(--t2)">—</span>'}</div>`;
-        h+=`<button class="gc-check" onclick="checkAnswer()">Check Answer ✓</button>`;
+      h+='<div class="ws">';
+      if(diff==='easy') h+=renderEasy();
+      else h+=renderMedium();
+      h+='</div>';
+
+      h+='<div class="gc-hint" id="hint"></div>';
+      h+='<div class="gc-fb" id="fb"></div>';
+
+      if(!done){
+        h+='<button class="gc-check" onclick="check()">Check Answer ✓</button>';
       } else {
-        h+=`<div class="gc-complete pop-in"><h3>✅ ${a} × ${b} = ${a*b}</h3>
-          <p>Great job!</p>
-          <button class="gc-next" onclick="nextProblem()">Next Problem →</button></div>`;
+        h+='<div class="gc-complete pop-in"><h3>✅ '+a+' × '+b+' = '+(a*b)+'</h3><p>Great job!</p><button class="gc-next" onclick="next()">Next Problem →</button></div>';
       }
       gc.innerHTML=h;
+      if(!done) setTimeout(wire,0);
     }
 
-    function press(n){
-      if(step>=steps.length||roundDone)return;
-      if(input.length<5){input+=n;render()}
+    /* =========== EASY MODE (2×1) =========== */
+    function renderEasy(){
+      const aT=Math.floor(a/10), aO=a%10;
+      const product=a*b;
+      const pLen=String(product).length;
+      let h='<div class="ws-grid">';
+      // Carry row placeholder
+      h+='<div class="ws-row" id="carryRow" style="visibility:hidden">';
+      h+='<div class="ws-carry-sp"></div><div class="ws-carry" id="carryVal"></div><div class="ws-carry-sp"></div>';
+      h+='</div>';
+      // Top number
+      h+='<div class="ws-row"><div class="ws-cell ws-num">'+aT+'</div><div class="ws-cell ws-num">'+aO+'</div></div>';
+      // × row
+      h+='<div class="ws-row"><div class="ws-op">×</div><div class="ws-cell ws-num">'+b+'</div></div>';
+      // Line
+      h+='<div class="ws-line"></div>';
+      // Result inputs (ones first, then tens, optionally hundreds)
+      h+='<div class="ws-row">';
+      if(pLen>=3) h+='<input class="d-in green-b" id="rH" type="text" inputmode="numeric" maxlength="1" placeholder="?" disabled autocomplete="off">';
+      h+='<input class="d-in green-b" id="rT" type="text" inputmode="numeric" maxlength="1" placeholder="?" disabled autocomplete="off">';
+      h+='<input class="d-in green-b" id="rO" type="text" inputmode="numeric" maxlength="1" placeholder="?"'+(done?' disabled':'')+' autocomplete="off">';
+      h+='</div>';
+      h+='</div>';
+      return h;
     }
-    function clearInput(){input='';render();const f=document.getElementById('fb');if(f){f.textContent='';f.className='gc-fb'}}
-    function backspace(){input=input.slice(0,-1);render()}
 
-    function checkAnswer(){
-      if(step>=steps.length||roundDone)return;
-      const info=steps[step];
-      if(!input&&info.answer!==0)return;
-      const val=input===''?0:parseInt(input);
-      const fb=document.getElementById('fb');
-      if(!fb)return;
-      if(val===info.answer){
-        fb.textContent='✅ Correct!';fb.className='gc-fb ok';
-        step++; input='';
-        if(step>=steps.length){correct++;problemNum++;}
-        setTimeout(()=>{
-          if(problemNum>=ROUND&&step>=steps.length){roundDone=true;}
-          render();
-        },600);
-      } else {
-        fb.textContent=`✗ The answer is ${info.answer}`;fb.className='gc-fb no';
-        input='';
-        setTimeout(()=>{
-          step++; input='';
-          if(step>=steps.length){problemNum++;}
-          if(problemNum>=ROUND&&step>=steps.length){roundDone=true;}
-          render();
-        },1800);
+    /* =========== MEDIUM MODE (2×2) =========== */
+    function renderMedium(){
+      const aT=Math.floor(a/10), aO=a%10;
+      const bT=Math.floor(b/10), bO=b%10;
+      const fp=a*bO; // first partial
+      const sp=a*bT; // second partial (without shift)
+      const fpLen=String(fp).length;
+      const spLen=String(sp).length;
+      const product=a*b;
+      const prLen=String(product).length;
+
+      let h='<div class="ws-grid">';
+      // Top number
+      h+='<div class="ws-row"><div class="ws-cell ws-num">'+aT+'</div><div class="ws-cell ws-num">'+aO+'</div></div>';
+      // × row
+      h+='<div class="ws-row"><div class="ws-op">×</div><div class="ws-cell ws-num">'+bT+'</div><div class="ws-cell ws-num">'+bO+'</div></div>';
+      // Line
+      h+='<div class="ws-line"></div>';
+
+      // First partial product row (×bO)
+      h+='<div class="ws-row">';
+      if(fpLen>=3) h+='<input class="d-in cyan-b" id="fpH" type="text" inputmode="numeric" maxlength="1" placeholder="?" disabled autocomplete="off">';
+      h+='<input class="d-in cyan-b" id="fpT" type="text" inputmode="numeric" maxlength="1" placeholder="?" disabled autocomplete="off">';
+      h+='<input class="d-in cyan-b" id="fpO" type="text" inputmode="numeric" maxlength="1" placeholder="?"'+(done?' disabled':'')+' autocomplete="off">';
+      h+='<span class="ws-label">('+bO+'×)</span>';
+      h+='</div>';
+
+      // Second partial product row (×bT, shifted)
+      h+='<div class="ws-row">';
+      if(spLen>=2) h+='<input class="d-in yellow-b" id="spH" type="text" inputmode="numeric" maxlength="1" placeholder="?" disabled autocomplete="off">';
+      h+='<input class="d-in yellow-b" id="spT" type="text" inputmode="numeric" maxlength="1" placeholder="?" disabled autocomplete="off">';
+      h+='<div class="ws-cell d-in placeholder-0" style="pointer-events:none">0</div>';
+      h+='<span class="ws-label">('+bT+'×)</span>';
+      h+='</div>';
+
+      // Line 2
+      h+='<div class="ws-line"></div>';
+
+      // Total row
+      h+='<div class="ws-row">';
+      if(prLen>=4) h+='<input class="d-in green-b" id="totTh" type="text" inputmode="numeric" maxlength="1" placeholder="?" disabled autocomplete="off">';
+      if(prLen>=3) h+='<input class="d-in green-b" id="totH" type="text" inputmode="numeric" maxlength="1" placeholder="?" disabled autocomplete="off">';
+      h+='<input class="d-in green-b" id="totT" type="text" inputmode="numeric" maxlength="1" placeholder="?" disabled autocomplete="off">';
+      h+='<input class="d-in green-b" id="totO" type="text" inputmode="numeric" maxlength="1" placeholder="?" disabled autocomplete="off">';
+      h+='<span class="ws-label">(sum)</span>';
+      h+='</div>';
+
+      h+='</div>';
+      return h;
+    }
+
+    /* =========== WIRING =========== */
+    function wire(){
+      if(diff==='easy') wireEasy();
+      else wireMedium();
+    }
+
+    function wireEasy(){
+      const rO=document.getElementById('rO'), rT=document.getElementById('rT'), rH=document.getElementById('rH');
+      const hint=document.getElementById('hint');
+      if(!rO)return;
+      const aO=a%10, aT=Math.floor(a/10);
+
+      rO.focus();
+      if(hint) hint.textContent=b+' × '+aO+' = ? (ones digit)';
+
+      rO.addEventListener('input',function(){
+        this.value=this.value.replace(/[^0-9]/g,'');
+        if(this.value.length===1){
+          // Show carry
+          const onesProduct=b*aO;
+          const carry=Math.floor(onesProduct/10);
+          if(carry>0){
+            const cr=document.getElementById('carryRow'), cv=document.getElementById('carryVal');
+            if(cr){cr.style.visibility='visible';}
+            if(cv){cv.textContent=carry;}
+          }
+          rT.disabled=false;
+          setTimeout(()=>{
+            rT.focus();
+            if(hint){
+              const carry=Math.floor(b*aO/10);
+              hint.textContent=carry>0?b+' × '+aT+' + '+carry+' = ? (tens digit)':b+' × '+aT+' = ? (tens digit)';
+            }
+          },50);
+        }
+      });
+
+      rT.addEventListener('input',function(){
+        this.value=this.value.replace(/[^0-9]/g,'');
+        if(this.value.length===1&&rH){
+          rH.disabled=false;
+          setTimeout(()=>{rH.focus();if(hint)hint.textContent='Hundreds digit';},50);
+        } else if(this.value.length===1){
+          if(hint)hint.textContent='All done! Click Check Answer';
+        }
+      });
+
+      if(rH){
+        rH.addEventListener('input',function(){
+          this.value=this.value.replace(/[^0-9]/g,'');
+          if(hint)hint.textContent='All done! Click Check Answer';
+        });
       }
     }
 
-    function nextProblem(){
-      if(problemNum>=ROUND){roundDone=true;render();return;}
-      generate();render();
+    function wireMedium(){
+      const fpO=document.getElementById('fpO'), fpT=document.getElementById('fpT'), fpH=document.getElementById('fpH');
+      const spT=document.getElementById('spT'), spH=document.getElementById('spH');
+      const totO=document.getElementById('totO'), totT=document.getElementById('totT'), totH=document.getElementById('totH'), totTh=document.getElementById('totTh');
+      const hint=document.getElementById('hint');
+      const bO=b%10, bT=Math.floor(b/10), aO=a%10, aT=Math.floor(a/10);
+      const fp=a*bO, sp=a*bT;
+
+      if(!fpO)return;
+      fpO.focus();
+      if(hint) hint.textContent=bO+' × '+aO+' = ? (ones digit)';
+
+      // First partial: ones → tens → hundreds
+      fpO.addEventListener('input',function(){
+        this.value=this.value.replace(/[^0-9]/g,'');
+        if(this.value.length===1){
+          fpT.disabled=false;
+          setTimeout(()=>{
+            fpT.focus();
+            const c=Math.floor(bO*aO/10);
+            if(hint) hint.textContent=c>0?bO+' × '+aT+' + '+c+' = ?':bO+' × '+aT+' = ?';
+          },50);
+        }
+      });
+      fpT.addEventListener('input',function(){
+        this.value=this.value.replace(/[^0-9]/g,'');
+        if(this.value.length===1){
+          if(fpH){
+            fpH.disabled=false;
+            setTimeout(()=>{fpH.focus();if(hint)hint.textContent='Hundreds digit of first partial';},50);
+          } else {
+            // Move to second partial
+            spT.disabled=false;
+            setTimeout(()=>{
+              spT.focus();
+              if(hint) hint.textContent=bT+' × '+aO+' = ? (tens digit)';
+            },50);
+          }
+        }
+      });
+      if(fpH){
+        fpH.addEventListener('input',function(){
+          this.value=this.value.replace(/[^0-9]/g,'');
+          if(this.value.length===1){
+            spT.disabled=false;
+            setTimeout(()=>{
+              spT.focus();
+              if(hint) hint.textContent=bT+' × '+aO+' = ? (tens digit)';
+            },50);
+          }
+        });
+      }
+
+      // Second partial: tens → hundreds
+      spT.addEventListener('input',function(){
+        this.value=this.value.replace(/[^0-9]/g,'');
+        if(this.value.length===1){
+          if(spH){
+            spH.disabled=false;
+            setTimeout(()=>{
+              spH.focus();
+              const c2=Math.floor(bT*aO/10);
+              if(hint) hint.textContent=c2>0?bT+' × '+aT+' + '+c2+' = ?':bT+' × '+aT+' = ?';
+            },50);
+          } else {
+            enableTotal();
+          }
+        }
+      });
+      if(spH){
+        spH.addEventListener('input',function(){
+          this.value=this.value.replace(/[^0-9]/g,'');
+          if(this.value.length===1) enableTotal();
+        });
+      }
+
+      function enableTotal(){
+        // Read user's partial products to show in hint
+        totO.disabled=false;
+        setTimeout(()=>{
+          totO.focus();
+          if(hint) hint.textContent=fp+' + '+(sp*10)+' = ? (ones digit)';
+        },50);
+      }
+
+      // Total: ones → tens → hundreds → thousands
+      totO.addEventListener('input',function(){
+        this.value=this.value.replace(/[^0-9]/g,'');
+        if(this.value.length===1){
+          totT.disabled=false;
+          setTimeout(()=>{totT.focus();if(hint)hint.textContent='Tens digit of total';},50);
+        }
+      });
+      totT.addEventListener('input',function(){
+        this.value=this.value.replace(/[^0-9]/g,'');
+        if(this.value.length===1){
+          if(totH){
+            totH.disabled=false;
+            setTimeout(()=>{totH.focus();if(hint)hint.textContent='Hundreds digit of total';},50);
+          } else if(hint) hint.textContent='All done! Click Check Answer';
+        }
+      });
+      if(totH){
+        totH.addEventListener('input',function(){
+          this.value=this.value.replace(/[^0-9]/g,'');
+          if(this.value.length===1){
+            if(totTh){
+              totTh.disabled=false;
+              setTimeout(()=>{totTh.focus();if(hint)hint.textContent='Thousands digit';},50);
+            } else if(hint) hint.textContent='All done! Click Check Answer';
+          }
+        });
+        if(totTh){
+          totTh.addEventListener('input',function(){
+            this.value=this.value.replace(/[^0-9]/g,'');
+            if(hint) hint.textContent='All done! Click Check Answer';
+          });
+        }
+      }
     }
-    function startRound(){correct=0;problemNum=0;roundDone=false;generate();render()}
 
-    document.addEventListener('keydown',e=>{
-      if(e.key>='0'&&e.key<='9')press(e.key);
-      else if(e.key==='Backspace'){e.preventDefault();backspace()}
-      else if(e.key==='Enter')checkAnswer();
-    });
+    /* =========== CHECK =========== */
+    function check(){
+      const fb=document.getElementById('fb');
+      if(!fb)return;
+      let userAnswer;
 
-    generate();render();
+      if(diff==='easy'){
+        const rO=document.getElementById('rO'), rT=document.getElementById('rT'), rH=document.getElementById('rH');
+        if(!rO||!rT) return;
+        if(!rO.value||!rT.value||(rH&&!rH.value)){fb.textContent='Fill in all cells first!';fb.className='gc-fb no';return;}
+        userAnswer=rH?parseInt(rH.value+rT.value+rO.value):parseInt(rT.value+rO.value);
+      } else {
+        // Collect all inputs
+        const ids=['fpO','fpT','fpH','spT','spH','totO','totT','totH','totTh'];
+        const vals={};
+        for(const id of ids){
+          const el=document.getElementById(id);
+          if(el){
+            if(!el.value){fb.textContent='Fill in all cells first!';fb.className='gc-fb no';return;}
+            vals[id]=parseInt(el.value);
+          }
+        }
+        // Validate each row
+        const bO=b%10, bT=Math.floor(b/10);
+        const fp=a*bO, sp=a*bT, product=a*b;
+        const fpOnes=fp%10, fpTens=Math.floor(fp/10)%10, fpHund=Math.floor(fp/100);
+        const spTens=sp%10, spHund=Math.floor(sp/10);
+        const tOnes=product%10, tTens=Math.floor(product/10)%10, tHund=Math.floor(product/100)%10, tThou=Math.floor(product/1000);
+
+        const r1ok=vals.fpO===fpOnes&&vals.fpT===fpTens&&(!document.getElementById('fpH')||vals.fpH===fpHund);
+        const r2ok=vals.spT===spTens&&(!document.getElementById('spH')||vals.spH===spHund);
+        const r3ok=vals.totO===tOnes&&vals.totT===tTens&&
+          (!document.getElementById('totH')||vals.totH===tHund)&&
+          (!document.getElementById('totTh')||vals.totTh===tThou);
+
+        if(r1ok&&r2ok&&r3ok){
+          fb.textContent='✅ Correct!';fb.className='gc-fb ok';correct++;
+          done=true;pNum++;
+          disableAll();
+          setTimeout(()=>{if(pNum>=ROUND)roundDone=true;render();},1500);
+          return;
+        } else {
+          fb.textContent='✗ Answer: '+a+' × '+b+' = '+(a*b);fb.className='gc-fb no';
+          done=true;pNum++;
+          disableAll();
+          setTimeout(()=>{if(pNum>=ROUND)roundDone=true;render();},1500);
+          return;
+        }
+      }
+
+      // Easy mode check
+      const product=a*b;
+      if(userAnswer===product){
+        fb.textContent='✅ Correct!';fb.className='gc-fb ok';correct++;
+      } else {
+        fb.textContent='✗ Answer: '+a+' × '+b+' = '+product;fb.className='gc-fb no';
+      }
+      done=true;pNum++;
+      disableAll();
+      setTimeout(()=>{if(pNum>=ROUND)roundDone=true;render();},1500);
+    }
+
+    function disableAll(){
+      document.querySelectorAll('.d-in').forEach(el=>el.disabled=true);
+    }
+
+    function next(){if(pNum>=ROUND){roundDone=true;render();return;}gen();render();}
+    function startRound(){correct=0;pNum=0;roundDone=false;gen();render();}
+    gen();render();
   </script>
 </body>
 </html>

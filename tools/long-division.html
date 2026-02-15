@@ -16,6 +16,8 @@
   <meta name="pinterest-rich-pin" content="true">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Long Division","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Long Division"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do you do long division step by step?","acceptedAnswer":{"@type":"Answer","text":"Long division follows four repeating steps: Divide, Multiply, Subtract, Bring Down. First, divide the divisor into the first digit (or first two digits) of the dividend to find the first quotient digit. Multiply that digit by the divisor and subtract from the dividend. Bring down the next digit and repeat until there are no digits left. Any leftover amount is the remainder."}},{"@type":"Question","name":"What is the bus stop method in division?","acceptedAnswer":{"@type":"Answer","text":"The bus stop method is another name for long division, commonly used in UK schools. It gets its name from the division bracket that looks like a bus stop shelter. The dividend sits inside the bracket and the divisor sits outside on the left, while the quotient is written on top, digit by digit."}},{"@type":"Question","name":"At what age should kids learn long division?","acceptedAnswer":{"@type":"Answer","text":"Most children begin learning long division between ages 8 and 10 (Years 4–5 in the UK, Grades 3–4 in the US). Before starting long division, children should be comfortable with basic multiplication and division facts. Interactive practice tools can help build confidence at any pace."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to Do Long Division Step by Step","description":"Learn the long division method by following these clear steps. Practice with our free interactive tool.","step":[{"@type":"HowToStep","position":1,"name":"Divide","text":"Look at the first digit of the dividend. Determine how many times the divisor fits into that digit. Write the result above the dividend as the first digit of the quotient."},{"@type":"HowToStep","position":2,"name":"Multiply","text":"Multiply the quotient digit you just wrote by the divisor. Write the product below the digit(s) of the dividend you used."},{"@type":"HowToStep","position":3,"name":"Subtract","text":"Subtract the product from the digit(s) above it to find the difference."},{"@type":"HowToStep","position":4,"name":"Bring Down","text":"Bring down the next digit of the dividend and write it next to the difference. This forms a new number."},{"@type":"HowToStep","position":5,"name":"Repeat","text":"Repeat the Divide–Multiply–Subtract–Bring Down cycle with the new number. Continue until there are no more digits to bring down. Any remaining value is the remainder."}]}</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
@@ -25,9 +27,10 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f8;min-height:100vh;display:flex;flex-direction:column}
     h1,h2,h3{font-family:'Nunito',sans-serif}a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer;border:none;background:none}
+    input{font-family:inherit}
     :root{--pp:#c4b5fd;--pk:#f9a8d4;--pb:#93c5fd;--pg:#86efac;--pa:#fcd34d;--db:#0a0a0f;--dc:#141420;--ds:#1a1a2e;--dbr:#2a2a3e;--t1:#f0f0f8;--t2:#9898b0}
     .gt{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);height:64px}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.85);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);height:64px}
     .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:100%}
     .nav-brand{display:flex;align-items:center;gap:.6rem;font-family:'Nunito';font-weight:900;font-size:1.3rem}
     .nav-brand .brand-text{background:linear-gradient(135deg,var(--pp),var(--pk),var(--pb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -41,256 +44,252 @@
     .main{flex:1;max-width:520px;margin:0 auto;padding:1.5rem 1rem 3rem;width:100%}
 
     /* Game Card */
-    .gc{background:var(--dc);border:2px solid #6d28d9;border-radius:1.25rem;padding:1.5rem;position:relative;box-shadow:0 0 40px rgba(109,40,217,.15)}
-    .gc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
-    .gc-score{font-size:.95rem;font-weight:700;color:var(--t2)}.gc-score strong{color:var(--t1)}
-    .gc-stars{font-size:1.2rem;letter-spacing:2px}
-    .gc-stars .filled{color:var(--pa)}.gc-stars .empty{color:#333}
-    .gc-bar{width:100%;height:6px;background:var(--ds);border-radius:3px;margin-bottom:1.25rem;overflow:hidden}
+    .gc{background:var(--dc);border:2px solid #6d28d9;border-radius:1.25rem;padding:1.25rem;position:relative;box-shadow:0 0 40px rgba(109,40,217,.15)}
+    .gc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem}
+    .gc-score{font-size:.9rem;font-weight:700;color:var(--t2)}.gc-score strong{color:var(--t1)}
+    .gc-stars{font-size:1.1rem;letter-spacing:2px}.gc-stars .filled{color:var(--pa)}.gc-stars .empty{color:#333}
+    .gc-bar{width:100%;height:5px;background:var(--ds);border-radius:3px;margin-bottom:1rem;overflow:hidden}
     .gc-bar-fill{height:100%;background:linear-gradient(90deg,#6d28d9,var(--pk));border-radius:3px;transition:width .4s ease}
-
-    /* Problem */
-    .gc-problem{text-align:center;margin-bottom:1rem}
-    .gc-problem h2{font-size:1.6rem;font-weight:900;margin-bottom:.2rem}
-    .gc-problem p{font-size:.85rem;color:var(--t2)}
+    .gc-problem{text-align:center;margin-bottom:.75rem}
+    .gc-problem h2{font-size:1.5rem;font-weight:900;margin-bottom:.15rem}
+    .gc-problem p{font-size:.8rem;color:var(--t2)}
 
     /* Workspace */
-    .ws{background:rgba(109,40,217,.12);border:1.5px solid rgba(109,40,217,.3);border-radius:1rem;padding:1.25rem 1rem;margin-bottom:1rem;overflow-x:auto}
-    .ws-row{display:flex;align-items:center;justify-content:center;gap:4px;min-height:44px}
-    .ws-sp{width:52px;flex-shrink:0}
-    .ws-cell{width:42px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;flex-shrink:0}
-    .ws-q{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.25);color:#fff}
-    .ws-q.filled{border-color:rgba(255,255,255,.5);color:#fff}
-    .ws-q.active{border-color:var(--pa);background:rgba(252,211,77,.12);color:var(--pa);box-shadow:0 0 14px rgba(252,211,77,.25);animation:pulse 1.5s infinite}
-    @keyframes pulse{0%,100%{box-shadow:0 0 14px rgba(252,211,77,.25)}50%{box-shadow:0 0 22px rgba(252,211,77,.4)}}
-    .ws-dv{border:2px solid rgba(99,102,241,.5);color:var(--pb);background:rgba(99,102,241,.08)}
-    .ws-divisor{color:var(--pb);font-size:1.3rem;font-weight:800;font-family:'Nunito',sans-serif;width:42px;text-align:center;flex-shrink:0}
-    .ws-bracket{display:inline-flex;gap:4px;border-top:3px solid #7c3aed;border-left:3px solid #7c3aed;border-top-left-radius:12px;padding:6px 8px 4px 10px}
-    .ws-sub{color:var(--pa);font-size:1.1rem;font-weight:700;font-family:'Nunito',sans-serif;text-align:center}
-    .ws-sub-row{padding-left:52px}
-    .ws-line{height:2px;background:var(--pp);margin:2px 0;opacity:.5;width:90px;margin-left:auto;margin-right:auto}
-    .ws-mid{font-size:1.15rem;font-weight:700;font-family:'Nunito',sans-serif;color:var(--t1);width:42px;text-align:center}
-    .ws-rem-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px;flex-wrap:wrap}
-    .ws-rem-label{font-size:.95rem;font-weight:700;color:var(--t2)}
-    .ws-rem-cell{width:42px;height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800}
-    .ws-rem-cell.active{border:2px solid #fb923c;background:rgba(251,146,60,.12);color:#fb923c;box-shadow:0 0 14px rgba(251,146,60,.25);animation:pulse-o 1.5s infinite}
-    @keyframes pulse-o{0%,100%{box-shadow:0 0 14px rgba(251,146,60,.25)}50%{box-shadow:0 0 22px rgba(251,146,60,.4)}}
-    .ws-rem-cell.filled{border:2px solid var(--pg);color:var(--pg);background:rgba(134,239,172,.1)}
-    .ws-rem-hint{font-size:.8rem;color:var(--t2);width:100%;text-align:center;margin-top:2px}
+    .ws{background:rgba(30,41,59,.9);border-radius:.75rem;padding:1rem .75rem;margin-bottom:.75rem}
+    .ws-center{display:flex;flex-direction:column;align-items:center}
 
-    /* Prompt */
-    .gc-prompt{text-align:center;font-size:1.05rem;font-weight:700;margin-bottom:.25rem;color:var(--t1);min-height:1.4em}
-    .gc-hint{text-align:center;font-size:.85rem;color:var(--t2);margin-bottom:.75rem;min-height:1.2em}
+    /* Quotient inputs */
+    .q-row{display:flex;gap:4px;margin-bottom:4px;padding-left:52px}
+    .q-in{width:40px;height:40px;border:3px solid rgba(74,222,128,.5);background:#fff;color:#7c3aed;border-radius:8px;text-align:center;font-size:1.4rem;font-weight:800;font-family:'Nunito',sans-serif;outline:none}
+    .q-in:focus{border-color:var(--pa);box-shadow:0 0 12px rgba(252,211,77,.4)}
+    .q-in:disabled{opacity:.4;background:#e5e7eb}.q-in::placeholder{color:rgba(124,58,237,.35);font-weight:700}
 
-    /* Feedback */
-    .gc-fb{text-align:center;font-size:1rem;font-weight:700;min-height:1.5rem;margin-bottom:.5rem}
+    /* Divisor + bracket */
+    .d-row{display:flex;align-items:center}
+    .d-div{font-size:1.35rem;font-weight:800;color:#60a5fa;width:44px;text-align:right;padding-right:6px}
+    .d-bracket{display:inline-flex;border-top:3.5px solid #fff;border-left:3.5px solid #fff;border-top-left-radius:10px;padding:4px 10px 2px 10px;gap:2px}
+    .d-digit{font-size:1.35rem;font-weight:800;color:var(--pa);width:34px;text-align:center}
+
+    /* Working steps */
+    .w-row{display:flex;align-items:center;padding-left:34px;min-height:26px;gap:2px}
+    .w-sign{width:18px;text-align:center;font-size:1.1rem;font-weight:700;flex-shrink:0}
+    .w-v{width:34px;text-align:center;font-size:1.1rem;font-weight:700}
+    .w-cyan{color:#22d3ee}.w-white{color:#fff}.w-pink{color:#f472b6;font-weight:800}
+    .w-line{width:76px;height:2px;background:rgba(255,255,255,.45);margin:3px 0 3px 52px}
+
+    /* Remainder */
+    .r-wrap{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.15)}
+    .r-label{font-size:.85rem;font-weight:600;color:rgba(255,255,255,.55)}
+    .r-in{width:40px;height:40px;border:3px solid rgba(251,146,60,.5);background:#fff;color:#7c3aed;border-radius:8px;text-align:center;font-size:1.4rem;font-weight:800;font-family:'Nunito',sans-serif;outline:none}
+    .r-in:focus{border-color:var(--pa);box-shadow:0 0 12px rgba(252,211,77,.4)}
+    .r-in::placeholder{color:rgba(124,58,237,.35);font-weight:700}
+
+    /* Hint & Feedback */
+    .gc-hint{text-align:center;font-size:.82rem;color:var(--t2);min-height:1.1em;margin-bottom:.4rem}
+    .gc-summary{background:rgba(255,255,255,.08);border-radius:8px;padding:.5rem;text-align:center;font-size:.85rem;color:#fff;margin-bottom:.5rem}
+    .gc-fb{text-align:center;font-size:.95rem;font-weight:700;min-height:1.4rem;margin-bottom:.4rem}
     .gc-fb.ok{color:var(--pg)}.gc-fb.no{color:var(--pk)}
 
-    /* Numpad */
-    .gc-numpad{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:.75rem}
-    .np-btn{height:48px;border-radius:10px;font-size:1.15rem;font-weight:700;background:var(--ds);border:1.5px solid var(--dbr);color:var(--t1);transition:.15s;display:flex;align-items:center;justify-content:center}
-    .np-btn:hover{background:var(--dc);border-color:var(--pp)}.np-btn:active{transform:scale(.93)}
-    .np-btn.np-clear{color:var(--pk);font-size:.85rem}.np-btn.np-back{color:var(--t2);font-size:.95rem}
-
-    /* Check Button */
-    .gc-check{display:block;width:100%;padding:.85rem;border-radius:12px;font-size:1.05rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#059669,#10b981);border:none;cursor:pointer;transition:.2s;margin-bottom:.5rem}
+    .gc-check{display:block;width:100%;padding:.8rem;border-radius:12px;font-size:1rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#059669,#10b981);border:none;cursor:pointer;transition:.2s}
     .gc-check:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(5,150,105,.3)}
     .gc-check:active{transform:scale(.98)}
-    .gc-check:disabled{opacity:.5;cursor:default;transform:none;box-shadow:none}
 
-    /* Complete state */
-    .gc-complete{text-align:center;padding:1rem 0}
-    .gc-complete h3{font-size:1.3rem;color:var(--pg);margin-bottom:.3rem}
-    .gc-complete p{color:var(--t2);font-size:.9rem;margin-bottom:.75rem}
-    .gc-next{padding:.7rem 2rem;border-radius:999px;font-weight:700;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;font-size:.95rem;transition:.2s}
+    .gc-complete{text-align:center;padding:.75rem 0}
+    .gc-complete h3{font-size:1.2rem;color:var(--pg);margin-bottom:.25rem}
+    .gc-complete p{color:var(--t2);font-size:.85rem;margin-bottom:.6rem}
+    .gc-next{padding:.6rem 1.8rem;border-radius:999px;font-weight:700;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;font-size:.9rem;transition:.2s}
     .gc-next:hover{transform:scale(1.05)}
+    .round-end{text-align:center;padding:1.5rem .75rem}
+    .round-end h2{font-size:1.6rem;margin-bottom:.4rem}
+    .round-end .big-stars{font-size:1.8rem;letter-spacing:4px;margin-bottom:.4rem}
+    .round-end p{color:var(--t2);margin-bottom:.75rem}
 
-    /* Round end */
-    .round-end{text-align:center;padding:2rem 1rem}
-    .round-end h2{font-size:1.8rem;margin-bottom:.5rem}
-    .round-end .big-stars{font-size:2rem;letter-spacing:4px;margin-bottom:.5rem}
-    .round-end p{color:var(--t2);margin-bottom:1rem}
-
-    /* Promo */
-    .promo{text-align:center;padding:2rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:1.5rem}.promo h3{font-size:1.1rem;margin-bottom:.3rem}.promo p{color:var(--t2);font-size:.9rem;margin-bottom:1rem}
-    .promo a{display:inline-block;padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.85rem;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f}
-    .footer{padding:2rem 1.5rem;background:var(--db);border-top:1px solid var(--dbr);text-align:center;font-size:.85rem;color:var(--t2);margin-top:auto}
-    .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}.footer-links a{color:#8888a0}.footer-links a:hover{color:var(--pp)}
+    .promo{text-align:center;padding:1.5rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:1.5rem}.promo h3{font-size:1.05rem;margin-bottom:.25rem}.promo p{color:var(--t2);font-size:.85rem;margin-bottom:.75rem}
+    .promo a{display:inline-block;padding:.55rem 1.3rem;border-radius:999px;font-weight:700;font-size:.82rem;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f}
+    .footer{padding:1.5rem;background:var(--db);border-top:1px solid var(--dbr);text-align:center;font-size:.8rem;color:var(--t2);margin-top:auto}
+    .footer-links{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;margin-bottom:.75rem}.footer-links a{color:#8888a0}.footer-links a:hover{color:var(--pp)}
     @keyframes pop{0%{transform:scale(.8);opacity:0}50%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
     .pop-in{animation:pop .4s ease}
   </style>
 </head>
 <body>
   <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button><div class="nav-links" id="navLinks"><a href="/#games">Games</a><a href="/tools/" class="active">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
+  <noscript><div style="max-width:600px;margin:6rem auto 2rem;padding:2rem;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;text-align:center;color:#f0f0f8;font-family:sans-serif"><h2 style="margin-bottom:.5rem">📐 Long Division Practice</h2><p style="color:#9898b0;margin-bottom:.5rem">This interactive long division tool lets you practice bracket division step by step, filling in each quotient digit and remainder — just like on paper.</p><p style="color:#9898b0">Please <strong>enable JavaScript</strong> in your browser to use this tool.</p></div></noscript>
   <section class="hero"><h1>📐 <span class="gt">Long</span> Division</h1><p>Step-by-step bracket division — fill in each digit, just like the Math Tank app!</p></section>
   <div class="main">
+    <a href="/tools/" style="display:inline-flex;align-items:center;gap:.4rem;color:#9898b0;font-size:.85rem;font-weight:600;margin-bottom:.75rem;transition:color .2s;text-decoration:none" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='#9898b0'">← All Tools</a>
     <div class="gc" id="gameCard"></div>
     <div class="promo"><h3>🦦 Love this? Try Math Tank!</h3><p>Long division powers your missiles in epic space battles!</p><a href="/apps/math-tank.html">Learn About Math Tank →</a></div>
   </div>
-  <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
+  <section class="seo-content" style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">How to Do Long Division Step by Step</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Long division breaks big division problems into a series of smaller, manageable steps: <strong style="color:#c4b5fd">Divide, Multiply, Subtract, Bring Down</strong>. By repeating this cycle for each digit of the dividend, children can solve problems that would otherwise feel overwhelming.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">This tool uses a bracket layout (sometimes called the <em>bus stop method</em>) with individual digit cells so kids fill in one number at a time — exactly the way it's taught on paper and in the Math Tank app.</p>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Why Practise Long Division Online?</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Interactive practice gives children instant feedback, which research shows speeds up learning. Instead of completing a worksheet and waiting for a teacher's mark, kids know immediately whether each digit is correct.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">Our tool is free, requires no sign-up, and works on phones, tablets and computers — perfect for homework help or a quick revision session before a test.</p>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Tips for Teaching Long Division to Kids</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Start with small divisors (2–5) so your child can rely on basic multiplication facts they already know. Once the <em>process</em> feels automatic, gradually increase the difficulty.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7">Encourage children to say each step out loud: "How many times does 3 go into 7?" Verbalising the thinking helps cement the method and makes it easier to spot mistakes early.</p>
+  </section>
+  <div style="max-width:700px;margin:1.5rem auto 2rem;padding:0 1.5rem">
+    <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem;text-align:center">📚 Related Tools</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem">
+      <a href="/tools/division-practice.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">➗</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Division Practice</div><div style="font-size:.78rem;color:#9898b0">Master division facts ÷2 – ÷12</div></a>
+      <a href="/tools/column-multiplication.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">✖️</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Column Multiplication</div><div style="font-size:.78rem;color:#9898b0">Step-by-step long multiplication</div></a>
+      <a href="/tools/math-quiz.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">⚡</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Math Speed Quiz</div><div style="font-size:.78rem;color:#9898b0">30-second timed challenge</div></a>
+    </div>
+  </div>
+  <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p>© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
 
   <script>
     document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
 
     const ROUND=5;
-    let divisor,dividend,A,B,Q1,P1,R1,bringDown,Q2,P2,finalR;
-    let step=0,input='',correct=0,problemNum=0,roundDone=false;
+    let divisor,dividend,dvT,dvO,quotient,qT,qO,rem;
+    let correct=0,pNum=0,roundDone=false,done=false;
 
-    function generate(){
-      divisor=2+Math.floor(Math.random()*8);
-      let f=divisor+Math.floor(Math.random()*(10-divisor));
-      B=Math.floor(Math.random()*10);
-      A=f; dividend=A*10+B;
-      Q1=Math.floor(A/divisor); P1=divisor*Q1; R1=A-P1;
-      bringDown=R1*10+B;
-      Q2=Math.floor(bringDown/divisor); P2=divisor*Q2;
-      finalR=bringDown-P2;
-      step=0; input='';
+    function gen(){
+      divisor=2+Math.floor(Math.random()*4);
+      quotient=11+Math.floor(Math.random()*9);
+      qT=Math.floor(quotient/10); qO=quotient%10;
+      rem=Math.floor(Math.random()*divisor);
+      dividend=quotient*divisor+rem;
+      dvT=Math.floor(dividend/10); dvO=dividend%10;
+      done=false;
     }
 
-    function starsHTML(){
-      let s='';
-      for(let i=0;i<ROUND;i++) s+=`<span class="${i<correct?'filled':'empty'}">${i<correct?'★':'☆'}</span>`;
-      return s;
-    }
-
-    function getStepInfo(){
-      if(step===0) return {prompt:`How many times does ${divisor} go into ${A}?`,hint:`Think: ${divisor} × ? ≤ ${A}`,answer:Q1};
-      if(step===1) return {prompt:`How many times does ${divisor} go into ${bringDown}?`,hint:`Think: ${divisor} × ? ≤ ${bringDown}`,answer:Q2};
-      if(step===2) return {prompt:`What's the remainder?`,hint:`${bringDown} − ${P2} = ?`,answer:finalR};
-      return null;
-    }
-
-    function renderWorkspace(){
-      let h='';
-      // Quotient row
-      h+='<div class="ws-row" style="padding-left:56px">';
-      if(step>0) h+=`<div class="ws-cell ws-q filled">${Q1}</div>`;
-      else h+=`<div class="ws-cell ws-q active">${input||'?'}</div>`;
-      if(step>1) h+=`<div class="ws-cell ws-q filled">${Q2}</div>`;
-      else if(step===1) h+=`<div class="ws-cell ws-q active">${input||'?'}</div>`;
-      else h+='<div class="ws-cell ws-q">?</div>';
-      h+='</div>';
-      // Bracket + Dividend
-      h+='<div class="ws-row">';
-      h+=`<div class="ws-divisor">${divisor}</div>`;
-      h+=`<div class="ws-bracket"><div class="ws-cell ws-dv">${A}</div><div class="ws-cell ws-dv">${B}</div></div>`;
-      h+='</div>';
-      // After Q1: show subtraction + bring down
-      if(step>=1){
-        h+=`<div class="ws-row ws-sub-row"><div class="ws-sub">−${P1}</div></div>`;
-        h+='<div class="ws-line"></div>';
-        h+=`<div class="ws-row" style="padding-left:56px"><div class="ws-mid">${R1}</div><div class="ws-mid">${B}</div></div>`;
-      }
-      // After Q2: show subtraction
-      if(step>=2){
-        let p2Str=String(P2);
-        h+=`<div class="ws-row ws-sub-row"><div class="ws-sub">−${P2}</div></div>`;
-        h+='<div class="ws-line"></div>';
-        // Remainder
-        h+='<div class="ws-rem-row">';
-        h+='<span class="ws-rem-label">Remainder:</span>';
-        if(step>2) h+=`<div class="ws-rem-cell filled">${finalR}</div>`;
-        else h+=`<div class="ws-rem-cell active">${input||'?'}</div>`;
-        h+='</div>';
-        if(step===2) h+='<div class="ws-rem-hint">What\'s left over?</div>';
-      }
-      return h;
+    function stars(){
+      let s='';for(let i=0;i<ROUND;i++) s+='<span class="'+(i<correct?'filled':'empty')+'">'+(i<correct?'★':'☆')+'</span>';return s;
     }
 
     function render(){
       const gc=document.getElementById('gameCard');
       if(roundDone){
-        gc.innerHTML=`<div class="round-end pop-in">
-          <h2>🎉 Round Complete!</h2>
-          <div class="big-stars">${starsHTML()}</div>
-          <p>You got <strong>${correct}</strong> out of <strong>${ROUND}</strong> correct!</p>
-          <button class="gc-next" onclick="startRound()">New Round →</button>
-        </div>`;
+        gc.innerHTML='<div class="round-end pop-in"><h2>🎉 Round Complete!</h2><div class="big-stars">'+stars()+'</div><p>You got <strong>'+correct+'</strong> out of <strong>'+ROUND+'</strong> correct!</p><button class="gc-next" onclick="startRound()">New Round →</button></div>';
         return;
       }
-      const info=getStepInfo();
-      const isComplete=step>=3;
       let h='';
-      // Header
-      h+=`<div class="gc-head"><div class="gc-score">Correct: <strong>${correct}</strong>/${ROUND}</div><div class="gc-stars">${starsHTML()}</div></div>`;
-      h+=`<div class="gc-bar"><div class="gc-bar-fill" style="width:${(problemNum/ROUND)*100}%"></div></div>`;
-      // Problem
-      h+=`<div class="gc-problem"><h2>${dividend} ÷ ${divisor} = ?</h2><p>Two-digit quotient!</p></div>`;
-      // Workspace
-      h+=`<div class="ws">${renderWorkspace()}</div>`;
-      if(!isComplete){
-        // Prompt + Hint
-        h+=`<div class="gc-prompt">${info.prompt}</div>`;
-        h+=`<div class="gc-hint">${info.hint}</div>`;
-        // Feedback
-        h+='<div class="gc-fb" id="fb"></div>';
-        // Numpad
-        h+='<div class="gc-numpad">';
-        for(let i=0;i<=9;i++) h+=`<button class="np-btn" onclick="press('${i}')">${i}</button>`;
-        h+='</div>';
-        // Action buttons row
-        h+='<div style="display:flex;gap:8px;margin-bottom:.5rem">';
-        h+='<button class="np-btn np-clear" style="flex:1" onclick="clearInput()">Clear</button>';
-        h+='<button class="np-btn np-back" style="flex:1" onclick="backspace()">⌫</button>';
-        h+='</div>';
-        h+=`<button class="gc-check" onclick="checkAnswer()">Check Answer ✓</button>`;
+      h+='<div class="gc-head"><div class="gc-score">Correct: <strong>'+correct+'</strong>/'+ROUND+'</div><div class="gc-stars">'+stars()+'</div></div>';
+      h+='<div class="gc-bar"><div class="gc-bar-fill" style="width:'+(pNum/ROUND*100)+'%"></div></div>';
+      h+='<div class="gc-problem"><h2>'+dividend+' ÷ '+divisor+' = ?</h2><p>Two-digit quotient with remainder</p></div>';
+
+      h+='<div class="ws"><div class="ws-center">';
+      // Quotient inputs
+      h+='<div class="q-row">';
+      h+='<input class="q-in" id="qT" type="text" inputmode="numeric" maxlength="1" placeholder="?"'+(done?' disabled':'')+' autocomplete="off">';
+      h+='<input class="q-in" id="qO" type="text" inputmode="numeric" maxlength="1" placeholder="?" disabled autocomplete="off">';
+      h+='</div>';
+      // Divisor + bracket + dividend
+      h+='<div class="d-row"><span class="d-div">'+divisor+'</span><div class="d-bracket"><span class="d-digit">'+dvT+'</span><span class="d-digit">'+dvO+'</span></div></div>';
+      // Working area
+      h+='<div id="work"></div>';
+      h+='</div></div>';
+
+      h+='<div class="gc-hint" id="hint">First: '+divisor+' into '+dvT+' = ?</div>';
+      h+='<div class="gc-fb" id="fb"></div>';
+
+      if(!done){
+        h+='<button class="gc-check" onclick="check()">Check Answer ✓</button>';
       } else {
-        // Complete
-        h+=`<div class="gc-complete pop-in"><h3>✅ ${dividend} ÷ ${divisor} = ${Q1}${Q2}${finalR>0?' R'+finalR:''}</h3>
-          <p>Great job!</p>
-          <button class="gc-next" onclick="nextProblem()">Next Problem →</button></div>`;
+        h+='<div class="gc-complete pop-in"><h3>✅ '+dividend+' ÷ '+divisor+' = '+quotient+(rem>0?' R'+rem:'')+'</h3><p>Great job!</p><button class="gc-next" onclick="next()">Next Problem →</button></div>';
       }
       gc.innerHTML=h;
+      if(!done) setTimeout(wire,0);
     }
 
-    function press(n){
-      if(step>=3||roundDone)return;
-      if(input.length<3){input+=n;render()}
-    }
-    function clearInput(){input='';render();const f=document.getElementById('fb');if(f){f.textContent='';f.className='gc-fb'}}
-    function backspace(){input=input.slice(0,-1);render()}
+    function wire(){
+      const tI=document.getElementById('qT'), oI=document.getElementById('qO');
+      if(!tI)return;
+      tI.focus();
 
-    function checkAnswer(){
-      if(step>=3||roundDone)return;
-      const info=getStepInfo();
-      if(!input&&info.answer!==0)return;
-      const val=input===''?0:parseInt(input);
-      const fb=document.getElementById('fb');
-      if(!fb)return;
-      if(val===info.answer){
-        fb.textContent='✅ Correct!';fb.className='gc-fb ok';
-        step++; input='';
-        if(step>=3){correct++;problemNum++;}
-        setTimeout(()=>{
-          if(problemNum>=ROUND&&step>=3){roundDone=true;}
-          render();
-        },600);
+      tI.addEventListener('input',function(){
+        this.value=this.value.replace(/[^0-9]/g,'');
+        if(this.value.length===1){oI.disabled=false;setTimeout(()=>oI.focus(),50);}
+        else{oI.disabled=true;oI.value='';}
+        buildWork();
+      });
+      oI.addEventListener('input',function(){
+        this.value=this.value.replace(/[^0-9]/g,'');
+        buildWork();
+        if(this.value.length===1){
+          setTimeout(()=>{const r=document.getElementById('rI');if(r)r.focus();},100);
+        }
+      });
+    }
+
+    function buildWork(){
+      const tI=document.getElementById('qT'), oI=document.getElementById('qO');
+      const work=document.getElementById('work'), hint=document.getElementById('hint');
+      if(!tI||!work)return;
+      const uT=tI.value?parseInt(tI.value):0;
+      const uO=oI.value?parseInt(oI.value):0;
+      let w='';
+
+      if(uT>0){
+        const m1=uT*divisor, s1=dvT-m1, bd=s1*10+dvO;
+        const m1s=String(m1);
+        w+='<div class="w-row"><span class="w-sign w-cyan">−</span>';
+        if(m1s.length===1){w+='<span class="w-v w-cyan">'+m1+'</span><span class="w-v"></span>';}
+        else{w+='<span class="w-v w-cyan">'+m1s[0]+'</span><span class="w-v w-cyan">'+m1s[1]+'</span>';}
+        w+='</div>';
+        w+='<div class="w-line"></div>';
+        w+='<div class="w-row"><span class="w-sign"></span><span class="w-v w-white">'+(s1>=0?s1:'?')+'</span><span class="w-v w-pink">'+dvO+'</span></div>';
+
+        if(uO>0){
+          const m2=uO*divisor;
+          const m2s=String(m2);
+          w+='<div class="w-row"><span class="w-sign w-cyan">−</span>';
+          if(m2s.length===1){w+='<span class="w-v"></span><span class="w-v w-cyan">'+m2+'</span>';}
+          else{w+='<span class="w-v w-cyan">'+m2s[0]+'</span><span class="w-v w-cyan">'+m2s[1]+'</span>';}
+          w+='</div>';
+          w+='<div class="w-line"></div>';
+          w+='<div class="r-wrap"><span class="r-label">Remainder:</span><input class="r-in" id="rI" type="text" inputmode="numeric" maxlength="1" placeholder="?" autocomplete="off"></div>';
+          if(hint) hint.textContent="What's left over?";
+          setTimeout(()=>{
+            const rI=document.getElementById('rI');
+            if(rI&&!rI._w){rI._w=true;
+              rI.addEventListener('input',function(){
+                this.value=this.value.replace(/[^0-9]/g,'');
+                const h2=document.getElementById('hint');
+                if(this.value&&tI.value&&oI.value&&h2) h2.textContent=dividend+' ÷ '+divisor+' = '+tI.value+oI.value+' R'+this.value;
+              });
+            }
+          },0);
+        } else {
+          if(hint) hint.textContent='Next: '+divisor+' into '+bd+' = ?';
+        }
       } else {
-        fb.textContent=`✗ The answer is ${info.answer}`;fb.className='gc-fb no';
-        input='';
-        setTimeout(()=>{
-          step++; input='';
-          if(step>=3){problemNum++;}
-          if(problemNum>=ROUND&&step>=3){roundDone=true;}
-          render();
-        },1800);
+        if(hint) hint.textContent='First: '+divisor+' into '+dvT+' = ?';
       }
+      work.innerHTML=w;
     }
 
-    function nextProblem(){
-      if(problemNum>=ROUND){roundDone=true;render();return;}
-      generate();render();
+    function check(){
+      const tI=document.getElementById('qT'), oI=document.getElementById('qO'), rI=document.getElementById('rI');
+      const fb=document.getElementById('fb');
+      if(!tI||!oI||!fb)return;
+      const uT=tI.value?parseInt(tI.value):null;
+      const uO=oI.value?parseInt(oI.value):null;
+      const uR=rI&&rI.value!==''?parseInt(rI.value):null;
+
+      if(uT===null||uO===null||uR===null){
+        fb.textContent='Fill in all cells first!';fb.className='gc-fb no';return;
+      }
+      const uQ=parseInt(''+uT+uO);
+      if(uQ===quotient&&uR===rem){
+        fb.textContent='✅ Correct!';fb.className='gc-fb ok';correct++;
+      } else {
+        fb.textContent='✗ Answer: '+quotient+(rem>0?' R'+rem:'');fb.className='gc-fb no';
+      }
+      done=true;pNum++;
+      tI.disabled=true;oI.disabled=true;if(rI)rI.disabled=true;
+      setTimeout(()=>{if(pNum>=ROUND)roundDone=true;render();},1500);
     }
-    function startRound(){correct=0;problemNum=0;roundDone=false;generate();render()}
 
-    document.addEventListener('keydown',e=>{
-      if(e.key>='0'&&e.key<='9')press(e.key);
-      else if(e.key==='Backspace'){e.preventDefault();backspace()}
-      else if(e.key==='Enter')checkAnswer();
-    });
-
-    generate();render();
+    function next(){if(pNum>=ROUND){roundDone=true;render();return;}gen();render();}
+    function startRound(){correct=0;pNum=0;roundDone=false;gen();render();}
+    gen();render();
   </script>
 </body>
 </html>

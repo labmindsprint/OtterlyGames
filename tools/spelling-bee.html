@@ -53,6 +53,9 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Spelling Bee"}]}
   </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does this spelling bee tool work?","acceptedAnswer":{"@type":"Answer","text":"Click the 'Hear the Word' button to listen to the word spoken aloud. Read the hint for context, then type the correct spelling into the box and press Check. The tool tracks your correct answers and streak. Choose Easy, Medium or Hard to match your child's level."}},{"@type":"Question","name":"What age is this spelling tool suitable for?","acceptedAnswer":{"@type":"Answer","text":"Easy mode suits ages 4–6 with simple CVC words (cat, dog, sun). Medium is aimed at ages 6–8 with common words that include blends and silent letters. Hard challenges ages 8–11 with multi-syllable words like 'beautiful' and 'necessary'."}},{"@type":"Question","name":"Can I use this spelling bee on a phone or tablet?","acceptedAnswer":{"@type":"Answer","text":"Yes! The tool works on phones, tablets and computers. It uses your browser's built-in speech synthesis to read words aloud. For the best experience, use Chrome, Edge or Safari."}}]}
+  </script>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
@@ -61,11 +64,32 @@
 </head>
 <body>
   <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button><div class="nav-links" id="navLinks"><a href="/#games">Games</a><a href="/tools/" class="active">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
+  <noscript><div style="max-width:600px;margin:6rem auto 2rem;padding:2rem;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;text-align:center;color:#f0f0f8;font-family:sans-serif"><h2 style="margin-bottom:.5rem">🐝 Spelling Bee</h2><p style="color:#9898b0;margin-bottom:.5rem">This interactive spelling tool reads words aloud and lets your child practise spelling with three difficulty levels and voice guidance.</p><p style="color:#9898b0">Please <strong>enable JavaScript</strong> in your browser to use this tool.</p></div></noscript>
   <section class="hero"><h1>🐝 <span class="gt">Spelling</span> Bee</h1><p>Listen to the word, read the hint, and spell it correctly</p></section>
   <div class="main">
+    <a href="/tools/" style="display:inline-flex;align-items:center;gap:.4rem;color:#9898b0;font-size:.85rem;font-weight:600;margin-bottom:.75rem;transition:color .2s;text-decoration:none" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='#9898b0'">← All Tools</a>
     <div class="lvl-btns"><button class="lvl-btn active" onclick="setLvl('easy')">Easy</button><button class="lvl-btn" onclick="setLvl('medium')">Medium</button><button class="lvl-btn" onclick="setLvl('hard')">Hard</button></div>
     <div class="stats"><span>✅ <strong id="ct">0</strong></span><span>🔥 Streak <strong id="sk">0</strong></span></div>
     <div id="spellArea"></div>
+  </div>
+  <section style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Why Spelling Practice Matters</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Spelling is more than memorising letter sequences — it builds <strong style="color:#c4b5fd">phonemic awareness</strong>, vocabulary and reading fluency. Children who spell well tend to read more confidently and write more freely.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">This tool combines listening, reading a hint and typing the word — engaging three learning channels at once for stronger retention.</p>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Choosing the Right Level</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem"><strong style="color:#c4b5fd">Easy</strong> uses simple 3–4 letter CVC words (cat, dog, sun) — perfect for early readers aged 4–6. <strong style="color:#c4b5fd">Medium</strong> introduces common words with blends, digraphs and silent letters for ages 6–8. <strong style="color:#c4b5fd">Hard</strong> tackles multi-syllable words like “beautiful” and “necessary” for ages 8–11.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">Let your child start at their comfort level and move up when they can consistently spell 10+ words in a row (watch the streak counter!).</p>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Tips for Better Spelling</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Encourage children to <em>say the word out loud</em> before typing it. Breaking words into syllables ("but-ter-fly") makes long words less intimidating. After getting a word wrong, look at the correct spelling together and spot the tricky part.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7">Pair this tool with reading — children who read for pleasure naturally encounter correct spellings in context, reinforcing what they practise here.</p>
+  </section>
+  <div style="max-width:700px;margin:1.5rem auto 2rem;padding:0 1.5rem">
+    <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem;text-align:center">📚 Related Tools</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem">
+      <a href="/tools/math-quiz.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">⚡</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Math Speed Quiz</div><div style="font-size:.78rem;color:#9898b0">30-second timed challenge</div></a>
+      <a href="/tools/clock-lessons.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">🕰️</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Clock Lessons</div><div style="font-size:.78rem;color:#9898b0">Learn to tell the time</div></a>
+      <a href="/tools/calculator.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">🧮</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Calculator</div><div style="font-size:.78rem;color:#9898b0">Kid-friendly calculator</div></a>
+    </div>
   </div>
   <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
   <script>

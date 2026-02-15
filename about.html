@@ -38,6 +38,7 @@
     .gradient-text {
       background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-shadow: none;
     }
 
     /* Nav */
@@ -87,21 +88,27 @@
       text-align: center; padding: 7rem 1.5rem 3rem; overflow: hidden;
     }
     .about-hero-bg {
-      position: absolute; inset: 0; z-index: 0;
+      position: absolute; top: 0; bottom: 0; z-index: 0;
+      width: 100%; max-width: 1400px;
+      left: 50%; transform: translateX(-50%);
       background: url('/images/About.png') center/cover no-repeat;
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+      mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
     }
     .about-hero-bg::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(10,10,15,0.3) 0%, rgba(10,10,15,0.8) 65%, #0a0a0f 100%);
+      background: linear-gradient(180deg, rgba(10,10,15,0.05) 0%, rgba(10,10,15,0.25) 60%, rgba(10,10,15,0.7) 85%, #0a0a0f 100%);
     }
     .about-hero-content {
       position: relative; z-index: 1; max-width: 600px;
     }
     .about-hero h1 {
       font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 0.75rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.4);
     }
     .about-hero p {
       font-size: 1.05rem; color: var(--text-secondary); max-width: 480px; margin: 0 auto;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
     }
 
     /* Story */
@@ -225,6 +232,7 @@
 
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>

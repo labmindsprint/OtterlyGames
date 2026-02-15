@@ -54,6 +54,9 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Kid Calculator"}]}
   </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is using a calculator bad for learning maths?","acceptedAnswer":{"@type":"Answer","text":"Not at all! A calculator is a valuable checking tool. When children work out answers by hand first and then verify with a calculator, they build confidence and learn to self-correct. The key is using calculators to support learning, not replace it."}},{"@type":"Question","name":"What can kids use a calculator for?","acceptedAnswer":{"@type":"Answer","text":"Children can use a calculator to check homework answers, explore number patterns, verify their mental maths, and handle larger calculations during problem-solving. It's also great for building early familiarity with the four operations (+, −, ×, ÷)."}},{"@type":"Question","name":"Does this calculator work on phones and tablets?","acceptedAnswer":{"@type":"Answer","text":"Yes! This calculator is fully responsive and works on smartphones, tablets and desktop computers. It supports both touch input and keyboard input, so children can use whichever feels most natural."}}]}
+  </script>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
@@ -62,8 +65,10 @@
 </head>
 <body>
   <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button><div class="nav-links" id="navLinks"><a href="/#games">Games</a><a href="/tools/" class="active">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
+  <noscript><div style="max-width:600px;margin:6rem auto 2rem;padding:2rem;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;text-align:center;color:#f0f0f8;font-family:sans-serif"><h2 style="margin-bottom:.5rem">🔢 Kid Calculator</h2><p style="color:#9898b0;margin-bottom:.5rem">A simple, colorful calculator for children. Supports addition, subtraction, multiplication and division with a large, easy-to-use button layout.</p><p style="color:#9898b0">Please <strong>enable JavaScript</strong> in your browser to use this tool.</p></div></noscript>
   <section class="hero"><h1>🔢 <span class="gt">Kid</span> Calculator</h1><p>Simple, colorful, and easy to use — perfect for homework</p></section>
   <div class="main">
+    <a href="/tools/" style="display:inline-flex;align-items:center;gap:.4rem;color:#9898b0;font-size:.85rem;font-weight:600;margin-bottom:.75rem;transition:color .2s;text-decoration:none" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='#9898b0'">← All Tools</a>
     <div class="calc">
       <div class="display"><div class="display-expr" id="expr"></div><div class="display-val" id="val">0</div></div>
       <div class="calc-grid">
@@ -87,6 +92,25 @@
         <button class="calc-btn num" onclick="numPress('.')">.</button>
         <button class="calc-btn eq" onclick="calculate()">=</button>
       </div>
+    </div>
+  </div>
+  <section style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">A Calculator Designed for Kids</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Most calculators are designed for adults — tiny buttons, confusing modes, and scientific functions that mystify young learners. This calculator has <strong style="color:#c4b5fd">big, colourful buttons</strong>, a clean display, and only the four operations children actually need: +, −, ×, ÷.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">It also includes percentage and backspace, which are handy for homework without being overwhelming.</p>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Using a Calculator to Learn</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Calculators aren’t just answer machines — they’re exploration tools. Ask your child "What happens if you multiply a number by 10? By 100?" or "What’s half of 365?" Curious questions lead to mathematical discoveries.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">For best results, have your child <em>estimate</em> the answer first, then use the calculator to check. This builds number sense alongside computational skill.</p>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Keyboard Shortcuts</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">On a desktop computer, children can type numbers on the keyboard, use +, -, * and / for operations, and press Enter to calculate. The Backspace key deletes the last digit and Escape clears everything.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7">On phones and tablets, just tap the big buttons — they’re sized for small fingers and spaced to avoid accidental taps.</p>
+  </section>
+  <div style="max-width:700px;margin:1.5rem auto 2rem;padding:0 1.5rem">
+    <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem;text-align:center">📚 Related Tools</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem">
+      <a href="/tools/math-quiz.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">⚡</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Math Speed Quiz</div><div style="font-size:.78rem;color:#9898b0">30-second timed challenge</div></a>
+      <a href="/tools/multiplication-practice.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">✖️</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Times Tables</div><div style="font-size:.78rem;color:#9898b0">Study & drill ×2 to ×12</div></a>
+      <a href="/tools/division-practice.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">➗</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Division Practice</div><div style="font-size:.78rem;color:#9898b0">Master ÷2 to ÷12</div></a>
     </div>
   </div>
   <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>

@@ -5,7 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free Learning Tools for Kids | Otterly Games</title>
   <meta name="description" content="Free interactive learning tools for kids — multiplication tables, math quizzes, spelling practice. No download needed, works in your browser.">
+  <meta name="keywords" content="free math tools for kids, multiplication table, times tables practice, division practice, spelling bee, clock learning, math quiz, interactive learning tools">
   <link rel="canonical" href="https://otterlygames.com/tools/">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"Free Learning Tools for Kids","description":"Free interactive learning tools for kids — multiplication tables, math quizzes, spelling practice. No download needed, works in your browser.","url":"https://otterlygames.com/tools/","publisher":{"@type":"Organization","name":"Otterly Games","url":"https://otterlygames.com"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ItemList","name":"Free Learning Tools for Kids","numberOfItems":9,"itemListElement":[{"@type":"ListItem","position":1,"name":"Multiplication Practice","url":"https://otterlygames.com/tools/multiplication-practice.html"},{"@type":"ListItem","position":2,"name":"Division Practice","url":"https://otterlygames.com/tools/division-practice.html"},{"@type":"ListItem","position":3,"name":"Multiplication Table","url":"https://otterlygames.com/tools/multiplication-table.html"},{"@type":"ListItem","position":4,"name":"Column Multiplication","url":"https://otterlygames.com/tools/column-multiplication.html"},{"@type":"ListItem","position":5,"name":"Long Division","url":"https://otterlygames.com/tools/long-division.html"},{"@type":"ListItem","position":6,"name":"Math Speed Quiz","url":"https://otterlygames.com/tools/math-quiz.html"},{"@type":"ListItem","position":7,"name":"Kid Calculator","url":"https://otterlygames.com/tools/calculator.html"},{"@type":"ListItem","position":8,"name":"Spelling Bee","url":"https://otterlygames.com/tools/spelling-bee.html"},{"@type":"ListItem","position":9,"name":"Clock Lessons","url":"https://otterlygames.com/tools/clock-lessons.html"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are these learning tools really free?","acceptedAnswer":{"@type":"Answer","text":"Yes, every tool is 100% free with no signup, no download, and no hidden costs. They run directly in your browser on any device — phone, tablet or computer."}},{"@type":"Question","name":"What ages are these tools designed for?","acceptedAnswer":{"@type":"Answer","text":"Our tools cover ages 4 to 11 (Reception to Year 6 in the UK / Pre-K to Grade 5 in the US). Each tool shows a recommended age range. Younger children can start with times tables and clock lessons, while older children can tackle long division and column multiplication."}},{"@type":"Question","name":"Do I need to install anything?","acceptedAnswer":{"@type":"Answer","text":"No installation is needed. All tools work instantly in any modern web browser. They are also mobile-friendly, so children can practise on a phone or tablet during car journeys or waiting times."}}]}
+  </script>
   <meta property="og:title" content="Free Learning Tools for Kids — Otterly Games">
   <meta property="og:description" content="Practice math, spelling, and more for free. No download, no signup. Just learning.">
   <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
@@ -37,6 +47,7 @@
     .gradient-text {
       background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-shadow: none;
     }
 
     /* Nav */
@@ -81,17 +92,21 @@
 
     /* Hero */
     .tools-hero {
-      position: relative; min-height: 420px;
+      position: relative; min-height: 260px;
       display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 7rem 1.5rem 3rem; overflow: hidden;
+      text-align: center; padding: 5.5rem 1.5rem 2rem; overflow: hidden;
     }
     .tools-hero-bg {
-      position: absolute; inset: 0; z-index: 0;
+      position: absolute; top: 0; bottom: 0; z-index: 0;
+      width: 100%; max-width: 1400px;
+      left: 50%; transform: translateX(-50%);
       background: url('/images/tool.png') center/cover no-repeat;
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+      mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
     }
     .tools-hero-bg::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(10,10,15,0.4) 0%, rgba(10,10,15,0.85) 70%, #0a0a0f 100%);
+      background: linear-gradient(180deg, rgba(10,10,15,0.05) 0%, rgba(10,10,15,0.25) 60%, rgba(10,10,15,0.7) 85%, #0a0a0f 100%);
     }
     .tools-hero-content {
       position: relative; z-index: 1; max-width: 600px;
@@ -99,9 +114,11 @@
     .tools-hero h1 {
       font-size: clamp(2rem, 5vw, 3rem); font-weight: 900;
       margin-bottom: 0.75rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.4);
     }
     .tools-hero p {
       font-size: 1.05rem; color: var(--text-secondary); max-width: 480px; margin: 0 auto;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
     }
 
     /* Tools Grid */
@@ -158,6 +175,34 @@
       transition: color 0.2s;
     }
     .tool-card:hover .tool-cta { color: var(--pastel-pink); }
+    .age-badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      padding: 0.15rem 0.6rem; border-radius: 999px; margin-bottom: 0.5rem;
+      background: rgba(196,181,253,0.12); color: var(--pastel-purple);
+      letter-spacing: 0.03em;
+    }
+    .about-tools { max-width: 700px; margin: 1rem auto 2.5rem; }
+    .about-tools h2 { font-size: 1.3rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.6rem; }
+    .about-tools h3 { font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.8rem; }
+    .about-tools > p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; margin-bottom: 0.5rem; }
+    .about-tools > p strong { color: var(--pastel-purple); }
+    .about-tools details {
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: 0.75rem; margin-bottom: 0.5rem; overflow: hidden;
+    }
+    .about-tools summary {
+      padding: 0.9rem 1.2rem; font-weight: 700; font-size: 0.95rem;
+      color: var(--text-primary); cursor: pointer; list-style: none;
+    }
+    .about-tools summary::-webkit-details-marker { display: none; }
+    .about-tools summary::after {
+      content: '+'; float: right; font-size: 1.1rem; color: var(--pastel-purple);
+    }
+    .about-tools details[open] summary::after { content: '−'; }
+    .about-tools details p {
+      padding: 0 1.2rem 1rem; color: var(--text-secondary);
+      font-size: 0.9rem; line-height: 1.7; margin: 0;
+    }
 
     /* Promo */
     .tools-promo {
@@ -188,6 +233,7 @@
     /* Animations */
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+
   </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
@@ -220,8 +266,11 @@
   <section class="tools-hero">
     <div class="tools-hero-bg"></div>
     <div class="tools-hero-content">
-      <h1 class="fade-in"><span class="gradient-text">Otter</span> Tools</h1>
-      <p class="fade-in">No downloads. No accounts. Just open and practice. All tools run right in your browser.</p>
+      <h1 class="fade-in">Free <span class="gradient-text">Math & Learning</span> Tools for Kids</h1>
+      <p class="fade-in">Interactive practice for multiplication, division, spelling and telling the time — built by a parent, loved by kids.</p>
+      <div class="fade-in" style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;font-size:.85rem;font-weight:600;color:var(--text-secondary)">
+        <span>🧮 9 Free Tools</span><span>📱 Any Device</span><span>🔒 No Signup</span>
+      </div>
     </div>
   </section>
 
@@ -230,84 +279,102 @@
 
     <div class="tools-category fade-in">
       <div class="tools-category-header">
-        <h2>🕐 Clock & Time</h2>
-        <span class="cat-badge purple">from Clock Master</span>
-      </div>
-      <div class="tools-grid">
-        <a href="clock-lessons.html" class="tool-card">
-          <span class="tool-emoji">🕐</span>
-          <h3>Clock Lessons</h3>
-          <p>Interactive analog clock — learn hours, half past, quarter, and minutes step by step.</p>
-          <span class="tool-cta">Learn Free →</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="tools-category fade-in">
-      <div class="tools-category-header">
-        <h2>🧮 Math Practice</h2>
-        <span class="cat-badge pink">from Math Tank</span>
+        <h2>🧮 Math Practice & Drills</h2>
       </div>
       <div class="tools-grid">
         <a href="multiplication-practice.html" class="tool-card">
           <span class="tool-emoji">✖️</span>
           <h3>Multiplication Practice</h3>
-          <p>Study tables 2×–20×, then drill with typed answers. No timer, no pressure.</p>
+          <span class="age-badge">Ages 5–9</span>
+          <p>Study times tables 2×–12×, then drill with typed answers. No timer, no pressure.</p>
           <span class="tool-cta">Practice Free →</span>
         </a>
         <a href="division-practice.html" class="tool-card">
           <span class="tool-emoji">➗</span>
           <h3>Division Practice</h3>
-          <p>Study division tables ÷2–÷20, then practice. Clean division, no remainders.</p>
+          <span class="age-badge">Ages 6–10</span>
+          <p>Study division tables ÷2–÷12, then practise with typed answers. No remainders.</p>
           <span class="tool-cta">Practice Free →</span>
+        </a>
+        <a href="multiplication-table.html" class="tool-card">
+          <span class="tool-emoji">📋</span>
+          <h3>Multiplication Table</h3>
+          <span class="age-badge">Ages 5–11</span>
+          <p>Interactive 12×12 times table chart. Tap any number to highlight its entire table.</p>
+          <span class="tool-cta">View Table →</span>
         </a>
         <a href="column-multiplication.html" class="tool-card">
           <span class="tool-emoji">📊</span>
           <h3>Column Multiplication</h3>
-          <p>Two-digit × two-digit using partial products. Step-by-step column method.</p>
+          <span class="age-badge">Ages 8–11</span>
+          <p>Step-by-step long multiplication with carries and partial products.</p>
           <span class="tool-cta">Practice Free →</span>
         </a>
         <a href="long-division.html" class="tool-card">
           <span class="tool-emoji">📐</span>
           <h3>Long Division</h3>
-          <p>Bracket division with remainders. Find quotient digits step by step.</p>
+          <span class="age-badge">Ages 8–11</span>
+          <p>Bracket division with remainders. Fill in each quotient digit step by step.</p>
           <span class="tool-cta">Practice Free →</span>
+        </a>
+        <a href="math-quiz.html" class="tool-card">
+          <span class="tool-emoji">⚡</span>
+          <h3>Math Speed Quiz</h3>
+          <span class="age-badge">Ages 6–11</span>
+          <p>30-second timed challenge with three difficulty modes. Beat your high score!</p>
+          <span class="tool-cta">Start Quiz →</span>
+        </a>
+        <a href="calculator.html" class="tool-card">
+          <span class="tool-emoji">🔢</span>
+          <h3>Kid Calculator</h3>
+          <span class="age-badge">Ages 5–11</span>
+          <p>Simple, colourful calculator with big buttons — perfect for checking homework.</p>
+          <span class="tool-cta">Open Calculator →</span>
         </a>
       </div>
     </div>
 
     <div class="tools-category fade-in">
       <div class="tools-category-header">
-        <h2>📚 More Learning</h2>
-        <span class="cat-badge purple">Extras</span>
+        <h2>📚 English & Time</h2>
       </div>
       <div class="tools-grid">
-        <a href="multiplication-table.html" class="tool-card">
-          <span class="tool-emoji">📋</span>
-          <h3>Multiplication Table</h3>
-          <p>Interactive 12×12 times table with highlighting. Study any table from 1× to 12×.</p>
-          <span class="tool-cta">View Table →</span>
-        </a>
-        <a href="math-quiz.html" class="tool-card">
-          <span class="tool-emoji">⚡</span>
-          <h3>Math Speed Quiz</h3>
-          <p>30-second timed challenge. Easy, Medium, and Hard modes. Beat your high score!</p>
-          <span class="tool-cta">Start Quiz →</span>
-        </a>
         <a href="spelling-bee.html" class="tool-card">
           <span class="tool-emoji">🐝</span>
           <h3>Spelling Bee</h3>
-          <p>Listen to a word, then spell it. Three difficulty levels with voice guidance.</p>
+          <span class="age-badge">Ages 4–11</span>
+          <p>Listen to a word, read the hint, then type the spelling. Three levels with voice guidance.</p>
           <span class="tool-cta">Practice Free →</span>
         </a>
-        <a href="calculator.html" class="tool-card">
-          <span class="tool-emoji">🔢</span>
-          <h3>Kid Calculator</h3>
-          <p>A simple, colorful calculator. Perfect for checking homework or exploring numbers.</p>
-          <span class="tool-cta">Open Calculator →</span>
+        <a href="clock-lessons.html" class="tool-card">
+          <span class="tool-emoji">🕐</span>
+          <h3>Clock Lessons</h3>
+          <span class="age-badge">Ages 5–8</span>
+          <p>Learn to read analogue clocks — from hours only to every minute, step by step.</p>
+          <span class="tool-cta">Learn Free →</span>
         </a>
       </div>
     </div>
+
+    <!-- About Section -->
+    <section class="about-tools fade-in">
+      <h2>About Our Free Learning Tools</h2>
+      <p>Every tool on this page was built by a parent who understands the nightly homework struggle. They give children <strong>focused, distraction-free practice</strong> with instant feedback — no ads popping up mid-question, no gamification that pulls attention away from learning.</p>
+      <p style="margin-bottom:1.5rem">All 9 tools work in your browser with no download, no account and no cost. They're mobile-friendly too, so your child can practise times tables on a tablet at breakfast or tackle long division on a phone during a car journey.</p>
+      <h3>Frequently Asked Questions</h3>
+      <details>
+        <summary>Are these learning tools really free?</summary>
+        <p>Yes — 100% free with no signup, no download and no hidden costs. They run directly in your browser on any device.</p>
+      </details>
+      <details>
+        <summary>What ages are these tools designed for?</summary>
+        <p>Our tools cover ages 4 to 11 (Reception to Year 6 in the UK / Pre-K to Grade 5 in the US). Each tool card shows its recommended age range so you can find the right fit instantly.</p>
+      </details>
+      <details>
+        <summary>Do I need to install anything?</summary>
+        <p>No installation needed. All tools work instantly in any modern browser — Chrome, Safari, Edge or Firefox. They're fully responsive on phones, tablets and computers.</p>
+      </details>
+    </section>
 
     <div class="tools-promo fade-in">
       <h3>🦦 Want the full experience?</h3>

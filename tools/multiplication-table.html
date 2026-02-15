@@ -57,6 +57,9 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Multiplication Table"}]}
   </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a multiplication table?","acceptedAnswer":{"@type":"Answer","text":"A multiplication table (or times table chart) is a grid showing the products of numbers 1–12. Each row and column represents a number, and the cell where they meet shows their product. It’s a visual reference that helps children spot patterns and memorise multiplication facts."}},{"@type":"Question","name":"How do you read a multiplication table?","acceptedAnswer":{"@type":"Answer","text":"Find one number along the top row and the other down the left column. Follow the row and column until they meet — the number in that cell is the product. For example, row 7 and column 8 meet at 56, so 7 × 8 = 56."}},{"@type":"Question","name":"What patterns can you find in a times table chart?","acceptedAnswer":{"@type":"Answer","text":"Many! The 2× column is all even numbers. The 5× column alternates between 0 and 5 in the ones digit. The 9× table digits always add up to 9. The table is also symmetrical along the diagonal because multiplication is commutative: 3 × 8 = 8 × 3."}}]}
+  </script>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
@@ -65,12 +68,33 @@
 </head>
 <body>
   <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button><div class="nav-links" id="navLinks"><a href="/#games">Games</a><a href="/tools/" class="active">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
+  <noscript><div style="max-width:600px;margin:6rem auto 2rem;padding:2rem;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;text-align:center;color:#f0f0f8;font-family:sans-serif"><h2 style="margin-bottom:.5rem">📋 Multiplication Table</h2><p style="color:#9898b0;margin-bottom:.5rem">This interactive 12×12 multiplication chart lets you tap any number to highlight its table. A great visual reference for learning times tables.</p><p style="color:#9898b0">Please <strong>enable JavaScript</strong> in your browser to use this tool.</p></div></noscript>
   <section class="hero"><h1>📋 <span class="gt">Times</span> Table</h1><p>Interactive 12×12 multiplication chart — tap any number to highlight its table</p></section>
   <div class="main">
+    <a href="/tools/" style="display:inline-flex;align-items:center;gap:.4rem;color:#9898b0;font-size:.85rem;font-weight:600;margin-bottom:.75rem;transition:color .2s;text-decoration:none" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='#9898b0'">← All Tools</a>
     <div class="sel-btns" id="selBtns"></div>
     <div class="highlight-info" id="hlInfo">Tap a number to highlight its table</div>
     <div class="table-wrap"><table id="tbl"></table></div>
     <div class="promo"><h3>🦦 Master the tables? Try Math Tank!</h3><p>Battle enemies by solving multiplication problems!</p><a href="/apps/math-tank.html">Learn About Math Tank →</a></div>
+  </div>
+  <section style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">How to Use a Multiplication Table</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">A multiplication table is one of the most powerful learning tools in primary maths. To find the answer to any times-table fact, locate one number along the top and the other down the left side. Where the row and column meet is the product.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">This interactive chart lets you <strong style="color:#c4b5fd">tap a number to highlight its entire table</strong>, making patterns easy to spot. Try highlighting the 9× table and watch how the tens digit goes up while the ones digit goes down!</p>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Patterns to Look For</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">The table is <em>symmetrical</em> along the diagonal — because multiplication is commutative (3 × 8 = 8 × 3). That means children only need to learn roughly half the facts, since each one has a mirror partner.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">The 2× column is always even. The 5× column ends in 0 or 5. The digits of every 9× product add up to 9. Spotting these patterns builds number sense and makes memorisation faster.</p>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">From Chart to Memory</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Use this chart as a <em>reference</em>, then switch to our <a href="/tools/multiplication-practice.html" style="color:#c4b5fd">Multiplication Practice</a> tool to test recall. Looking up facts is a great first step, but typing answers from memory is what locks them in long-term.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7">Print-friendly tip: bookmark this page for quick reference during homework — it works beautifully on tablets and phones too.</p>
+  </section>
+  <div style="max-width:700px;margin:1.5rem auto 2rem;padding:0 1.5rem">
+    <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem;text-align:center">📚 Related Tools</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem">
+      <a href="/tools/multiplication-practice.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">✖️</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Times Tables Practice</div><div style="font-size:.78rem;color:#9898b0">Study & drill ×2 to ×12</div></a>
+      <a href="/tools/column-multiplication.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">📊</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Column Multiplication</div><div style="font-size:.78rem;color:#9898b0">Step-by-step long multiplication</div></a>
+      <a href="/tools/math-quiz.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem;text-align:center;transition:border-color .2s;text-decoration:none;color:inherit" onmouseover="this.style.borderColor='#c4b5fd'" onmouseout="this.style.borderColor='#2a2a3e'"><div style="font-size:1.5rem;margin-bottom:.3rem">⚡</div><div style="font-weight:700;font-size:.9rem;color:#f0f0f8;margin-bottom:.2rem">Math Speed Quiz</div><div style="font-size:.78rem;color:#9898b0">30-second timed challenge</div></a>
+    </div>
   </div>
   <footer class="footer"><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a></div><p style="color:#4a4a60">© 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
   <script>

@@ -5,7 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Otter Side — Blog | Parenting, Learning & Games — Otterly Games</title>
   <meta name="description" content="The Otter Side: A blog about parenting, kid academics, and educational gaming. Real stories from a mom building learning apps for children.">
+  <meta name="keywords" content="parenting blog, educational games for kids, math tips for parents, screen time advice, learning apps, teaching kids math, clock learning, homeschool resources">
   <link rel="canonical" href="https://otterlygames.com/blog/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "The Otter Side — Parenting & Education Blog",
+    "description": "A blog about parenting, kid academics, and educational gaming. Real stories from a mom building learning apps for children.",
+    "url": "https://otterlygames.com/blog/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Otterly Games",
+      "url": "https://otterlygames.com"
+    }
+  }
+  </script>
   <meta property="og:title" content="The Otter Side — Parenting & Education Blog">
   <meta property="og:description" content="Real stories from a mom building educational games. Parenting tips, math tricks, and honest screen time advice.">
   <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
@@ -37,6 +52,7 @@
     .gradient-text {
       background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      text-shadow: none;
     }
 
     /* Nav */
@@ -86,44 +102,58 @@
       text-align: center; padding: 7rem 1.5rem 3rem; overflow: hidden;
     }
     .blog-hero-bg {
-      position: absolute; inset: 0; z-index: 0;
+      position: absolute; top: 0; bottom: 0; z-index: 0;
+      width: 100%; max-width: 1400px;
+      left: 50%; transform: translateX(-50%);
       background: url('/images/Blog.png') center/cover no-repeat;
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+      mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
     }
     .blog-hero-bg::after {
       content: ''; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(10,10,15,0.3) 0%, rgba(10,10,15,0.8) 65%, #0a0a0f 100%);
+      background: linear-gradient(180deg, rgba(10,10,15,0.05) 0%, rgba(10,10,15,0.25) 60%, rgba(10,10,15,0.7) 85%, #0a0a0f 100%);
     }
     .blog-hero-content {
       position: relative; z-index: 1; max-width: 600px;
     }
     .blog-hero h1 {
       font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 0.75rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.4);
     }
     .blog-hero p {
       font-size: 1.05rem; color: var(--text-secondary); max-width: 480px; margin: 0 auto;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
     }
 
     /* Blog listing */
     .blog-main {
       padding: 3rem 1.5rem 4rem;
-      max-width: 800px; margin: 0 auto;
+      max-width: 1100px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 768px) {
+      .blog-main {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+      }
     }
     .blog-card {
-      display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem;
-      align-items: start;
+      display: flex; flex-direction: column; gap: 0;
       padding: 1.5rem; background: var(--dark-card);
       border: 1px solid var(--dark-border); border-radius: 1rem;
-      margin-bottom: 1rem; transition: all 0.3s; cursor: pointer;
+      transition: all 0.3s; cursor: pointer;
     }
     .blog-card:hover {
       border-color: var(--pastel-purple); transform: translateY(-3px);
       box-shadow: 0 12px 30px rgba(0,0,0,0.3);
     }
     .blog-card-emoji {
-      width: 100px; height: 100px; border-radius: 12px;
+      width: 100%; height: 64px; border-radius: 10px;
       background: var(--dark-surface);
       display: flex; align-items: center; justify-content: center;
-      font-size: 2.5rem;
+      font-size: 2rem; margin-bottom: 1rem;
     }
     .blog-card-body { }
     .blog-card-cat {
@@ -135,6 +165,9 @@
     .blog-card-cat.story { background: rgba(196,181,253,0.15); color: var(--pastel-purple); }
     .blog-card-cat.tips { background: rgba(134,239,172,0.15); color: var(--pastel-green); }
     .blog-card-cat.digital { background: rgba(249,168,212,0.15); color: var(--pastel-pink); }
+    .blog-card-cat.guide { background: rgba(147,197,253,0.15); color: var(--pastel-blue); }
+    .blog-card-cat.reviews { background: rgba(252,211,77,0.15); color: var(--pastel-amber); }
+    .blog-card-cat.resources { background: rgba(134,239,172,0.15); color: var(--pastel-green); }
     .blog-card h3 {
       font-size: 1.1rem; font-weight: 800; color: var(--text-primary);
       margin-bottom: 0.4rem; line-height: 1.3;
@@ -148,8 +181,7 @@
       display: flex; gap: 0.5rem; align-items: center;
     }
     @media (max-width: 600px) {
-      .blog-card { grid-template-columns: 1fr; }
-      .blog-card-emoji { width: 60px; height: 60px; font-size: 1.5rem; }
+      .blog-card-emoji { height: 52px; font-size: 1.5rem; }
     }
 
     /* Footer */
@@ -164,6 +196,7 @@
 
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+
   </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>

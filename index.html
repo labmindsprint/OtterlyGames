@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -81,62 +81,80 @@
   <!-- SCROLL PROGRESS BAR -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-mascot fade-in">
-        <img src="/images/Otter-mascot.png" alt="Otterly — your learning buddy">
+  <!-- HERO + ABOUT COMBINED -->
+  <section class="hero" id="about">
+    <div class="hero-particles">
+      <span class="particle p1">✦</span>
+      <span class="particle p2">✦</span>
+      <span class="particle p3">✧</span>
+      <span class="particle p4">✦</span>
+      <span class="particle p5">✧</span>
+    </div>
+    <div class="hero-about-wrapper">
+      <!-- LEFT: BRAND IDENTITY -->
+      <div class="hero-content">
+        <div class="hero-mascot fade-in">
+          <img src="/images/Otter-mascot.png" alt="Otterly — your learning buddy">
+        </div>
+        <h1 class="fade-in"><span class="gradient-text">Otterly</span> Smart.</h1>
+        <p class="hero-tagline fade-in">
+          Learning like no <span class="gradient-text">otter</span>.
+        </p>
+        <p class="hero-pitch fade-in">
+          A mom turned <strong class="amber">screen time guilt</strong> into
+          <strong class="green">screen time wins</strong>.<br>
+          Games so fun, kids don't realize they're getting smarter.
+        </p>
+        <div class="hero-actions fade-in">
+          <a href="#play" class="btn-glow">▶ Play Now</a>
+          <a href="#games" class="btn-outline">Our Games →</a>
+        </div>
       </div>
-      <h1 class="fade-in"><span class="gradient-text">Otterly</span> Smart.</h1>
-      <p class="hero-sub fade-in" style="font-size:1.2rem; margin-bottom:1rem;">
-        Learning like no <span class="gradient-text" style="font-weight:700;">otter</span>.
-      </p>
-      <p class="hero-sub fade-in" style="margin-top:0; font-size:0.95rem; max-width:440px;">
-        A mom turned <span style="color:var(--pastel-amber);font-weight:600;">screen time guilt</span> into
-        <span style="color:var(--pastel-green);font-weight:600;">screen time wins</span>.<br>
-        Games so fun, kids don’t realize they’re getting smarter.
-      </p>
-    </div>    <!-- Scroll Indicator -->
-    <a href="#about" class="scroll-indicator" id="scrollIndicator">
+
+      <!-- RIGHT: THE STORY -->
+      <div class="story-panel fade-in-right">
+        <div class="story-glow"></div>
+        <div class="story-accent"></div>
+        <div class="story-body">
+          <span class="story-label">Our Story</span>
+          <h2>Built by a Mom.<br>Tested by <span class="gradient-text">Real Kids</span>.</h2>
+          <p>
+            My son was in tears over reading a clock. Multiplication felt like punishment.
+            So I built what I wished existed — games that are <em>genuinely fun</em> and
+            <em>genuinely educational</em>. No dark patterns. No data harvesting. Just honest
+            games made with love.
+          </p>
+          <div class="trust-grid">
+            <div class="trust-badge fade-in stagger-1">
+              <span class="trust-icon">🔒</span>
+              <div><strong>Zero Data</strong><small>Nothing collected. Ever.</small></div>
+            </div>
+            <div class="trust-badge fade-in stagger-2">
+              <span class="trust-icon">✅</span>
+              <div><strong>COPPA Certified</strong><small>Fully compliant & safe.</small></div>
+            </div>
+            <div class="trust-badge fade-in stagger-3">
+              <span class="trust-icon">💝</span>
+              <div><strong>Mom-Made</strong><small>With love, not algorithms.</small></div>
+            </div>
+            <div class="trust-badge fade-in stagger-4">
+              <span class="trust-icon">⭐</span>
+              <div><strong>New & Growing</strong><small>More games coming soon.</small></div>
+            </div>
+          </div>
+          <a href="/about.html" class="story-link">Read the full story →</a>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll Indicator -->
+    <a href="#games" class="scroll-indicator" id="scrollIndicator">
       <span>Scroll</span>
       <div class="chevrons">
         <div class="chevron"></div>
         <div class="chevron"></div>
       </div>
-    </a>  </section>
-
-  <!-- ABOUT US -->
-  <section class="about-section" id="about">
-    <div class="about-inner">
-      <div class="about-portrait fade-in-left">
-        <img src="/images/Otter-mascot.png" alt="Otterly Games mascot">
-      </div>
-      <div class="about-text fade-in-right">
-        <h2>A Mom Who <span class="gradient-text">Gets It</span></h2>
-        <p>
-          It started with a struggle every parent knows. My son was in tears over reading a clock.
-          Multiplication felt like a punishment. And I was drowning in <strong>screen time guilt</strong> — 
-          handing them a tablet just to get 20 minutes of peace, knowing they were learning nothing.
-        </p>
-        <p>
-          So I built what I wished existed: games that are <em>genuinely fun</em> and <em>genuinely educational</em>. 
-          No dark patterns. No data harvesting. No manipulative monetization. 
-          Just honest games made with love, designed to help kids learn without realizing it.
-        </p>
-        <p>
-          Every game is <strong>COPPA certified</strong>, collects <strong>zero personal data</strong>, 
-          and was tested by real kids (including my own very honest critic).
-        </p>
-        <div class="about-values">
-          <div class="about-value fade-in stagger-1"><span>🔒</span> Zero Data</div>
-          <div class="about-value fade-in stagger-2"><span>✅</span> COPPA Certified</div>
-          <div class="about-value fade-in stagger-3"><span>💝</span> Mom-Made</div>
-          <div class="about-value fade-in stagger-4"><span>⭐</span> New & Growing</div>
-        </div>
-      </div>
-    </div>
+    </a>
   </section>
-
   <!-- CLOCK MASTER -->
   <section class="game-section clock-section" id="games">
     <div class="game-bg" style="background-image: url('/images/Otter-race.jpeg')"></div>
@@ -212,78 +230,143 @@
     </div>
   </section>
 
-  <!-- PLAY SECTION -->
+  <!-- PLAY & DOWNLOAD -->
   <section class="play-section" id="play">
     <div class="play-header">
       <h2 class="fade-in">Try It <span class="gradient-text">Right Now</span></h2>
-      <p class="fade-in">Pick a game. Play it. Exactly like on your phone.</p>
+      <p class="fade-in">Pick a game. Play it right here. Love it? Grab it.</p>
+      <div class="play-tabs fade-in">
+        <button class="play-tab active" data-game="clock" onclick="switchGame('clock')">🕐 Clock Master</button>
+        <button class="play-tab" data-game="math" onclick="switchGame('math')">🎯 Math Tank</button>
+      </div>
     </div>
-    <div class="play-tabs fade-in">
-      <button class="play-tab active" data-game="clock" onclick="switchGame('clock')">🕐 Clock Master</button>
-      <button class="play-tab" data-game="math" onclick="switchGame('math')">🎯 Math Tank</button>
-    </div>
-    <div class="play-phone-wrap fade-in" id="playPhoneWrap">
-      <button class="expand-btn" id="expandBtn" onclick="toggleExpand()" title="Expand game">
-        <svg id="expandIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-        <svg id="contractIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-      </button>
-      <div class="play-phone" id="playPhone">
-        <div class="play-screen">
-          <div class="play-camera"></div>
-          <div class="iframe-scaler" id="iframeScaler">
-            <iframe id="clock-frame" class="play-iframe" allow="autoplay" title="Clock Master"></iframe>
-            <iframe id="math-frame" class="play-iframe" style="display:none" allow="autoplay" title="Math Tank"></iframe>
+    <div class="play-inner fade-in">
+      <!-- LEFT: Phone -->
+      <div class="play-phone-col">
+        <div class="play-phone-wrap" id="playPhoneWrap">
+          <div class="play-phone" id="playPhone">
+            <div class="play-screen">
+              <div class="play-camera"></div>
+              <div class="iframe-scaler" id="iframeScaler">
+                <iframe id="clock-frame" class="play-iframe" allow="autoplay" title="Clock Master"></iframe>
+                <iframe id="math-frame" class="play-iframe" style="display:none" allow="autoplay" title="Math Tank"></iframe>
+              </div>
+              <!-- Game splash preview (visible before play) -->
+              <div class="play-splash" id="playSplash" data-game="clock">
+                <div class="play-splash-bg clock-splash"></div>
+                <div class="play-splash-bg math-splash"></div>
+              </div>
+              <!-- Tap to Play overlay (on top of splash) -->
+              <div class="play-start-overlay" id="playStartOverlay" onclick="startGame()">
+                <div class="play-start-icon" id="splashIcon">🏎️</div>
+                <div class="play-start-title" id="splashTitle">Clock Master</div>
+                <div class="play-start-mode" id="splashMode">Time Race</div>
+                <div class="play-start-btn">▶</div>
+                <p>Tap to Play</p>
+              </div>
+              <div class="play-overlay" id="gameOverlay">
+                <div style="font-size:2.5rem;margin-bottom:0.5rem">🎉</div>
+                <h3>Great Round!</h3>
+                <p>Download the app for achievements, progress tracking & more</p>
+                <a class="overlay-dl" href="https://play.google.com/store/apps/details?id=com.clockmaster.timeforjuniors" target="_blank" rel="noopener" onclick="closeOverlay()">📲 Get the App</a>
+                <button class="overlay-skip" onclick="dismissOverlay()">Keep Playing</button>
+              </div>
+              <div class="play-home-bar"></div>
+            </div>
+            <button class="expand-btn" id="expandBtn" onclick="toggleExpand()" title="Expand game">
+              <svg id="expandIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+              <svg id="contractIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+            </button>
           </div>
-          <!-- Tap to Play overlay -->
-          <div class="play-start-overlay" id="playStartOverlay" onclick="startGame()">
-            <div class="play-start-btn">▶</div>
-            <p>Tap to Play</p>
-          </div>
-          <div class="play-overlay" id="gameOverlay">
-            <div style="font-size:2.5rem;margin-bottom:0.5rem">🎉</div>
-            <h3>Great Round!</h3>
-            <p>Download the app for achievements, progress tracking & more</p>
-            <a class="overlay-dl" href="https://play.google.com/store/apps/details?id=com.clockmaster.timeforjuniors" target="_blank" rel="noopener" onclick="closeOverlay()">📲 Get the App</a>
-            <button class="overlay-skip" onclick="dismissOverlay()">Keep Playing</button>
-          </div>
-          <div class="play-home-bar"></div>
         </div>
       </div>
-      <p class="play-caption">📱 Pixel-perfect — same experience as the app</p>
-    </div>
-  </section>
 
-  <!-- DOWNLOAD -->
-  <section class="download-section" id="download">
-    <h2 class="fade-in">Get the <span class="gradient-text">Full Experience</span></h2>
-    <p class="fade-in">All levels, progress tracking, achievements — on your device.</p>
-    <div class="store-buttons fade-in">
-      <a href="https://play.google.com/store/apps/details?id=com.clockmaster.timeforjuniors&pcampaignid=web_share" target="_blank" rel="noopener" class="store-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
-        Clock Master — Google Play
-      </a>
-      <span class="store-btn" style="opacity:0.6; cursor:default;">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
-        Math Tank — Coming Soon
-      </span>
-    </div>
-    <div class="dl-trust">
-      <span class="fade-in stagger-1">🔒 Zero Data</span><span class="fade-in stagger-2">✅ COPPA Certified</span><span class="fade-in stagger-3">⭐ New & Growing</span><span class="fade-in stagger-4">🦦 Mom-Made</span>
+      <!-- RIGHT: Download info -->
+      <div class="play-info" id="download">
+        <h3>Get the<br><span class="gradient-text">Full Experience</span></h3>
+        <p class="play-info-desc">All levels, achievements & progress tracking — offline, on your device. Built by a mom who understands screen time.</p>
+        <ul class="play-info-perks">
+          <li><span class="feat-icon">📴</span><span><strong>Works offline</strong> — No Wi-Fi needed</span></li>
+          <li><span class="feat-icon">🏆</span><span><strong>Achievements</strong> — Track your child's progress</span></li>
+          <li><span class="feat-icon">⏱️</span><span><strong>Daily limits</strong> — Built-in screen time controls</span></li>
+          <li><span class="feat-icon">🔒</span><span><strong>COPPA compliant</strong> — No data collected</span></li>
+        </ul>
+        <div class="play-info-buttons">
+          <a href="https://play.google.com/store/apps/details?id=com.clockmaster.timeforjuniors&pcampaignid=web_share" target="_blank" rel="noopener" class="game-play-btn purple">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
+            Clock Master — Google Play
+          </a>
+          <span class="game-play-btn purple disabled">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
+            Math Tank — Coming Soon
+          </span>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- FREE LEARNING TOOLS -->
-  <section class="seo-section">
-    <div class="seo-inner">
-      <h3 class="fade-in">Free Learning Tools</h3>
-      <p class="fade-in">Practice anytime, right in your browser</p>
-      <div class="seo-grid">
-        <a href="/tools/clock-lessons.html" class="seo-link fade-in stagger-1">Clock Lessons <small>Learn time</small></a>
-        <a href="/tools/math-quiz.html" class="seo-link fade-in stagger-2">Math Quiz <small>Quick practice</small></a>
-        <a href="/tools/multiplication-table.html" class="seo-link fade-in stagger-3">Times Tables <small>Interactive</small></a>
-        <a href="/tools/multiplication-practice.html" class="seo-link fade-in stagger-4">Multiplication <small>Drills</small></a>
-        <a href="/tools/division-practice.html" class="seo-link fade-in stagger-5">Division <small>Step by step</small></a>
-        <a href="/tools/spelling-bee.html" class="seo-link fade-in stagger-6">Spelling Bee <small>Words</small></a>
+  <section class="tools-section">
+    <div class="tools-inner">
+      <h3 class="fade-in">Free <span class="gradient-text">Learning Tools</span></h3>
+      <p class="fade-in">Practice anytime, right in your browser — no download needed</p>
+      <div class="tools-grid">
+        <a href="/tools/hour-hand.html" class="tool-card fade-in stagger-1" data-category="time">
+          <span class="tool-icon">🖐️</span>
+          <div class="tool-text">
+            <strong>Hour Hand</strong>
+            <small>Drag the short hand, see the hour</small>
+          </div>
+        </a>
+        <a href="/tools/minute-hand.html" class="tool-card fade-in stagger-2" data-category="time">
+          <span class="tool-icon">⏱️</span>
+          <div class="tool-text">
+            <strong>Minute Hand</strong>
+            <small>Grab the long hand, count minutes</small>
+          </div>
+        </a>
+        <a href="/tools/math-quiz.html" class="tool-card fade-in stagger-3" data-category="math">
+          <span class="tool-icon">🧮</span>
+          <div class="tool-text">
+            <strong>Math Quiz</strong>
+            <small>Quick drills across all operations</small>
+          </div>
+        </a>
+        <a href="/tools/multiplication-table.html" class="tool-card fade-in stagger-4" data-category="math">
+          <span class="tool-icon">✖️</span>
+          <div class="tool-text">
+            <strong>Times Tables</strong>
+            <small>Interactive 2&times; to 12&times; tables</small>
+          </div>
+        </a>
+        <a href="/tools/multiplication-practice.html" class="tool-card fade-in stagger-5" data-category="math">
+          <span class="tool-icon">💪</span>
+          <div class="tool-text">
+            <strong>Multiplication</strong>
+            <small>Timed multiplication drills</small>
+          </div>
+        </a>
+        <a href="/tools/division-practice.html" class="tool-card fade-in stagger-6" data-category="math">
+          <span class="tool-icon">➗</span>
+          <div class="tool-text">
+            <strong>Division Practice</strong>
+            <small>Step-by-step division problems</small>
+          </div>
+        </a>
+        <a href="/tools/long-division.html" class="tool-card fade-in stagger-7" data-category="math">
+          <span class="tool-icon">📏</span>
+          <div class="tool-text">
+            <strong>Long Division</strong>
+            <small>Master the long division method</small>
+          </div>
+        </a>
+        <a href="/tools/spelling-bee.html" class="tool-card fade-in stagger-8" data-category="language">
+          <span class="tool-icon">🐝</span>
+          <div class="tool-text">
+            <strong>Spelling Bee</strong>
+            <small>Practice spelling common words</small>
+          </div>
+        </a>
       </div>
       <a href="/tools/" class="section-more-link fade-in">View all tools &rarr;</a>
     </div>
@@ -378,6 +461,8 @@
     function startGame() {
       started = true;
       document.getElementById('playStartOverlay').classList.add('hidden');
+      const splash = document.getElementById('playSplash');
+      if (splash) splash.classList.add('hidden');
       ensureLoaded(activeGame);
     }
 
@@ -395,6 +480,18 @@
       // Show / hide
       cf.style.display = game === 'clock' ? 'block' : 'none';
       mf.style.display = game === 'math'  ? 'block' : 'none';
+
+      // Update splash preview
+      const splash = document.getElementById('playSplash');
+      if (splash) {
+        splash.setAttribute('data-game', game);
+        const icons = { clock: '🏎️', math: '🎯' };
+        const titles = { clock: 'Clock Master', math: 'Math Tank' };
+        const modes = { clock: 'Time Race', math: 'Battle Mode' };
+        document.getElementById('splashIcon').textContent = icons[game];
+        document.getElementById('splashTitle').textContent = titles[game];
+        document.getElementById('splashMode').textContent = modes[game];
+      }
 
       if (started) ensureLoaded(game);
 
