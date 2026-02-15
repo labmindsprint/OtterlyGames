@@ -60,7 +60,7 @@
    FOOTER
    ========================================================================== */
 .footer {
-  padding: 2rem 1.5rem; background: var(--dark-bg);
+  padding: 2rem 1.5rem 5rem; background: var(--dark-bg);
   border-top: 1px solid var(--dark-border);
   text-align: center; font-size: 0.85rem; color: var(--text-secondary);
   margin-top: auto;
