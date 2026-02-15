@@ -460,6 +460,39 @@ img { max-width: 100%; display: block; }
 }
 .overlay-skip:hover { border-color: rgba(255,255,255,0.4); color: white; }
 .play-caption { margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.4rem; }
+
+/* Expand / Contract */
+.play-phone-wrap { position: relative; }
+.expand-btn {
+  position: absolute; top: -12px; right: calc(50% - 185px); z-index: 20;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--dark-surface); border: 1px solid var(--dark-border);
+  color: var(--pastel-purple); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.25s; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.expand-btn:hover { background: var(--pastel-purple); color: #0a0a0f; transform: scale(1.1); }
+
+/* Expanded state */
+.play-phone-wrap.expanded {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.92); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 1rem;
+}
+.play-phone-wrap.expanded .expand-btn {
+  position: fixed; top: 1rem; right: 1rem; z-index: 10000;
+}
+.play-phone-wrap.expanded .play-caption { display: none; }
+.play-phone.expanded {
+  width: 100% !important; max-width: min(90vw, calc(90vh * 412 / 915));
+  height: auto !important; aspect-ratio: 412 / 915; max-height: 90vh;
+  border-radius: 16px;
+}
+.play-phone.expanded .play-screen {
+  top: 0; left: 0; right: 0; bottom: 0; border-radius: 16px;
+}
+.play-phone.expanded .play-camera { display: none; }
+.play-phone.expanded .play-home-bar { display: none; }
+
 @media (min-width: 640px) {
   .play-phone { width: 340px; height: 720px; border-radius: 40px; }
   .play-screen { top: 8px; left: 8px; right: 8px; bottom: 8px; border-radius: 32px; }
@@ -467,6 +500,7 @@ img { max-width: 100%; display: block; }
   .iframe-scaler { transform: scale(0.786); }
   .play-camera { top: 14px; width: 10px; height: 10px; }
   .play-home-bar { bottom: 7px; width: 100px; height: 4px; }
+  .expand-btn { right: calc(50% - 215px); }
 }
 
 /* DOWNLOAD */
