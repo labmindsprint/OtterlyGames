@@ -5,7 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page Not Found — Otterly Games</title>
   <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <style>
+    .page-404 {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 2rem;
+    }
+    .page-404 h1 {
+      font-size: 8rem; line-height: 1; margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .page-404 h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .page-404 p { color: var(--text-secondary); margin-bottom: 2rem; }
+    .page-404 .btn-home {
+      display: inline-block; padding: 0.8rem 2rem; border-radius: 999px;
+      font-weight: 700; font-size: 1rem;
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .page-404 .btn-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(196,181,253,0.3);
+    }
+  </style>
   <link rel="icon" type="image/png" href="/images/Otter-mascot.png">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
@@ -38,7 +62,7 @@
       </svg>
       <h2>This page has drifted away...</h2>
       <p>Like an otter without its buddy. Let's get you back to safe waters.</p>
-      <a href="/" class="btn btn-primary btn-lg">Swim Back Home 🦦</a>
+      <a href="/" class="btn-home">Swim Back Home 🦦</a>
     </div>
   </div>
 </body>

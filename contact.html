@@ -16,70 +16,11 @@
   <meta name="twitter:image" content="https://otterlygames.com/images/Otter-mascot.png">
   <meta name="pinterest-rich-pin" content="true">
   <link rel="icon" type="image/png" href="/images/Otter-mascot.png">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Shared CSS (single source of truth) -->
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <!-- Page-specific styles -->
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: #0a0a0f; color: #e8e8f0;
-      line-height: 1.6; overflow-x: hidden;
-    }
-    h1, h2, h3, h4 { font-family: 'Nunito', sans-serif; }
-    a { text-decoration: none; color: inherit; }
-    button { font-family: inherit; cursor: pointer; border: none; background: none; }
-    img { max-width: 100%; display: block; }
-    :root {
-      --pastel-purple: #c4b5fd; --pastel-pink: #f9a8d4; --pastel-blue: #93c5fd;
-      --pastel-green: #86efac; --pastel-amber: #fcd34d;
-      --dark-bg: #0a0a0f; --dark-card: #141420; --dark-surface: #1a1a2e;
-      --dark-border: #2a2a3e; --text-primary: #f0f0f8; --text-secondary: #9898b0;
-    }
-    .gradient-text {
-      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-
-    /* Nav */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(10,10,15,0.85); backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.06); height: 64px;
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
-      display: flex; align-items: center; justify-content: space-between; height: 100%;
-    }
-    .nav-brand {
-      display: flex; align-items: center; gap: 0.6rem;
-      font-family: 'Nunito'; font-weight: 900; font-size: 1.3rem;
-    }
-    .nav-brand .brand-text {
-      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .nav-brand img { width: 40px; height: 40px; border-radius: 50%; }
-    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
-    .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--pastel-purple); }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
-      color: #0a0a0f !important; padding: 0.5rem 1.2rem; border-radius: 999px;
-      font-weight: 700; font-size: 0.85rem; transition: transform 0.2s;
-    }
-    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(196,181,253,0.3); }
-    .nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; }
-    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-secondary); border-radius: 2px; }
-    @media (max-width: 768px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none; position: absolute; top: 64px; left: 0; right: 0;
-        background: rgba(10,10,15,0.97); padding: 1.5rem; flex-direction: column;
-        border-bottom: 1px solid var(--dark-border);
-      }
-      .nav-links.open { display: flex; }
-    }
-
     /* Contact Section */
     .contact-section {
       max-width: 640px; margin: 0 auto; padding: 8rem 1.5rem 4rem;
@@ -194,18 +135,6 @@
       color: var(--text-secondary);
     }
 
-    /* Footer */
-    .footer {
-      padding: 2rem 1.5rem;
-      border-top: 1px solid var(--dark-border);
-      text-align: center;
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-    }
-    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-    .footer-links a { color: #8888a0; }
-    .footer-links a:hover { color: var(--pastel-purple); }
-
     @media (max-width: 480px) {
       .contact-header h1 { font-size: 2rem; }
       .contact-form { padding: 1.5rem; }
@@ -217,27 +146,7 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
 </head>
-<body>
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-brand">
-        <img src="/images/Otter-mascot.png" alt="Otterly Games" style="width:40px;height:40px;border-radius:50%">
-        <span class="brand-text">Otterly Games</span>
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-links" id="navLinks">
-        <a href="/#games">Games</a>
-        <a href="/tools/">Tools</a>
-        <a href="/blog/">Blog</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html" class="active">Contact</a>
-        <a href="/#games" class="nav-cta">Get Our Games →</a>
-      </div>
-    </div>
-  </nav>
+<body data-og-includes="nav,footer">
 
   <!-- Contact Section -->
   <section class="contact-section">
@@ -293,17 +202,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="/">Home</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a>
-    </div>
-    <p style="color:#4a4a60">&copy; 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p>
-  </footer>
-
   <script>
-    document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
-
     const form = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
 
@@ -335,6 +234,8 @@
       }
     });
   </script>
+  <!-- Shared includes -->
+  <script src="/js/includes.js" defer></script>
   <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
   <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
 </body>

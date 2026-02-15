@@ -12,8 +12,26 @@
   <meta property="og:url" content="https://otterlygames.com/privacy.html">
   <meta name="twitter:card" content="summary">
   <meta name="pinterest-rich-pin" content="true">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/dark-brand.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    .legal-page {
+      padding: 6rem 1.5rem 3rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .legal-page h1 { font-size: 2rem; margin-bottom: 1.5rem; }
+    .legal-page h2 { font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+    .legal-page h3 { font-size: 1.15rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .legal-page p, .legal-page li {
+      font-size: 1rem; line-height: 1.8;
+      color: var(--text-secondary); margin-bottom: 1rem;
+    }
+    .legal-page ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .legal-page li { list-style: disc; margin-bottom: 0.5rem; }
+    .legal-page strong { color: var(--text-primary); }
+    .legal-page a { color: var(--pastel-purple); text-decoration: underline; }
+  </style>
   <link rel="icon" type="image/png" href="/images/Otter-mascot.png">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
@@ -21,8 +39,7 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
 </head>
-<body>
-  <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games" style="width:40px;height:40px;border-radius:50%"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button><div class="nav-links"><a href="/#games" class="nav-link">Games</a><a href="/tools/" class="nav-link">Tools</a><a href="/blog/" class="nav-link">Blog</a><a href="/about.html" class="nav-link">About</a><a href="/contact.html" class="nav-link">Contact</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
+<body data-og-includes="nav,footer">
 
   <section class="legal-page">
     <div class="container">
@@ -119,14 +136,8 @@
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="/">Home</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a>
-    </div>
-    <p style="color:#4a4a60">&copy; 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p>
-  </footer>
-
-  <script src="js/main.js"></script>
+  <!-- Shared includes -->
+  <script src="/js/includes.js" defer></script>
   <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
   <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
 </body>
