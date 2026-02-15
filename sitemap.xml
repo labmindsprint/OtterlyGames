@@ -163,6 +163,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://otterlygames.com/games/clockmaster/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://otterlygames.com/games/mathtank/</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://otterlygames.com/privacy.html</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>yearly</changefreq>
