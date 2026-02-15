@@ -134,7 +134,19 @@
     </div>
   </article>
 
+  <section class="related-posts" id="related-posts"></section>
+  <nav class="post-nav" id="post-nav"></nav>
+
   <script src="/js/includes.js" defer></script>
+  <script src="/js/registry.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.OG) {
+        OG.renderRelatedPosts('#related-posts');
+        OG.renderPostNav('#post-nav');
+      }
+    });
+  </script>
   <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
   <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
 </body>

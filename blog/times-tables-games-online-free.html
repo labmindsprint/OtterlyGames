@@ -154,6 +154,18 @@
     </div>
   </article>
 
+  <section class="related-posts" id="related-posts"></section>
+  <nav class="post-nav" id="post-nav"></nav>
+
   <script src="/js/includes.js" defer></script>
+  <script src="/js/registry.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.OG) {
+        OG.renderRelatedPosts('#related-posts');
+        OG.renderPostNav('#post-nav');
+      }
+    });
+  </script>
 </body>
 </html>

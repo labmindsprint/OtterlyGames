@@ -212,6 +212,104 @@
     });
   };
 
+  /* ---- Post Navigation ---- */
+
+  /**
+   * Render prev/next navigation and "Back to Blog" for a blog post page.
+   * Auto-detects current post from window.location.pathname.
+   * @param {string} containerSelector - CSS selector for the nav container
+   */
+  OG.renderPostNav = function (containerSelector) {
+    return OG.loadRegistry().then(function () {
+      var container = document.querySelector(containerSelector);
+      if (!container || !OG._blogs) return;
+
+      var path = window.location.pathname;
+      var posts = OG._blogs.slice().sort(function (a, b) {
+        return new Date(b.date) - new Date(a.date);
+      });
+
+      var currentIdx = -1;
+      for (var i = 0; i < posts.length; i++) {
+        if (path.indexOf(posts[i].id) !== -1) { currentIdx = i; break; }
+      }
+      if (currentIdx === -1) return;
+
+      var prev = currentIdx > 0 ? posts[currentIdx - 1] : null;
+      var next = currentIdx < posts.length - 1 ? posts[currentIdx + 1] : null;
+
+      var html = '<div class="post-nav-back">' +
+        '<a href="/blog/">&#8592; All Posts</a>' +
+      '</div>';
+
+      if (prev || next) {
+        html += '<div class="post-nav-links">';
+        if (prev) {
+          html += '<div class="post-nav-prev"><a href="' + prev.url + '">' +
+            '<span class="post-nav-label">Newer</span>' +
+            '<span class="post-nav-title">' + prev.title + '</span>' +
+          '</a></div>';
+        }
+        if (next) {
+          html += '<div class="post-nav-next"><a href="' + next.url + '">' +
+            '<span class="post-nav-label">Older</span>' +
+            '<span class="post-nav-title">' + next.title + '</span>' +
+          '</a></div>';
+        }
+        html += '</div>';
+      }
+
+      container.innerHTML = html;
+    });
+  };
+
+  /**
+   * Render related posts at the bottom of a blog post page.
+   * Shows posts from the same category first, then fills with recent posts.
+   * @param {string} containerSelector - CSS selector
+   * @param {number} [maxItems=3] - max related posts to show
+   */
+  OG.renderRelatedPosts = function (containerSelector, maxItems) {
+    maxItems = maxItems || 3;
+    return OG.loadRegistry().then(function () {
+      var container = document.querySelector(containerSelector);
+      if (!container || !OG._blogs) return;
+
+      var path = window.location.pathname;
+      var current = null;
+      for (var i = 0; i < OG._blogs.length; i++) {
+        if (path.indexOf(OG._blogs[i].id) !== -1) { current = OG._blogs[i]; break; }
+      }
+      if (!current) return;
+
+      // Same-category posts first (excluding current), then recent posts
+      var sameCategory = OG._blogs.filter(function (p) {
+        return p.id !== current.id && p.category === current.category;
+      });
+      var others = OG._blogs
+        .filter(function (p) {
+          return p.id !== current.id && p.category !== current.category;
+        })
+        .sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+
+      var related = sameCategory.concat(others).slice(0, maxItems);
+      if (related.length === 0) return;
+
+      var html = '<h3>You Might Also Like</h3><div class="related-posts-grid">';
+      related.forEach(function (p, idx) {
+        html += '<a href="' + p.url + '" class="blog-preview-card fade-in stagger-' + (idx + 1) + '">' +
+          '<span class="blog-preview-date">' + p.displayDate + '</span>' +
+          '<h4>' + p.title + '</h4>' +
+          '<p>' + p.excerpt + '</p>' +
+        '</a>';
+      });
+      html += '</div>';
+
+      container.innerHTML = html;
+      reobserveFadeIns(container);
+    });
+  };
+
   /* ---- Schema Helpers ---- */
 
   function updateToolsSchema() {
