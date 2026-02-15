@@ -19,70 +19,12 @@
   {"@context":"https://schema.org","@type":"WebApplication","name":"Division Practice","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"},"description":"Free division table study and drill for kids aged 4-9. No remainders."}
   </script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: #0a0a0f; color: #f0f0f8;
-      line-height: 1.6; overflow-x: hidden;
       min-height: 100vh;
       display: flex; flex-direction: column;
-    }
-    h1, h2, h3, h4 { font-family: 'Nunito', sans-serif; }
-    a { text-decoration: none; color: inherit; }
-    button { font-family: inherit; cursor: pointer; border: none; background: none; }
-    img { max-width: 100%; display: block; }
-    :root {
-      --pastel-purple: #c4b5fd; --pastel-pink: #f9a8d4; --pastel-blue: #93c5fd;
-      --pastel-green: #86efac; --pastel-amber: #fcd34d;
-      --dark-bg: #0a0a0f; --dark-card: #141420; --dark-surface: #1a1a2e;
-      --dark-border: #2a2a3e; --text-primary: #f0f0f8; --text-secondary: #9898b0;
-    }
-    .gradient-text {
-      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-
-    /* ── Nav ── */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(10,10,15,0.85); backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.06); height: 64px;
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
-      display: flex; align-items: center; justify-content: space-between; height: 100%;
-    }
-    .nav-brand {
-      display: flex; align-items: center; gap: 0.6rem;
-      font-family: 'Nunito'; font-weight: 900; font-size: 1.3rem;
-    }
-    .nav-brand .brand-text {
-      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .nav-brand img { width: 40px; height: 40px; border-radius: 50%; }
-    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
-    .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--pastel-purple); }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
-      color: #0a0a0f !important; padding: 0.5rem 1.2rem; border-radius: 999px;
-      font-weight: 700; font-size: 0.85rem; transition: transform 0.2s;
-    }
-    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(196,181,253,0.3); }
-    .nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 0.5rem; }
-    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-secondary); border-radius: 2px; transition: 0.3s; }
-    @media (max-width: 768px) {
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none; position: absolute; top: 64px; left: 0; right: 0;
-        background: rgba(10,10,15,0.97); padding: 1.5rem; flex-direction: column;
-        border-bottom: 1px solid var(--dark-border);
-      }
-      .nav-links.open { display: flex; }
     }
 
     /* ── Hero ── */
@@ -325,15 +267,6 @@
     }
     .reset-btn:hover { color: var(--pastel-pink); }
 
-    /* ── Footer ── */
-    .footer {
-      border-top: 1px solid var(--dark-border);
-      padding: 2rem 1.5rem; text-align: center; margin-top: auto;
-    }
-    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
-    .footer-links a { color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--pastel-purple); }
-
     /* ── Animations ── */
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
@@ -372,26 +305,7 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
 </head>
-<body>
-
-  <!-- Nav -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-brand">
-        <img src="/images/Otter-mascot.png" alt="Otterly Games">
-        <span class="brand-text">Otterly Games</span>
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
-      <div class="nav-links" id="navLinks">
-        <a href="/#games">Games</a>
-        <a href="/tools/" class="active">Tools</a>
-        <a href="/blog/">Blog</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-        <a href="/#games" class="nav-cta">Get Our Games →</a>
-      </div>
-    </div>
-  </nav>
+<body data-og-includes="nav,footer">
 
   <noscript><div style="max-width:600px;margin:6rem auto 2rem;padding:2rem;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;text-align:center;color:#f0f0f8;font-family:sans-serif"><h2 style="margin-bottom:.5rem">➗ Division Practice</h2><p style="color:#9898b0;margin-bottom:.5rem">This interactive tool lets you study and drill division facts from ÷2 to ÷12 with typed answers. No remainders, no timer, no pressure.</p><p style="color:#9898b0">Please <strong>enable JavaScript</strong> in your browser to use this tool.</p></div></noscript>
 
@@ -515,14 +429,7 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="/">Home</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a>
-    </div>
-    <p style="color:#4a4a60">&copy; 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p>
-  </footer>
-
+  <script src="/js/includes.js" defer></script>
   <script>
   (function() {
     'use strict';
@@ -564,11 +471,6 @@
     var celebrationSub = document.getElementById('celebrationSub');
     var resetBtn = document.getElementById('resetBtn');
     var practiceCard = document.getElementById('practiceCard');
-
-    // ── Nav toggle ──
-    document.getElementById('navToggle').addEventListener('click', function() {
-      document.getElementById('navLinks').classList.toggle('open');
-    });
 
     // ── Build table selector (÷2 through ÷12) ──
     for (var i = 2; i <= 12; i++) {

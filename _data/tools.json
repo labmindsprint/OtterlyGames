@@ -1,0 +1,174 @@
+{
+  "categories": {
+    "time": {
+      "label": "🕐 Time & Clocks",
+      "order": 1
+    },
+    "math": {
+      "label": "🧮 Math Practice & Drills",
+      "order": 2
+    },
+    "language": {
+      "label": "📚 English & Language",
+      "order": 3
+    }
+  },
+  "tools": [
+    {
+      "id": "hour-hand",
+      "title": "Hour Hand",
+      "emoji": "🖐️",
+      "category": "time",
+      "ageRange": "Ages 4–6",
+      "description": "Drag the short hand, see the hour",
+      "fullDescription": "Interactive hour hand lesson. Drag the short hand around the clock to see the hour change. No quiz, just explore.",
+      "url": "/tools/hour-hand.html",
+      "cta": "Learn Free →",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "minute-hand",
+      "title": "Minute Hand",
+      "emoji": "⏱️",
+      "category": "time",
+      "ageRange": "Ages 5–7",
+      "description": "Grab the long hand, count minutes",
+      "fullDescription": "Drag the long hand around the clock and see minutes change. Learn to count by 5s and read every minute.",
+      "url": "/tools/minute-hand.html",
+      "cta": "Learn Free →",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "am-pm",
+      "title": "AM & PM",
+      "emoji": "🌅",
+      "category": "time",
+      "ageRange": "Ages 5–8",
+      "description": "Learn morning vs afternoon",
+      "fullDescription": "Slide through a full day and learn when it's AM (morning) and PM (afternoon/night). Visual and fun.",
+      "url": "/tools/am-pm.html",
+      "cta": "Learn Free →",
+      "featured": true,
+      "order": 3
+    },
+    {
+      "id": "clock-lessons",
+      "title": "Clock Lessons",
+      "emoji": "🕐",
+      "category": "time",
+      "ageRange": "Ages 5–8",
+      "description": "Read analogue clocks step by step",
+      "fullDescription": "Learn to read analogue clocks — from hours only to every minute, step by step.",
+      "url": "/tools/clock-lessons.html",
+      "cta": "Learn Free →",
+      "featured": true,
+      "order": 4
+    },
+    {
+      "id": "multiplication-practice",
+      "title": "Multiplication Practice",
+      "emoji": "✖️",
+      "category": "math",
+      "ageRange": "Ages 5–9",
+      "description": "Timed multiplication drills",
+      "fullDescription": "Study times tables 2×–12×, then drill with typed answers. No timer, no pressure.",
+      "url": "/tools/multiplication-practice.html",
+      "cta": "Practice Free →",
+      "featured": true,
+      "order": 1
+    },
+    {
+      "id": "division-practice",
+      "title": "Division Practice",
+      "emoji": "➗",
+      "category": "math",
+      "ageRange": "Ages 6–10",
+      "description": "Step-by-step division problems",
+      "fullDescription": "Study division tables ÷2–÷12, then practise with typed answers. No remainders.",
+      "url": "/tools/division-practice.html",
+      "cta": "Practice Free →",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "multiplication-table",
+      "title": "Times Tables",
+      "emoji": "📋",
+      "category": "math",
+      "ageRange": "Ages 5–11",
+      "description": "Interactive 2× to 12× tables",
+      "fullDescription": "Interactive 12×12 times table chart. Tap any number to highlight its entire table.",
+      "url": "/tools/multiplication-table.html",
+      "cta": "View Table →",
+      "featured": true,
+      "order": 3
+    },
+    {
+      "id": "column-multiplication",
+      "title": "Column Multiplication",
+      "emoji": "📊",
+      "category": "math",
+      "ageRange": "Ages 8–11",
+      "description": "Long multiplication with carries",
+      "fullDescription": "Step-by-step long multiplication with carries and partial products.",
+      "url": "/tools/column-multiplication.html",
+      "cta": "Practice Free →",
+      "featured": false,
+      "order": 4
+    },
+    {
+      "id": "long-division",
+      "title": "Long Division",
+      "emoji": "📐",
+      "category": "math",
+      "ageRange": "Ages 8–11",
+      "description": "Master the long division method",
+      "fullDescription": "Bracket division with remainders. Fill in each quotient digit step by step.",
+      "url": "/tools/long-division.html",
+      "cta": "Practice Free →",
+      "featured": true,
+      "order": 5
+    },
+    {
+      "id": "math-quiz",
+      "title": "Math Speed Quiz",
+      "emoji": "⚡",
+      "category": "math",
+      "ageRange": "Ages 6–11",
+      "description": "Quick drills across all operations",
+      "fullDescription": "30-second timed challenge with three difficulty modes. Beat your high score!",
+      "url": "/tools/math-quiz.html",
+      "cta": "Start Quiz →",
+      "featured": true,
+      "order": 6
+    },
+    {
+      "id": "calculator",
+      "title": "Kid Calculator",
+      "emoji": "🔢",
+      "category": "math",
+      "ageRange": "Ages 5–11",
+      "description": "Simple calculator for homework",
+      "fullDescription": "Simple, colourful calculator with big buttons — perfect for checking homework.",
+      "url": "/tools/calculator.html",
+      "cta": "Open Calculator →",
+      "featured": false,
+      "order": 7
+    },
+    {
+      "id": "spelling-bee",
+      "title": "Spelling Bee",
+      "emoji": "🐝",
+      "category": "language",
+      "ageRange": "Ages 4–11",
+      "description": "Practice spelling common words",
+      "fullDescription": "Listen to a word, read the hint, then type the spelling. Three levels with voice guidance.",
+      "url": "/tools/spelling-bee.html",
+      "cta": "Practice Free →",
+      "featured": true,
+      "order": 1
+    }
+  ]
+}

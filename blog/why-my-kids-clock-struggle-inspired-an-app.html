@@ -21,6 +21,8 @@
   </script>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/dark-brand.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://otterlygames.com/blog/"},{"@type":"ListItem","position":3,"name":"Why My Kid's Clock Struggle Inspired an App"}]}
@@ -31,8 +33,7 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
 </head>
-<body>
-  <nav class="nav"><div class="nav-inner"><a href="/" class="nav-brand"><img src="/images/Otter-mascot.png" alt="Otterly Games" style="width:40px;height:40px;border-radius:50%"><span class="brand-text">Otterly Games</span></a><button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button><div class="nav-links"><a href="/#games" class="nav-link">Games</a><a href="/tools/" class="nav-link">Tools</a><a href="/blog/" class="nav-link active">Blog</a><a href="/about.html" class="nav-link">About</a><a href="/contact.html" class="nav-link">Contact</a><a href="/#games" class="nav-cta">Get Our Games →</a></div></div></nav>
+<body data-og-includes="nav,footer">
 
   <article>
     <section class="post-hero">
@@ -130,7 +131,7 @@
     </div>
   </article>
 
-  <footer class="footer"><div class="footer-links"><a href="/">Home</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a></div><p style="color:#4a4a60">&copy; 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p></footer>
+  <script src="/js/includes.js" defer></script>
   <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
   <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
   <script src="../js/main.js"></script>

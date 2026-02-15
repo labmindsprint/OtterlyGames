@@ -49,7 +49,10 @@
   }
   </script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦦</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Shared CSS (single source of truth) -->
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <!-- Page-specific overrides -->
   <link rel="stylesheet" href="/css/homepage.css">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
@@ -310,63 +313,8 @@
     <div class="tools-inner">
       <h3 class="fade-in">Free <span class="gradient-text">Learning Tools</span></h3>
       <p class="fade-in">Practice anytime, right in your browser — no download needed</p>
-      <div class="tools-grid">
-        <a href="/tools/hour-hand.html" class="tool-card fade-in stagger-1" data-category="time">
-          <span class="tool-icon">🖐️</span>
-          <div class="tool-text">
-            <strong>Hour Hand</strong>
-            <small>Drag the short hand, see the hour</small>
-          </div>
-        </a>
-        <a href="/tools/minute-hand.html" class="tool-card fade-in stagger-2" data-category="time">
-          <span class="tool-icon">⏱️</span>
-          <div class="tool-text">
-            <strong>Minute Hand</strong>
-            <small>Grab the long hand, count minutes</small>
-          </div>
-        </a>
-        <a href="/tools/math-quiz.html" class="tool-card fade-in stagger-3" data-category="math">
-          <span class="tool-icon">🧮</span>
-          <div class="tool-text">
-            <strong>Math Quiz</strong>
-            <small>Quick drills across all operations</small>
-          </div>
-        </a>
-        <a href="/tools/multiplication-table.html" class="tool-card fade-in stagger-4" data-category="math">
-          <span class="tool-icon">✖️</span>
-          <div class="tool-text">
-            <strong>Times Tables</strong>
-            <small>Interactive 2&times; to 12&times; tables</small>
-          </div>
-        </a>
-        <a href="/tools/multiplication-practice.html" class="tool-card fade-in stagger-5" data-category="math">
-          <span class="tool-icon">💪</span>
-          <div class="tool-text">
-            <strong>Multiplication</strong>
-            <small>Timed multiplication drills</small>
-          </div>
-        </a>
-        <a href="/tools/division-practice.html" class="tool-card fade-in stagger-6" data-category="math">
-          <span class="tool-icon">➗</span>
-          <div class="tool-text">
-            <strong>Division Practice</strong>
-            <small>Step-by-step division problems</small>
-          </div>
-        </a>
-        <a href="/tools/long-division.html" class="tool-card fade-in stagger-7" data-category="math">
-          <span class="tool-icon">📏</span>
-          <div class="tool-text">
-            <strong>Long Division</strong>
-            <small>Master the long division method</small>
-          </div>
-        </a>
-        <a href="/tools/spelling-bee.html" class="tool-card fade-in stagger-8" data-category="language">
-          <span class="tool-icon">🐝</span>
-          <div class="tool-text">
-            <strong>Spelling Bee</strong>
-            <small>Practice spelling common words</small>
-          </div>
-        </a>
+      <div id="tools-preview" class="tools-grid--compact">
+        <!-- OG.renderToolsPreview populates this from _data/tools.json -->
       </div>
       <a href="/tools/" class="section-more-link fade-in">View all tools &rarr;</a>
     </div>
@@ -377,22 +325,8 @@
     <div class="blog-preview-inner">
       <h3 class="fade-in">From <span class="gradient-text">The Otter Side</span></h3>
       <p class="fade-in">Tips, stories & guides from a mom who builds learning games</p>
-      <div class="blog-preview-grid">
-        <a href="/blog/division-for-kids-explained-simply.html" class="blog-preview-card fade-in stagger-1">
-          <span class="blog-preview-date">Mar 2, 2026</span>
-          <h4>Division for Kids Explained Simply</h4>
-          <p>How to teach division to kids in a way they actually understand. A parent's step-by-step guide.</p>
-        </a>
-        <a href="/blog/how-to-help-a-child-who-hates-math.html" class="blog-preview-card fade-in stagger-2">
-          <span class="blog-preview-date">Feb 28, 2026</span>
-          <h4>How to Help a Child Who Hates Math</h4>
-          <p>Practical strategies for parents on how to turn math dread into confidence.</p>
-        </a>
-        <a href="/blog/times-tables-games-online-free.html" class="blog-preview-card fade-in stagger-3">
-          <span class="blog-preview-date">Feb 25, 2026</span>
-          <h4>Free Times Tables Games Online</h4>
-          <p>Free online times tables games for kids. Practice multiplication from 2&times; to 12&times;.</p>
-        </a>
+      <div id="blog-preview" class="blog-preview-grid">
+        <!-- OG.renderBlogPreview populates this from _data/blogs.json -->
       </div>
       <a href="/blog/" class="section-more-link fade-in">Read more on the blog &rarr;</a>
     </div>
@@ -588,6 +522,16 @@
       scaler.style.transform = 'scale(' + scale + ')';
       scaler.style.transformOrigin = 'top left';
     }
+  </script>
+  <!-- Data Registry -->
+  <script src="/js/registry.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.OG) {
+        OG.renderToolsPreview('#tools-preview');
+        OG.renderBlogPreview('#blog-preview', 3);
+      }
+    });
   </script>
   <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
   <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
