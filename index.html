@@ -48,7 +48,12 @@
     }
   }
   </script>
-  <link rel="icon" type="image/png" href="/images/Otter-mascot.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
   <!-- Shared CSS (single source of truth) -->
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
@@ -367,17 +372,16 @@
     let loaded = { clock: false, math: false };
     let started = false; // user clicked "Tap to Play"
 
-    /* Pause every <audio> and AudioContext inside an iframe (same-origin) */
+    /* Pause every <audio> and AudioContext inside an iframe */
     function pauseIframeAudio(frame) {
       try {
-        const win = frame.contentWindow;
-        if (!win) return;
-        // Pause HTML5 <audio> elements
-        const doc = win.document;
-        if (doc) doc.querySelectorAll('audio').forEach(a => a.pause());
-        // Suspend any AudioContext / webkitAudioContext
-        if (win.AudioContext || win.webkitAudioContext) {
-          ['audioContext','__audioCtx'].forEach(k => { if (win[k] && win[k].state === 'running') win[k].suspend(); });
+        // Primary: postMessage (game listens for this)
+        if (frame.contentWindow) {
+          frame.contentWindow.postMessage({ type: 'pauseAudio' }, '*');
+        }
+        // Backup: call tracked-audio helper injected by game HTML
+        if (frame.contentWindow && typeof frame.contentWindow.__pauseAllAudio === 'function') {
+          frame.contentWindow.__pauseAllAudio();
         }
       } catch (e) { /* cross-origin — ignore */ }
     }
