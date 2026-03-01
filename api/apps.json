@@ -1,0 +1,21 @@
+{
+  "apps": [
+    {
+      "id": "com.clockmaster.timeforjuniors",
+      "name": "Clock Master",
+      "emoji": "🕐",
+      "tagline": "Race to learn time!",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.clockmaster.timeforjuniors",
+      "order": 1
+    },
+    {
+      "id": "com.namasya.mathtank",
+      "name": "Math Tank",
+      "emoji": "🎯",
+      "tagline": "Multiply. Divide. Conquer!",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.namasya.mathtank",
+      "order": 2
+    }
+  ],
+  "updatedAt": "2026-03-01T00:00:00Z"
+}
