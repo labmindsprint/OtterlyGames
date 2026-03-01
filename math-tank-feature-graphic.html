@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Tank Feature Graphic — 1024×500</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0a0a12;
+      color: #f0f0f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 { font-family: 'Nunito', sans-serif; margin-bottom: 0.5rem; color: #00e5ff; }
+    p.inst {
+      color: #9898b0;
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .save-btn {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 0.8rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #00e5ff, #ff00ff, #ff6600);
+      color: #0a0a0f;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      transition: transform 0.2s;
+    }
+    .save-btn:hover { transform: scale(1.05); }
+    .status { color: #86efac; margin-bottom: 1rem; font-size: 0.9rem; min-height: 1.4em; }
+    canvas {
+      border: 2px solid #00e5ff;
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
+    }
+    code { background: #1a1a2e; padding: 2px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <h1>🎮 Math Tank Feature Graphic</h1>
+  <p class="inst">
+    Google Play Feature Graphic: <strong>1024×500px</strong><br>
+    Click <strong>Save as PNG</strong> to download.
+  </p>
+  <div class="status" id="status">Loading tank image...</div>
+  <button class="save-btn" id="saveBtn" onclick="saveImage()" disabled>💾 Save as PNG</button>
+  <canvas id="canvas" width="1024" height="500"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const statusEl = document.getElementById('status');
+    const saveBtn = document.getElementById('saveBtn');
+    const W = 1024, H = 500;
+
+    // Load tank image
+    const tankImg = new Image();
+    tankImg.crossOrigin = 'anonymous';
+    tankImg.onload = () => {
+      statusEl.textContent = '✅ Tank loaded! Ready to save.';
+      saveBtn.disabled = false;
+      drawGraphic();
+    };
+    tankImg.onerror = () => {
+      statusEl.textContent = '⚠️ Could not load tank image — drawing without it.';
+      saveBtn.disabled = false;
+      drawGraphic();
+    };
+    tankImg.src = 'images/Otter-tank.png';
+
+    function drawGlow(x, y, radius, color) {
+      const grad = ctx.createRadialGradient(x, y, 0, x, y, radius);
+      grad.addColorStop(0, color);
+      grad.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad;
+      ctx.fillRect(x - radius, y - radius, radius * 2, radius * 2);
+    }
+
+    function drawStars() {
+      const starColors = ['#00e5ff', '#ff00ff', '#ff6600', '#ffffff', '#a855f7'];
+      for (let i = 0; i < 40; i++) {
+        const x = Math.random() * W;
+        const y = Math.random() * H * 0.7;
+        const size = Math.random() * 3 + 1;
+        const color = starColors[Math.floor(Math.random() * starColors.length)];
+        
+        ctx.fillStyle = color;
+        ctx.globalAlpha = Math.random() * 0.5 + 0.3;
+        
+        // Draw 4-point star
+        ctx.beginPath();
+        ctx.moveTo(x, y - size);
+        ctx.lineTo(x + size * 0.3, y);
+        ctx.lineTo(x, y + size);
+        ctx.lineTo(x - size * 0.3, y);
+        ctx.closePath();
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.moveTo(x - size, y);
+        ctx.lineTo(x, y + size * 0.3);
+        ctx.lineTo(x + size, y);
+        ctx.lineTo(x, y - size * 0.3);
+        ctx.closePath();
+        ctx.fill();
+        
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    function drawGraphic() {
+      // === DARK SPACE BACKGROUND ===
+      const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
+      bgGrad.addColorStop(0, '#0a0a12');
+      bgGrad.addColorStop(0.5, '#0d0d1a');
+      bgGrad.addColorStop(1, '#151528');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, W, H);
+
+      // === AMBIENT GLOW EFFECTS ===
+      drawGlow(150, 100, 200, 'rgba(0, 229, 255, 0.08)');
+      drawGlow(850, 150, 180, 'rgba(255, 0, 255, 0.06)');
+      drawGlow(500, 400, 250, 'rgba(255, 102, 0, 0.05)');
+      drawGlow(W - 100, H - 100, 200, 'rgba(168, 85, 247, 0.08)');
+
+      // === STARS ===
+      drawStars();
+
+      // === GRID PATTERN ===
+      ctx.strokeStyle = 'rgba(0, 229, 255, 0.03)';
+      ctx.lineWidth = 1;
+      for (let x = 0; x < W; x += 50) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+      }
+      for (let y = 0; y < H; y += 50) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+      }
+
+      // === TANK IMAGE ===
+      if (tankImg.complete && tankImg.naturalWidth > 0) {
+        const imgW = tankImg.naturalWidth;
+        const imgH = tankImg.naturalHeight;
+        
+        // Scale and position tank on the right side
+        const scale = Math.min(620 / imgW, 420 / imgH);
+        const tankW = imgW * scale;
+        const tankH = imgH * scale;
+        const tankX = W - tankW - 30;
+        const tankY = H - tankH + 20;
+        
+        // Add glow behind tank
+        drawGlow(tankX + tankW/2, tankY + tankH/2, 250, 'rgba(0, 229, 255, 0.15)');
+        
+        ctx.drawImage(tankImg, tankX, tankY, tankW, tankH);
+      }
+
+      // === MATH TANK TITLE ===
+      // Title glow effect
+      ctx.shadowColor = '#00e5ff';
+      ctx.shadowBlur = 20;
+      
+      // "MATH" text
+      ctx.font = '900 90px "Orbitron", sans-serif';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      
+      // Gradient for MATH
+      const mathGrad = ctx.createLinearGradient(50, 140, 50, 220);
+      mathGrad.addColorStop(0, '#00e5ff');
+      mathGrad.addColorStop(0.5, '#ffffff');
+      mathGrad.addColorStop(1, '#00e5ff');
+      ctx.fillStyle = mathGrad;
+      ctx.fillText('MATH', 60, 180);
+      
+      // "TANK" text
+      const tankGrad = ctx.createLinearGradient(50, 250, 50, 330);
+      tankGrad.addColorStop(0, '#ff6600');
+      tankGrad.addColorStop(0.5, '#ffdd00');
+      tankGrad.addColorStop(1, '#ff6600');
+      ctx.fillStyle = tankGrad;
+      ctx.fillText('TANK', 60, 290);
+      
+      ctx.shadowBlur = 0;
+
+      // === TAGLINE ===
+      ctx.font = '700 26px "Nunito", sans-serif';
+      ctx.fillStyle = '#c4b5fd';
+      ctx.shadowColor = '#a855f7';
+      ctx.shadowBlur = 10;
+      ctx.fillText('Learn Math. Blast Off!', 65, 385);
+      ctx.shadowBlur = 0;
+
+      // === DECORATIVE ELEMENTS ===
+      // Neon line accent
+      ctx.strokeStyle = '#00e5ff';
+      ctx.lineWidth = 3;
+      ctx.shadowColor = '#00e5ff';
+      ctx.shadowBlur = 10;
+      ctx.beginPath();
+      ctx.moveTo(60, 340);
+      ctx.lineTo(320, 340);
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Math symbols floating
+      ctx.font = '700 32px "Nunito", sans-serif';
+      ctx.fillStyle = 'rgba(255, 0, 255, 0.4)';
+      ctx.fillText('×', 380, 150);
+      ctx.fillStyle = 'rgba(0, 229, 255, 0.4)';
+      ctx.fillText('÷', 420, 80);
+      ctx.fillStyle = 'rgba(255, 102, 0, 0.4)';
+      ctx.fillText('+', 350, 100);
+      ctx.fillStyle = 'rgba(168, 85, 247, 0.4)';
+      ctx.fillText('−', 450, 130);
+      ctx.fillStyle = 'rgba(134, 239, 172, 0.4)';
+      ctx.fillText('=', 400, 180);
+
+      // Corner accent - top left
+      ctx.strokeStyle = '#ff00ff';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(20, 50);
+      ctx.lineTo(20, 20);
+      ctx.lineTo(50, 20);
+      ctx.stroke();
+
+      // Corner accent - bottom right
+      ctx.strokeStyle = '#ff6600';
+      ctx.beginPath();
+      ctx.moveTo(W - 20, H - 50);
+      ctx.lineTo(W - 20, H - 20);
+      ctx.lineTo(W - 50, H - 20);
+      ctx.stroke();
+
+      // === OTTERLY GAMES BADGE ===
+      ctx.font = '600 14px "Nunito", sans-serif';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.textAlign = 'left';
+      ctx.fillText('🦦 Otterly Games', 65, 440);
+    }
+
+    function saveImage() {
+      const link = document.createElement('a');
+      link.download = 'math-tank-feature-graphic.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      statusEl.textContent = '✅ Saved! Check your downloads folder.';
+    }
+  </script>
+
+</body>
+</html>

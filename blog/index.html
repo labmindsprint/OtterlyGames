@@ -21,6 +21,9 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Blog"}]}
+  </script>
   <meta property="og:title" content="The Otter Side — Parenting & Education Blog">
   <meta property="og:description" content="Real stories from a mom building educational games. Parenting tips, math tricks, and honest screen time advice.">
   <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
@@ -92,12 +95,99 @@
     </div>
   </section>
 
-  <!-- Blog Posts (rendered from registry) -->
+  <!-- Breadcrumb -->
+  <nav style="max-width:1100px;margin:0 auto;padding:1rem 1.5rem 0" aria-label="Breadcrumb">
+    <ol style="display:flex;gap:.5rem;list-style:none;padding:0;margin:0;font-size:.85rem;color:#9898b0">
+      <li><a href="/" style="color:#c4b5fd;text-decoration:none">Home</a></li>
+      <li style="color:#4a4a60">/</li>
+      <li aria-current="page">Blog</li>
+    </ol>
+  </nav>
+
+  <!-- Blog intro + prose for SEO -->
+  <section style="max-width:800px;margin:0 auto;padding:2rem 1.5rem 0">
+    <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:.75rem;color:#f0f0f8">Welcome to <span class="gradient-text">The Otter Side</span></h2>
+    <p style="color:#9898b0;font-size:1rem;line-height:1.8;margin-bottom:1rem">The Otter Side is where we share everything we've learned on this journey from homework tears to educational game development. Written by a mom who builds learning apps for kids, our articles cover <strong style="color:#f0f0f8">practical parenting strategies</strong>, <strong style="color:#f0f0f8">math teaching tips</strong>, honest app reviews, and real stories about raising confident learners.</p>
+    <p style="color:#9898b0;font-size:1rem;line-height:1.8;margin-bottom:1rem">Whether you're looking for ways to make multiplication practice less painful, need advice on managing screen time, or want step-by-step guides for teaching tricky concepts like telling time or division, you'll find honest, experience-based advice here. Every article is written from the perspective of a parent who's been in the trenches — no jargon, no judgment, just practical help.</p>
+  </section>
+
+  <!-- Blog Posts (rendered from registry, with static noscript fallback) -->
   <div class="blog-main">
     <div id="blog-container" class="blog-grid">
       <!-- OG.renderBlogGrid populates this from _data/blogs.json -->
     </div>
+
+    <!-- Static fallback for Googlebot / noscript -->
+    <noscript>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem">
+        <a href="/blog/division-for-kids-explained-simply.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
+          <div style="font-size:2rem;margin-bottom:.5rem">➗</div>
+          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Learning Guide</span>
+          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">Division for Kids Explained Simply</h3>
+          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">How to teach division to kids in a way they actually understand. A parent's step-by-step guide.</p>
+          <span style="font-size:.8rem;color:#9898b0">Mar 2, 2026 · 8 min read</span>
+        </a>
+        <a href="/blog/how-to-help-a-child-who-hates-math.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
+          <div style="font-size:2rem;margin-bottom:.5rem">💪</div>
+          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Parenting Tips</span>
+          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">How to Help a Child Who Hates Math</h3>
+          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">Practical strategies for parents on how to turn math dread into confidence.</p>
+          <span style="font-size:.8rem;color:#9898b0">Feb 28, 2026 · 9 min read</span>
+        </a>
+        <a href="/blog/times-tables-games-online-free.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
+          <div style="font-size:2rem;margin-bottom:.5rem">✖️</div>
+          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Learning Resources</span>
+          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">Free Times Tables Games Online</h3>
+          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">Free online times tables games for kids. Practice multiplication from 2× to 12×.</p>
+          <span style="font-size:.8rem;color:#9898b0">Feb 25, 2026 · 7 min read</span>
+        </a>
+        <a href="/blog/best-math-apps-for-kids.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
+          <div style="font-size:2rem;margin-bottom:.5rem">📲</div>
+          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">App Reviews</span>
+          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">Best Math Apps for Kids in 2025</h3>
+          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">Honest reviews of 20+ math apps for kids aged 4–9. Free and paid picks that actually teach math.</p>
+          <span style="font-size:.8rem;color:#9898b0">Feb 22, 2026 · 10 min read</span>
+        </a>
+        <a href="/blog/how-to-teach-a-child-to-tell-time.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
+          <div style="font-size:2rem;margin-bottom:.5rem">🕐</div>
+          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Learning Guide</span>
+          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">How to Teach a Child to Tell Time</h3>
+          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">A complete step-by-step guide to teaching kids to read analog and digital clocks.</p>
+          <span style="font-size:.8rem;color:#9898b0">Feb 20, 2026 · 8 min read</span>
+        </a>
+        <a href="/blog/screen-time-that-actually-helps.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
+          <div style="font-size:2rem;margin-bottom:.5rem">📱</div>
+          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Digital Parenting</span>
+          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">Screen Time That Actually Helps</h3>
+          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">A mom who builds educational apps shares her honest approach to kids' screen time.</p>
+          <span style="font-size:.8rem;color:#9898b0">Feb 14, 2026 · 6 min read</span>
+        </a>
+        <a href="/blog/5-ways-to-make-math-fun-at-home.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
+          <div style="font-size:2rem;margin-bottom:.5rem">🧮</div>
+          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Parenting Tips</span>
+          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">5 Ways to Make Math Fun at Home</h3>
+          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">Forget boring flashcards. Five tried-and-tested ways to make math enjoyable at home.</p>
+          <span style="font-size:.8rem;color:#9898b0">Feb 12, 2026 · 7 min read</span>
+        </a>
+        <a href="/blog/why-my-kids-clock-struggle-inspired-an-app.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
+          <div style="font-size:2rem;margin-bottom:.5rem">🕐</div>
+          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Our Story</span>
+          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">Why My Kid's Clock Struggle Inspired an App</h3>
+          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">The true story behind Clock Master — how one mom's frustration led to building an educational game.</p>
+          <span style="font-size:.8rem;color:#9898b0">Feb 10, 2026 · 5 min read</span>
+        </a>
+      </div>
+    </noscript>
   </div>
+
+  <!-- Blog topics overview for SEO -->
+  <section style="max-width:800px;margin:0 auto;padding:2rem 1.5rem 0">
+    <h2 style="font-size:1.3rem;font-weight:900;margin-bottom:.75rem;color:#f0f0f8">What We Write About</h2>
+    <p style="color:#9898b0;font-size:.95rem;line-height:1.8;margin-bottom:1rem"><strong style="color:#f0f0f8">Parenting Tips</strong> — Actionable advice for helping children with homework, building confidence in maths, and turning everyday moments into learning opportunities. We cover topics like helping children who hate maths, making multiplication practice enjoyable, and setting up productive homework routines.</p>
+    <p style="color:#9898b0;font-size:.95rem;line-height:1.8;margin-bottom:1rem"><strong style="color:#f0f0f8">Learning Guides</strong> — Step-by-step instructions for teaching specific skills. From telling the time on analogue clocks to understanding division with remainders, each guide breaks complex topics into simple, age-appropriate steps that parents can follow at home.</p>
+    <p style="color:#9898b0;font-size:.95rem;line-height:1.8;margin-bottom:1rem"><strong style="color:#f0f0f8">App Reviews & Resources</strong> — Honest reviews of educational apps and free online tools. We test everything with real children before recommending it, and we always note the privacy and safety implications for families.</p>
+    <p style="color:#9898b0;font-size:.95rem;line-height:1.8;margin-bottom:1rem"><strong style="color:#f0f0f8">Digital Parenting</strong> — Practical guidance on screen time, educational technology, and raising digitally literate children. We share what works in our own family — the successes and the mistakes.</p>
+  </section>
 
   <!-- Shared includes + registry -->
   <script src="/js/includes.js" defer></script>

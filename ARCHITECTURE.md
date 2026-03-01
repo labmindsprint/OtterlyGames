@@ -473,7 +473,9 @@ Even before the full architecture migration, these gaps should be fixed **now**:
 
 ## 8. Tool Page Template
 
-Standard structure for any new tool page:
+Standard structure for any new tool page. **Every section marked MANDATORY must
+be present before the page goes live.** See Section 10 for the content-quality
+rules that drive these requirements.
 
 ```html
 <!DOCTYPE html>
@@ -485,16 +487,20 @@ Standard structure for any new tool page:
   <meta name="description" content="{{TOOL_DESCRIPTION}}">
   <link rel="canonical" href="https://otterlygames.com/tools/{{TOOL_SLUG}}.html">
   <!-- OG + Twitter meta tags -->
-  <!-- Schema JSON-LD: WebApplication + BreadcrumbList -->
+  <!-- Schema JSON-LD: WebApplication + BreadcrumbList + FAQPage (MANDATORY) -->
   <link rel="icon" href="data:image/svg+xml,...">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
   <link rel="stylesheet" href="/css/tool-page.css">
   <script src="/js/includes.js" defer></script>
   <!-- Analytics (from base.css or a shared snippet) -->
+  <!-- ⚠️  NO AdSense on noindex pages (404, redirects, error pages) -->
 </head>
 <body>
   <!-- Nav injected by includes.js -->
+
+  <!-- MANDATORY: Breadcrumb back-link -->
+  <a href="/tools/" class="breadcrumb-back">← All Tools</a>
 
   <section class="hero">
     <h1>{{TOOL_TITLE}}</h1>
@@ -502,8 +508,57 @@ Standard structure for any new tool page:
   </section>
 
   <main class="main">
-    <!-- Tool-specific content here -->
+    <!-- Tool-specific interactive content here -->
   </main>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- MANDATORY: Educational Prose (min 400 words, see §10.3)   -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section class="edu-prose" style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
+    <h2>{{TOPIC_HEADING_1}}</h2>
+    <p>…original educational content…</p>
+
+    <h2>{{TOPIC_HEADING_2}}</h2>
+    <p>…original educational content…</p>
+
+    <h2>Teaching Tips for Parents</h2>
+    <p>…actionable parenting advice…</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- MANDATORY: FAQ Section (min 3 Q&As, see §10.3)            -->
+  <!-- Must match the FAQPage schema in <head>                   -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section class="faq-section" style="max-width:700px;margin:1.5rem auto;padding:0 1.5rem">
+    <h2>Frequently Asked Questions</h2>
+    <details><summary>{{QUESTION_1}}</summary><p>{{ANSWER_1}}</p></details>
+    <details><summary>{{QUESTION_2}}</summary><p>{{ANSWER_2}}</p></details>
+    <details><summary>{{QUESTION_3}}</summary><p>{{ANSWER_3}}</p></details>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- MANDATORY: Related Tools grid (min 3 links, see §10.3)    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <section class="related-tools" style="max-width:700px;margin:1.5rem auto;padding:0 1.5rem">
+    <h2>Related Tools</h2>
+    <div class="related-grid">
+      <a href="/tools/{{RELATED_1}}.html" class="related-card">…</a>
+      <a href="/tools/{{RELATED_2}}.html" class="related-card">…</a>
+      <a href="/tools/{{RELATED_3}}.html" class="related-card">…</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- MANDATORY: <noscript> fallback (see §10.4)                -->
+  <!-- Googlebot must see meaningful content without JS           -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <noscript>
+    <section style="max-width:700px;margin:2rem auto;padding:1rem 1.5rem">
+      <h2>{{TOOL_TITLE}}</h2>
+      <p>This interactive tool requires JavaScript. {{TOOL_STATIC_DESCRIPTION}}</p>
+      <p><a href="/tools/">← Browse all free learning tools</a></p>
+    </section>
+  </noscript>
 
   <!-- Footer injected by includes.js -->
   <script src="/js/main.js"></script>
@@ -515,18 +570,34 @@ Standard structure for any new tool page:
 
 ## 9. Checklist: What Makes a Good Tool Page
 
+### 9a. Technical Quality
+
 - [ ] Listed in `_data/tools.json`
 - [ ] Has proper `<title>` and `<meta description>`
 - [ ] Has canonical URL
 - [ ] Has OG + Twitter meta tags
-- [ ] Has Schema JSON-LD (WebApplication + BreadcrumbList)
+- [ ] Has Schema JSON-LD: **WebApplication + BreadcrumbList + FAQPage**
 - [ ] Uses shared nav (via includes.js or inline from template)
 - [ ] Uses shared footer
 - [ ] Uses shared CSS (base.css + components.css)
 - [ ] Mobile responsive
-- [ ] Has breadcrumb back to Tools
-- [ ] Cross-links to related tools
+- [ ] Has breadcrumb back to Tools (visible `← All Tools` link)
+- [ ] Cross-links to ≥ 3 related tools
 - [ ] Included in sitemap.xml
+- [ ] Has `<noscript>` fallback with static description + link back to tools index
+
+### 9b. Content Quality (AdSense Gate — see §10)
+
+- [ ] **≥ 400 words** of original educational prose below the interactive tool
+- [ ] **≥ 3 FAQ items** (visible `<details>` elements matching FAQPage schema)
+- [ ] Prose is **unique** — not duplicated from another tool page
+- [ ] Prose provides **genuine teaching value** for parents (tips, milestones, explanations)
+- [ ] Related Tools section with ≥ 3 cross-links to sibling tool pages
+- [ ] **No AdSense script** on any page that has `<meta name="robots" content="noindex">`
+- [ ] Googlebot can see ≥ 500 words of static HTML **without executing JavaScript**
+
+> **Rule: No page goes live until EVERY box is checked.** A page that fails 9b
+> is "thin content" and risks another AdSense rejection for the entire domain.
 
 ---
 
@@ -540,3 +611,134 @@ Standard structure for any new tool page:
 | CSS defined 3+ times for `.tool-card` | No shared stylesheet | `css/components.css` |
 | Adding a tool requires 5 edits | No convention | JSON registry + auto-render |
 | Brand change = edit 15+ files | No shared variables | `css/base.css` with single `:root` |
+| **AdSense "Low value content" rejection** | Thin tool pages, JS-only listing pages, ads on 404 | §10: Content minimums, `<noscript>` fallbacks, AdSense placement rules |
+| Googlebot sees empty listing pages | No `<noscript>` fallback for JS-rendered content | §10.4: Every JS-rendered block needs static HTML fallback |
+| AdSense on noindex pages | No policy awareness in template | §10.5: Never place AdSense on noindex/error pages |
+| Tool pages with < 200 words | No content-quality gate | §10.3: Min 400 words prose + FAQ + related tools per tool page |
+| Missing FAQPage schema on tool pages | No structured data checklist | §10.6: Required schema types per page type |
+
+---
+
+## 10. AdSense & Content Quality Standards
+
+> **Context:** In early 2026 Google AdSense rejected the site for **"Low value
+> content"**, citing failure to meet *minimum content requirements*, *unique &
+> high-quality content*, and *webmaster quality guidelines (thin content)*.
+> This section documents the root causes and the enforceable rules that prevent
+> a repeat.
+
+### 10.1 What Went Wrong (Root-Cause Analysis)
+
+| # | Problem | Why It Matters | Pages Affected |
+|---|---------|---------------|----------------|
+| 1 | **JS-only listing pages** — `blog/index.html` and `tools/index.html` rendered their entire content via JavaScript. Googlebot's renderer sometimes doesn't execute JS, so Google saw near-empty pages (~40 words of static text). | Google treats a page with no crawlable body text as "thin content". Two key index pages appearing empty tanks the site-wide quality score. | `blog/index.html`, `tools/index.html` |
+| 2 | **AdSense on a `noindex` 404 page** — `404.html` loaded the AdSense script despite having `<meta name="robots" content="noindex">`. | Google explicitly flags AdSense on non-indexable pages as a policy violation. It signals that ads are placed without regard for user or crawler experience. | `404.html` |
+| 3 | **Thin interactive-only tool pages** — `am-pm.html`, `hour-hand.html`, `minute-hand.html` had an interactive widget but zero educational prose, no FAQ, no related links, and no `<noscript>` fallback. | Without JS the page was essentially blank. Even with JS, the total crawlable text was < 200 words — well below the threshold Google expects for a page displaying ads. | `tools/am-pm.html`, `tools/hour-hand.html`, `tools/minute-hand.html` |
+| 4 | **No `<noscript>` fallbacks anywhere** — Pages that depend on JS for core content had no static alternative. | Crawlers, accessibility tools, and users with JS disabled saw empty containers. | All JS-rendered listing pages, thin tool pages |
+| 5 | **Missing structured data** — Thin pages lacked `FAQPage` and `BreadcrumbList` schema, reducing their perceived richness in Google's evaluation. | While schema alone doesn't fix thin content, its absence meant Google had fewer signals to understand the page's purpose and value. | `tools/am-pm.html`, `tools/hour-hand.html`, `tools/minute-hand.html` |
+
+### 10.2 The Fix Applied
+
+| Page | What Was Added |
+|------|----------------|
+| `blog/index.html` | BreadcrumbList schema, visible breadcrumb nav, ~200-word intro prose, `<noscript>` fallback with all 8 blog post cards as static HTML, ~300-word "What We Write About" section |
+| `404.html` | Removed AdSense and Analytics scripts entirely |
+| `tools/index.html` | BreadcrumbList schema, visible breadcrumb nav, `<noscript>` fallback with all 12 tools as static HTML cards organized by category |
+| `tools/am-pm.html` | FAQPage schema (3 Q&As), breadcrumb back-link, ~500 words educational prose, FAQ section, related tools grid (3 tools), `<noscript>` fallback |
+| `tools/hour-hand.html` | FAQPage schema (3 Q&As), breadcrumb back-link, ~600 words educational prose, FAQ section, related tools grid (3 tools), `<noscript>` fallback |
+| `tools/minute-hand.html` | FAQPage schema (3 Q&As), breadcrumb back-link, ~700 words educational prose, FAQ section, related tools grid (3 tools), `<noscript>` fallback |
+
+### 10.3 Content Minimum Standards (Mandatory)
+
+These are hard rules. No page should be published or merged without meeting them.
+
+#### Per-Page Word Counts
+
+| Page Type | Min Static Words | Required Sections |
+|-----------|:---:|---|
+| **Tool page** | 400 | Educational prose (≥ 2 `<h2>` subsections), FAQ (≥ 3 `<details>`), Related Tools (≥ 3 links), `<noscript>` |
+| **Blog post** | 700 | Full article body, author/date, breadcrumb, related posts |
+| **Listing page** (tools index, blog index) | 200 | Intro paragraph, `<noscript>` fallback with **every** item as static HTML |
+| **App page** | 300 | Feature list, screenshots/description, download links, SoftwareApplication schema |
+| **Static page** (about, contact, privacy) | 200 | Substantive original content relevant to site purpose |
+
+> **"Static words"** = text visible in the raw HTML source without executing
+> JavaScript. This is what Googlebot's initial parser sees.
+
+#### Content Must Be Unique
+
+- Every tool page's prose must be **original** — not copied/paraphrased from
+  another tool page on the site.
+- FAQ answers must be **specific** to that tool's subject. Generic filler like
+  "This tool is great for kids" repeated across pages counts as duplicate content.
+- Use the tool's subject matter to generate genuinely helpful educational
+  guidance (teaching tips, developmental milestones, common mistakes, etc.).
+
+### 10.4 Noscript & Static Fallback Rules
+
+| Rule | Rationale |
+|------|-----------|
+| Every page that renders **any** content via JavaScript MUST have a `<noscript>` block with equivalent static HTML | Googlebot may not execute JS. Without fallback, the page appears empty → thin content. |
+| Listing pages (`blog/index.html`, `tools/index.html`) must include **every item** in the `<noscript>` block as a static card (title, excerpt, link) | Partial fallbacks still leave the page looking thin. Full coverage ensures Google sees the complete content catalogue. |
+| The `<noscript>` block must be **kept in sync** with `_data/tools.json` / `_data/blogs.json` | When a new tool or blog post is added, its static card must be added to the relevant `<noscript>` block too. |
+| Interactive tool pages must have enough **non-JS prose** (edu-prose + FAQ + related tools) that the page exceeds 400 words even if the `<canvas>`/`<script>` tool doesn't render | The educational sections are pure HTML — they always render. This is the safety net. |
+
+### 10.5 AdSense Placement Rules
+
+| Rule | Detail |
+|------|---------|
+| **Never** place AdSense on `noindex` pages | 404, redirects, error pages, staging previews. Google explicitly flags this. |
+| **Never** place AdSense on pages with < 400 static words | The page will be classified as thin content with ads = policy violation. |
+| **Never** place AdSense on pages that are substantially JS-rendered without a full `<noscript>` fallback | Google's ad crawler may see an empty page — instant flag. |
+| AdSense `<script>` goes in `<head>` of approved pages only | Keep it out of shared includes if any include is used on noindex pages. Consider a conditional like `data-adsense="true"` attribute. |
+| After **any** structural site change, re-audit ad placement | New pages, moved pages, or template changes can inadvertently put ads on thin/noindex pages. |
+
+### 10.6 Structured Data Requirements
+
+| Page Type | Required Schema Types |
+|-----------|-----------------------|
+| Tool page | `WebApplication` + `BreadcrumbList` + `FAQPage` |
+| Blog post | `Article` (or `BlogPosting`) + `BreadcrumbList` |
+| Listing page | `CollectionPage` + `ItemList` + `BreadcrumbList` |
+| App page | `SoftwareApplication` + `BreadcrumbList` |
+| Homepage | `Organization` + `WebSite` |
+
+- FAQPage schema `mainEntity` array must **exactly match** the visible FAQ
+  `<details>` elements on the page (same questions, same answers).
+- `ItemList.numberOfItems` must match the actual count of items rendered.
+- Run Google's Rich Results Test on every new page before publishing.
+
+### 10.7 New Page Launch Checklist (Pre-Publish Gate)
+
+Before any new page is deployed to production:
+
+```
+□  Word count ≥ minimum for page type (§10.3)
+□  Content is original — not duplicated from another page on the site
+□  <noscript> fallback present if any content is JS-rendered
+□  AdSense script is absent if page is noindex or below word threshold
+□  All required Schema JSON-LD types are present (§10.6)
+□  Schema data matches visible page content
+□  Page is listed in _data/tools.json or _data/blogs.json
+□  Page is listed in sitemap.xml
+□  Google Rich Results Test passes
+□  Page renders meaningful content with JavaScript disabled
+□  Breadcrumb visible and links back to parent listing
+□  ≥ 3 cross-links to related pages within the site
+```
+
+> **Enforcement:** Treat this checklist as a merge-blocking gate. Every page
+> must satisfy it before going live. A single thin page can trigger an
+> AdSense rejection for the **entire domain**, not just that page.
+
+### 10.8 Ongoing Maintenance
+
+- **When adding a tool:** Add entry to `_data/tools.json`, add static card to
+  `tools/index.html` `<noscript>`, update `sitemap.xml`, and ensure the tool
+  page itself passes the full §10.7 checklist.
+- **When adding a blog post:** Add entry to `_data/blogs.json`, add static card
+  to `blog/index.html` `<noscript>`, update `sitemap.xml`.
+- **Quarterly audit:** Review all pages against §10.3 word-count minimums.
+  Tools that have grown stale or lost content should be refreshed.
+- **After any AdSense change:** Re-verify that no noindex page loads the
+  AdSense script.

@@ -14,6 +14,9 @@
   {"@context":"https://schema.org","@type":"ItemList","name":"Free Learning Tools for Kids","numberOfItems":12,"itemListElement":[{"@type":"ListItem","position":1,"name":"Hour Hand","url":"https://otterlygames.com/tools/hour-hand.html"},{"@type":"ListItem","position":2,"name":"Minute Hand","url":"https://otterlygames.com/tools/minute-hand.html"},{"@type":"ListItem","position":3,"name":"AM & PM","url":"https://otterlygames.com/tools/am-pm.html"},{"@type":"ListItem","position":4,"name":"Clock Lessons","url":"https://otterlygames.com/tools/clock-lessons.html"},{"@type":"ListItem","position":5,"name":"Multiplication Practice","url":"https://otterlygames.com/tools/multiplication-practice.html"},{"@type":"ListItem","position":6,"name":"Division Practice","url":"https://otterlygames.com/tools/division-practice.html"},{"@type":"ListItem","position":7,"name":"Times Tables","url":"https://otterlygames.com/tools/multiplication-table.html"},{"@type":"ListItem","position":8,"name":"Column Multiplication","url":"https://otterlygames.com/tools/column-multiplication.html"},{"@type":"ListItem","position":9,"name":"Long Division","url":"https://otterlygames.com/tools/long-division.html"},{"@type":"ListItem","position":10,"name":"Math Speed Quiz","url":"https://otterlygames.com/tools/math-quiz.html"},{"@type":"ListItem","position":11,"name":"Kid Calculator","url":"https://otterlygames.com/tools/calculator.html"},{"@type":"ListItem","position":12,"name":"Spelling Bee","url":"https://otterlygames.com/tools/spelling-bee.html"}]}
   </script>
   <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools"}]}
+  </script>
+  <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are these learning tools really free?","acceptedAnswer":{"@type":"Answer","text":"Yes, every tool is 100% free with no signup, no download, and no hidden costs. They run directly in your browser on any device — phone, tablet or computer."}},{"@type":"Question","name":"What ages are these tools designed for?","acceptedAnswer":{"@type":"Answer","text":"Our tools cover ages 4 to 11 (Reception to Year 6 in the UK / Pre-K to Grade 5 in the US). Each tool shows a recommended age range. Younger children can start with times tables and clock lessons, while older children can tackle long division and column multiplication."}},{"@type":"Question","name":"Do I need to install anything?","acceptedAnswer":{"@type":"Answer","text":"No installation is needed. All tools work instantly in any modern web browser. They are also mobile-friendly, so children can practise on a phone or tablet during car journeys or waiting times."}}]}
   </script>
   <meta property="og:title" content="Free Learning Tools for Kids — Otterly Games">
@@ -87,11 +90,95 @@
     </div>
   </section>
 
+  <!-- Breadcrumb -->
+  <nav style="max-width:1100px;margin:0 auto;padding:1rem 1.5rem 0" aria-label="Breadcrumb">
+    <ol style="display:flex;gap:.5rem;list-style:none;padding:0;margin:0;font-size:.85rem;color:#9898b0">
+      <li><a href="/" style="color:#c4b5fd;text-decoration:none">Home</a></li>
+      <li style="color:#4a4a60">/</li>
+      <li aria-current="page">Tools</li>
+    </ol>
+  </nav>
+
   <!-- Tools (rendered from registry) -->
   <div class="tools-main">
     <div id="tools-container">
       <!-- OG.renderToolsGrid populates this from _data/tools.json -->
     </div>
+
+    <!-- Static fallback for Googlebot / noscript -->
+    <noscript>
+      <div style="padding:0 1.5rem;max-width:1100px;margin:0 auto">
+        <h2 style="font-size:1.3rem;font-weight:900;margin:1.5rem 0 1rem;color:#f0f0f8">Time & Clocks</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
+          <a href="/tools/hour-hand.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.25rem;text-decoration:none;color:inherit">
+            <div style="font-size:1.5rem;margin-bottom:.4rem">🖐️</div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f0f0f8;margin-bottom:.3rem">Hour Hand</h3>
+            <p style="color:#9898b0;font-size:.85rem;line-height:1.5">Drag the short hand, see the hour — Ages 4–6</p>
+          </a>
+          <a href="/tools/minute-hand.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.25rem;text-decoration:none;color:inherit">
+            <div style="font-size:1.5rem;margin-bottom:.4rem">⏱️</div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f0f0f8;margin-bottom:.3rem">Minute Hand</h3>
+            <p style="color:#9898b0;font-size:.85rem;line-height:1.5">Grab the long hand, count minutes — Ages 5–7</p>
+          </a>
+          <a href="/tools/am-pm.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.25rem;text-decoration:none;color:inherit">
+            <div style="font-size:1.5rem;margin-bottom:.4rem">🌅</div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f0f0f8;margin-bottom:.3rem">AM & PM</h3>
+            <p style="color:#9898b0;font-size:.85rem;line-height:1.5">Learn morning vs afternoon — Ages 5–8</p>
+          </a>
+          <a href="/tools/clock-lessons.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.25rem;text-decoration:none;color:inherit">
+            <div style="font-size:1.5rem;margin-bottom:.4rem">🕐</div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f0f0f8;margin-bottom:.3rem">Clock Lessons</h3>
+            <p style="color:#9898b0;font-size:.85rem;line-height:1.5">Read analogue clocks step by step — Ages 5–8</p>
+          </a>
+        </div>
+        <h2 style="font-size:1.3rem;font-weight:900;margin:2rem 0 1rem;color:#f0f0f8">Math Practice & Drills</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
+          <a href="/tools/multiplication-practice.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.25rem;text-decoration:none;color:inherit">
+            <div style="font-size:1.5rem;margin-bottom:.4rem">✖️</div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f0f0f8;margin-bottom:.3rem">Multiplication Practice</h3>
+            <p style="color:#9898b0;font-size:.85rem;line-height:1.5">Timed multiplication drills — Ages 5–9</p>
+          </a>
+          <a href="/tools/division-practice.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.25rem;text-decoration:none;color:inherit">
+            <div style="font-size:1.5rem;margin-bottom:.4rem">➗</div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f0f0f8;margin-bottom:.3rem">Division Practice</h3>
+            <p style="color:#9898b0;font-size:.85rem;line-height:1.5">Step-by-step division problems — Ages 6–10</p>
+          </a>
+          <a href="/tools/multiplication-table.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.25rem;text-decoration:none;color:inherit">
+            <div style="font-size:1.5rem;margin-bottom:.4rem">📋</div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f0f0f8;margin-bottom:.3rem">Times Tables</h3>
+            <p style="color:#9898b0;font-size:.85rem;line-height:1.5">Interactive 2× to 12× tables — Ages 5–11</p>
+          </a>
+          <a href="/tools/column-multiplication.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.25rem;text-decoration:none;color:inherit">
+            <div style="font-size:1.5rem;margin-bottom:.4rem">📊</div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f0f0f8;margin-bottom:.3rem">Column Multiplication</h3>
+            <p style="color:#9898b0;font-size:.85rem;line-height:1.5">Long multiplication with carries — Ages 8–11</p>
+          </a>
+          <a href="/tools/long-division.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.25rem;text-decoration:none;color:inherit">
+            <div style="font-size:1.5rem;margin-bottom:.4rem">📐</div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f0f0f8;margin-bottom:.3rem">Long Division</h3>
+            <p style="color:#9898b0;font-size:.85rem;line-height:1.5">Master the long division method — Ages 8–11</p>
+          </a>
+          <a href="/tools/math-quiz.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.25rem;text-decoration:none;color:inherit">
+            <div style="font-size:1.5rem;margin-bottom:.4rem">⚡</div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f0f0f8;margin-bottom:.3rem">Math Speed Quiz</h3>
+            <p style="color:#9898b0;font-size:.85rem;line-height:1.5">Quick drills across all operations — Ages 6–11</p>
+          </a>
+          <a href="/tools/calculator.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.25rem;text-decoration:none;color:inherit">
+            <div style="font-size:1.5rem;margin-bottom:.4rem">🔢</div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f0f0f8;margin-bottom:.3rem">Kid Calculator</h3>
+            <p style="color:#9898b0;font-size:.85rem;line-height:1.5">Simple calculator for homework — Ages 5–11</p>
+          </a>
+        </div>
+        <h2 style="font-size:1.3rem;font-weight:900;margin:2rem 0 1rem;color:#f0f0f8">English & Language</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">
+          <a href="/tools/spelling-bee.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.25rem;text-decoration:none;color:inherit">
+            <div style="font-size:1.5rem;margin-bottom:.4rem">🐝</div>
+            <h3 style="font-size:1rem;font-weight:800;color:#f0f0f8;margin-bottom:.3rem">Spelling Bee</h3>
+            <p style="color:#9898b0;font-size:.85rem;line-height:1.5">Practice spelling common words — Ages 4–11</p>
+          </a>
+        </div>
+      </div>
+    </noscript>
 
     <!-- About Section -->
     <section class="about-tools fade-in">
