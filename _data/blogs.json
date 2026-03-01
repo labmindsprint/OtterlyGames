@@ -1,32 +1,18 @@
 {
   "posts": [
     {
-      "id": "is-my-child-behind-in-math-age-by-age-milestones",
-      "title": "Is My Child Behind in Math? Age-by-Age Milestones",
-      "excerpt": "Worried about your child's math progress? Learn age-by-age milestones, actionable strategies, and expert-backed advice to empower your child today.",
-      "url": "/blog/is-my-child-behind-in-math-age-by-age-milestones.html",
+      "id": "why-kids-struggle-with-word-problems-and-how-to-help",
+      "title": "Why Kids Struggle with Word Problems (And How to Help)",
+      "excerpt": "Learn why kids struggle with word problems and how you can help them succeed. Backed by research and actionable tips for parents.",
+      "url": "/blog/why-kids-struggle-with-word-problems-and-how-to-help.html",
       "date": "2026-03-01",
       "displayDate": "Mar 1, 2026",
       "emoji": "📖",
       "category": "Learning Guide",
       "categoryClass": "guide",
-      "readTime": "4 min read",
-      "featured": false,
-      "order": 1
-    },
-    {
-      "id": "why-gamified-learning-works-better-than-worksheets",
-      "title": "Why Gamified Learning Works Better Than Worksheets",
-      "excerpt": "Are worksheets a daily struggle in your house? Here's why gamified learning might just be the sanity-saving solution you need.",
-      "url": "/blog/why-gamified-learning-works-better-than-worksheets.html",
-      "date": "2026-03-01",
-      "displayDate": "Mar 1, 2026",
-      "emoji": "🎓",
-      "category": "Learning Resources",
-      "categoryClass": "resources",
       "readTime": "5 min read",
       "featured": false,
-      "order": 2
+      "order": 1
     },
     {
       "id": "division-for-kids-explained-simply",
@@ -40,7 +26,7 @@
       "categoryClass": "guide",
       "readTime": "8 min read",
       "featured": true,
-      "order": 3
+      "order": 2
     },
     {
       "id": "how-to-help-a-child-who-hates-math",
@@ -54,7 +40,7 @@
       "categoryClass": "tips",
       "readTime": "9 min read",
       "featured": true,
-      "order": 4
+      "order": 3
     },
     {
       "id": "times-tables-games-online-free",
@@ -68,7 +54,7 @@
       "categoryClass": "resources",
       "readTime": "7 min read",
       "featured": true,
-      "order": 5
+      "order": 4
     },
     {
       "id": "best-math-apps-for-kids",
@@ -82,7 +68,7 @@
       "categoryClass": "reviews",
       "readTime": "10 min read",
       "featured": false,
-      "order": 6
+      "order": 5
     },
     {
       "id": "how-to-teach-a-child-to-tell-time",
@@ -96,7 +82,7 @@
       "categoryClass": "guide",
       "readTime": "8 min read",
       "featured": false,
-      "order": 7
+      "order": 6
     },
     {
       "id": "screen-time-that-actually-helps",
@@ -110,7 +96,7 @@
       "categoryClass": "digital",
       "readTime": "6 min read",
       "featured": false,
-      "order": 8
+      "order": 7
     },
     {
       "id": "5-ways-to-make-math-fun-at-home",
@@ -124,7 +110,7 @@
       "categoryClass": "tips",
       "readTime": "7 min read",
       "featured": false,
-      "order": 9
+      "order": 8
     },
     {
       "id": "why-my-kids-clock-struggle-inspired-an-app",
@@ -138,7 +124,7 @@
       "categoryClass": "story",
       "readTime": "5 min read",
       "featured": false,
-      "order": 10
+      "order": 9
     }
   ]
 }
