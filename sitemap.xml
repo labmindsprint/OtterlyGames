@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://otterlygames.com/blog/</loc>
-    <lastmod>2026-03-01</lastmod>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -183,6 +183,12 @@
   <url>
     <loc>https://otterlygames.com/blog/why-kids-struggle-with-word-problems-and-how-to-help.html</loc>
     <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://otterlygames.com/blog/how-much-screen-time-is-actually-ok-what-research-says.html</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
