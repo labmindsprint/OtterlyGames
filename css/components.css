@@ -534,6 +534,32 @@
 }
 
 /* ==========================================================================
+   AUTHOR BIO (bottom of blog posts)
+   ========================================================================== */
+.author-bio {
+  display: flex; align-items: center; gap: 1.25rem;
+  max-width: 720px; margin: 2rem auto 0; padding: 1.5rem 1.5rem;
+  background: var(--dark-card); border: 1px solid var(--dark-border);
+  border-radius: 1rem;
+}
+.author-bio-avatar {
+  width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+  object-fit: cover;
+}
+.author-bio-info {}
+.author-bio-name {
+  display: block; font-weight: 800; font-size: 0.95rem;
+  color: var(--text-primary); margin-bottom: 0.3rem;
+}
+.author-bio-desc {
+  font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin: 0;
+}
+.author-bio-desc a { color: var(--pastel-purple); }
+@media (max-width: 500px) {
+  .author-bio { flex-direction: column; text-align: center; }
+}
+
+/* ==========================================================================
    RELATED POSTS (bottom of blog posts)
    ========================================================================== */
 .related-posts {

@@ -1,32 +1,74 @@
 {
   "posts": [
     {
+      "id": "how-to-teach-fractions-to-kids",
+      "title": "How to Teach Fractions to Kids (Without the Tears)",
+      "excerpt": "Teaching fractions to kids doesn't have to be hard. A step-by-step parent's guide using food, LEGO, and everyday life to make fractions click.",
+      "url": "/blog/how-to-teach-fractions-to-kids.html",
+      "date": "2026-03-12",
+      "displayDate": "Mar 12, 2026",
+      "emoji": "🍕",
+      "category": "Learning Guide",
+      "categoryClass": "guide",
+      "readTime": "9 min read",
+      "featured": true,
+      "order": 1
+    },
+    {
       "id": "how-much-screen-time-is-actually-ok-what-research-says",
       "title": "How Much Screen Time Is Actually OK? What Research Says",
-      "excerpt": "Can screen time be educational? Learn what research says about balancing screens, kids, and healthy habits for learning.",
+      "excerpt": "Discover the science behind healthy screen time for kids. Practical tips, expert advice, and tools to balance learning and fun.",
       "url": "/blog/how-much-screen-time-is-actually-ok-what-research-says.html",
       "date": "2026-03-07",
       "displayDate": "Mar 7, 2026",
-      "emoji": "📱",
+      "emoji": "📺",
       "category": "Digital Parenting",
       "categoryClass": "digital",
+      "readTime": "8 min read",
+      "featured": true,
+      "order": 2
+    },
+    {
+      "id": "why-gamified-learning-works-better-than-worksheets",
+      "title": "Why Gamified Learning Works Better Than Worksheets",
+      "excerpt": "Tired of fights over worksheets? Discover why gamified learning works better, keeps kids engaged, and makes math (finally) fun.",
+      "url": "/blog/why-gamified-learning-works-better-than-worksheets.html",
+      "date": "2026-03-05",
+      "displayDate": "Mar 5, 2026",
+      "emoji": "🎮",
+      "category": "Learning Guide",
+      "categoryClass": "guide",
       "readTime": "5 min read",
-      "featured": false,
-      "order": 1
+      "featured": true,
+      "order": 3
     },
     {
       "id": "why-kids-struggle-with-word-problems-and-how-to-help",
       "title": "Why Kids Struggle with Word Problems (And How to Help)",
-      "excerpt": "Learn why kids struggle with word problems and how you can help them succeed. Backed by research and actionable tips for parents.",
+      "excerpt": "Why do kids find word problems so hard — and what can parents actually do to help? A practical guide.",
       "url": "/blog/why-kids-struggle-with-word-problems-and-how-to-help.html",
-      "date": "2026-03-01",
-      "displayDate": "Mar 1, 2026",
-      "emoji": "📖",
+      "date": "2026-03-04",
+      "displayDate": "Mar 4, 2026",
+      "emoji": "💬",
       "category": "Learning Guide",
       "categoryClass": "guide",
       "readTime": "5 min read",
       "featured": false,
-      "order": 2
+      "order": 4
+    },
+    {
+      "id": "is-my-child-behind-in-math-age-by-age-milestones",
+      "title": "Is My Child Behind in Math? Age-by-Age Milestones",
+      "excerpt": "Worried your child is behind in math? Here's what kids should know at each age, and practical strategies to help them catch up.",
+      "url": "/blog/is-my-child-behind-in-math-age-by-age-milestones.html",
+      "date": "2026-03-03",
+      "displayDate": "Mar 3, 2026",
+      "emoji": "📊",
+      "category": "Learning Guide",
+      "categoryClass": "guide",
+      "readTime": "4 min read",
+      "featured": false,
+      "order": 5
     },
     {
       "id": "division-for-kids-explained-simply",
@@ -39,8 +81,8 @@
       "category": "Learning Guide",
       "categoryClass": "guide",
       "readTime": "8 min read",
-      "featured": true,
-      "order": 3
+      "featured": false,
+      "order": 6
     },
     {
       "id": "how-to-help-a-child-who-hates-math",
@@ -54,7 +96,7 @@
       "categoryClass": "tips",
       "readTime": "9 min read",
       "featured": true,
-      "order": 4
+      "order": 7
     },
     {
       "id": "times-tables-games-online-free",
@@ -68,11 +110,11 @@
       "categoryClass": "resources",
       "readTime": "7 min read",
       "featured": true,
-      "order": 5
+      "order": 8
     },
     {
       "id": "best-math-apps-for-kids",
-      "title": "Best Math Apps for Kids in 2025",
+      "title": "Best Math Apps for Kids in 2026",
       "excerpt": "Honest reviews of 20+ math apps for kids aged 4–9. Free and paid picks that actually teach math.",
       "url": "/blog/best-math-apps-for-kids.html",
       "date": "2026-02-22",
@@ -82,7 +124,7 @@
       "categoryClass": "reviews",
       "readTime": "10 min read",
       "featured": false,
-      "order": 6
+      "order": 9
     },
     {
       "id": "how-to-teach-a-child-to-tell-time",
@@ -96,7 +138,7 @@
       "categoryClass": "guide",
       "readTime": "8 min read",
       "featured": false,
-      "order": 7
+      "order": 10
     },
     {
       "id": "screen-time-that-actually-helps",
@@ -110,7 +152,7 @@
       "categoryClass": "digital",
       "readTime": "6 min read",
       "featured": false,
-      "order": 8
+      "order": 11
     },
     {
       "id": "5-ways-to-make-math-fun-at-home",
@@ -124,7 +166,7 @@
       "categoryClass": "tips",
       "readTime": "7 min read",
       "featured": false,
-      "order": 9
+      "order": 12
     },
     {
       "id": "why-my-kids-clock-struggle-inspired-an-app",
@@ -138,7 +180,7 @@
       "categoryClass": "story",
       "readTime": "5 min read",
       "featured": false,
-      "order": 10
+      "order": 13
     }
   ]
 }

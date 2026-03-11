@@ -71,6 +71,26 @@
 
   </article>
 
+  <aside class="author-bio">
+    <img src="/images/Otter-mascot.png" alt="Otterly Games" class="author-bio-avatar">
+    <div class="author-bio-info">
+      <span class="author-bio-name">Written by Otterly Games</span>
+      <p class="author-bio-desc">A mom-built studio creating safe educational games that kids actually want to play. Clock Master and Math Tank are used by families across 50+ countries. Zero data collected, COPPA certified. <a href="/about.html">Read our story →</a></p>
+    </div>
+  </aside>
+
+  <section class="related-posts" id="related-posts"></section>
+  <nav class="post-nav" id="post-nav"></nav>
+
   <script src="/js/includes.js" defer></script>
+  <script src="/js/registry.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.OG) {
+        OG.renderRelatedPosts('#related-posts');
+        OG.renderPostNav('#post-nav');
+      }
+    });
+  </script>
 </body>
 </html>

@@ -73,10 +73,40 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://otterlygames.com/blog/how-to-teach-fractions-to-kids.html</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://otterlygames.com/blog/</loc>
-    <lastmod>2026-03-07</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://otterlygames.com/blog/why-kids-struggle-with-word-problems-and-how-to-help.html</loc>
+    <lastmod>2026-03-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://otterlygames.com/blog/is-my-child-behind-in-math-age-by-age-milestones.html</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://otterlygames.com/blog/why-gamified-learning-works-better-than-worksheets.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://otterlygames.com/blog/how-much-screen-time-is-actually-ok-what-research-says.html</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://otterlygames.com/blog/why-my-kids-clock-struggle-inspired-an-app.html</loc>
@@ -175,21 +205,15 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://otterlygames.com/privacy.html</loc>
-    <lastmod>2026-02-14</lastmod>
+    <loc>https://otterlygames.com/terms.html</loc>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://otterlygames.com/blog/why-kids-struggle-with-word-problems-and-how-to-help.html</loc>
-    <lastmod>2026-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://otterlygames.com/blog/how-much-screen-time-is-actually-ok-what-research-says.html</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://otterlygames.com/privacy.html</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
