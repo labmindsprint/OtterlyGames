@@ -78,6 +78,7 @@
       <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
       <div class="nav-links" id="navLinks">
         <a href="#games">Games</a>
+        <a href="/Arcade/">Arcade</a>
         <a href="/tools/">Tools</a>
         <a href="/blog/">Blog</a>
         <a href="/about.html">About</a>
@@ -239,6 +240,42 @@
     </div>
   </section>
 
+  <!-- EQUATION STRIKER -->
+  <section class="game-section" style="background:linear-gradient(135deg,#0a0a1a 0%,#1a1030 50%,#0a0a1a 100%);">
+    <div class="game-inner">
+      <div class="game-phone fade-in-left" onclick="switchGame('equation')" style="cursor:pointer">
+        <div class="game-phone-screen">
+          <div class="game-phone-camera"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1030,#2d1b4e);display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:23px;">
+            <div style="font-size:3rem;margin-bottom:0.5rem;">⚖️</div>
+            <div style="color:white;font-weight:800;font-size:1.1rem;font-family:Nunito,sans-serif;">Equation Striker</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.8rem;margin-bottom:1rem;">Balance & Solve</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.5rem 1.5rem;border-radius:999px;color:white;font-weight:700;font-size:0.85rem;">▶ Tap to Play</div>
+          </div>
+          <div class="game-phone-home"></div>
+        </div>
+      </div>
+      <div class="game-info fade-in-right">
+        <span class="game-tag" style="background:linear-gradient(135deg,#c4b5fd,#f9a8d4);color:#1a1a2e;">Equation Striker</span>
+        <h2>Balance.<br>Solve.<br>Strike!</h2>
+        <p class="game-pun">"Why did X go to therapy? It had too many <em>unknown</em> issues!" ⚖️</p>
+        <p class="game-desc">
+          What IS an equation? Most kids memorize rules without understanding.
+          Equation Striker uses a weighing scale to make it click.
+          See objects balance, discover the mystery box is X, and slash through
+          prime factors with a satisfying pen strike. That's <em>otterly</em> brilliant.
+        </p>
+        <ul class="game-features">
+          <li><span class="feat-icon">⚖️</span><span><strong>Weighing scale</strong> — See equations as real balance</span></li>
+          <li><span class="feat-icon">📝</span><span><strong>7 levels</strong> — Addition to word problems</span></li>
+          <li><span class="feat-icon">⚡</span><span><strong>Strike mode</strong> — Cross out prime factors like on paper</span></li>
+          <li><span class="feat-icon">🖨️</span><span><strong>PDF worksheets</strong> — Print practice for offline study</span></li>
+        </ul>
+        <a href="#play" class="game-play-btn" style="background:linear-gradient(135deg,#c4b5fd,#f9a8d4);color:#1a1a2e;" onclick="switchGame('equation')">▶ Try Equation Striker</a>
+      </div>
+    </div>
+  </section>
+
   <!-- PLAY & DOWNLOAD -->
   <section class="play-section" id="play">
     <div class="play-header">
@@ -247,6 +284,7 @@
       <div class="play-tabs fade-in">
         <button class="play-tab active" data-game="clock" onclick="switchGame('clock')">🕐 Clock Master</button>
         <button class="play-tab" data-game="math" onclick="switchGame('math')">🎯 Math Tank</button>
+        <button class="play-tab" data-game="equation" onclick="switchGame('equation')">⚖️ Equation Striker</button>
       </div>
     </div>
     <div class="play-inner fade-in">
@@ -259,6 +297,7 @@
               <div class="iframe-scaler" id="iframeScaler">
                 <iframe id="clock-frame" class="play-iframe" allow="autoplay" title="Clock Master"></iframe>
                 <iframe id="math-frame" class="play-iframe" style="display:none" allow="autoplay" title="Math Tank"></iframe>
+                <iframe id="equation-frame" class="play-iframe" style="display:none" allow="autoplay" title="Equation Striker"></iframe>
               </div>
               <!-- Game splash preview (visible before play) -->
               <div class="play-splash" id="playSplash" data-game="clock">
@@ -308,6 +347,9 @@
           <a href="https://play.google.com/store/apps/details?id=com.namasya.mathtank&pcampaignid=web_share" target="_blank" rel="noopener" class="game-play-btn pink">
             <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
             Math Tank — Google Play
+          </a>
+          <a href="/games/equationstriker/" class="game-play-btn" style="background:linear-gradient(135deg,#c4b5fd,#f9a8d4);color:#1a1a2e;">
+            ⚖️ Equation Striker — Play Free
           </a>
         </div>
       </div>
@@ -368,9 +410,9 @@
     });
 
     /* ---- Audio-smart iframe management ---- */
-    const GAME_SRCS = { clock: '/games/clockmaster/?mode=race', math: '/games/mathtank/?mode=battle' };
+    const GAME_SRCS = { clock: '/games/clockmaster/?mode=race', math: '/games/mathtank/?mode=battle', equation: '/games/equationstriker/' };
     let activeGame = 'clock';
-    let loaded = { clock: false, math: false };
+    let loaded = { clock: false, math: false, equation: false };
     let started = false; // user clicked "Tap to Play"
 
     /* Pause every <audio> and AudioContext inside an iframe */
@@ -411,22 +453,24 @@
       document.querySelectorAll('.play-tab').forEach(t => t.classList.toggle('active', t.dataset.game === game));
       const cf = document.getElementById('clock-frame');
       const mf = document.getElementById('math-frame');
+      const ef = document.getElementById('equation-frame');
 
       // Pause audio in the iframe we're leaving
-      const prevFrame = prev === 'clock' ? cf : mf;
-      pauseIframeAudio(prevFrame);
+      const prevFrames = { clock: cf, math: mf, equation: ef };
+      pauseIframeAudio(prevFrames[prev]);
 
       // Show / hide
       cf.style.display = game === 'clock' ? 'block' : 'none';
       mf.style.display = game === 'math'  ? 'block' : 'none';
+      ef.style.display = game === 'equation' ? 'block' : 'none';
 
       // Update splash preview
       const splash = document.getElementById('playSplash');
       if (splash) {
         splash.setAttribute('data-game', game);
-        const icons = { clock: '🏎️', math: '🎯' };
-        const titles = { clock: 'Clock Master', math: 'Math Tank' };
-        const modes = { clock: 'Time Race', math: 'Battle Mode' };
+        const icons = { clock: '🏎️', math: '🎯', equation: '⚖️' };
+        const titles = { clock: 'Clock Master', math: 'Math Tank', equation: 'Equation Striker' };
+        const modes = { clock: 'Time Race', math: 'Battle Mode', equation: 'Balance & Solve' };
         document.getElementById('splashIcon').textContent = icons[game];
         document.getElementById('splashTitle').textContent = titles[game];
         document.getElementById('splashMode').textContent = modes[game];
@@ -443,6 +487,7 @@
       if (document.hidden) {
         pauseIframeAudio(document.getElementById('clock-frame'));
         pauseIframeAudio(document.getElementById('math-frame'));
+        pauseIframeAudio(document.getElementById('equation-frame'));
       }
     });
 
@@ -454,6 +499,7 @@
           if (!e.isIntersecting) {
             pauseIframeAudio(document.getElementById('clock-frame'));
             pauseIframeAudio(document.getElementById('math-frame'));
+            pauseIframeAudio(document.getElementById('equation-frame'));
           }
         });
       }, { threshold: 0 });

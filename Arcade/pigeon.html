@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Captain Pigeon Pooper — Otterly Arcade</title>
+<link rel="stylesheet" href="/css/arcade-game.css">
+<style>
+  /* Game-specific overrides only */
+  canvas {
+    background: #87ceeb;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    display: block;
+    image-rendering: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  /* Pigeon-specific bar colors */
+  .bar.life > div   { background: linear-gradient(90deg, #ef4444, #fca5a5); }
+  .bar.justice > div { background: linear-gradient(90deg, #22c55e, #86efac); }
+
+  #legend .row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 4px 0; font-size: 12px;
+  }
+  #legend .swatch {
+    width: 14px; height: 14px; border-radius: 3px;
+    display: inline-block;
+  }
+
+  /* Overlay for splash / game over */
+  #overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 10, 20, 0.78);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    z-index: 5;
+    border-radius: 8px;
+    margin: 12px;
+  }
+  #overlay.hidden { display: none; }
+  .panel {
+    background: linear-gradient(160deg, var(--panel) 0%, var(--surface) 100%);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 40px;
+    max-width: 520px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+  .panel h2.title {
+    font-size: 32px;
+    margin: 0 0 4px;
+    border: 0; padding: 0; letter-spacing: 0;
+    text-transform: none;
+    font-family: var(--font-heading);
+    background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .panel .tagline {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .panel p { color: #cbd5e1; line-height: 1.6; font-size: 14px; margin: 8px 0; }
+  .panel .keys-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 14px;
+    margin: 18px auto 6px;
+    text-align: left;
+    max-width: 360px;
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+  .panel .start-btn {
+    margin-top: 22px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #0a0a0f;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-family: var(--font-heading);
+    box-shadow: 0 6px 20px rgba(196,181,253,0.35);
+  }
+  .panel .start-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+  .panel .score-line {
+    font-size: 18px;
+    color: var(--accent-2);
+    margin: 10px 0;
+    font-weight: 700;
+  }
+  .panel .small { font-size: 12px; color: var(--muted); margin-top: 14px; }
+</style>
+</head>
+<body>
+<div class="game-page">
+  <div class="game-topbar">
+    <a href="index.html" class="back-link">← Arcade</a>
+    <span class="game-title">Captain Pigeon Pooper</span>
+    <span class="brand-mark"><img src="/images/Otter-mascot.png" alt="Otterly">Otterly Arcade</span>
+  </div>
+<div class="game-area">
+  <div class="game-canvas-col">
+    <canvas id="game" width="960" height="600"></canvas>
+
+    <div id="overlay">
+      <div class="panel">
+        <h2 class="title">🕊️ Captain Pigeon Pooper 💩</h2>
+        <div class="tagline">Justice from above</div>
+        <p>The city is full of crime. Pickpockets, bank robbers, kidnappers.</p>
+        <p>You are <b>Captain Pigeon Pooper</b>. Your weapon: gravity-assisted justice.</p>
+        <p><b>Spot the bad guys</b> — they glow <span style="color:#ef4444"><b>red</b></span>. Then drop the poop.</p>
+        <p style="color:#fbbf24;">⚠️ Some crooks are <b>armed</b> — they will shoot back at you. Dodge their tracers and poop them fast.</p>
+
+        <div class="keys-grid">
+          <div><span class="key">W</span> <span class="key">A</span> <span class="key">S</span> <span class="key">D</span></div>
+          <div>Fly around the sky</div>
+          <div><span class="key">Space</span></div>
+          <div><b>Drop</b> poop straight down 💩</div>
+          <div><span class="key">Mouse Click</span></div>
+          <div><b>Aimed throw</b> toward the crosshair 🎯</div>
+        </div>
+
+        <p style="margin-top:18px;">⚠️ <b>Don't poop on civilians.</b> But if you do, it's only a small penalty — keep flying.</p>
+
+        <button class="start-btn" id="startBtn">START PATROL ▶</button>
+        <div class="small">Tip: when poop overlaps a civilian AND a criminal, the criminal takes the hit.</div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="game-sidebar">
+    <h1>Captain Pigeon Pooper</h1>
+    <div class="subtitle">Justice from above</div>
+
+    <h2>Mission Status</h2>
+    <div class="stat"><span>Score</span><b id="uiScore">0</b></div>
+    <div class="stat"><span>Crimes Stopped</span><b id="uiStops" class="v-good">0</b></div>
+    <div class="stat"><span>Crimes Missed</span><b id="uiMissed" class="v-bad">0</b></div>
+    <div class="stat"><span>Wave</span><b id="uiWave">1</b></div>
+
+    <h2>Pigeon Status</h2>
+    <div class="stat"><span>Lives</span><b id="uiLives">3</b></div>
+    <div class="bar life"><div id="uiLifeBar" style="width:100%"></div></div>
+
+    <div class="stat" style="margin-top:8px;"><span>Justice Rating</span><b id="uiJustice" class="v-good">100%</b></div>
+    <div class="bar justice"><div id="uiJusticeBar" style="width:100%"></div></div>
+
+    <div class="stat" style="margin-top:8px;"><span>Poop Ammo</span><b id="uiAmmo">5 / 5</b></div>
+    <div class="bar"><div id="uiAmmoBar" style="width:100%"></div></div>
+
+    <h2>Crime Guide</h2>
+    <div id="legend">
+      <div class="row"><span class="swatch" style="background:#dc2626"></span> <b style="color:#fca5a5">PICKPOCKET</b></div>
+      <div class="row"><span class="desc">Sneaks behind a civilian to steal a wallet.</span></div>
+      <div class="row" style="margin-top:6px;"><span class="swatch" style="background:#7c3aed"></span> <b style="color:#c4b5fd">BANK ROBBER</b></div>
+      <div class="row"><span class="desc">Runs from the bank with a money bag.</span></div>
+      <div class="row" style="margin-top:6px;"><span class="swatch" style="background:#dc2626"></span> <b style="color:#fca5a5">KIDNAPPER</b></div>
+      <div class="row"><span class="desc">Drags a victim — yells "HELP!"</span></div>
+      <div class="row" style="margin-top:6px;"><span class="swatch" style="background:#0b1220"></span> <b style="color:#fbbf24">ARMED THUG ⚠</b></div>
+      <div class="row"><span class="desc">Shoots BACK at you! Dodge bullets and poop them fast.</span></div>
+    </div>
+
+    <h2>Controls</h2>
+    <div class="ctrl"><span class="key">W</span><span class="key">↑</span><span class="desc">Fly up</span></div>
+    <div class="ctrl"><span class="key">S</span><span class="key">↓</span><span class="desc">Fly down</span></div>
+    <div class="ctrl"><span class="key">A</span><span class="key">←</span><span class="desc">Fly left</span></div>
+    <div class="ctrl"><span class="key">D</span><span class="key">→</span><span class="desc">Fly right</span></div>
+    <div class="ctrl"><span class="key">Space</span><span class="desc"><b>Drop</b> — straight down</span></div>
+    <div class="ctrl"><span class="key">Click</span><span class="desc"><b>Aim</b> — throw at crosshair</span></div>
+    <div class="ctrl"><span class="key">R</span><span class="desc">Restart</span></div>
+    <div class="ctrl"><span class="key">P</span><span class="desc">Pause</span></div>
+
+    <div id="tip">
+      💡 <b>Space vs Click:</b> Use <b>Space</b> when you're flying right over a target. Use <b>Click</b> to <b>aim</b> at a target without moving — great for criminals across the screen.
+      <br><br>
+      🟥 Criminals have a <span style="color:#ef4444">red glowing aura</span>. Civilians don't.
+    </div>
+  </aside>
+</div>
+</div>
+
+<script>
+// =====================================================================
+// CAPTAIN PIGEON POOPER
+// Top-down-ish side view: pigeon patrols the sky, drops poop on crimes below.
+// =====================================================================
+
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+const W = canvas.width;
+const H = canvas.height;
+
+// World layout
+const SKY_TOP = 0;
+const STREET_Y = 420;       // top of the sidewalk
+const GROUND_Y = 500;       // walking baseline (feet of NPCs)
+const SKY_FLOOR = STREET_Y - 30; // pigeon can't fly below this
+
+// ---------- Game state ----------
+const GameState = { SPLASH: 'splash', PLAYING: 'playing', PAUSED: 'paused', GAMEOVER: 'gameover' };
+
+const game = {
+  state: GameState.SPLASH,
+  score: 0,
+  stops: 0,
+  missed: 0,
+  hitCivilians: 0,
+  lives: 3,
+  justice: 100,             // 0-100
+  wave: 1,
+  waveTime: 0,
+  spawnCooldown: 3.5,       // sec until next NPC spawn (slower than before)
+  crimeCooldown: 4.5,       // sec until next crime kicks off (slower than before)
+  ammo: 6,
+  maxAmmo: 6,
+  reloadTimer: 0,
+  reloadRate: 0.9,          // sec per poop reload (faster)
+  t: 0,                     // total seconds
+  shake: 0,
+  maxCivilians: 5,          // cap on-screen civilians to reduce clutter
+  waveDuration: 55,         // sec per wave (slower progression)
+};
+
+// ---------- Player ----------
+const player = {
+  x: W * 0.3,
+  y: 140,
+  w: 44,
+  h: 32,
+  vx: 0, vy: 0,
+  speed: 320,
+  accel: 1400,
+  friction: 6,
+  flap: 0,           // wing animation phase
+  facing: 1,         // 1 right, -1 left
+  hitFlash: 0,
+  invuln: 0,         // brief invincibility after being shot
+};
+
+// ---------- Collections ----------
+const poops = [];      // {x,y,vx,vy,r,life}
+const npcs  = [];      // see spawnNPC
+const crimes = [];     // active crime objects linking criminal -> victim
+const bullets = [];    // shooter bullets: {x,y,vx,vy,life}
+const fx = [];         // visual effects: splash, popup text, feathers
+const clouds = [];
+const cars = [];
+
+// ---------- Input ----------
+const keys = {};
+let mouse = { x: 0, y: 0, down: false, overCanvas: false };
+
+window.addEventListener('keydown', e => {
+  keys[e.code] = true;
+  if (e.code === 'Space') e.preventDefault();
+  if (e.code === 'KeyR') restart();
+  if (e.code === 'KeyP' && game.state === GameState.PLAYING) game.state = GameState.PAUSED;
+  else if (e.code === 'KeyP' && game.state === GameState.PAUSED) game.state = GameState.PLAYING;
+  // Space = straight DROP
+  if (e.code === 'Space' && game.state === GameState.PLAYING) shoot(false);
+  if (game.state === GameState.SPLASH && (e.code === 'Space' || e.code === 'Enter')) startGame();
+  if (game.state === GameState.GAMEOVER && (e.code === 'Enter' || e.code === 'KeyR')) restart();
+});
+window.addEventListener('keyup', e => { keys[e.code] = false; });
+
+canvas.addEventListener('mousemove', e => {
+  const r = canvas.getBoundingClientRect();
+  mouse.x = (e.clientX - r.left) * (W / r.width);
+  mouse.y = (e.clientY - r.top)  * (H / r.height);
+  mouse.overCanvas = true;
+});
+canvas.addEventListener('mouseleave', () => { mouse.overCanvas = false; });
+canvas.addEventListener('mousedown', e => {
+  mouse.down = true;
+  // Mouse click = AIMED THROW toward cursor
+  if (game.state === GameState.PLAYING) shoot(true, mouse.x, mouse.y);
+});
+canvas.addEventListener('mouseup',   () => { mouse.down = false; });
+
+document.getElementById('startBtn').addEventListener('click', startGame);
+
+// ---------- Setup initial scenery ----------
+function initScenery() {
+  clouds.length = 0;
+  for (let i = 0; i < 5; i++) {
+    clouds.push({ x: Math.random() * W, y: 30 + Math.random() * 150, s: 0.6 + Math.random() * 0.8, v: 5 + Math.random() * 8 });
+  }
+  cars.length = 0;
+  // a couple of cars driving down the street for atmosphere
+  for (let i = 0; i < 2; i++) spawnCar();
+}
+initScenery();
+
+function spawnCar() {
+  const dir = Math.random() < 0.5 ? 1 : -1;
+  const colors = ['#ef4444', '#3b82f6', '#22c55e', '#f59e0b', '#a855f7', '#0ea5e9'];
+  cars.push({
+    x: dir > 0 ? -90 : W + 90,
+    y: GROUND_Y + 25,
+    w: 80, h: 28,
+    vx: dir * (60 + Math.random() * 40),
+    color: colors[Math.floor(Math.random() * colors.length)],
+  });
+}
+
+// ---------- NPC system ----------
+// Roles: 'civilian' (good), 'pickpocket', 'robber', 'kidnapper', 'shooter', 'victim'
+function spawnNPC(role) {
+  role = role || 'civilian';
+  const dir = Math.random() < 0.5 ? 1 : -1;
+  const x   = dir > 0 ? -30 : W + 30;
+  // Skin / palette
+  const skins = ['#f5d0b0', '#e7b18b', '#c08868', '#8b5a3c'];
+  const shirts = ['#3b82f6', '#10b981', '#facc15', '#a855f7', '#ec4899', '#f97316', '#06b6d4'];
+  const npc = {
+    id: Math.random().toString(36).slice(2),
+    role,
+    x, y: GROUND_Y,
+    w: 16, h: 44,
+    vx: dir * (25 + Math.random() * 20),
+    dir,
+    skin: skins[Math.floor(Math.random() * skins.length)],
+    shirt: shirts[Math.floor(Math.random() * shirts.length)],
+    pants: '#1f2937',
+    bobPhase: Math.random() * Math.PI * 2,
+    state: 'walking',
+    crimeTimer: 0,
+    stunned: 0,
+    fleeing: false,
+    hitFlash: 0,
+    age: 0,
+    targetId: null,   // for criminals / victims
+    isVictim: false,
+    saidHelp: 0,      // speech bubble timer
+    money: false,
+    mask: false,
+    dragging: false,
+    armed: false,      // shooter only
+    fireTimer: 0,      // sec until next shot (shooter)
+  };
+
+  if (role === 'pickpocket') {
+    npc.shirt = '#7f1d1d';
+    npc.pants = '#0f172a';
+    npc.mask = true;
+    npc.vx = dir * 40;            // a touch slower
+  } else if (role === 'robber') {
+    npc.shirt = '#4c1d95';
+    npc.pants = '#1e1b4b';
+    npc.mask = true;
+    npc.money = true;
+    npc.vx = dir * 80;            // slower so you can aim
+  } else if (role === 'kidnapper') {
+    npc.shirt = '#7f1d1d';
+    npc.pants = '#0f172a';
+    npc.mask = true;
+    npc.dragging = true;
+    npc.vx = dir * 55;
+  } else if (role === 'shooter') {
+    npc.shirt = '#0b1220';        // dark trench coat
+    npc.pants = '#0a0a0a';
+    npc.mask = true;
+    npc.armed = true;
+    npc.vx = dir * 28;             // slow — they stop to aim
+    npc.fireTimer = 1.6;           // first shot delay
+  }
+
+  npcs.push(npc);
+  return npc;
+}
+
+// ---------- Start a crime ----------
+function startCrime() {
+  // Choose crime by wave
+  const r = Math.random();
+  let type;
+  if (game.wave === 1) {
+    type = r < 0.6 ? 'pickpocket' : 'robber';
+  } else if (game.wave === 2) {
+    // wave 2: introduce kidnappers + a rare armed shooter
+    type = r < 0.40 ? 'pickpocket'
+         : r < 0.70 ? 'robber'
+         : r < 0.88 ? 'kidnapper'
+         : 'shooter';
+  } else {
+    // wave 3+: shooters more common
+    type = r < 0.30 ? 'pickpocket'
+         : r < 0.55 ? 'robber'
+         : r < 0.78 ? 'kidnapper'
+         : 'shooter';
+  }
+
+  // Only allow one shooter on screen at a time (they're dangerous)
+  if (type === 'shooter' && npcs.some(n => n.role === 'shooter' && !n.stopped)) {
+    type = 'robber';
+  }
+
+  if (type === 'pickpocket') {
+    // Pickpocket walks behind a civilian. Spawn or pick a civilian, then pickpocket behind it.
+    let victim = npcs.find(n => n.role === 'civilian' && !n.targetId && n.x > 60 && n.x < W - 60);
+    if (!victim) victim = spawnNPC('civilian');
+    const crook = spawnNPC('pickpocket');
+    crook.dir = victim.dir;
+    crook.vx = victim.dir * 40;
+    crook.x  = victim.x - victim.dir * 80; // behind victim
+    crook.targetId = victim.id;
+    victim.targetId = crook.id;
+    victim.isVictim = true;
+    crimes.push({ id: crook.id, type, criminal: crook.id, victim: victim.id, timer: 18, label: 'PICKPOCKET' });
+  }
+  else if (type === 'robber') {
+    // Robber spawns at the bank door running away
+    const crook = spawnNPC('robber');
+    crook.x = W * 0.55;             // bank door
+    crook.dir = Math.random() < 0.5 ? -1 : 1;
+    crook.vx = crook.dir * 80;
+    crook.money = true;
+    crimes.push({ id: crook.id, type, criminal: crook.id, victim: null, timer: 14, label: 'BANK ROBBERY!' });
+    // Bank alarm popup
+    fx.push({ kind: 'alarm', x: W * 0.55, y: STREET_Y - 60, t: 0, life: 2 });
+  }
+  else if (type === 'kidnapper') {
+    // Kidnapper drags a victim. Spawn both together.
+    const crook = spawnNPC('kidnapper');
+    const victim = spawnNPC('civilian');
+    victim.isVictim = true;
+    victim.shirt = '#fb7185'; // distinct child/victim look
+    victim.h = 34;             // smaller
+    victim.dir = crook.dir;
+    victim.vx = crook.vx;
+    victim.x  = crook.x + crook.dir * 18;
+    victim.targetId = crook.id;
+    crook.targetId = victim.id;
+    crimes.push({ id: crook.id, type, criminal: crook.id, victim: victim.id, timer: 20, label: 'KIDNAPPING!' });
+  }
+  else if (type === 'shooter') {
+    // Armed thug — walks slowly, fires at the pigeon. Generous crime timer
+    // since the threat to YOU is the bullets, not a ticking crime.
+    const crook = spawnNPC('shooter');
+    crimes.push({ id: crook.id, type, criminal: crook.id, victim: null, timer: 22, label: 'ARMED THUG!' });
+    fx.push({ kind: 'popup', x: crook.x, y: STREET_Y - 30, text: '⚠ ARMED THUG', color: '#fbbf24', t: 0, life: 1.8 });
+  }
+}
+
+// ---------- Shooter bullets ----------
+// Fires a single bullet from the shooter's pistol toward the pigeon,
+// with a small amount of lead so the player can dodge by moving.
+function spawnBullet(n) {
+  const BULLET_SPEED = 520;
+  // Origin: pistol muzzle at the shooter's hand height
+  const muzzleX = n.x + n.dir * 14;
+  const muzzleY = n.y - 28;
+  // Lead the pigeon by ~70% of the time-to-target
+  const dx = player.x - muzzleX;
+  const dy = player.y - muzzleY;
+  const dist = Math.hypot(dx, dy) || 1;
+  const tToHit = dist / BULLET_SPEED;
+  // Predict player position with some lead, but inject inaccuracy so it's dodgeable
+  const lead = 0.65;
+  const inacc = 0.18; // ~18% random offset
+  const tx = player.x + player.vx * tToHit * lead + (Math.random() - 0.5) * dist * inacc;
+  const ty = player.y + player.vy * tToHit * lead + (Math.random() - 0.5) * 30;
+  const ax = tx - muzzleX, ay = ty - muzzleY;
+  const am = Math.hypot(ax, ay) || 1;
+  bullets.push({
+    x: muzzleX,
+    y: muzzleY,
+    vx: ax / am * BULLET_SPEED,
+    vy: ay / am * BULLET_SPEED,
+    life: 2.2,
+  });
+  // Muzzle flash + bang popup
+  fx.push({ kind: 'muzzle', x: muzzleX, y: muzzleY, t: 0, life: 0.12 });
+  // Small recoil bob on the shooter
+  n.bobPhase += 0.6;
+}
+
+// ---------- Player actions ----------
+// Two firing modes:
+//   shoot(false)         -> Space:  straight DROP (gravity only)
+//   shoot(true, x, y)    -> Mouse:  AIMED THROW toward (x, y), gives horizontal lead
+function shoot(aimed, ax, ay) {
+  if (game.ammo <= 0) {
+    // little dry-fire feedback
+    fx.push({ kind: 'popup', x: player.x, y: player.y - 20, text: 'RELOADING…', color: '#f87171', t: 0, life: 0.6 });
+    return;
+  }
+  game.ammo--;
+
+  let vx, vy;
+  if (aimed) {
+    // Compute throw velocity toward the target point with a ballistic arc.
+    const dx = ax - player.x;
+    const dy = (ay !== undefined ? ay : GROUND_Y) - player.y;
+    // Pick a flight time based on vertical distance (so it lands roughly on the ground line)
+    const T = Math.max(0.55, Math.min(1.4, Math.sqrt(Math.max(40, dy) / 180)));
+    vx = dx / T;
+    // vy chosen so under gravity 360 px/s^2 the poop reaches dy in time T
+    vy = (dy - 0.5 * 360 * T * T) / T;
+    // Clamp horizontal speed so you can't fling poop across the whole screen
+    const MAX_VX = 320;
+    if (vx >  MAX_VX) vx =  MAX_VX;
+    if (vx < -MAX_VX) vx = -MAX_VX;
+  } else {
+    // Straight drop: inherits a bit of pigeon momentum, no aim
+    vx = player.vx * 0.35;
+    vy = 40;
+  }
+
+  poops.push({
+    x: player.x,
+    y: player.y + 12,
+    vx, vy,
+    r: 7,
+    life: 4,
+    rot: 0, vrot: (Math.random() - 0.5) * 10,
+    aimed: !!aimed,
+  });
+  // Tiny recoil up
+  player.vy -= 30;
+}
+
+// ---------- Update loop ----------
+let lastTime = performance.now();
+function tick(now) {
+  let dt = (now - lastTime) / 1000;
+  if (dt > 0.05) dt = 0.05; // clamp big spikes
+  lastTime = now;
+
+  if (game.state === GameState.PLAYING) {
+    update(dt);
+  }
+  render();
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+
+function update(dt) {
+  game.t += dt;
+  game.waveTime += dt;
+
+  // Wave progression — every waveDuration seconds difficulty increases
+  if (game.waveTime > game.waveDuration) {
+    game.wave++;
+    game.waveTime = 0;
+    game.crimeCooldown = Math.max(3.0, game.crimeCooldown - 0.4);
+    fx.push({ kind: 'wavebanner', text: `WAVE ${game.wave}`, t: 0, life: 2.4 });
+  }
+
+  // Reload poop
+  if (game.ammo < game.maxAmmo) {
+    game.reloadTimer += dt;
+    if (game.reloadTimer >= game.reloadRate) {
+      game.reloadTimer = 0;
+      game.ammo++;
+    }
+  } else {
+    game.reloadTimer = 0;
+  }
+
+  // Player input
+  let ax = 0, ay = 0;
+  if (keys['KeyA'] || keys['ArrowLeft'])  ax -= 1;
+  if (keys['KeyD'] || keys['ArrowRight']) ax += 1;
+  if (keys['KeyW'] || keys['ArrowUp'])    ay -= 1;
+  if (keys['KeyS'] || keys['ArrowDown'])  ay += 1;
+  if (ax || ay) {
+    const m = Math.hypot(ax, ay) || 1;
+    player.vx += (ax / m) * player.accel * dt;
+    player.vy += (ay / m) * player.accel * dt;
+    if (ax !== 0) player.facing = ax > 0 ? 1 : -1;
+  }
+  // Friction
+  player.vx -= player.vx * player.friction * dt;
+  player.vy -= player.vy * player.friction * dt;
+  // Clamp speed
+  const sp = Math.hypot(player.vx, player.vy);
+  if (sp > player.speed) {
+    player.vx = player.vx / sp * player.speed;
+    player.vy = player.vy / sp * player.speed;
+  }
+  player.x += player.vx * dt;
+  player.y += player.vy * dt;
+  // Bounds: pigeon stays in sky
+  if (player.x < 28) { player.x = 28; player.vx = 0; }
+  if (player.x > W - 28) { player.x = W - 28; player.vx = 0; }
+  if (player.y < 30) { player.y = 30; player.vy = 0; }
+  if (player.y > SKY_FLOOR) { player.y = SKY_FLOOR; player.vy = 0; }
+
+  player.flap += dt * (8 + Math.min(8, sp / 30));
+  if (player.hitFlash > 0) player.hitFlash -= dt;
+
+  // Clouds drift
+  for (const c of clouds) {
+    c.x += c.v * dt * 0.3;
+    if (c.x > W + 80) c.x = -80;
+  }
+
+  // Cars drive
+  for (let i = cars.length - 1; i >= 0; i--) {
+    const c = cars[i];
+    c.x += c.vx * dt;
+    if (c.x < -120 || c.x > W + 120) cars.splice(i, 1);
+  }
+  if (cars.length < 2 && Math.random() < 0.3 * dt) spawnCar();
+
+  // Spawn cycle: ambient civilians (capped to avoid clutter)
+  game.spawnCooldown -= dt;
+  if (game.spawnCooldown <= 0) {
+    const civCount = npcs.filter(n => n.role === 'civilian' && !n.isVictim).length;
+    if (civCount < game.maxCivilians) {
+      spawnNPC('civilian');
+    }
+    game.spawnCooldown = 3.5 + Math.random() * 3.0;
+  }
+
+  // Spawn cycle: crimes
+  game.crimeCooldown -= dt;
+  if (game.crimeCooldown <= 0) {
+    startCrime();
+    game.crimeCooldown = 6.5 + Math.random() * 3.0 - Math.min(2, game.wave * 0.25);
+  }
+
+  // Update NPCs
+  for (let i = npcs.length - 1; i >= 0; i--) {
+    const n = npcs[i];
+    n.age += dt;
+    if (n.stunned > 0) { n.stunned -= dt; n.vx *= 0.9; }
+    if (n.hitFlash > 0) n.hitFlash -= dt;
+    if (n.saidHelp > 0) n.saidHelp -= dt;
+
+    if (n.stunned <= 0) {
+      n.x += n.vx * dt;
+    }
+    n.bobPhase += dt * (Math.abs(n.vx) * 0.05 + 1);
+
+    // Armed shooters: aim at the pigeon and fire periodically
+    if (n.role === 'shooter' && !n.stopped && n.stunned <= 0
+        && n.x > 20 && n.x < W - 20) {
+      // face the pigeon
+      n.dir = (player.x >= n.x) ? 1 : -1;
+      n.fireTimer -= dt;
+      if (n.fireTimer <= 0) {
+        spawnBullet(n);
+        // 2.4-3.4s between shots; tighter at higher waves
+        n.fireTimer = (2.4 - Math.min(0.6, game.wave * 0.15))
+                     + Math.random() * 1.0;
+      }
+    }
+
+    // Victim says "HELP!" periodically while crime active
+    if (n.isVictim && n.saidHelp <= 0) {
+      n.saidHelp = 1.4;
+    }
+
+    // Cleanup off-screen
+    if (n.x < -60 || n.x > W + 60) {
+      // If a criminal escapes, count as missed
+      if ((n.role === 'pickpocket' || n.role === 'robber' || n.role === 'kidnapper' || n.role === 'shooter') && !n.stopped) {
+        crimeFailed(n.id, 'escape');
+      }
+      npcs.splice(i, 1);
+    }
+  }
+
+  // Update crimes (timers)
+  for (let i = crimes.length - 1; i >= 0; i--) {
+    const cr = crimes[i];
+    cr.timer -= dt;
+    const crook = npcs.find(n => n.id === cr.criminal);
+    if (!crook) { crimes.splice(i, 1); continue; }
+    if (crook.stopped) {
+      crimes.splice(i, 1);
+      continue;
+    }
+    if (cr.timer <= 0) {
+      // Crime committed — penalty
+      crimeFailed(cr.criminal, 'committed');
+      crimes.splice(i, 1);
+    }
+  }
+
+  // Update bullets (fired by shooters at the pigeon)
+  if (player.invuln > 0) player.invuln -= dt;
+  for (let i = bullets.length - 1; i >= 0; i--) {
+    const b = bullets[i];
+    b.x += b.vx * dt;
+    b.y += b.vy * dt;
+    b.life -= dt;
+    // Off-screen / out of life
+    if (b.life <= 0 || b.x < -20 || b.x > W + 20 || b.y < -20 || b.y > H + 20) {
+      bullets.splice(i, 1);
+      continue;
+    }
+    // Hit the pigeon? Hitbox roughly 30x22 around player center
+    if (player.invuln <= 0
+        && b.x > player.x - 18 && b.x < player.x + 18
+        && b.y > player.y - 12 && b.y < player.y + 12) {
+      // Hit!
+      bullets.splice(i, 1);
+      // Feathers + popup
+      for (let k = 0; k < 8; k++) {
+        fx.push({ kind: 'feather', x: player.x, y: player.y,
+                  vx: (Math.random() - 0.5) * 160, vy: -60 - Math.random() * 80,
+                  t: 0, life: 1.2 });
+      }
+      fx.push({ kind: 'popup', x: player.x, y: player.y - 30, text: 'HIT!', color: '#fca5a5', t: 0, life: 1.0 });
+      player.invuln = 1.2;
+      loseLife('SHOT DOWN!');
+      continue;
+    }
+  }
+
+  // Update poops
+  for (let i = poops.length - 1; i >= 0; i--) {
+    const p = poops[i];
+    p.vy += 360 * dt;       // gravity
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    p.rot += p.vrot * dt;
+    p.life -= dt;
+
+    // Ground hit
+    if (p.y > GROUND_Y + 4) {
+      // splash on the ground
+      fx.push({ kind: 'splash', x: p.x, y: GROUND_Y + 6, t: 0, life: 0.6, big: false });
+      poops.splice(i, 1);
+      continue;
+    }
+
+    // Check NPC collision — favor criminals when overlapping civilians
+    let hitIdx = -1;
+    let hitIsCriminal = false;
+    for (let j = 0; j < npcs.length; j++) {
+      const n = npcs[j];
+      if (n.stopped) continue;
+      // Slightly larger hit zone for forgiveness (esp. for criminals)
+      const isCrook = (n.role === 'pickpocket' || n.role === 'robber' || n.role === 'kidnapper' || n.role === 'shooter');
+      const pad = isCrook ? 18 : 12;
+      const hx = n.x - pad, hw = pad * 2;
+      const hy = n.y - n.h - 4, hh = n.h + 4;
+      if (p.x > hx && p.x < hx + hw && p.y > hy && p.y < hy + hh) {
+        // Prefer criminals if both match
+        if (isCrook) { hitIdx = j; hitIsCriminal = true; break; }
+        if (!hitIsCriminal) hitIdx = j;
+      }
+    }
+    if (hitIdx >= 0) {
+      const n = npcs[hitIdx];
+      hitNPC(n);
+      fx.push({ kind: 'splash', x: p.x, y: p.y, t: 0, life: 0.55, big: true });
+      poops.splice(i, 1);
+      continue;
+    }
+    if (p.life <= 0) poops.splice(i, 1);
+  }
+
+  // Update fx
+  for (let i = fx.length - 1; i >= 0; i--) {
+    const e = fx[i];
+    e.t += dt;
+    if (e.kind === 'popup') { e.y -= 30 * dt; }
+    if (e.t >= e.life) fx.splice(i, 1);
+  }
+
+  if (game.shake > 0) game.shake = Math.max(0, game.shake - dt * 6);
+
+  updateHUD();
+}
+
+function hitNPC(n) {
+  n.hitFlash = 0.4;
+  n.stopped = true;
+  n.stunned = 5;
+  n.vx = 0;
+
+  if (n.role === 'civilian') {
+    if (n.isVictim) {
+      // The victim got hit — that's bad too, but mild
+      game.justice = Math.max(0, game.justice - 5);
+      game.score = Math.max(0, game.score - 10);
+      fx.push({ kind: 'popup', x: n.x, y: n.y - 60, text: '–10  oh no!', color: '#f87171', t: 0, life: 1.2 });
+    } else {
+      game.justice = Math.max(0, game.justice - 7);
+      game.hitCivilians++;
+      game.score = Math.max(0, game.score - 15);
+      fx.push({ kind: 'popup', x: n.x, y: n.y - 60, text: '–15  civilian!', color: '#f87171', t: 0, life: 1.2 });
+      // Lose a life if justice drops too low
+      if (game.justice <= 0) loseLife('Justice dropped to zero!');
+    }
+  } else {
+    // Criminal stopped!
+    let pts = 0, label = '';
+    if (n.role === 'pickpocket') { pts = 50; label = 'PICKPOCKET!'; }
+    if (n.role === 'robber')     { pts = 80; label = 'ROBBER!'; }
+    if (n.role === 'kidnapper')  { pts = 120; label = 'KIDNAPPER!'; }
+    if (n.role === 'shooter')    { pts = 150; label = 'SILENCED THE SHOOTER!'; }
+    game.score += pts;
+    game.stops++;
+    game.justice = Math.min(100, game.justice + 6);
+    fx.push({ kind: 'popup', x: n.x, y: n.y - 60, text: `+${pts}  ${label}`, color: '#86efac', t: 0, life: 1.4 });
+    // Free the victim
+    if (n.targetId) {
+      const v = npcs.find(x => x.id === n.targetId);
+      if (v) {
+        v.isVictim = false;
+        v.targetId = null;
+        v.vx = v.dir * 45;
+        fx.push({ kind: 'popup', x: v.x, y: v.y - 60, text: 'SAVED!', color: '#facc15', t: 0, life: 1.2 });
+      }
+    }
+    game.shake = 0.5;
+  }
+}
+
+function crimeFailed(crookId, reason) {
+  game.missed++;
+  game.justice = Math.max(0, game.justice - 6);
+  game.score = Math.max(0, game.score - 10);
+  const crook = npcs.find(n => n.id === crookId);
+  if (crook) {
+    const lbl = reason === 'escape' ? 'CROOK ESCAPED' : 'CRIME COMMITTED';
+    fx.push({ kind: 'popup', x: crook.x, y: STREET_Y - 30, text: `❌ ${lbl}`, color: '#fca5a5', t: 0, life: 1.6 });
+    crook.stopped = true; // stop tracking
+  }
+  if (game.justice <= 0) loseLife('Justice fell to zero!');
+}
+
+function loseLife(reason) {
+  game.lives--;
+  game.justice = 60;
+  game.shake = 1.2;
+  player.hitFlash = 0.8;
+  fx.push({ kind: 'banner', text: reason, t: 0, life: 1.8, color: '#f87171' });
+  if (game.lives <= 0) {
+    gameOver();
+  }
+}
+
+function gameOver() {
+  game.state = GameState.GAMEOVER;
+  showOverlayGameOver();
+}
+
+// ---------- Render ----------
+function render() {
+  ctx.save();
+  // screen shake
+  if (game.shake > 0) {
+    const s = game.shake * 8;
+    ctx.translate((Math.random() - 0.5) * s, (Math.random() - 0.5) * s);
+  }
+
+  drawSky();
+  drawCityBackdrop();
+  drawStreet();
+
+  // Cars (between street and people)
+  for (const c of cars) drawCar(c);
+
+  // Criminal auras (drawn BEFORE NPCs so they appear underneath)
+  for (const n of npcs) {
+    if (n.stopped) continue;
+    if (n.role === 'pickpocket' || n.role === 'robber' || n.role === 'kidnapper' || n.role === 'shooter') {
+      drawCriminalAura(n);
+    }
+  }
+
+  // Sort NPCs by y for depth-ish ordering (they're all on the ground here, so just walking order)
+  // Draw victims behind kidnappers slightly so dragging looks right
+  const drawOrder = npcs.slice().sort((a, b) => a.y - b.y);
+  for (const n of drawOrder) drawNPC(n);
+
+  // Crime indicators
+  for (const cr of crimes) drawCrimeIndicator(cr);
+
+  // Poops
+  for (const p of poops) drawPoop(p);
+
+  // Bullets (rendered above NPCs so they're clearly visible)
+  for (const b of bullets) drawBullet(b);
+
+  // Player
+  drawPigeon(player);
+
+  // Aiming reticle on the ground when mouse is over canvas
+  if (game.state === GameState.PLAYING && mouse.overCanvas) {
+    drawAimReticle(mouse.x, mouse.y);
+  }
+
+  // FX (splashes, popups)
+  for (const e of fx) drawFX(e);
+
+  ctx.restore();
+
+  // HUD overlay (no shake)
+  drawHUDOverlay();
+}
+
+function drawSky() {
+  const grd = ctx.createLinearGradient(0, 0, 0, STREET_Y);
+  grd.addColorStop(0, '#7ec8e3');
+  grd.addColorStop(0.7, '#bce5f4');
+  grd.addColorStop(1, '#e7f4fa');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, W, STREET_Y);
+
+  // Sun
+  ctx.save();
+  ctx.globalAlpha = 0.55;
+  const sx = W - 110, sy = 80;
+  const radial = ctx.createRadialGradient(sx, sy, 0, sx, sy, 80);
+  radial.addColorStop(0, 'rgba(255, 230, 130, 1)');
+  radial.addColorStop(1, 'rgba(255, 230, 130, 0)');
+  ctx.fillStyle = radial;
+  ctx.beginPath(); ctx.arc(sx, sy, 80, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#fff7c2';
+  ctx.beginPath(); ctx.arc(sx, sy, 26, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+
+  // Clouds
+  for (const c of clouds) drawCloud(c);
+}
+
+function drawCloud(c) {
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.92)';
+  const r = 24 * c.s;
+  ctx.beginPath();
+  ctx.arc(c.x,        c.y,         r,       0, Math.PI * 2);
+  ctx.arc(c.x + r,    c.y - r*0.3, r*0.85,  0, Math.PI * 2);
+  ctx.arc(c.x + r*2,  c.y,         r,       0, Math.PI * 2);
+  ctx.arc(c.x + r*1,  c.y + r*0.4, r*0.9,   0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawCityBackdrop() {
+  // distant skyline silhouette
+  ctx.save();
+  ctx.fillStyle = '#94a3b8';
+  ctx.globalAlpha = 0.55;
+  const baseY = STREET_Y;
+  const buildings = [
+    { x:0,   w:90,  h:140 },
+    { x:90,  w:60,  h:100 },
+    { x:150, w:100, h:170 },
+    { x:250, w:80,  h:120 },
+    { x:330, w:110, h:200 }, // tallest
+    { x:440, w:70,  h:130 },
+    { x:510, w:90,  h:150 },
+    { x:600, w:120, h:110 }, // BANK area starts around here
+    { x:720, w:80,  h:170 },
+    { x:800, w:90,  h:130 },
+    { x:890, w:70,  h:150 },
+  ];
+  for (const b of buildings) {
+    ctx.fillRect(b.x, baseY - b.h, b.w, b.h);
+  }
+  ctx.restore();
+
+  // Nearer buildings with windows
+  drawNearBuildings();
+}
+
+function drawNearBuildings() {
+  // BANK building, centerpiece
+  const bankX = W * 0.5 - 70, bankY = STREET_Y - 130, bankW = 200, bankH = 130;
+  ctx.fillStyle = '#cbd5e1';
+  ctx.fillRect(bankX, bankY, bankW, bankH);
+  // columns
+  ctx.fillStyle = '#94a3b8';
+  for (let i = 0; i < 4; i++) {
+    ctx.fillRect(bankX + 18 + i * 50, bankY + 30, 10, bankH - 30);
+  }
+  // pediment
+  ctx.beginPath();
+  ctx.moveTo(bankX - 6, bankY + 30);
+  ctx.lineTo(bankX + bankW / 2, bankY);
+  ctx.lineTo(bankX + bankW + 6, bankY + 30);
+  ctx.closePath();
+  ctx.fillStyle = '#e5e7eb';
+  ctx.fill();
+  // BANK sign
+  ctx.fillStyle = '#1e293b';
+  ctx.font = 'bold 16px "Segoe UI"';
+  ctx.textAlign = 'center';
+  ctx.fillText('🏦 BANK', bankX + bankW / 2, bankY + 22);
+
+  // Shops left + right
+  drawShop(40, STREET_Y - 90, 160, 90, '#fde68a', '☕ CAFÉ');
+  drawShop(220, STREET_Y - 110, 140, 110, '#fecaca', '🍔 DINER');
+  drawShop(W - 240, STREET_Y - 100, 160, 100, '#bbf7d0', '🌳 PARK');
+  drawShop(W - 70, STREET_Y - 90, 60, 90, '#c7d2fe', '');
+}
+
+function drawShop(x, y, w, h, color, label) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, w, h);
+  ctx.strokeStyle = '#0f172a';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(x + 0.5, y + 0.5, w, h);
+  // door
+  ctx.fillStyle = '#374151';
+  ctx.fillRect(x + w/2 - 12, y + h - 38, 24, 38);
+  // window
+  ctx.fillStyle = '#bae6fd';
+  ctx.fillRect(x + 10, y + 14, w/2 - 20, 26);
+  // sign
+  if (label) {
+    ctx.fillStyle = '#1f2937';
+    ctx.font = 'bold 12px "Segoe UI"';
+    ctx.textAlign = 'center';
+    ctx.fillText(label, x + w / 2, y + 12);
+  }
+}
+
+function drawStreet() {
+  // sidewalk
+  ctx.fillStyle = '#a8a29e';
+  ctx.fillRect(0, STREET_Y, W, 90);
+  // curb stripe
+  ctx.fillStyle = '#78716c';
+  ctx.fillRect(0, STREET_Y, W, 4);
+
+  // road
+  ctx.fillStyle = '#1f2937';
+  ctx.fillRect(0, STREET_Y + 70, W, 30);
+
+  // road dashed line
+  ctx.fillStyle = '#facc15';
+  for (let x = 0; x < W; x += 28) {
+    ctx.fillRect(x, STREET_Y + 84, 16, 3);
+  }
+
+  // sidewalk seams
+  ctx.strokeStyle = '#78716c';
+  ctx.lineWidth = 1;
+  for (let x = 0; x < W; x += 40) {
+    ctx.beginPath();
+    ctx.moveTo(x, STREET_Y + 4);
+    ctx.lineTo(x, STREET_Y + 68);
+    ctx.stroke();
+  }
+}
+
+function drawCar(c) {
+  ctx.save();
+  // body
+  ctx.fillStyle = c.color;
+  ctx.fillRect(c.x - c.w/2, c.y - c.h, c.w, c.h);
+  // cabin
+  ctx.fillStyle = '#cbd5e1';
+  ctx.fillRect(c.x - c.w/2 + 16, c.y - c.h + 4, c.w - 32, c.h - 14);
+  // wheels
+  ctx.fillStyle = '#0f172a';
+  ctx.beginPath();
+  ctx.arc(c.x - c.w/2 + 14, c.y - 2, 6, 0, Math.PI * 2);
+  ctx.arc(c.x + c.w/2 - 14, c.y - 2, 6, 0, Math.PI * 2);
+  ctx.fill();
+  // headlight (direction)
+  ctx.fillStyle = '#fef08a';
+  if (c.vx > 0) ctx.fillRect(c.x + c.w/2 - 4, c.y - c.h/2 - 3, 4, 6);
+  else          ctx.fillRect(c.x - c.w/2,     c.y - c.h/2 - 3, 4, 6);
+  ctx.restore();
+}
+
+function drawPigeon(p) {
+  // Invulnerability blink — skip drawing every other ~80ms while iframes are active
+  if (p.invuln > 0 && Math.floor(p.invuln * 12) % 2 === 0) return;
+  ctx.save();
+  ctx.translate(p.x, p.y);
+  if (p.facing === -1) ctx.scale(-1, 1);
+  if (p.hitFlash > 0) ctx.filter = 'brightness(1.6) saturate(0.4)';
+
+  // Body
+  ctx.fillStyle = '#6b7280';
+  ctx.beginPath();
+  ctx.ellipse(0, 0, 18, 12, 0, 0, Math.PI * 2);
+  ctx.fill();
+  // Belly
+  ctx.fillStyle = '#d1d5db';
+  ctx.beginPath();
+  ctx.ellipse(0, 4, 12, 6, 0, 0, Math.PI * 2);
+  ctx.fill();
+  // Head
+  ctx.fillStyle = '#6b7280';
+  ctx.beginPath();
+  ctx.arc(14, -6, 9, 0, Math.PI * 2);
+  ctx.fill();
+  // Captain's cap!
+  ctx.fillStyle = '#1e3a8a';
+  ctx.beginPath();
+  ctx.ellipse(14, -12, 10, 3, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillRect(8, -15, 12, 4);
+  // cap badge (gold)
+  ctx.fillStyle = '#facc15';
+  ctx.beginPath();
+  ctx.arc(14, -14, 2, 0, Math.PI * 2);
+  ctx.fill();
+  // Beak
+  ctx.fillStyle = '#f59e0b';
+  ctx.beginPath();
+  ctx.moveTo(22, -6);
+  ctx.lineTo(28, -4);
+  ctx.lineTo(22, -2);
+  ctx.closePath();
+  ctx.fill();
+  // Eye
+  ctx.fillStyle = '#0a0a0a';
+  ctx.beginPath();
+  ctx.arc(16, -8, 1.6, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#fff';
+  ctx.beginPath();
+  ctx.arc(16.6, -8.6, 0.6, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Wing (flaps based on flap phase)
+  const wf = Math.sin(player.flap);
+  ctx.save();
+  ctx.translate(-2, -2);
+  ctx.rotate(wf * 0.6);
+  ctx.fillStyle = '#4b5563';
+  ctx.beginPath();
+  ctx.ellipse(0, 0, 14, 5, 0, 0, Math.PI * 2);
+  ctx.fill();
+  // wing tip darker
+  ctx.fillStyle = '#374151';
+  ctx.beginPath();
+  ctx.ellipse(-8, 1, 6, 3, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // Tail
+  ctx.fillStyle = '#4b5563';
+  ctx.beginPath();
+  ctx.moveTo(-14, -2);
+  ctx.lineTo(-22, -5);
+  ctx.lineTo(-22, 3);
+  ctx.closePath();
+  ctx.fill();
+
+  // Feet (tucked when flying — show small)
+  ctx.fillStyle = '#f59e0b';
+  ctx.fillRect(-4, 10, 2, 4);
+  ctx.fillRect(2, 10, 2, 4);
+
+  ctx.restore();
+}
+
+function drawNPC(n) {
+  ctx.save();
+  ctx.translate(n.x, n.y);
+  if (n.dir === -1) ctx.scale(-1, 1);
+  if (n.hitFlash > 0) ctx.filter = 'brightness(1.8) saturate(0.3)';
+
+  const bob = n.stunned > 0 ? 0 : Math.sin(n.bobPhase) * 1.5;
+
+  // Body / legs
+  ctx.fillStyle = n.pants;
+  ctx.fillRect(-6, -22, 5, 22);  // left leg
+  ctx.fillRect(1, -22, 5, 22);   // right leg
+  // shirt
+  ctx.fillStyle = n.shirt;
+  ctx.fillRect(-9, -36 + bob, 18, 18);
+  // arms
+  ctx.fillStyle = n.shirt;
+  ctx.fillRect(-12, -34 + bob, 4, 14);
+  ctx.fillRect(8, -34 + bob, 4, 14);
+  // head
+  ctx.fillStyle = n.skin;
+  ctx.beginPath();
+  ctx.arc(0, -42 + bob, 7, 0, Math.PI * 2);
+  ctx.fill();
+  // hair
+  ctx.fillStyle = '#3f3f46';
+  ctx.beginPath();
+  ctx.arc(0, -45 + bob, 7, Math.PI, 0);
+  ctx.fill();
+
+  // Mask (criminal)
+  if (n.mask) {
+    ctx.fillStyle = '#0f0f10';
+    ctx.fillRect(-7, -44 + bob, 14, 5);
+    // beady eyes through mask
+    ctx.fillStyle = '#fef08a';
+    ctx.fillRect(-4, -43 + bob, 1.5, 1.5);
+    ctx.fillRect(2.5, -43 + bob, 1.5, 1.5);
+  } else {
+    // friendly eyes
+    ctx.fillStyle = '#000';
+    ctx.fillRect(-3, -43 + bob, 1.2, 1.2);
+    ctx.fillRect(2, -43 + bob, 1.2, 1.2);
+  }
+
+  // Money bag (robber)
+  if (n.money) {
+    ctx.fillStyle = '#a16207';
+    ctx.beginPath();
+    ctx.ellipse(-12, -22 + bob, 7, 8, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#facc15';
+    ctx.font = 'bold 11px "Segoe UI"';
+    ctx.textAlign = 'center';
+    ctx.fillText('$', -12, -19 + bob);
+  }
+
+  // Reaching hand (pickpocket animation)
+  if (n.role === 'pickpocket') {
+    const reach = Math.sin(n.age * 6) * 3 + 12;
+    ctx.fillStyle = n.skin;
+    ctx.fillRect(8, -28 + bob, reach, 3);
+  }
+
+  // If dragging victim (kidnapper) draw a rope/arm
+  if (n.dragging) {
+    ctx.strokeStyle = n.skin;
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(-10, -28 + bob);
+    ctx.lineTo(-22, -22 + bob);
+    ctx.stroke();
+  }
+
+  // Armed shooter — pistol in right hand (relative to facing dir)
+  if (n.armed) {
+    // arm holding the gun forward
+    ctx.fillStyle = n.skin;
+    ctx.fillRect(8, -30 + bob, 10, 3);
+    // pistol body
+    ctx.fillStyle = '#111';
+    ctx.fillRect(14, -32 + bob, 8, 5);
+    // barrel
+    ctx.fillStyle = '#1f2937';
+    ctx.fillRect(20, -31 + bob, 4, 2);
+    // grip
+    ctx.fillStyle = '#2d2d2d';
+    ctx.fillRect(15, -28 + bob, 3, 5);
+  }
+
+  // Restore (filter)
+  ctx.restore();
+
+  // Victim "HELP!" bubble (drawn in world coords without flip)
+  if (n.isVictim && n.saidHelp > 0) {
+    drawSpeech(n.x, n.y - 60, 'HELP!');
+  }
+  if (n.stopped && (n.role === 'pickpocket' || n.role === 'robber' || n.role === 'kidnapper' || n.role === 'shooter')) {
+    // small "X" cross-out
+    ctx.save();
+    ctx.strokeStyle = '#ef4444';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(n.x - 10, n.y - 35);
+    ctx.lineTo(n.x + 10, n.y - 50);
+    ctx.moveTo(n.x + 10, n.y - 35);
+    ctx.lineTo(n.x - 10, n.y - 50);
+    ctx.stroke();
+    ctx.restore();
+  }
+}
+
+function drawSpeech(x, y, text) {
+  ctx.save();
+  ctx.font = 'bold 12px "Segoe UI"';
+  ctx.textAlign = 'center';
+  const w = ctx.measureText(text).width + 14;
+  const h = 22;
+  ctx.fillStyle = 'rgba(255,255,255,0.95)';
+  ctx.strokeStyle = '#dc2626';
+  ctx.lineWidth = 2;
+  roundRect(ctx, x - w/2, y - h, w, h, 6, true, true);
+  // tail
+  ctx.beginPath();
+  ctx.moveTo(x - 4, y);
+  ctx.lineTo(x + 4, y);
+  ctx.lineTo(x, y + 6);
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(255,255,255,0.95)';
+  ctx.fill();
+  ctx.strokeStyle = '#dc2626';
+  ctx.stroke();
+  ctx.fillStyle = '#dc2626';
+  ctx.fillText(text, x, y - 7);
+  ctx.restore();
+}
+
+// Red pulsing aura under criminals — easy "shoot the glowing one" signal
+function drawCriminalAura(n) {
+  const pulse = 0.7 + Math.sin(game.t * 6) * 0.3;
+  ctx.save();
+  // Glow puddle on the ground
+  const grd = ctx.createRadialGradient(n.x, n.y, 4, n.x, n.y, 38);
+  grd.addColorStop(0, `rgba(239, 68, 68, ${0.55 * pulse})`);
+  grd.addColorStop(0.6, `rgba(239, 68, 68, ${0.22 * pulse})`);
+  grd.addColorStop(1, 'rgba(239, 68, 68, 0)');
+  ctx.fillStyle = grd;
+  ctx.beginPath();
+  ctx.ellipse(n.x, n.y - 2, 38, 14, 0, 0, Math.PI * 2);
+  ctx.fill();
+  // Soft red halo around the body
+  const halo = ctx.createRadialGradient(n.x, n.y - 22, 6, n.x, n.y - 22, 36);
+  halo.addColorStop(0, `rgba(239, 68, 68, ${0.35 * pulse})`);
+  halo.addColorStop(1, 'rgba(239, 68, 68, 0)');
+  ctx.fillStyle = halo;
+  ctx.beginPath();
+  ctx.arc(n.x, n.y - 22, 36, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+// Aiming reticle for the mouse — shows where an aimed throw will land
+function drawAimReticle(x, y) {
+  ctx.save();
+  // Constrain the reticle to be visible only over the street
+  const ty = Math.max(40, Math.min(H - 10, y));
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath();
+  ctx.arc(x, ty, 14, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.strokeStyle = '#facc15';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(x - 18, ty);
+  ctx.lineTo(x - 6,  ty);
+  ctx.moveTo(x + 6,  ty);
+  ctx.lineTo(x + 18, ty);
+  ctx.moveTo(x, ty - 18);
+  ctx.lineTo(x, ty - 6);
+  ctx.moveTo(x, ty + 6);
+  ctx.lineTo(x, ty + 18);
+  ctx.stroke();
+  // Faint trajectory hint from pigeon to reticle
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([2, 6]);
+  ctx.beginPath();
+  ctx.moveTo(player.x, player.y + 10);
+  ctx.lineTo(x, ty);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.restore();
+}
+
+function drawCrimeIndicator(cr) {
+  const crook = npcs.find(n => n.id === cr.criminal);
+  if (!crook || crook.stopped) return;
+  const x = crook.x;
+  const y = crook.y - 70;
+
+  // Pulsing red "!" marker
+  const pulse = 1 + Math.sin(game.t * 8) * 0.15;
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(pulse, pulse);
+  ctx.fillStyle = '#dc2626';
+  ctx.beginPath();
+  ctx.moveTo(-9, -16);
+  ctx.lineTo(9, -16);
+  ctx.lineTo(0, 4);
+  ctx.closePath();
+  ctx.fill();
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 14px "Segoe UI"';
+  ctx.textAlign = 'center';
+  ctx.fillText('!', 0, -2);
+  ctx.restore();
+
+  // Crime label
+  ctx.save();
+  ctx.font = 'bold 10px "Segoe UI"';
+  ctx.textAlign = 'center';
+  ctx.fillStyle = 'rgba(0,0,0,0.7)';
+  const lw = ctx.measureText(cr.label).width + 8;
+  roundRect(ctx, x - lw/2, y - 32, lw, 14, 4, true, false);
+  ctx.fillStyle = '#fecaca';
+  ctx.fillText(cr.label, x, y - 22);
+  ctx.restore();
+
+  // Crime timer bar above
+  const frac = Math.max(0, cr.timer / (cr.type === 'kidnapper' ? 14 : cr.type === 'pickpocket' ? 12 : 9));
+  ctx.save();
+  ctx.fillStyle = 'rgba(0,0,0,0.55)';
+  ctx.fillRect(x - 22, y - 40, 44, 4);
+  ctx.fillStyle = frac > 0.5 ? '#22c55e' : frac > 0.25 ? '#facc15' : '#ef4444';
+  ctx.fillRect(x - 22, y - 40, 44 * frac, 4);
+  ctx.restore();
+}
+
+function drawPoop(p) {
+  ctx.save();
+  ctx.translate(p.x, p.y);
+  ctx.rotate(p.rot);
+  // shadow trail
+  ctx.fillStyle = 'rgba(120,73,36,0.25)';
+  ctx.beginPath();
+  ctx.ellipse(0, -6, p.r * 0.7, p.r * 0.4, 0, 0, Math.PI * 2);
+  ctx.fill();
+  // poop blob (cartoony swirl)
+  ctx.fillStyle = '#6b3a13';
+  ctx.beginPath();
+  ctx.arc(0, 2, p.r * 0.9, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#8a4a18';
+  ctx.beginPath();
+  ctx.arc(-1, -2, p.r * 0.7, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#a25a20';
+  ctx.beginPath();
+  ctx.arc(0, -6, p.r * 0.45, 0, Math.PI * 2);
+  ctx.fill();
+  // shine
+  ctx.fillStyle = 'rgba(255,255,255,0.45)';
+  ctx.beginPath();
+  ctx.ellipse(-1, -2, 1.5, 0.7, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+// Bullet tracer — small fast yellow streak with glow
+function drawBullet(b) {
+  ctx.save();
+  const len = 14;
+  const sp = Math.hypot(b.vx, b.vy) || 1;
+  const ux = b.vx / sp, uy = b.vy / sp;
+  const x1 = b.x - ux * len, y1 = b.y - uy * len;
+  // outer glow
+  ctx.strokeStyle = 'rgba(250, 204, 21, 0.35)';
+  ctx.lineWidth = 6;
+  ctx.lineCap = 'round';
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(b.x, b.y);
+  ctx.stroke();
+  // inner streak
+  ctx.strokeStyle = '#fef08a';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(b.x, b.y);
+  ctx.stroke();
+  // head
+  ctx.fillStyle = '#fff';
+  ctx.beginPath();
+  ctx.arc(b.x, b.y, 2, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawFX(e) {
+  if (e.kind === 'splash') {
+    const k = e.t / e.life;
+    const r = (e.big ? 22 : 14) * (0.6 + k * 1.4);
+    ctx.save();
+    ctx.globalAlpha = 1 - k;
+    ctx.fillStyle = '#6b3a13';
+    ctx.beginPath();
+    ctx.ellipse(e.x, e.y, r, r * 0.4, 0, 0, Math.PI * 2);
+    ctx.fill();
+    // splatter dots
+    ctx.fillStyle = '#8a4a18';
+    for (let i = 0; i < 5; i++) {
+      const a = (i / 5) * Math.PI * 2;
+      ctx.beginPath();
+      ctx.arc(e.x + Math.cos(a) * r * 0.8, e.y + Math.sin(a) * r * 0.3, 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  } else if (e.kind === 'popup') {
+    const k = e.t / e.life;
+    ctx.save();
+    ctx.globalAlpha = 1 - k;
+    ctx.font = 'bold 14px "Segoe UI"';
+    ctx.textAlign = 'center';
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = 'rgba(0,0,0,0.6)';
+    ctx.strokeText(e.text, e.x, e.y);
+    ctx.fillStyle = e.color || '#fff';
+    ctx.fillText(e.text, e.x, e.y);
+    ctx.restore();
+  } else if (e.kind === 'wavebanner') {
+    const k = e.t / e.life;
+    const a = k < 0.2 ? k / 0.2 : k > 0.8 ? (1 - k) / 0.2 : 1;
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.font = 'bold 56px "Segoe UI"';
+    ctx.textAlign = 'center';
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = '#1e3a8a';
+    ctx.strokeText(e.text, W/2, H/2);
+    ctx.fillStyle = '#facc15';
+    ctx.fillText(e.text, W/2, H/2);
+    ctx.restore();
+  } else if (e.kind === 'banner') {
+    const k = e.t / e.life;
+    const a = k < 0.2 ? k / 0.2 : k > 0.8 ? (1 - k) / 0.2 : 1;
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.fillStyle = 'rgba(0,0,0,0.7)';
+    ctx.fillRect(0, H/2 - 30, W, 60);
+    ctx.fillStyle = e.color || '#fff';
+    ctx.font = 'bold 26px "Segoe UI"';
+    ctx.textAlign = 'center';
+    ctx.fillText(e.text, W/2, H/2 + 8);
+    ctx.restore();
+  } else if (e.kind === 'alarm') {
+    const k = e.t / e.life;
+    ctx.save();
+    ctx.globalAlpha = 1 - k;
+    ctx.fillStyle = '#dc2626';
+    ctx.font = 'bold 18px "Segoe UI"';
+    ctx.textAlign = 'center';
+    ctx.fillText('🚨 ALARM! 🚨', e.x, e.y - k * 30);
+    ctx.restore();
+  } else if (e.kind === 'muzzle') {
+    // brief yellow burst at gun muzzle
+    const k = e.t / e.life;
+    ctx.save();
+    ctx.globalAlpha = 1 - k;
+    const r = 8 * (1 + k * 0.5);
+    const grd = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, r);
+    grd.addColorStop(0, '#fff7ae');
+    grd.addColorStop(0.4, '#facc15');
+    grd.addColorStop(1, 'rgba(250, 204, 21, 0)');
+    ctx.fillStyle = grd;
+    ctx.beginPath();
+    ctx.arc(e.x, e.y, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  } else if (e.kind === 'feather') {
+    // gravity-pulled little white feather
+    e.vy += 220 * 0.016;       // gentle gravity
+    e.x += e.vx * 0.016;
+    e.y += e.vy * 0.016;
+    const k = e.t / e.life;
+    ctx.save();
+    ctx.globalAlpha = 1 - k;
+    ctx.fillStyle = '#f8fafc';
+    ctx.beginPath();
+    ctx.ellipse(e.x, e.y, 3, 1.4, e.t * 4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+function drawHUDOverlay() {
+  // small in-canvas HUD top-left for ammo
+  ctx.save();
+  ctx.font = 'bold 13px "Segoe UI"';
+  ctx.textAlign = 'left';
+  // wave time bar
+  const wt = Math.min(1, game.waveTime / game.waveDuration);
+  ctx.fillStyle = 'rgba(0,0,0,0.35)';
+  ctx.fillRect(10, 10, 200, 8);
+  ctx.fillStyle = '#60a5fa';
+  ctx.fillRect(10, 10, 200 * wt, 8);
+  ctx.fillStyle = '#fff';
+  ctx.fillText(`WAVE ${game.wave}`, 10, 32);
+
+  // pause hint
+  if (game.state === GameState.PAUSED) {
+    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 42px "Segoe UI"';
+    ctx.textAlign = 'center';
+    ctx.fillText('⏸  PAUSED', W/2, H/2);
+    ctx.font = '14px "Segoe UI"';
+    ctx.fillText('Press P to resume', W/2, H/2 + 30);
+  }
+  ctx.restore();
+}
+
+// helper: rounded rectangle
+function roundRect(ctx, x, y, w, h, r, fill, stroke) {
+  if (typeof r === 'number') r = { tl: r, tr: r, br: r, bl: r };
+  ctx.beginPath();
+  ctx.moveTo(x + r.tl, y);
+  ctx.lineTo(x + w - r.tr, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r.tr);
+  ctx.lineTo(x + w, y + h - r.br);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r.br, y + h);
+  ctx.lineTo(x + r.bl, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r.bl);
+  ctx.lineTo(x, y + r.tl);
+  ctx.quadraticCurveTo(x, y, x + r.tl, y);
+  ctx.closePath();
+  if (fill) ctx.fill();
+  if (stroke) ctx.stroke();
+}
+
+// ---------- HUD (sidebar) ----------
+function updateHUD() {
+  document.getElementById('uiScore').textContent = game.score;
+  document.getElementById('uiStops').textContent = game.stops;
+  document.getElementById('uiMissed').textContent = game.missed;
+  document.getElementById('uiWave').textContent = game.wave;
+  document.getElementById('uiLives').textContent = game.lives;
+  const livePct = (game.lives / 3) * 100;
+  document.getElementById('uiLifeBar').style.width = livePct + '%';
+  const justiceEl = document.getElementById('uiJustice');
+  justiceEl.textContent = Math.round(game.justice) + '%';
+  justiceEl.className = game.justice > 60 ? 'v-good' : game.justice > 30 ? 'v-warn' : 'v-bad';
+  document.getElementById('uiJusticeBar').style.width = game.justice + '%';
+
+  document.getElementById('uiAmmo').textContent = `${game.ammo} / ${game.maxAmmo}`;
+  const ammoPct = (game.ammo / game.maxAmmo) * 100;
+  const reloadPct = (game.reloadTimer / game.reloadRate) * 100 / game.maxAmmo;
+  document.getElementById('uiAmmoBar').style.width = (ammoPct + reloadPct) + '%';
+}
+
+// ---------- Overlay / state transitions ----------
+const overlay = document.getElementById('overlay');
+
+function showOverlayGameOver() {
+  overlay.classList.remove('hidden');
+  overlay.innerHTML = `
+    <div class="panel">
+      <h2 class="title">Patrol Ended</h2>
+      <div class="tagline">${game.justice >= 70 ? 'Hero of the skies' : game.justice >= 40 ? 'Mostly justice' : 'Maybe try again?'}</div>
+      <div class="score-line">Final Score: ${game.score}</div>
+      <p>Crimes stopped: <b style="color:#86efac">${game.stops}</b></p>
+      <p>Crimes missed: <b style="color:#fca5a5">${game.missed}</b></p>
+      <p>Civilians… inconvenienced: <b style="color:#fca5a5">${game.hitCivilians}</b></p>
+      <p>Justice Rating: <b style="color:${game.justice >= 60 ? '#86efac' : '#fca5a5'}">${Math.round(game.justice)}%</b></p>
+      <button class="start-btn" id="againBtn">FLY AGAIN ▶</button>
+      <div class="small">Or press <b>R</b> / <b>Enter</b> to restart</div>
+    </div>`;
+  document.getElementById('againBtn').addEventListener('click', restart);
+}
+
+function startGame() {
+  overlay.classList.add('hidden');
+  game.state = GameState.PLAYING;
+}
+
+function restart() {
+  // reset everything
+  game.state = GameState.SPLASH;
+  game.score = 0;
+  game.stops = 0;
+  game.missed = 0;
+  game.hitCivilians = 0;
+  game.lives = 3;
+  game.justice = 100;
+  game.wave = 1;
+  game.waveTime = 0;
+  game.spawnCooldown = 3.5;
+  game.crimeCooldown = 4.5;
+  game.ammo = game.maxAmmo;
+  game.reloadTimer = 0;
+  game.t = 0;
+  game.shake = 0;
+  poops.length = 0;
+  npcs.length = 0;
+  crimes.length = 0;
+  bullets.length = 0;
+  fx.length = 0;
+  player.x = W * 0.3; player.y = 140; player.vx = 0; player.vy = 0;
+  player.invuln = 0;
+  initScenery();
+  updateHUD();
+  // Re-show splash
+  overlay.classList.remove('hidden');
+  overlay.innerHTML = `
+    <div class="panel">
+      <h2 class="title">🕊️ Captain Pigeon Pooper 💩</h2>
+      <div class="tagline">Justice from above</div>
+      <p>The city is full of crime. Pickpockets, bank robbers, kidnappers.</p>
+      <p>You are <b>Captain Pigeon Pooper</b>. Your weapon: gravity-assisted justice.</p>
+      <p><b>Spot the bad guys</b> — they glow <span style="color:#ef4444"><b>red</b></span>. Then drop the poop.</p>
+      <p style="color:#fbbf24;">⚠️ Some crooks are <b>armed</b> — they will shoot back at you. Dodge their tracers and poop them fast.</p>
+      <div class="keys-grid">
+        <div><span class="key">W</span> <span class="key">A</span> <span class="key">S</span> <span class="key">D</span></div>
+        <div>Fly around the sky</div>
+        <div><span class="key">Space</span></div>
+        <div><b>Drop</b> poop straight down 💩</div>
+        <div><span class="key">Mouse Click</span></div>
+        <div><b>Aimed throw</b> toward the crosshair 🎯</div>
+      </div>
+      <p style="margin-top:18px;">⚠️ <b>Don't poop on civilians.</b> But if you do, it's only a small penalty — keep flying.</p>
+      <button class="start-btn" id="startBtn">START PATROL ▶</button>
+      <div class="small">Tip: when poop overlaps a civilian AND a criminal, the criminal takes the hit.</div>
+    </div>`;
+  document.getElementById('startBtn').addEventListener('click', startGame);
+}
+</script>
+</body>
+</html>

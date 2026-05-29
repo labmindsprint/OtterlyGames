@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gundu Arcade — Free Games Marketplace</title>
+<style>
+  :root {
+    --bg: #0b0d10;
+    --bg-2: #11151b;
+    --panel: #161b22;
+    --panel-2: #1c2230;
+    --ink: #e6edf3;
+    --muted: #8b97a8;
+    --accent: #6ee7b7;
+    --accent-2: #e94560;
+    --border: #232a36;
+    --free: #22c55e;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(1200px 600px at 20% -10%, #1b2838 0%, var(--bg) 60%),
+                radial-gradient(900px 500px at 100% 10%, #2a1530 0%, var(--bg) 55%),
+                var(--bg);
+    color: var(--ink);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+  }
+
+  /* ----- Top bar ----- */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 36px;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    background: rgba(11, 13, 16, 0.75);
+    z-index: 10;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+  }
+  .brand .logo {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    display: grid; place-items: center;
+    color: #0b0d10;
+    font-weight: 900;
+    font-size: 18px;
+    box-shadow: 0 6px 22px rgba(110, 231, 183, 0.25);
+  }
+  .brand .name span { color: var(--accent); }
+  .nav-links {
+    display: flex; gap: 22px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .pill-free {
+    background: rgba(34, 197, 94, 0.12);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* ----- Hero ----- */
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 64px 36px 28px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: clamp(34px, 5vw, 54px);
+    margin: 0 0 14px;
+    background: linear-gradient(90deg, #ffffff, #6ee7b7 50%, #e94560);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.55;
+  }
+  .hero .badges {
+    margin-top: 22px;
+    display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+  }
+  .badge {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+  }
+
+  /* ----- Section heading ----- */
+  .section {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px 36px 80px;
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 22px;
+  }
+  .section-head h2 {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: 0.3px;
+  }
+  .section-head .count {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* ----- Game grid ----- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 22px;
+  }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: #2f3a4d;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  }
+  .card .cover {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .card .price-tag {
+    position: absolute;
+    top: 12px; right: 12px;
+    background: var(--free);
+    color: #052e16;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    box-shadow: 0 4px 14px rgba(34, 197, 94, 0.35);
+  }
+  .card .genre-tag {
+    position: absolute;
+    top: 12px; left: 12px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    color: var(--ink);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .card .body {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  .card h3 {
+    margin: 0;
+    font-size: 19px;
+    letter-spacing: 0.2px;
+  }
+  .card .desc {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+    flex: 1;
+  }
+  .card .meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .card .stars {
+    color: #f5c518;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .card .play-btn {
+    background: linear-gradient(135deg, var(--accent) 0%, #34d399 100%);
+    color: #052e16;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.15s ease;
+  }
+  .card:hover .play-btn { filter: brightness(1.1); }
+
+  /* ----- Ninja cover (red/pink theme) ----- */
+  .cover-ninja {
+    background:
+      radial-gradient(circle at 30% 30%, #ff6b81 0%, transparent 55%),
+      radial-gradient(circle at 80% 70%, #4a154b 0%, transparent 60%),
+      linear-gradient(135deg, #2d0a1a 0%, #1a0612 100%);
+  }
+  .ninja-shuriken {
+    width: 96px; height: 96px;
+    position: relative;
+    animation: spin 3s linear infinite;
+    filter: drop-shadow(0 0 18px rgba(233, 69, 96, 0.55));
+  }
+  .ninja-shuriken::before,
+  .ninja-shuriken::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #e94560, #c1314a);
+    clip-path: polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%);
+  }
+  .ninja-shuriken::after {
+    transform: rotate(45deg);
+    opacity: 0.85;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ----- Zombie cover (green theme) ----- */
+  .cover-zombie {
+    background:
+      radial-gradient(circle at 70% 30%, #0f3d2e 0%, transparent 55%),
+      radial-gradient(circle at 20% 80%, #1e293b 0%, transparent 60%),
+      linear-gradient(135deg, #05140e 0%, #0a1a14 100%);
+    position: relative;
+  }
+  .cover-zombie::before {
+    /* fog overlay */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 100%, rgba(110, 231, 183, 0.12) 0%, transparent 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0 2px, transparent 2px 4px);
+    pointer-events: none;
+  }
+  .zombie-eyes {
+    display: flex;
+    gap: 24px;
+    z-index: 1;
+  }
+  .zombie-eyes .eye {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ff4444 0%, #7f1d1d 70%, transparent 100%);
+    box-shadow: 0 0 24px rgba(239, 68, 68, 0.85);
+    animation: blink 4s infinite;
+  }
+  .zombie-eyes .eye:nth-child(2) { animation-delay: 0.15s; }
+  @keyframes blink {
+    0%, 92%, 100% { transform: scaleY(1); opacity: 1; }
+    94%, 98% { transform: scaleY(0.1); opacity: 0.6; }
+  }
+  .zombie-silhouette {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 100px;
+    background: #000;
+    clip-path: polygon(
+      35% 100%, 35% 70%, 25% 70%, 25% 50%, 35% 35%,
+      40% 20%, 45% 14%, 55% 14%, 60% 20%, 65% 35%,
+      75% 50%, 75% 70%, 65% 70%, 65% 100%
+    );
+    opacity: 0.85;
+  }
+
+  /* ----- Pigeon cover (sky + city theme) ----- */
+  .cover-pigeon {
+    background:
+      radial-gradient(circle at 80% 20%, #fde68a 0%, transparent 45%),
+      radial-gradient(circle at 30% 80%, #1e293b 0%, transparent 55%),
+      linear-gradient(180deg, #7ec8e3 0%, #bce5f4 60%, #94a3b8 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-pigeon::before {
+    /* skyline silhouette */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 60px;
+    background:
+      linear-gradient(90deg,
+        #1e293b 0 8%, transparent 8% 10%,
+        #1e293b 10% 18%, transparent 18% 20%,
+        #1e293b 20% 32%, transparent 32% 34%,
+        #1e293b 34% 46%, transparent 46% 48%,
+        #1e293b 48% 60%, transparent 60% 62%,
+        #1e293b 62% 74%, transparent 74% 76%,
+        #1e293b 76% 88%, transparent 88% 90%,
+        #1e293b 90% 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%);
+            mask-image: linear-gradient(180deg, transparent 0%, #000 30%);
+  }
+  .cover-pigeon .sun {
+    position: absolute;
+    top: 28px; right: 38px;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff7c2 0%, #facc15 60%, transparent 70%);
+    box-shadow: 0 0 28px rgba(250, 204, 21, 0.55);
+  }
+  .cover-pigeon .cloud {
+    position: absolute;
+    width: 60px; height: 18px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 999px;
+    box-shadow:
+      18px -8px 0 -4px rgba(255,255,255,0.85),
+      -16px -4px 0 -6px rgba(255,255,255,0.85);
+  }
+  .cover-pigeon .cloud.c1 { top: 22px; left: 28px; animation: drift 18s linear infinite; }
+  .cover-pigeon .cloud.c2 { top: 70px; left: 140px; transform: scale(0.7); animation: drift 26s linear infinite reverse; }
+  @keyframes drift {
+    0%   { transform: translateX(0) scale(var(--s, 1)); }
+    100% { transform: translateX(40px) scale(var(--s, 1)); }
+  }
+  .cover-pigeon .pigeon {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 78px;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.35));
+    animation: hover 2.4s ease-in-out infinite;
+  }
+  .cover-pigeon .poop-drop {
+    position: absolute;
+    top: 52%;
+    left: calc(50% + 2px);
+    font-size: 22px;
+    animation: drop 1.6s ease-in infinite;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
+  }
+  @keyframes hover {
+    0%,100% { transform: translate(-50%, -50%); }
+    50%     { transform: translate(-50%, -58%); }
+  }
+  @keyframes drop {
+    0%   { transform: translate(-50%, 0)   scale(1);   opacity: 1; }
+    80%  { transform: translate(-50%, 60px) scale(1.1); opacity: 1; }
+    100% { transform: translate(-50%, 80px) scale(0.4); opacity: 0; }
+  }
+
+  /* ----- Dog Shepherd cover (green pasture theme) ----- */
+  .cover-shepherd {
+    background:
+      radial-gradient(circle at 70% 20%, #3b7d3b 0%, transparent 50%),
+      radial-gradient(circle at 30% 80%, #1a3a1a 0%, transparent 55%),
+      linear-gradient(180deg, #5b9bd5 0%, #87ceab 40%, #2d5a27 60%, #234d23 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-shepherd::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(180deg, transparent, rgba(35,77,35,0.9));
+    pointer-events: none;
+  }
+  .cover-shepherd .fence {
+    position: absolute;
+    bottom: 18px; left: 10%; right: 10%;
+    height: 3px;
+    background: #8B6914;
+    box-shadow: 0 -8px 0 0 #8B6914;
+  }
+  .cover-shepherd .fence::before {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 10%;
+    width: 6px; height: 20px;
+    background: #6B4E0A;
+    box-shadow: 60px 0 0 0 #6B4E0A, 120px 0 0 0 #6B4E0A, 180px 0 0 0 #6B4E0A, 240px 0 0 0 #6B4E0A;
+  }
+  .cover-shepherd .dog-emoji {
+    position: absolute;
+    top: 36%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    font-size: 56px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+    animation: dogBounce 1.2s ease-in-out infinite;
+  }
+  .cover-shepherd .sheep-emoji {
+    position: absolute;
+    font-size: 28px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    animation: sheepWander 3s ease-in-out infinite alternate;
+  }
+  .cover-shepherd .sheep-emoji.s1 { top: 30%; right: 18%; animation-delay: 0s; }
+  .cover-shepherd .sheep-emoji.s2 { top: 50%; right: 28%; animation-delay: 0.8s; }
+  .cover-shepherd .sheep-emoji.s3 { top: 55%; left: 20%; animation-delay: 1.4s; }
+  .cover-shepherd .wolf-emoji {
+    position: absolute;
+    bottom: 28px; right: 8%;
+    font-size: 22px;
+    opacity: 0.7;
+    animation: wolfSneak 4s ease-in-out infinite;
+  }
+  .cover-shepherd .woof {
+    position: absolute;
+    top: 26%;
+    left: 50%;
+    font-size: 14px;
+    font-weight: 800;
+    color: #f5c518;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    animation: woofPop 2s ease-in-out infinite;
+  }
+  @keyframes dogBounce {
+    0%,100% { transform: translate(-50%, -50%) scaleX(1); }
+    50%     { transform: translate(-50%, -58%) scaleX(-1); }
+  }
+  @keyframes sheepWander {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(12px); }
+  }
+  @keyframes wolfSneak {
+    0%,100% { transform: translateX(0); opacity: 0.4; }
+    50%     { transform: translateX(-18px); opacity: 0.8; }
+  }
+  @keyframes woofPop {
+    0%,70%,100% { opacity: 0; transform: scale(0.5); }
+    30%,60%     { opacity: 1; transform: scale(1.1); }
+  }
+
+  /* ----- Footer ----- */
+  footer {
+    text-align: center;
+    padding: 28px 36px 40px;
+    color: var(--muted);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+  footer .heart { color: var(--accent-2); }
+
+  /* ----- Responsive ----- */
+  @media (max-width: 640px) {
+    .topbar { padding: 14px 18px; }
+    .nav-links { display: none; }
+    .hero { padding: 40px 18px 18px; }
+    .section { padding: 18px 18px 60px; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">G</div>
+      <div class="name">Gundu <span>Arcade</span></div>
+    </div>
+    <nav class="nav-links">
+      <a href="#games">Games</a>
+      <a href="#about">About</a>
+      <a href="#" onclick="return false;">Sign In</a>
+    </nav>
+    <span class="pill-free">All Free</span>
+  </header>
+
+  <section class="hero">
+    <h1>Play. Don't Pay.</h1>
+    <p>A tiny marketplace of handcrafted browser games. No ads, no logins, no in-app purchases — every game on this page is 100% free, forever.</p>
+    <div class="badges">
+      <span class="badge">🕹️ Instant play</span>
+      <span class="badge">🌐 Works offline</span>
+      <span class="badge">💚 Always free</span>
+    </div>
+  </section>
+
+  <main class="section" id="games">
+    <div class="section-head">
+      <h2>Featured Games</h2>
+      <span class="count" id="gameCount">2 games available</span>
+    </div>
+
+    <div class="grid">
+
+      <!-- Ninja Cloud -->
+      <a class="card" href="game.html" aria-label="Play Ninja Cloud">
+        <div class="cover cover-ninja">
+          <span class="genre-tag">ACTION • ARCADE</span>
+          <span class="price-tag">FREE</span>
+          <div class="ninja-shuriken"></div>
+        </div>
+        <div class="body">
+          <h3>Ninja Cloud</h3>
+          <p class="desc">Throw spinning shurikens and slice through endless waves of zombies. Level up, dodge, survive. Mouse + keyboard.</p>
+          <div class="meta">
+            <span class="stars">★★★★★</span>
+            <button class="play-btn">Play Now ▶</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Zombie Hide & Seek -->
+      <a class="card" href="zombie.html" aria-label="Play Zombie Hide and Seek">
+        <div class="cover cover-zombie">
+          <span class="genre-tag">STEALTH • SURVIVAL</span>
+          <span class="price-tag">FREE</span>
+          <div class="zombie-silhouette"></div>
+          <div class="zombie-eyes">
+            <div class="eye"></div>
+            <div class="eye"></div>
+          </div>
+        </div>
+        <div class="body">
+          <h3>Zombie Hide &amp; Seek</h3>
+          <p class="desc">Sneak through the dark, stay out of sight, and outsmart the undead. A tense top-down stealth experience.</p>
+          <div class="meta">
+            <span class="stars">★★★★☆</span>
+            <button class="play-btn">Play Now ▶</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Captain Pigeon Pooper -->
+      <a class="card" href="pigeon.html" aria-label="Play Captain Pigeon Pooper">
+        <div class="cover cover-pigeon">
+          <span class="genre-tag">ARCADE • COMEDY</span>
+          <span class="price-tag">FREE</span>
+          <div class="sun"></div>
+          <div class="cloud c1"></div>
+          <div class="cloud c2"></div>
+          <div class="pigeon">🕊️</div>
+          <div class="poop-drop">💩</div>
+        </div>
+        <div class="body">
+          <h3>Captain Pigeon Pooper</h3>
+          <p class="desc">Fly over the city as a heroic pigeon. Spot pickpockets, bank robbers, and kidnappers — then deliver gravity-assisted justice. 💩</p>
+          <div class="meta">
+            <span class="stars">★★★★★</span>
+            <button class="play-btn">Play Now ▶</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Dog Shepherd -->
+      <a class="card" href="shepherd.html" aria-label="Play Dog Shepherd">
+        <div class="cover cover-shepherd">
+          <span class="genre-tag">COMEDY • STRATEGY</span>
+          <span class="price-tag">FREE</span>
+          <div class="fence"></div>
+          <div class="dog-emoji">🐕</div>
+          <div class="sheep-emoji s1">🐑</div>
+          <div class="sheep-emoji s2">🐑</div>
+          <div class="sheep-emoji s3">🐑</div>
+          <div class="wolf-emoji">🐺</div>
+          <div class="woof">WOOF!</div>
+        </div>
+        <div class="body">
+          <h3>Dog Shepherd</h3>
+          <p class="desc">You're a Golden Retriever who LOVES everyone — but barking scares your sheep AND the wolves. Protect the flock without terrorizing it!</p>
+          <div class="meta">
+            <span class="stars">★★★★★</span>
+            <button class="play-btn">Play Now ▶</button>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer id="about">
+    Made with <span class="heart">♥</span> in the Gundu Playground · No payment, no tracking, just games.
+  </footer>
+
+  <script>
+    // Keep the play button from stealing the anchor's navigation
+    document.querySelectorAll('.card .play-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        // Let the parent <a> handle navigation; just prevent button form-submit weirdness.
+        e.preventDefault();
+        const card = btn.closest('.card');
+        if (card && card.href) window.location.href = card.href;
+      });
+    });
+
+    // Update count automatically so it stays accurate if more games are added.
+    const n = document.querySelectorAll('.grid .card').length;
+    document.getElementById('gameCount').textContent =
+      n + (n === 1 ? ' game available' : ' games available');
+  </script>
+</body>
+</html>

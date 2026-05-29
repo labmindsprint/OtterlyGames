@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dog Shepherd — Otterly Arcade</title>
+<link rel="stylesheet" href="/css/arcade-game.css">
+<style>
+/* Game-specific overrides */
+canvas{border-radius:12px 0 0 12px;border-right:none}
+#hud{width:280px;background:var(--panel);border:1px solid var(--border);border-radius:0 12px 12px 0;padding:14px;display:flex;flex-direction:column;gap:10px;height:600px;overflow-y:auto}
+#hud h2{font-size:14px;color:var(--accent);letter-spacing:.5px;border-bottom:1px solid var(--border);padding-bottom:6px;margin:0;font-family:var(--font-heading)}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.stat{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);background:var(--surface);padding:5px 8px;border-radius:5px}
+.stat b{color:var(--ink)}
+#thought{background:rgba(196,181,253,.08);border:1px solid rgba(196,181,253,.18);border-radius:8px;padding:8px 10px;font-size:11px;line-height:1.4;color:var(--accent);font-style:italic;min-height:40px}
+#controls{font-size:10px;color:var(--muted);line-height:1.6}
+#controls kbd{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:1px 4px;font-size:9px;color:var(--ink);font-family:inherit;display:inline-block;min-width:14px;text-align:center}
+#bark-meter-wrap{background:var(--surface);border-radius:6px;height:10px;overflow:hidden;position:relative}
+#bark-meter{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .3s;border-radius:6px}
+.meter-label{font-size:10px;color:var(--muted);display:flex;justify-content:space-between}
+.sheep-icons{display:flex;gap:2px;flex-wrap:wrap;min-height:18px}
+.sheep-icons span{font-size:13px}
+#abilities{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.ability{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:5px 3px;text-align:center;position:relative;overflow:hidden}
+.ability .key{font-size:10px;color:var(--accent);font-weight:700}
+.ability .icon{font-size:18px;line-height:1.2}
+.ability .name{font-size:8px;color:var(--muted);letter-spacing:.3px}
+.ability.ready{border-color:var(--accent)}
+.ability.cooldown{opacity:.55}
+.ability .cd-fill{position:absolute;bottom:0;left:0;right:0;background:rgba(196,181,253,.3);transition:height .1s}
+.ability .uses{position:absolute;top:1px;right:3px;font-size:9px;color:var(--warn);font-weight:700}
+</style>
+</head>
+<body>
+<div class="game-page">
+<div class="game-topbar">
+  <a href="index.html" class="back-link">← Arcade</a>
+  <span class="game-title">Dog Shepherd</span>
+  <span class="brand-mark"><img src="/images/Otter-mascot.png" alt="Otterly">Otterly Arcade</span>
+</div>
+<div class="game-area" style="justify-content:center;align-items:center">
+<canvas id="c" width="900" height="600"></canvas>
+<div id="hud">
+  <h2>🐕 Dog Shepherd</h2>
+  <div class="stats-row">
+    <div class="stat">Wave <b id="hWave">—</b></div>
+    <div class="stat">Score <b id="hScore">0</b></div>
+    <div class="stat">🐑 <b id="hSheep">—</b></div>
+    <div class="stat">🐺 <b id="hWolves">—</b></div>
+  </div>
+  <div class="meter-label"><span>Flock Panic</span><span id="hPanicPct">0%</span></div>
+  <div id="bark-meter-wrap"><div id="bark-meter"></div></div>
+  <div class="sheep-icons" id="sheepIcons"></div>
+  <div id="abilities">
+    <div class="ability ready" id="abBark"><div class="cd-fill"></div><div class="key">SPC</div><div class="icon">🗣️</div><div class="name">BARK</div></div>
+    <div class="ability ready" id="abWag"><div class="cd-fill"></div><div class="key">SHIFT</div><div class="icon">💕</div><div class="name">WAG</div></div>
+    <div class="ability ready" id="abDash"><div class="cd-fill"></div><div class="key">E</div><div class="icon">💨</div><div class="name">DASH</div></div>
+    <div class="ability ready" id="abFetch"><span class="uses" id="abFetchUses">2</span><div class="cd-fill"></div><div class="key">F</div><div class="icon">🎾</div><div class="name">FETCH</div></div>
+    <div class="ability ready" id="abTreat"><span class="uses" id="abTreatUses">2</span><div class="cd-fill"></div><div class="key">R</div><div class="icon">🦴</div><div class="name">TREAT</div></div>
+    <div class="ability ready" id="abHowl"><span class="uses" id="abHowlUses">1</span><div class="cd-fill"></div><div class="key">Q</div><div class="icon">🌙</div><div class="name">HOWL</div></div>
+    <div class="ability ready" id="abNudge"><div class="cd-fill"></div><div class="key">CLK</div><div class="icon">👃</div><div class="name">NUDGE</div></div>
+    <div class="ability ready" id="abPause"><div class="cd-fill"></div><div class="key">P</div><div class="icon">⏸️</div><div class="name">PAUSE</div></div>
+  </div>
+  <div id="thought">"I wonder if the sheep want to be friends..."</div>
+</div>
+</div>
+</div>
+
+<script>
+// ───── CANVAS & CONTEXT ─────
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height;
+
+// ───── GAME CONSTANTS ─────
+const FIELD = {x:40,y:40,w:W-80,h:H-80};
+const BARK_RADIUS = 130;
+const BARK_COOLDOWN = 1.5;
+const SHEEP_SPEED = 45;
+const DOG_SPEED = 220;
+const DOG_DASH_SPEED = 520;
+const WOLF_BASE_SPEED = 55;
+const NUDGE_FORCE = 180;
+const WAG_RADIUS = 110;
+const WAG_COOLDOWN = 3.0;
+const DASH_COOLDOWN = 4.0;
+const DASH_DURATION = 0.35;
+const FETCH_COOLDOWN = 1.5;
+const TREAT_COOLDOWN = 1.5;
+const HOWL_COOLDOWN = 8.0;
+const HOWL_RADIUS = 1000; // entire field
+const BONE_SCORE = 25;
+
+// ───── PERSONALITY DATA ─────
+const PERSONALITIES = [
+  {name:'Sleepy',emoji:'😴',panicMul:0.5,idleMsg:['*snore*','five more minutes...','zzZzz...'],panicMsg:['huh? what?','I was NAPPING!','not again...']},
+  {name:'Dramatic',emoji:'🎭',panicMul:2.0,idleMsg:['*sigh*','life is pain','why am I a sheep'],panicMsg:['AAAAAA!','I can\'t even!','tell my lamb I love them']},
+  {name:'Hungry',emoji:'🌿',panicMul:1.0,idleMsg:['mmm grass','*munch*','is that clover?'],panicMsg:['my salad!','I dropped my grass!','not during lunch!']},
+  {name:'Nervous',emoji:'😰',panicMul:1.5,idleMsg:['is that a wolf?','what was that?','I have a bad feeling'],panicMsg:['I KNEW IT!','WE\'RE ALL GONNA— oh','AGAIN?!']},
+  {name:'Chill',emoji:'😎',panicMul:0.3,idleMsg:['this is fine','vibes','cool cool cool'],panicMsg:['meh','that was loud','bro chill']}
+];
+
+const IDLE_ACTIVITIES = ['🧶','📰','🧘','☕','📖','🎨'];
+
+const DOG_THOUGHTS = {
+  start:["BEST. JOB. EVER.","I LOVE SHEEP! I LOVE EVERYONE!","today is gonna be GREAT"],
+  bark:["why do they run from me 😢","I'm just being ENTHUSIASTIC","I said WOOF not AHHH"],
+  wolfScare:["YEAH! GET OUTTA HERE!","nobody messes with MY friends!","I am a HERO"],
+  sheepLost:["oh no... come back friend...","I tried my best 😢","they'll come back... right?"],
+  wave:["MORE FRIENDS! wait— wolves","I can do this! probably!","the sheep are counting on me!"],
+  calm:["everyone looks so peaceful","I love my job","maybe they DO like me"],
+  disguise:["that sheep looks... suspicious","wait is that a WOLF?","nice try buddy"],
+  idle:["*tail wag*","I wonder if sheep like belly rubs","SQUIRREL! no wait, focus"],
+  wag:["who's a happy sheep? YOU ARE!","love love LOVE","good vibes only ✨"],
+  dash:["ZOOMIES!!!","I AM SPEED","catch me if you can!"],
+  fetch:["FETCH! oh wait— wolf!","DISTRACTION!","look at the ball Mr. Wolf!"],
+  treat:["snack time!!!","everyone gets a TREAT","food fixes everything"],
+  howl:["AWOOOOOOO 🌙","backup arrived!","the whole forest heard that"],
+  bone:["A BONE!! my favorite!","MINE!","tasty tasty"]
+};
+
+// ───── WAVE CONFIG ─────
+const WAVES = [
+  {wolves:1, speed:1.0, delay:3, sheepCount:6, hasDisguise:false, msg:"Wave 1 — Let's go! Try barking (SPACE)"},
+  {wolves:2, speed:1.0, delay:2.5, sheepCount:0, hasDisguise:false, msg:"Wave 2 — Tail wag (SHIFT) calms sheep!"},
+  {wolves:3, speed:1.1, delay:2.2, sheepCount:0, hasDisguise:true, msg:"Wave 3 — Is that a sheep or...? 🐺"},
+  {wolves:3, speed:1.3, delay:1.8, sheepCount:0, hasDisguise:false, msg:"Wave 4 — Dash (E) into wolves to body-block!"},
+  {wolves:4, speed:1.4, delay:1.6, sheepCount:0, hasDisguise:true, msg:"Wave 5 — Fetch (F) distracts wolves!"},
+  {wolves:4, speed:1.5, delay:1.4, sheepCount:0, hasDisguise:true, msg:"Wave 6 — The sheep union holds an emergency meeting"},
+  {wolves:5, speed:1.6, delay:1.2, sheepCount:0, hasDisguise:true, msg:"Wave 7 — HOWL (Q) for backup if surrounded!"},
+  {wolves:6, speed:1.7, delay:1.0, sheepCount:0, hasDisguise:true, msg:"Wave 8 — MAXIMUM CHAOS! 🐺🐺🐺"}
+];
+
+// ───── GAME STATE ─────
+const S = {SPLASH:0,PLAYING:1,BETWEEN:2,GAMEOVER:3,WIN:4,PAUSED:5};
+let state = S.SPLASH;
+let score = 0;
+let wave = 0;
+let totalBarks = 0;
+let sheepSaved = 0;
+let panicLevel = 0;
+let barkTimer = 0;
+let wagTimer = 0;
+let dashTimer = 0;     // cooldown
+let dashActive = 0;    // currently dashing duration
+let fetchTimer = 0;
+let treatTimer = 0;
+let howlTimer = 0;
+let fetchUses = 2;
+let treatUses = 2;
+let howlUses = 1;
+let barkAnim = null;
+let wagAnim = null;
+let howlAnim = null;
+let waveTimer = 0;
+let betweenTimer = 0;
+let msgTimer = 0;
+let waveMsg = '';
+let splashBob = 0;
+let bonesCollected = 0;
+
+let dog = null;
+let sheep = [];
+let wolves = [];
+let bubbles = [];
+let particles = [];
+let balls = [];       // fetch decoys
+let treats = [];      // dropped treats
+let bones = [];       // collectible bones on field
+let hearts = [];      // wag love particles
+let wolvesToSpawn = 0;
+let wolfSpawnTimer = 0;
+let boneSpawnTimer = 6;
+
+const keys = {};
+let mouseX = 0, mouseY = 0;
+let lastTime = 0;
+
+// ───── HUD ELEMENTS ─────
+const hWave = document.getElementById('hWave');
+const hScore = document.getElementById('hScore');
+const hSheep = document.getElementById('hSheep');
+const hWolves = document.getElementById('hWolves');
+const hThought = document.getElementById('thought');
+const hBarkMeter = document.getElementById('bark-meter');
+const hPanicPct = document.getElementById('hPanicPct');
+const hSheepIcons = document.getElementById('sheepIcons');
+const abBark = document.getElementById('abBark');
+const abWag = document.getElementById('abWag');
+const abDash = document.getElementById('abDash');
+const abFetch = document.getElementById('abFetch');
+const abTreat = document.getElementById('abTreat');
+const abHowl = document.getElementById('abHowl');
+const abFetchUses = document.getElementById('abFetchUses');
+const abTreatUses = document.getElementById('abTreatUses');
+const abHowlUses = document.getElementById('abHowlUses');
+
+// ───── INPUT ─────
+window.addEventListener('keydown', e => {
+  if(keys[e.code]) return; // ignore repeats for triggered abilities
+  keys[e.code] = true;
+  if(e.code==='Space'){
+    e.preventDefault();
+    if(state===S.SPLASH){startGame();return;}
+    if(state===S.GAMEOVER||state===S.WIN){resetToSplash();return;}
+    if(state===S.PLAYING) doBark();
+  }
+  if(state!==S.PLAYING) return;
+  if(e.code==='ShiftLeft'||e.code==='ShiftRight'){e.preventDefault(); doWag();}
+  if(e.code==='KeyE') doDash();
+  if(e.code==='KeyF') doFetch(mouseX, mouseY);
+  if(e.code==='KeyR') doTreat();
+  if(e.code==='KeyQ') doHowl();
+  if(e.code==='KeyP') state = S.PAUSED;
+});
+window.addEventListener('keyup', e => {
+  keys[e.code] = false;
+  if(e.code==='KeyP' && state===S.PAUSED) state = S.PLAYING;
+});
+canvas.addEventListener('mousemove', e=>{const r=canvas.getBoundingClientRect();mouseX=(e.clientX-r.left)*(canvas.width/r.width);mouseY=(e.clientY-r.top)*(canvas.height/r.height);});
+canvas.addEventListener('click', e=>{
+  if(state===S.SPLASH){startGame();return;}
+  if(state===S.GAMEOVER||state===S.WIN){resetToSplash();return;}
+  if(state===S.PLAYING) doNudge(mouseX,mouseY);
+});
+
+// ───── UTILITIES ─────
+function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}
+function rng(a,b){return a+Math.random()*(b-a);}
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)];}
+function clamp(v,lo,hi){return Math.max(lo,Math.min(hi,v));}
+function lerp(a,b,t){return a+(b-a)*t;}
+function inField(x,y,m){return x>FIELD.x+m&&x<FIELD.x+FIELD.w-m&&y>FIELD.y+m&&y<FIELD.y+FIELD.h-m;}
+
+function setThought(category){
+  hThought.textContent = '"'+pick(DOG_THOUGHTS[category])+'"';
+}
+
+// ───── ENTITY CREATION ─────
+function makeDog(){
+  return {x:W/2,y:H/2,r:18,vx:0,vy:0,facing:1,bobT:0,tailT:0,tongueT:0,nudgeTarget:null};
+}
+
+function makeSheep(x,y){
+  const p = pick(PERSONALITIES);
+  return {
+    x:x||rng(FIELD.x+60,FIELD.x+FIELD.w-60),
+    y:y||rng(FIELD.y+60,FIELD.y+FIELD.h-60),
+    r:14, vx:0, vy:0,
+    personality:p, panic:0, fainted:false, faintTimer:0,
+    grabbed:false, grabber:null,
+    wanderAngle:Math.random()*Math.PI*2, wanderTimer:rng(1,3),
+    bobT:Math.random()*6, legT:0,
+    idleActivity:null, stackedOn:null, dead:false, lost:false
+  };
+}
+
+function makeWolf(waveIdx){
+  const cfg = WAVES[waveIdx];
+  const side = Math.floor(Math.random()*4);
+  let x,y;
+  if(side===0){x=rng(0,W);y=-30;}
+  else if(side===1){x=W+30;y=rng(0,H);}
+  else if(side===2){x=rng(0,W);y=H+30;}
+  else{x=-30;y=rng(0,H);}
+  return {
+    x,y,r:16,vx:0,vy:0,
+    speed:WOLF_BASE_SPEED*cfg.speed,
+    fleeing:false,fleeTimer:0,
+    grabbing:null, disguised:cfg.hasDisguise&&Math.random()<0.4,
+    scared:false, scaredTimer:0,
+    distractedBy:null, distractTimer:0,
+    stunned:false, stunTimer:0,
+    bobT:Math.random()*6, dead:false,
+    eyeGlow:0, hp:1
+  };
+}
+
+function makeBall(x,y,vx,vy){
+  return {x,y,vx,vy,r:8,life:5,bouncing:0,landed:false};
+}
+
+function makeTreat(x,y){
+  return {x,y,r:7,life:8,bobT:0};
+}
+
+function makeBone(){
+  return {
+    x:rng(FIELD.x+50,FIELD.x+FIELD.w-50),
+    y:rng(FIELD.y+50,FIELD.y+FIELD.h-50),
+    r:10, bobT:Math.random()*6, life:15
+  };
+}
+
+// ───── GAME START / RESET ─────
+function startGame(){
+  state = S.PLAYING;
+  score = 0; wave = 0; totalBarks = 0; sheepSaved = 0; panicLevel = 0; bonesCollected = 0;
+  barkTimer = 0; wagTimer = 0; dashTimer = 0; dashActive = 0;
+  fetchTimer = 0; treatTimer = 0; howlTimer = 0;
+  fetchUses = 2; treatUses = 2; howlUses = 1;
+  barkAnim = null; wagAnim = null; howlAnim = null;
+  dog = makeDog();
+  sheep = [];
+  wolves = [];
+  bubbles = [];
+  particles = [];
+  balls = [];
+  treats = [];
+  bones = [];
+  hearts = [];
+  boneSpawnTimer = 6;
+  startWave(0);
+}
+
+function startWave(idx){
+  wave = idx;
+  const cfg = WAVES[idx];
+  waveMsg = cfg.msg;
+  msgTimer = 2.5;
+  if(cfg.sheepCount>0){
+    for(let i=0;i<cfg.sheepCount;i++) sheep.push(makeSheep());
+  }
+  // Replenish a use each wave (rewarding survival)
+  if(idx>0){
+    fetchUses = Math.min(3, fetchUses+1);
+    treatUses = Math.min(3, treatUses+1);
+    if(idx%2===0) howlUses = Math.min(2, howlUses+1);
+  }
+  wolvesToSpawn = cfg.wolves;
+  wolfSpawnTimer = 0.8;
+  setThought(idx===0?'start':'wave');
+}
+
+function resetToSplash(){
+  state = S.SPLASH;
+  dog = null; sheep = []; wolves = []; bubbles = []; particles = [];
+  balls = []; treats = []; bones = []; hearts = [];
+}
+
+// ───── BARK ─────
+function doBark(){
+  if(barkTimer>0) return;
+  barkTimer = BARK_COOLDOWN;
+  totalBarks++;
+  barkAnim = {x:dog.x,y:dog.y,r:0,maxR:BARK_RADIUS,alpha:1};
+
+  // Add WOOF particle
+  particles.push({x:dog.x,y:dog.y-30,text:'WOOF!',life:1,maxLife:1,size:20,color:'#f5c518',vy:-40});
+
+  // Scare wolves in range
+  let scaredWolf = false;
+  for(const w of wolves){
+    if(dist(dog,w)<BARK_RADIUS+w.r){
+      w.fleeing = true;
+      w.fleeTimer = 2.5;
+      const a = Math.atan2(w.y-dog.y,w.x-dog.x);
+      w.vx = Math.cos(a)*w.speed*3;
+      w.vy = Math.sin(a)*w.speed*3;
+      if(w.grabbing){
+        w.grabbing.grabbed = false;
+        w.grabbing.grabber = null;
+        w.grabbing = null;
+      }
+      w.scared = true;
+      w.scaredTimer = 0.5;
+      scaredWolf = true;
+      // yelp particle
+      particles.push({x:w.x,y:w.y-20,text:'YELP!',life:0.8,maxLife:0.8,size:14,color:'#e94560',vy:-30});
+    }
+  }
+  if(scaredWolf) setThought('wolfScare');
+  else setThought('bark');
+
+  // Panic sheep in range
+  for(const s of sheep){
+    if(s.dead||s.lost) continue;
+    const d = dist(dog,s);
+    if(d < BARK_RADIUS + s.r){
+      const intensity = 1 - d/(BARK_RADIUS+s.r);
+      s.panic = Math.min(1, s.panic + intensity * s.personality.panicMul);
+      panicLevel = Math.min(100, panicLevel + 8*s.personality.panicMul);
+
+      // Personality-specific reactions
+      if(s.personality.name==='Dramatic' && Math.random()<0.6){
+        s.fainted = true;
+        s.faintTimer = 3;
+        addBubble(s, pick(s.personality.panicMsg));
+      } else if(s.personality.name==='Nervous'){
+        // run in a tight circle
+        s.wanderAngle = Math.random()*Math.PI*2;
+        s.wanderTimer = 0.1;
+        addBubble(s, pick(s.personality.panicMsg));
+      } else if(s.personality.name==='Sleepy' && Math.random()<0.5){
+        addBubble(s, pick(s.personality.panicMsg));
+      } else if(Math.random()<0.4){
+        addBubble(s, pick(s.personality.panicMsg));
+      }
+
+      // Scatter away from dog
+      if(!s.fainted){
+        const a = Math.atan2(s.y-dog.y,s.x-dog.x);
+        const force = 160 * s.personality.panicMul;
+        s.vx += Math.cos(a)*force;
+        s.vy += Math.sin(a)*force;
+      }
+    }
+  }
+}
+
+function doNudge(mx,my){
+  // Find nearest sheep to click position
+  let best=null, bestD=80;
+  for(const s of sheep){
+    if(s.dead||s.lost||s.grabbed) continue;
+    const d = dist({x:mx,y:my},s);
+    if(d<bestD){bestD=d;best=s;}
+  }
+  if(best){
+    dog.nudgeTarget = {x:best.x,y:best.y,sheep:best};
+    // Push sheep toward field center
+    const cx = FIELD.x+FIELD.w/2, cy = FIELD.y+FIELD.h/2;
+    const a = Math.atan2(cy-best.y,cx-best.x);
+    best.vx += Math.cos(a)*NUDGE_FORCE;
+    best.vy += Math.sin(a)*NUDGE_FORCE;
+    best.panic = Math.max(0, best.panic-0.2);
+    // boop particle
+    particles.push({x:best.x,y:best.y-20,text:'boop!',life:0.7,maxLife:0.7,size:12,color:'#6ee7b7',vy:-25});
+    if(Math.random()<0.3) addBubble(best, 'hey!');
+  }
+}
+
+// ───── TAIL WAG (Shift) — Calm nearby sheep ─────
+function doWag(){
+  if(wagTimer>0) return;
+  wagTimer = WAG_COOLDOWN;
+  wagAnim = {x:dog.x,y:dog.y,r:0,maxR:WAG_RADIUS,alpha:1};
+  for(const s of sheep){
+    if(s.dead||s.lost) continue;
+    if(dist(dog,s)<WAG_RADIUS+s.r){
+      s.panic = Math.max(0, s.panic-0.6);
+      s.fainted = false;
+      // Heart particle from sheep
+      hearts.push({x:s.x,y:s.y-15,vx:rng(-20,20),vy:-40,life:1.2,maxLife:1.2});
+      // Calm message
+      if(Math.random()<0.3) addBubble(s, pick(['awww','*purrs*','okay maybe you ARE nice','♥']));
+    }
+  }
+  // Calm panic meter
+  panicLevel = Math.max(0, panicLevel-25);
+  setThought('wag');
+}
+
+// ───── DASH (E) — Speed burst ─────
+function doDash(){
+  if(dashTimer>0 || dashActive>0) return;
+  dashTimer = DASH_COOLDOWN;
+  dashActive = DASH_DURATION;
+  particles.push({x:dog.x,y:dog.y-20,text:'ZOOM!',life:0.8,maxLife:0.8,size:18,color:'#7ec8e3',vy:-40});
+  setThought('dash');
+}
+
+// ───── FETCH (F) — Throw decoy ball ─────
+function doFetch(targetX, targetY){
+  if(fetchTimer>0 || fetchUses<=0) return;
+  fetchTimer = FETCH_COOLDOWN;
+  fetchUses--;
+  const dx = targetX-dog.x, dy = targetY-dog.y;
+  const len = Math.hypot(dx,dy) || 1;
+  const speed = 380;
+  balls.push(makeBall(dog.x, dog.y, dx/len*speed, dy/len*speed));
+  particles.push({x:dog.x,y:dog.y-20,text:'fetch!',life:0.7,maxLife:0.7,size:14,color:'#f5c518',vy:-30});
+  setThought('fetch');
+}
+
+// ───── TREAT (R) — Drop treat to lure sheep ─────
+function doTreat(){
+  if(treatTimer>0 || treatUses<=0) return;
+  treatTimer = TREAT_COOLDOWN;
+  treatUses--;
+  treats.push(makeTreat(dog.x, dog.y));
+  particles.push({x:dog.x,y:dog.y-20,text:'snack!',life:0.8,maxLife:0.8,size:14,color:'#f5c518',vy:-30});
+  setThought('treat');
+}
+
+// ───── HOWL (Q) — Big AOE wolf scare ─────
+function doHowl(){
+  if(howlTimer>0 || howlUses<=0) return;
+  howlTimer = HOWL_COOLDOWN;
+  howlUses--;
+  howlAnim = {x:dog.x,y:dog.y,r:0,maxR:HOWL_RADIUS,alpha:1};
+  // Scare ALL wolves on field
+  for(const w of wolves){
+    if(w.dead) continue;
+    w.fleeing = true;
+    w.fleeTimer = 4;
+    const a = Math.atan2(w.y-dog.y,w.x-dog.x);
+    w.vx = Math.cos(a)*w.speed*4;
+    w.vy = Math.sin(a)*w.speed*4;
+    if(w.grabbing){
+      w.grabbing.grabbed = false;
+      w.grabbing.grabber = null;
+      w.grabbing = null;
+    }
+    w.scared = true;
+    w.scaredTimer = 1.5;
+    particles.push({x:w.x,y:w.y-20,text:'YIPE!',life:1,maxLife:1,size:14,color:'#e94560',vy:-30});
+  }
+  particles.push({x:dog.x,y:dog.y-40,text:'AWOOOOO!',life:1.5,maxLife:1.5,size:24,color:'#7ec8e3',vy:-20});
+  // Howl also slightly panics sheep but less than bark
+  for(const s of sheep){
+    if(s.dead||s.lost) continue;
+    s.panic = Math.min(1, s.panic + 0.15);
+  }
+  panicLevel = Math.min(100, panicLevel+15);
+  setThought('howl');
+}
+
+// ───── SPEECH BUBBLES ─────
+function addBubble(entity,text){
+  // Don't stack too many
+  const existing = bubbles.filter(b=>b.owner===entity);
+  if(existing.length>=1) return;
+  bubbles.push({owner:entity,text,life:2.2,maxLife:2.2,y:-28});
+}
+
+// ───── UPDATE ─────
+function update(dt){
+  if(state===S.PAUSED) return;
+
+  // Wave message timer
+  if(msgTimer>0) msgTimer -= dt;
+
+  // Ability cooldowns
+  if(barkTimer>0) barkTimer -= dt;
+  if(wagTimer>0) wagTimer -= dt;
+  if(dashTimer>0) dashTimer -= dt;
+  if(dashActive>0) dashActive -= dt;
+  if(fetchTimer>0) fetchTimer -= dt;
+  if(treatTimer>0) treatTimer -= dt;
+  if(howlTimer>0) howlTimer -= dt;
+
+  // Bark animation
+  if(barkAnim){
+    barkAnim.r += dt*500;
+    barkAnim.alpha = 1 - barkAnim.r/barkAnim.maxR;
+    if(barkAnim.r>=barkAnim.maxR) barkAnim = null;
+  }
+  // Wag animation
+  if(wagAnim){
+    wagAnim.r += dt*350;
+    wagAnim.alpha = 1 - wagAnim.r/wagAnim.maxR;
+    if(wagAnim.r>=wagAnim.maxR) wagAnim = null;
+  }
+  // Howl animation
+  if(howlAnim){
+    howlAnim.r += dt*900;
+    howlAnim.alpha = 1 - howlAnim.r/howlAnim.maxR;
+    if(howlAnim.r>=howlAnim.maxR) howlAnim = null;
+  }
+
+  // Panic decay
+  panicLevel = Math.max(0, panicLevel - dt*5);
+
+  if(state===S.PLAYING){
+    updateDog(dt);
+    updateSheep(dt);
+    updateWolves(dt);
+    updateBalls(dt);
+    updateTreats(dt);
+    updateBones(dt);
+    updateHearts(dt);
+    spawnWolves(dt);
+    spawnBones(dt);
+    checkWaveEnd();
+  } else if(state===S.BETWEEN){
+    // Between waves: tick timer, update calm sheep idle, but don't spawn wolves/check end
+    updateDog(dt);
+    updateSheep(dt);
+    updateHearts(dt);
+    updateBones(dt);
+    betweenTimer -= dt;
+    if(betweenTimer<=0){
+      if(wave+1 < WAVES.length){
+        state = S.PLAYING;
+        startWave(wave+1);
+      } else {
+        // shouldn't reach — win is decided in checkWaveEnd
+        state = S.PLAYING;
+      }
+    }
+  }
+  updateBubbles(dt);
+  updateParticles(dt);
+  updateHUD();
+}
+
+function updateDog(dt){
+  const d = dog;
+  let mx=0,my=0;
+  if(keys['KeyW']||keys['ArrowUp']) my=-1;
+  if(keys['KeyS']||keys['ArrowDown']) my=1;
+  if(keys['KeyA']||keys['ArrowLeft']) mx=-1;
+  if(keys['KeyD']||keys['ArrowRight']) mx=1;
+  const moving = mx!==0||my!==0;
+  const speed = dashActive>0 ? DOG_DASH_SPEED : DOG_SPEED;
+  if(moving){
+    const len = Math.hypot(mx,my);
+    d.vx = (mx/len)*speed;
+    d.vy = (my/len)*speed;
+    if(mx!==0) d.facing = mx>0?1:-1;
+  } else {
+    d.vx *= 0.85;
+    d.vy *= 0.85;
+  }
+  d.x = clamp(d.x+d.vx*dt, 20, W-20);
+  d.y = clamp(d.y+d.vy*dt, 20, H-20);
+  d.bobT += dt*(dashActive>0?18:moving?10:3);
+  d.tailT += dt*(dashActive>0?14:8);
+  d.tongueT += dt*3;
+
+  // Dash trail particles
+  if(dashActive>0 && Math.random()<0.6){
+    particles.push({x:d.x+rng(-6,6),y:d.y+rng(-4,4),text:'·',life:0.4,maxLife:0.4,size:14,color:'rgba(126,200,227,0.9)',vy:-10});
+  }
+
+  // BODY BLOCK: dog physically pushes wolves
+  for(const w of wolves){
+    if(w.dead || w.fleeing) continue;
+    const dd = dist(d,w);
+    if(dd < d.r + w.r + 2){
+      const a = Math.atan2(w.y-d.y, w.x-d.x);
+      const push = dashActive>0 ? 280 : 120;
+      w.x += Math.cos(a)*push*dt;
+      w.y += Math.sin(a)*push*dt;
+      // If dashing, also frees grabbed sheep
+      if(dashActive>0 && w.grabbing){
+        w.grabbing.grabbed = false;
+        w.grabbing.grabber = null;
+        w.grabbing = null;
+        w.stunned = true;
+        w.stunTimer = 1.2;
+        particles.push({x:w.x,y:w.y-15,text:'OOF!',life:0.8,maxLife:0.8,size:14,color:'#f5c518',vy:-30});
+      }
+    }
+  }
+
+  // Collect bones
+  for(let i=bones.length-1;i>=0;i--){
+    const b = bones[i];
+    if(dist(d,b) < d.r+b.r){
+      bones.splice(i,1);
+      score += BONE_SCORE;
+      bonesCollected++;
+      particles.push({x:b.x,y:b.y-15,text:'+'+BONE_SCORE,life:1,maxLife:1,size:14,color:'#f5c518',vy:-35});
+      // Bonus: chance to recharge a use
+      const roll = Math.random();
+      if(roll<0.3 && fetchUses<3){ fetchUses++; particles.push({x:b.x,y:b.y-30,text:'+🎾',life:1.2,maxLife:1.2,size:16,color:'#fff',vy:-25}); }
+      else if(roll<0.55 && treatUses<3){ treatUses++; particles.push({x:b.x,y:b.y-30,text:'+🦴',life:1.2,maxLife:1.2,size:16,color:'#fff',vy:-25}); }
+      else if(roll<0.7 && howlUses<2){ howlUses++; particles.push({x:b.x,y:b.y-30,text:'+🌙',life:1.2,maxLife:1.2,size:16,color:'#fff',vy:-25}); }
+      setThought('bone');
+    }
+  }
+}
+
+function updateSheep(dt){
+  for(const s of sheep){
+    if(s.dead||s.lost) continue;
+
+    // Faint recovery
+    if(s.fainted){
+      s.faintTimer -= dt;
+      if(s.faintTimer<=0) s.fainted = false;
+      continue; // fainted sheep don't move
+    }
+
+    // Grabbed by wolf
+    if(s.grabbed) continue;
+
+    // Panic decay
+    s.panic = Math.max(0, s.panic - dt*0.15);
+
+    // Wander AI
+    s.wanderTimer -= dt;
+    if(s.wanderTimer<=0){
+      if(s.panic>0.3){
+        // Panicked — erratic movement
+        if(s.personality.name==='Nervous'){
+          // circle!
+          s.wanderAngle += 2*dt;
+        } else {
+          s.wanderAngle = Math.random()*Math.PI*2;
+        }
+        s.wanderTimer = rng(0.3,0.8);
+      } else {
+        // Calm — gentle wander, bias toward field center
+        const cx=FIELD.x+FIELD.w/2, cy=FIELD.y+FIELD.h/2;
+        const toCenter = Math.atan2(cy-s.y,cx-s.x);
+        s.wanderAngle = lerp(Math.random()*Math.PI*2, toCenter, 0.3);
+        s.wanderTimer = rng(2,5);
+
+        // Idle message
+        if(Math.random()<0.08) addBubble(s, pick(s.personality.idleMsg));
+      }
+    }
+
+    // Treat attraction: sheep walk toward nearest treat (Hungry sheep extra strong)
+    let nearestTreat = null, ntD = Infinity;
+    for(const t of treats){
+      const td = dist(s,t);
+      if(td<200 && td<ntD){ntD=td;nearestTreat=t;}
+    }
+    if(nearestTreat && !s.fainted){
+      const tA = Math.atan2(nearestTreat.y-s.y, nearestTreat.x-s.x);
+      const pull = s.personality.name==='Hungry' ? 1.5 : 0.7;
+      s.wanderAngle = tA;
+      s.panic = Math.max(0, s.panic - dt*pull); // treats calm them
+      // Eat if very close
+      if(ntD < s.r + nearestTreat.r){
+        nearestTreat.life = 0; // gobbled
+        s.panic = 0;
+        addBubble(s, pick(['nom!','tasty!','*munch*','🍪']));
+        hearts.push({x:s.x,y:s.y-15,vx:rng(-15,15),vy:-30,life:1,maxLife:1});
+      }
+    }
+
+    // Movement
+    const speed = SHEEP_SPEED * (s.panic>0.3 ? 1+s.panic*1.5 : 0.5);
+    const wx = Math.cos(s.wanderAngle)*speed;
+    const wy = Math.sin(s.wanderAngle)*speed;
+    s.vx = lerp(s.vx, wx, dt*3);
+    s.vy = lerp(s.vy, wy, dt*3);
+
+    // Friction
+    s.vx *= (1-dt*2);
+    s.vy *= (1-dt*2);
+
+    s.x += s.vx*dt;
+    s.y += s.vy*dt;
+    s.bobT += dt*4;
+    s.legT += dt*(Math.abs(s.vx)+Math.abs(s.vy)>10?8:2);
+
+    // Sheep-sheep avoidance
+    for(const o of sheep){
+      if(o===s||o.dead||o.lost) continue;
+      const d2 = dist(s,o);
+      if(d2<s.r+o.r+4){
+        const a = Math.atan2(s.y-o.y,s.x-o.x);
+        s.vx += Math.cos(a)*50*dt;
+        s.vy += Math.sin(a)*50*dt;
+      }
+    }
+
+    // Hungry sheep nibbles near edges, but doesn't actually try to leave
+    if(s.personality.name==='Hungry' && s.panic<0.3){
+      if(Math.random()<0.003){
+        // Pick a point NEAR the edge but still inside field
+        const tx = rng(FIELD.x+30, FIELD.x+FIELD.w-30);
+        const ty = rng(FIELD.y+30, FIELD.y+FIELD.h-30);
+        s.wanderAngle = Math.atan2(ty-s.y, tx-s.x);
+      }
+    }
+
+    // Hard boundary — sheep CANNOT leave the field on their own.
+    // They can only be "lost" when panicking hard from wolves, or being dragged.
+    const margin = s.r;
+    if(s.x < FIELD.x+margin){ s.x = FIELD.x+margin; s.vx = Math.abs(s.vx)*0.5; s.wanderAngle = rng(-Math.PI/3, Math.PI/3); }
+    if(s.x > FIELD.x+FIELD.w-margin){ s.x = FIELD.x+FIELD.w-margin; s.vx = -Math.abs(s.vx)*0.5; s.wanderAngle = rng(Math.PI-Math.PI/3, Math.PI+Math.PI/3); }
+    if(s.y < FIELD.y+margin){ s.y = FIELD.y+margin; s.vy = Math.abs(s.vy)*0.5; s.wanderAngle = rng(Math.PI/2-Math.PI/3, Math.PI/2+Math.PI/3); }
+    if(s.y > FIELD.y+FIELD.h-margin){ s.y = FIELD.y+FIELD.h-margin; s.vy = -Math.abs(s.vy)*0.5; s.wanderAngle = rng(-Math.PI/2-Math.PI/3, -Math.PI/2+Math.PI/3); }
+
+    // Only PANICKED sheep can bolt past the boundary and become lost.
+    // (kept as a comedy beat — terrified sheep yeet themselves off the field)
+    if(s.panic > 0.7){
+      if(s.x<-20||s.x>W+20||s.y<-20||s.y>H+20){
+        s.lost = true;
+        s.dead = true;
+        setThought('sheepLost');
+        particles.push({x:clamp(s.x,0,W),y:clamp(s.y,0,H),text:'💨',life:1,maxLife:1,size:24,color:'#fff',vy:-20});
+      }
+    }
+  }
+}
+
+function updateWolves(dt){
+  for(const w of wolves){
+    if(w.dead) continue;
+
+    w.bobT += dt*5;
+    w.eyeGlow = 0.5+0.5*Math.sin(w.bobT*2);
+
+    if(w.scared){
+      w.scaredTimer -= dt;
+      if(w.scaredTimer<=0) w.scared = false;
+    }
+
+    // Stunned: can't move
+    if(w.stunned){
+      w.stunTimer -= dt;
+      if(w.stunTimer<=0) w.stunned = false;
+      continue;
+    }
+
+    if(w.fleeing){
+      w.fleeTimer -= dt;
+      w.x += w.vx*dt;
+      w.y += w.vy*dt;
+      w.vx *= (1-dt*1.5);
+      w.vy *= (1-dt*1.5);
+      if(w.x<-60||w.x>W+60||w.y<-60||w.y>H+60){
+        w.dead = true;
+      }
+      if(w.fleeTimer<=0) w.fleeing = false;
+      continue;
+    }
+
+    // Distracted by ball?
+    if(w.distractedBy){
+      w.distractTimer -= dt;
+      // chase the ball
+      const b = w.distractedBy;
+      if(!b || b.life<=0){
+        w.distractedBy = null;
+      } else {
+        const a = Math.atan2(b.y-w.y, b.x-w.x);
+        w.x += Math.cos(a)*w.speed*0.7*dt;
+        w.y += Math.sin(a)*w.speed*0.7*dt;
+        // Sniffs ball, then breaks distraction when timer ends
+        if(w.distractTimer<=0){
+          w.distractedBy = null;
+          b.life = 0; // ball consumed
+          particles.push({x:b.x,y:b.y-15,text:'?',life:1,maxLife:1,size:18,color:'#fff',vy:-25});
+        }
+        continue;
+      }
+    }
+
+    // Look for a fetch ball nearby (if not grabbing or fleeing)
+    if(!w.grabbing){
+      let nearestBall = null, nbD = Infinity;
+      for(const b of balls){
+        if(b.life<=0) continue;
+        const d2 = dist(w,b);
+        if(d2 < 250 && d2 < nbD){nbD = d2; nearestBall = b;}
+      }
+      if(nearestBall && Math.random()<0.7){ // 70% sniff factor
+        w.distractedBy = nearestBall;
+        w.distractTimer = 4;
+        particles.push({x:w.x,y:w.y-15,text:'ooh',life:0.8,maxLife:0.8,size:14,color:'#7ec8e3',vy:-25});
+        continue;
+      }
+    }
+
+    // If grabbing a sheep, drag toward edge
+    if(w.grabbing){
+      const s = w.grabbing;
+      const edges = [{x:-40,y:w.y},{x:W+40,y:w.y},{x:w.x,y:-40},{x:w.x,y:H+40}];
+      let nearEdge = edges[0], nearD = Infinity;
+      for(const e of edges){const d2=Math.hypot(e.x-w.x,e.y-w.y);if(d2<nearD){nearD=d2;nearEdge=e;}}
+      const a = Math.atan2(nearEdge.y-w.y, nearEdge.x-w.x);
+      const dragSpeed = w.speed * 0.35;
+      w.x += Math.cos(a)*dragSpeed*dt;
+      w.y += Math.sin(a)*dragSpeed*dt;
+      s.x = w.x - Math.cos(a)*22;
+      s.y = w.y - Math.sin(a)*22;
+      if(w.x<-30||w.x>W+30||w.y<-30||w.y>H+30){
+        s.dead = true; s.lost = true;
+        w.dead = true;
+        setThought('sheepLost');
+      }
+      continue;
+    }
+
+    // Creep toward nearest sheep
+    let target = null, targetD = Infinity;
+    for(const s of sheep){
+      if(s.dead||s.lost||s.grabbed) continue;
+      const d2 = dist(w,s);
+      if(d2<targetD){targetD=d2;target=s;}
+    }
+    if(target){
+      const a = Math.atan2(target.y-w.y, target.x-w.x);
+      w.x += Math.cos(a)*w.speed*dt;
+      w.y += Math.sin(a)*w.speed*dt;
+      if(dist(w,target)<w.r+target.r){
+        w.grabbing = target;
+        target.grabbed = true;
+        target.grabber = w;
+        addBubble(target, pick(['HELP!','OH NO!','not again!','BAAAA!']));
+      }
+    } else {
+      // No sheep — wander toward field center
+      const cx = FIELD.x+FIELD.w/2, cy=FIELD.y+FIELD.h/2;
+      const a = Math.atan2(cy-w.y, cx-w.x);
+      w.x += Math.cos(a)*w.speed*0.4*dt;
+      w.y += Math.sin(a)*w.speed*0.4*dt;
+    }
+  }
+
+  // Cleanup dead wolves
+  for(let i=wolves.length-1;i>=0;i--) if(wolves[i].dead) wolves.splice(i,1);
+}
+
+// ───── BALLS (fetch decoys) ─────
+function updateBalls(dt){
+  for(let i=balls.length-1;i>=0;i--){
+    const b = balls[i];
+    b.life -= dt;
+    if(!b.landed){
+      b.x += b.vx*dt;
+      b.y += b.vy*dt;
+      b.vx *= (1-dt*1.2);
+      b.vy *= (1-dt*1.2);
+      if(Math.hypot(b.vx,b.vy)<30) b.landed = true;
+    }
+    b.bouncing = (b.bouncing||0) + dt*8;
+    if(b.life<=0) balls.splice(i,1);
+  }
+}
+
+// ───── TREATS ─────
+function updateTreats(dt){
+  for(let i=treats.length-1;i>=0;i--){
+    const t = treats[i];
+    t.life -= dt;
+    t.bobT = (t.bobT||0)+dt*4;
+    if(t.life<=0) treats.splice(i,1);
+  }
+}
+
+// ───── BONES (collectibles) ─────
+function spawnBones(dt){
+  boneSpawnTimer -= dt;
+  if(boneSpawnTimer<=0 && bones.length<2){
+    bones.push(makeBone());
+    boneSpawnTimer = rng(8,14);
+  }
+}
+function updateBones(dt){
+  for(let i=bones.length-1;i>=0;i--){
+    const b = bones[i];
+    b.life -= dt;
+    b.bobT += dt*3;
+    if(b.life<=0) bones.splice(i,1);
+  }
+}
+
+// ───── HEARTS (wag love particles) ─────
+function updateHearts(dt){
+  for(let i=hearts.length-1;i>=0;i--){
+    const h = hearts[i];
+    h.life -= dt;
+    h.x += h.vx*dt;
+    h.y += h.vy*dt;
+    h.vy *= 0.96;
+    if(h.life<=0) hearts.splice(i,1);
+  }
+}
+
+function spawnWolves(dt){
+  if(wolvesToSpawn<=0) return;
+  wolfSpawnTimer -= dt;
+  if(wolfSpawnTimer<=0){
+    wolves.push(makeWolf(wave));
+    wolvesToSpawn--;
+    wolfSpawnTimer = WAVES[wave].delay;
+    // Disguise thought
+    const w = wolves[wolves.length-1];
+    if(w.disguised) setTimeout(()=>setThought('disguise'), 1500);
+  }
+}
+
+function checkWaveEnd(){
+  // Only runs during PLAYING state (gated by caller)
+  // Wave ends when all wolves for this wave are spawned AND all are dead/fled
+  if(wolvesToSpawn>0) return;
+  if(wolves.length>0) return;
+
+  // Check alive sheep
+  const alive = sheep.filter(s=>!s.dead&&!s.lost);
+  if(alive.length===0){
+    state = S.GAMEOVER;
+    sheepSaved = 0;
+    return;
+  }
+
+  // Next wave or win
+  if(wave >= WAVES.length-1){
+    state = S.WIN;
+    sheepSaved = alive.length;
+    score += alive.length * 100;
+    return;
+  }
+
+  // Between waves — transition once
+  state = S.BETWEEN;
+  betweenTimer = 4;
+  score += alive.length * 10 * (wave+1);
+  setThought('calm');
+
+  // Give sheep idle activities + heal them
+  for(const s of alive){
+    s.panic = 0;
+    s.fainted = false;
+    s.faintTimer = 0;
+    s.idleActivity = pick(IDLE_ACTIVITIES);
+  }
+}
+
+function updateBubbles(dt){
+  for(let i=bubbles.length-1;i>=0;i--){
+    bubbles[i].life -= dt;
+    bubbles[i].y -= dt*8;
+    if(bubbles[i].life<=0) bubbles.splice(i,1);
+  }
+}
+
+function updateParticles(dt){
+  for(let i=particles.length-1;i>=0;i--){
+    const p=particles[i];
+    p.life -= dt;
+    p.y += p.vy*dt;
+    if(p.life<=0) particles.splice(i,1);
+  }
+}
+
+function updateHUD(){
+  const alive = sheep.filter(s=>!s.dead&&!s.lost);
+  hWave.textContent = (wave+1)+'/'+WAVES.length;
+  hScore.textContent = score;
+  hSheep.textContent = alive.length;
+  hWolves.textContent = wolves.length+wolvesToSpawn;
+  hBarkMeter.style.width = panicLevel+'%';
+  hPanicPct.textContent = Math.round(panicLevel)+'%';
+  hBarkMeter.style.background = panicLevel>60
+    ? 'linear-gradient(90deg,#e94560,#ff6b6b)'
+    : 'linear-gradient(90deg,#6ee7b7,#34d399)';
+  // Sheep icons
+  let icons = '';
+  for(const s of sheep){
+    if(s.dead||s.lost) icons += '<span style="opacity:0.2">🐑</span>';
+    else icons += '<span>'+s.personality.emoji+'</span>';
+  }
+  hSheepIcons.innerHTML = icons;
+
+  // Ability cooldown bars
+  updateAbility(abBark, barkTimer, BARK_COOLDOWN, null);
+  updateAbility(abWag, wagTimer, WAG_COOLDOWN, null);
+  updateAbility(abDash, dashTimer, DASH_COOLDOWN, null);
+  updateAbility(abFetch, fetchTimer, FETCH_COOLDOWN, fetchUses);
+  updateAbility(abTreat, treatTimer, TREAT_COOLDOWN, treatUses);
+  updateAbility(abHowl, howlTimer, HOWL_COOLDOWN, howlUses);
+  abFetchUses.textContent = fetchUses;
+  abTreatUses.textContent = treatUses;
+  abHowlUses.textContent = howlUses;
+}
+
+function updateAbility(el, timer, cd, uses){
+  const fill = el.querySelector('.cd-fill');
+  const pct = timer>0 ? (timer/cd)*100 : 0;
+  fill.style.height = pct+'%';
+  const ready = timer<=0 && (uses===null || uses>0);
+  el.classList.toggle('ready', ready);
+  el.classList.toggle('cooldown', !ready);
+}
+
+// ───── RENDER ─────
+function render(){
+  ctx.clearRect(0,0,W,H);
+
+  if(state===S.SPLASH){drawSplash();return;}
+  if(state===S.GAMEOVER){drawField();drawEntities();drawGameOver();return;}
+  if(state===S.WIN){drawField();drawEntities();drawWin();return;}
+
+  drawField();
+  drawEntities();
+
+  if(state===S.PAUSED) drawPaused();
+  if(state===S.BETWEEN) drawBetween();
+  if(msgTimer>0) drawWaveMsg();
+}
+
+function drawField(){
+  // Grass
+  ctx.fillStyle = '#1a3a1a';
+  ctx.fillRect(0,0,W,H);
+
+  // Field
+  ctx.fillStyle = '#234d23';
+  ctx.fillRect(FIELD.x, FIELD.y, FIELD.w, FIELD.h);
+
+  // Grass texture
+  ctx.strokeStyle = 'rgba(110,231,183,0.06)';
+  ctx.lineWidth = 1;
+  for(let i=0;i<40;i++){
+    const gx = FIELD.x + (i*23)%FIELD.w;
+    const gy = FIELD.y + ((i*37+17)%FIELD.h);
+    ctx.beginPath();
+    ctx.moveTo(gx,gy);
+    ctx.lineTo(gx-3,gy-8);
+    ctx.moveTo(gx,gy);
+    ctx.lineTo(gx+2,gy-7);
+    ctx.stroke();
+  }
+
+  // Fence
+  ctx.strokeStyle = '#8B6914';
+  ctx.lineWidth = 3;
+  ctx.strokeRect(FIELD.x, FIELD.y, FIELD.w, FIELD.h);
+  // Fence posts
+  ctx.fillStyle = '#6B4E0A';
+  for(let x=FIELD.x;x<=FIELD.x+FIELD.w;x+=50){
+    ctx.fillRect(x-3,FIELD.y-6,6,12);
+    ctx.fillRect(x-3,FIELD.y+FIELD.h-6,6,12);
+  }
+  for(let y=FIELD.y;y<=FIELD.y+FIELD.h;y+=50){
+    ctx.fillRect(FIELD.x-6,y-3,12,6);
+    ctx.fillRect(FIELD.x+FIELD.w-6,y-3,12,6);
+  }
+  // Horizontal fence rails
+  ctx.strokeStyle = '#A07818';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(FIELD.x,FIELD.y+4);ctx.lineTo(FIELD.x+FIELD.w,FIELD.y+4);
+  ctx.moveTo(FIELD.x,FIELD.y-4);ctx.lineTo(FIELD.x+FIELD.w,FIELD.y-4);
+  ctx.moveTo(FIELD.x,FIELD.y+FIELD.h+4);ctx.lineTo(FIELD.x+FIELD.w,FIELD.y+FIELD.h+4);
+  ctx.moveTo(FIELD.x,FIELD.y+FIELD.h-4);ctx.lineTo(FIELD.x+FIELD.w,FIELD.y+FIELD.h-4);
+  ctx.stroke();
+
+  // Bark cooldown indicator
+  if(barkTimer>0){
+    ctx.fillStyle='rgba(255,255,255,0.06)';
+    ctx.fillRect(10,H-16,(barkTimer/BARK_COOLDOWN)*100,8);
+  }
+}
+
+function drawEntities(){
+  // Bones (on ground, behind everything)
+  for(const b of bones){
+    const bob = Math.sin(b.bobT)*3;
+    const alpha = b.life<3 ? Math.max(0.3, b.life/3) : 1;
+    ctx.globalAlpha = alpha;
+    ctx.save();
+    ctx.translate(b.x,b.y+bob);
+    // Glow
+    ctx.fillStyle='rgba(245,197,24,0.25)';
+    ctx.beginPath();ctx.arc(0,0,b.r+8,0,Math.PI*2);ctx.fill();
+    // Bone shape
+    ctx.fillStyle='#fdfaf0';
+    ctx.beginPath();
+    ctx.arc(-7,0,5,0,Math.PI*2);
+    ctx.arc(7,0,5,0,Math.PI*2);
+    ctx.fill();
+    ctx.fillRect(-7,-3,14,6);
+    // outline
+    ctx.strokeStyle='#a89b6a';ctx.lineWidth=1;
+    ctx.stroke();
+    ctx.restore();
+    ctx.globalAlpha = 1;
+  }
+
+  // Treats (on ground)
+  for(const t of treats){
+    const bob = Math.sin(t.bobT)*2;
+    const alpha = t.life<2 ? Math.max(0.3, t.life/2) : 1;
+    ctx.globalAlpha = alpha;
+    ctx.save();
+    ctx.translate(t.x,t.y+bob);
+    ctx.fillStyle='rgba(245,197,24,0.3)';
+    ctx.beginPath();ctx.arc(0,0,t.r+6,0,Math.PI*2);ctx.fill();
+    // Cookie/biscuit
+    ctx.fillStyle='#c89060';
+    ctx.beginPath();ctx.arc(0,0,t.r,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#7a4a20';
+    for(let i=0;i<4;i++){
+      const a=i*Math.PI/2+0.3;
+      ctx.beginPath();ctx.arc(Math.cos(a)*3,Math.sin(a)*3,1.2,0,Math.PI*2);ctx.fill();
+    }
+    ctx.restore();
+    ctx.globalAlpha = 1;
+  }
+
+  // Balls (fetch decoys)
+  for(const b of balls){
+    const alpha = b.life<1 ? b.life : 1;
+    ctx.globalAlpha = alpha;
+    ctx.save();
+    const bounce = b.landed ? Math.abs(Math.sin(b.bouncing))*4 : 0;
+    ctx.translate(b.x, b.y-bounce);
+    // Shadow
+    ctx.fillStyle='rgba(0,0,0,0.2)';
+    ctx.beginPath();ctx.ellipse(0,bounce+2,b.r,3,0,0,Math.PI*2);ctx.fill();
+    // Ball
+    ctx.fillStyle='#d4ff5a';
+    ctx.beginPath();ctx.arc(0,0,b.r,0,Math.PI*2);ctx.fill();
+    // Tennis ball seam
+    ctx.strokeStyle='#a0c020';ctx.lineWidth=1.2;
+    ctx.beginPath();ctx.arc(0,0,b.r-2,-0.6,0.6);ctx.stroke();
+    ctx.beginPath();ctx.arc(0,0,b.r-2,Math.PI-0.6,Math.PI+0.6);ctx.stroke();
+    ctx.restore();
+    ctx.globalAlpha = 1;
+  }
+
+  // Sheep (behind dog)
+  for(const s of sheep){
+    if(s.dead||s.lost) continue;
+    drawSheep(s);
+  }
+
+  // Wolves
+  for(const w of wolves){
+    if(w.dead) continue;
+    drawWolf(w);
+  }
+
+  // Dog (on top)
+  if(dog) drawDog(dog);
+
+  // Hearts (wag love)
+  for(const h of hearts){
+    const a = h.life/h.maxLife;
+    ctx.globalAlpha = a;
+    ctx.fillStyle='#ff6b8a';
+    ctx.font='bold '+(14+(1-a)*4)+'px Segoe UI';
+    ctx.textAlign='center';
+    ctx.fillText('♥', h.x, h.y);
+    ctx.globalAlpha = 1;
+  }
+
+  // Bark animation ring
+  if(barkAnim){
+    ctx.beginPath();
+    ctx.arc(barkAnim.x,barkAnim.y,barkAnim.r,0,Math.PI*2);
+    ctx.strokeStyle = `rgba(245,197,24,${barkAnim.alpha*0.6})`;
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    ctx.strokeStyle = `rgba(110,231,183,${barkAnim.alpha*0.3})`;
+    ctx.lineWidth = 6;
+    ctx.stroke();
+  }
+
+  // Wag animation ring (pink/heart)
+  if(wagAnim){
+    ctx.beginPath();
+    ctx.arc(wagAnim.x,wagAnim.y,wagAnim.r,0,Math.PI*2);
+    ctx.strokeStyle = `rgba(255,107,138,${wagAnim.alpha*0.5})`;
+    ctx.lineWidth = 4;
+    ctx.stroke();
+  }
+
+  // Howl animation ring (blue, big)
+  if(howlAnim){
+    ctx.beginPath();
+    ctx.arc(howlAnim.x,howlAnim.y,howlAnim.r,0,Math.PI*2);
+    ctx.strokeStyle = `rgba(126,200,227,${howlAnim.alpha*0.8})`;
+    ctx.lineWidth = 5;
+    ctx.stroke();
+    ctx.strokeStyle = `rgba(255,255,255,${howlAnim.alpha*0.4})`;
+    ctx.lineWidth = 10;
+    ctx.stroke();
+  }
+
+  // Bubbles
+  for(const b of bubbles){
+    const alpha = Math.min(1, b.life/0.5);
+    const ox = b.owner.x, oy = b.owner.y + b.y;
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = 'rgba(255,255,255,0.92)';
+    ctx.font = '11px Segoe UI';
+    const tw = ctx.measureText(b.text).width+12;
+    const bx = ox-tw/2, by = oy-10;
+    roundRect(bx,by,tw,20,6);
+    ctx.fill();
+    // tail
+    ctx.beginPath();
+    ctx.moveTo(ox-4,by+20);ctx.lineTo(ox,by+26);ctx.lineTo(ox+4,by+20);
+    ctx.fill();
+    ctx.fillStyle = '#1a1a2e';
+    ctx.textAlign = 'center';
+    ctx.fillText(b.text, ox, oy+3);
+    ctx.globalAlpha = 1;
+  }
+
+  // Particles
+  for(const p of particles){
+    ctx.globalAlpha = p.life/p.maxLife;
+    ctx.fillStyle = p.color;
+    ctx.font = `bold ${p.size}px Segoe UI`;
+    ctx.textAlign = 'center';
+    ctx.fillText(p.text, p.x, p.y);
+    ctx.globalAlpha = 1;
+  }
+}
+
+function roundRect(x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+  ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);
+  ctx.closePath();
+}
+
+// ───── DRAW DOG ─────
+function drawDog(d){
+  ctx.save();
+  ctx.translate(d.x, d.y);
+  const bobY = Math.sin(d.bobT)*3;
+  const moving = Math.abs(d.vx)>5||Math.abs(d.vy)>5;
+
+  // Shadow
+  ctx.fillStyle='rgba(0,0,0,0.15)';
+  ctx.beginPath();ctx.ellipse(0,d.r+4,d.r,5,0,0,Math.PI*2);ctx.fill();
+
+  // Tail (behind body)
+  ctx.save();
+  ctx.translate(-d.facing*14, -2+bobY);
+  const tailWag = Math.sin(d.tailT)*0.5;
+  ctx.rotate(tailWag + (d.facing>0?2.5:-2.5));
+  ctx.fillStyle='#C8941E';
+  ctx.beginPath();
+  ctx.ellipse(0,-8,4,12,0,0,Math.PI*2);
+  ctx.fill();
+  ctx.restore();
+
+  // Body
+  ctx.fillStyle='#DAA520';
+  ctx.beginPath();
+  ctx.ellipse(0, bobY, d.r+2, d.r-2, 0, 0, Math.PI*2);
+  ctx.fill();
+  // Belly
+  ctx.fillStyle='#F0D070';
+  ctx.beginPath();
+  ctx.ellipse(0, bobY+4, d.r-4, d.r-6, 0, 0, Math.PI*2);
+  ctx.fill();
+
+  // Legs
+  const legBob = moving ? Math.sin(d.bobT*1.5)*4 : 0;
+  ctx.fillStyle='#C8941E';
+  ctx.fillRect(-8, d.r-4+bobY, 5, 8+legBob);
+  ctx.fillRect(4, d.r-4+bobY, 5, 8-legBob);
+
+  // Head
+  ctx.fillStyle='#DAA520';
+  ctx.beginPath();
+  ctx.ellipse(d.facing*12, -8+bobY, 11, 10, 0, 0, Math.PI*2);
+  ctx.fill();
+
+  // Ears (floppy!)
+  ctx.fillStyle='#B8860B';
+  const earFlop = Math.sin(d.bobT*0.8)*2;
+  ctx.beginPath();
+  ctx.ellipse(d.facing*12-7, -14+bobY+earFlop, 5, 8, -0.3, 0, Math.PI*2);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.ellipse(d.facing*12+7, -14+bobY-earFlop, 5, 8, 0.3, 0, Math.PI*2);
+  ctx.fill();
+
+  // Eyes (big happy eyes!)
+  ctx.fillStyle='#1a1a2e';
+  ctx.beginPath();ctx.arc(d.facing*12-3, -10+bobY, 2.5, 0, Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.arc(d.facing*12+3, -10+bobY, 2.5, 0, Math.PI*2);ctx.fill();
+  // Eye shine
+  ctx.fillStyle='#fff';
+  ctx.beginPath();ctx.arc(d.facing*12-2, -11+bobY, 1, 0, Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.arc(d.facing*12+4, -11+bobY, 1, 0, Math.PI*2);ctx.fill();
+
+  // Nose
+  ctx.fillStyle='#2c1810';
+  ctx.beginPath();ctx.ellipse(d.facing*22, -6+bobY, 3, 2.5, 0, 0, Math.PI*2);ctx.fill();
+
+  // Mouth + tongue
+  ctx.strokeStyle='#2c1810';
+  ctx.lineWidth=1;
+  ctx.beginPath();
+  ctx.moveTo(d.facing*22, -4+bobY);
+  ctx.lineTo(d.facing*20, 0+bobY);
+  ctx.stroke();
+  // Tongue (always hanging out)
+  const tongueLen = 5+Math.sin(d.tongueT)*2;
+  ctx.fillStyle='#FF6B8A';
+  ctx.beginPath();
+  ctx.ellipse(d.facing*20, 2+bobY+tongueLen/2, 3, tongueLen/2, 0, 0, Math.PI*2);
+  ctx.fill();
+
+  // Bark indicator (mouth open when recently barked)
+  if(barkTimer>BARK_COOLDOWN-0.3){
+    ctx.fillStyle='#4a2020';
+    ctx.beginPath();
+    ctx.ellipse(d.facing*19, -2+bobY, 6, 5, 0, 0, Math.PI*2);
+    ctx.fill();
+    ctx.fillStyle='#FF6B8A';
+    ctx.beginPath();
+    ctx.ellipse(d.facing*19, 1+bobY, 4, 3, 0, 0, Math.PI*2);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+// ───── DRAW SHEEP ─────
+function drawSheep(s){
+  ctx.save();
+  ctx.translate(s.x, s.y);
+  const bobY = Math.sin(s.bobT)*2;
+
+  // Shadow
+  ctx.fillStyle='rgba(0,0,0,0.1)';
+  ctx.beginPath();ctx.ellipse(0,s.r+2,s.r,3,0,0,Math.PI*2);ctx.fill();
+
+  if(s.fainted){
+    // Lying on side
+    ctx.rotate(Math.PI/2);
+    ctx.globalAlpha = 0.7;
+  }
+
+  // Idle activity (between waves)
+  if(state===S.BETWEEN && s.idleActivity){
+    ctx.font='16px serif';
+    ctx.textAlign='center';
+    ctx.fillText(s.idleActivity, 12, -18);
+  }
+
+  // Legs
+  const legT = s.legT;
+  ctx.fillStyle='#3d3d3d';
+  ctx.fillRect(-6, s.r-2+bobY, 3, 7+Math.sin(legT)*2);
+  ctx.fillRect(3, s.r-2+bobY, 3, 7-Math.sin(legT)*2);
+
+  // Body (fluffy!)
+  ctx.fillStyle = s.grabbed ? '#ffcccc' : '#f0f0f0';
+  ctx.beginPath();ctx.arc(0, bobY, s.r, 0, Math.PI*2);ctx.fill();
+  // Wool texture bumps
+  ctx.fillStyle = s.grabbed ? '#ffdddd' : '#ffffff';
+  for(let i=0;i<6;i++){
+    const a = i*Math.PI/3;
+    ctx.beginPath();
+    ctx.arc(Math.cos(a)*(s.r-4), Math.sin(a)*(s.r-4)+bobY, 5, 0, Math.PI*2);
+    ctx.fill();
+  }
+
+  // Head
+  ctx.fillStyle='#2c2c2c';
+  ctx.beginPath();ctx.ellipse(10, -4+bobY, 6, 5, 0, 0, Math.PI*2);ctx.fill();
+  // Eyes
+  ctx.fillStyle='#fff';
+  ctx.beginPath();ctx.arc(12, -5+bobY, 2, 0, Math.PI*2);ctx.fill();
+  ctx.fillStyle='#111';
+  ctx.beginPath();ctx.arc(12.5, -5+bobY, 1, 0, Math.PI*2);ctx.fill();
+
+  // Personality emoji
+  if(!s.fainted){
+    ctx.font='12px serif';
+    ctx.textAlign='center';
+    ctx.fillText(s.personality.emoji, 0, -s.r-8+bobY);
+  } else {
+    ctx.font='12px serif';
+    ctx.textAlign='center';
+    ctx.fillText('💫', 0, -s.r-8);
+  }
+
+  // Panic indicator (red tint when panicked)
+  if(s.panic>0.3){
+    ctx.fillStyle=`rgba(233,69,96,${s.panic*0.2})`;
+    ctx.beginPath();ctx.arc(0,bobY,s.r+2,0,Math.PI*2);ctx.fill();
+  }
+
+  ctx.globalAlpha = 1;
+  ctx.restore();
+}
+
+// ───── DRAW WOLF ─────
+function drawWolf(w){
+  ctx.save();
+  ctx.translate(w.x, w.y);
+  const bobY = Math.sin(w.bobT)*2;
+
+  // Shadow
+  ctx.fillStyle='rgba(0,0,0,0.15)';
+  ctx.beginPath();ctx.ellipse(0,w.r+3,w.r+2,4,0,0,Math.PI*2);ctx.fill();
+
+  // Disguise (sheep costume on top)
+  if(w.disguised){
+    // Terrible sheep wool on gray body
+    ctx.fillStyle='#e8e8e8';
+    ctx.beginPath();ctx.arc(0,bobY-2,w.r+3,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#f5f5f5';
+    for(let i=0;i<5;i++){
+      const a=i*Math.PI*2/5;
+      ctx.beginPath();
+      ctx.arc(Math.cos(a)*(w.r-2),Math.sin(a)*(w.r-2)+bobY-2,5,0,Math.PI*2);
+      ctx.fill();
+    }
+    // But the wolf ears stick out!
+    ctx.fillStyle='#555';
+    ctx.beginPath();
+    ctx.moveTo(-6,-w.r-6+bobY);ctx.lineTo(-10,-w.r-16+bobY);ctx.lineTo(-2,-w.r-4+bobY);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(6,-w.r-6+bobY);ctx.lineTo(10,-w.r-16+bobY);ctx.lineTo(2,-w.r-4+bobY);
+    ctx.fill();
+    // Shifty eyes peek through
+    ctx.fillStyle=`rgba(255,200,0,${0.7+w.eyeGlow*0.3})`;
+    ctx.beginPath();ctx.arc(-4,-2+bobY,2.5,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(4,-2+bobY,2.5,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#111';
+    ctx.beginPath();ctx.arc(-4,-2+bobY,1.2,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(4,-2+bobY,1.2,0,Math.PI*2);ctx.fill();
+  } else {
+    // Normal wolf body
+    ctx.fillStyle='#555';
+    ctx.beginPath();ctx.ellipse(0,bobY,w.r+2,w.r-2,0,0,Math.PI*2);ctx.fill();
+    // Belly
+    ctx.fillStyle='#777';
+    ctx.beginPath();ctx.ellipse(0,bobY+3,w.r-4,w.r-6,0,0,Math.PI*2);ctx.fill();
+    // Head
+    ctx.fillStyle='#555';
+    ctx.beginPath();ctx.ellipse(10,-3+bobY,8,7,0,0,Math.PI*2);ctx.fill();
+    // Snout
+    ctx.fillStyle='#666';
+    ctx.beginPath();ctx.ellipse(18,-1+bobY,5,4,0,0,Math.PI*2);ctx.fill();
+    // Ears (pointy!)
+    ctx.fillStyle='#444';
+    ctx.beginPath();
+    ctx.moveTo(5,-8+bobY);ctx.lineTo(3,-20+bobY);ctx.lineTo(9,-8+bobY);ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(13,-8+bobY);ctx.lineTo(15,-20+bobY);ctx.lineTo(19,-8+bobY);ctx.fill();
+    // Eyes (glowing yellow)
+    ctx.fillStyle=`rgba(255,200,0,${0.7+w.eyeGlow*0.3})`;
+    ctx.beginPath();ctx.arc(8,-5+bobY,2.5,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(14,-5+bobY,2.5,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#111';
+    ctx.beginPath();ctx.arc(8,-5+bobY,1.2,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(14,-5+bobY,1.2,0,Math.PI*2);ctx.fill();
+    // Nose
+    ctx.fillStyle='#222';
+    ctx.beginPath();ctx.ellipse(22,-1+bobY,2,1.5,0,0,Math.PI*2);ctx.fill();
+    // Legs
+    ctx.fillStyle='#444';
+    const legB = Math.sin(w.bobT)*3;
+    ctx.fillRect(-6,w.r-3+bobY,4,7+legB);
+    ctx.fillRect(4,w.r-3+bobY,4,7-legB);
+    // Tail
+    ctx.fillStyle='#555';
+    ctx.save();
+    ctx.translate(-14,0+bobY);
+    ctx.rotate(-0.5+Math.sin(w.bobT*0.5)*0.2);
+    ctx.beginPath();ctx.ellipse(0,-4,3,8,0,0,Math.PI*2);ctx.fill();
+    ctx.restore();
+  }
+
+  // Scared face
+  if(w.scared){
+    ctx.font='16px serif';ctx.textAlign='center';
+    ctx.fillText('😱',0,-w.r-10+bobY);
+  }
+
+  ctx.restore();
+}
+
+// ───── SPLASH SCREEN ─────
+function drawSplash(){
+  splashBob += 0.03;
+
+  // Background
+  ctx.fillStyle='#1a3a1a';
+  ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='#234d23';
+  ctx.fillRect(40,40,W-80,H-80);
+
+  // Animated sheep walking across
+  const sheepX = ((Date.now()/30)%1100)-100;
+  ctx.save();
+  ctx.translate(sheepX, H-120);
+  ctx.fillStyle='#f0f0f0';
+  ctx.beginPath();ctx.arc(0,0,16,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#fff';
+  for(let i=0;i<5;i++){const a=i*Math.PI*2/5;ctx.beginPath();ctx.arc(Math.cos(a)*10,Math.sin(a)*10,6,0,Math.PI*2);ctx.fill();}
+  ctx.fillStyle='#2c2c2c';
+  ctx.beginPath();ctx.ellipse(12,-4,6,5,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#3d3d3d';
+  ctx.fillRect(-6,14,3,7);ctx.fillRect(3,14,3,7);
+  ctx.font='14px serif';ctx.textAlign='center';ctx.fillText('😎',0,-24);
+  ctx.restore();
+
+  // Second sheep
+  const sheepX2 = ((Date.now()/30+400)%1100)-100;
+  ctx.save();
+  ctx.translate(sheepX2, H-100);
+  ctx.fillStyle='#f0f0f0';
+  ctx.beginPath();ctx.arc(0,0,14,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#fff';
+  for(let i=0;i<4;i++){const a=i*Math.PI/2;ctx.beginPath();ctx.arc(Math.cos(a)*8,Math.sin(a)*8,5,0,Math.PI*2);ctx.fill();}
+  ctx.fillStyle='#2c2c2c';
+  ctx.beginPath();ctx.ellipse(10,-3,5,4,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#3d3d3d';
+  ctx.fillRect(-5,12,3,6);ctx.fillRect(2,12,3,6);
+  ctx.font='12px serif';ctx.textAlign='center';ctx.fillText('😴',0,-22);
+  ctx.restore();
+
+  // Title
+  ctx.textAlign='center';
+  ctx.fillStyle='#DAA520';
+  ctx.font='bold 52px Segoe UI';
+  ctx.fillText('🐕 Dog Shepherd', W/2, 160+Math.sin(splashBob)*5);
+
+  ctx.fillStyle='#e6edf3';
+  ctx.font='18px Segoe UI';
+  ctx.fillText('A Golden Retriever who loves EVERYONE', W/2, 210);
+
+  ctx.fillStyle='#8b97a8';
+  ctx.font='14px Segoe UI';
+  ctx.fillText('(even the wolves)', W/2, 235);
+
+  // Dog face
+  ctx.save();
+  ctx.translate(W/2, 330+Math.sin(splashBob*1.2)*8);
+  // Body
+  ctx.fillStyle='#DAA520';
+  ctx.beginPath();ctx.ellipse(0,10,36,28,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#F0D070';
+  ctx.beginPath();ctx.ellipse(0,18,26,18,0,0,Math.PI*2);ctx.fill();
+  // Head
+  ctx.fillStyle='#DAA520';
+  ctx.beginPath();ctx.ellipse(0,-20,28,24,0,0,Math.PI*2);ctx.fill();
+  // Ears
+  ctx.fillStyle='#B8860B';
+  ctx.beginPath();ctx.ellipse(-20,-28,10,16,-0.3,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.ellipse(20,-28,10,16,0.3,0,Math.PI*2);ctx.fill();
+  // Eyes
+  ctx.fillStyle='#1a1a2e';
+  ctx.beginPath();ctx.arc(-8,-24,5,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.arc(8,-24,5,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#fff';
+  ctx.beginPath();ctx.arc(-6,-25,2,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.arc(10,-25,2,0,Math.PI*2);ctx.fill();
+  // Nose
+  ctx.fillStyle='#2c1810';
+  ctx.beginPath();ctx.ellipse(0,-12,5,4,0,0,Math.PI*2);ctx.fill();
+  // Tongue
+  ctx.fillStyle='#FF6B8A';
+  const tl = 10+Math.sin(splashBob*2)*3;
+  ctx.beginPath();ctx.ellipse(0,-2+tl/2,5,tl/2,0,0,Math.PI*2);ctx.fill();
+  // Tail wagging behind
+  ctx.fillStyle='#C8941E';
+  ctx.save();ctx.translate(-30,10);ctx.rotate(Math.sin(splashBob*3)*0.4+0.3);
+  ctx.beginPath();ctx.ellipse(0,-14,6,16,0,0,Math.PI*2);ctx.fill();
+  ctx.restore();
+  ctx.restore();
+
+  // Instructions
+  ctx.fillStyle='#6ee7b7';
+  ctx.font='bold 20px Segoe UI';
+  ctx.fillText('Press SPACE or Click to Start!', W/2, H-90);
+
+  ctx.fillStyle='#e6edf3';
+  ctx.font='bold 13px Segoe UI';
+  ctx.fillText('WASD move · SPACE bark · SHIFT wag · E dash · F fetch', W/2, H-58);
+  ctx.fillStyle='#8b97a8';
+  ctx.font='12px Segoe UI';
+  ctx.fillText('R treat · Q howl · CLICK nudge · Collect 🦴 bones for score!', W/2, H-38);
+}
+
+// ───── GAME OVER ─────
+function drawGameOver(){
+  ctx.fillStyle='rgba(0,0,0,0.6)';
+  ctx.fillRect(0,0,W,H);
+
+  ctx.textAlign='center';
+  ctx.fillStyle='#e94560';
+  ctx.font='bold 44px Segoe UI';
+  ctx.fillText('All Sheep Lost!', W/2, 180);
+
+  ctx.fillStyle='#e6edf3';
+  ctx.font='22px Segoe UI';
+  ctx.fillText('The flock has scattered to the winds...', W/2, 230);
+
+  // Funny stats
+  ctx.fillStyle='#8b97a8';
+  ctx.font='16px Segoe UI';
+  const barkMsg = totalBarks > 30 ? `You barked ${totalBarks} times. The sheep filed a noise complaint.`
+    : totalBarks > 15 ? `You barked ${totalBarks} times. The sheep are considering earplugs.`
+    : `You barked ${totalBarks} times. The sheep appreciate your restraint.`;
+  ctx.fillText(barkMsg, W/2, 290);
+  ctx.fillText(`Reached Wave ${wave+1} of ${WAVES.length}  ·  🦴 ${bonesCollected} bones`, W/2, 320);
+  ctx.fillText(`Final Score: ${score}`, W/2, 350);
+
+  // Dog looking sad
+  ctx.save();
+  ctx.translate(W/2, 430);
+  ctx.fillStyle='#DAA520';
+  ctx.beginPath();ctx.ellipse(0,0,22,18,0,0,Math.PI*2);ctx.fill();
+  // Sad eyes
+  ctx.fillStyle='#1a1a2e';
+  ctx.beginPath();ctx.arc(-5,-6,3,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.arc(5,-6,3,0,Math.PI*2);ctx.fill();
+  // Tear
+  ctx.fillStyle='#7ec8e3';
+  ctx.beginPath();ctx.ellipse(8,-1,2,3,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#2c1810';
+  ctx.beginPath();ctx.ellipse(0,2,3,2,0,0,Math.PI*2);ctx.fill();
+  ctx.restore();
+
+  ctx.fillStyle='#6ee7b7';
+  ctx.font='bold 16px Segoe UI';
+  ctx.fillText('Press SPACE or Click to try again', W/2, H-50);
+}
+
+// ───── WIN SCREEN ─────
+function drawWin(){
+  ctx.fillStyle='rgba(0,0,0,0.5)';
+  ctx.fillRect(0,0,W,H);
+
+  ctx.textAlign='center';
+  ctx.fillStyle='#6ee7b7';
+  ctx.font='bold 48px Segoe UI';
+  ctx.fillText('🎉 GOOD BOY! 🎉', W/2, 160);
+
+  ctx.fillStyle='#e6edf3';
+  ctx.font='22px Segoe UI';
+  ctx.fillText(`You saved ${sheepSaved} sheep!`, W/2, 220);
+
+  ctx.fillStyle='#f5c518';
+  ctx.font='bold 28px Segoe UI';
+  ctx.fillText(`Score: ${score}`, W/2, 270);
+
+  // Fun stats
+  ctx.fillStyle='#8b97a8';
+  ctx.font='15px Segoe UI';
+  const barkRate = totalBarks <= 10 ? 'The sheep elected you Mayor.'
+    : totalBarks <= 25 ? 'The sheep gave you a 4-star Yelp review.'
+    : totalBarks <= 40 ? 'The sheep filed a noise ordinance but still love you.'
+    : 'The sheep are hiring a quieter dog next season.';
+  ctx.fillText(`Barks: ${totalBarks} — ${barkRate}`, W/2, 320);
+  ctx.fillText(`🦴 Bones collected: ${bonesCollected}`, W/2, 345);
+
+  // Happy dog with crown
+  ctx.save();
+  ctx.translate(W/2, 420);
+  const t = Date.now()/500;
+  // Crown
+  ctx.fillStyle='#f5c518';
+  ctx.beginPath();
+  ctx.moveTo(-14,-32);ctx.lineTo(-10,-42);ctx.lineTo(-4,-34);ctx.lineTo(0,-44);
+  ctx.lineTo(4,-34);ctx.lineTo(10,-42);ctx.lineTo(14,-32);ctx.closePath();ctx.fill();
+  // Dog
+  ctx.fillStyle='#DAA520';
+  ctx.beginPath();ctx.ellipse(0,0,22,18,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#B8860B';
+  ctx.beginPath();ctx.ellipse(-16,-18,8,12,-0.3,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.ellipse(16,-18,8,12,0.3,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#1a1a2e';
+  ctx.beginPath();ctx.arc(-5,-6,3,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.arc(5,-6,3,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#fff';
+  ctx.beginPath();ctx.arc(-4,-7,1.2,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.arc(6,-7,1.2,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#2c1810';
+  ctx.beginPath();ctx.ellipse(0,2,4,2.5,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#FF6B8A';
+  ctx.beginPath();ctx.ellipse(0,6+Math.sin(t)*2,4,5+Math.sin(t),0,0,Math.PI*2);ctx.fill();
+  // Tail wag
+  ctx.fillStyle='#C8941E';
+  ctx.save();ctx.translate(-22,4);ctx.rotate(Math.sin(t*3)*0.6);
+  ctx.beginPath();ctx.ellipse(0,-8,4,10,0,0,Math.PI*2);ctx.fill();
+  ctx.restore();
+  ctx.restore();
+
+  // Confetti
+  ctx.save();
+  for(let i=0;i<20;i++){
+    const cx = (W*0.15)+(i/20)*(W*0.7);
+    const cy = 80+Math.sin(Date.now()/300+i*2)*60+((Date.now()/10+i*50)%400);
+    const colors = ['#6ee7b7','#e94560','#f5c518','#7ec8e3','#FF6B8A'];
+    ctx.fillStyle = colors[i%5];
+    ctx.globalAlpha = 0.7;
+    ctx.save();
+    ctx.translate(cx,cy);
+    ctx.rotate(Date.now()/200+i);
+    ctx.fillRect(-3,-6,6,12);
+    ctx.restore();
+  }
+  ctx.globalAlpha=1;
+  ctx.restore();
+
+  ctx.fillStyle='#6ee7b7';
+  ctx.font='bold 16px Segoe UI';
+  ctx.fillText('Press SPACE or Click to play again', W/2, H-40);
+}
+
+// ───── BETWEEN WAVES ─────
+function drawBetween(){
+  ctx.fillStyle='rgba(0,0,0,0.3)';
+  ctx.fillRect(0,0,W,H);
+
+  ctx.textAlign='center';
+  ctx.fillStyle='#6ee7b7';
+  ctx.font='bold 28px Segoe UI';
+  ctx.fillText('Wave Complete!', W/2, H/2-40);
+
+  ctx.fillStyle='#e6edf3';
+  ctx.font='18px Segoe UI';
+  const alive = sheep.filter(s=>!s.dead&&!s.lost).length;
+  ctx.fillText(`${alive} sheep safe and sound`, W/2, H/2);
+
+  // Protest sign on wave 4+
+  if(wave>=3){
+    ctx.fillStyle='#f5c518';
+    ctx.font='14px Segoe UI';
+    ctx.fillText('🪧 The sheep demand fewer barks next wave', W/2, H/2+35);
+  }
+
+  ctx.fillStyle='#8b97a8';
+  ctx.font='14px Segoe UI';
+  ctx.fillText(`Next wave in ${Math.max(0,Math.ceil(betweenTimer))}...`, W/2, H/2+70);
+}
+
+function drawPaused(){
+  ctx.fillStyle='rgba(0,0,0,0.5)';
+  ctx.fillRect(0,0,W,H);
+  ctx.textAlign='center';
+  ctx.fillStyle='#e6edf3';
+  ctx.font='bold 36px Segoe UI';
+  ctx.fillText('PAUSED', W/2, H/2-10);
+  ctx.fillStyle='#8b97a8';
+  ctx.font='16px Segoe UI';
+  ctx.fillText('Press P to resume', W/2, H/2+25);
+}
+
+function drawWaveMsg(){
+  const alpha = msgTimer>0.5?1:msgTimer/0.5;
+  ctx.globalAlpha = alpha;
+  ctx.textAlign='center';
+  ctx.fillStyle='#f5c518';
+  ctx.font='bold 24px Segoe UI';
+  ctx.fillText(waveMsg, W/2, 80);
+  ctx.globalAlpha = 1;
+}
+
+// ───── GAME LOOP ─────
+function tick(now){
+  const dt = Math.min((now-lastTime)/1000, 0.05);
+  lastTime = now;
+
+  if(state===S.PLAYING||state===S.BETWEEN){
+    update(dt);
+  } else if(state===S.PAUSED){
+    // Still update HUD so cooldown bars stay visible
+    updateHUD();
+  }
+  render();
+  requestAnimationFrame(tick);
+}
+
+// ───── IDLE THOUGHT TIMER ─────
+setInterval(()=>{
+  if(state===S.PLAYING && wolves.length===0 && wolvesToSpawn===0){
+    setThought('idle');
+  }
+},8000);
+
+// ───── KICK OFF ─────
+lastTime = performance.now();
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>

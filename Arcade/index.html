@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcade — Free Browser Games | Otterly Games</title>
+  <meta name="description" content="Play free browser games at the Otterly Arcade. No ads, no logins, no in-app purchases — just fun. Ninja Cloud, Zombie Hide & Seek, Captain Pigeon Pooper, and Dog Shepherd.">
+  <meta name="keywords" content="free browser games for kids, arcade games, play online games free, kids games no ads, educational gaming">
+  <link rel="canonical" href="https://otterlygames.com/Arcade/">
+  <meta property="og:title" content="Otterly Arcade — Free Browser Games">
+  <meta property="og:description" content="Play free browser games at the Otterly Arcade. No ads, no logins, no in-app purchases — just fun.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://otterlygames.com/images/Otter-mascot.png">
+  <meta property="og:url" content="https://otterlygames.com/Arcade/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Otterly Arcade — Free Browser Games">
+  <meta name="twitter:description" content="Play free browser games at the Otterly Arcade. No ads, no logins, no in-app purchases — just fun.">
+  <meta name="twitter:image" content="https://otterlygames.com/images/Otter-mascot.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Arcade"}]}
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
+  <style>
+    /* ---- Arcade Hero ---- */
+    .arcade-hero {
+      position: relative;
+      min-height: 380px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 7rem 1.5rem 3rem; overflow: hidden;
+    }
+    .arcade-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 900px 500px at 30% 20%, rgba(196,181,253,0.15), transparent),
+        radial-gradient(ellipse 700px 400px at 80% 60%, rgba(249,168,212,0.1), transparent);
+      pointer-events: none;
+    }
+    .arcade-hero .container { position: relative; z-index: 1; max-width: 700px; }
+    .arcade-hero .breadcrumbs {
+      font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;
+    }
+    .arcade-hero .breadcrumbs a { color: var(--pastel-purple); }
+    .arcade-hero .breadcrumbs span { margin: 0 0.4rem; }
+    .arcade-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .arcade-hero p {
+      font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.5rem; line-height: 1.6;
+    }
+    .arcade-badges {
+      display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap;
+    }
+    .arcade-badge {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      color: var(--text-primary);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ---- Games Grid ---- */
+    .arcade-main {
+      max-width: 1100px; margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    .arcade-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .arcade-header h2 {
+      font-size: 1.4rem; font-weight: 800;
+    }
+    .arcade-header .count {
+      color: var(--text-secondary); font-size: 0.9rem;
+    }
+    .arcade-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* ---- Game Card ---- */
+    .game-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 1rem;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none; color: inherit;
+      position: relative;
+    }
+    .game-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(196,181,253,0.3);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .game-card .cover {
+      height: 200px; position: relative; overflow: hidden;
+      display: grid; place-items: center;
+    }
+    .game-card .tag-free {
+      position: absolute; top: 12px; right: 12px;
+      background: linear-gradient(135deg, var(--pastel-green), #4ade80);
+      color: #052e16; font-weight: 800; font-size: 0.75rem;
+      letter-spacing: 0.5px; padding: 4px 10px; border-radius: 6px;
+      box-shadow: 0 4px 14px rgba(134,239,172,0.3);
+    }
+    .game-card .tag-genre {
+      position: absolute; top: 12px; left: 12px;
+      background: rgba(10,10,15,0.65); backdrop-filter: blur(6px);
+      color: var(--text-primary); font-size: 0.7rem; letter-spacing: 0.4px;
+      padding: 4px 10px; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .game-card .body {
+      padding: 1.2rem 1.3rem 1.4rem;
+      display: flex; flex-direction: column; gap: 0.6rem; flex: 1;
+    }
+    .game-card h3 {
+      font-size: 1.15rem; font-weight: 800; margin: 0;
+      font-family: var(--font-heading);
+    }
+    .game-card .desc {
+      color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; flex: 1;
+    }
+    .game-card .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 0.4rem; padding-top: 1rem;
+      border-top: 1px solid var(--dark-border);
+    }
+    .game-card .stars { color: #fcd34d; font-size: 0.85rem; letter-spacing: 1px; }
+    .play-btn {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f; font-weight: 700; font-size: 0.85rem;
+      padding: 0.5rem 1.1rem; border-radius: 999px;
+      border: none; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .play-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(196,181,253,0.3);
+    }
+
+    /* ---- Cover Art (CSS-only animated covers) ---- */
+    /* Ninja */
+    .cover-ninja {
+      background:
+        radial-gradient(circle at 30% 30%, rgba(196,181,253,0.4) 0%, transparent 55%),
+        radial-gradient(circle at 80% 70%, rgba(249,168,212,0.25) 0%, transparent 60%),
+        linear-gradient(135deg, #1a1028 0%, #0a0a0f 100%);
+    }
+    .ninja-shuriken {
+      width: 90px; height: 90px; position: relative;
+      animation: spin 3s linear infinite;
+      filter: drop-shadow(0 0 18px rgba(196,181,253,0.5));
+    }
+    .ninja-shuriken::before, .ninja-shuriken::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      clip-path: polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%);
+    }
+    .ninja-shuriken::after { transform: rotate(45deg); opacity: 0.85; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Zombie */
+    .cover-zombie {
+      background:
+        radial-gradient(circle at 70% 30%, rgba(134,239,172,0.15) 0%, transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(147,197,253,0.1) 0%, transparent 60%),
+        linear-gradient(135deg, #0a140e 0%, #0a0a0f 100%);
+      position: relative;
+    }
+    .cover-zombie::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 100%, rgba(134,239,172,0.1) 0%, transparent 60%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.01) 0 2px, transparent 2px 4px);
+      pointer-events: none;
+    }
+    .zombie-eyes { display: flex; gap: 24px; z-index: 1; }
+    .zombie-eyes .eye {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: radial-gradient(circle, #ff4444 0%, #7f1d1d 70%, transparent 100%);
+      box-shadow: 0 0 24px rgba(239,68,68,0.85);
+      animation: blink 4s infinite;
+    }
+    .zombie-eyes .eye:nth-child(2) { animation-delay: 0.15s; }
+    @keyframes blink {
+      0%, 92%, 100% { transform: scaleY(1); opacity: 1; }
+      94%, 98% { transform: scaleY(0.1); opacity: 0.6; }
+    }
+    .zombie-silhouette {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 110px; height: 100px; background: #000;
+      clip-path: polygon(35% 100%, 35% 70%, 25% 70%, 25% 50%, 35% 35%, 40% 20%, 45% 14%, 55% 14%, 60% 20%, 65% 35%, 75% 50%, 75% 70%, 65% 70%, 65% 100%);
+      opacity: 0.85;
+    }
+
+    /* Pigeon */
+    .cover-pigeon {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(252,211,77,0.4) 0%, transparent 45%),
+        radial-gradient(circle at 30% 80%, rgba(147,197,253,0.15) 0%, transparent 55%),
+        linear-gradient(180deg, #7ec8e3 0%, #bce5f4 60%, #94a3b8 100%);
+      position: relative; overflow: hidden;
+    }
+    .cover-pigeon::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+      background: linear-gradient(90deg, #1e293b 0 8%, transparent 8% 10%, #1e293b 10% 18%, transparent 18% 20%, #1e293b 20% 32%, transparent 32% 34%, #1e293b 34% 46%, transparent 46% 48%, #1e293b 48% 60%, transparent 60% 62%, #1e293b 62% 74%, transparent 74% 76%, #1e293b 76% 88%, transparent 88% 90%, #1e293b 90% 100%);
+      mask-image: linear-gradient(180deg, transparent 0%, #000 30%);
+    }
+    .cover-pigeon .sun {
+      position: absolute; top: 28px; right: 38px;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: radial-gradient(circle, #fff7c2 0%, #facc15 60%, transparent 70%);
+      box-shadow: 0 0 28px rgba(250,204,21,0.55);
+    }
+    .cover-pigeon .cloud {
+      position: absolute; width: 60px; height: 18px;
+      background: rgba(255,255,255,0.85); border-radius: 999px;
+      box-shadow: 18px -8px 0 -4px rgba(255,255,255,0.85), -16px -4px 0 -6px rgba(255,255,255,0.85);
+    }
+    .cover-pigeon .cloud.c1 { top: 22px; left: 28px; animation: drift 18s linear infinite; }
+    .cover-pigeon .cloud.c2 { top: 70px; left: 140px; transform: scale(0.7); animation: drift 26s linear infinite reverse; }
+    @keyframes drift { 0% { transform: translateX(0); } 100% { transform: translateX(40px); } }
+    .cover-pigeon .pigeon {
+      position: absolute; top: 40%; left: 50%; transform: translate(-50%,-50%);
+      font-size: 78px; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.35));
+      animation: hover 2.4s ease-in-out infinite;
+    }
+    .cover-pigeon .poop-drop {
+      position: absolute; top: 52%; left: calc(50% + 2px);
+      font-size: 22px; animation: drop 1.6s ease-in infinite;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
+    }
+    @keyframes hover { 0%,100% { transform: translate(-50%,-50%); } 50% { transform: translate(-50%,-58%); } }
+    @keyframes drop { 0% { transform: translate(-50%,0) scale(1); opacity: 1; } 80% { transform: translate(-50%,60px) scale(1.1); opacity: 1; } 100% { transform: translate(-50%,80px) scale(0.4); opacity: 0; } }
+
+    /* Dog Shepherd */
+    .cover-shepherd {
+      background:
+        radial-gradient(circle at 70% 20%, rgba(134,239,172,0.25) 0%, transparent 50%),
+        radial-gradient(circle at 30% 80%, rgba(147,197,253,0.1) 0%, transparent 55%),
+        linear-gradient(180deg, #5b9bd5 0%, #87ceab 40%, #2d5a27 60%, #234d23 100%);
+      position: relative; overflow: hidden;
+    }
+    .cover-shepherd::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+      background: linear-gradient(180deg, transparent, rgba(35,77,35,0.9));
+      pointer-events: none;
+    }
+    .cover-shepherd .fence {
+      position: absolute; bottom: 18px; left: 10%; right: 10%;
+      height: 3px; background: #8B6914;
+      box-shadow: 0 -8px 0 0 #8B6914;
+    }
+    .cover-shepherd .fence::before {
+      content: ''; position: absolute; bottom: -4px; left: 10%;
+      width: 6px; height: 20px; background: #6B4E0A;
+      box-shadow: 60px 0 0 0 #6B4E0A, 120px 0 0 0 #6B4E0A, 180px 0 0 0 #6B4E0A, 240px 0 0 0 #6B4E0A;
+    }
+    .cover-shepherd .dog-emoji {
+      position: absolute; top: 36%; left: 38%; transform: translate(-50%,-50%);
+      font-size: 56px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+      animation: dogBounce 1.2s ease-in-out infinite;
+    }
+    .cover-shepherd .sheep-emoji {
+      position: absolute; font-size: 28px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+      animation: sheepWander 3s ease-in-out infinite alternate;
+    }
+    .cover-shepherd .sheep-emoji.s1 { top: 30%; right: 18%; animation-delay: 0s; }
+    .cover-shepherd .sheep-emoji.s2 { top: 50%; right: 28%; animation-delay: 0.8s; }
+    .cover-shepherd .sheep-emoji.s3 { top: 55%; left: 20%; animation-delay: 1.4s; }
+    .cover-shepherd .wolf-emoji {
+      position: absolute; bottom: 28px; right: 8%; font-size: 22px;
+      opacity: 0.7; animation: wolfSneak 4s ease-in-out infinite;
+    }
+    .cover-shepherd .woof {
+      position: absolute; top: 26%; left: 50%;
+      font-size: 14px; font-weight: 800; color: #fcd34d;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+      animation: woofPop 2s ease-in-out infinite;
+    }
+    @keyframes dogBounce { 0%,100% { transform: translate(-50%,-50%) scaleX(1); } 50% { transform: translate(-50%,-58%) scaleX(-1); } }
+    @keyframes sheepWander { 0% { transform: translateX(0); } 100% { transform: translateX(12px); } }
+    @keyframes wolfSneak { 0%,100% { transform: translateX(0); opacity: 0.4; } 50% { transform: translateX(-18px); opacity: 0.8; } }
+    @keyframes woofPop { 0%,70%,100% { opacity: 0; transform: scale(0.5); } 30%,60% { opacity: 1; transform: scale(1.1); } }
+
+    /* ---- AI Banner ---- */
+    .ai-banner {
+      max-width: 1100px; margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+    }
+    .ai-banner-inner {
+      background: linear-gradient(135deg, rgba(196,181,253,0.08), rgba(249,168,212,0.08));
+      border: 1px solid rgba(196,181,253,0.15);
+      border-radius: 1rem; padding: 2rem; text-align: center;
+    }
+    .ai-banner-inner h3 {
+      font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 0.5rem;
+    }
+    .ai-banner-inner p {
+      color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.95rem;
+    }
+    .ai-banner-inner a {
+      display: inline-block; padding: 0.6rem 1.3rem;
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f; border-radius: 999px; font-weight: 700; font-size: 0.85rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .ai-banner-inner a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(196,181,253,0.3);
+    }
+
+    /* ---- Rating Stars ---- */
+    .rating {
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .rating .star {
+      font-size: 1.2rem; cursor: pointer; color: #3a3a4e;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .rating .star:hover, .rating .star.active { color: #fcd34d; transform: scale(1.15); }
+    .rating .rating-count {
+      font-size: 0.75rem; color: var(--text-secondary); margin-left: 0.3rem;
+    }
+
+    /* ---- AI Prompt ---- */
+    .ai-prompt {
+      background: rgba(196,181,253,0.06);
+      border: 1px solid rgba(196,181,253,0.12);
+      border-radius: 0.6rem;
+      padding: 0.6rem 0.8rem;
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--text-secondary);
+    }
+    .ai-prompt strong {
+      color: var(--pastel-purple);
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    @media (max-width: 640px) {
+      .arcade-hero { padding: 6rem 1rem 2rem; min-height: auto; }
+      .arcade-main { padding: 1.5rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body data-og-includes="nav,footer">
+
+  <!-- HERO -->
+  <section class="arcade-hero">
+    <div class="container">
+      <div class="breadcrumbs"><a href="/">Home</a> <span>/</span> Arcade</div>
+      <h1>Built by Kids. Played by Everyone.</h1>
+      <p>Every game here started as a simple idea — and was brought to life with AI. Play them, rate them, then <a href="/blog/kids-can-make-games-with-ai.html" style="color:var(--pastel-purple);text-decoration:underline;">build your own</a>.</p>
+      <div class="arcade-badges">
+        <span class="arcade-badge">🧠 Made with AI prompts</span>
+        <span class="arcade-badge">🕹️ Instant play</span>
+        <span class="arcade-badge">💚 Always free</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <main class="arcade-main" id="games">
+    <div class="arcade-header">
+      <h2>Games Kids Shipped</h2>
+      <span class="count" id="gameCount">4 games available</span>
+    </div>
+
+    <div class="arcade-grid">
+
+      <!-- Ninja Cloud -->
+      <a class="game-card" href="game.html" aria-label="Play Ninja Cloud">
+        <div class="cover cover-ninja">
+          <span class="tag-genre">ACTION · ARCADE</span>
+          <span class="tag-free">FREE</span>
+          <div class="ninja-shuriken"></div>
+        </div>
+        <div class="body">
+          <h3>Ninja Cloud</h3>
+          <p class="desc">Throw spinning shurikens and slice through endless waves of enemies. Level up your weapons, dodge attacks, and survive as long as you can.</p>
+          <div class="ai-prompt">
+            <strong>AI Prompt used:</strong><br>
+            "Build a browser game where a ninja throws shurikens at zombie waves. Add upgradeable weapons, a coin system, and a garage to unlock new shurikens."
+          </div>
+          <div class="card-footer">
+            <div class="rating" data-game="ninja-cloud"></div>
+            <button class="play-btn">Play Now ▶</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Zombie Hide & Seek -->
+      <a class="game-card" href="zombie.html" aria-label="Play Zombie Hide and Seek">
+        <div class="cover cover-zombie">
+          <span class="tag-genre">STEALTH · SURVIVAL</span>
+          <span class="tag-free">FREE</span>
+          <div class="zombie-silhouette"></div>
+          <div class="zombie-eyes">
+            <div class="eye"></div>
+            <div class="eye"></div>
+          </div>
+        </div>
+        <div class="body">
+          <h3>Zombie Hide &amp; Seek</h3>
+          <p class="desc">Sneak through the dark, stay out of sight, and outsmart the undead. A tense top-down stealth experience that tests your nerves.</p>
+          <div class="ai-prompt">
+            <strong>AI Prompt used:</strong><br>
+            "Make a stealth game with fog-of-war. The player hides from zombies in a dark map using furniture. Add a flashlight, noise meter, and multiple escape routes."
+          </div>
+          <div class="card-footer">
+            <div class="rating" data-game="zombie-hide-seek"></div>
+            <button class="play-btn">Play Now ▶</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Captain Pigeon Pooper -->
+      <a class="game-card" href="pigeon.html" aria-label="Play Captain Pigeon Pooper">
+        <div class="cover cover-pigeon">
+          <span class="tag-genre">ARCADE · COMEDY</span>
+          <span class="tag-free">FREE</span>
+          <div class="sun"></div>
+          <div class="cloud c1"></div>
+          <div class="cloud c2"></div>
+          <div class="pigeon">🕊️</div>
+          <div class="poop-drop">💩</div>
+        </div>
+        <div class="body">
+          <h3>Captain Pigeon Pooper</h3>
+          <p class="desc">Fly over the city as a heroic pigeon. Spot bad guys and deliver gravity-assisted justice from above. A hilarious arcade experience!</p>
+          <div class="ai-prompt">
+            <strong>AI Prompt used:</strong><br>
+            "Create a game where a pigeon flies over a city and poops on criminals — pickpockets, robbers, kidnappers. Add a side panel with score, ammo, and crime stats."
+          </div>
+          <div class="card-footer">
+            <div class="rating" data-game="pigeon-pooper"></div>
+            <button class="play-btn">Play Now ▶</button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Dog Shepherd -->
+      <a class="game-card" href="shepherd.html" aria-label="Play Dog Shepherd">
+        <div class="cover cover-shepherd">
+          <span class="tag-genre">STRATEGY · COMEDY</span>
+          <span class="tag-free">FREE</span>
+          <div class="fence"></div>
+          <div class="dog-emoji">🐕</div>
+          <div class="sheep-emoji s1">🐑</div>
+          <div class="sheep-emoji s2">🐑</div>
+          <div class="sheep-emoji s3">🐑</div>
+          <div class="wolf-emoji">🐺</div>
+          <div class="woof">WOOF!</div>
+        </div>
+        <div class="body">
+          <h3>Dog Shepherd</h3>
+          <p class="desc">You're a Golden Retriever who loves everyone — but barking scares your sheep AND the wolves. Protect the flock without terrorizing it!</p>
+          <div class="ai-prompt">
+            <strong>AI Prompt used:</strong><br>
+            "Build a herding game where a dog protects sheep from wolves. Each sheep has a personality. Barking scares everyone — balance fear vs safety. Add abilities with cooldowns."
+          </div>
+          <div class="card-footer">
+            <div class="rating" data-game="dog-shepherd"></div>
+            <button class="play-btn">Play Now ▶</button>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- AI Blog Banner -->
+  <section class="ai-banner">
+    <div class="ai-banner-inner">
+      <h3>🧠 These Games Were Built with 2 Lines of AI Prompts</h3>
+      <p>Your kid can do this too. Playing games builds logic. Building games builds confidence. Read how children are becoming product creators — not just consumers.</p>
+      <a href="/blog/kids-can-make-games-with-ai.html">Learn How Your Kid Can Build a Game →</a>
+    </div>
+  </section>
+
+  <!-- Firebase SDK (compat for simplicity) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+  <script src="/js/includes.js" defer></script>
+  <script>
+    // ---- Firebase Rating System (shared across all users) ----
+    (function() {
+      // Firebase config
+      const firebaseConfig = {
+        apiKey: "AIzaSyC_mePHvHVUvVZQogQaeqjZ5Jw9ZhPNWww",
+        authDomain: "otterly-games.firebaseapp.com",
+        databaseURL: "https://otterly-games-default-rtdb.firebaseio.com",
+        projectId: "otterly-games",
+        storageBucket: "otterly-games.firebasestorage.app",
+        messagingSenderId: "1010396336283",
+        appId: "1:1010396336283:web:63beb04e6d671efa2bb63e",
+        measurementId: "G-2ZJ8LJ7PGD"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
+      const LOCAL_KEY = 'otterly_arcade_user_votes';
+
+      // Track which games this user already rated (localStorage for user's own vote only)
+      function getUserVotes() {
+        try { return JSON.parse(localStorage.getItem(LOCAL_KEY)) || {}; }
+        catch { return {}; }
+      }
+      function setUserVote(game, score) {
+        const votes = getUserVotes();
+        votes[game] = score;
+        localStorage.setItem(LOCAL_KEY, JSON.stringify(votes));
+      }
+
+      function submitRating(game, score) {
+        const userVotes = getUserVotes();
+        const prevScore = userVotes[game] || 0;
+        const ref = db.ref('ratings/' + game);
+
+        ref.transaction(function(current) {
+          if (!current) current = { total: 0, count: 0 };
+          if (prevScore > 0) {
+            // User re-rating: adjust total without changing count
+            current.total = current.total - prevScore + score;
+          } else {
+            current.total += score;
+            current.count += 1;
+          }
+          return current;
+        }).then(function() {
+          setUserVote(game, score);
+        });
+      }
+
+      function renderStars(container) {
+        const game = container.dataset.game;
+        const userVotes = getUserVotes();
+        const userScore = userVotes[game] || 0;
+
+        // Show loading state
+        container.innerHTML = '<span class="rating-count">Loading...</span>';
+
+        // Listen for real-time updates from Firebase
+        db.ref('ratings/' + game).on('value', function(snapshot) {
+          const data = snapshot.val() || { total: 0, count: 0 };
+          const avg = data.count ? (data.total / data.count) : 0;
+          const displayScore = userVotes[game] || Math.round(avg);
+
+          let html = '';
+          for (let i = 1; i <= 5; i++) {
+            const active = i <= displayScore ? 'active' : '';
+            html += '<span class="star ' + active + '" data-value="' + i + '">★</span>';
+          }
+          html += '<span class="rating-count">';
+          if (data.count > 0) {
+            html += avg.toFixed(1) + ' (' + data.count + (data.count === 1 ? ' vote' : ' votes') + ')';
+          } else {
+            html += 'Be the first to rate!';
+          }
+          html += '</span>';
+          container.innerHTML = html;
+
+          // Attach click handlers
+          container.querySelectorAll('.star').forEach(star => {
+            star.addEventListener('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              submitRating(game, parseInt(this.dataset.value));
+            });
+          });
+        });
+      }
+
+      // Init all rating widgets
+      document.querySelectorAll('.rating[data-game]').forEach(renderStars);
+    })();
+
+    // Keep play button from stealing anchor navigation
+    document.querySelectorAll('.game-card .play-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const card = btn.closest('.game-card');
+        if (card && card.href) window.location.href = card.href;
+      });
+    });
+    // Auto-update count
+    const n = document.querySelectorAll('.arcade-grid .game-card').length;
+    document.getElementById('gameCount').textContent = n + (n === 1 ? ' game available' : ' games available');
+  </script>
+</body>
+</html>

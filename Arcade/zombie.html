@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Zombie Hide &amp; Seek — Otterly Arcade</title>
+<link rel="stylesheet" href="/css/arcade-game.css">
+<style>
+  /* Game-specific overrides */
+  canvas {
+    background: #05070a;
+    border-radius: 6px;
+    box-shadow: 0 0 40px rgba(196, 181, 253, 0.08);
+    image-rendering: pixelated;
+    display: block;
+  }
+  .status-box { border-left-color: var(--accent); }
+  .status-box.danger { border-left-color: var(--danger); color: #fecaca; }
+  .status-box.warn { border-left-color: var(--warn); color: #fde68a; }
+  .action-btn {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #0a0a0f;
+    font-family: var(--font-heading);
+  }
+  .action-btn:hover { filter: brightness(1.1); }
+  .traprow .swatch { border-radius: 50%; }
+</style>
+</head>
+<body>
+<div class="game-page">
+  <div class="game-topbar">
+    <a href="index.html" class="back-link">← Arcade</a>
+    <span class="game-title">Zombie Hide & Seek</span>
+    <span class="brand-mark"><img src="/images/Otter-mascot.png" alt="Otterly">Otterly Arcade</span>
+  </div>
+  <div class="game-area">
+    <div class="game-canvas-col">
+      <canvas id="game" width="800" height="608"></canvas>
+    </div>
+    <aside class="game-sidebar">
+      <h1>🧟 ZOMBIE HIDE & SEEK</h1>
+      <div class="subtitle">Reach the glowing exit. Don't get caught.</div>
+
+      <h2>Status</h2>
+      <div class="stat"><span>Zombies</span><b id="ui-zombies">0</b></div>
+      <div class="stat"><span>Hidden</span><b id="ui-hidden">No</b></div>
+      <div class="stat"><span>Detected</span><b id="ui-detected">No</b></div>
+      <div class="stat"><span>Time</span><b id="ui-time">0s</b></div>
+
+      <h2>Traps</h2>
+      <div class="traprow">
+        <span class="name"><span class="swatch" style="background:#cbd5e1"></span>Spike <small style="color:var(--muted)">[1]</small></span>
+        <span class="count" id="ui-spike">0</span>
+      </div>
+      <div class="traprow">
+        <span class="name"><span class="swatch" style="background:#92400e"></span>Bear <small style="color:var(--muted)">[2]</small></span>
+        <span class="count" id="ui-bear">0</span>
+      </div>
+      <div class="traprow">
+        <span class="name"><span class="swatch" style="background:#f59e0b"></span>Mine <small style="color:var(--muted)">[3]</small></span>
+        <span class="count" id="ui-mine">0</span>
+      </div>
+
+      <h2>Controls</h2>
+      <div class="ctrl"><span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span><span class="desc">Move</span></div>
+      <div class="ctrl"><span class="key">1</span><span class="key">2</span><span class="key">3</span><span class="desc">Place trap</span></div>
+      <div class="ctrl"><span class="key">Shift</span><span class="desc">Sneak (slower, quieter)</span></div>
+      <div class="ctrl"><span class="key">R</span><span class="desc">Restart</span></div>
+
+      <div class="status-box" id="status">Sneak through the maze. Bushes hide you from sight.</div>
+      <button class="action-btn" id="restart">New Maze</button>
+    </aside>
+  </div>
+</div>
+
+<script>
+// ============================================================
+//  Zombie Hide & Seek — single-file game
+// ============================================================
+
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+
+const TILE = 32;
+const COLS = 25;
+const ROWS = 19;
+const W = COLS * TILE;
+const H = ROWS * TILE;
+canvas.width = W;
+canvas.height = H;
+
+// ---------- Maze generation (recursive backtracker) ----------
+function makeMaze() {
+  const g = Array.from({ length: ROWS }, () => Array(COLS).fill(1));
+  function carve(cx, cy) {
+    g[cy][cx] = 0;
+    const dirs = [[2,0],[-2,0],[0,2],[0,-2]].sort(() => Math.random() - 0.5);
+    for (const [dx, dy] of dirs) {
+      const nx = cx + dx, ny = cy + dy;
+      if (nx > 0 && nx < COLS - 1 && ny > 0 && ny < ROWS - 1 && g[ny][nx] === 1) {
+        g[cy + dy/2][cx + dx/2] = 0;
+        carve(nx, ny);
+      }
+    }
+  }
+  carve(1, 1);
+  // Open up some random walls to make it less linear (more routes)
+  for (let i = 0; i < 30; i++) {
+    const x = 1 + Math.floor(Math.random() * (COLS - 2));
+    const y = 1 + Math.floor(Math.random() * (ROWS - 2));
+    if (g[y][x] === 1) {
+      // only break if it connects two floors
+      let floors = 0;
+      if (g[y-1]?.[x] === 0) floors++;
+      if (g[y+1]?.[x] === 0) floors++;
+      if (g[y]?.[x-1] === 0) floors++;
+      if (g[y]?.[x+1] === 0) floors++;
+      if (floors >= 2) g[y][x] = 0;
+    }
+  }
+  return g;
+}
+
+// ---------- Game state ----------
+let maze, bushes, exitTile, player, zombies, traps, gameOver, won, t0, lastTime, alertText, alertUntil;
+
+const TRAP = {
+  SPIKE: 'spike',
+  BEAR:  'bear',
+  MINE:  'mine'
+};
+
+function reset() {
+  maze = makeMaze();
+
+  // Pick bushes (hiding spots) on floor tiles, not too close to spawn
+  bushes = new Set();
+  const floors = [];
+  for (let y = 1; y < ROWS - 1; y++)
+    for (let x = 1; x < COLS - 1; x++)
+      if (maze[y][x] === 0) floors.push([x, y]);
+
+  shuffle(floors);
+  let placed = 0;
+  for (const [x, y] of floors) {
+    if (Math.abs(x - 1) + Math.abs(y - 1) < 3) continue; // not next to player
+    if (Math.abs(x - (COLS-2)) + Math.abs(y - (ROWS-2)) < 3) continue; // not next to exit
+    bushes.add(`${x},${y}`);
+    placed++;
+    if (placed >= 10) break;
+  }
+
+  exitTile = { x: COLS - 2, y: ROWS - 2 };
+
+  player = {
+    x: 1.5 * TILE,
+    y: 1.5 * TILE,
+    r: 11,
+    speed: 130, // px/sec
+    dir: { x: 0, y: 1 },
+    moving: false,
+    sneaking: false,
+    noise: 0   // recent movement noise level, decays
+  };
+
+  // Spawn 4 zombies far from player
+  zombies = [];
+  const farFloors = floors.filter(([x,y]) => Math.abs(x-1) + Math.abs(y-1) > 12);
+  shuffle(farFloors);
+  for (let i = 0; i < 4 && i < farFloors.length; i++) {
+    const [tx, ty] = farFloors[i];
+    zombies.push(makeZombie(tx * TILE + TILE/2, ty * TILE + TILE/2));
+  }
+
+  traps = []; // placed traps on the map
+  inventory = { spike: Infinity, bear: Infinity, mine: Infinity };
+
+  gameOver = false;
+  won = false;
+  t0 = performance.now();
+  lastTime = t0;
+  alertText = 'Sneak through the maze. Bushes hide you from sight.';
+  alertUntil = t0 + 99999;
+}
+
+function makeZombie(x, y) {
+  return {
+    x, y, r: 11,
+    speed: 60,   // base patrol speed
+    chaseSpeed: 95,
+    state: 'patrol',    // patrol | chase | search | stunned
+    target: null,       // pixel target
+    path: [],           // queue of tile waypoints
+    seeTimer: 0,        // how long they've seen player
+    lostTimer: 0,       // time since last seen player when chasing
+    stunUntil: 0,
+    lastTileSeen: null, // tile coords where they last saw player
+    eye: 0
+  };
+}
+
+// ---------- Helpers ----------
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function tileAt(px, py) {
+  return { x: Math.floor(px / TILE), y: Math.floor(py / TILE) };
+}
+
+function isWall(tx, ty) {
+  if (tx < 0 || ty < 0 || tx >= COLS || ty >= ROWS) return true;
+  return maze[ty][tx] === 1;
+}
+
+// Circle vs grid walls collision (axis-separated)
+function moveCircle(ent, dx, dy) {
+  // X axis
+  let nx = ent.x + dx;
+  if (!collidesAt(nx, ent.y, ent.r)) ent.x = nx;
+  // Y axis
+  let ny = ent.y + dy;
+  if (!collidesAt(ent.x, ny, ent.r)) ent.y = ny;
+}
+
+function collidesAt(px, py, r) {
+  // Check the 4 corners' tiles
+  const minTx = Math.floor((px - r) / TILE);
+  const maxTx = Math.floor((px + r) / TILE);
+  const minTy = Math.floor((py - r) / TILE);
+  const maxTy = Math.floor((py + r) / TILE);
+  for (let ty = minTy; ty <= maxTy; ty++) {
+    for (let tx = minTx; tx <= maxTx; tx++) {
+      if (!isWall(tx, ty)) continue;
+      // AABB of wall vs circle
+      const cx = Math.max(tx * TILE, Math.min(px, tx * TILE + TILE));
+      const cy = Math.max(ty * TILE, Math.min(py, ty * TILE + TILE));
+      const dx = px - cx;
+      const dy = py - cy;
+      if (dx * dx + dy * dy < r * r) return true;
+    }
+  }
+  return false;
+}
+
+// Bresenham-ish line of sight (no walls between two pixel points)
+function hasLOS(x0, y0, x1, y1) {
+  const dx = x1 - x0, dy = y1 - y0;
+  const steps = Math.ceil(Math.hypot(dx, dy) / 6); // sample every ~6 px
+  for (let i = 1; i < steps; i++) {
+    const t = i / steps;
+    const px = x0 + dx * t;
+    const py = y0 + dy * t;
+    const tx = Math.floor(px / TILE);
+    const ty = Math.floor(py / TILE);
+    if (isWall(tx, ty)) return false;
+  }
+  return true;
+}
+
+// BFS pathfinding on tile grid
+function findPath(sx, sy, gx, gy) {
+  if (sx === gx && sy === gy) return [];
+  const key = (x, y) => y * COLS + x;
+  const came = new Map();
+  const visited = new Set();
+  const q = [[sx, sy]];
+  visited.add(key(sx, sy));
+  while (q.length) {
+    const [cx, cy] = q.shift();
+    if (cx === gx && cy === gy) {
+      // reconstruct
+      const path = [];
+      let cur = key(cx, cy);
+      while (cur !== key(sx, sy)) {
+        const px = cur % COLS;
+        const py = Math.floor(cur / COLS);
+        path.unshift([px, py]);
+        cur = came.get(cur);
+      }
+      return path;
+    }
+    for (const [dx, dy] of [[1,0],[-1,0],[0,1],[0,-1]]) {
+      const nx = cx + dx, ny = cy + dy;
+      if (isWall(nx, ny)) continue;
+      const k = key(nx, ny);
+      if (visited.has(k)) continue;
+      visited.add(k);
+      came.set(k, key(cx, cy));
+      q.push([nx, ny]);
+    }
+  }
+  return null;
+}
+
+// ---------- Input ----------
+const keys = {};
+window.addEventListener('keydown', e => {
+  keys[e.key.toLowerCase()] = true;
+  if (e.key === '1') tryPlaceTrap(TRAP.SPIKE);
+  if (e.key === '2') tryPlaceTrap(TRAP.BEAR);
+  if (e.key === '3') tryPlaceTrap(TRAP.MINE);
+  if (e.key.toLowerCase() === 'r') reset();
+});
+window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
+
+let inventory = { spike: Infinity, bear: Infinity, mine: Infinity };
+
+function tryPlaceTrap(kind) {
+  if (gameOver) return;
+  const t = tileAt(player.x, player.y);
+  // Don't place on exit or on existing trap
+  if (t.x === exitTile.x && t.y === exitTile.y) {
+    showAlert(`Can't place a trap on the exit.`, 'warn');
+    return;
+  }
+  if (traps.some(tr => tr.tx === t.x && tr.ty === t.y && tr.active)) {
+    showAlert(`A trap is already here.`, 'warn');
+    return;
+  }
+  traps.push({
+    kind, tx: t.x, ty: t.y,
+    x: t.x * TILE + TILE/2,
+    y: t.y * TILE + TILE/2,
+    active: true,
+    armTime: performance.now() + 400 // don't trigger on yourself
+  });
+  showAlert(`Placed ${kind} trap.`, 'ok');
+}
+
+// ---------- Update ----------
+function update(dt) {
+  if (gameOver) return;
+
+  // Player input
+  let vx = 0, vy = 0;
+  if (keys['w'] || keys['arrowup'])    vy -= 1;
+  if (keys['s'] || keys['arrowdown'])  vy += 1;
+  if (keys['a'] || keys['arrowleft'])  vx -= 1;
+  if (keys['d'] || keys['arrowright']) vx += 1;
+
+  player.sneaking = !!keys['shift'];
+  const len = Math.hypot(vx, vy);
+  player.moving = len > 0;
+  if (len > 0) {
+    vx /= len; vy /= len;
+    player.dir.x = vx; player.dir.y = vy;
+    const sp = player.speed * (player.sneaking ? 0.55 : 1);
+    moveCircle(player, vx * sp * dt, vy * sp * dt);
+    // Noise level
+    player.noise = Math.min(1, player.noise + dt * (player.sneaking ? 0.3 : 1.4));
+  } else {
+    player.noise = Math.max(0, player.noise - dt * 2);
+  }
+
+  // Player on a trap? (your own traps don't hurt you)
+  // Check exit
+  const pt = tileAt(player.x, player.y);
+  if (pt.x === exitTile.x && pt.y === exitTile.y) {
+    won = true;
+    gameOver = true;
+    showAlert('YOU ESCAPED!', 'ok');
+    return;
+  }
+
+  // Player hidden?
+  const hidden = isHidden(player);
+
+  // The moment you slip into a bush, any zombie that was actively chasing
+  // loses sight of you and drops to 'search' mode at your last known tile.
+  if (hidden && !player.wasHidden) {
+    for (const z of zombies) {
+      if (z.dead) continue;
+      if (z.state === 'chase') {
+        z.state = 'search';
+        z.lostTimer = 0;
+        z.path = [];
+      }
+    }
+    showAlert('Hidden! The zombies lose sight of you.', 'ok');
+  }
+  player.wasHidden = hidden;
+
+  // Hiding also kills footstep noise — you're crouched in the brush.
+  if (hidden) player.noise = 0;
+
+  // Update zombies
+  for (const z of zombies) {
+    if (z.dead) continue;
+    updateZombie(z, dt, hidden);
+  }
+
+  // Trap interactions with zombies.
+  // Trigger when the zombie's BODY (not just its center) overlaps the trap,
+  // OR when its tile is the trap's tile. Previous version only checked the
+  // center, so fast zombies could brush past traps and reach the player
+  // before the trap fired.
+  for (const tr of traps) {
+    if (!tr.active) continue;
+    for (const z of zombies) {
+      if (z.dead) continue;
+      const d = Math.hypot(z.x - tr.x, z.y - tr.y);
+      const zt = tileAt(z.x, z.y);
+      const onSameTile = (zt.x === tr.tx && zt.y === tr.ty);
+      const bodyTouchSpike = d < z.r + 12;
+      const bodyTouchBear  = d < z.r + 12;
+      const bodyTouchMine  = d < z.r + 12;
+      if (tr.kind === TRAP.SPIKE && (bodyTouchSpike || onSameTile)) {
+        z.dead = true;
+        z.path = [];
+        tr.active = false;
+        showAlert('Zombie impaled!', 'ok');
+      } else if (tr.kind === TRAP.BEAR && (bodyTouchBear || onSameTile)) {
+        z.stunUntil = performance.now() + 4000;
+        z.state = 'stunned';
+        z.path = [];
+        tr.active = false;
+        showAlert('Zombie caught in bear trap!', 'ok');
+      } else if (tr.kind === TRAP.MINE && (bodyTouchMine || onSameTile)) {
+        // Boom! kill all in radius
+        tr.active = false;
+        tr.exploding = performance.now();
+        let killed = 0;
+        for (const z2 of zombies) {
+          if (z2.dead) continue;
+          if (Math.hypot(z2.x - tr.x, z2.y - tr.y) < TILE * 2.2) {
+            z2.dead = true;
+            z2.path = [];
+            killed++;
+          }
+        }
+        showAlert(`Mine! ${killed} zombie(s) destroyed!`, 'ok');
+      }
+    }
+  }
+
+  // Win condition: all zombies dead
+  if (zombies.length > 0 && zombies.every(z => z.dead)) {
+    showAlert('All zombies eliminated! Reach the exit.', 'ok');
+  }
+
+  // Collision player vs zombie — hidden players are SAFE on contact.
+  // The zombie walks right past the bush without finding them.
+  if (!hidden) {
+    for (const z of zombies) {
+      if (z.dead || z.state === 'stunned') continue;
+      if (Math.hypot(z.x - player.x, z.y - player.y) < z.r + player.r - 2) {
+        gameOver = true;
+        won = false;
+        showAlert('YOU WERE CAUGHT...', 'danger');
+        return;
+      }
+    }
+  }
+}
+
+function isHidden(p) {
+  // Player is hidden whenever their center is on a bush tile.
+  // (Previous version required them to be perfectly centered within ~0.45 TILE,
+  // which made hiding feel broken.)
+  const t = tileAt(p.x, p.y);
+  return bushes.has(`${t.x},${t.y}`);
+}
+
+function updateZombie(z, dt, playerHidden) {
+  if (z.dead) return; // corpses don't move or chase
+  z.eye += dt;
+  // Stun
+  if (z.state === 'stunned') {
+    if (performance.now() > z.stunUntil) {
+      z.state = 'patrol';
+      z.path = [];
+    } else {
+      return;
+    }
+  }
+
+  // Can zombie see player?
+  const dist = Math.hypot(player.x - z.x, player.y - z.y);
+  const visionRange = TILE * 6.5;
+  const hearingRange = TILE * 3.5;
+
+  let canSee = false;
+  if (!playerHidden && dist < visionRange && hasLOS(z.x, z.y, player.x, player.y)) {
+    canSee = true;
+  }
+  // Hearing: if player makes noise and is close (LOS not required, but reduced by walls)
+  let canHear = false;
+  if (!playerHidden && player.noise > 0.4 && dist < hearingRange) {
+    canHear = true;
+  }
+
+  if (canSee) {
+    z.state = 'chase';
+    z.seeTimer += dt;
+    z.lostTimer = 0;
+    z.lastTileSeen = tileAt(player.x, player.y);
+    // Move directly toward player (with pathfinding fallback if blocked)
+    moveTowardsTile(z, z.lastTileSeen.x, z.lastTileSeen.y, dt, z.chaseSpeed);
+  } else if (canHear && z.state !== 'chase') {
+    z.state = 'search';
+    z.lastTileSeen = tileAt(player.x, player.y);
+    moveTowardsTile(z, z.lastTileSeen.x, z.lastTileSeen.y, dt, z.speed * 1.15);
+  } else {
+    if (z.state === 'chase') {
+      z.lostTimer += dt;
+      // Go to last known position
+      if (z.lastTileSeen) {
+        moveTowardsTile(z, z.lastTileSeen.x, z.lastTileSeen.y, dt, z.chaseSpeed);
+        const zt = tileAt(z.x, z.y);
+        if (zt.x === z.lastTileSeen.x && zt.y === z.lastTileSeen.y) {
+          z.state = 'search';
+        }
+      }
+      if (z.lostTimer > 4) {
+        z.state = 'patrol';
+        z.path = [];
+      }
+    } else if (z.state === 'search') {
+      // Wander near last seen
+      if (!z.target || tileDistTo(z, z.target) < 0.4) {
+        z.target = randomTileNear(z.lastTileSeen, 3);
+      }
+      if (z.target) moveTowardsTile(z, z.target.x, z.target.y, dt, z.speed);
+      z.lostTimer += dt;
+      if (z.lostTimer > 6) {
+        z.state = 'patrol';
+        z.path = [];
+      }
+    } else {
+      // Patrol: pick random target and wander
+      if (!z.target || tileDistTo(z, z.target) < 0.4) {
+        z.target = randomFloorTile();
+      }
+      if (z.target) moveTowardsTile(z, z.target.x, z.target.y, dt, z.speed);
+    }
+  }
+}
+
+function tileDistTo(z, t) {
+  return Math.hypot(z.x/TILE - (t.x + 0.5), z.y/TILE - (t.y + 0.5));
+}
+
+function randomFloorTile() {
+  for (let i = 0; i < 50; i++) {
+    const x = Math.floor(Math.random() * COLS);
+    const y = Math.floor(Math.random() * ROWS);
+    if (!isWall(x, y)) return { x, y };
+  }
+  return null;
+}
+
+function randomTileNear(t, r) {
+  if (!t) return randomFloorTile();
+  for (let i = 0; i < 30; i++) {
+    const x = t.x + Math.floor((Math.random() - 0.5) * 2 * r);
+    const y = t.y + Math.floor((Math.random() - 0.5) * 2 * r);
+    if (!isWall(x, y)) return { x, y };
+  }
+  return randomFloorTile();
+}
+
+function moveTowardsTile(z, gx, gy, dt, speed) {
+  const zt = tileAt(z.x, z.y);
+  if (zt.x === gx && zt.y === gy) {
+    // Move toward center of tile (no pathing needed)
+    const cx = gx * TILE + TILE/2;
+    const cy = gy * TILE + TILE/2;
+    stepToward(z, cx, cy, dt, speed);
+    return;
+  }
+  // Get next path step
+  if (!z.path || z.path.length === 0 || z.pathGoal?.x !== gx || z.pathGoal?.y !== gy) {
+    z.path = findPath(zt.x, zt.y, gx, gy) || [];
+    z.pathGoal = { x: gx, y: gy };
+  }
+  if (z.path.length === 0) return;
+  const next = z.path[0];
+  const cx = next[0] * TILE + TILE/2;
+  const cy = next[1] * TILE + TILE/2;
+  stepToward(z, cx, cy, dt, speed);
+  if (Math.hypot(z.x - cx, z.y - cy) < 4) z.path.shift();
+}
+
+function stepToward(z, tx, ty, dt, speed) {
+  const dx = tx - z.x;
+  const dy = ty - z.y;
+  const d = Math.hypot(dx, dy);
+  if (d < 0.5) return;
+  const vx = (dx / d) * speed;
+  const vy = (dy / d) * speed;
+  moveCircle(z, vx * dt, vy * dt);
+}
+
+// ---------- Render ----------
+function draw() {
+  // Background
+  ctx.fillStyle = '#06080b';
+  ctx.fillRect(0, 0, W, H);
+
+  // Tiles
+  for (let y = 0; y < ROWS; y++) {
+    for (let x = 0; x < COLS; x++) {
+      const px = x * TILE, py = y * TILE;
+      if (maze[y][x] === 1) {
+        // Wall
+        ctx.fillStyle = '#1a2027';
+        ctx.fillRect(px, py, TILE, TILE);
+        ctx.strokeStyle = '#252e37';
+        ctx.strokeRect(px + 0.5, py + 0.5, TILE - 1, TILE - 1);
+      } else {
+        // Floor
+        ctx.fillStyle = '#0e1318';
+        ctx.fillRect(px, py, TILE, TILE);
+      }
+    }
+  }
+
+  // Bushes (hiding spots)
+  for (const key of bushes) {
+    const [x, y] = key.split(',').map(Number);
+    drawBush(x * TILE, y * TILE);
+  }
+
+  // Exit
+  drawExit(exitTile.x * TILE, exitTile.y * TILE);
+
+  // Traps
+  for (const tr of traps) {
+    drawTrap(tr);
+  }
+
+  // Zombies
+  for (const z of zombies) {
+    if (z.dead) drawDeadZombie(z); else drawZombie(z);
+  }
+
+  // Vision cones / alert markers
+  for (const z of zombies) {
+    if (z.dead) continue;
+    drawZombieAlert(z);
+  }
+
+  // Player
+  drawPlayer(player);
+
+  // Light radius (subtle vignette around player)
+  drawVignette();
+
+  // Game over overlay
+  if (gameOver) drawOverlay();
+}
+
+function drawBush(x, y) {
+  ctx.save();
+  // Dark green clump
+  const cx = x + TILE/2, cy = y + TILE/2;
+  ctx.fillStyle = '#0f3b2a';
+  ctx.beginPath();
+  ctx.arc(cx - 5, cy - 2, 9, 0, Math.PI * 2);
+  ctx.arc(cx + 5, cy - 2, 9, 0, Math.PI * 2);
+  ctx.arc(cx, cy + 4, 10, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#155e3e';
+  ctx.beginPath();
+  ctx.arc(cx - 4, cy - 3, 4, 0, Math.PI * 2);
+  ctx.arc(cx + 4, cy - 1, 3, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawExit(x, y) {
+  const t = (performance.now() / 400) % (Math.PI * 2);
+  const glow = 0.55 + 0.25 * Math.sin(t);
+  ctx.save();
+  ctx.fillStyle = `rgba(245, 158, 11, ${glow})`;
+  ctx.fillRect(x + 2, y + 2, TILE - 4, TILE - 4);
+  ctx.strokeStyle = '#fde68a';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(x + 4, y + 4, TILE - 8, TILE - 8);
+  ctx.fillStyle = '#1f2937';
+  ctx.font = 'bold 14px Segoe UI';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('EXIT', x + TILE/2, y + TILE/2);
+  ctx.restore();
+}
+
+function drawTrap(tr) {
+  ctx.save();
+  if (!tr.active) {
+    if (tr.exploding && performance.now() - tr.exploding < 400) {
+      // Mine explosion flash
+      const age = (performance.now() - tr.exploding) / 400;
+      const r = TILE * 2.2 * age;
+      ctx.fillStyle = `rgba(245, 158, 11, ${1 - age})`;
+      ctx.beginPath(); ctx.arc(tr.x, tr.y, r, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = `rgba(255, 240, 200, ${1 - age})`;
+      ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(tr.x, tr.y, r, 0, Math.PI * 2); ctx.stroke();
+    } else {
+      // Spent trap: small dark mark
+      ctx.fillStyle = '#3a2f24';
+      ctx.fillRect(tr.x - 4, tr.y - 4, 8, 8);
+    }
+    ctx.restore();
+    return;
+  }
+  if (tr.kind === TRAP.SPIKE) {
+    ctx.fillStyle = '#cbd5e1';
+    for (let i = 0; i < 4; i++) {
+      const a = (i / 4) * Math.PI * 2;
+      ctx.beginPath();
+      ctx.moveTo(tr.x + Math.cos(a) * 3, tr.y + Math.sin(a) * 3);
+      ctx.lineTo(tr.x + Math.cos(a) * 11, tr.y + Math.sin(a) * 11);
+      ctx.lineTo(tr.x + Math.cos(a + 0.4) * 3, tr.y + Math.sin(a + 0.4) * 3);
+      ctx.closePath();
+      ctx.fill();
+    }
+    ctx.fillStyle = '#475569';
+    ctx.beginPath(); ctx.arc(tr.x, tr.y, 4, 0, Math.PI * 2); ctx.fill();
+  } else if (tr.kind === TRAP.BEAR) {
+    ctx.strokeStyle = '#92400e';
+    ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(tr.x, tr.y, 10, 0, Math.PI * 2); ctx.stroke();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#b45309';
+    for (let i = 0; i < 8; i++) {
+      const a = (i / 8) * Math.PI * 2;
+      ctx.beginPath();
+      ctx.moveTo(tr.x + Math.cos(a) * 8, tr.y + Math.sin(a) * 8);
+      ctx.lineTo(tr.x + Math.cos(a) * 13, tr.y + Math.sin(a) * 13);
+      ctx.stroke();
+    }
+  } else if (tr.kind === TRAP.MINE) {
+    const pulse = 0.6 + 0.4 * Math.sin(performance.now() / 200);
+    ctx.fillStyle = `rgba(245, 158, 11, ${pulse})`;
+    ctx.beginPath(); ctx.arc(tr.x, tr.y, 8, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#7c2d12';
+    ctx.beginPath(); ctx.arc(tr.x, tr.y, 4, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+
+function drawPlayer(p) {
+  const hidden = isHidden(p);
+  ctx.save();
+  // Shadow
+  ctx.fillStyle = 'rgba(0,0,0,0.4)';
+  ctx.beginPath();
+  ctx.ellipse(p.x, p.y + 8, p.r * 0.9, p.r * 0.45, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Body
+  ctx.globalAlpha = hidden ? 0.35 : 1;
+  ctx.fillStyle = '#6ee7b7';
+  ctx.beginPath();
+  ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = '#10b981';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Face direction marker
+  ctx.fillStyle = '#052e1f';
+  ctx.beginPath();
+  ctx.arc(p.x + p.dir.x * 4, p.y + p.dir.y * 4, 3, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+
+  // HIDDEN badge floating above the player so the state is obvious.
+  if (hidden) {
+    ctx.save();
+    const pulse = 0.7 + 0.3 * Math.sin(performance.now() / 200);
+    ctx.fillStyle = `rgba(110, 231, 183, ${pulse})`;
+    ctx.font = 'bold 11px Segoe UI';
+    ctx.textAlign = 'center';
+    ctx.fillText('HIDDEN', p.x, p.y - p.r - 6);
+    ctx.restore();
+  }
+}
+
+function drawZombie(z) {
+  ctx.save();
+  ctx.fillStyle = 'rgba(0,0,0,0.4)';
+  ctx.beginPath();
+  ctx.ellipse(z.x, z.y + 8, z.r * 0.9, z.r * 0.45, 0, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Body
+  let bodyColor = '#84cc16';
+  if (z.state === 'chase') bodyColor = '#a3e635';
+  if (z.state === 'stunned') bodyColor = '#6b7280';
+  ctx.fillStyle = bodyColor;
+  ctx.beginPath();
+  ctx.arc(z.x, z.y, z.r, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.strokeStyle = '#365314';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Eyes
+  ctx.fillStyle = z.state === 'chase' ? '#ef4444' : '#1f2937';
+  ctx.beginPath();
+  ctx.arc(z.x - 3, z.y - 2, 2, 0, Math.PI * 2);
+  ctx.arc(z.x + 3, z.y - 2, 2, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawDeadZombie(z) {
+  ctx.save();
+  ctx.fillStyle = '#3f3f46';
+  ctx.beginPath();
+  ctx.arc(z.x, z.y, z.r * 0.9, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = '#7f1d1d';
+  ctx.beginPath();
+  ctx.arc(z.x - 4, z.y, 2, 0, Math.PI * 2);
+  ctx.arc(z.x + 4, z.y - 2, 2, 0, Math.PI * 2);
+  ctx.fill();
+  // X eyes
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(z.x - 4, z.y - 4); ctx.lineTo(z.x - 1, z.y - 1);
+  ctx.moveTo(z.x - 1, z.y - 4); ctx.lineTo(z.x - 4, z.y - 1);
+  ctx.moveTo(z.x + 4, z.y - 4); ctx.lineTo(z.x + 1, z.y - 1);
+  ctx.moveTo(z.x + 1, z.y - 4); ctx.lineTo(z.x + 4, z.y - 1);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawZombieAlert(z) {
+  if (z.state === 'chase') {
+    ctx.fillStyle = '#ef4444';
+    ctx.font = 'bold 14px Segoe UI';
+    ctx.textAlign = 'center';
+    ctx.fillText('!', z.x, z.y - z.r - 6);
+  } else if (z.state === 'search') {
+    ctx.fillStyle = '#f59e0b';
+    ctx.font = 'bold 14px Segoe UI';
+    ctx.textAlign = 'center';
+    ctx.fillText('?', z.x, z.y - z.r - 6);
+  } else if (z.state === 'stunned') {
+    ctx.fillStyle = '#a78bfa';
+    ctx.font = 'bold 12px Segoe UI';
+    ctx.textAlign = 'center';
+    ctx.fillText('zZ', z.x, z.y - z.r - 6);
+  }
+}
+
+function drawVignette() {
+  const grad = ctx.createRadialGradient(player.x, player.y, TILE * 2, player.x, player.y, TILE * 9);
+  grad.addColorStop(0, 'rgba(0,0,0,0)');
+  grad.addColorStop(1, 'rgba(0,0,0,0.55)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+}
+
+function drawOverlay() {
+  ctx.fillStyle = won ? 'rgba(16, 185, 129, 0.25)' : 'rgba(239, 68, 68, 0.25)';
+  ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 48px Segoe UI';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(won ? 'YOU ESCAPED!' : 'CAUGHT BY THE HORDE', W/2, H/2 - 12);
+  ctx.font = '16px Segoe UI';
+  ctx.fillText('Press R to play a new maze', W/2, H/2 + 24);
+}
+
+// ---------- HUD updates ----------
+function updateHUD() {
+  const aliveZ = zombies.filter(z => !z.dead).length;
+  document.getElementById('ui-zombies').textContent = aliveZ;
+  document.getElementById('ui-hidden').textContent = isHidden(player) ? 'Yes' : 'No';
+  const anyChase = zombies.some(z => !z.dead && z.state === 'chase');
+  const anySearch = zombies.some(z => !z.dead && z.state === 'search');
+  document.getElementById('ui-detected').textContent = anyChase ? 'CHASING!' : (anySearch ? 'Searching' : 'No');
+  document.getElementById('ui-time').textContent = Math.floor((performance.now() - t0) / 1000) + 's';
+
+  document.getElementById('ui-spike').textContent = '∞';
+  document.getElementById('ui-bear').textContent = '∞';
+  document.getElementById('ui-mine').textContent = '∞';
+  document.getElementById('ui-spike').className = 'count';
+  document.getElementById('ui-bear').className = 'count';
+  document.getElementById('ui-mine').className = 'count';
+
+  const status = document.getElementById('status');
+  if (performance.now() < alertUntil) {
+    status.textContent = alertText;
+    status.className = alertClass;
+  } else if (gameOver) {
+    status.textContent = won ? 'Escaped! Press R for a new maze.' : 'Caught! Press R to try again.';
+    status.className = won ? '' : 'danger';
+  } else if (anyChase) {
+    status.textContent = 'A zombie has spotted you! Run or hide!';
+    status.className = 'danger';
+  } else if (anySearch) {
+    status.textContent = 'A zombie heard you... stay still or hide.';
+    status.className = 'warn';
+  } else {
+    status.textContent = isHidden(player)
+      ? 'You are hidden in the bush.'
+      : 'All quiet. Make your way to the exit.';
+    status.className = '';
+  }
+}
+
+let alertClass = '';
+function showAlert(text, kind) {
+  alertText = text;
+  alertClass = kind === 'danger' ? 'danger' : kind === 'warn' ? 'warn' : '';
+  alertUntil = performance.now() + 2200;
+}
+
+// ---------- Main loop ----------
+function loop(now) {
+  const dt = Math.min(0.04, (now - lastTime) / 1000);
+  lastTime = now;
+  update(dt);
+  draw();
+  updateHUD();
+  requestAnimationFrame(loop);
+}
+
+document.getElementById('restart').addEventListener('click', reset);
+
+reset();
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

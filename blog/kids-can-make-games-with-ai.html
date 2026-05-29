@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Kid Can Build a Game with AI — Here's How | Otterly Games</title>
+  <meta name="description" content="A practical parent's guide to helping kids build games with AI. Explains HTML, Git, VS Code, and GitHub Copilot in language an 8-year-old can understand — plus a 30-minute Saturday project to build a real game.">
+  <meta name="keywords" content="kids make games with AI, coding for kids, game development for children, product builder mindset, AI game maker, teach kids to code, kids coding projects">
+  <link rel="canonical" href="https://otterlygames.com/blog/kids-can-make-games-with-ai.html">
+  <meta property="og:title" content="Your Kid Can Build a Game with AI — Here's How">
+  <meta property="og:description" content="A practical guide: explain HTML, Git, and VS Code to your kid, then build a real game together in 30 minutes using GitHub Copilot or Manus.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Your Kid Can Build a Game with AI — Here's How">
+  <meta name="twitter:description" content="A practical guide: explain HTML, Git, and VS Code to your kid, then build a real game together in 30 minutes using GitHub Copilot or Manus.">
+  <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="pinterest-rich-pin" content="true">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Your Kid Can Build a Game with AI — Here's How","author":{"@type":"Person","name":"Otterly Games"},"publisher":{"@type":"Organization","name":"Otterly Games","logo":{"@type":"ImageObject","url":"https://otterlygames.com/images/Otter-mascot.png"}},"datePublished":"2026-05-29","dateModified":"2026-05-29","image":"https://otterlygames.com/images/og-default.png","description":"A practical parent's guide to helping kids build games with AI. Explains HTML, Git, VS Code, and GitHub Copilot in language an 8-year-old can understand."}
+  </script>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://otterlygames.com/blog/"},{"@type":"ListItem","position":3,"name":"Your Kid Can Build a Game with AI"}]}
+  </script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
+</head>
+<body data-og-includes="nav,footer">
+
+  <section class="post-hero">
+    <div class="container">
+      <div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <a href="/blog/">Blog</a> <span>/</span> Digital Parenting</div>
+      <div class="post-meta">
+        <span class="post-category">Digital Parenting</span>
+        <span>May 29, 2026</span>
+        <span>·</span>
+        <span>12 min read</span>
+      </div>
+      <h1 class="post-title">Your Kid Can Build a Game with AI — Here's How</h1>
+    </div>
+  </section>
+
+  <article class="post-content">
+
+    <p>My 8-year-old finished playing Dog Shepherd — our silly herding game — and said: <em>"Papa, I want to give super powers to dogs. Wolves are powerful. Why can't the dog have powers too?"</em></p>
+
+    <p>That's not just a game idea. That's a <strong>product idea</strong>. He saw a mechanic, imagined a twist, and wanted to build it. He didn't know it, but he was thinking like a product designer.</p>
+
+    <p>Here's the thing parents don't hear often enough: <strong>your kid doesn't have to just play games — they can make them.</strong> And thanks to AI, the barrier to entry has never been lower. This blog is a practical, step-by-step guide to help you get started — tonight, at your kitchen table.</p>
+
+    <h2>Why Playing Games Builds the Foundation</h2>
+
+    <p>Before we talk about building, let's talk about why <em>playing</em> matters more than most parents think.</p>
+
+    <p>When your child plays a stealth game like Zombie Hide &amp; Seek, they're not just having fun. They're learning:</p>
+
+    <ul>
+      <li><strong>Cause and effect</strong> — "If I move here, the zombie sees me"</li>
+      <li><strong>Systems thinking</strong> — "The flashlight reveals enemies but also reveals me"</li>
+      <li><strong>Optimization</strong> — "What's the fastest safe path?"</li>
+      <li><strong>Failure resilience</strong> — "I died. Let me try a different strategy."</li>
+    </ul>
+
+    <p>Playing games is the prerequisite to building games — because you can't design what you don't understand.</p>
+
+    <h2>The Product-Builder Mindset</h2>
+
+    <p>There's a difference between a <em>consumer mindset</em> and a <em>builder mindset</em>:</p>
+
+    <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--dark-border);">
+          <th style="text-align:left;padding:0.7rem;color:var(--pastel-purple);">Consumer Mindset</th>
+          <th style="text-align:left;padding:0.7rem;color:var(--pastel-green);">Builder Mindset</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--dark-border);">
+          <td style="padding:0.6rem;">"This game is fun"</td>
+          <td style="padding:0.6rem;">"What makes this game fun?"</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--dark-border);">
+          <td style="padding:0.6rem;">"I want more levels"</td>
+          <td style="padding:0.6rem;">"How would I design a new level?"</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--dark-border);">
+          <td style="padding:0.6rem;">"This is too hard"</td>
+          <td style="padding:0.6rem;">"How could I make this more balanced?"</td>
+        </tr>
+        <tr>
+          <td style="padding:0.6rem;">"I wish this existed"</td>
+          <td style="padding:0.6rem;">"I can build this myself"</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The builder mindset is what separates kids who consume technology from kids who <em>create</em> it.</p>
+
+    <h2>First, Let's Understand the Big Words</h2>
+
+    <p>Before your child can build a game, they need to understand a few ideas. Here's how I explained them to my 8-year-old — using things he already knows.</p>
+
+    <h3>🌐 What Is the Internet?</h3>
+
+    <div style="background:var(--dark-card);border:1px solid var(--dark-border);border-radius:0.75rem;padding:1.5rem;margin:1.5rem 0;">
+      <p>Think of the internet like a <strong>giant post office</strong>. When you type <code>otterlygames.com</code> in your browser, you're sending a letter that says: "Can I see this website, please?" That letter zooms through cables and towers until it reaches the right building. That building sends back the website, and your browser shows it on the screen.</p>
+      <p>Every website lives on a computer somewhere in the world. The internet is just the roads that connect your computer to all those other computers.</p>
+    </div>
+
+    <h3>🏠 What Is a Server? What Is a Client?</h3>
+
+    <div style="background:var(--dark-card);border:1px solid var(--dark-border);border-radius:0.75rem;padding:1.5rem;margin:1.5rem 0;">
+      <p><strong>Server</strong> = the library. It has all the books (websites, games, data). It waits for people to ask for things.</p>
+      <p><strong>Client</strong> = you walking into the library. You ask for a book, the librarian (server) gives it to you, and you read it at your table (your browser).</p>
+      <p>When you open a game on your phone, your phone is the <strong>client</strong>. The computer that stores the game and sends it to you is the <strong>server</strong>.</p>
+    </div>
+
+    <h3>📄 What Is HTML?</h3>
+
+    <div style="background:var(--dark-card);border:1px solid var(--dark-border);border-radius:0.75rem;padding:1.5rem;margin:1.5rem 0;">
+      <p>HTML is the <strong>language that every web page speaks</strong>. It's like LEGO instructions — it tells the browser: "Put a heading here. Put a picture there. Make a button that says START."</p>
+      <p>A game you play in your browser? It's just an HTML file. That's it. One file, and you can play it. No app store. No download. Just open the file in Chrome and play.</p>
+      <p>Here's what it looks like:</p>
+      <pre style="background:#0d0d17;border-radius:0.5rem;padding:1rem;overflow-x:auto;font-size:0.85rem;color:var(--pastel-green);"><code>&lt;h1&gt;My Dog Game&lt;/h1&gt;
+&lt;p&gt;The dog has super powers!&lt;/p&gt;
+&lt;button&gt;START GAME&lt;/button&gt;</code></pre>
+      <p style="color:var(--text-secondary);font-size:0.9rem;">That's real code. It's not scary. It's just English words inside angle brackets.</p>
+    </div>
+
+    <h3>📦 What Is Git? (And Commit? And Push?)</h3>
+
+    <div style="background:var(--dark-card);border:1px solid var(--dark-border);border-radius:0.75rem;padding:1.5rem;margin:1.5rem 0;">
+      <p>Imagine you're writing a story in a notebook. Every few pages, you take a photo of your notebook — so if you spill juice on it, you can look at the photo and rewrite it.</p>
+      <p><strong>Git</strong> is that camera. It takes snapshots of your project every time you want to save your progress.</p>
+      <ul style="margin-top:0.5rem;">
+        <li><strong>Commit</strong> = taking the photo. You say, "Save what I have right now." You also write a small note like: <em>"Added the dog's laser power."</em></li>
+        <li><strong>Push</strong> = putting that photo in a safe on the internet (called <strong>GitHub</strong>) so it's saved forever — even if your computer breaks. Other people can see it there too.</li>
+        <li><strong>Pull</strong> = getting the latest photos from the safe, in case someone else made changes.</li>
+      </ul>
+      <p>So: <strong>write code → commit (save snapshot) → push (send to the cloud).</strong> That's it. That's what professional developers do every day.</p>
+    </div>
+
+    <h2>The Tools: What You Actually Need</h2>
+
+    <p>You don't need to buy anything. Everything below is free.</p>
+
+    <h3>🛠️ VS Code — Your Kid's Workshop</h3>
+
+    <div style="background:var(--dark-card);border:1px solid var(--dark-border);border-radius:0.75rem;padding:1.5rem;margin:1.5rem 0;">
+      <p><a href="https://code.visualstudio.com" style="color:var(--pastel-blue);">VS Code</a> (Visual Studio Code) is a <strong>free app</strong> from Microsoft where you write code. Think of it as Google Docs — but for code instead of essays.</p>
+      <p>It does some cool things:</p>
+      <ul>
+        <li>Colors your code so it's easy to read (like syntax highlighting in a storybook)</li>
+        <li>Tells you when you made a typo (red squiggly lines — just like Word!)</li>
+        <li>Has a built-in "terminal" — a text box where you can talk to your computer directly</li>
+        <li>Works on Windows, Mac, and Chromebook</li>
+      </ul>
+      <p><strong>Parent tip:</strong> Download VS Code and open it. Create a file called <code>game.html</code>. That's step one.</p>
+    </div>
+
+    <h3>🤖 GitHub Copilot — The AI That Writes Code With You</h3>
+
+    <div style="background:var(--dark-card);border:1px solid var(--dark-border);border-radius:0.75rem;padding:1.5rem;margin:1.5rem 0;">
+      <p><a href="https://github.com/features/copilot" style="color:var(--pastel-blue);">GitHub Copilot</a> lives inside VS Code. It's like having a really smart friend sitting next to your kid while they code.</p>
+      <p>Your child types a comment like:</p>
+      <pre style="background:#0d0d17;border-radius:0.5rem;padding:1rem;overflow-x:auto;font-size:0.85rem;color:var(--pastel-green);"><code>// Make a game where a dog runs across the screen
+// and the player clicks to give it super powers
+// wolves chase the dog but the powers defeat them</code></pre>
+      <p>Copilot reads that and <strong>writes the code for it</strong>. Your kid reviews it, hits Tab to accept it, and runs it. If something isn't right, they tell Copilot in the chat: <em>"Make the wolves bigger"</em> — and it updates the code.</p>
+      <p><strong>Free tier available</strong> — no credit card needed. Just sign up with a GitHub account.</p>
+    </div>
+
+    <h3>🧠 Manus / ChatGPT / Claude — The Idea-to-Game Machine</h3>
+
+    <div style="background:var(--dark-card);border:1px solid var(--dark-border);border-radius:0.75rem;padding:1.5rem;margin:1.5rem 0;">
+      <p>If VS Code + Copilot feels too "cody" for your child, start even simpler. Open <a href="https://manus.im" style="color:var(--pastel-blue);">Manus</a>, ChatGPT, or Claude in a browser and just talk to it:</p>
+      <p style="font-style:italic;color:var(--pastel-amber);">"Build me a game in one HTML file. A dog with super powers fights wolves. Arrow keys to move. Space bar to shoot a laser beam. The dog has 3 lives. If a wolf touches the dog, it loses a life. Make it colorful."</p>
+      <p>The AI gives you a complete HTML file. Copy it, save it as <code>dog-powers.html</code>, open in Chrome. Done. Your kid just "shipped" a game.</p>
+      <p>Then your kid can keep talking to it:</p>
+      <ul>
+        <li><em>"Add a shield power-up"</em></li>
+        <li><em>"Make the wolves come in waves"</em></li>
+        <li><em>"The dog should bark when it shoots"</em></li>
+        <li><em>"Add a score counter"</em></li>
+      </ul>
+      <p>Every sentence is a product decision. Your child is the boss; the AI is the builder.</p>
+    </div>
+
+    <h2>A Practical Saturday Project: Build a Game in 30 Minutes</h2>
+
+    <p>Here's exactly what to do, step by step. No tech background needed.</p>
+
+    <h3>Step 1: Play Together First (5 min)</h3>
+
+    <p>Sit down and play a few games together. Try the ones in our <a href="/Arcade/">Otterly Arcade</a> — they're free, run in any browser, and each one was built with AI prompts. As you play, ask your child:</p>
+
+    <ul>
+      <li>"What's your favorite part?"</li>
+      <li>"What would you change?"</li>
+      <li>"What game do YOU wish existed?"</li>
+    </ul>
+
+    <h3>Step 2: Write the Game Idea (5 min)</h3>
+
+    <p>Help your child write down their game idea. Keep it simple — a few sentences is perfect:</p>
+
+    <div style="background:var(--dark-card);border:1px solid var(--dark-border);border-radius:0.75rem;padding:1.5rem;margin:1.5rem 0;font-style:italic;color:var(--text-secondary);">
+      <strong style="color:var(--pastel-amber);font-style:normal;">Example Game Idea:</strong><br><br>
+      <strong>Name:</strong> Super Dog<br>
+      <strong>What happens:</strong> A dog with laser eyes fights waves of wolves<br>
+      <strong>Controls:</strong> Arrow keys to move, space to shoot<br>
+      <strong>How you win:</strong> Survive 5 waves<br>
+      <strong>Power-up:</strong> Bones give you a shield for 5 seconds
+    </div>
+
+    <p>Congrats — your child just wrote a product spec. That's what software teams do every day.</p>
+
+    <h3>Step 3: Turn It Into a Game (10 min)</h3>
+
+    <p><strong>Option A — Easiest (Manus / ChatGPT):</strong> Open the AI in a browser, paste the game idea, and ask it to build a complete game in a single HTML file. Copy the code, save as <code>super-dog.html</code>, open in Chrome.</p>
+
+    <p><strong>Option B — More hands-on (VS Code + Copilot):</strong> Open VS Code, create a new file called <code>super-dog.html</code>, type a comment describing the game, and let Copilot generate the code. Hit the "Play" button (Live Server extension) to see it in your browser.</p>
+
+    <h3>Step 4: Iterate and Improve (10 min)</h3>
+
+    <p>This is where the real learning happens. Your child plays their game and says:</p>
+
+    <ul>
+      <li>"The wolves are too slow" → Tell the AI to speed them up</li>
+      <li>"I want the dog to have a different power each level" → Tell the AI</li>
+      <li>"Can I add sound when the dog barks?" → Tell the AI</li>
+      <li>"It's too easy" → Tell the AI to add more wolves per wave</li>
+    </ul>
+
+    <p>Every iteration teaches the <strong>build → test → learn</strong> loop — the same cycle used by every startup in the world.</p>
+
+    <h3>Step 5: Save It with Git (5 min — optional but powerful)</h3>
+
+    <p>If your child is 8+, this is a great moment to introduce Git:</p>
+
+    <ol>
+      <li>In VS Code's terminal, type: <code>git init</code> (creates the camera)</li>
+      <li><code>git add .</code> (tells Git to look at all your files)</li>
+      <li><code>git commit -m "My first dog game!"</code> (takes the snapshot)</li>
+      <li>Push to GitHub — their game now lives on the internet!</li>
+    </ol>
+
+    <p>My son's face when he realized his game had a URL that friends could visit? Priceless.</p>
+
+    <h2>Where to Start Based on Your Child's Age</h2>
+
+    <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--dark-border);">
+          <th style="text-align:left;padding:0.7rem;color:var(--pastel-purple);">Age</th>
+          <th style="text-align:left;padding:0.7rem;color:var(--pastel-pink);">Best Starting Tool</th>
+          <th style="text-align:left;padding:0.7rem;color:var(--pastel-blue);">What to Expect</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--dark-border);">
+          <td style="padding:0.6rem;font-weight:700;">5–7</td>
+          <td style="padding:0.6rem;">Manus or ChatGPT (parent types)</td>
+          <td style="padding:0.6rem;">Child describes the game out loud. Parent types the prompt. Child tests and says what to change. They're the creative director.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--dark-border);">
+          <td style="padding:0.6rem;font-weight:700;">8–10</td>
+          <td style="padding:0.6rem;">VS Code + GitHub Copilot</td>
+          <td style="padding:0.6rem;">Child types comments in VS Code. Copilot fills in the code. Child learns what HTML tags look like. Introduce Git commits.</td>
+        </tr>
+        <tr>
+          <td style="padding:0.6rem;font-weight:700;">11+</td>
+          <td style="padding:0.6rem;">VS Code + Copilot + GitHub</td>
+          <td style="padding:0.6rem;">Child reads and edits generated code. Pushes to GitHub. Shares the game URL with friends. Starts modifying JavaScript directly.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>What Kids Actually Learn</h2>
+
+    <p>When a child builds a game with AI, they're developing skills that go far beyond coding:</p>
+
+    <ul>
+      <li><strong>Creative thinking</strong> — Imagining something that doesn't exist yet</li>
+      <li><strong>Problem decomposition</strong> — Breaking a big idea into small, buildable pieces</li>
+      <li><strong>Clear communication</strong> — Describing ideas so precisely that a machine can understand them</li>
+      <li><strong>Critical thinking</strong> — "This isn't fun. Why? How do I fix it?"</li>
+      <li><strong>Persistence</strong> — Debugging and improving until it feels right</li>
+      <li><strong>Empathy</strong> — "Would my friend enjoy this? What would they find confusing?"</li>
+    </ul>
+
+    <p>These are the skills that matter in every career — not just tech.</p>
+
+    <h2>From Player to Builder</h2>
+
+    <p>Every game in our <a href="/Arcade/">Otterly Arcade</a> — Ninja Shuriken, Zombie Hide &amp; Seek, Captain Pigeon Pooper, Dog Shepherd — started as a sentence spoken by a kid. <em>"What if the pigeon poops on bad guys?"</em> That's how Captain Pigeon Pooper was born.</p>
+
+    <p>Your child has ideas like that every single day. The difference between a kid who just plays games and a kid who builds them isn't talent — it's having the right tools and a parent who says: <strong>"Let's try building it."</strong></p>
+
+    <p>So tonight, sit down and ask: <strong>"What game do you wish existed?"</strong></p>
+
+    <p>Then open VS Code, or Manus, or ChatGPT — and build it together. The first game will take 30 minutes. The second one will take 20. By the third, your kid will be doing it without you.</p>
+
+    <p>And that's the whole point.</p>
+
+    <div class="post-cta" style="background:linear-gradient(135deg,rgba(196,181,253,0.1),rgba(249,168,212,0.1));border:1px solid rgba(196,181,253,0.2);border-radius:1rem;padding:2rem;text-align:center;margin-top:2rem;">
+      <h3 style="font-family:'Nunito',sans-serif;font-size:1.3rem;margin-bottom:0.5rem;">See Games Built by Kids with AI</h3>
+      <p style="color:#9898b0;margin-bottom:1rem;">Every game in our Arcade was built with AI prompts. Play them, read the prompts, then build your own.</p>
+      <a href="/Arcade/" style="display:inline-block;padding:0.7rem 1.5rem;background:linear-gradient(135deg,#c4b5fd,#f9a8d4);color:#0a0a0f;border-radius:999px;font-weight:700;font-size:0.9rem;">Visit the Otterly Arcade →</a>
+    </div>
+  </article>
+
+  <aside class="author-bio">
+    <img src="/images/Otter-mascot.png" alt="Otterly Games" class="author-bio-avatar">
+    <div class="author-bio-info">
+      <span class="author-bio-name">Written by Otterly Games</span>
+      <p class="author-bio-desc">A mom-built studio creating safe educational games that kids actually want to play. Clock Master and Math Tank are used by families across 50+ countries. Zero data collected, COPPA certified. <a href="/about.html">Read our story →</a></p>
+    </div>
+  </aside>
+
+  <section class="related-posts" id="related-posts"></section>
+  <nav class="post-nav" id="post-nav"></nav>
+
+  <script src="/js/includes.js" defer></script>
+  <script src="/js/registry.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.OG) {
+        OG.renderRelatedPosts('#related-posts');
+        OG.renderPostNav('#post-nav');
+      }
+    });
+  </script>
+  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+  <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
+</body>
+</html>

@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Shuriken — Otterly Arcade</title>
+    <link rel="stylesheet" href="/css/arcade-game.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { overflow: hidden; }
+        #gameContainer { position: relative; }
+        canvas {
+            border-radius: 10px;
+            display: block;
+        }
+        #ui {
+            position: absolute;
+            top: 10px; left: 10px; right: 10px;
+            display: flex;
+            justify-content: space-between;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            pointer-events: none;
+        }
+        #overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            border-radius: 8px;
+            z-index: 10;
+        }
+        #overlay h1 { font-size: 44px; color: var(--accent); margin-bottom: 8px; font-family: var(--font-heading); }
+        #overlay h2 { font-size: 24px; color: var(--warn); margin-bottom: 16px; font-family: var(--font-heading); }
+        #overlay p { font-size: 15px; margin: 3px 0; color: var(--muted); }
+        .start-btn {
+            margin-top: 20px;
+            padding: 12px 36px;
+            font-size: 18px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #0a0a0f;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: var(--font-heading);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .start-btn:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(196,181,253,0.35); }
+        .hidden { display: none !important; }
+        #garage {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(10,10,30,0.95);
+            color: #fff;
+            border-radius: 8px;
+            z-index: 20;
+            padding: 30px 20px;
+            overflow-y: auto;
+        }
+        #garage h1 { font-size: 36px; color: var(--warn); margin-bottom: 6px; font-family: var(--font-heading); }
+        #garage .coins-display { font-size: 20px; color: var(--warn); margin-bottom: 18px; }
+        .shuriken-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            width: 100%;
+            max-width: 700px;
+        }
+        .shuriken-card {
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 12px;
+            text-align: center;
+            transition: border-color 0.2s, transform 0.1s;
+            cursor: pointer;
+        }
+        .shuriken-card:hover { transform: scale(1.03); }
+        .shuriken-card.selected { border-color: var(--accent); box-shadow: 0 0 12px rgba(196,181,253,0.4); }
+        .shuriken-card.locked { opacity: 0.5; }
+        .shuriken-card .icon { font-size: 38px; margin-bottom: 6px; }
+        .shuriken-card .name { font-size: 15px; font-weight: bold; color: #fff; }
+        .shuriken-card .stats { font-size: 12px; color: #aaa; margin: 4px 0; }
+        .shuriken-card .price { font-size: 14px; color: var(--warn); font-weight: bold; }
+        .shuriken-card .owned { font-size: 13px; color: var(--good); font-weight: bold; }
+        .garage-btns { margin-top: 18px; display: flex; gap: 12px; }
+        .garage-btns button {
+            padding: 10px 28px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .buy-btn { background: var(--warn); color: #333; }
+        .buy-btn:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; }
+        .back-btn { background: var(--surface); color: var(--ink); border: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+<div class="game-page">
+  <div class="game-topbar">
+    <a href="index.html" class="back-link">← Arcade</a>
+    <span class="game-title">Ninja Shuriken</span>
+    <span class="brand-mark"><img src="/images/Otter-mascot.png" alt="Otterly">Otterly Arcade</span>
+  </div>
+  <div class="game-area">
+    <div class="game-canvas-col">
+    <div id="gameContainer">
+        <canvas id="game" width="900" height="600"></canvas>
+        <div id="ui">
+            <span id="hpDisplay">❤️ 100</span>
+            <span id="ammoDisplay">✦ ∞</span>
+            <span id="coinDisplay">🪙 0</span>
+            <span id="levelDisplay">Level 1</span>
+            <span id="killDisplay">Kills: 0 / 25</span>
+        </div>
+        <div id="overlay">
+            <h1>🌀 Ninja Shuriken</h1>
+            <h2>Throw shurikens to defeat zombies!</h2>
+            <p>WASD / Arrow Keys — Move</p>
+            <p>SPACE — Throw Shuriken</p>
+            <p>1-5 — Use Powers (unlock every 10 kills)</p>
+            <p>G — Open Garage (between levels)</p>
+            <p>Kill 25 zombies per level!</p>
+            <button class="start-btn" id="startBtn">START GAME</button>
+        </div>
+        <div id="garage" class="hidden"></div>
+    </div>
+    </div>
+    <aside class="game-sidebar">
+      <h1>🌀 Ninja Shuriken</h1>
+      <div class="subtitle">Slice through the horde</div>
+      <h2>Stats</h2>
+      <div class="stat"><span>❤️ HP</span><b id="sideHp">100</b></div>
+      <div class="stat"><span>🪙 Coins</span><b id="sideCoins">0</b></div>
+      <div class="stat"><span>Level</span><b id="sideLevel">1</b></div>
+      <div class="stat"><span>Kills</span><b id="sideKills">0 / 25</b></div>
+      <div class="stat"><span>Weapon</span><b id="sideWeapon">Iron Star</b></div>
+      <h2>Controls</h2>
+      <div class="ctrl"><span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span><span class="desc">Move</span></div>
+      <div class="ctrl"><span class="key">Space</span><span class="desc">Throw shuriken</span></div>
+      <div class="ctrl"><span class="key">1-5</span><span class="desc">Use powers</span></div>
+      <div class="ctrl"><span class="key">G</span><span class="desc">Open garage</span></div>
+      <div class="tip">💡 Kill 25 zombies per level to advance. Earn coins to buy new shurikens in the Garage.</div>
+    </aside>
+  </div>
+</div>
+
+    <script>
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    const overlay = document.getElementById('overlay');
+    const garageEl = document.getElementById('garage');
+    const startBtn = document.getElementById('startBtn');
+    const hpDisplay = document.getElementById('hpDisplay');
+    const ammoDisplay = document.getElementById('ammoDisplay');
+    const coinDisplay = document.getElementById('coinDisplay');
+    const levelDisplay = document.getElementById('levelDisplay');
+    const killDisplay = document.getElementById('killDisplay');
+
+    const W = canvas.width;
+    const H = canvas.height;
+
+    const ZOMBIES_PER_LEVEL = 25;
+    const WAVE_SIZE = 8;
+
+    // ─── Shuriken Types ───
+    const SHURIKEN_TYPES = [
+        { id: 'basic', name: 'Iron Star', icon: '✦', color: '#b0bec5', trailColor: '#78909c', damage: 1, speed: 400, size: 8, spinSpeed: 12, price: 0, owned: true, desc: 'Basic 4-point shuriken' },
+        { id: 'steel', name: 'Steel Fang', icon: '✧', color: '#e0e0e0', trailColor: '#9e9e9e', damage: 2, speed: 450, size: 9, spinSpeed: 14, price: 30, owned: false, desc: 'Sharper, deals 2 damage' },
+        { id: 'fire', name: 'Fire Star', icon: '🔥', color: '#ff7043', trailColor: '#ff5722', damage: 2, speed: 420, size: 10, spinSpeed: 10, price: 60, owned: false, desc: 'Burns on hit, 2 damage' },
+        { id: 'ice', name: 'Frost Blade', icon: '❄️', color: '#4fc3f7', trailColor: '#0288d1', damage: 1, speed: 380, size: 10, spinSpeed: 8, price: 50, owned: false, desc: 'Slows enemies on hit' },
+        { id: 'golden', name: 'Gold Razor', icon: '⭐', color: '#ffd54f', trailColor: '#ff8f00', damage: 3, speed: 500, size: 10, spinSpeed: 18, price: 120, owned: false, desc: 'Fast & deadly, 3 damage' },
+        { id: 'shadow', name: 'Shadow Star', icon: '🌑', color: '#7e57c2', trailColor: '#4527a0', damage: 2, speed: 550, size: 8, spinSpeed: 20, price: 150, owned: false, desc: 'Fastest, pierces enemies' },
+    ];
+
+    // ─── Powers ───
+    const POWERS = [
+        { id: 'shockwave', name: 'Shockwave', icon: '💥', key: 'Digit1', unlockAt: 10, cooldown: 6, radius: 150, damage: 3, color: '#ff9800', desc: 'Blast ring pushes & damages nearby' },
+        { id: 'meteor',    name: 'Meteor Rain', icon: '☄️', key: 'Digit2', unlockAt: 20, cooldown: 10, damage: 5, color: '#f44336', desc: 'Fireballs rain from the sky' },
+        { id: 'lightning', name: 'Lightning Chain', icon: '⚡', key: 'Digit3', unlockAt: 30, cooldown: 8, damage: 4, color: '#ffeb3b', desc: 'Lightning jumps between 5 enemies' },
+        { id: 'freeze',    name: 'Freeze Blast', icon: '🧊', key: 'Digit4', unlockAt: 40, cooldown: 12, color: '#4fc3f7', desc: 'Freezes ALL enemies for 3 seconds' },
+        { id: 'vortex',    name: 'Death Vortex', icon: '🌀', key: 'Digit5', unlockAt: 50, cooldown: 15, damage: 2, duration: 3, color: '#e040fb', desc: 'Shuriken storm around player for 3s' },
+    ];
+
+    // ─── Game State ───
+    let player, enemies, shurikens, particles, powerEffects, notifications;
+    let keys = {};
+    let level = 1;
+    let kills = 0;
+    let totalKills = 0;
+    let zombiesSpawned = 0;
+    let waveTimer = 0;
+    let coins = 0;
+    let selectedShuriken = 0;
+    let powerCooldowns = [0, 0, 0, 0, 0];
+    let gameRunning = false;
+    let garageOpen = false;
+    let lastTime = 0;
+
+    // ─── Player ───
+    function createPlayer() {
+        return {
+            x: W / 2, y: H / 2,
+            w: 28, h: 36,
+            speed: 220,
+            hp: 100, maxHp: 100,
+            facing: 1, facingY: 0,
+            throwCooldown: 0, cooldownTime: 0.22,
+            invincible: 0,
+            walkFrame: 0, throwAnim: 0,
+        };
+    }
+
+    // ─── Enemy ───
+    function spawnEnemy() {
+        let side = Math.floor(Math.random() * 4);
+        let x, y;
+        if (side === 0) { x = -30; y = Math.random() * H; }
+        else if (side === 1) { x = W + 30; y = Math.random() * H; }
+        else if (side === 2) { x = Math.random() * W; y = -30; }
+        else { x = Math.random() * W; y = H + 30; }
+        const speedMult = 1 + (level - 1) * 0.12;
+        return {
+            x, y, w: 24, h: 30,
+            speed: (55 + Math.random() * 40) * speedMult,
+            hp: 1 + Math.floor((level - 1) / 2),
+            maxHp: 1 + Math.floor((level - 1) / 2),
+            damage: 6 + level * 2,
+            flash: 0, slow: 0, frozen: 0,
+            alive: true, walkFrame: 0,
+        };
+    }
+
+    function spawnWave() {
+        const toSpawn = Math.min(WAVE_SIZE, ZOMBIES_PER_LEVEL - zombiesSpawned);
+        for (let i = 0; i < toSpawn; i++) enemies.push(spawnEnemy());
+        zombiesSpawned += toSpawn;
+    }
+
+    function throwShuriken() {
+        if (player.throwCooldown > 0) return;
+        const type = SHURIKEN_TYPES[selectedShuriken];
+        let dirX = player.facing, dirY = player.facingY;
+        const len = Math.sqrt(dirX * dirX + dirY * dirY);
+        if (len > 0) { dirX /= len; dirY /= len; }
+        shurikens.push({
+            x: player.x + dirX * 15, y: player.y + dirY * 10,
+            vx: dirX * type.speed, vy: dirY * type.speed,
+            size: type.size, color: type.color, trailColor: type.trailColor,
+            damage: type.damage, spin: 0, spinSpeed: type.spinSpeed,
+            pierce: type.id === 'shadow', slow: type.id === 'ice' ? 0.4 : 0,
+            life: 2.0, hitSet: new Set(),
+        });
+        player.throwCooldown = player.cooldownTime;
+        player.throwAnim = 0.15;
+    }
+
+    function addNotification(text, color) {
+        notifications.push({ text, color, timer: 2.5, y: H / 2 - 60 });
+    }
+
+    function initLevel() {
+        kills = 0;
+        zombiesSpawned = 0;
+        waveTimer = 0;
+        player = createPlayer();
+        enemies = [];
+        shurikens = [];
+        particles = [];
+        powerEffects = [];
+        notifications = notifications || [];
+        spawnWave();
+        updateUI();
+    }
+
+    function updateUI() {
+        hpDisplay.textContent = '❤️ ' + Math.max(0, Math.ceil(player.hp));
+        ammoDisplay.textContent = SHURIKEN_TYPES[selectedShuriken].icon + ' ∞';
+        coinDisplay.textContent = '🪙 ' + coins;
+        levelDisplay.textContent = 'Level ' + level;
+        killDisplay.textContent = 'Kills: ' + kills + ' / ' + ZOMBIES_PER_LEVEL;
+        // Sync sidebar
+        const se = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+        se('sideHp', Math.max(0, Math.ceil(player.hp)));
+        se('sideCoins', coins);
+        se('sideLevel', level);
+        se('sideKills', kills + ' / ' + ZOMBIES_PER_LEVEL);
+        se('sideWeapon', SHURIKEN_TYPES[selectedShuriken].name);
+    }
+
+    // ─── Power Activation ───
+    function activatePower(index) {
+        const pow = POWERS[index];
+        if (totalKills < pow.unlockAt) return;
+        if (powerCooldowns[index] > 0) return;
+
+        powerCooldowns[index] = pow.cooldown;
+
+        if (pow.id === 'shockwave') {
+            powerEffects.push({ type: 'shockwave', x: player.x, y: player.y, radius: 0, maxRadius: pow.radius, timer: 0.5, damage: pow.damage, hit: new Set() });
+            spawnParticles(player.x, player.y, pow.color, 20);
+        }
+        else if (pow.id === 'meteor') {
+            for (let i = 0; i < 8; i++) {
+                const tx = 60 + Math.random() * (W - 120);
+                const ty = 60 + Math.random() * (H - 120);
+                powerEffects.push({ type: 'meteor', x: tx, y: -40 - i * 30, targetX: tx, targetY: ty, timer: 0.4 + i * 0.15, damage: pow.damage, exploded: false });
+            }
+        }
+        else if (pow.id === 'lightning') {
+            const alive = enemies.filter(e => e.alive);
+            const targets = [];
+            if (alive.length > 0) {
+                // Pick closest enemy first, then chain to nearby
+                alive.sort((a, b) => {
+                    const da = Math.hypot(a.x - player.x, a.y - player.y);
+                    const db = Math.hypot(b.x - player.x, b.y - player.y);
+                    return da - db;
+                });
+                let last = { x: player.x, y: player.y };
+                const used = new Set();
+                for (let i = 0; i < Math.min(5, alive.length); i++) {
+                    let best = null, bestDist = Infinity;
+                    for (const e of alive) {
+                        if (used.has(e)) continue;
+                        const d = Math.hypot(e.x - last.x, e.y - last.y);
+                        if (d < bestDist) { bestDist = d; best = e; }
+                    }
+                    if (best) {
+                        targets.push(best);
+                        used.add(best);
+                        last = best;
+                    }
+                }
+            }
+            powerEffects.push({ type: 'lightning', targets, timer: 0.6, damage: pow.damage, hit: false });
+        }
+        else if (pow.id === 'freeze') {
+            for (const e of enemies) {
+                if (e.alive) e.frozen = 3.0;
+            }
+            powerEffects.push({ type: 'freeze', timer: 0.8 });
+            spawnParticles(W / 2, H / 2, '#4fc3f7', 30);
+        }
+        else if (pow.id === 'vortex') {
+            powerEffects.push({ type: 'vortex', timer: pow.duration, angle: 0, damage: pow.damage, hitTimer: 0 });
+        }
+    }
+
+    // ─── Input ───
+    window.addEventListener('keydown', e => {
+        keys[e.code] = true;
+        if (e.code === 'Space') {
+            e.preventDefault();
+            if (gameRunning) throwShuriken();
+        }
+        if (gameRunning) {
+            for (let i = 0; i < POWERS.length; i++) {
+                if (e.code === POWERS[i].key) activatePower(i);
+            }
+        }
+        if (e.code === 'KeyG' && !gameRunning && !garageOpen) openGarage();
+    });
+    window.addEventListener('keyup', e => { keys[e.code] = false; });
+
+    // ─── Particles ───
+    function spawnParticles(x, y, color, count) {
+        for (let i = 0; i < count; i++) {
+            particles.push({
+                x, y,
+                vx: (Math.random() - 0.5) * 200,
+                vy: (Math.random() - 0.5) * 200,
+                life: 0.3 + Math.random() * 0.4,
+                maxLife: 0.5,
+                size: 2 + Math.random() * 4,
+                color
+            });
+        }
+    }
+
+    // ─── Drawing ───
+    function drawShurikenProj(s) {
+        ctx.save();
+        ctx.translate(s.x, s.y);
+        ctx.rotate(s.spin);
+        ctx.fillStyle = s.color;
+        ctx.beginPath();
+        for (let i = 0; i < 4; i++) {
+            const a = (i / 4) * Math.PI * 2;
+            const ox = Math.cos(a) * s.size, oy = Math.sin(a) * s.size;
+            const ma = a + Math.PI / 4;
+            const ix = Math.cos(ma) * s.size * 0.35, iy = Math.sin(ma) * s.size * 0.35;
+            if (i === 0) ctx.moveTo(ox, oy); else ctx.lineTo(ox, oy);
+            ctx.lineTo(ix, iy);
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = '#333';
+        ctx.beginPath();
+        ctx.arc(0, 0, s.size * 0.18, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+        ctx.globalAlpha = 0.3;
+        ctx.fillStyle = s.trailColor;
+        ctx.beginPath();
+        ctx.arc(s.x - s.vx * 0.02, s.y - s.vy * 0.02, s.size * 0.7, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+    }
+
+    function drawBoy(p) {
+        const f = p.facing;
+        const bobble = Math.sin(p.walkFrame * 8) * 2;
+        ctx.save();
+        ctx.translate(p.x, p.y + bobble);
+        if (p.invincible > 0 && Math.floor(p.invincible * 10) % 2 === 0) ctx.globalAlpha = 0.4;
+        ctx.fillStyle = '#263238';
+        ctx.fillRect(-10, -4, 20, 22);
+        ctx.fillStyle = '#e94560';
+        ctx.fillRect(-10, 8, 20, 3);
+        ctx.fillStyle = '#ffcc80';
+        ctx.beginPath(); ctx.arc(0, -12, 11, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#37474f';
+        ctx.fillRect(-11, -16, 22, 6);
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(f === 1 ? 2 : -6, -14, 3, 3);
+        ctx.fillStyle = '#e94560';
+        ctx.fillRect(-12, -18, 24, 3);
+        ctx.fillStyle = '#c62828';
+        ctx.fillRect(f === 1 ? -14 : 10, -18, 5, 8);
+        const legOffset = Math.sin(p.walkFrame * 10) * 4;
+        ctx.fillStyle = '#263238';
+        ctx.fillRect(-8, 18, 6, 12 + legOffset);
+        ctx.fillRect(2, 18, 6, 12 - legOffset);
+        if (p.throwAnim > 0) {
+            ctx.save();
+            ctx.translate(f * 12, 2);
+            ctx.rotate(f * -1.2);
+            ctx.fillStyle = '#ffcc80';
+            ctx.fillRect(-3, -12, 6, 14);
+            ctx.restore();
+        } else {
+            ctx.fillStyle = '#ffcc80';
+            ctx.fillRect(f * 10, 0, 6, 10);
+        }
+        ctx.fillStyle = SHURIKEN_TYPES[selectedShuriken].color;
+        ctx.save();
+        ctx.translate(-f * 8, 9);
+        ctx.rotate(Math.PI / 4);
+        ctx.fillRect(-3, -3, 6, 6);
+        ctx.restore();
+        ctx.restore();
+    }
+
+    function drawEnemy(e) {
+        const bobble = e.frozen > 0 ? 0 : Math.sin(e.walkFrame * 6) * 1.5;
+        ctx.save();
+        ctx.translate(e.x, e.y + bobble);
+        if (e.flash > 0) ctx.globalAlpha = 0.6;
+
+        // Zombie body — greenish tattered look
+        const bodyColor = e.frozen > 0 ? '#4fc3f7' : (e.flash > 0 ? '#ff5252' : (e.slow > 0 ? '#64b5f6' : '#558b2f'));
+        ctx.fillStyle = bodyColor;
+        ctx.fillRect(-10, -2, 20, 20);
+
+        // Tattered shirt edges
+        if (e.frozen <= 0) {
+            ctx.fillStyle = '#33691e';
+            ctx.fillRect(-12, 14, 4, 6);
+            ctx.fillRect(8, 12, 4, 8);
+        }
+
+        // Head — pale green zombie
+        ctx.fillStyle = e.frozen > 0 ? '#b3e5fc' : '#a5d6a7';
+        ctx.beginPath(); ctx.arc(0, -10, 10, 0, Math.PI * 2); ctx.fill();
+
+        // Zombie eyes — red glowing
+        ctx.fillStyle = '#ff1744';
+        ctx.fillRect(-6, -13, 4, 5);
+        ctx.fillRect(2, -13, 4, 5);
+        // Pupils
+        ctx.fillStyle = '#b71c1c';
+        ctx.fillRect(-5, -12, 2, 3);
+        ctx.fillRect(3, -12, 2, 3);
+
+        // Mouth — jagged
+        ctx.fillStyle = '#1b5e20';
+        ctx.fillRect(-4, -3, 8, 2);
+        ctx.fillStyle = '#fff';
+        ctx.fillRect(-3, -3, 2, 2);
+        ctx.fillRect(1, -3, 2, 2);
+
+        // Arms reaching out
+        ctx.fillStyle = e.frozen > 0 ? '#b3e5fc' : '#81c784';
+        ctx.fillRect(-16, 0, 7, 4);
+        ctx.fillRect(9, 2, 7, 4);
+
+        // Legs
+        const legOff = e.frozen > 0 ? 0 : Math.sin(e.walkFrame * 8) * 3;
+        ctx.fillStyle = '#4e342e';
+        ctx.fillRect(-8, 18, 6, 10 + legOff);
+        ctx.fillRect(2, 18, 6, 10 - legOff);
+
+        // Frozen ice overlay
+        if (e.frozen > 0) {
+            ctx.globalAlpha = 0.3;
+            ctx.fillStyle = '#e1f5fe';
+            ctx.fillRect(-14, -22, 28, 52);
+            ctx.globalAlpha = 1;
+        }
+
+        // HP bar
+        if (e.maxHp > 1) {
+            ctx.fillStyle = '#333';
+            ctx.fillRect(-14, -28, 28, 4);
+            ctx.fillStyle = '#4caf50';
+            ctx.fillRect(-14, -28, 28 * (e.hp / e.maxHp), 4);
+        }
+        ctx.restore();
+    }
+
+    // ─── Draw Power Effects ───
+    function drawPowerEffects() {
+        for (const fx of powerEffects) {
+            if (fx.type === 'shockwave') {
+                const progress = 1 - fx.timer / 0.5;
+                const r = progress * fx.maxRadius;
+                ctx.save();
+                ctx.globalAlpha = 1 - progress;
+                ctx.strokeStyle = '#ff9800';
+                ctx.lineWidth = 6 - progress * 4;
+                ctx.beginPath();
+                ctx.arc(fx.x, fx.y, r, 0, Math.PI * 2);
+                ctx.stroke();
+                // Inner glow
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(fx.x, fx.y, r * 0.8, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.restore();
+            }
+            else if (fx.type === 'meteor' && !fx.exploded) {
+                // Falling fireball
+                const progress = Math.max(0, 1 - fx.timer / 0.6);
+                const my = -40 + (fx.targetY + 40) * progress;
+                ctx.save();
+                // Glow
+                ctx.globalAlpha = 0.5;
+                ctx.fillStyle = '#ff5722';
+                ctx.beginPath();
+                ctx.arc(fx.targetX, my, 14, 0, Math.PI * 2);
+                ctx.fill();
+                // Core
+                ctx.globalAlpha = 1;
+                ctx.fillStyle = '#ffeb3b';
+                ctx.beginPath();
+                ctx.arc(fx.targetX, my, 8, 0, Math.PI * 2);
+                ctx.fill();
+                // Trail
+                ctx.globalAlpha = 0.4;
+                ctx.fillStyle = '#ff9800';
+                ctx.beginPath();
+                ctx.arc(fx.targetX, my - 15, 6, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(fx.targetX, my - 28, 4, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+            else if (fx.type === 'meteor' && fx.exploded && fx.explodeTimer > 0) {
+                const p = fx.explodeTimer / 0.4;
+                ctx.save();
+                ctx.globalAlpha = p * 0.6;
+                ctx.fillStyle = '#ff5722';
+                ctx.beginPath();
+                ctx.arc(fx.targetX, fx.targetY, 40 * (1 - p) + 20, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+            else if (fx.type === 'lightning') {
+                if (fx.timer > 0 && fx.targets.length > 0) {
+                    ctx.save();
+                    ctx.globalAlpha = Math.min(1, fx.timer * 3);
+                    ctx.strokeStyle = '#ffeb3b';
+                    ctx.lineWidth = 3;
+                    ctx.shadowColor = '#ffeb3b';
+                    ctx.shadowBlur = 15;
+                    let prev = { x: player.x, y: player.y };
+                    for (const t of fx.targets) {
+                        // Jagged lightning line
+                        ctx.beginPath();
+                        ctx.moveTo(prev.x, prev.y);
+                        const mx = (prev.x + t.x) / 2 + (Math.random() - 0.5) * 30;
+                        const my = (prev.y + t.y) / 2 + (Math.random() - 0.5) * 30;
+                        ctx.lineTo(mx, my);
+                        ctx.lineTo(t.x, t.y);
+                        ctx.stroke();
+                        // Hit flash
+                        ctx.fillStyle = '#fff';
+                        ctx.beginPath();
+                        ctx.arc(t.x, t.y, 10, 0, Math.PI * 2);
+                        ctx.fill();
+                        prev = t;
+                    }
+                    ctx.shadowBlur = 0;
+                    ctx.restore();
+                }
+            }
+            else if (fx.type === 'freeze') {
+                const p = fx.timer / 0.8;
+                ctx.save();
+                ctx.globalAlpha = p * 0.3;
+                ctx.fillStyle = '#b3e5fc';
+                ctx.fillRect(0, 0, W, H);
+                ctx.restore();
+            }
+            else if (fx.type === 'vortex') {
+                ctx.save();
+                ctx.translate(player.x, player.y);
+                const count = 8;
+                for (let i = 0; i < count; i++) {
+                    const a = fx.angle + (i / count) * Math.PI * 2;
+                    const r = 55;
+                    const sx = Math.cos(a) * r;
+                    const sy = Math.sin(a) * r;
+                    ctx.save();
+                    ctx.translate(sx, sy);
+                    ctx.rotate(a * 3);
+                    ctx.fillStyle = '#e040fb';
+                    ctx.beginPath();
+                    for (let j = 0; j < 4; j++) {
+                        const ba = (j / 4) * Math.PI * 2;
+                        const bx = Math.cos(ba) * 6, by = Math.sin(ba) * 6;
+                        const ma2 = ba + Math.PI / 4;
+                        const ix = Math.cos(ma2) * 2, iy = Math.sin(ma2) * 2;
+                        if (j === 0) ctx.moveTo(bx, by); else ctx.lineTo(bx, by);
+                        ctx.lineTo(ix, iy);
+                    }
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.restore();
+                }
+                // Glow ring
+                ctx.globalAlpha = 0.2;
+                ctx.strokeStyle = '#e040fb';
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.arc(0, 0, 60, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.restore();
+            }
+        }
+    }
+
+    // ─── Power HUD ───
+    function drawPowerHUD() {
+        const barY = H - 42;
+        const barX = W / 2 - POWERS.length * 40;
+        for (let i = 0; i < POWERS.length; i++) {
+            const pow = POWERS[i];
+            const unlocked = totalKills >= pow.unlockAt;
+            const x = barX + i * 80;
+
+            ctx.save();
+            // Background
+            ctx.fillStyle = unlocked ? '#1e1e3a' : '#111';
+            ctx.globalAlpha = unlocked ? 0.85 : 0.4;
+            ctx.beginPath();
+            ctx.roundRect(x, barY, 72, 36, 6);
+            ctx.fill();
+
+            // Cooldown overlay
+            if (unlocked && powerCooldowns[i] > 0) {
+                const cdPct = powerCooldowns[i] / pow.cooldown;
+                ctx.fillStyle = '#000';
+                ctx.globalAlpha = 0.5;
+                ctx.fillRect(x, barY, 72 * cdPct, 36);
+            }
+
+            ctx.globalAlpha = unlocked ? 1 : 0.3;
+
+            // Icon
+            ctx.font = '18px Segoe UI Emoji';
+            ctx.textAlign = 'left';
+            ctx.fillStyle = '#fff';
+            ctx.fillText(pow.icon, x + 4, barY + 24);
+
+            // Key number
+            ctx.font = 'bold 11px Segoe UI';
+            ctx.fillStyle = unlocked ? pow.color : '#555';
+            ctx.fillText((i + 1).toString(), x + 28, barY + 14);
+
+            // Cooldown number
+            if (unlocked && powerCooldowns[i] > 0) {
+                ctx.font = 'bold 13px Segoe UI';
+                ctx.fillStyle = '#ff9800';
+                ctx.fillText(Math.ceil(powerCooldowns[i]) + 's', x + 40, barY + 26);
+            } else if (unlocked) {
+                ctx.font = '10px Segoe UI';
+                ctx.fillStyle = '#4caf50';
+                ctx.fillText('READY', x + 30, barY + 26);
+            } else {
+                ctx.font = '10px Segoe UI';
+                ctx.fillStyle = '#777';
+                ctx.fillText(pow.unlockAt + ' kills', x + 26, barY + 26);
+            }
+
+            ctx.restore();
+        }
+
+        // Total kills display
+        ctx.save();
+        ctx.font = 'bold 13px Segoe UI';
+        ctx.fillStyle = '#ffd54f';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('Total Kills: ' + totalKills, W / 2, barY - 10);
+        ctx.restore();
+    }
+
+    // ─── Notifications ───
+    function drawNotifications() {
+        for (const n of notifications) {
+            ctx.save();
+            ctx.globalAlpha = Math.min(1, n.timer);
+            ctx.font = 'bold 22px Segoe UI';
+            ctx.textAlign = 'center';
+            ctx.fillStyle = n.color;
+            ctx.fillText(n.text, W / 2, n.y);
+            ctx.restore();
+        }
+    }
+
+    function drawBackground() {
+        const grad = ctx.createLinearGradient(0, 0, 0, H);
+        grad.addColorStop(0, '#1a237e');
+        grad.addColorStop(0.6, '#283593');
+        grad.addColorStop(1, '#2e7d32');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, W, H);
+        ctx.fillStyle = '#388e3c';
+        ctx.fillRect(0, H * 0.75, W, H * 0.25);
+        ctx.fillStyle = '#43a047';
+        for (let i = 0; i < W; i += 30) {
+            const h = 5 + Math.sin(i * 0.7) * 4;
+            ctx.fillRect(i, H * 0.75 - h, 3, h);
+        }
+        ctx.fillStyle = '#fff';
+        for (let i = 0; i < 50; i++) {
+            const sx = (i * 137.5 + 50) % W;
+            const sy = (i * 91.3 + 20) % (H * 0.55);
+            const size = 1 + (i % 3);
+            ctx.globalAlpha = 0.4 + (i % 5) * 0.12;
+            ctx.fillRect(sx, sy, size, size);
+        }
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = '#fff9c4';
+        ctx.beginPath(); ctx.arc(780, 70, 30, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#1a237e';
+        ctx.beginPath(); ctx.arc(790, 62, 26, 0, Math.PI * 2); ctx.fill();
+        for (let i = 0; i < 5; i++) {
+            const tx = 80 + i * 200, ty = H * 0.75;
+            ctx.fillStyle = '#5d4037';
+            ctx.fillRect(tx - 5, ty - 60, 10, 60);
+            ctx.fillStyle = '#1b5e20';
+            ctx.beginPath();
+            ctx.moveTo(tx - 30, ty - 40); ctx.lineTo(tx, ty - 100); ctx.lineTo(tx + 30, ty - 40);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.moveTo(tx - 22, ty - 65); ctx.lineTo(tx, ty - 110); ctx.lineTo(tx + 22, ty - 65);
+            ctx.fill();
+        }
+    }
+
+    // ─── Collision ───
+    function rectsOverlap(a, b) {
+        return Math.abs(a.x - b.x) < (a.w + b.w) / 2 && Math.abs(a.y - b.y) < (a.h + b.h) / 2;
+    }
+    function shurikenHitsEnemy(s, e) {
+        return Math.hypot(s.x - e.x, s.y - e.y) < s.size + 14;
+    }
+
+    // ─── Kill enemy helper ───
+    function killEnemy(e) {
+        e.alive = false;
+        kills++;
+        totalKills++;
+        coins += 5 + level;
+        spawnParticles(e.x, e.y, '#ffeb3b', 15);
+
+        // Check power unlocks
+        for (let i = 0; i < POWERS.length; i++) {
+            if (totalKills === POWERS[i].unlockAt) {
+                addNotification('🔓 ' + POWERS[i].icon + ' ' + POWERS[i].name + ' UNLOCKED! (Press ' + (i + 1) + ')', POWERS[i].color);
+            }
+        }
+        updateUI();
+    }
+
+    // ─── Update ───
+    function update(dt) {
+        // Player movement
+        let dx = 0, dy = 0;
+        if (keys['KeyA'] || keys['ArrowLeft']) dx -= 1;
+        if (keys['KeyD'] || keys['ArrowRight']) dx += 1;
+        if (keys['KeyW'] || keys['ArrowUp']) dy -= 1;
+        if (keys['KeyS'] || keys['ArrowDown']) dy += 1;
+        if (dx !== 0 || dy !== 0) {
+            const len = Math.sqrt(dx * dx + dy * dy);
+            dx /= len; dy /= len;
+            player.x += dx * player.speed * dt;
+            player.y += dy * player.speed * dt;
+            if (dx !== 0) player.facing = dx > 0 ? 1 : -1;
+            player.facingY = dy;
+            player.walkFrame += dt;
+        }
+        player.x = Math.max(20, Math.min(W - 20, player.x));
+        player.y = Math.max(20, Math.min(H - 20, player.y));
+
+        if (player.throwCooldown > 0) player.throwCooldown -= dt;
+        if (player.throwAnim > 0) player.throwAnim -= dt;
+        if (player.invincible > 0) player.invincible -= dt;
+
+        // Power cooldowns
+        for (let i = 0; i < powerCooldowns.length; i++) {
+            if (powerCooldowns[i] > 0) powerCooldowns[i] = Math.max(0, powerCooldowns[i] - dt);
+        }
+
+        // Wave spawning
+        const aliveCount = enemies.filter(e => e.alive).length;
+        if (zombiesSpawned < ZOMBIES_PER_LEVEL && aliveCount <= 3) {
+            waveTimer += dt;
+            if (waveTimer >= 1.5) {
+                waveTimer = 0;
+                spawnWave();
+            }
+        }
+
+        // Shurikens
+        for (let i = shurikens.length - 1; i >= 0; i--) {
+            const s = shurikens[i];
+            s.x += s.vx * dt;
+            s.y += s.vy * dt;
+            s.spin += s.spinSpeed * dt;
+            s.life -= dt;
+            if (s.life <= 0 || s.x < -20 || s.x > W + 20 || s.y < -20 || s.y > H + 20) {
+                shurikens.splice(i, 1);
+                continue;
+            }
+            let hitSomething = false;
+            for (const e of enemies) {
+                if (!e.alive || s.hitSet.has(e)) continue;
+                if (shurikenHitsEnemy(s, e)) {
+                    e.hp -= s.damage;
+                    e.flash = 0.2;
+                    if (s.slow > 0) e.slow = 1.5;
+                    s.hitSet.add(e);
+                    spawnParticles(e.x, e.y, s.trailColor, 6);
+                    if (e.hp <= 0) killEnemy(e);
+                    if (!s.pierce) { hitSomething = true; break; }
+                }
+            }
+            if (hitSomething) shurikens.splice(i, 1);
+        }
+
+        // Power effects update
+        for (let i = powerEffects.length - 1; i >= 0; i--) {
+            const fx = powerEffects[i];
+            fx.timer -= dt;
+
+            if (fx.type === 'shockwave') {
+                const progress = 1 - fx.timer / 0.5;
+                const r = progress * fx.maxRadius;
+                for (const e of enemies) {
+                    if (!e.alive || fx.hit.has(e)) continue;
+                    const d = Math.hypot(e.x - fx.x, e.y - fx.y);
+                    if (d < r + 15) {
+                        e.hp -= fx.damage;
+                        e.flash = 0.3;
+                        fx.hit.add(e);
+                        // Knockback
+                        const angle = Math.atan2(e.y - fx.y, e.x - fx.x);
+                        e.x += Math.cos(angle) * 80;
+                        e.y += Math.sin(angle) * 80;
+                        spawnParticles(e.x, e.y, '#ff9800', 5);
+                        if (e.hp <= 0) killEnemy(e);
+                    }
+                }
+                if (fx.timer <= 0) powerEffects.splice(i, 1);
+            }
+            else if (fx.type === 'meteor') {
+                if (fx.timer <= 0 && !fx.exploded) {
+                    fx.exploded = true;
+                    fx.explodeTimer = 0.4;
+                    spawnParticles(fx.targetX, fx.targetY, '#ff5722', 12);
+                    // Damage enemies in blast radius
+                    for (const e of enemies) {
+                        if (!e.alive) continue;
+                        if (Math.hypot(e.x - fx.targetX, e.y - fx.targetY) < 50) {
+                            e.hp -= fx.damage;
+                            e.flash = 0.3;
+                            spawnParticles(e.x, e.y, '#f44336', 5);
+                            if (e.hp <= 0) killEnemy(e);
+                        }
+                    }
+                }
+                if (fx.exploded) {
+                    fx.explodeTimer -= dt;
+                    if (fx.explodeTimer <= 0) powerEffects.splice(i, 1);
+                }
+            }
+            else if (fx.type === 'lightning') {
+                if (!fx.hit && fx.targets.length > 0) {
+                    fx.hit = true;
+                    for (const t of fx.targets) {
+                        if (!t.alive) continue;
+                        t.hp -= fx.damage;
+                        t.flash = 0.4;
+                        spawnParticles(t.x, t.y, '#ffeb3b', 8);
+                        if (t.hp <= 0) killEnemy(t);
+                    }
+                }
+                if (fx.timer <= 0) powerEffects.splice(i, 1);
+            }
+            else if (fx.type === 'freeze') {
+                if (fx.timer <= 0) powerEffects.splice(i, 1);
+            }
+            else if (fx.type === 'vortex') {
+                fx.angle += dt * 8;
+                fx.hitTimer -= dt;
+                if (fx.hitTimer <= 0) {
+                    fx.hitTimer = 0.3;
+                    for (const e of enemies) {
+                        if (!e.alive) continue;
+                        if (Math.hypot(e.x - player.x, e.y - player.y) < 70) {
+                            e.hp -= fx.damage;
+                            e.flash = 0.15;
+                            spawnParticles(e.x, e.y, '#e040fb', 4);
+                            if (e.hp <= 0) killEnemy(e);
+                        }
+                    }
+                }
+                if (fx.timer <= 0) powerEffects.splice(i, 1);
+            }
+        }
+
+        // Enemies
+        for (const e of enemies) {
+            if (!e.alive) continue;
+            if (e.frozen > 0) { e.frozen -= dt; continue; }
+            const edx = player.x - e.x, edy = player.y - e.y;
+            const elen = Math.hypot(edx, edy);
+            const speedMod = e.slow > 0 ? 0.35 : 1;
+            if (elen > 5) {
+                e.x += (edx / elen) * e.speed * speedMod * dt;
+                e.y += (edy / elen) * e.speed * speedMod * dt;
+                e.walkFrame += dt * speedMod;
+            }
+            if (e.flash > 0) e.flash -= dt;
+            if (e.slow > 0) e.slow -= dt;
+            if (e.alive && player.invincible <= 0 && rectsOverlap(player, e)) {
+                player.hp -= e.damage;
+                player.invincible = 0.8;
+                spawnParticles(player.x, player.y, '#e94560', 8);
+                updateUI();
+                if (player.hp <= 0) { gameOver(); return; }
+            }
+        }
+        enemies = enemies.filter(e => e.alive);
+
+        // Particles
+        for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            p.x += p.vx * dt; p.y += p.vy * dt; p.life -= dt;
+            if (p.life <= 0) particles.splice(i, 1);
+        }
+
+        // Notifications
+        for (let i = notifications.length - 1; i >= 0; i--) {
+            notifications[i].timer -= dt;
+            notifications[i].y -= dt * 15;
+            if (notifications[i].timer <= 0) notifications.splice(i, 1);
+        }
+
+        if (kills >= ZOMBIES_PER_LEVEL) levelComplete();
+    }
+
+    // ─── Render ───
+    function render() {
+        ctx.clearRect(0, 0, W, H);
+        drawBackground();
+        enemies.forEach(e => { if (e.alive) drawEnemy(e); });
+        drawPowerEffects();
+        shurikens.forEach(drawShurikenProj);
+        drawBoy(player);
+        particles.forEach(p => {
+            ctx.globalAlpha = p.life / p.maxLife;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size);
+        });
+        ctx.globalAlpha = 1;
+        drawPowerHUD();
+        drawNotifications();
+    }
+
+    // ─── Game Loop ───
+    function gameLoop(timestamp) {
+        if (!gameRunning) return;
+        const dt = Math.min((timestamp - lastTime) / 1000, 0.05);
+        lastTime = timestamp;
+        update(dt);
+        render();
+        requestAnimationFrame(gameLoop);
+    }
+
+    // ─── Garage ───
+    function openGarage() {
+        garageOpen = true;
+        overlay.classList.add('hidden');
+        garageEl.classList.remove('hidden');
+        renderGarage();
+    }
+    function renderGarage() {
+        let html = `<h1>🏠 Shuriken Garage</h1>`;
+        html += `<div class="coins-display">🪙 ${coins} coins</div>`;
+        html += `<div class="shuriken-grid">`;
+        SHURIKEN_TYPES.forEach((t, i) => {
+            const sel = i === selectedShuriken ? ' selected' : '';
+            const lock = !t.owned ? ' locked' : '';
+            html += `<div class="shuriken-card${sel}${lock}" onclick="garageSelect(${i})">`;
+            html += `<div class="icon">${t.icon}</div>`;
+            html += `<div class="name">${t.name}</div>`;
+            html += `<div class="stats">DMG: ${t.damage} | SPD: ${Math.round(t.speed / 50)}</div>`;
+            html += `<div class="stats">${t.desc}</div>`;
+            html += t.owned ? `<div class="owned">✓ OWNED</div>` : `<div class="price">🪙 ${t.price}</div>`;
+            html += `</div>`;
+        });
+        html += `</div><div class="garage-btns">`;
+        const selType = SHURIKEN_TYPES[selectedShuriken];
+        if (!selType.owned) {
+            const canBuy = coins >= selType.price;
+            html += `<button class="buy-btn" ${canBuy ? '' : 'disabled'} onclick="buyShuriken(${selectedShuriken})">BUY — 🪙 ${selType.price}</button>`;
+        }
+        html += `<button class="back-btn" onclick="closeGarage()">BACK</button></div>`;
+        garageEl.innerHTML = html;
+    }
+    window.garageSelect = function(i) { selectedShuriken = i; renderGarage(); };
+    window.buyShuriken = function(i) {
+        const t = SHURIKEN_TYPES[i];
+        if (t.owned || coins < t.price) return;
+        coins -= t.price; t.owned = true; selectedShuriken = i; renderGarage();
+    };
+    window.closeGarage = function() {
+        garageOpen = false;
+        garageEl.classList.add('hidden');
+        if (!SHURIKEN_TYPES[selectedShuriken].owned) selectedShuriken = SHURIKEN_TYPES.findIndex(t => t.owned);
+        overlay.classList.remove('hidden');
+    };
+
+    // ─── State Management ───
+    function startGame() {
+        level = 1; coins = 0; totalKills = 0;
+        powerCooldowns = [0, 0, 0, 0, 0];
+        notifications = [];
+        gameRunning = true;
+        overlay.classList.add('hidden');
+        initLevel();
+        lastTime = performance.now();
+        requestAnimationFrame(gameLoop);
+    }
+
+    function levelComplete() {
+        gameRunning = false;
+        level++;
+        // Show unlocked powers in level complete screen
+        let powText = '';
+        for (let i = 0; i < POWERS.length; i++) {
+            if (totalKills >= POWERS[i].unlockAt) {
+                powText += `<span style="color:${POWERS[i].color}">${POWERS[i].icon} ${POWERS[i].name}</span> `;
+            }
+        }
+        overlay.classList.remove('hidden');
+        overlay.innerHTML = `
+            <h1>🎉 Level ${level - 1} Complete!</h1>
+            <h2>🪙 ${coins} coins | Total Kills: ${totalKills}</h2>
+            ${powText ? '<p style="margin-top:6px">Powers: ' + powText + '</p>' : ''}
+            <p>Enemies get tougher each level!</p>
+            <p style="color:#ffd54f; margin-top:8px;">Press G to open the Shuriken Garage!</p>
+            <button class="start-btn" onclick="nextLevel()">NEXT LEVEL</button>
+        `;
+    }
+    window.nextLevel = function() {
+        if (!SHURIKEN_TYPES[selectedShuriken].owned) selectedShuriken = SHURIKEN_TYPES.findIndex(t => t.owned);
+        gameRunning = true;
+        overlay.classList.add('hidden');
+        initLevel();
+        lastTime = performance.now();
+        requestAnimationFrame(gameLoop);
+    };
+    function gameOver() {
+        gameRunning = false;
+        overlay.classList.remove('hidden');
+        overlay.innerHTML = `
+            <h1>💀 Game Over</h1>
+            <h2>Level ${level} | Total Kills: ${totalKills}</h2>
+            <p>🪙 Coins: ${coins}</p>
+            <button class="start-btn" onclick="restartGame()">TRY AGAIN</button>
+        `;
+    }
+    window.restartGame = function() {
+        level = 1; coins = 0; totalKills = 0;
+        powerCooldowns = [0, 0, 0, 0, 0];
+        notifications = [];
+        SHURIKEN_TYPES.forEach((t, i) => { t.owned = i === 0; });
+        selectedShuriken = 0;
+        gameRunning = true;
+        overlay.classList.add('hidden');
+        initLevel();
+        lastTime = performance.now();
+        requestAnimationFrame(gameLoop);
+    };
+    startBtn.addEventListener('click', startGame);
+    </script>
+</body>
+</html>

@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "id": "kids-can-make-games-with-ai",
+      "title": "Your Kid Can Build a Game with AI — Here's How",
+      "excerpt": "A practical parent's guide: explain HTML, Git, and VS Code to your kid, then build a real game together in 30 minutes using AI.",
+      "url": "/blog/kids-can-make-games-with-ai.html",
+      "date": "2026-05-29",
+      "displayDate": "May 29, 2026",
+      "emoji": "🧠",
+      "category": "Digital Parenting",
+      "categoryClass": "digital",
+      "readTime": "12 min read",
+      "featured": true,
+      "order": 1
+    },
+    {
       "id": "how-to-teach-fractions-to-kids",
       "title": "How to Teach Fractions to Kids (Without the Tears)",
       "excerpt": "Teaching fractions to kids doesn't have to be hard. A step-by-step parent's guide using food, LEGO, and everyday life to make fractions click.",
@@ -12,7 +26,7 @@
       "categoryClass": "guide",
       "readTime": "9 min read",
       "featured": true,
-      "order": 1
+      "order": 2
     },
     {
       "id": "how-much-screen-time-is-actually-ok-what-research-says",
@@ -26,7 +40,7 @@
       "categoryClass": "digital",
       "readTime": "8 min read",
       "featured": true,
-      "order": 2
+      "order": 3
     },
     {
       "id": "why-gamified-learning-works-better-than-worksheets",
@@ -40,7 +54,7 @@
       "categoryClass": "guide",
       "readTime": "5 min read",
       "featured": true,
-      "order": 3
+      "order": 4
     },
     {
       "id": "why-kids-struggle-with-word-problems-and-how-to-help",
@@ -54,7 +68,7 @@
       "categoryClass": "guide",
       "readTime": "5 min read",
       "featured": false,
-      "order": 4
+      "order": 5
     },
     {
       "id": "is-my-child-behind-in-math-age-by-age-milestones",
@@ -68,7 +82,7 @@
       "categoryClass": "guide",
       "readTime": "4 min read",
       "featured": false,
-      "order": 5
+      "order": 6
     },
     {
       "id": "division-for-kids-explained-simply",
@@ -82,7 +96,7 @@
       "categoryClass": "guide",
       "readTime": "8 min read",
       "featured": false,
-      "order": 6
+      "order": 7
     },
     {
       "id": "how-to-help-a-child-who-hates-math",
@@ -96,7 +110,7 @@
       "categoryClass": "tips",
       "readTime": "9 min read",
       "featured": true,
-      "order": 7
+      "order": 8
     },
     {
       "id": "times-tables-games-online-free",
@@ -110,7 +124,7 @@
       "categoryClass": "resources",
       "readTime": "7 min read",
       "featured": true,
-      "order": 8
+      "order": 9
     },
     {
       "id": "best-math-apps-for-kids",
@@ -124,7 +138,7 @@
       "categoryClass": "reviews",
       "readTime": "10 min read",
       "featured": false,
-      "order": 9
+      "order": 10
     },
     {
       "id": "how-to-teach-a-child-to-tell-time",
@@ -138,7 +152,7 @@
       "categoryClass": "guide",
       "readTime": "8 min read",
       "featured": false,
-      "order": 10
+      "order": 11
     },
     {
       "id": "screen-time-that-actually-helps",
@@ -152,7 +166,7 @@
       "categoryClass": "digital",
       "readTime": "6 min read",
       "featured": false,
-      "order": 11
+      "order": 12
     },
     {
       "id": "5-ways-to-make-math-fun-at-home",
@@ -166,7 +180,7 @@
       "categoryClass": "tips",
       "readTime": "7 min read",
       "featured": false,
-      "order": 12
+      "order": 13
     },
     {
       "id": "why-my-kids-clock-struggle-inspired-an-app",
@@ -180,7 +194,7 @@
       "categoryClass": "story",
       "readTime": "5 min read",
       "featured": false,
-      "order": 13
+      "order": 14
     }
   ]
 }
