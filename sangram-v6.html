@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sangram Keshari Maharana &#8212; Principal PM Lead</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="AI product leader at Microsoft. Ships autonomous agents, retires legacy, builds with AI.">
+  <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    /* ================================================================
+       SANGRAM v6 - Interactive Showcase - Scroll-Triggered Animations
+       Theme 5: Single-column, animated reveals, tilt cards, tag cloud
+       Fonts: Segoe UI (body) + Nunito (headings)
+       ================================================================ */
+    :root {
+      --teal: #00B294;
+      --teal-light: #33CCAD;
+      --teal-dim: rgba(0,178,148,0.15);
+      --teal-subtle: rgba(0,178,148,0.06);
+      --deep-bg: #080d12;
+      --card-bg: rgba(10,18,22,0.75);
+      --glass-border: rgba(0,178,148,0.12);
+      --glass-hover: rgba(0,178,148,0.28);
+      --text-1: #eaf5f3;
+      --text-2: #94c0b8;
+      --text-3: #6a9990;
+      --accent-purple: #c4b5fd;
+      --accent-amber: #fbbf24;
+      --accent-rose: #fb7185;
+      --accent-blue: #60a5fa;
+      --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Nunito', 'Segoe UI', sans-serif;
+      --wrap: 980px;
+    }
+
+    /* -- RESET / BASE -- */
+    body {
+      background: var(--deep-bg) !important;
+      color: var(--text-1) !important;
+      font-family: var(--font-body) !important;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: var(--font-heading) !important; margin: 0; }
+    *, *::before, *::after { box-sizing: border-box; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .skm-reveal { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem; z-index: 1000;
+      padding: 0.5rem 1rem; background: var(--teal); color: #080d12;
+      border-radius: 0 0 0.5rem 0.5rem; font-weight: 700; font-size: 0.85rem;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 0; }
+    :focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+    /* -- SHARED -- */
+    .skm-wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 2rem; }
+    .teal-grad {
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .glass {
+      background: var(--card-bg);
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      border: 1px solid var(--glass-border);
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .glass:hover {
+      border-color: var(--glass-hover);
+      box-shadow: 0 8px 32px rgba(0,178,148,0.1);
+    }
+
+    /* Scroll reveal */
+    .skm-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .skm-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* -- PROGRESS BAR -- */
+    .skm-prog {
+      position: fixed; top: 64px; left: 0; height: 2px; z-index: 99;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      width: 0%; transition: width 0.1s linear;
+    }
+
+    /* ====== 1. HERO ====== */
+    .skm-hero {
+      position: relative;
+      padding: 6rem 0 4rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .skm-hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 700px 500px at 30% 40%, rgba(0,178,148,0.1), transparent),
+        radial-gradient(ellipse 500px 400px at 75% 60%, rgba(196,181,253,0.05), transparent);
+    }
+    .skm-hero-inner { position: relative; z-index: 1; }
+
+    /* Profile photo */
+    .skm-photo-wrap {
+      width: 130px; height: 130px; margin: 0 auto 1.5rem;
+      border-radius: 50%; position: relative;
+    }
+    .skm-photo-wrap::before {
+      content: ''; position: absolute; inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--teal), var(--accent-purple), var(--teal-light), var(--teal));
+      animation: photoSpin 6s linear infinite;
+    }
+    @keyframes photoSpin { to { transform: rotate(360deg); } }
+    .skm-photo {
+      width: 130px; height: 130px; border-radius: 50%;
+      position: relative; z-index: 1;
+      border: 3px solid var(--deep-bg);
+      object-fit: cover;
+      background: linear-gradient(135deg, rgba(0,178,148,0.3), rgba(196,181,253,0.3));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem; font-weight: 900; color: var(--teal);
+      font-family: var(--font-heading);
+    }
+
+    .skm-badge {
+      display: inline-block; padding: 0.3rem 1rem; border-radius: 4px;
+      background: var(--teal-subtle); border: 1px solid rgba(0,178,148,0.2);
+      font-size: 0.8rem; font-weight: 600; color: var(--teal);
+      letter-spacing: 0.08em; margin-bottom: 1rem;
+    }
+    .skm-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 900;
+      line-height: 1.15; margin-bottom: 0.8rem;
+    }
+
+    /* Typewriter */
+    .skm-typewriter {
+      font-size: 1.1rem; color: var(--text-2); max-width: 720px;
+      margin: 0 auto 0.8rem; line-height: 1.7; min-height: 3.4em;
+    }
+    .skm-cursor {
+      display: inline-block; width: 2px; height: 1.1em;
+      background: var(--teal); margin-left: 2px;
+      animation: blink 0.8s step-end infinite;
+      vertical-align: text-bottom;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .skm-interest {
+      font-size: 0.9rem; color: var(--teal); font-weight: 600;
+      margin-bottom: 1.8rem; letter-spacing: 0.02em;
+    }
+
+    /* Hero links */
+    .skm-links { display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap; }
+    .skm-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.6rem 1.3rem; border-radius: 999px; font-weight: 700;
+      font-size: 0.88rem; transition: all 0.3s; text-decoration: none;
+    }
+    .skm-btn-fill { background: var(--teal); color: #080d12; }
+    .skm-btn-fill:hover { background: var(--teal-light); box-shadow: 0 4px 16px rgba(0,178,148,0.3); }
+    .skm-btn-ghost { border: 1.5px solid rgba(0,178,148,0.2); color: var(--text-1); }
+    .skm-btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+    .skm-btn-dl { border-color: var(--teal); color: var(--teal); }
+    .skm-btn-dl:hover { background: var(--teal); color: #080d12; }
+
+    /* ====== 2. COMPETENCY TAG CLOUD ====== */
+    .skm-comp-sec {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid rgba(0,178,148,0.06);
+    }
+    .skm-sec-hd {
+      font-size: 1.35rem; font-weight: 900; margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .skm-cloud {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 0.6rem; max-width: 700px; margin: 0 auto;
+      perspective: 800px;
+    }
+    .skm-cloud-tag {
+      padding: 0.45rem 1rem; border-radius: 999px;
+      font-weight: 600; transition: all 0.3s;
+      cursor: default; position: relative;
+      animation: cloudFloat 3s ease-in-out infinite;
+    }
+    .skm-cloud-tag:nth-child(even) { animation-delay: -1.5s; }
+    .skm-cloud-tag:nth-child(3n) { animation-delay: -0.8s; }
+    @keyframes cloudFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .skm-cloud-tag:hover {
+      transform: translateY(-6px) scale(1.08) !important;
+      box-shadow: 0 6px 20px rgba(0,178,148,0.2);
+    }
+    .ctag-lg { font-size: 1.05rem; background: var(--teal); color: #080d12; }
+    .ctag-md { font-size: 0.88rem; background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(0,178,148,0.2); }
+    .ctag-sm { font-size: 0.78rem; background: rgba(0,178,148,0.06); color: var(--text-2); border: 1px solid rgba(0,178,148,0.1); }
+
+    /* ====== 3. CAREER ARC ====== */
+    .skm-arc-sec {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid rgba(0,178,148,0.06);
+    }
+    .skm-arc {
+      position: relative;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 800px; margin: 0 auto;
+      padding: 2rem 0;
+    }
+    .skm-arc::before {
+      content: ''; position: absolute;
+      top: 50%; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, rgba(0,178,148,0.1), var(--teal), rgba(0,178,148,0.1));
+    }
+    .skm-arc-node {
+      position: relative; z-index: 1; text-align: center;
+      cursor: default; transition: transform 0.3s;
+    }
+    .skm-arc-node:hover { transform: scale(1.1); }
+    .skm-arc-dot {
+      width: 18px; height: 18px; border-radius: 50%;
+      margin: 0 auto 0.5rem;
+      border: 2.5px solid rgba(0,178,148,0.3);
+      background: var(--deep-bg);
+      transition: all 0.4s;
+    }
+    .skm-arc-node.active .skm-arc-dot {
+      border-color: var(--teal);
+      box-shadow: 0 0 12px rgba(0,178,148,0.5);
+      background: var(--teal);
+    }
+    .skm-arc-node.scrolled .skm-arc-dot {
+      border-color: var(--teal);
+      background: rgba(0,178,148,0.3);
+    }
+    .skm-arc-co {
+      font-size: 0.78rem; font-weight: 700; color: var(--text-1);
+      white-space: nowrap;
+    }
+    .skm-arc-yr {
+      font-size: 0.65rem; color: var(--text-3); font-weight: 600;
+    }
+    .skm-arc-logo {
+      width: 28px; height: 28px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 0.3rem; overflow: hidden;
+    }
+    .skm-arc-logo img {
+      width: 22px; height: 22px; object-fit: contain;
+    }
+
+    /* ====== 4. SECTION SHARED ====== */
+    .skm-section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid rgba(0,178,148,0.06);
+    }
+    .skm-section:last-of-type { border-bottom: none; }
+    .skm-sec-title {
+      font-size: 1.35rem; font-weight: 900; margin-bottom: 0.4rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .skm-sec-title::after { content: ''; flex: 1; height: 1px; background: rgba(0,178,148,0.1); }
+    .skm-sec-title img { width: 22px; height: 22px; flex-shrink: 0; }
+    .skm-sec-subtitle {
+      font-size: 0.9rem; color: var(--text-3); margin-bottom: 2rem; line-height: 1.5;
+    }
+
+    /* ====== 5. PROJECT CARDS ====== */
+    .skm-cards { display: grid; gap: 1.2rem; }
+    .skm-cards-2 { grid-template-columns: 1fr 1fr; }
+    .skm-cards-3 { grid-template-columns: repeat(3, 1fr); }
+
+    .skm-card {
+      padding: 1.5rem;
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .skm-card:hover { transform: translateY(-4px); }
+
+    /* Top accent bar */
+    .skm-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .skm-card:hover::before { opacity: 1; }
+
+    .skm-card-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-bottom: 1rem; flex-shrink: 0;
+    }
+    .ci-platform { background: linear-gradient(135deg, rgba(0,178,148,0.4), rgba(51,204,173,0.4)); }
+    .ci-ai { background: linear-gradient(135deg, rgba(196,181,253,0.4), rgba(167,139,250,0.4)); }
+    .ci-seller { background: linear-gradient(135deg, rgba(96,165,250,0.4), rgba(59,130,246,0.4)); }
+    .ci-lead { background: linear-gradient(135deg, rgba(251,191,36,0.4), rgba(245,158,11,0.4)); }
+
+    .skm-card h3 {
+      font-size: 1.05rem; font-weight: 800; margin-bottom: 0.3rem; line-height: 1.3;
+    }
+    .skm-card-role {
+      font-size: 0.78rem; color: var(--teal); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Problem / Solution / Impact */
+    .skm-psi { margin-bottom: 0.6rem; }
+    .skm-psi-label {
+      font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.06em; margin-bottom: 0.15rem;
+    }
+    .skm-psi-label.lbl-problem { color: var(--accent-rose); }
+    .skm-psi-label.lbl-solution { color: var(--teal); }
+    .skm-psi-label.lbl-impact { color: var(--accent-amber); }
+    .skm-psi p { font-size: 0.88rem; color: var(--text-2); line-height: 1.6; margin: 0; }
+    .skm-psi p strong { color: var(--text-1); font-weight: 600; }
+
+    /* Skills tags */
+    .skm-card-skills {
+      display: flex; flex-wrap: wrap; gap: 0.25rem;
+      margin-top: 0.8rem; padding-top: 0.8rem;
+      border-top: 1px solid rgba(0,178,148,0.08);
+    }
+    .skm-card-skill {
+      font-size: 0.72rem; padding: 0.15rem 0.5rem; border-radius: 999px;
+      background: var(--teal-subtle); border: 1px solid rgba(0,178,148,0.1);
+      color: var(--teal); font-weight: 600;
+    }
+
+    /* Impact chips */
+    .skm-impact-row { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 0.6rem; }
+    .skm-impact-chip {
+      display: flex; align-items: center; gap: 0.3rem;
+      padding: 0.3rem 0.7rem; border-radius: 0.5rem;
+      background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.15);
+    }
+    .skm-impact-val { font-size: 0.95rem; font-weight: 900; color: var(--accent-amber); font-family: var(--font-heading); }
+    .skm-impact-lbl { font-size: 0.7rem; color: var(--text-3); }
+
+    /* ====== 6. HOBBY CARDS ====== */
+    .skm-hobby-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .skm-hobby-icon img {
+      width: 36px; height: 36px; border-radius: 8px; object-fit: cover;
+    }
+    .skm-card-header {
+      display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem;
+    }
+    .skm-card-header h3 { margin-bottom: 0; }
+    .skm-card-domain {
+      font-size: 0.7rem; color: var(--text-3); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .skm-card p { font-size: 0.88rem; color: var(--text-2); line-height: 1.55; margin-bottom: 0.6rem; }
+    .skm-card p strong { color: var(--text-1); }
+    .skm-card-tech { display: flex; flex-wrap: wrap; gap: 0.2rem; margin-bottom: 0.5rem; }
+    .skm-card-tech span {
+      font-size: 0.68rem; padding: 0.1rem 0.4rem; border-radius: 999px;
+      background: var(--teal-subtle); color: var(--teal); font-weight: 600;
+    }
+    .skm-card-links { display: flex; gap: 0.4rem; }
+    .skm-clink {
+      font-size: 0.72rem; padding: 0.15rem 0.5rem; border-radius: 999px;
+      text-decoration: none; font-weight: 700; white-space: nowrap;
+    }
+    .skm-clink.android {
+      background: rgba(52,168,83,0.12); border: 1px solid rgba(52,168,83,0.2); color: #34a853;
+    }
+    .skm-clink.android:hover { background: rgba(52,168,83,0.2); }
+    .skm-clink.web {
+      background: rgba(99,102,241,0.12); border: 1px solid rgba(99,102,241,0.2); color: #818cf8;
+    }
+    .skm-clink.web:hover { background: rgba(99,102,241,0.2); }
+
+    /* ====== 7. ACCORDION ====== */
+    .skm-accordion { margin-bottom: 1rem; }
+    .skm-acc-toggle {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.3rem;
+      font-family: var(--font-heading); font-size: 1rem; font-weight: 800;
+      color: var(--text-1); text-align: left;
+    }
+    .skm-acc-toggle:hover { border-color: var(--glass-hover); }
+    .skm-acc-meta { display: flex; align-items: center; gap: 0.5rem; }
+    .skm-acc-logo {
+      width: 24px; height: 24px; border-radius: 5px;
+      display: inline-flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .skm-acc-logo img { width: 20px; height: 20px; object-fit: contain; }
+    .skm-acc-role { font-size: 0.82rem; color: var(--text-2); font-weight: 600; }
+    .skm-acc-yr { font-size: 0.75rem; color: var(--teal); font-weight: 700; }
+    .skm-acc-right { display: flex; align-items: center; gap: 0.8rem; }
+    .skm-acc-arrow { font-size: 0.8rem; color: var(--teal); transition: transform 0.3s; }
+    .skm-accordion.open .skm-acc-arrow { transform: rotate(180deg); }
+    .skm-acc-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      padding: 0 1.3rem;
+    }
+    .skm-accordion.open .skm-acc-body {
+      max-height: 2000px;
+      transition: max-height 0.6s ease-in;
+    }
+    .skm-acc-content { padding: 0.5rem 0 1.2rem; }
+    .skm-acc-bullets { list-style: none; padding: 0; margin: 0; }
+    .skm-acc-bullets li {
+      position: relative; padding-left: 1.1rem; margin-bottom: 0.35rem;
+      font-size: 0.88rem; color: var(--text-2); line-height: 1.6;
+    }
+    .skm-acc-bullets li::before {
+      content: '\2192'; position: absolute; left: 0; color: var(--teal); font-weight: 700;
+    }
+    .skm-acc-bullets li strong { color: var(--text-1); font-weight: 600; }
+    .skm-acc-chips { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.5rem; }
+    .skm-acc-chip {
+      font-size: 0.7rem; padding: 0.12rem 0.5rem; border-radius: 999px;
+      background: var(--teal-subtle); border: 1px solid rgba(0,178,148,0.08);
+      color: var(--text-3);
+    }
+    .skm-inline-link { color: var(--teal); text-decoration: none; }
+    .skm-inline-link:hover { text-decoration: underline; }
+
+    /* ====== 8. EDUCATION FOOTER ====== */
+    .skm-footer {
+      padding: 3rem 0 4rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+    }
+    .skm-ft-hd {
+      font-size: 0.82rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--text-3); margin-bottom: 0.8rem;
+    }
+    .skm-ft-list { list-style: none; padding: 0; margin: 0 0 1.2rem; }
+    .skm-ft-li {
+      display: flex; align-items: center; gap: 0.4rem;
+      padding: 0.35rem 0; font-size: 0.88rem; color: var(--text-2);
+    }
+    .skm-ft-li strong { color: var(--text-1); font-weight: 700; }
+    .skm-awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .skm-aw { display: flex; align-items: flex-start; gap: 0.5rem; padding: 0.7rem; }
+    .skm-aw h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.1rem; }
+    .skm-aw p { font-size: 0.75rem; color: var(--text-2); line-height: 1.4; margin: 0; }
+
+    /* -- SCROLL TOP -- */
+    .skm-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;
+      width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; color: var(--text-2); border: none;
+      opacity: 0; pointer-events: none; transition: all 0.3s;
+    }
+    .skm-top.vis { opacity: 1; pointer-events: auto; }
+    .skm-top:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* -- RESPONSIVE -- */
+    @media (max-width: 768px) {
+      .skm-cards-2 { grid-template-columns: 1fr; }
+      .skm-cards-3 { grid-template-columns: 1fr 1fr; }
+      .skm-footer { grid-template-columns: 1fr; }
+      .skm-awards-grid { grid-template-columns: 1fr; }
+      .skm-arc { flex-wrap: wrap; gap: 1rem; justify-content: center; }
+      .skm-arc::before { display: none; }
+    }
+    @media (max-width: 500px) {
+      .skm-cards-3 { grid-template-columns: 1fr; }
+      .skm-hero { padding: 4rem 0 2.5rem; }
+      .skm-photo-wrap { width: 100px; height: 100px; }
+      .skm-photo { width: 100px; height: 100px; font-size: 2rem; }
+    }
+  </style>
+</head>
+<body data-og-includes="nav,footer">
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <div class="skm-prog" id="prog" aria-hidden="true"></div>
+
+  <!-- ====== 1. HERO ====== -->
+  <header class="skm-hero">
+    <div class="skm-wrap skm-hero-inner">
+      <!-- Profile photo: replace div with <img src="/images/sangram.jpg" alt="Sangram Maharana" class="skm-photo"> -->
+      <div class="skm-photo-wrap">
+        <div class="skm-photo" aria-label="Sangram Maharana">SK</div>
+      </div>
+      <span class="skm-badge">PRINCIPAL PM LEAD &#183; L66 &#183; MICROSOFT</span>
+      <h1><span class="teal-grad">Sangram Keshari</span> Maharana</h1>
+      <p class="skm-typewriter" id="typewriter" aria-label="Product leader with 16 years spanning embedded systems engineering, strategy consulting, 0-to-1 digital transformation, and enterprise product management. On Microsoft's extended leadership team -- owns the commerce AI strategy, leads a multi-vendor PM team, and has transformed 15+ legacy platforms into the org's most loved seller experience."></p>
+      <p class="skm-interest">Open to AI product leadership roles</p>
+      <div class="skm-links">
+        <a href="https://www.linkedin.com/in/sangramkm/" target="_blank" rel="noopener" class="skm-btn skm-btn-fill">LinkedIn &#8599;</a>
+        <a href="/sangram-resume.pdf" download class="skm-btn skm-btn-ghost skm-btn-dl">&#8595; Download CV</a>
+        <a href="mailto:p12sangramkm@iima.ac.in" class="skm-btn skm-btn-ghost">Email</a>
+        <a href="https://2minsksm.blogspot.com/" target="_blank" rel="noopener" class="skm-btn skm-btn-ghost">Blog &#8599;</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="skm-wrap">
+    <main id="main">
+
+      <!-- ====== 2. COMPETENCY CLOUD ====== -->
+      <section class="skm-comp-sec skm-reveal" aria-labelledby="hd-comp">
+        <h2 class="skm-sec-hd" id="hd-comp">Core <span class="teal-grad">Competencies</span></h2>
+        <div class="skm-cloud" role="list" aria-label="Core competencies">
+          <span class="skm-cloud-tag ctag-lg" role="listitem">AI &amp; Agentic Systems</span>
+          <span class="skm-cloud-tag ctag-lg" role="listitem">Product Management</span>
+          <span class="skm-cloud-tag ctag-lg" role="listitem">Platform Architecture</span>
+          <span class="skm-cloud-tag ctag-md" role="listitem">0&#8594;1 Org Building</span>
+          <span class="skm-cloud-tag ctag-md" role="listitem">Strategy Consulting</span>
+          <span class="skm-cloud-tag ctag-md" role="listitem">Multi-vendor Leadership</span>
+          <span class="skm-cloud-tag ctag-md" role="listitem">Change Management</span>
+          <span class="skm-cloud-tag ctag-md" role="listitem">Customer-Centric Design</span>
+          <span class="skm-cloud-tag ctag-sm" role="listitem">Azure OpenAI</span>
+          <span class="skm-cloud-tag ctag-sm" role="listitem">GPT-4o</span>
+          <span class="skm-cloud-tag ctag-sm" role="listitem">Embedded Systems</span>
+          <span class="skm-cloud-tag ctag-sm" role="listitem">Financial Modelling</span>
+          <span class="skm-cloud-tag ctag-md" role="listitem">Legacy Retirement</span>
+          <span class="skm-cloud-tag ctag-sm" role="listitem">Digital Transformation</span>
+          <span class="skm-cloud-tag ctag-sm" role="listitem">Specs-as-Code</span>
+          <span class="skm-cloud-tag ctag-sm" role="listitem">Cross-org Influence</span>
+          <span class="skm-cloud-tag ctag-md" role="listitem">AI for PMs</span>
+          <span class="skm-cloud-tag ctag-sm" role="listitem">Power Automate</span>
+          <span class="skm-cloud-tag ctag-sm" role="listitem">React &#183; Next.js</span>
+          <span class="skm-cloud-tag ctag-sm" role="listitem">Python &#183; Node.js</span>
+        </div>
+      </section>
+
+      <!-- ====== 3. CAREER ARC ====== -->
+      <section class="skm-arc-sec skm-reveal" aria-labelledby="hd-arc">
+        <h2 class="skm-sec-hd" id="hd-arc">Career <span class="teal-grad">Arc</span></h2>
+        <div class="skm-arc" role="list" aria-label="Career arc timeline">
+          <div class="skm-arc-node" role="listitem">
+            <div class="skm-arc-logo" aria-hidden="true"><img src="https://logo.clearbit.com/infineon.com" alt="Cypress"></div>
+            <div class="skm-arc-dot"></div>
+            <div class="skm-arc-co">Cypress</div>
+            <div class="skm-arc-yr">2008&#8211;12</div>
+          </div>
+          <div class="skm-arc-node" role="listitem">
+            <div class="skm-arc-logo" aria-hidden="true"><img src="https://logo.clearbit.com/zoomrx.com" alt="ZoomRx"></div>
+            <div class="skm-arc-dot"></div>
+            <div class="skm-arc-co">ZoomRx</div>
+            <div class="skm-arc-yr">2013</div>
+          </div>
+          <div class="skm-arc-node" role="listitem">
+            <div class="skm-arc-logo" aria-hidden="true"><img src="https://logo.clearbit.com/powergrid.in" alt="PowerGrid"></div>
+            <div class="skm-arc-dot"></div>
+            <div class="skm-arc-co">PowerGrid</div>
+            <div class="skm-arc-yr">2014</div>
+          </div>
+          <div class="skm-arc-node" role="listitem">
+            <div class="skm-arc-logo" aria-hidden="true"><img src="https://logo.clearbit.com/kpmg.com" alt="KPMG"></div>
+            <div class="skm-arc-dot"></div>
+            <div class="skm-arc-co">KPMG</div>
+            <div class="skm-arc-yr">2014&#8211;17</div>
+          </div>
+          <div class="skm-arc-node" role="listitem">
+            <div class="skm-arc-logo" aria-hidden="true"><img src="https://logo.clearbit.com/piindustries.com" alt="PI Industries"></div>
+            <div class="skm-arc-dot"></div>
+            <div class="skm-arc-co">PI Industries</div>
+            <div class="skm-arc-yr">2017&#8211;21</div>
+          </div>
+          <div class="skm-arc-node active" role="listitem">
+            <div class="skm-arc-logo" aria-hidden="true"><img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft"></div>
+            <div class="skm-arc-dot"></div>
+            <div class="skm-arc-co">Microsoft</div>
+            <div class="skm-arc-yr">2021&#8211;Now</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====== 4. MICROSOFT - WHAT I'VE BUILT ====== -->
+      <section class="skm-section" aria-labelledby="hd-ms">
+        <h2 class="skm-sec-title" id="hd-ms"><img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft"> Microsoft &#183; <span class="teal-grad">What I've Built</span></h2>
+        <p class="skm-sec-subtitle">Principal PM Lead (L66) &#183; Commerce &amp; AI &#183; 2021&#8211;Present &#183; XLT Member</p>
+
+        <div class="skm-cards skm-cards-2">
+
+          <article class="skm-card glass skm-reveal">
+            <div class="skm-card-icon ci-platform" aria-hidden="true">&#127959;</div>
+            <h3>Modern Seller Platform</h3>
+            <div class="skm-card-role">$60B sales motion &#183; 2,000+ internal &#183; 3,500+ partner users</div>
+            <div class="skm-psi">
+              <div class="skm-psi-label lbl-problem">Problem</div>
+              <p>15+ disconnected legacy tools (CPQ, Approvals, Pre-Approvals, Amendments) slowed deal velocity to 40 days. Sellers toggled between systems.</p>
+            </div>
+            <div class="skm-psi">
+              <div class="skm-psi-label lbl-solution">Solution</div>
+              <p>Built "single pane of glass" experience &#8212; retired all legacy platforms, consolidated into one commerce platform with <strong>100% adoption</strong> within months.</p>
+            </div>
+            <div class="skm-psi">
+              <div class="skm-psi-label lbl-impact">Impact</div>
+              <p><strong>Deal velocity 40&#8594;23 days</strong>. Partner velocity 6&#8594;2 days. Amendment digitization saved <strong>$340K</strong>, improved order automation by 8%. Combined savings <strong>~$1M/yr</strong>.</p>
+            </div>
+            <div class="skm-impact-row">
+              <div class="skm-impact-chip"><span class="skm-impact-val">100%</span><span class="skm-impact-lbl">adoption</span></div>
+              <div class="skm-impact-chip"><span class="skm-impact-val">40&#8594;23d</span><span class="skm-impact-lbl">deal velocity</span></div>
+              <div class="skm-impact-chip"><span class="skm-impact-val">~$1M/yr</span><span class="skm-impact-lbl">saved</span></div>
+            </div>
+            <div class="skm-card-skills">
+              <span class="skm-card-skill">Platform Architecture</span>
+              <span class="skm-card-skill">Change Management</span>
+              <span class="skm-card-skill">Legacy Retirement</span>
+              <span class="skm-card-skill">Stakeholder Mgmt</span>
+              <span class="skm-card-skill">Quality Star Award</span>
+            </div>
+          </article>
+
+          <article class="skm-card glass skm-reveal">
+            <div class="skm-card-icon ci-ai" aria-hidden="true">&#129302;</div>
+            <h3>Sales AI Assistant &#8594; Agentic AI</h3>
+            <div class="skm-card-role">First Gen AI in commerce platform &#183; 2023</div>
+            <div class="skm-psi">
+              <div class="skm-psi-label lbl-problem">Problem</div>
+              <p>Sellers spent 20+ mins on data entry per renewal quote, plus days of research on sales policies, product terms, and upsell rules.</p>
+            </div>
+            <div class="skm-psi">
+              <div class="skm-psi-label lbl-solution">Solution</div>
+              <p>Shipped Sales AI Assistant &#8212; create renewal quotes in <strong>one prompt</strong>. AI skills handle policy, terms, and upsell rules. Evolved into <strong>agentic system</strong> with autonomous deal processing.</p>
+            </div>
+            <div class="skm-psi">
+              <div class="skm-psi-label lbl-impact">Impact</div>
+              <p><strong>60% AI adoption</strong>. Vendor cost reduced by <strong>$1M over 3 years</strong>. Cycle time improved by <strong>12 hours</strong>. Three-tier AI architecture (standard &#183; custom &#183; exception).</p>
+            </div>
+            <div class="skm-impact-row">
+              <div class="skm-impact-chip"><span class="skm-impact-val">60%</span><span class="skm-impact-lbl">AI adoption</span></div>
+              <div class="skm-impact-chip"><span class="skm-impact-val">$1M</span><span class="skm-impact-lbl">3yr savings</span></div>
+              <div class="skm-impact-chip"><span class="skm-impact-val">-12hrs</span><span class="skm-impact-lbl">cycle time</span></div>
+            </div>
+            <div class="skm-card-skills">
+              <span class="skm-card-skill">Agentic AI</span>
+              <span class="skm-card-skill">Azure OpenAI</span>
+              <span class="skm-card-skill">AI Architecture</span>
+              <span class="skm-card-skill">USEABLE Framework</span>
+              <span class="skm-card-skill">Copilot &#8594; Agent</span>
+            </div>
+          </article>
+
+          <article class="skm-card glass skm-reveal">
+            <div class="skm-card-icon ci-seller" aria-hidden="true">&#127919;</div>
+            <h3>Seller Experience Leadership</h3>
+            <div class="skm-card-role">Modern Commerce &#183; FY25&#8211;26</div>
+            <div class="skm-psi">
+              <div class="skm-psi-label lbl-problem">Problem</div>
+              <p>Seller CSAT below target. 20 experience issues identified but not prioritized. Release velocity inconsistent.</p>
+            </div>
+            <div class="skm-psi">
+              <div class="skm-psi-label lbl-solution">Solution</div>
+              <p>Championed prioritization of 20 new projects. Established Seller Think Tank for customer-centric design. Drove accessibility certification (Level C).</p>
+            </div>
+            <div class="skm-psi">
+              <div class="skm-psi-label lbl-impact">Impact</div>
+              <p>CSAT target of <strong>4.0</strong>. Delivered <strong>30 releases in FY26</strong> (Q1&#8211;Q3) and <strong>~48 releases</strong> across Q4. All platforms accessibility-certified.</p>
+            </div>
+            <div class="skm-card-skills">
+              <span class="skm-card-skill">Customer Research</span>
+              <span class="skm-card-skill">Accessibility</span>
+              <span class="skm-card-skill">Seller Think Tank</span>
+              <span class="skm-card-skill">Release Cadence</span>
+            </div>
+          </article>
+
+          <article class="skm-card glass skm-reveal">
+            <div class="skm-card-icon ci-lead" aria-hidden="true">&#128101;</div>
+            <h3>Leadership &amp; Team Building</h3>
+            <div class="skm-card-role">XLT Member &#183; Multi-vendor PM Team</div>
+            <div class="skm-psi">
+              <div class="skm-psi-label lbl-problem">Problem</div>
+              <p>Commerce PM function needed representation at the leadership table. Team needed structure, AI fluency, and customer empathy.</p>
+            </div>
+            <div class="skm-psi">
+              <div class="skm-psi-label lbl-solution">Solution</div>
+              <p>Joined Extended Leadership Team (XLT). Led multi-vendor PM team of <strong>5+ across LTIMindtree and Accenture</strong>. Championed AI for PMs initiative.</p>
+            </div>
+            <div class="skm-psi">
+              <div class="skm-psi-label lbl-impact">Impact</div>
+              <p>Established <strong>USEABLE framework</strong> for AI product design. Specs-as-Markdown with AI prototyping. Model, coach, care leadership. <strong>17 major releases</strong> in one half.</p>
+            </div>
+            <div class="skm-card-skills">
+              <span class="skm-card-skill">XLT / Exec Influence</span>
+              <span class="skm-card-skill">Multi-vendor Mgmt</span>
+              <span class="skm-card-skill">AI for PMs</span>
+              <span class="skm-card-skill">Specs-as-Code</span>
+              <span class="skm-card-skill">Charters</span>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ====== 5. SIDE PROJECTS ====== -->
+      <section class="skm-section" aria-labelledby="hd-hobby">
+        <h2 class="skm-sec-title" id="hd-hobby">Side <span class="teal-grad">Projects</span></h2>
+        <p class="skm-sec-subtitle">Built on weekends with GitHub Copilot, cloud GPUs, and LLMs.</p>
+
+        <div class="skm-cards skm-cards-3">
+
+          <article class="skm-card glass skm-reveal">
+            <div class="skm-card-header">
+              <div class="skm-hobby-icon" style="background:linear-gradient(135deg,rgba(52,211,153,0.3),rgba(16,185,129,0.3));font-size:1.2rem;" aria-hidden="true">&#128200;</div>
+              <div><h3>NeoTrading</h3><div class="skm-card-domain">FinTech &#183; Agentic AI</div></div>
+            </div>
+            <p>Autonomous algo trading with <strong>static + agentic strategies</strong>. GPT-4o confluence intelligence scores trades. Sharpe: 1.69.</p>
+            <div class="skm-card-tech"><span>Python</span><span>Azure Functions</span><span>GPT-4o</span><span>Agentic AI</span></div>
+          </article>
+
+          <article class="skm-card glass skm-reveal">
+            <div class="skm-card-header">
+              <div class="skm-hobby-icon" style="background:linear-gradient(135deg,rgba(96,165,250,0.3),rgba(59,130,246,0.3));font-size:1.2rem;" aria-hidden="true">&#127973;</div>
+              <div><h3>HealthMoni</h3><div class="skm-card-domain">HealthTech &#183; AG-UI</div></div>
+            </div>
+            <p>AI health tracker with <strong>AG-UI agentic interface</strong>. Parses lab PDFs, trend analysis, AI-powered health diagnosis.</p>
+            <div class="skm-card-tech"><span>Python</span><span>Azure Functions</span><span>Azure OpenAI</span><span>AG-UI</span></div>
+          </article>
+
+          <article class="skm-card glass skm-reveal">
+            <div class="skm-card-header">
+              <div class="skm-hobby-icon" style="background:linear-gradient(135deg,rgba(196,181,253,0.3),rgba(167,139,250,0.3));font-size:1.2rem;" aria-hidden="true">&#9997;&#65039;</div>
+              <div><h3>Content Hub</h3><div class="skm-card-domain">Content &#183; AI Pipeline</div></div>
+            </div>
+            <p>AI content pipeline: <strong>RunPod GPU + LLMs</strong> for drafts, <strong>Replicate</strong> for images, SEO scoring &#8594; auto-publish.</p>
+            <div class="skm-card-tech"><span>Node.js</span><span>Claude API</span><span>RunPod</span><span>Replicate</span></div>
+          </article>
+
+          <article class="skm-card glass skm-reveal">
+            <div class="skm-card-header">
+              <div class="skm-hobby-icon"><img src="/images/clockmaster-icon.png" alt="Clock Master"></div>
+              <div><h3>Clock Master</h3><div class="skm-card-domain">EdTech &#183; Android</div></div>
+            </div>
+            <p>Gamified time-telling for kids. Drag clock hands, race cars, prep for Junior Olympiad.</p>
+            <div class="skm-card-tech"><span>React</span><span>Vite</span><span>Capacitor</span><span>MUI</span></div>
+            <div class="skm-card-links">
+              <a href="https://play.google.com/store/apps/details?id=com.clockmaster.timeforjuniors" target="_blank" rel="noopener" class="skm-clink android">&#9654; Play Store</a>
+            </div>
+          </article>
+
+          <article class="skm-card glass skm-reveal">
+            <div class="skm-card-header">
+              <div class="skm-hobby-icon"><img src="/images/mathtank-icon.png" alt="Math Tank"></div>
+              <div><h3>Math Tank</h3><div class="skm-card-domain">EdTech &#183; Android</div></div>
+            </div>
+            <p>Math-powered tank battle. Multiplication to fire torpedoes. 90 levels, 10 torpedo types.</p>
+            <div class="skm-card-tech"><span>Next.js</span><span>React</span><span>Tailwind</span><span>Capacitor</span></div>
+            <div class="skm-card-links">
+              <a href="https://play.google.com/store/apps/details?id=com.namasya.mathtank" target="_blank" rel="noopener" class="skm-clink android">&#9654; Play Store</a>
+            </div>
+          </article>
+
+          <article class="skm-card glass skm-reveal">
+            <div class="skm-card-header">
+              <div class="skm-hobby-icon"><img src="/images/Otter-mascot.png" alt="Otterly Games"></div>
+              <div><h3>Otterly Games</h3><div class="skm-card-domain">Brand &#183; Web</div></div>
+            </div>
+            <p>Full brand site: 12 free learning tools, blog, cross-promotion, SEO. Zero frameworks.</p>
+            <div class="skm-card-tech"><span>HTML5</span><span>CSS3</span><span>Vanilla JS</span><span>GitHub Pages</span></div>
+            <div class="skm-card-links">
+              <a href="https://otterlygames.com" target="_blank" rel="noopener" class="skm-clink web">&#8599; otterlygames.com</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ====== 6. EARLIER CAREER (Accordions) ====== -->
+      <section class="skm-section" aria-labelledby="hd-earlier">
+        <h2 class="skm-sec-title" id="hd-earlier">Earlier <span class="teal-grad">Career</span></h2>
+
+        <div class="skm-accordion glass" data-acc>
+          <button class="skm-acc-toggle" aria-expanded="false">
+            <div class="skm-acc-meta">
+              <span class="skm-acc-logo" aria-hidden="true"><img src="https://logo.clearbit.com/piindustries.com" alt="PI"></span>
+              <span>PI Industries</span>
+              <span class="skm-acc-role">&#183; Digital Transformation Head</span>
+            </div>
+            <div class="skm-acc-right">
+              <span class="skm-acc-yr">2017&#8211;2021</span>
+              <span class="skm-acc-arrow">&#9660;</span>
+            </div>
+          </button>
+          <div class="skm-acc-body">
+            <div class="skm-acc-content">
+              <ul class="skm-acc-bullets">
+                <li>Built the <strong>entire digital org from zero</strong> &#8212; hired team, selected vendors, shipped 7 products</li>
+                <li><strong>MPower</strong> (<a href="https://play.google.com/store/apps/details?id=com.piind.mPower" target="_blank" rel="noopener" class="skm-inline-link">Play Store &#8599;</a>): India's first ag-chem field force app &#8212; <strong>1,000+ reps, 25L customer database</strong></li>
+                <li><strong>PI Mitra</strong> (<a href="https://play.google.com/store/apps/details?id=com.piind.cicl" target="_blank" rel="noopener" class="skm-inline-link">Play Store &#8599;</a>): Gamified retailer loyalty with instant Paytm wallet &#8212; <strong>15K+ downloads, 70% liquidation</strong>, first in ag-chem industry</li>
+                <li>CRM tele-calling center generating <strong>&#8377;10 Cr/yr</strong>, improved product demo efficacy by <strong>25%</strong></li>
+                <li>Barcoding project to digitize SKUs across <strong>5 assembly lines</strong>; fleet tracking for <strong>140 machines</strong>; SAP-integrated distributor portal</li>
+                <li>Digital marketing: Facebook <strong>3L page views/day</strong>, YouTube <strong>27K subscribers</strong> (2nd largest in industry)</li>
+                <li>E-commerce strategy: &#8377;2 Cr from online enquiries + <strong>&#8377;3 Cr from e-com partners</strong></li>
+                <li>Conducted first-ever <strong>Channel Satisfaction Survey</strong>; introduced HHI/Diversity index for channel risk</li>
+                <li>Future Office Strategy during COVID: WFH policy saving <strong>&#8377;3 Cr/yr</strong></li>
+              </ul>
+              <div class="skm-acc-chips">
+                <span class="skm-acc-chip">0&#8594;1 Org</span><span class="skm-acc-chip">7 Products</span><span class="skm-acc-chip">AgriTech</span>
+                <span class="skm-acc-chip">Android</span><span class="skm-acc-chip">SAP</span><span class="skm-acc-chip">Digital Marketing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skm-accordion glass" data-acc>
+          <button class="skm-acc-toggle" aria-expanded="false">
+            <div class="skm-acc-meta">
+              <span class="skm-acc-logo" aria-hidden="true"><img src="https://logo.clearbit.com/kpmg.com" alt="KPMG"></span>
+              <span>KPMG Advisory</span>
+              <span class="skm-acc-role">&#183; Assistant Manager</span>
+            </div>
+            <div class="skm-acc-right">
+              <span class="skm-acc-yr">2014&#8211;2017</span>
+              <span class="skm-acc-arrow">&#9660;</span>
+            </div>
+          </button>
+          <div class="skm-acc-body">
+            <div class="skm-acc-content">
+              <ul class="skm-acc-bullets">
+                <li>Growth and diversification strategy for an <strong>IPP and Ferro Alloy manufacturer</strong> &#8212; domestic and export markets</li>
+                <li>5-year power procurement strategy &#8212; reduced requirement from <strong>2,400 MW to 600 MW</strong>, saving <strong>&#8377;2,500 Cr/yr</strong></li>
+                <li>Thought leadership article on <strong>solar generation variability</strong> and grid impact &#8212; 40+ solar plants analyzed</li>
+                <li>Bid advisory for <strong>DBFOO power procurement</strong>, solar procurement, and <strong>TBCB for intra-state transmission</strong></li>
+                <li>Financial models for transmission company revenue and levelized tariff computation</li>
+              </ul>
+              <div class="skm-acc-chips">
+                <span class="skm-acc-chip">Power Sector</span><span class="skm-acc-chip">Financial Modelling</span><span class="skm-acc-chip">Strategy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skm-accordion glass" data-acc>
+          <button class="skm-acc-toggle" aria-expanded="false">
+            <div class="skm-acc-meta">
+              <span class="skm-acc-logo" aria-hidden="true"><img src="https://logo.clearbit.com/powergrid.in" alt="PG"></span>
+              <span>PowerGrid Corp</span>
+              <span class="skm-acc-role">&#183; Tariff Bidding Officer</span>
+            </div>
+            <div class="skm-acc-right">
+              <span class="skm-acc-yr">2014</span>
+              <span class="skm-acc-arrow">&#9660;</span>
+            </div>
+          </button>
+          <div class="skm-acc-body">
+            <div class="skm-acc-content">
+              <ul class="skm-acc-bullets">
+                <li>Excel model for cost variance across <strong>11 contracts worth INR 700 Cr</strong> &#8212; CEO dashboard for project pain points</li>
+                <li>Financial model for <strong>levelized tariff bidding</strong> in transmission projects</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="skm-accordion glass" data-acc>
+          <button class="skm-acc-toggle" aria-expanded="false">
+            <div class="skm-acc-meta">
+              <span class="skm-acc-logo" aria-hidden="true"><img src="https://logo.clearbit.com/zoomrx.com" alt="Zx"></span>
+              <span>ZoomRx Research</span>
+              <span class="skm-acc-role">&#183; Consulting Intern</span>
+            </div>
+            <div class="skm-acc-right">
+              <span class="skm-acc-yr">2013</span>
+              <span class="skm-acc-arrow">&#9660;</span>
+            </div>
+          </button>
+          <div class="skm-acc-body">
+            <div class="skm-acc-content">
+              <ul class="skm-acc-bullets">
+                <li>Created SOP for <strong>hypothesis-driven quantitative questionnaires</strong> at this Boston-based pharma research startup</li>
+                <li>Syndicated report on <strong>US Hemophilia market</strong> &#8212; converted leads with <strong>3 major pharma players</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="skm-accordion glass" data-acc>
+          <button class="skm-acc-toggle" aria-expanded="false">
+            <div class="skm-acc-meta">
+              <span class="skm-acc-logo" aria-hidden="true"><img src="https://logo.clearbit.com/infineon.com" alt="CY"></span>
+              <span>Cypress Semiconductor</span>
+              <span class="skm-acc-role">&#183; Sr Software Engineer</span>
+            </div>
+            <div class="skm-acc-right">
+              <span class="skm-acc-yr">2008&#8211;2012</span>
+              <span class="skm-acc-arrow">&#9660;</span>
+            </div>
+          </button>
+          <div class="skm-acc-body">
+            <div class="skm-acc-content">
+              <ul class="skm-acc-bullets">
+                <li>Engineering design of <strong>USB 3.0 software architecture</strong> on ARM platform with ThreadX RTOS</li>
+                <li>Module development: <strong>USB, SCSI, UAS, I2C, I2S, SPI</strong> &#8212; HAL and API design</li>
+                <li>Android kernel driver development &#8212; USB 3.0 video streaming via Nokia Camera + TI platform</li>
+                <li>Led demo project opening <strong>$2M in project opportunities</strong></li>
+                <li>Published in <strong>EETimes</strong> &#8212; 2nd best among 120 globally; <strong>3 papers</strong> in Cypress Symposium</li>
+              </ul>
+              <div class="skm-acc-chips">
+                <span class="skm-acc-chip">USB 3.0</span><span class="skm-acc-chip">ARM</span><span class="skm-acc-chip">Android</span><span class="skm-acc-chip">Firmware</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- ====== 7. EDUCATION & RECOGNITION ====== -->
+    <footer class="skm-footer skm-reveal" aria-label="Education and recognition">
+      <div>
+        <div class="skm-ft-hd">Education</div>
+        <ul class="skm-ft-list">
+          <li class="skm-ft-li">&#127891; <strong>IIM Ahmedabad</strong> &#183; PGDM, Rank 57/376</li>
+          <li class="skm-ft-li">&#127891; <strong>Manipal University</strong> &#183; MS Digital Design &amp; Embedded Systems, 92.4%</li>
+          <li class="skm-ft-li">&#127891; <strong>NIT Calicut</strong> &#183; B.Tech ECE, 87.1%</li>
+        </ul>
+        <div class="skm-ft-hd">Certifications</div>
+        <ul class="skm-ft-list">
+          <li class="skm-ft-li">&#128203; <strong>PMP</strong> Certified (2020)</li>
+          <li class="skm-ft-li">&#128202; <strong>CFA</strong> Level I (2014)</li>
+          <li class="skm-ft-li">&#9881;&#65039; <strong>Six Sigma</strong> Green Belt (2016)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="skm-ft-hd">Recognition</div>
+        <div class="skm-awards-grid">
+          <div class="skm-aw glass">
+            <div><h4>&#127942; Quality Star Award</h4><p>Microsoft &#8212; partner platform retirement</p></div>
+          </div>
+          <div class="skm-aw glass">
+            <div><h4>&#127941; EC North Winner</h4><p>Microsoft &#8212; visionary, accountable, inclusive</p></div>
+          </div>
+          <div class="skm-aw glass">
+            <div><h4>&#129353; MCAPS Hack! 3rd</h4><p>Microsoft Executive Challenge hackathon (2024)</p></div>
+          </div>
+          <div class="skm-aw glass">
+            <div><h4>&#128240; EETimes Published</h4><p>"USB 3.0 I/O" &#8212; 2nd among 120 globally</p></div>
+          </div>
+          <div class="skm-aw glass">
+            <div><h4>&#129351; National Winner x2</h4><p>Miebach Milestone + MarkGuru Vista IIM-B</p></div>
+          </div>
+          <div class="skm-aw glass">
+            <div><h4>&#127941; Tata Strategic 2nd</h4><p>Strategy Quotient &#8212; logistics market entry</p></div>
+          </div>
+          <div class="skm-aw glass">
+            <div><h4>&#128218; 4 Papers Published</h4><p>EETimes + 3 Cypress International Symposium</p></div>
+          </div>
+          <div class="skm-aw glass">
+            <div><h4>&#128737;&#65039; Secured by Design</h4><p>Led session for Microsoft IDC PM community</p></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <button class="skm-top glass" id="topBtn" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+
+  <script src="/js/includes.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      /* -- 1. Scroll Progress + Back-to-Top -- */
+      var prog = document.getElementById('prog');
+      var topBtn = document.getElementById('topBtn');
+      window.addEventListener('scroll', function () {
+        var s = window.scrollY;
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        if (h > 0) prog.style.width = (s / h * 100) + '%';
+        topBtn.classList.toggle('vis', s > 400);
+      });
+
+      /* -- 2. Scroll Reveal (IntersectionObserver) -- */
+      var reveals = document.querySelectorAll('.skm-reveal');
+      if ('IntersectionObserver' in window) {
+        var revealObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              revealObs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function (el) { revealObs.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('visible'); });
+      }
+
+      /* -- 3. Typewriter Effect -- */
+      var twEl = document.getElementById('typewriter');
+      var twText = twEl.getAttribute('aria-label');
+      var twIdx = 0;
+      var twSpeed = 18;
+      twEl.innerHTML = '<span class="skm-cursor"></span>';
+      function typeChar() {
+        if (twIdx < twText.length) {
+          var cursor = twEl.querySelector('.skm-cursor');
+          twEl.insertBefore(document.createTextNode(twText.charAt(twIdx)), cursor);
+          twIdx++;
+          setTimeout(typeChar, twSpeed);
+        } else {
+          setTimeout(function () {
+            var c = twEl.querySelector('.skm-cursor');
+            if (c) c.style.display = 'none';
+          }, 2000);
+        }
+      }
+      setTimeout(typeChar, 600);
+
+      /* -- 4. Accordion Toggle -- */
+      document.querySelectorAll('[data-acc]').forEach(function (acc) {
+        var btn = acc.querySelector('.skm-acc-toggle');
+        btn.addEventListener('click', function () {
+          var isOpen = acc.classList.contains('open');
+          acc.classList.toggle('open');
+          btn.setAttribute('aria-expanded', !isOpen);
+        });
+      });
+
+      /* -- 5. Card Tilt on Hover -- */
+      document.querySelectorAll('.skm-card').forEach(function (card) {
+        card.addEventListener('mousemove', function (e) {
+          var rect = card.getBoundingClientRect();
+          var x = e.clientX - rect.left;
+          var y = e.clientY - rect.top;
+          var centerX = rect.width / 2;
+          var centerY = rect.height / 2;
+          var rotateX = ((y - centerY) / centerY) * -3;
+          var rotateY = ((x - centerX) / centerX) * 3;
+          card.style.transform = 'translateY(-4px) perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+        });
+        card.addEventListener('mouseleave', function () {
+          card.style.transform = '';
+        });
+      });
+
+      /* -- 6. Career Arc scroll-triggered dot activation -- */
+      var arcNodes = document.querySelectorAll('.skm-arc-node:not(.active)');
+      if ('IntersectionObserver' in window) {
+        var arcObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              arcNodes.forEach(function (node, i) {
+                setTimeout(function () {
+                  node.classList.add('scrolled');
+                }, i * 150);
+              });
+              arcObs.disconnect();
+            }
+          });
+        }, { threshold: 0.5 });
+        var arcSec = document.querySelector('.skm-arc-sec');
+        if (arcSec) arcObs.observe(arcSec);
+      }
+
+    });
+  </script>
+</body>
+</html>

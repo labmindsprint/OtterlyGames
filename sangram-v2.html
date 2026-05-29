@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sangram Keshari Maharana — Principal PM Lead</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Product leader. Builder. Transformer. From silicon to strategy to scale.">
+  <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <style>
+    /* ================================================================
+       SANGRAM — Interactive Resume v2
+       Design: Visual-first, data-rich, progressive disclosure
+       ================================================================ */
+
+    /* --- Hero --- */
+    .skm-hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 6rem 1.5rem 3rem;
+      overflow: hidden;
+    }
+    .skm-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 600px 400px at 20% 30%, rgba(196,181,253,0.08), transparent),
+        radial-gradient(ellipse 500px 350px at 80% 70%, rgba(147,197,253,0.06), transparent),
+        radial-gradient(ellipse 400px 300px at 50% 50%, rgba(249,168,212,0.04), transparent);
+      pointer-events: none;
+    }
+    .skm-hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .skm-hero-label {
+      display: inline-block; padding: 0.35rem 1rem; border-radius: 999px;
+      background: rgba(196,181,253,0.1); border: 1px solid rgba(196,181,253,0.2);
+      font-size: 0.8rem; font-weight: 600; color: var(--pastel-purple);
+      letter-spacing: 0.05em; margin-bottom: 1.5rem;
+    }
+    .skm-hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem); font-weight: 900;
+      line-height: 1.15; margin-bottom: 1rem;
+    }
+    .skm-hero-hook {
+      font-size: 1rem; color: var(--text-secondary); max-width: 620px;
+      margin: 0 auto 2rem; line-height: 1.7;
+    }
+    .skm-hero-hook strong { color: var(--text-primary); }
+    .skm-hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--text-secondary);
+      max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.6;
+      font-style: italic;
+    }
+    .skm-hero-tagline em { font-style: normal; color: var(--pastel-purple); }
+
+    /* --- Animated Impact Counters --- */
+    .skm-impact-ring {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;
+      max-width: 900px; margin: 0 auto 2rem;
+    }
+    .skm-impact-item {
+      position: relative; padding: 1.5rem 0.5rem;
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: 1rem; text-align: center; transition: all 0.3s;
+      overflow: hidden;
+    }
+    .skm-impact-item::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      border-radius: 1rem 1rem 0 0;
+    }
+    .skm-impact-item:nth-child(1)::before { background: var(--pastel-purple); }
+    .skm-impact-item:nth-child(2)::before { background: var(--pastel-green); }
+    .skm-impact-item:nth-child(3)::before { background: var(--pastel-blue); }
+    .skm-impact-item:nth-child(4)::before { background: var(--pastel-pink); }
+    .skm-impact-item:nth-child(5)::before { background: var(--pastel-amber); }
+    .skm-impact-item:hover {
+      border-color: rgba(196,181,253,0.3); transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+    }
+    .skm-impact-visual {
+      position: relative; width: 80px; height: 80px; margin: 0 auto 0.75rem;
+    }
+    .skm-impact-visual svg { width: 80px; height: 80px; transform: rotate(-90deg); }
+    .skm-impact-visual .ring-bg {
+      fill: none; stroke: var(--dark-border); stroke-width: 4;
+    }
+    .skm-impact-visual .ring-fill {
+      fill: none; stroke-width: 4; stroke-linecap: round;
+      stroke-dasharray: 226; stroke-dashoffset: 226;
+      transition: stroke-dashoffset 1.5s ease-out;
+    }
+    .skm-impact-visual.animated .ring-fill { stroke-dashoffset: var(--offset); }
+    .skm-impact-value {
+      position: absolute; inset: 0; display: flex; align-items: center;
+      justify-content: center; font-family: var(--font-heading);
+      font-size: 1.3rem; font-weight: 900;
+    }
+    .skm-impact-label {
+      font-size: 0.72rem; color: var(--text-secondary); line-height: 1.3;
+    }
+    @media (max-width: 768px) {
+      .skm-impact-ring { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .skm-impact-ring { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .skm-hero-links {
+      display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;
+    }
+    .skm-link-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.5rem; border-radius: 999px; font-weight: 700;
+      font-size: 0.85rem; transition: all 0.3s;
+    }
+    .skm-link-primary {
+      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+      color: #0a0a0f;
+    }
+    .skm-link-primary:hover {
+      transform: translateY(-2px); box-shadow: 0 6px 25px rgba(196,181,253,0.3);
+    }
+    .skm-link-outline {
+      border: 1.5px solid var(--dark-border); color: var(--text-primary);
+    }
+    .skm-link-outline:hover {
+      border-color: var(--pastel-purple); color: var(--pastel-purple);
+    }
+
+    /* --- Section Common --- */
+    .skm-section { padding: 5rem 1.5rem; max-width: 1060px; margin: 0 auto; }
+    .skm-section-alt {
+      background: var(--dark-card);
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .skm-section-header { text-align: center; margin-bottom: 3rem; }
+    .skm-section-header h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 900; margin-bottom: 0.5rem;
+    }
+    .skm-section-header p {
+      color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 0.95rem;
+    }
+
+    /* --- Career Arc Visual (SVG River) --- */
+    .skm-arc { max-width: 1000px; margin: 0 auto; }
+    .skm-arc-row {
+      display: grid; grid-template-columns: 80px 40px 1fr; gap: 0; align-items: stretch;
+      min-height: 140px;
+    }
+    .skm-arc-year {
+      display: flex; align-items: flex-start; justify-content: flex-end;
+      padding-top: 1.25rem; padding-right: 0.75rem;
+      font-family: var(--font-heading); font-size: 0.8rem; font-weight: 700;
+      color: var(--text-secondary);
+    }
+    .skm-arc-line {
+      position: relative; display: flex; justify-content: center;
+    }
+    .skm-arc-line::before {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 2px;
+      background: var(--dark-border);
+    }
+    .skm-arc-dot {
+      position: relative; top: 1.5rem; width: 16px; height: 16px;
+      border-radius: 50%; border: 2px solid var(--dark-border);
+      background: var(--dark-bg); z-index: 1; flex-shrink: 0;
+      transition: all 0.3s;
+    }
+    .skm-arc-row:hover .skm-arc-dot {
+      border-color: var(--pastel-purple); box-shadow: 0 0 12px rgba(196,181,253,0.4);
+    }
+    .skm-arc-content {
+      padding: 1.25rem 1.5rem; background: var(--dark-surface);
+      border: 1px solid var(--dark-border); border-radius: 1rem;
+      margin: 0.5rem 0 0.5rem 0.5rem; transition: all 0.3s;
+    }
+    .skm-arc-row:hover .skm-arc-content {
+      border-color: rgba(196,181,253,0.3); transform: translateX(4px);
+    }
+    .skm-arc-badge {
+      display: inline-block; padding: 0.15rem 0.55rem; border-radius: 999px;
+      font-size: 0.65rem; font-weight: 700; margin-bottom: 0.4rem;
+      letter-spacing: 0.03em;
+    }
+    .skm-arc-badge.eng { background: rgba(147,197,253,0.15); color: var(--pastel-blue); }
+    .skm-arc-badge.consult { background: rgba(252,211,77,0.15); color: var(--pastel-amber); }
+    .skm-arc-badge.transform { background: rgba(249,168,212,0.15); color: var(--pastel-pink); }
+    .skm-arc-badge.microsoft { background: rgba(196,181,253,0.15); color: var(--pastel-purple); }
+    .skm-arc-content h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .skm-arc-content .skm-arc-org {
+      font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;
+    }
+    .skm-arc-content p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+    .skm-arc-content p strong { color: var(--text-primary); }
+    .skm-arc-takeaway {
+      display: block; margin-top: 0.5rem; font-size: 0.78rem;
+      color: var(--pastel-purple); font-style: italic;
+    }
+    @media (max-width: 600px) {
+      .skm-arc-row { grid-template-columns: 60px 30px 1fr; }
+      .skm-arc-year { font-size: 0.7rem; }
+    }
+
+    /* --- Domain Breadth Visual --- */
+    .skm-domains {
+      display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .skm-domain-pill {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.6rem 1.2rem; border-radius: 999px;
+      background: var(--dark-surface); border: 1px solid var(--dark-border);
+      font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);
+      transition: all 0.3s;
+    }
+    .skm-domain-pill:hover {
+      border-color: rgba(196,181,253,0.3); color: var(--text-primary);
+    }
+    .skm-domain-pill .skm-domain-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+
+    /* --- Skills Radar (CSS-driven) --- */
+    .skm-skills-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+      max-width: 900px; margin: 0 auto;
+    }
+    .skm-skill-category { }
+    .skm-skill-cat-title {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .skm-skill-cat-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--dark-border);
+    }
+    .skm-skill-bar-row {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;
+    }
+    .skm-skill-name {
+      width: 140px; flex-shrink: 0; font-size: 0.82rem;
+      color: var(--text-secondary); text-align: right;
+    }
+    .skm-skill-track {
+      flex: 1; height: 8px; background: var(--dark-surface);
+      border-radius: 4px; overflow: hidden; position: relative;
+    }
+    .skm-skill-fill {
+      height: 100%; border-radius: 4px;
+      width: 0%; transition: width 1.2s ease-out;
+    }
+    .skm-skill-fill.animated { width: var(--level); }
+    .skm-skill-fill.purple { background: linear-gradient(90deg, var(--pastel-purple), rgba(196,181,253,0.5)); }
+    .skm-skill-fill.blue { background: linear-gradient(90deg, var(--pastel-blue), rgba(147,197,253,0.5)); }
+    .skm-skill-fill.pink { background: linear-gradient(90deg, var(--pastel-pink), rgba(249,168,212,0.5)); }
+    .skm-skill-fill.green { background: linear-gradient(90deg, var(--pastel-green), rgba(134,239,172,0.5)); }
+    .skm-skill-fill.amber { background: linear-gradient(90deg, var(--pastel-amber), rgba(252,211,77,0.5)); }
+    .skm-skill-pct {
+      width: 32px; flex-shrink: 0; font-size: 0.7rem; font-weight: 700;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 768px) {
+      .skm-skills-grid { grid-template-columns: 1fr; }
+      .skm-skill-name { width: 110px; font-size: 0.78rem; }
+    }
+
+    /* --- Products Shipped Section --- */
+    .skm-shipped {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
+    }
+    .skm-shipped-card {
+      padding: 1.75rem; background: var(--dark-surface);
+      border: 1px solid var(--dark-border); border-radius: 1rem;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .skm-shipped-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      border-radius: 1rem 1rem 0 0;
+    }
+    .skm-shipped-card.pi::before { background: linear-gradient(90deg, var(--pastel-pink), var(--pastel-amber)); }
+    .skm-shipped-card.msft::before { background: linear-gradient(90deg, var(--pastel-purple), var(--pastel-blue)); }
+    .skm-shipped-card:hover {
+      border-color: rgba(196,181,253,0.3); transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+    }
+    .skm-shipped-card h3 {
+      font-size: 1.05rem; font-weight: 800; margin-bottom: 0.3rem;
+    }
+    .skm-shipped-org {
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.05em; margin-bottom: 0.75rem;
+    }
+    .skm-shipped-org.pi-color { color: var(--pastel-pink); }
+    .skm-shipped-org.msft-color { color: var(--pastel-purple); }
+    .skm-shipped-card p {
+      font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+    .skm-shipped-card p strong { color: var(--text-primary); }
+    .skm-shipped-metrics {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .skm-shipped-metric {
+      padding: 0.35rem 0.7rem; background: rgba(196,181,253,0.06);
+      border: 1px solid rgba(196,181,253,0.1); border-radius: 0.5rem;
+      font-size: 0.72rem; color: var(--text-secondary);
+    }
+    .skm-shipped-metric strong {
+      color: var(--text-primary); font-weight: 700;
+    }
+    @media (max-width: 768px) {
+      .skm-shipped { grid-template-columns: 1fr; }
+    }
+
+    /* --- How I Think --- */
+    .skm-mindset-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    }
+    .skm-mindset {
+      padding: 1.75rem; background: var(--dark-surface);
+      border: 1px solid var(--dark-border); border-radius: 1rem;
+      text-align: center; transition: all 0.3s;
+    }
+    .skm-mindset:hover {
+      border-color: rgba(196,181,253,0.25); transform: translateY(-3px);
+    }
+    .skm-mindset-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .skm-mindset h3 {
+      font-size: 0.95rem; font-weight: 800; margin-bottom: 0.4rem;
+    }
+    .skm-mindset p {
+      font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .skm-mindset-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- Leadership Themes Bento --- */
+    .skm-themes {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto; gap: 1rem;
+    }
+    .skm-theme {
+      padding: 1.75rem; background: var(--dark-surface);
+      border: 1px solid var(--dark-border); border-radius: 1rem;
+      transition: all 0.3s;
+    }
+    .skm-theme:hover {
+      border-color: rgba(196,181,253,0.25); transform: translateY(-2px);
+    }
+    .skm-theme.wide { grid-column: span 2; }
+    .skm-theme-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .skm-theme h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .skm-theme p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+    .skm-theme .skm-theme-metric {
+      font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; margin-bottom: 0.25rem;
+    }
+    .skm-accent-green { color: var(--pastel-green); }
+    @media (max-width: 768px) {
+      .skm-themes { grid-template-columns: 1fr; }
+      .skm-theme.wide { grid-column: span 1; }
+    }
+
+    /* --- Microsoft Journey (Interactive) --- */
+    .skm-journey { position: relative; max-width: 900px; margin: 0 auto; }
+    .skm-journey-track {
+      position: absolute; left: 24px; top: 0; bottom: 0; width: 2px;
+      background: var(--dark-border);
+    }
+    .skm-phase {
+      position: relative; padding-left: 60px; margin-bottom: 2.5rem; cursor: pointer;
+    }
+    .skm-phase:last-child { margin-bottom: 0; }
+    .skm-phase-dot {
+      position: absolute; left: 14px; top: 6px;
+      width: 22px; height: 22px; border-radius: 50%;
+      border: 2px solid var(--dark-border); background: var(--dark-bg);
+      transition: all 0.3s; z-index: 1;
+    }
+    .skm-phase-dot::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--text-secondary); transition: all 0.3s;
+    }
+    .skm-phase.active .skm-phase-dot {
+      border-color: var(--pastel-purple); box-shadow: 0 0 12px rgba(196,181,253,0.4);
+    }
+    .skm-phase.active .skm-phase-dot::after { background: var(--pastel-purple); }
+    .skm-phase-header {
+      display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.3rem;
+    }
+    .skm-phase-date {
+      font-size: 0.75rem; font-weight: 700; color: var(--pastel-purple); letter-spacing: 0.05em;
+    }
+    .skm-phase-title { font-size: 1.05rem; font-weight: 800; color: var(--text-primary); }
+    .skm-phase-level {
+      font-size: 0.7rem; padding: 0.15rem 0.6rem; border-radius: 999px;
+      background: rgba(196,181,253,0.1); color: var(--pastel-purple); font-weight: 700;
+    }
+    .skm-phase-summary {
+      font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-top: 0.3rem;
+    }
+    .skm-phase-details {
+      max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.3s;
+    }
+    .skm-phase.active .skm-phase-details { max-height: 600px; padding-top: 0.75rem; }
+    .skm-phase-outcomes { list-style: none; padding: 0; }
+    .skm-phase-outcomes li {
+      position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem;
+      font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;
+    }
+    .skm-phase-outcomes li::before {
+      content: '→'; position: absolute; left: 0; color: var(--pastel-purple); font-weight: 700;
+    }
+    .skm-phase-outcomes li strong { color: var(--text-primary); font-weight: 600; }
+    .skm-phase-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+    .skm-tag {
+      font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 999px;
+      background: rgba(196,181,253,0.08); border: 1px solid rgba(196,181,253,0.15);
+      color: var(--text-secondary); font-weight: 500;
+    }
+
+    /* --- Maker Portfolio --- */
+    .skm-projects {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;
+    }
+    .skm-project {
+      padding: 1.75rem; background: var(--dark-surface);
+      border: 1px solid var(--dark-border); border-radius: 1rem;
+      transition: all 0.3s; display: flex; flex-direction: column;
+    }
+    .skm-project:hover {
+      border-color: rgba(196,181,253,0.3); transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+    }
+    .skm-project-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .skm-project-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; flex-shrink: 0;
+    }
+    .skm-icon-clock { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+    .skm-icon-math { background: linear-gradient(135deg, #e11d48, #fb7185); }
+    .skm-icon-health { background: linear-gradient(135deg, #059669, #34d399); }
+    .skm-icon-trading { background: linear-gradient(135deg, #d97706, #fbbf24); }
+    .skm-icon-otterly { background: linear-gradient(135deg, #6366f1, #818cf8); }
+    .skm-icon-content { background: linear-gradient(135deg, #0891b2, #22d3ee); }
+    .skm-project h3 { font-size: 1.05rem; font-weight: 800; }
+    .skm-project-domain {
+      font-size: 0.7rem; color: var(--text-secondary); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .skm-project-desc {
+      font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;
+      margin-bottom: 1rem; flex: 1;
+    }
+    .skm-project-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .skm-project-stack span {
+      font-size: 0.65rem; padding: 0.15rem 0.55rem; border-radius: 999px;
+      background: rgba(147,197,253,0.1); border: 1px solid rgba(147,197,253,0.15);
+      color: var(--pastel-blue); font-weight: 600;
+    }
+    .skm-project-why {
+      margin-top: 0.75rem; padding-top: 0.75rem;
+      border-top: 1px solid var(--dark-border);
+      font-size: 0.78rem; color: var(--text-secondary); font-style: italic;
+    }
+    .skm-project-why strong {
+      color: var(--pastel-amber); font-style: normal; font-weight: 700;
+    }
+
+    /* --- Philosophy Quote --- */
+    .skm-philosophy {
+      text-align: center; padding: 4rem 1.5rem; max-width: 700px; margin: 0 auto;
+    }
+    .skm-philosophy blockquote {
+      font-family: var(--font-heading); font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 700; line-height: 1.6; font-style: italic;
+      color: var(--text-secondary); position: relative; padding-left: 1.5rem;
+    }
+    .skm-philosophy blockquote::before {
+      content: '"'; font-size: 4rem; color: var(--pastel-purple);
+      position: absolute; top: -1.5rem; left: -0.5rem;
+      font-family: Georgia, serif; opacity: 0.5;
+    }
+    .skm-philosophy cite {
+      display: block; margin-top: 1rem; font-size: 0.85rem;
+      font-style: normal; color: var(--pastel-purple); font-weight: 600;
+    }
+
+    /* --- Credentials --- */
+    .skm-creds {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem;
+      padding: 3rem 1.5rem; border-top: 1px solid var(--dark-border);
+    }
+    .skm-cred { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-secondary); }
+    .skm-cred-badge {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; font-weight: 800;
+      background: var(--dark-surface); border: 1px solid var(--dark-border);
+    }
+    .skm-badge-amber { color: var(--pastel-amber); }
+    .skm-badge-blue { color: var(--pastel-blue); }
+    .skm-badge-green { color: var(--pastel-green); }
+    .skm-badge-pink { color: var(--pastel-pink); }
+    .skm-badge-purple { color: var(--pastel-purple); }
+    .skm-cred-sub { font-size: 0.75rem; }
+
+    /* --- Scroll Progress --- */
+    .skm-scroll-progress {
+      position: fixed; top: 64px; left: 0; height: 2px; z-index: 99;
+      background: linear-gradient(90deg, var(--pastel-purple), var(--pastel-pink), var(--pastel-blue));
+      transition: width 0.1s linear; width: 0%;
+    }
+
+    /* --- Back-to-top --- */
+    .skm-top-btn {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 50;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: var(--text-secondary);
+      opacity: 0; pointer-events: none; transition: all 0.3s; cursor: pointer;
+    }
+    .skm-top-btn.visible { opacity: 1; pointer-events: auto; }
+    .skm-top-btn:hover {
+      border-color: var(--pastel-purple); color: var(--pastel-purple); transform: translateY(-2px);
+    }
+
+    /* --- Tech Breadth (horizontal bar) --- */
+    .skm-tech-bar {
+      display: flex; border-radius: 0.5rem; overflow: hidden; height: 32px;
+      max-width: 700px; margin: 0 auto 1rem; position: relative;
+    }
+    .skm-tech-seg {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 700; color: #0a0a0f;
+      transition: flex 0.5s ease;
+      white-space: nowrap; padding: 0 0.5rem; min-width: 0;
+      overflow: hidden;
+    }
+    .skm-tech-legend {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;
+      margin-top: 0.75rem;
+    }
+    .skm-tech-legend-item {
+      display: flex; align-items: center; gap: 0.35rem;
+      font-size: 0.72rem; color: var(--text-secondary);
+    }
+    .skm-tech-legend-dot {
+      width: 8px; height: 8px; border-radius: 2px;
+    }
+
+    /* --- Social Proof Bar --- */
+    .skm-proof-bar {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; max-width: 800px; margin: 0 auto;
+    }
+    .skm-proof {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      padding: 1rem; background: var(--dark-surface);
+      border: 1px solid var(--dark-border); border-radius: 0.75rem;
+    }
+    .skm-proof-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .skm-proof h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .skm-proof p { font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; }
+  </style>
+</head>
+<body data-og-includes="nav,footer">
+  <div class="skm-scroll-progress" id="scrollProgress"></div>
+
+  <!-- ================================================================
+       SECTION 1: HERO — Personal Hook + Impact Counters
+       ================================================================ -->
+  <section class="skm-hero" id="top">
+    <div class="skm-hero-content">
+      <span class="skm-hero-label fade-in">PRINCIPAL PM LEAD &middot; L66 &middot; MICROSOFT</span>
+
+      <h1 class="fade-in stagger-2">
+        <span class="gradient-text">Sangram Keshari</span><br>Maharana
+      </h1>
+
+      <p class="skm-hero-hook fade-in stagger-3">
+        I've written firmware at the silicon layer, advised state governments on billion-dollar power procurement,
+        built a digital organization from scratch for India's largest ag-chem company, and now lead enterprise commerce
+        modernization at Microsoft. <strong>I don't just manage products — I build them.</strong>
+      </p>
+
+      <p class="skm-hero-tagline fade-in stagger-3">
+        Engineering depth. Consulting rigor. Product vision. <em>Transformation at scale.</em>
+      </p>
+
+      <!-- Animated Impact Rings -->
+      <div class="skm-impact-ring fade-in stagger-4">
+        <div class="skm-impact-item">
+          <div class="skm-impact-visual" data-pct="100">
+            <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" stroke="var(--pastel-purple)"/></svg>
+            <div class="skm-impact-value gradient-text">15+</div>
+          </div>
+          <div class="skm-impact-label">Legacy platforms<br>retired</div>
+        </div>
+        <div class="skm-impact-item">
+          <div class="skm-impact-visual" data-pct="90">
+            <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" stroke="var(--pastel-green)"/></svg>
+            <div class="skm-impact-value gradient-text">~$1M</div>
+          </div>
+          <div class="skm-impact-label">Annual savings<br>delivered</div>
+        </div>
+        <div class="skm-impact-item">
+          <div class="skm-impact-visual" data-pct="58">
+            <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" stroke="var(--pastel-blue)"/></svg>
+            <div class="skm-impact-value gradient-text">40→23</div>
+          </div>
+          <div class="skm-impact-label">Days deal velocity<br>reduction</div>
+        </div>
+        <div class="skm-impact-item">
+          <div class="skm-impact-visual" data-pct="93">
+            <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" stroke="var(--pastel-pink)"/></svg>
+            <div class="skm-impact-value gradient-text">8→93%</div>
+          </div>
+          <div class="skm-impact-label">Platform<br>adoption</div>
+        </div>
+        <div class="skm-impact-item">
+          <div class="skm-impact-visual" data-pct="80">
+            <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" stroke="var(--pastel-amber)"/></svg>
+            <div class="skm-impact-value gradient-text">10+</div>
+          </div>
+          <div class="skm-impact-label">Products shipped<br>end-to-end</div>
+        </div>
+      </div>
+
+      <div class="skm-hero-links fade-in stagger-5">
+        <a href="https://www.linkedin.com/in/sangramkm/" target="_blank" rel="noopener" class="skm-link-btn skm-link-primary">LinkedIn ↗</a>
+        <a href="mailto:p12sangramkm@iima.ac.in" class="skm-link-btn skm-link-outline">Get in Touch</a>
+        <a href="https://2minsksm.blogspot.com/" target="_blank" rel="noopener" class="skm-link-btn skm-link-outline">Blog ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 2: DOMAIN BREADTH + TECH DEPTH (Visualizations)
+       ================================================================ -->
+  <section class="skm-section-alt">
+    <div class="skm-section">
+      <div class="skm-section-header fade-in">
+        <h2>Five Industries. One <span class="gradient-text">Product Mind</span>.</h2>
+        <p>Most PMs stay in one lane. I built a full-stack perspective across five domains.</p>
+      </div>
+
+      <div class="skm-domains fade-in">
+        <div class="skm-domain-pill"><span class="skm-domain-dot" style="background:var(--pastel-blue)"></span> Embedded Systems</div>
+        <div class="skm-domain-pill"><span class="skm-domain-dot" style="background:var(--pastel-amber)"></span> Management Consulting</div>
+        <div class="skm-domain-pill"><span class="skm-domain-dot" style="background:var(--pastel-pink)"></span> AgTech &amp; Digital Transformation</div>
+        <div class="skm-domain-pill"><span class="skm-domain-dot" style="background:var(--pastel-purple)"></span> Enterprise Commerce</div>
+        <div class="skm-domain-pill"><span class="skm-domain-dot" style="background:var(--pastel-green)"></span> AI &amp; Agentic Systems</div>
+      </div>
+
+      <!-- Tech Breadth Bar -->
+      <div class="skm-tech-bar fade-in">
+        <div class="skm-tech-seg" style="flex:2;background:var(--pastel-blue)">C / ARM</div>
+        <div class="skm-tech-seg" style="flex:1.5;background:var(--pastel-amber)">Excel / VBA</div>
+        <div class="skm-tech-seg" style="flex:2;background:var(--pastel-pink)">CRM / Mobile</div>
+        <div class="skm-tech-seg" style="flex:3;background:var(--pastel-purple)">React / Next.js / Azure</div>
+        <div class="skm-tech-seg" style="flex:2.5;background:var(--pastel-green)">Python / AI / GPT</div>
+      </div>
+      <div class="skm-tech-legend fade-in">
+        <div class="skm-tech-legend-item"><span class="skm-tech-legend-dot" style="background:var(--pastel-blue)"></span> Firmware</div>
+        <div class="skm-tech-legend-item"><span class="skm-tech-legend-dot" style="background:var(--pastel-amber)"></span> Modelling</div>
+        <div class="skm-tech-legend-item"><span class="skm-tech-legend-dot" style="background:var(--pastel-pink)"></span> Mobile / CRM</div>
+        <div class="skm-tech-legend-item"><span class="skm-tech-legend-dot" style="background:var(--pastel-purple)"></span> Web / Cloud</div>
+        <div class="skm-tech-legend-item"><span class="skm-tech-legend-dot" style="background:var(--pastel-green)"></span> AI / Agents</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 3: HOW I THINK — Mental Models
+       ================================================================ -->
+  <section class="skm-section">
+    <div class="skm-section-header fade-in">
+      <h2>How I <span class="gradient-text">Think</span></h2>
+      <p>Product judgment that comes from building across hardware, strategy, and software</p>
+    </div>
+    <div class="skm-mindset-grid">
+      <div class="skm-mindset fade-in stagger-1">
+        <div class="skm-mindset-icon">🎯</div>
+        <h3>Kill the Feature</h3>
+        <p>I removed 10+ low-ROI scenarios from an AI Agent charter and 400+ outdated rules from a catalog. Saying no is the hardest PM skill — and the most valuable.</p>
+      </div>
+      <div class="skm-mindset fade-in stagger-2">
+        <div class="skm-mindset-icon">🔬</div>
+        <h3>Instrument, Then Decide</h3>
+        <p>I set up Seller Think Tanks and partnered with research studios before building. Every feature starts with a quantified hypothesis, not an assumption.</p>
+      </div>
+      <div class="skm-mindset fade-in stagger-3">
+        <div class="skm-mindset-icon">⚡</div>
+        <h3>Ship Small, Ship Fast</h3>
+        <p>Split Amendment into Admin + Seller tracks. Split Phase 2 into parallel workstreams. Decompose big bets into small, shippable increments.</p>
+      </div>
+      <div class="skm-mindset fade-in stagger-4">
+        <div class="skm-mindset-icon">🏗️</div>
+        <h3>Platform Over Feature</h3>
+        <p>I don't build point solutions. I architect shared exception platforms, reusable AI skill frameworks, and standard spec templates adopted org-wide.</p>
+      </div>
+      <div class="skm-mindset fade-in stagger-5">
+        <div class="skm-mindset-icon">🤝</div>
+        <h3>Earn the Right to Lead</h3>
+        <p>I built a VBA tool, produced the first marketing video, triaged 274 bugs. Leaders who get their hands dirty earn engineering trust.</p>
+      </div>
+      <div class="skm-mindset fade-in stagger-6">
+        <div class="skm-mindset-icon">♻️</div>
+        <h3>Retire Before You Build</h3>
+        <p>15+ legacy retirements saving $1M/yr. Reducing surface area is as important as expanding it. The best new feature is often deleting the old one.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 4: PRODUCTS I SHIPPED — Professional (PI + Microsoft)
+       ================================================================ -->
+  <section class="skm-section-alt">
+    <div class="skm-section">
+      <div class="skm-section-header fade-in">
+        <h2>Products I <span class="gradient-text">Shipped</span></h2>
+        <p>Not features. Not specs. End-to-end products used by real people in real workflows.</p>
+      </div>
+
+      <div class="skm-shipped">
+        <!-- PI Industries Products -->
+        <div class="skm-shipped-card pi fade-in stagger-1">
+          <h3>MPower — Field Force App</h3>
+          <div class="skm-shipped-org pi-color">PI INDUSTRIES &middot; BUILT FROM SCRATCH</div>
+          <p>India's first in-house field force management app for ag-chem. Built to digitize customer interactions and track activities of <strong>1,000+ sales representatives</strong> across India. Created a <strong>25 lakh customer database</strong> in three years.</p>
+          <div class="skm-shipped-metrics">
+            <div class="skm-shipped-metric"><strong>1,000+</strong> field reps</div>
+            <div class="skm-shipped-metric"><strong>25L</strong> customers</div>
+            <div class="skm-shipped-metric"><strong>First</strong> in-house app</div>
+          </div>
+        </div>
+
+        <div class="skm-shipped-card pi fade-in stagger-2">
+          <h3>Channel Loyalty App</h3>
+          <div class="skm-shipped-org pi-color">PI INDUSTRIES &middot; FIRST IN INDUSTRY</div>
+          <p>Gamified retailer loyalty platform using barcoded SKUs and <strong>instant Paytm wallet gratification</strong>. First in the Indian ag-chem industry. Drove retailer engagement with <strong>70% liquidation</strong> tracking.</p>
+          <div class="skm-shipped-metrics">
+            <div class="skm-shipped-metric"><strong>15K+</strong> downloads</div>
+            <div class="skm-shipped-metric"><strong>70%</strong> liquidation</div>
+            <div class="skm-shipped-metric"><strong>Industry first</strong></div>
+          </div>
+        </div>
+
+        <div class="skm-shipped-card pi fade-in stagger-3">
+          <h3>CRM Call Center & SMS Platform</h3>
+          <div class="skm-shipped-org pi-color">PI INDUSTRIES &middot; NEW CAPABILITY</div>
+          <p>Set up a CRM-enabled tele-calling center and SMS marketing platform from zero — adding <strong>tele-marketing and customer support</strong> as new business capabilities, clocking <strong>₹10 Cr/year revenue</strong>.</p>
+          <div class="skm-shipped-metrics">
+            <div class="skm-shipped-metric"><strong>₹10 Cr</strong>/year</div>
+            <div class="skm-shipped-metric"><strong>+25%</strong> demo efficacy</div>
+            <div class="skm-shipped-metric"><strong>0→1</strong> capability</div>
+          </div>
+        </div>
+
+        <div class="skm-shipped-card pi fade-in stagger-4">
+          <h3>Fleet & Distributor Portal</h3>
+          <div class="skm-shipped-org pi-color">PI INDUSTRIES &middot; SAP INTEGRATED</div>
+          <p>Fleet management system tracking <strong>140 application service machines</strong> with real-time efficiency metrics. Built a SAP-integrated distributor portal enabling digital ordering and transparency.</p>
+          <div class="skm-shipped-metrics">
+            <div class="skm-shipped-metric"><strong>140</strong> machines tracked</div>
+            <div class="skm-shipped-metric"><strong>SAP</strong> integration</div>
+          </div>
+        </div>
+
+        <!-- Microsoft Products -->
+        <div class="skm-shipped-card msft fade-in stagger-5">
+          <h3>Modern Seller Transaction Platform</h3>
+          <div class="skm-shipped-org msft-color">MICROSOFT &middot; MULTI-YEAR 0→1</div>
+          <p>End-to-end enterprise commerce platform replacing legacy CPQ — covering <strong>quotation, amendments, preapprovals, and approvals</strong>. Grew adoption from 8% to 93%. Reduced deal velocity from <strong>40 to 23 days</strong>.</p>
+          <div class="skm-shipped-metrics">
+            <div class="skm-shipped-metric"><strong>8→93%</strong> adoption</div>
+            <div class="skm-shipped-metric"><strong>40→23</strong> day velocity</div>
+            <div class="skm-shipped-metric"><strong>~$1M</strong>/yr saved</div>
+          </div>
+        </div>
+
+        <div class="skm-shipped-card msft fade-in stagger-6">
+          <h3>AI Seller Assistant → Deal Agent</h3>
+          <div class="skm-shipped-org msft-color">MICROSOFT &middot; AI-NATIVE</div>
+          <p>First AI assistant for sellers in Microsoft Commerce — discount insights, amendment summaries, and smart quoting. Now evolving into an <strong>autonomous agent creating custom quotations</strong> saving $800K/yr.</p>
+          <div class="skm-shipped-metrics">
+            <div class="skm-shipped-metric"><strong>8min→13s</strong> data entry</div>
+            <div class="skm-shipped-metric"><strong>$800K</strong>/yr savings</div>
+            <div class="skm-shipped-metric"><strong>-12 hrs</strong> deal velocity</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 5: SKILLS VISUALIZATION — Bar Chart
+       ================================================================ -->
+  <section class="skm-section">
+    <div class="skm-section-header fade-in">
+      <h2>Skills <span class="gradient-text">Depth</span></h2>
+      <p>Not buzzwords — capabilities demonstrated through shipped products and measurable outcomes</p>
+    </div>
+
+    <div class="skm-skills-grid fade-in">
+      <div class="skm-skill-category">
+        <div class="skm-skill-cat-title">Product & Strategy</div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">0→1 Product Creation</div><div class="skm-skill-track"><div class="skm-skill-fill purple" style="--level:95%"></div></div><div class="skm-skill-pct">95%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Platform Thinking</div><div class="skm-skill-track"><div class="skm-skill-fill purple" style="--level:92%"></div></div><div class="skm-skill-pct">92%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Legacy Modernization</div><div class="skm-skill-track"><div class="skm-skill-fill purple" style="--level:98%"></div></div><div class="skm-skill-pct">98%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Customer Research</div><div class="skm-skill-track"><div class="skm-skill-fill purple" style="--level:88%"></div></div><div class="skm-skill-pct">88%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Business Strategy</div><div class="skm-skill-track"><div class="skm-skill-fill purple" style="--level:90%"></div></div><div class="skm-skill-pct">90%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Financial Modelling</div><div class="skm-skill-track"><div class="skm-skill-fill purple" style="--level:82%"></div></div><div class="skm-skill-pct">82%</div></div>
+      </div>
+      <div class="skm-skill-category">
+        <div class="skm-skill-cat-title">Technology & Execution</div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">AI / Agents / LLMs</div><div class="skm-skill-track"><div class="skm-skill-fill green" style="--level:90%"></div></div><div class="skm-skill-pct">90%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Cloud (Azure)</div><div class="skm-skill-track"><div class="skm-skill-fill green" style="--level:85%"></div></div><div class="skm-skill-pct">85%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Frontend (React/JS)</div><div class="skm-skill-track"><div class="skm-skill-fill blue" style="--level:80%"></div></div><div class="skm-skill-pct">80%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Backend (Python)</div><div class="skm-skill-track"><div class="skm-skill-fill blue" style="--level:78%"></div></div><div class="skm-skill-pct">78%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Embedded / Firmware</div><div class="skm-skill-track"><div class="skm-skill-fill blue" style="--level:75%"></div></div><div class="skm-skill-pct">75%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Security & Compliance</div><div class="skm-skill-track"><div class="skm-skill-fill pink" style="--level:85%"></div></div><div class="skm-skill-pct">85%</div></div>
+      </div>
+      <div class="skm-skill-category">
+        <div class="skm-skill-cat-title">Leadership & Influence</div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Cross-org Influence</div><div class="skm-skill-track"><div class="skm-skill-fill amber" style="--level:92%"></div></div><div class="skm-skill-pct">92%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">People Leadership</div><div class="skm-skill-track"><div class="skm-skill-fill amber" style="--level:88%"></div></div><div class="skm-skill-pct">88%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Change Management</div><div class="skm-skill-track"><div class="skm-skill-fill amber" style="--level:94%"></div></div><div class="skm-skill-pct">94%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Stakeholder Mgmt</div><div class="skm-skill-track"><div class="skm-skill-fill amber" style="--level:90%"></div></div><div class="skm-skill-pct">90%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Adoption at Scale</div><div class="skm-skill-track"><div class="skm-skill-fill amber" style="--level:96%"></div></div><div class="skm-skill-pct">96%</div></div>
+        <div class="skm-skill-bar-row"><div class="skm-skill-name">Vendor Orchestration</div><div class="skm-skill-track"><div class="skm-skill-fill amber" style="--level:85%"></div></div><div class="skm-skill-pct">85%</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 6: CAREER ARC — Visual Timeline
+       ================================================================ -->
+  <section class="skm-section-alt">
+    <div class="skm-section">
+      <div class="skm-section-header fade-in">
+        <h2>The <span class="gradient-text">Arc</span></h2>
+        <p>Not a career path — a deliberately built toolkit of perspectives</p>
+      </div>
+
+      <div class="skm-arc">
+        <div class="skm-arc-row fade-in stagger-1">
+          <div class="skm-arc-year">2008</div>
+          <div class="skm-arc-line"><div class="skm-arc-dot" style="border-color:var(--pastel-blue)"></div></div>
+          <div class="skm-arc-content">
+            <span class="skm-arc-badge eng">ENGINEER</span>
+            <h3>The Engineer</h3>
+            <div class="skm-arc-org">Cypress Semiconductor &middot; Senior Software Engineer &middot; 4 years</div>
+            <p><strong>USB 3.0 firmware, ARM RTOS, Android kernel drivers.</strong> Designed hardware abstraction layers. Shipped a demo that unlocked <strong>$2M in opportunities</strong>. Published in EETimes (2nd best among 120 globally). 3 papers in Cypress International Symposium.</p>
+            <span class="skm-arc-takeaway">→ I learned to think in constraints, systems, and first principles.</span>
+          </div>
+        </div>
+        <div class="skm-arc-row fade-in stagger-2">
+          <div class="skm-arc-year">2014</div>
+          <div class="skm-arc-line"><div class="skm-arc-dot" style="border-color:var(--pastel-amber)"></div></div>
+          <div class="skm-arc-content">
+            <span class="skm-arc-badge consult">STRATEGIST</span>
+            <h3>The Strategist</h3>
+            <div class="skm-arc-org">KPMG + Power Grid Corp &middot; Consultant &amp; Bidding Officer &middot; 3 years</div>
+            <p><strong>Growth strategy, financial modelling, power sector advisory.</strong> Reduced a state's power procurement by 1,800 MW — saving <strong>₹2,500 Cr annually</strong>. Built bid models, forecast demand, analyzed solar variability across 40+ plants. Shaped policy feedback for MNRE.</p>
+            <span class="skm-arc-takeaway">→ I learned to frame problems in P&L, risk, and market dynamics.</span>
+          </div>
+        </div>
+        <div class="skm-arc-row fade-in stagger-3">
+          <div class="skm-arc-year">2017</div>
+          <div class="skm-arc-line"><div class="skm-arc-dot" style="border-color:var(--pastel-pink)"></div></div>
+          <div class="skm-arc-content">
+            <span class="skm-arc-badge transform">TRANSFORMER</span>
+            <h3>The Transformer</h3>
+            <div class="skm-arc-org">PI Industries &middot; Digital Transformation Head &middot; 4 years</div>
+            <p><strong>Built a digital organization from zero.</strong> Created <strong>MPower App</strong> (field force management for 1,000+ reps, 25L customer database). Launched <strong>Channel Loyalty App</strong> — first gamified retailer platform in Indian ag-chem (15K+ downloads). Set up <strong>CRM tele-calling center</strong> clocking ₹10 Cr/yr. Built fleet tracking, SAP distributor portal, SMS platform. Led digital marketing to <strong>3L page views/day</strong>. Panelist at Agriculture 4.0 Conference.</p>
+            <span class="skm-arc-takeaway">→ I learned to build orgs, ship products, manage change, and drive adoption in resistant environments.</span>
+          </div>
+        </div>
+        <div class="skm-arc-row fade-in stagger-4">
+          <div class="skm-arc-year">2021</div>
+          <div class="skm-arc-line"><div class="skm-arc-dot" style="border-color:var(--pastel-purple)"></div></div>
+          <div class="skm-arc-content">
+            <span class="skm-arc-badge microsoft">PRODUCT LEADER</span>
+            <h3>The Synthesizer</h3>
+            <div class="skm-arc-org">Microsoft &middot; Sr PM → Principal PM → PM Lead (L66) &middot; 5+ years</div>
+            <p><strong>All lenses converge.</strong> Built a 0→1 seller transaction platform. Retired 15+ legacy tools saving ~$1M/yr. Pioneered AI Copilot for sellers. Now leading AI Deal Agent reducing deal velocity by 12 hours. Grew adoption from 8% to 93%. Led multi-vendor teams across Accenture &amp; LTIMindtree. Promoted three times in four years.</p>
+            <span class="skm-arc-takeaway">→ Engineering depth × consulting rigor × transformation experience = product leadership at scale.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 7: WHAT I DRIVE — Impact Themes Bento
+       ================================================================ -->
+  <section class="skm-section">
+    <div class="skm-section-header fade-in">
+      <h2>What I <span class="gradient-text">Drive</span></h2>
+      <p>Recurring themes across 16+ years of building, advising, and transforming</p>
+    </div>
+
+    <div class="skm-themes">
+      <div class="skm-theme wide fade-in stagger-1">
+        <div class="skm-theme-icon">🚀</div>
+        <h3>0→1 Platform Creation</h3>
+        <p>Built Microsoft's modern seller transaction platform from scratch — replacing a legacy CPQ ecosystem spanning quotation, amendments, preapprovals, and approvals. At PI, built MPower App, Channel Loyalty App, CRM platform, and fleet management from zero. Took Microsoft platform adoption from <strong class="skm-accent-green">8% to 93%</strong>.</p>
+      </div>
+      <div class="skm-theme fade-in stagger-2">
+        <div class="skm-theme-metric gradient-text">$1M+</div>
+        <h3>Legacy Retirement</h3>
+        <p>Retired 15+ legacy tools across partner quoting, approval processes, and commerce workflows — saving ~$1M/year in cloud, vendor, and ops costs.</p>
+      </div>
+      <div class="skm-theme fade-in stagger-3">
+        <div class="skm-theme-icon">🤖</div>
+        <h3>AI-Native Product Design</h3>
+        <p>First to build an AI assistant for sellers at Microsoft Commerce. Now leading an AI agent creating custom quotations — saving <strong class="skm-accent-green">$800K/yr</strong> and cutting deal data entry from 8 min to 13 sec.</p>
+      </div>
+      <div class="skm-theme fade-in stagger-4">
+        <div class="skm-theme-icon">⚡</div>
+        <h3>Deal Velocity</h3>
+        <p>Compressed enterprise deal cycles from 40 to 23 days. AI agent reducing custom quote turnaround by 12 hours. Self-serve partner deals: <strong class="skm-accent-green">13 days → 2 hours</strong>.</p>
+      </div>
+      <div class="skm-theme wide fade-in stagger-5">
+        <div class="skm-theme-icon">🛡️</div>
+        <h3>Security & Customer-Centric Design</h3>
+        <p>Led privacy, security, and accessibility reviews across 5 service trees. Established Seller Think Tank — direct SME forums with field sellers. At PI, ran first-ever Channel Satisfaction Survey. Every feature grounded in real customer pain.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 8: MICROSOFT DEEP-DIVE — Interactive Timeline
+       ================================================================ -->
+  <section class="skm-section-alt">
+    <div class="skm-section">
+      <div class="skm-section-header fade-in">
+        <h2>The Microsoft <span class="gradient-text">Chapter</span></h2>
+        <p>5+ years transforming enterprise commerce — click any phase to expand</p>
+      </div>
+
+      <div class="skm-journey" id="journey">
+        <div class="skm-journey-track"></div>
+
+        <div class="skm-phase active" data-phase="6">
+          <div class="skm-phase-dot"></div>
+          <div class="skm-phase-header">
+            <span class="skm-phase-date">NOV 2025 → NOW</span>
+            <span class="skm-phase-title">Team Scaling & AI Agents</span>
+            <span class="skm-phase-level">L66 — PM Lead</span>
+          </div>
+          <div class="skm-phase-summary">Leading multi-vendor teams across commerce modernization, AI agent enablement, and cross-vendor delivery.</div>
+          <div class="skm-phase-details">
+            <ul class="skm-phase-outcomes">
+              <li><strong>Shipped 17 major platform releases</strong> in a single half via war rooms and exec dashboards</li>
+              <li>Leading <strong>$800K/year cost savings</strong> and 12-hour deal velocity reduction through AI agent for custom quotations</li>
+              <li>Architected three-tier AI Assistant design (standard / custom / exception)</li>
+              <li>Scaled vendor PM org — hired and onboarded <strong>5+ PM/TPM roles</strong> across LTIMindtree and Accenture</li>
+              <li>Drove quote digitization from ~50% to <strong>93%</strong></li>
+            </ul>
+            <div class="skm-phase-tags">
+              <span class="skm-tag">AI Agents</span><span class="skm-tag">Multi-vendor</span><span class="skm-tag">Team Leadership</span><span class="skm-tag">Cost Optimization</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skm-phase" data-phase="5">
+          <div class="skm-phase-dot"></div>
+          <div class="skm-phase-header">
+            <span class="skm-phase-date">APR 2025</span>
+            <span class="skm-phase-title">Retirement & Transition</span>
+            <span class="skm-phase-level">L66</span>
+          </div>
+          <div class="skm-phase-summary">Platform transition leadership — retired partner-facing tools, hardened security, drove cross-org influence.</div>
+          <div class="skm-phase-details">
+            <ul class="skm-phase-outcomes">
+              <li>Retired legacy partner quoting — <strong>saved $60K/yr</strong>, improved velocity by 4 days</li>
+              <li>Retired commerce app — <strong>25% cloud reduction, $235K/yr vendor savings</strong></li>
+              <li>Removed 400+ outdated rules — cut onboarding from <strong>3 weeks to 3 days</strong></li>
+            </ul>
+            <div class="skm-phase-tags">
+              <span class="skm-tag">Legacy Retirement</span><span class="skm-tag">Security</span><span class="skm-tag">Quality Star Award</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skm-phase" data-phase="4">
+          <div class="skm-phase-dot"></div>
+          <div class="skm-phase-header">
+            <span class="skm-phase-date">NOV 2023 – NOV 2024</span>
+            <span class="skm-phase-title">AI Transformation</span>
+            <span class="skm-phase-level">L64 → L66</span>
+          </div>
+          <div class="skm-phase-summary">Pioneered AI Copilot in commerce, shipped partner self-serve, launched Deal Studio vision.</div>
+          <div class="skm-phase-details">
+            <ul class="skm-phase-outcomes">
+              <li>First to build <strong>AI Copilot for sellers</strong> — discount insights, amendments, smart quoting</li>
+              <li><strong>AI Smart Import</strong>: 8 min → 13 seconds per deal</li>
+              <li>Partner self-serve: <strong>13-day approval → 2-hour median</strong></li>
+              <li>Demoed "Deal Studio" reimagination to senior leadership</li>
+            </ul>
+            <div class="skm-phase-tags">
+              <span class="skm-tag">AI Copilot</span><span class="skm-tag">0→1</span><span class="skm-tag">Deal Studio</span><span class="skm-tag">Promotion to L66</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skm-phase" data-phase="3">
+          <div class="skm-phase-dot"></div>
+          <div class="skm-phase-header">
+            <span class="skm-phase-date">MAY 2022 – NOV 2023</span>
+            <span class="skm-phase-title">MVP-to-GA & Scale</span>
+            <span class="skm-phase-level">L63 → L64</span>
+          </div>
+          <div class="skm-phase-summary">Shipped Phase 1 GA, drove adoption from 8% to 68%, built quality infrastructure.</div>
+          <div class="skm-phase-details">
+            <ul class="skm-phase-outcomes">
+              <li>Adoption inflection: <strong>8% → 66% in 6 months</strong> through weekly office hours</li>
+              <li>Triaged <strong>274 bugs (54 P0 / 131 P1)</strong> — automated handling for 600+</li>
+              <li>Authored <strong>18 features</strong> across agreement, license, and approval scenarios</li>
+            </ul>
+            <div class="skm-phase-tags">
+              <span class="skm-tag">Adoption</span><span class="skm-tag">Quality</span><span class="skm-tag">Research</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skm-phase" data-phase="2">
+          <div class="skm-phase-dot"></div>
+          <div class="skm-phase-header">
+            <span class="skm-phase-date">NOV 2021 – MAY 2022</span>
+            <span class="skm-phase-title">Zero-to-One</span>
+            <span class="skm-phase-level">L62 — Sr PM</span>
+          </div>
+          <div class="skm-phase-summary">Onboarded in 2 weeks, created foundational CJMs, established Seller Think Tank.</div>
+          <div class="skm-phase-details">
+            <ul class="skm-phase-outcomes">
+              <li>Authored end-to-end <strong>Customer Journey Map</strong> aligning all stakeholders</li>
+              <li>Established <strong>Seller Think Tank</strong> — ad-hoc SME forum with field sellers</li>
+              <li>Authored API spec template <strong>adopted as org standard</strong></li>
+              <li>Built VBA tool that cut a CE task from <strong>a full week to minutes</strong></li>
+            </ul>
+            <div class="skm-phase-tags">
+              <span class="skm-tag">0→1</span><span class="skm-tag">Customer Research</span><span class="skm-tag">Seller Think Tank</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 9: PHILOSOPHY + MAKER PORTFOLIO
+       ================================================================ -->
+  <section class="skm-philosophy fade-in">
+    <blockquote>
+      I don't just manage products — I build them. The best product leaders stay close to the craft,
+      get their hands dirty, and never stop being curious about what's possible.
+    </blockquote>
+    <cite>— Sangram, on why he still ships code on weekends</cite>
+  </section>
+
+  <section class="skm-section">
+    <div class="skm-section-header fade-in">
+      <h2>I <span class="gradient-text">Build</span> Things</h2>
+      <p>Side projects across EdTech, HealthTech, FinTech, and content automation — all designed, developed, and shipped by me</p>
+    </div>
+
+    <div class="skm-projects">
+      <div class="skm-project fade-in stagger-1">
+        <div class="skm-project-header">
+          <div class="skm-project-icon skm-icon-clock">🕐</div>
+          <div><h3>Clock Master</h3><div class="skm-project-domain">EdTech &middot; Android</div></div>
+        </div>
+        <div class="skm-project-desc">Gamified time-telling app for kids PP1–Grade 3. Drag analog clock hands, race cars with correct answers, prep for Junior Olympiad.</div>
+        <div class="skm-project-stack"><span>React</span><span>Vite</span><span>Capacitor</span><span>Framer Motion</span><span>TTS</span></div>
+        <div class="skm-project-why"><strong>Why:</strong> My kid struggled with analog clocks. No app made it fun. So I built one.</div>
+      </div>
+
+      <div class="skm-project fade-in stagger-2">
+        <div class="skm-project-header">
+          <div class="skm-project-icon skm-icon-math">💥</div>
+          <div><h3>Math Tank</h3><div class="skm-project-domain">EdTech &middot; Android</div></div>
+        </div>
+        <div class="skm-project-desc">Math-powered tank battle game. Answer multiplication to fire torpedoes. 90 levels, 10 torpedo types, God Mode.</div>
+        <div class="skm-project-stack"><span>Next.js</span><span>React</span><span>Tailwind</span><span>Capacitor</span><span>SQLite</span></div>
+        <div class="skm-project-why"><strong>Why:</strong> Kids hate math drills. Nobody said math can't involve explosions.</div>
+      </div>
+
+      <div class="skm-project fade-in stagger-3">
+        <div class="skm-project-header">
+          <div class="skm-project-icon skm-icon-health">🏥</div>
+          <div><h3>HealthMoni</h3><div class="skm-project-domain">HealthTech &middot; AI</div></div>
+        </div>
+        <div class="skm-project-desc">AI-powered family health tracker. Parses Indian lab PDFs, normalizes data across labs, visualizes trends with clinical flagging.</div>
+        <div class="skm-project-stack"><span>Python</span><span>Azure Functions</span><span>Azure OpenAI</span><span>Fuzzy Matching</span></div>
+        <div class="skm-project-why"><strong>Why:</strong> Tracking family health across 5 labs shouldn't require a spreadsheet.</div>
+      </div>
+
+      <div class="skm-project fade-in stagger-4">
+        <div class="skm-project-header">
+          <div class="skm-project-icon skm-icon-trading">📈</div>
+          <div><h3>NeoTrading</h3><div class="skm-project-domain">FinTech &middot; AI</div></div>
+        </div>
+        <div class="skm-project-desc">Autonomous algorithmic trading engine. 3 strategies, confluence engine, GPT-4o intelligence, sector rotation. Sharpe: 1.69.</div>
+        <div class="skm-project-stack"><span>Python</span><span>Azure Functions</span><span>GPT-4o</span><span>Kotak API</span></div>
+        <div class="skm-project-why"><strong>Why:</strong> Wanted to test if AI + technical analysis could beat my gut instinct. It can.</div>
+      </div>
+
+      <div class="skm-project fade-in stagger-5">
+        <div class="skm-project-header">
+          <div class="skm-project-icon skm-icon-otterly">🦦</div>
+          <div><h3>Otterly Games</h3><div class="skm-project-domain">Brand &middot; Web Platform</div></div>
+        </div>
+        <div class="skm-project-desc">Full brand site: 12 free learning tools, blog, cross-promotion, SEO — all pure HTML/CSS/JS, zero frameworks.</div>
+        <div class="skm-project-stack"><span>HTML5</span><span>CSS3</span><span>Vanilla JS</span><span>GitHub Pages</span></div>
+        <div class="skm-project-why"><strong>Why:</strong> Prove you can ship a complete brand without a single npm install.</div>
+      </div>
+
+      <div class="skm-project fade-in stagger-6">
+        <div class="skm-project-header">
+          <div class="skm-project-icon skm-icon-content">✍️</div>
+          <div><h3>Content Hub</h3><div class="skm-project-domain">Content &middot; AI Automation</div></div>
+        </div>
+        <div class="skm-project-desc">AI-powered blog pipeline: trend discovery → Claude drafts → SEO scoring → auto-publish → social media generation.</div>
+        <div class="skm-project-stack"><span>Node.js</span><span>Claude API</span><span>SEO Engine</span><span>Express</span></div>
+        <div class="skm-project-why"><strong>Why:</strong> Content marketing is a treadmill. AI should run it while I focus on product.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 10: SOCIAL PROOF + CREDENTIALS
+       ================================================================ -->
+  <section class="skm-section-alt">
+    <div class="skm-section">
+      <div class="skm-section-header fade-in">
+        <h2>Recognition & <span class="gradient-text">Credentials</span></h2>
+      </div>
+
+      <div class="skm-proof-bar fade-in">
+        <div class="skm-proof">
+          <div class="skm-proof-icon">🏆</div>
+          <div><h4>Quality Star Award</h4><p>Microsoft — for legacy retirement excellence and impact</p></div>
+        </div>
+        <div class="skm-proof">
+          <div class="skm-proof-icon">🎤</div>
+          <div><h4>Conference Panelist</h4><p>Digital Agriculture India — Agriculture 4.0 & Sustainability, 2020</p></div>
+        </div>
+        <div class="skm-proof">
+          <div class="skm-proof-icon">📰</div>
+          <div><h4>EETimes Published</h4><p>"USB 3.0 I/O Management" — 2nd best article among 120 globally</p></div>
+        </div>
+        <div class="skm-proof">
+          <div class="skm-proof-icon">🥇</div>
+          <div><h4>National Winner ×2</h4><p>Miebach Milestone (e-commerce) + MarkGuru Vista IIM-B (Atomberg strategy)</p></div>
+        </div>
+        <div class="skm-proof">
+          <div class="skm-proof-icon">🎓</div>
+          <div><h4>3 Promotions in 4 Years</h4><p>Microsoft — L62 → L63 → L64 → L66</p></div>
+        </div>
+        <div class="skm-proof">
+          <div class="skm-proof-icon">📋</div>
+          <div><h4>Secured by Design</h4><p>Led "Secured by Design" session for Microsoft IDC PM community</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="skm-creds fade-in">
+    <div class="skm-cred">
+      <div class="skm-cred-badge skm-badge-amber">🎓</div>
+      <div><strong>IIM Ahmedabad</strong><br><span class="skm-cred-sub">PGDM — Rank 57/376</span></div>
+    </div>
+    <div class="skm-cred">
+      <div class="skm-cred-badge skm-badge-blue">🎓</div>
+      <div><strong>NIT Calicut</strong><br><span class="skm-cred-sub">B.Tech ECE — 87.1%</span></div>
+    </div>
+    <div class="skm-cred">
+      <div class="skm-cred-badge skm-badge-green">📋</div>
+      <div><strong>PMP Certified</strong><br><span class="skm-cred-sub">Project Management Professional</span></div>
+    </div>
+    <div class="skm-cred">
+      <div class="skm-cred-badge skm-badge-pink">📊</div>
+      <div><strong>CFA Level I</strong><br><span class="skm-cred-sub">Chartered Financial Analyst</span></div>
+    </div>
+    <div class="skm-cred">
+      <div class="skm-cred-badge skm-badge-purple">⚙️</div>
+      <div><strong>Six Sigma</strong><br><span class="skm-cred-sub">Lean Green Belt</span></div>
+    </div>
+  </div>
+
+  <button class="skm-top-btn" id="topBtn" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script src="/js/includes.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      /* --- Interactive Timeline --- */
+      document.querySelectorAll('.skm-phase').forEach(function (phase) {
+        phase.addEventListener('click', function () {
+          var wasActive = phase.classList.contains('active');
+          document.querySelectorAll('.skm-phase').forEach(function (p) { p.classList.remove('active'); });
+          if (!wasActive) phase.classList.add('active');
+        });
+      });
+
+      /* --- Scroll Progress + Back to Top --- */
+      var progressBar = document.getElementById('scrollProgress');
+      var topBtn = document.getElementById('topBtn');
+      window.addEventListener('scroll', function () {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight > 0) progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+        topBtn.classList.toggle('visible', scrollTop > 600);
+      });
+
+      /* --- Animated Skill Bars + Impact Rings --- */
+      var animObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            // Skill bars
+            e.target.querySelectorAll('.skm-skill-fill').forEach(function (bar) {
+              bar.classList.add('animated');
+            });
+            // Impact rings
+            e.target.querySelectorAll('.skm-impact-visual').forEach(function (ring) {
+              var pct = parseInt(ring.dataset.pct || 0, 10);
+              var circumference = 2 * Math.PI * 36; // r=36
+              var offset = circumference - (pct / 100 * circumference);
+              ring.style.setProperty('--offset', offset);
+              ring.classList.add('animated');
+            });
+          }
+        });
+      }, { threshold: 0.2 });
+
+      document.querySelectorAll('.skm-skills-grid, .skm-impact-ring').forEach(function (el) {
+        animObserver.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

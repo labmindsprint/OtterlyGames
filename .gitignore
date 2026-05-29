@@ -24,6 +24,17 @@ desktop.ini
 .env.local
 .env.*.local
 
+# Secret keys and credentials
+*.pem
+*.key
+*.secret
+*.credentials
+id_rsa
+id_ed25519
+
+# Deployment/infra scripts with hardcoded secrets
+**/test_outputs/
+
 # Logs
 *.log
 npm-debug.log*
@@ -36,6 +47,7 @@ npm-debug.log*
 ClockMaster-main/
 Math-Tank-main/
 Gaming Brand Site Creation/
+PlayMyStory/
 
 # Backup files
 *-backup.html
