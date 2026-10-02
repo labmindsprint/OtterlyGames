@@ -10,7 +10,7 @@
       <meta name="theme-color" content="#6366f1" />
       <meta name="description" content="Learn to tell time with fun! An educational game for kids featuring clock lessons, time races, and space exploration." />
       
-      <title>Time Quest - Learn Clock with Fun!</title>
+      <title>Clock Master - Learn Clock with Fun!</title>
       
       <!-- Favicon -->
       <link rel="icon" type="image/svg+xml" href="/games/clockmaster/favicon.svg" />
@@ -19,7 +19,7 @@
       <link rel="manifest" href="/games/clockmaster/manifest.json" />
       
       <!-- Apple Touch Icon -->
-      <link rel="apple-touch-icon" href="/games/clockmaster/icon-180.svg" />
+      <link rel="apple-touch-icon" href="/games/clockmaster/icon-180.png" />
       
       <!-- Android Chrome Icons -->
       <link rel="icon" type="image/svg+xml" sizes="192x192" href="/games/clockmaster/icon-192.svg" />
@@ -41,34 +41,8 @@
           background-color: #1e1e1e;
         }
       </style>
-      <!-- Audio tracker: lets parent page pause all audio via postMessage -->
-      <script>
-      (function(){
-        var audios=[],contexts=[];
-        var origPlay=HTMLAudioElement.prototype.play;
-        HTMLAudioElement.prototype.play=function(){
-          if(audios.indexOf(this)===-1)audios.push(this);
-          return origPlay.apply(this,arguments);
-        };
-        ['AudioContext','webkitAudioContext'].forEach(function(n){
-          var O=window[n];if(!O)return;
-          function P(o){var c=o?new O(o):new O();contexts.push(c);return c}
-          P.prototype=O.prototype;
-          try{Object.defineProperty(P,'name',{value:n})}catch(e){}
-          window[n]=P;
-        });
-        function pauseAll(){
-          audios.forEach(function(a){try{a.pause()}catch(e){}});
-          contexts.forEach(function(c){try{if(c.state==='running')c.suspend()}catch(e){}});
-        }
-        window.__pauseAllAudio=pauseAll;
-        window.addEventListener('message',function(e){
-          if(e.data&&e.data.type==='pauseAudio')pauseAll();
-        });
-      })();
-      </script>
-      <script type="module" crossorigin src="/games/clockmaster/assets/index-DBm50toB.js"></script>
-      <link rel="stylesheet" crossorigin href="/games/clockmaster/assets/index-DPmT_9js.css">
+      <script type="module" crossorigin src="/games/clockmaster/assets/index-IjJEmIi3.js"></script>
+      <link rel="stylesheet" crossorigin href="/games/clockmaster/assets/index-DAi6fb3z.css">
     </head>
 
     <body>

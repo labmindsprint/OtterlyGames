@@ -45,6 +45,7 @@
   <!-- Page layout (legacy app page styles) -->
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/dark-brand.css">
+  <link rel="stylesheet" href="/css/math-tank.css">
   <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
@@ -67,7 +68,7 @@
       </div>
       <div class="app-hero-inner">
         <div class="fade-in">
-          <div class="app-hero-icon">🔢</div>
+          <img class="mt-icon" src="/images/mathtank-icon.png" alt="Math Tank icon" width="112" height="112">
           <h1>Math Tank</h1>
           <p class="app-card-tagline">Learn × Battle — Master Math Through Epic Tank Battles!</p>
           <p>Math Tank turns multiplication and division into an adventure. Answer math questions to fire missiles, defeat pirate tanks, explore space, and practice times tables — all at your own pace. No pressure, just fun.</p>
@@ -97,15 +98,7 @@
           </div>
         </div>
         <div class="app-hero-mockup fade-in">
-          <div class="phone-mockup">
-            <div class="phone-screen math-tank-screen">
-              <div style="text-align:center;color:white;">
-                <div style="font-size:4rem;">⚔️</div>
-                <div style="font-size:1.2rem;font-weight:800;font-family:var(--font-heading);margin-top:0.5rem;">Math Explorer</div>
-                <div style="font-size:0.75rem;opacity:0.8;margin-top:0.25rem;">Master math through battle!</div>
-              </div>
-            </div>
-          </div>
+          <img class="mt-phone-shot" src="/images/mathtank/home.webp" alt="The refreshed Math Tank home with illustrated tanks and visual activity buttons" width="540" height="960" fetchpriority="high">
         </div>
       </div>
     </div>
@@ -119,8 +112,25 @@
         <h2 class="section-title">Try the Tank Battle!</h2>
         <p class="section-subtitle">Answer multiplication questions to fire missiles at the pirate tank. This is a taste of Math Tank!</p>
       </div>
-      <div class="mini-game-wrapper fade-in">
-        <div id="math-battle-game"></div>
+      <div class="mt-demo fade-in" id="math-demo">
+        <button class="mt-demo-start" id="math-demo-start" type="button">
+          <img src="/images/mathtank/battle.webp" alt="" width="540" height="960" loading="lazy">
+          <span>Play Tank Battle</span>
+        </button>
+        <iframe id="math-demo-frame" title="Play Math Tank Battle" allow="autoplay" hidden></iframe>
+      </div>
+      <p class="mt-demo-link"><a href="/games/mathtank/?mode=battle">Open the battle full size</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">A fresh look for every adventure</h2>
+      <p class="section-subtitle">Discover the compact garage, choose paint and stickers, and rescue worlds in the full Android game.</p>
+      <div class="mt-gallery">
+        <figure><img src="/images/mathtank/garage.webp" alt="Compact illustrated tank cards with visual stats" width="540" height="960" loading="lazy"><figcaption>Collect your tanks</figcaption></figure>
+        <figure><img src="/images/mathtank/customize.webp" alt="Paint colors and a large interactive tank preview" width="540" height="960" loading="lazy"><figcaption>Make it yours</figcaption></figure>
+        <figure><img src="/images/mathtank/universe.webp" alt="The new illustrated universe rescue map" width="540" height="960" loading="lazy"><figcaption>Rescue the universe</figcaption></figure>
       </div>
     </div>
   </section>
@@ -268,6 +278,7 @@
 
   <!-- Shared includes -->
   <script src="/js/includes.js" defer></script>
+  <script src="/js/math-demo.js" defer></script>
   <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
   <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
 </body>

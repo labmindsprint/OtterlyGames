@@ -14,8 +14,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Clock Master: Time for Junior Olympiad">
   <meta name="twitter:description" content="Interactive clock lessons, car racing, and space exploration. A gamified way for kids aged 4-9 to master telling time.">
-  <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
-  <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="twitter:image" content="https://otterlygames.com/images/clockmaster/feature.webp">
+  <meta property="og:image" content="https://otterlygames.com/images/clockmaster/feature.webp">
   <meta name="pinterest-rich-pin" content="true">
   <script type="application/ld+json">
   {
@@ -45,6 +45,7 @@
   <!-- Page layout (legacy app page styles) -->
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/dark-brand.css">
+  <link rel="stylesheet" href="/css/clock-master.css">
   <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
@@ -67,26 +68,26 @@
       </div>
       <div class="app-hero-inner">
         <div class="fade-in">
-          <div class="app-hero-icon">🕐</div>
+          <img class="cm-icon" src="/images/clockmaster-icon.png" alt="Clock Master Space Clock icon" width="112" height="112">
           <h1>Clock Master</h1>
           <p class="app-card-tagline">Time for Junior Olympiad — Learn Time Through Play</p>
-          <p>Clock Master makes learning to tell time an adventure. From dragging clock hands to racing cars to exploring the cosmos — every activity is powered by clock-reading skills. Built with voice guidance so kids can learn independently.</p>
+          <p>Meet Otterly, your animated timekeeping companion. Drag clock hands, race original cars, and explore the cosmos through 11 guided chapters and playful clock challenges. Voice guidance helps children know what to do next.</p>
           <div class="app-meta">
             <div class="app-meta-item">
               <div class="app-meta-value">4-9</div>
               <div class="app-meta-label">Ages</div>
             </div>
             <div class="app-meta-item">
-              <div class="app-meta-value">8</div>
-              <div class="app-meta-label">Lessons</div>
+              <div class="app-meta-value">11</div>
+              <div class="app-meta-label">Chapters</div>
             </div>
             <div class="app-meta-item">
               <div class="app-meta-value">30</div>
               <div class="app-meta-label">Space Objects</div>
             </div>
             <div class="app-meta-item">
-              <div class="app-meta-value">No IAP</div>
-              <div class="app-meta-label">In-App Purchases</div>
+              <div class="app-meta-value">41</div>
+              <div class="app-meta-label">Cars</div>
             </div>
           </div>
           <div style="display:flex;gap:1rem;flex-wrap:wrap;">
@@ -97,31 +98,28 @@
           </div>
         </div>
         <div class="app-hero-mockup fade-in">
-          <div class="phone-mockup">
-            <div class="phone-screen clock-master-screen">
-              <div style="text-align:center;color:white;">
-                <div style="font-size:4rem;">🕐</div>
-                <div style="font-size:1.2rem;font-weight:800;font-family:var(--font-heading);margin-top:0.5rem;">Time Explorers!</div>
-                <div style="font-size:0.75rem;opacity:0.8;margin-top:0.25rem;">Let's learn about time!</div>
-              </div>
-            </div>
-          </div>
+          <img class="cm-phone-shot" src="/images/clockmaster/home.webp" alt="The redesigned Clock Master home with Otterly and Learn, Race, and Universe activities" width="540" height="960" fetchpriority="high">
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============ PLAYABLE MINI-GAME ============ -->
-  <section class="section" style="background:var(--white);">
+  <section class="section" id="play" style="background:var(--white);">
     <div class="container">
       <div class="section-header fade-in">
         <div class="mini-game-badge">🎮 PLAYABLE DEMO</div>
         <h2 class="section-title">Try the Time Race!</h2>
         <p class="section-subtitle">Read the clock, pick the right time, and beat your rival. This is a taste of what Clock Master feels like!</p>
       </div>
-      <div class="mini-game-wrapper fade-in">
-        <div id="time-race-game"></div>
+      <div class="cm-demo fade-in" id="clock-demo">
+        <button class="cm-demo-start" id="clock-demo-start" type="button">
+          <img src="/images/clockmaster/race.webp" alt="" width="540" height="960" loading="lazy">
+          <span>Play Time Race</span>
+        </button>
+        <iframe id="clock-demo-frame" title="Play Clock Master Time Race" allow="autoplay" hidden></iframe>
       </div>
+      <p class="cm-demo-link"><a href="/games/clockmaster/?mode=race">Open the game full size</a> &middot; <a href="/games/clockmaster/">Meet Otterly and explore all activities</a></p>
     </div>
   </section>
 
@@ -129,10 +127,10 @@
   <section class="feature-section">
     <div class="container">
       <div class="feature-grid fade-in">
-        <div class="feature-visual" style="background:linear-gradient(135deg,#EDE9FE,#FDE68A);">🕐📚</div>
+        <div class="feature-visual cm-feature"><img src="/images/clockmaster/lesson.webp" alt="Guided clock-hand practice with a clear target and feedback" width="960" height="600" loading="lazy"></div>
         <div class="feature-content">
-          <h3>8 Interactive Clock Lessons</h3>
-          <p>Step-by-step animated lessons that build from the basics to advanced concepts. Each lesson includes intro animations, guided tasks, and practice quizzes with voice-over support.</p>
+          <h3>11 Guided Clock Chapters</h3>
+          <p>Animated explanations lead into hands-on practice. Clear instructions, precise hand dragging, and immediate answer feedback let children learn at their own pace. Move to the next question when ready.</p>
           <ul class="feature-list">
             <li>Hour Hand — Learn what each number means</li>
             <li>Minute Hand — Understanding minutes around the clock</li>
@@ -142,6 +140,9 @@
             <li>Quarter & Half Past — Common time expressions</li>
             <li>Time Addition — "What time will it be in 2 hours?"</li>
             <li>Time Subtraction — "What time was it 30 minutes ago?"</li>
+            <li>Clock Angles — See how the hands form angles</li>
+            <li>The Sneaky Hour Hand — Watch the hour hand move between numbers</li>
+            <li>The Chase Game — Explore when clock hands meet</li>
           </ul>
         </div>
       </div>
@@ -151,15 +152,15 @@
   <section class="feature-section" style="background:var(--white);">
     <div class="container">
       <div class="feature-grid reverse fade-in">
-        <div class="feature-visual" style="background:linear-gradient(135deg,#FEF3C7,#FECACA);">🏎️💨</div>
+        <div class="feature-visual cm-feature"><img src="/images/clockmaster/garage.webp" alt="The garage with original illustrated cars to collect" width="960" height="600" loading="lazy"></div>
         <div class="feature-content">
           <h3>Time Race — Car Racing Game</h3>
           <p>An exciting racing game where quick, correct answers to time-telling questions give your car a nitro boost! Race against a computer opponent across difficulty levels.</p>
           <ul class="feature-list">
             <li>4 difficulty levels — Easy, Medium, Hard, Master</li>
             <li>Answer time questions to get speed boosts</li>
-            <li>Customizable cars — 10 types, 7 colors, 4 accessories</li>
-            <li>Energy system — 3 free races daily, more via optional ads</li>
+            <li>41 original illustrated cars with animated racing details</li>
+            <li>Daily fuel refills, with optional rewarded videos for more fuel</li>
             <li>Earn coins for car upgrades and customizations</li>
           </ul>
         </div>
@@ -170,7 +171,7 @@
   <section class="feature-section">
     <div class="container">
       <div class="feature-grid fade-in">
-        <div class="feature-visual" style="background:linear-gradient(135deg,#E0E7FF,#C7D2FE);">🚀🌌</div>
+        <div class="feature-visual cm-feature"><img src="/images/clockmaster/universe.webp" alt="Earth in the redesigned animated universe explorer" width="960" height="600" loading="lazy"></div>
         <div class="feature-content">
           <h3>Explore the Universe</h3>
           <p>Embark on a cosmic journey through 30 real celestial objects! From Earth to a Black Hole — answer time questions to fly your rocket to each destination and learn amazing space facts.</p>
@@ -189,12 +190,13 @@
   <section class="feature-section" style="background:var(--white);">
     <div class="container">
       <div class="feature-grid reverse fade-in">
-        <div class="feature-visual" style="background:linear-gradient(135deg,#FCE7F3,#DDD6FE);">🦊✨</div>
+        <div class="feature-visual cm-feature"><img src="/images/clockmaster/companions.webp" alt="Clock Cat and the five animated companion choices" width="960" height="600" loading="lazy"></div>
         <div class="feature-content">
-          <h3>Foxy — Your Friendly Guide</h3>
-          <p>First-time players meet Foxy, a friendly fox mascot who guides them through every button and feature with tooltip bubbles and voice narration. No child gets lost.</p>
+          <h3>Meet Otterly and Friends</h3>
+          <p>Otterly is a curious little timekeeper with a pocket watch and a playful personality. Choose from five original 2D companions, each with their own character animation.</p>
           <ul class="feature-list">
-            <li>9-step interactive onboarding tutorial</li>
+            <li>Otterly, Time Robot, Clock Cat, Space Explorer, and Time Wizard</li>
+            <li>A guided first-time walkthrough with your companion</li>
             <li>Text-to-speech voice guidance throughout</li>
             <li>Gentle, encouraging feedback on every answer</li>
             <li>Parental gate protects settings with a math problem</li>
@@ -209,7 +211,8 @@
   <section class="cta-section">
     <div class="container fade-in">
       <h2 class="section-title">Ready to Master the Clock?</h2>
-      <p>Download Clock Master and let your child learn telling time through play.</p>
+      <p>Download Clock Master to learn and play offline. No account or in-app purchase is required.</p>
+      <p>When online, the app may show banners on race menus, pause, and results screens. Rewarded videos are optional. Lessons and active races have no ads. This website demo needs an internet connection to load.</p>
       <div class="cta-actions">
         <a href="https://play.google.com/store/apps/details?id=com.clockmaster.timeforjuniors" target="_blank" rel="noopener" class="store-badge" style="font-size:1rem;padding:1rem 2rem;">
           <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
@@ -222,6 +225,7 @@
 
   <!-- Shared includes -->
   <script src="/js/includes.js" defer></script>
+  <script src="/js/clock-demo.js" defer></script>
   <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
   <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
 </body>

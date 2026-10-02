@@ -1,0 +1,23 @@
+{
+  "width": 768,
+  "height": 512,
+  "pivot": [
+    411.381,
+    238.597
+  ],
+  "muzzle": [
+    577.721,
+    258.942
+  ],
+  "hit": [
+    519.118,
+    318.11
+  ],
+  "ground": [
+    331.139,
+    430.63
+  ],
+  "name": "Industrial Mech",
+  "hover": false,
+  "provenance": "Original Blender model, unique catalog geometry; no external assets."
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "width": 768,
+  "height": 512,
+  "decalQuad": [
+    [
+      321.926,
+      114.15
+    ],
+    [
+      398.593,
+      123.527
+    ],
+    [
+      373.853,
+      144.876
+    ],
+    [
+      297.186,
+      135.499
+    ]
+  ],
+  "attachmentPlane": [
+    [
+      -0.44,
+      0.23,
+      1.916
+    ],
+    [
+      0.12,
+      0.23,
+      1.916
+    ],
+    [
+      0.12,
+      -0.25,
+      1.916
+    ],
+    [
+      -0.44,
+      -0.25,
+      1.916
+    ]
+  ],
+  "paintMaterials": [
+    "Scout / celadon upper armor",
+    "Scout / enamel emerald"
+  ],
+  "neutralReference": 190,
+  "provenance": "Original model armor-material visibility mask and neutral Cycles lighting; authored body-attached decal plane."
+}

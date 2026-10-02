@@ -1,0 +1,284 @@
+{
+  "sourceProject": "C:\\Namasya Development\\Math Tank",
+  "sourceManifest": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\atlas.json",
+  "artwork": "Original MathTank Blender/procedural universe artwork, copied read-only; artistic interpretations, not scientific maps. Fixed lighting and object-appropriate 24-frame animation. No whole-image spin.",
+  "conversion": "RGBA WebP; 256px frame height, 4 columns / 6 rows; each frame independently Lanczos resized. Atlas quality 84, posters 88. Rings and irregular alpha retained.",
+  "sourceProvenance": {
+    "C:\\Namasya Development\\Math Tank\\Assets\\ArtPreview\\Universe\\provenance.json": "{\n  \"status\": \"isolated-approval-prototype\",\n  \"scope\": \"All 30 production catalog objects in their original order, presented in six five-object preview sectors; additional procedural spiral galaxy study\",\n  \"route\": \"/universe-preview/\",\n  \"artwork\": \"Original Blender geometry and procedural 2D artwork. The base five objects use approximate authored continent shapes, seeded craters, cloud material and annular ring geometry. Nearby-system and deep-space sources have separate provenance. Visual interpretations, not scientific maps.\",\n  \"generator\": \"Assets/Scripts/ArtPreview/build_universe.py\",\n  \"packer\": \"Assets/Scripts/ArtPreview/assemble_universe.py writes atlas-base.json; merge_universe.py combines base, solar and deep manifests after checking every image\",\n  \"rebuild\": [\n    \"blender --background --python-exit-code 1 --python Assets/Scripts/ArtPreview/build_universe.py\",\n    \"python Assets/Scripts/ArtPreview/assemble_universe.py\",\n    \"Rebuild the independent Solar and Deep collections using their own source instructions\",\n    \"python Assets/Scripts/ArtPreview/merge_universe.py\",\n    \"python Assets/Scripts/ArtPreview/check-universe-assets.py\",\n    \"node Assets/Scripts/ArtPreview/check-universe.cjs\"\n  ],\n  \"sources\": [\"earth.blend\", \"moon.blend\", \"mars.blend\", \"jupiter.blend\", \"saturn.blend\"],\n  \"animation\": \"Each object has 24 unique frames blended over 72 seconds. The base five use a static observer and sunlight; Saturn rings stay in their fixed orbital plane. Other objects use object-appropriate authored motion, not a generic whole-image rotation.\",\n  \"loading\": \"Only the selected sector's five animation atlases are fetched and decoded. Sector changes cancel obsolete loads and discard the previous sector's artwork. The full catalog gallery uses lazy-loaded still posters.\",\n  \"galaxy\": \"Seeded three-arm stellar disk in src/app/universe-preview/cosmos.ts; warm bulge, blue stellar knots, violet dust.\",\n  \"accessibility\": \"Named keyboard-operable world controls; 44px or larger world/previous/next targets; OS reduced motion freezes ambient rotation/parallax and replaces ship travel with a short reveal.\",\n  \"comparison\": \"Production images shown unchanged in a reconstructed circular treatment. Actual desktop/phone reference captures are also linked; those capture a fresh isolated profile.\",\n  \"excluded\": [\"Production replacement\", \"Persistent progress\", \"Battles\", \"Economy\", \"Sound design\", \"Hardware performance certification\"],\n  \"dependencies\": \"Blender with bundled NumPy; Python with Pillow for atlas packing\"\n}\n",
+    "C:\\Namasya Development\\Math Tank\\Assets\\ArtPreview\\Universe\\Solar\\provenance.json": "{\n  \"generator\": \"Assets/Scripts/ArtPreview/build_universe_solar.py\",\n  \"authorship\": \"Original analytic surface maps, native Blender geometry, and procedural materials. No external assets.\",\n  \"animation\": \"24 integer-keyed physical surface/orbit frames plus loop endpoint at 25; fixed camera and illumination.\",\n  \"stylization\": \"Illustrative colors and exaggerated terrain/ice jets; orbital arrangements and central stars not to scale.\",\n  \"keys\": [\n    \"iss\",\n    \"sun\",\n    \"mercury\",\n    \"venus\",\n    \"asteroid_belt\",\n    \"enceladus\",\n    \"uranus\",\n    \"neptune\",\n    \"pluto\",\n    \"oort_cloud\"\n  ],\n  \"render\": {\n    \"engine\": \"Cycles\",\n    \"samples\": 12,\n    \"threads\": 4,\n    \"transparent\": true\n  },\n  \"reproduce\": [\n    \"blender --background --threads 4 --python Assets\\\\Scripts\\\\ArtPreview\\\\build_universe_solar.py\",\n    \"python Assets\\\\Scripts\\\\ArtPreview\\\\build_universe_solar.py --pack\"\n  ]\n}\n",
+    "C:\\Namasya Development\\Math Tank\\Assets\\ArtPreview\\Universe\\Deep\\PROVENANCE.md": "# Deep-space procedural artwork\n\nThese fifteen illustrations (catalog IDs 16\u201330) are original, locally generated\nlayered 2D artwork, made with Python, NumPy, and Pillow. **They are not Blender\nrenders, telescope photographs, scientific simulations, or downloaded textures.**\nNo third-party model, texture, image, or generative-image service was used.\n\nThe editable source is `Assets\\Scripts\\ArtPreview\\build_universe_deep.py`.\nIts deterministic random seeds, analytic shape fields, multiscale noise,\npoint-source deposition, hand-designed palettes, and branching filament paths\nare the complete source of every visible object. `DESIGNS` records the separate\nart direction for each object. The cool lavender stellar disks and restrained\nwarm cores respond to the approved procedural galaxy in `cosmos.ts`; this\ngenerator does not modify that file or any production catalog data.\n\n## Reproduction\n\nFrom the repository root, with Python, Pillow and NumPy installed:\n\n```powershell\npython Assets\\Scripts\\ArtPreview\\build_universe_deep.py\npython Assets\\Scripts\\ArtPreview\\build_universe_deep.py --validate\n```\n\n`--keys ring_nebula crab_nebula` optionally rebuilds only named objects.\nNo temporary frame directory is created; frames are packed directly in memory.\nOnly deep-space posters/atlases and `atlas-deep.json` are written under\n`public\\universe-preview`. The shared `atlas.json` is intentionally untouched.\n\nEach straight-alpha RGBA poster is frame zero. Each atlas contains exactly\n24 frames in four columns by six rows, at 384\u00d7384 or 576\u00d7384 pixels per frame.\nThere is a completely transparent two-pixel minimum border on every frame;\ngas and coronas fade before the border. Rendering uses premultiplied internal\ncompositing, then unpremultiplies to standard PNG transparency.\n\nThe loop parameter is periodic. Noise advection, gas filaments, star-particle\norbits and accretion patterns move internally; composition, viewpoint, silhouette\nand illumination remain fixed. Pulsar plumes precess slowly without flashing.\nThe parent viewer may interpolate the 24 frames across 72 seconds and hold\nframe zero for reduced motion. Relative scales, colors, densities and motions\nare educational art direction rather than measurements.\n\n`contact-sheet.jpg` is a review-only poster sheet on a dark background, not an\nasset used by the application. `validation.json` records frame uniqueness,\ndimensions, two-pixel alpha borders, loop continuity, output sizes and SHA-256\nsignatures. All 24 hashes per object are retained for reproducibility.\n"
+  },
+  "assets": [
+    {
+      "canonicalIndex": 0,
+      "key": "earth",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\earth.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\earth-atlas.png",
+      "sourceAtlasSHA256": "ae5a00b2c27e2a2b22deee7a138b16e203f6c042ec6185768fcba557f3111787",
+      "sourcePosterSHA256": "cedd5506a252b5d555567f032104a1aeb9a07ca2f5427c569b7a0074c22c4c3d",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 1,
+      "key": "moon",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\moon.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\moon-atlas.png",
+      "sourceAtlasSHA256": "2af218c3b1041f8bf617b8b4b6135914931990f57eafda7e1cc5e79caed172fe",
+      "sourcePosterSHA256": "d2ef9d581cf14ff02be95075ed3171c7f6df0b8f522a4df8f1a077f652db6aaa",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 2,
+      "key": "iss",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\iss.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\iss-atlas.png",
+      "sourceAtlasSHA256": "deaab5357d5d510749e5822dede900182b853a58cb7000591d4130eb77bf9a8b",
+      "sourcePosterSHA256": "f6e03e2e3eebddb049a40f45f412a0c36177a1878d1de0016e2eb1b0ceaf0df6",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 3,
+      "key": "sun",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\sun.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\sun-atlas.png",
+      "sourceAtlasSHA256": "e4011e23ccd4dfd9d1d7de044ac5aa6a5cd60744d799aa5de73e8f5533ffb04d",
+      "sourcePosterSHA256": "136c34c7e5ff52016f3c69d895a5c1dabfd7b2638fc16658a2033adbad2143f8",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 4,
+      "key": "mercury",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\mercury.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\mercury-atlas.png",
+      "sourceAtlasSHA256": "578d0d54e8daaf80cadb4fe67381ca2fd2868ec329ff6255837773eb983fb682",
+      "sourcePosterSHA256": "0747c84988ec0a42a9c1421678f06dc0f5deafd52799c3bf3b931a90af4549d4",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 5,
+      "key": "venus",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\venus.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\venus-atlas.png",
+      "sourceAtlasSHA256": "6ae549eb58059186e2601bdcd1f4e5b20da5e479859e138cde8efbc5693888eb",
+      "sourcePosterSHA256": "c943204c882875b079e53c79810f58bedf2b5e5e7006b8e74015c65d8f060d77",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 6,
+      "key": "mars",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\mars.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\mars-atlas.png",
+      "sourceAtlasSHA256": "7876c7a0d758dd390b434fc597c090c3056b23b3aee1cd0adee7b11e00546c38",
+      "sourcePosterSHA256": "120f08938c538b322a361c7a95d8b7e129ce91146bbed21d7879cae26b2a0e27",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 7,
+      "key": "asteroid_belt",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\asteroid_belt.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\asteroid_belt-atlas.png",
+      "sourceAtlasSHA256": "3883d25fb2de2839b1361fe9fd6a10bfc264e1e18b719ed2ed5f20e197e527b1",
+      "sourcePosterSHA256": "dbb6d5c5ceb2769df176252360e543195a0d024423acbd64f2db2fae44b409c0",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 8,
+      "key": "jupiter",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\jupiter.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\jupiter-atlas.png",
+      "sourceAtlasSHA256": "a6f4eee667825ad52bafd2eb5ca714825577f4b02af838391b02ae937d334b27",
+      "sourcePosterSHA256": "afced3da5445475213a2b52e2fc9f500369915e9739732caf967963677f1f893",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 9,
+      "key": "saturn",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\saturn.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\saturn-atlas.png",
+      "sourceAtlasSHA256": "5714fa0f731da5ea6bdd74717e7667db26ddf1057a4894819aaf7858a6e3d42d",
+      "sourcePosterSHA256": "acd63728b8c912bb37b3b3b85b821aa8b8fbdd221b462c52e4ce65ee809b0d57",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 10,
+      "key": "enceladus",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\enceladus.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\enceladus-atlas.png",
+      "sourceAtlasSHA256": "c4136d33998f65036435d37afd8a40892f2d786aacef1881fc06680eceac7d5e",
+      "sourcePosterSHA256": "213c3cdf67101389955554ecb1207b059161cb7568590db219dea4ec7626bea6",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 11,
+      "key": "uranus",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\uranus.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\uranus-atlas.png",
+      "sourceAtlasSHA256": "85e647633b66ff608c1a549466f2a27ad08c02369b40096b214689be078978eb",
+      "sourcePosterSHA256": "ee96c37e77b092983eee7325a011a42743cbbe54417829ab85b8c124308973c5",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 12,
+      "key": "neptune",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\neptune.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\neptune-atlas.png",
+      "sourceAtlasSHA256": "e9c0e76bef4c474ce63bf5948b715a9e004f584b12b19ce3e60081cf40233faf",
+      "sourcePosterSHA256": "de17ebcdb6a7e7a50005c80dc191afd369e41c97bc533fae30ae27f1cb441b8f",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 13,
+      "key": "pluto",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\pluto.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\pluto-atlas.png",
+      "sourceAtlasSHA256": "9a92423a04843a79eba585bedeb87f95b2e73e38ca5f2ea41b2049900465bf25",
+      "sourcePosterSHA256": "76e86b82ab45cce97e9e625e00b7d4ae32832410d1aae4c27dc8d3d86d61d7ac",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 14,
+      "key": "oort_cloud",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\oort_cloud.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\oort_cloud-atlas.png",
+      "sourceAtlasSHA256": "3907396cc279d5921553b58718ae5370a29a2c6aba5462b5e57f53a94c8a34b8",
+      "sourcePosterSHA256": "f5bd2064e4811748e33d4ed0c98b3c0bab1abdc12e1e2c6f94c83011e614a83a",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 15,
+      "key": "alpha_centauri",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\alpha_centauri.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\alpha_centauri-atlas.png",
+      "sourceAtlasSHA256": "7ddf56b408a9ef9056307f615c0c35af93cce32dc3fd7f094fb7b613c6d5940b",
+      "sourcePosterSHA256": "07f86d452a2958ed0460c85f53323ae30fd607a2848bd47bc65e9cf901a9c84a",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 16,
+      "key": "betelgeuse",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\betelgeuse.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\betelgeuse-atlas.png",
+      "sourceAtlasSHA256": "1da9fe1aaf58e0ab6c75f9fca3fa4e334f73448e04eba4a207a1fd5bf55a5789",
+      "sourcePosterSHA256": "9b23a8b7d1561b744466ea594e8b5d2d0502f4b816c917bc1bea171325fe0275",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 17,
+      "key": "sirius",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\sirius.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\sirius-atlas.png",
+      "sourceAtlasSHA256": "69fd9b6de017a3aa26f53aaa103b984c0860ee21b9d6df4f88dbb3fb5308b752",
+      "sourcePosterSHA256": "91cde9ade38d3ce9e4d7db87b4ead39573fc0d6b2874565ebebbd61927efcd78",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 18,
+      "key": "pillars_of_creation",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\pillars_of_creation.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\pillars_of_creation-atlas.png",
+      "sourceAtlasSHA256": "7db7586fee71c5c5deefc819527c4865bed12550b81c2169badbe07543bb0cf7",
+      "sourcePosterSHA256": "ec13d7ab39e2f36a3ca97374086e0677b025e664a12f1c82e6965ad6f10286d3",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 19,
+      "key": "orion_nebula",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\orion_nebula.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\orion_nebula-atlas.png",
+      "sourceAtlasSHA256": "a653206da06583b3712042b9ae1b83c6d753250bfaa74de9342e95ca949a5aa0",
+      "sourcePosterSHA256": "439c89b3ee9d33d996d24765dc599f94466d685f78bb7728ea66c16c728e6b4e",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 20,
+      "key": "butterfly_nebula",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\butterfly_nebula.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\butterfly_nebula-atlas.png",
+      "sourceAtlasSHA256": "6dc0927e9b9fc1b1adb2c535f24273c585ae87e63e7a48d679fb5e53fc6c43ba",
+      "sourcePosterSHA256": "3d62de8374d5c16b5a615e471a24768ce5c83c4283ebfddc0021525a60d131c5",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 21,
+      "key": "ring_nebula",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\ring_nebula.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\ring_nebula-atlas.png",
+      "sourceAtlasSHA256": "b3aa8acf8d71c75226daec868ebb5cbebbdd34f66898ae5fe031991233a1ce05",
+      "sourcePosterSHA256": "189ed909e72e631efd37eafe9a38cdfc37ef668377fe6ca8176a8c06fd23b8e2",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 22,
+      "key": "crab_nebula",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\crab_nebula.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\crab_nebula-atlas.png",
+      "sourceAtlasSHA256": "7b922e1077eceefa55924a0788fbe12b1f74f98f2fb617b1bcdd88160fa12a4e",
+      "sourcePosterSHA256": "6332e1e4a34240e7d3d9af4a544155183a46684f6cdb327e8321e5fb08838760",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 23,
+      "key": "pulsar",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\pulsar.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\pulsar-atlas.png",
+      "sourceAtlasSHA256": "260d86431a95bae1aa2943e749a3694d5cf5faf067255b8b1f6195d8c266b2d1",
+      "sourcePosterSHA256": "4c325e8678102793a2674e644fd7d45518c5637e43e50a35d3c589bc35b45224",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 24,
+      "key": "milky_way",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\milky_way.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\milky_way-atlas.png",
+      "sourceAtlasSHA256": "75e6064d32c11fa3d3cffc2055da2d06464736b6aeca0eca227791aad3ef5c05",
+      "sourcePosterSHA256": "6d5a1b8a5b8ac7f292e7ef85127e81780686c7de71369ec6d896fe790cdd4c43",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 25,
+      "key": "andromeda",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\andromeda.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\andromeda-atlas.png",
+      "sourceAtlasSHA256": "a1ec462e1f5329182c5bcf14c01bc05343b3f75ee43cb276fd71cc0a5ba347ca",
+      "sourcePosterSHA256": "e45ffbc1683570d14a594fab8603b1b70c24f108049fc8de137a1692df4b774a",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 26,
+      "key": "sombrero",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\sombrero.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\sombrero-atlas.png",
+      "sourceAtlasSHA256": "7c9a1a848e808b55d38a20a169c7857736b3ba8e795380030194132721633b1f",
+      "sourcePosterSHA256": "dd52459e17c0e99f4e71b6a344a69fb280625bad2d95ab56128c0f5378593f8c",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 27,
+      "key": "whirlpool",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\whirlpool.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\whirlpool-atlas.png",
+      "sourceAtlasSHA256": "37b532be4c6e2a152d7b2dcb482e8253f2c4a766ecccb5e8e22a8cd902c59d8f",
+      "sourcePosterSHA256": "b69fc52a5b1aaa148481ad869295117101da634d869ccd0f242a3af86f3f4e22",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 28,
+      "key": "quasar",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\quasar.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\quasar-atlas.png",
+      "sourceAtlasSHA256": "9fa0e8fc319a618343d23cf4c1f20b27a69eb0aed436700b807b9873035f62b2",
+      "sourcePosterSHA256": "2e05e2be4c3fdd0e9af16d4a734f28ebe721015eb75dc51603fe5152dfac468c",
+      "verifiedUniqueFrames": 24
+    },
+    {
+      "canonicalIndex": 29,
+      "key": "black_hole",
+      "sourcePoster": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\black_hole.png",
+      "sourceAtlas": "C:\\Namasya Development\\Math Tank\\public\\universe-preview\\black_hole-atlas.png",
+      "sourceAtlasSHA256": "7d10f76e8cbea43ade3255d37468c71ff17dcd5b78f1c9e2d143f99b97695fb4",
+      "sourcePosterSHA256": "2eeb1cce4e92f33eb994d08f9e541aa87c5004f83f3aad6018acd64c9254225e",
+      "verifiedUniqueFrames": 24
+    }
+  ],
+  "uncovered": []
+}

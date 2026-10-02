@@ -167,17 +167,12 @@
   </section>
   <!-- CLOCK MASTER -->
   <section class="game-section clock-section" id="games">
-    <div class="game-bg" style="background-image: url('/images/Otter-race.jpeg')"></div>
+    <div class="game-bg" style="background-image: url('/images/clockmaster/feature.webp')"></div>
     <div class="game-inner">
       <div class="game-phone fade-in-left" onclick="switchGame('clock')" style="cursor:pointer">
         <div class="game-phone-screen">
           <div class="game-phone-camera"></div>
-          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#f97316,#ec4899);display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:23px;">
-            <div style="font-size:3rem;margin-bottom:0.5rem;">🏎️</div>
-            <div style="color:white;font-weight:800;font-size:1.1rem;font-family:Nunito,sans-serif;">Clock Master</div>
-            <div style="color:rgba(255,255,255,0.7);font-size:0.8rem;margin-bottom:1rem;">Time Race</div>
-            <div style="background:rgba(255,255,255,0.2);padding:0.5rem 1.5rem;border-radius:999px;color:white;font-weight:700;font-size:0.85rem;">▶ Tap to Play</div>
-          </div>
+          <img class="game-phone-preview" src="/images/clockmaster/home.webp" alt="Clock Master with Otterly, clock lessons, racing, and universe exploration" width="540" height="960" loading="lazy">
           <div class="game-phone-home"></div>
         </div>
       </div>
@@ -193,11 +188,12 @@
         </p>
         <ul class="game-features">
           <li><span class="feat-icon">🏎️</span><span><strong>Race to learn</strong> — Answer clock questions to boost speed</span></li>
-          <li><span class="feat-icon">📈</span><span><strong>4 difficulty levels</strong> — From hours to minutes & seconds</span></li>
-          <li><span class="feat-icon">🚀</span><span><strong>Space tracks</strong> — Race through planets as you level up</span></li>
-          <li><span class="feat-icon">🎨</span><span><strong>Car shop</strong> — Earn coins, unlock cool rides</span></li>
+          <li><span class="feat-icon">📈</span><span><strong>11 guided chapters</strong> — From clock hands to angles and time puzzles</span></li>
+          <li><span class="feat-icon">🚀</span><span><strong>Explore the universe</strong> — Discover 30 celestial objects through clock challenges</span></li>
+          <li><span class="feat-icon">🎨</span><span><strong>41 cars and 5 companions</strong> — Original artwork, animated personalities, and Otterly as your guide</span></li>
         </ul>
         <a href="#play" class="game-play-btn purple" onclick="switchGame('clock')">▶ Try Clock Master</a>
+        <a href="/apps/clock-master.html" style="display:block;margin-top:1rem">Explore Clock Master &rarr;</a>
       </div>
     </div>
   </section>
@@ -224,16 +220,12 @@
           <li><span class="feat-icon">🌌</span><span><strong>Save the Universe</strong> — Epic story mode through space</span></li>
         </ul>
         <a href="#play" class="game-play-btn pink" onclick="switchGame('math')">▶ Try Math Tank</a>
+        <a href="/apps/math-tank.html" style="display:block;margin-top:1rem">Explore Math Tank &rarr;</a>
       </div>
       <div class="game-phone fade-in-right" onclick="switchGame('math')" style="cursor:pointer">
         <div class="game-phone-screen">
           <div class="game-phone-camera"></div>
-          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1a2e,#3b1a5e);display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:23px;">
-            <div style="font-size:3rem;margin-bottom:0.5rem;">🎯</div>
-            <div style="color:white;font-weight:800;font-size:1.1rem;font-family:Nunito,sans-serif;">Math Tank</div>
-            <div style="color:rgba(255,255,255,0.7);font-size:0.8rem;margin-bottom:1rem;">Battle Mode</div>
-            <div style="background:rgba(255,255,255,0.2);padding:0.5rem 1.5rem;border-radius:999px;color:white;font-weight:700;font-size:0.85rem;">▶ Tap to Play</div>
-          </div>
+          <img class="game-phone-preview" src="/images/mathtank/home.webp" alt="Math Tank home with the new illustrated tank, battle, universe, lessons, and garage" width="540" height="960" loading="lazy">
           <div class="game-phone-home"></div>
         </div>
       </div>
@@ -263,17 +255,13 @@
               </div>
               <!-- Game splash preview (visible before play) -->
               <div class="play-splash" id="playSplash" data-game="clock">
-                <div class="play-splash-bg clock-splash"></div>
-                <div class="play-splash-bg math-splash"></div>
+                <img class="play-splash-bg clock-splash" src="/images/clockmaster/race.webp" alt="Clock Master race: read the clock and choose the matching time" width="540" height="960" loading="lazy">
+                <img class="play-splash-bg math-splash" src="/images/mathtank/battle.webp" alt="Math Tank battle with the new tanks, health bars, and answer keypad" width="540" height="960" loading="lazy">
               </div>
               <!-- Tap to Play overlay (on top of splash) -->
-              <div class="play-start-overlay" id="playStartOverlay" onclick="startGame()">
-                <div class="play-start-icon" id="splashIcon">🏎️</div>
-                <div class="play-start-title" id="splashTitle">Clock Master</div>
-                <div class="play-start-mode" id="splashMode">Time Race</div>
-                <div class="play-start-btn">▶</div>
-                <p>Tap to Play</p>
-              </div>
+              <button type="button" class="play-start-overlay" id="playStartOverlay" onclick="startGame()">
+                <span class="play-start-btn" id="splashLabel">▶ Play Clock Master</span>
+              </button>
               <div class="play-overlay" id="gameOverlay">
                 <div style="font-size:2.5rem;margin-bottom:0.5rem">🎉</div>
                 <h3>Great Round!</h3>
@@ -373,6 +361,15 @@
     let activeGame = 'clock';
     let loaded = { clock: false, math: false };
     let started = false; // user clicked "Tap to Play"
+    let playVisible = false;
+    let overlayTimer;
+
+    function updateClockVisibility() {
+      const frame = document.getElementById('clock-frame');
+      if (loaded.clock) frame.contentWindow.postMessage({
+        type: activeGame === 'clock' && playVisible && !document.hidden ? 'resumeAudio' : 'pauseAudio'
+      }, location.origin);
+    }
 
     /* Pause every <audio> and AudioContext inside an iframe */
     function pauseIframeAudio(frame) {
@@ -407,8 +404,12 @@
     }
 
     function switchGame(game) {
+      clearTimeout(overlayTimer);
       const prev = activeGame;
       activeGame = game;
+      document.querySelector('#gameOverlay .overlay-dl').href =
+        'https://play.google.com/store/apps/details?id=' +
+        (game === 'math' ? 'com.namasya.mathtank' : 'com.clockmaster.timeforjuniors');
       document.querySelectorAll('.play-tab').forEach(t => t.classList.toggle('active', t.dataset.game === game));
       const cf = document.getElementById('clock-frame');
       const mf = document.getElementById('math-frame');
@@ -425,15 +426,12 @@
       const splash = document.getElementById('playSplash');
       if (splash) {
         splash.setAttribute('data-game', game);
-        const icons = { clock: '🏎️', math: '🎯' };
         const titles = { clock: 'Clock Master', math: 'Math Tank' };
-        const modes = { clock: 'Time Race', math: 'Battle Mode' };
-        document.getElementById('splashIcon').textContent = icons[game];
-        document.getElementById('splashTitle').textContent = titles[game];
-        document.getElementById('splashMode').textContent = modes[game];
+        document.getElementById('splashLabel').textContent = '▶ Play ' + titles[game];
       }
 
       if (started) ensureLoaded(game);
+      updateClockVisibility();
 
       document.getElementById('gameOverlay').classList.remove('show');
       document.getElementById('play').scrollIntoView({ behavior: 'smooth' });
@@ -441,6 +439,7 @@
 
     /* Pause audio when user switches browser tabs or minimises */
     document.addEventListener('visibilitychange', () => {
+      updateClockVisibility();
       if (document.hidden) {
         pauseIframeAudio(document.getElementById('clock-frame'));
         pauseIframeAudio(document.getElementById('math-frame'));
@@ -453,6 +452,8 @@
     if (playSection) {
       const audioObs = new IntersectionObserver(entries => {
         entries.forEach(e => {
+          playVisible = e.isIntersecting;
+          updateClockVisibility();
           if (!e.isIntersecting) {
             pauseIframeAudio(document.getElementById('clock-frame'));
             pauseIframeAudio(document.getElementById('math-frame'));
@@ -465,9 +466,16 @@
 
     let roundsPlayed = 0;
     window.addEventListener('message', e => {
+      if (e.origin !== location.origin) return;
+      const cf = document.getElementById('clock-frame');
+      const mf = document.getElementById('math-frame');
+      if (e.source === cf.contentWindow && e.data?.type === 'clockReady') updateClockVisibility();
+      const activeFrame = activeGame === 'clock' ? cf : mf;
+      if (e.source !== activeFrame.contentWindow) return;
       if (e.data && e.data.type === 'gameEnd') {
         roundsPlayed++;
-        if (roundsPlayed >= 1) setTimeout(() => document.getElementById('gameOverlay').classList.add('show'), 1500);
+        clearTimeout(overlayTimer);
+        if (roundsPlayed >= 1) overlayTimer = setTimeout(() => document.getElementById('gameOverlay').classList.add('show'), 1500);
       }
     });
     function closeOverlay() { document.getElementById('gameOverlay').classList.remove('show'); }
@@ -543,5 +551,6 @@
   </script>
   <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
   <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
+  <script src="/js/math-demo.js" defer></script>
 </body>
 </html>

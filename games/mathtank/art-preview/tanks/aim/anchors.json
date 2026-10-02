@@ -1,0 +1,23 @@
+{
+  "width": 768,
+  "height": 512,
+  "pivot": [
+    411.381,
+    238.597
+  ],
+  "muzzle": [
+    608.525,
+    262.709
+  ],
+  "hit": [
+    519.118,
+    318.11
+  ],
+  "ground": [
+    331.139,
+    430.63
+  ],
+  "name": "Precision Sniper",
+  "hover": false,
+  "provenance": "Original Blender model, unique catalog geometry; no external assets."
+}

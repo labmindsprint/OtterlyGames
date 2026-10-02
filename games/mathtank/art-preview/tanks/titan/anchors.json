@@ -1,0 +1,23 @@
+{
+  "width": 768,
+  "height": 512,
+  "pivot": [
+    411.381,
+    209.543
+  ],
+  "muzzle": [
+    577.721,
+    229.888
+  ],
+  "hit": [
+    519.118,
+    290.44
+  ],
+  "ground": [
+    331.139,
+    430.63
+  ],
+  "name": "Titan Mech",
+  "hover": false,
+  "provenance": "Original Blender model, unique catalog geometry; no external assets."
+}

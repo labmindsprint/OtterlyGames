@@ -1,0 +1,21 @@
+{
+  "width": 768,
+  "height": 512,
+  "pivot": [
+    417.088,
+    206.369
+  ],
+  "muzzle": [
+    644.965,
+    234.324
+  ],
+  "hit": [
+    516.766,
+    294.873
+  ],
+  "ground": [
+    330.138,
+    457.187
+  ],
+  "provenance": "Original Blender geometry authored for the Math Tank Scout Drone approval preview."
+}

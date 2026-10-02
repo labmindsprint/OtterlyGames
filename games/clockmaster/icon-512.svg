@@ -1,93 +1,36 @@
-<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Space Clock">
   <defs>
-    <linearGradient id="bg-512" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#667eea"/>
-      <stop offset="100%" style="stop-color:#764ba2"/>
-    </linearGradient>
-    <linearGradient id="shine-512" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.4"/>
-      <stop offset="100%" style="stop-color:#fff;stop-opacity:0.05"/>
-    </linearGradient>
-    <radialGradient id="clock-512" cx="40%" cy="40%">
-      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.25"/>
-      <stop offset="100%" style="stop-color:#fff;stop-opacity:0.08"/>
-    </radialGradient>
-    <filter id="shadow-512">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="10.2"/>
-      <feOffset dx="5.1" dy="7.7" result="offsetblur"/>
-      <feComponentTransfer><feFuncA type="linear" slope="0.15"/></feComponentTransfer>
-      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="glow-512">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-  </defs>
-  
-  <!-- Background -->
-  <rect width="512" height="512" rx="112" fill="url(#bg-512)"/>
-  <circle cx="102" cy="128" r="77" fill="white" opacity="0.05"/>
-  <circle cx="410" cy="358" r="61" fill="white" opacity="0.05"/>
-  <rect width="512" height="512" rx="112" fill="url(#shine-512)"/>
-  
-  <!-- Clock face -->
-  <g filter="url(#shadow-512)">
-    <circle cx="256" cy="256" r="184" fill="white" opacity="0.15"/>
-    <circle cx="256" cy="256" r="163" fill="url(#clock-512)"/>
-    <circle cx="256" cy="256" r="163" fill="none" stroke="white" stroke-width="2" opacity="0.4"/>
-    <circle cx="256" cy="256" r="184" fill="none" stroke="white" stroke-width="1.5" opacity="0.3"/>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#6249ca" /><stop offset="1" stop-color="#ca88e4" /></linearGradient>
+    <linearGradient id="blue" x2=".35" y2="1"><stop stop-color="#95e6ff" /><stop offset=".48" stop-color="#49a9e9" /><stop offset="1" stop-color="#4775cd" /></linearGradient>
+    <linearGradient id="pink" x2=".3" y2="1"><stop stop-color="#ffc2df" /><stop offset=".5" stop-color="#f47fad" /><stop offset="1" stop-color="#d34f91" /></linearGradient>
+    <linearGradient id="gold" x2=".4" y2="1"><stop stop-color="#fff0a4" /><stop offset=".5" stop-color="#ffd16a" /><stop offset="1" stop-color="#e69c42" /></linearGradient>
+    <linearGradient id="teal" x2=".3" y2="1"><stop stop-color="#a8f2df" /><stop offset=".5" stop-color="#55c7be" /><stop offset="1" stop-color="#298fa6" /></linearGradient>
+    <linearGradient id="fur" x2=".3" y2="1"><stop stop-color="#d5a36e" /><stop offset=".6" stop-color="#b9804d" /><stop offset="1" stop-color="#91613f" /></linearGradient>
+    <linearGradient id="silver" x2=".4" y2="1"><stop stop-color="#fffef4" /><stop offset=".5" stop-color="#d5e8f4" /><stop offset="1" stop-color="#8aa5c5" /></linearGradient>
+    <linearGradient id="glass" x2=".4" y2="1"><stop stop-color="#e2ffff" /><stop offset=".5" stop-color="#91cfdf" /><stop offset="1" stop-color="#537eac" /></linearGradient>
+    <radialGradient id="cream" cx=".35" cy=".25" r=".85"><stop stop-color="#fffdf1" /><stop offset="1" stop-color="#ffe8b9" /></radialGradient>
+    <radialGradient id="light" cx=".25" cy=".10" r=".9"><stop stop-color="#fff" stop-opacity=".28" /><stop offset="1" stop-color="#fff" stop-opacity="0" /></radialGradient>
+  <clipPath id="web-icon-corners"><rect width="512" height="512" rx="112" /></clipPath></defs>
+  <g clip-path="url(#web-icon-corners)"><path fill="url(#bg)" d="M0 0H512V512H0Z" /><path fill="url(#light)" d="M0 0H512V512H0Z" />
+  <circle cx="256" cy="259" r="198" fill="#fff" opacity=".09" />
+  <ellipse cx="256" cy="406" rx="147" ry="19" fill="#34234a" opacity=".17" /><ellipse cx="256" cy="267" rx="197" ry="55" transform="rotate(-25 256 267)" fill="none" stroke="#273b58" stroke-width="31" />
+        <ellipse cx="256" cy="267" rx="197" ry="55" transform="rotate(-25 256 267)" fill="none" stroke="url(#gold)" stroke-width="21" />
+        <g stroke="#273b58" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="256" cy="257" r="133" fill="#29345b" opacity=".18" stroke="none" />
+    <circle cx="256" cy="250" r="133" fill="url(#pink)" />
+    <circle cx="256" cy="250" r="107.73" fill="#d79d53" stroke-width="4" />
+    <circle cx="256" cy="250" r="99.75" fill="url(#cream)" stroke-width="4" />
+    <path d="M299.225 175.13210384283528L302.55 169.37303490766877" stroke="#273b58" stroke-width="4" opacity=".45" /><path d="M330.86789615716475 206.77499999999998L336.62696509233126 203.45" stroke="#273b58" stroke-width="4" opacity=".45" /><path d="M330.86789615716475 293.22499999999997L336.62696509233126 296.54999999999995" stroke="#273b58" stroke-width="4" opacity=".45" /><path d="M299.225 324.86789615716475L302.55 330.62696509233126" stroke="#273b58" stroke-width="4" opacity=".45" /><path d="M212.77500000000003 324.86789615716475L209.45000000000005 330.62696509233126" stroke="#273b58" stroke-width="4" opacity=".45" /><path d="M181.1321038428353 293.225L175.3730349076688 296.55000000000007" stroke="#273b58" stroke-width="4" opacity=".45" /><path d="M181.13210384283528 206.77499999999998L175.37303490766877 203.45" stroke="#273b58" stroke-width="4" opacity=".45" /><path d="M212.77499999999998 175.1321038428353L209.44999999999996 169.3730349076688" stroke="#273b58" stroke-width="4" opacity=".45" />
+    <g fill="#273b58" stroke="none" font-family="Arial,sans-serif" font-weight="900" font-size="25.27" text-anchor="middle">
+      <text x="256" y="184.82999999999998">12</text><text x="334.47" y="259.31">3</text>
+      <text x="256" y="336.45">6</text><text x="177.53" y="259.31">9</text></g>
+    <path d="M256 250L216.1 223.4" stroke="#e26465" stroke-width="15.959999999999999" />
+    <path d="M256 250V190.15" stroke="#3579cc" stroke-width="11.969999999999999" />
+    <circle cx="256" cy="250" r="12.635" fill="url(#gold)" stroke-width="4" />
+    <path d="M172.20999999999998 172.86Q202.8 140.94 242.7 135.62" fill="none" stroke="#fff" stroke-width="9.31" opacity=".8" />
+
   </g>
-  
-  <!-- Hour markers -->
-  <circle cx="256" cy="117" r="6.1" fill="white" opacity="0.6" filter="url(#glow-512)"/>
-  <circle cx="395" cy="256" r="6.1" fill="white" opacity="0.6" filter="url(#glow-512)"/>
-  <circle cx="256" cy="395" r="6.1" fill="white" opacity="0.6" filter="url(#glow-512)"/>
-  <circle cx="117" cy="256" r="6.1" fill="white" opacity="0.6" filter="url(#glow-512)"/>
-  
-  <!-- Minor markers -->
-  <circle cx="328" cy="131" r="3.1" fill="white" opacity="0.3"/>
-  <circle cx="381" cy="184" r="3.1" fill="white" opacity="0.3"/>
-  <circle cx="381" cy="328" r="3.1" fill="white" opacity="0.3"/>
-  <circle cx="328" cy="381" r="3.1" fill="white" opacity="0.3"/>
-  <circle cx="184" cy="381" r="3.1" fill="white" opacity="0.3"/>
-  <circle cx="131" cy="328" r="3.1" fill="white" opacity="0.3"/>
-  <circle cx="131" cy="184" r="3.1" fill="white" opacity="0.3"/>
-  <circle cx="184" cy="131" r="3.1" fill="white" opacity="0.3"/>
-  
-  <!-- Decorative bubble -->
-  <g transform="translate(368,144) rotate(-35)" opacity="0.9" filter="url(#shadow-512)">
-    <ellipse cx="0" cy="0" rx="23" ry="36" fill="white" opacity="0.25"/>
-    <circle cx="0" cy="-7.7" r="9.2" fill="white" opacity="0.5"/>
-    <ellipse cx="0" cy="43" rx="13" ry="18" fill="#fbbf24" opacity="0.4"/>
-  </g>
-  
-  <!-- Hour hand (pointing ~8 o'clock) -->
-  <g transform="translate(256,256) rotate(120)">
-    <rect x="-4" y="-123" width="8" height="133" rx="4" fill="white" opacity="0.7" filter="url(#glow-512)"/>
-    <circle cx="0" cy="-123" r="9.2" fill="white" opacity="0.8"/>
-  </g>
-  
-  <!-- Minute hand (pointing ~2 o'clock) -->
-  <g transform="translate(256,256) rotate(-30)">
-    <rect x="-5.1" y="-82" width="10.2" height="92" rx="5.1" fill="white" opacity="0.6" filter="url(#glow-512)"/>
-    <circle cx="0" cy="-82" r="10.2" fill="white" opacity="0.7"/>
-  </g>
-  
-  <!-- Center hub -->
-  <circle cx="256" cy="256" r="18" fill="white" opacity="0.2" filter="url(#shadow-512)"/>
-  <circle cx="256" cy="256" r="13" fill="white" opacity="0.5"/>
-  <circle cx="252" cy="252" r="6.1" fill="white" opacity="0.6"/>
-  
-  <!-- Stars -->
-  <circle cx="128" cy="102" r="7.7" fill="white" opacity="0.4" filter="url(#glow-512)"/>
-  <circle cx="384" cy="179" r="6.1" fill="white" opacity="0.4" filter="url(#glow-512)"/>
-  <circle cx="154" cy="384" r="9.2" fill="white" opacity="0.4" filter="url(#glow-512)"/>
-  
-  <!-- Label bar -->
-  <g transform="translate(256,451)">
-    <rect x="-205" y="-25.6" width="410" height="51.2" rx="25.6" fill="white" opacity="0.15" filter="url(#shadow-512)"/>
-    <rect x="-205" y="-25.6" width="410" height="51.2" rx="25.6" fill="none" stroke="white" stroke-width="1.5" opacity="0.3"/>
-    <text x="0" y="2.6" text-anchor="middle" dominant-baseline="middle" fill="#000" font-size="38" font-weight="800" font-family="system-ui,-apple-system,sans-serif" opacity="0.3" letter-spacing="1">CLOCK MASTER</text>
-    <text x="0" y="0" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="38" font-weight="800" font-family="system-ui,-apple-system,sans-serif" letter-spacing="1">CLOCK MASTER</text>
-  </g>
-</svg>
+        <path d="M78 338Q115 382 290 298" fill="none" stroke="#273b58" stroke-width="31" stroke-linecap="round" />
+        <path d="M78 338Q115 382 290 298" fill="none" stroke="#ffe69d" stroke-width="21" stroke-linecap="round" />
+        <path d="M110 104Q113 123 132 126Q113 129 110 148Q107 129 88 126Q107 123 110 104Z" fill="#fff4b3" /><path d="M388 98Q391 108 401 111Q391 114 388 124Q385 114 375 111Q385 108 388 98Z" fill="#fff4b3" /><path d="M391 365Q394 382 411 385Q394 388 391 405Q388 388 371 385Q388 382 391 365Z" fill="#fff4b3" />
+  </g></svg>
