@@ -46,7 +46,7 @@
   display: block; width: 22px; height: 2px;
   background: var(--text-secondary); border-radius: 2px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .nav-toggle { display: flex; }
   .nav-links {
     display: none; position: absolute; top: 64px; left: 0; right: 0;

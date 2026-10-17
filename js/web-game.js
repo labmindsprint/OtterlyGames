@@ -5,6 +5,9 @@
   const placeholder = document.getElementById('game-placeholder');
   const fullscreen = document.getElementById('fullscreen-game');
   const status = document.getElementById('game-status');
+  const gameName = frame.dataset.gameName || 'Math Tank';
+  const gameSource = frame.dataset.gameSource || '/games/mathtank/';
+  const readyMessage = frame.dataset.readyMessage || 'mathReady';
   let visible = false;
   function revealGame() {
     if (document.fullscreenElement) return;
@@ -30,13 +33,13 @@
   }).observe(frame);
   document.addEventListener('visibilitychange', updateVisibility);
   window.addEventListener('message', event => {
-    if (event.origin === location.origin && event.source === frame.contentWindow && event.data?.type === 'mathReady') updateVisibility();
+    if (event.origin === location.origin && event.source === frame.contentWindow && event.data?.type === readyMessage) updateVisibility();
   });
   launch.addEventListener('click', () => {
     if (!frame.getAttribute('src')) {
-      status.textContent = 'Loading Math Tank. The game will check that this browser can save progress.';
+      status.textContent = `Loading ${gameName}. The game will check that this browser can save progress.`;
       frame.addEventListener('load', () => { status.textContent = ''; }, { once: true });
-      frame.src = '/games/mathtank/';
+      frame.src = gameSource;
       frame.hidden = false;
       placeholder.hidden = true;
       fullscreen.disabled = !frame.requestFullscreen;
@@ -49,7 +52,7 @@
     try {
       await frame.requestFullscreen();
     } catch (error) {
-      console.warn('[Math Tank] Full screen unavailable', error);
+      console.warn(`[${gameName}] Full screen unavailable`, error);
       status.textContent = 'Full screen is unavailable. You can keep playing in this window.';
     }
   });

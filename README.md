@@ -57,6 +57,20 @@ Designed for **GitHub Pages** (free):
 
 Both safe. Both built with love. No in-app purchases. 🦦
 
+## Full Clock Master browser game
+
+Open `/play/clock-master.html` and choose **Play Clock Master** for all lessons,
+race difficulties, space journeys, customization and parent settings.
+`/games/clockmaster/?mode=race` retains the existing race embed contract.
+Progress stays in the current browser, not an account or Android save. Storage
+failure blocks gameplay. Native ads and ad rewards are unavailable; earned
+rewards and daily limits are retained. The new game/landing load no tracking SDK.
+
+Regenerate using `node .\scripts\sync-clockmaster.mjs`. This builds an isolated
+copy of the adjacent production source without editing its dirty worktree.
+See [`scripts\clockmaster-web\README.md`](scripts/clockmaster-web/README.md)
+for the inventory, skill application, exact checks and evidence.
+
 ## Full Math Tank browser game
 
 `/play/math-tank.html` is the website entry point. `/games/mathtank/` runs the

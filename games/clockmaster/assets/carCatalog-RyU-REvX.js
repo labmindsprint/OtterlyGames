@@ -1,0 +1,1 @@
+import{aq as t}from"./App-DlZKFASY.js";const e=["priceSpeedster","priceRetroCruiser","priceThunderMuscle","priceTitanHauler","priceDesertStorm","priceNeonGlider","pricePhantomGT","priceViperStrike","priceSkyBlazer","priceMegaCrusher"];function c(r){return t.map((i,p)=>({...i,price:r[e[Math.min(p,e.length-1)]]}))}export{e as C,c as g};

@@ -1,0 +1,6 @@
+{
+  "version": "2.9.0",
+  "mode": "website-full-game-and-race-demo",
+  "storage": "local-browser",
+  "rewardedAds": false
+}

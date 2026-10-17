@@ -1,0 +1,31 @@
+.cw-home .cw-home__car-stage { overflow: hidden; }
+@media (min-width: 1000px) and (min-height: 501px) {
+  .shop-screen .shop-content {
+    grid-template-columns: minmax(260px, .85fr) minmax(0, 1.65fr);
+    grid-template-rows: 28px 44px minmax(0, 1fr);
+    grid-template-areas: "title title" "categories categories" "preview items";
+  }
+  .shop-screen .shop-title { grid-area: title; }
+  .shop-screen .shop-categories { grid-area: categories; }
+  .shop-screen .shop-preview { grid-area: preview; }
+  .shop-screen .shop-items, .shop-screen .shop-avatars { grid-area: items; }
+  .shop-screen .shop-preview .toy-car.cm-car { width: 100%; height: 100%; }
+  .shop-screen .shop-catalog { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .race-screen .race-track {
+    --race-car-width: 190px;
+    height: min(410px, calc(100dvh - 105px));
+    align-self: start;
+  }
+  .race-screen .race-track__car .toy-car.cm-car[data-motion-mode="race"] { height: 125px; }
+}
+@media (min-width: 1000px) and (min-height: 601px) {
+  .race-screen .race-clock { transform: scale(1.2); margin: 20px auto; }
+}
+@media (max-height: 500px) {
+  .race-dialog.race-results { padding: 8px; gap: 6px; }
+  [aria-label="Race paused"].race-dialog { padding: 14px; }
+  [aria-label="Race paused"] .text-6xl { font-size: 28px; margin-bottom: 4px; line-height: 1; }
+  [aria-label="Race paused"] p { margin-bottom: 10px; }
+  [aria-label="Race paused"] .flex-col { flex-direction: row; gap: 8px; }
+  [aria-label="Race paused"] button { height: 48px; font-size: 14px; }
+}
