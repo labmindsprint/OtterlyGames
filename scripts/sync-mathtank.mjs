@@ -3,6 +3,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
+import { prepareMathtankWeb } from './prepare-mathtank-web.mjs';
 
 const site = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const source = resolve(process.argv[2] || join(site, '..', 'Math Tank'));
@@ -16,6 +17,7 @@ try {
   }
   const { symlinkSync } = await import('node:fs');
   symlinkSync(join(source, 'node_modules'), join(workspace, 'node_modules'), process.platform === 'win32' ? 'junction' : 'dir');
+  prepareMathtankWeb(workspace);
   const result = spawnSync(process.execPath, [next, 'build'], {
     cwd: workspace, stdio: 'inherit',
     env: { ...process.env, NEXT_PUBLIC_BASE_PATH: '/games/mathtank', NEXT_PUBLIC_WEBSITE_DEMO: 'true', NEXT_BUILD_DIR: '.next' },
@@ -24,19 +26,26 @@ try {
   if (result.status !== 0) throw new Error(`Math Tank website build failed (${result.status})`);
   const output = join(workspace, 'out');
   const target = join(site, 'games', 'mathtank');
-  // Ship only battle assets; no universe atlases, native audio masters, or development pages.
-  const selected = ['index.html', 'index.txt', '404.html', '_next', 'art-preview/scout', 'art-preview/tanks', 'art-preview/decals', 'sounds/battle'];
+  const selected = ['index.html', 'index.txt', '404.html', '_next', 'art-preview/scout', 'art-preview/tanks', 'art-preview/decals', 'art-preview/icons', 'images', 'sounds/battle', 'audio/Math Tank Home.mp3', 'audio/Math Tank Battle.mp3', 'audio/Math Tank Universe.mp3'];
   const staged = join(workspace, 'website');
   mkdirSync(staged);
   for (const file of selected) {
     if (!existsSync(join(output, file))) throw new Error(`Missing export: ${file}`);
     cpSync(join(output, file), join(staged, file), { recursive: true });
   }
+  const universe = join(staged, 'universe-preview');
+  mkdirSync(universe);
+  for (const file of readdirSync(join(output, 'universe-preview'))) {
+    if (file === 'atlas.json' || file.endsWith('-atlas.webp') || file.endsWith('.png') && !file.endsWith('-atlas.png')) {
+      cpSync(join(output, 'universe-preview', file), join(universe, file));
+    }
+  }
   const originals = join(staged, 'sounds', 'battle', 'Original');
   if (existsSync(originals)) rmSync(originals, { recursive: true });
   writeFileSync(join(staged, 'version.json'), JSON.stringify({
     version: JSON.parse(readFileSync(join(source, 'package.json'), 'utf8')).version,
-    mode: 'website-battle-demo',
+    mode: 'website-full-game-and-battle-demo',
+    storage: 'local-browser',
   }, null, 2) + '\n');
   mkdirSync(target, { recursive: true });
   cpSync(staged, target, { recursive: true });

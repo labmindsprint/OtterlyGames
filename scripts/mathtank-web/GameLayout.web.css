@@ -1,0 +1,52 @@
+@media (min-width: 1024px) and (min-height: 600px) {
+  :global(.web-game) .setup {
+    --web-equipment-width: clamp(180px, 17vw, 240px);
+    --web-equipment-height: clamp(170px, 23dvh, 230px);
+    --web-art-width: clamp(150px, 14vw, 200px);
+    --web-art-height: clamp(100px, 15dvh, 160px);
+    padding-inline: max(24px, calc((100% - 1560px) / 2)) !important;
+  }
+  :global(.web-game) .setupScroll { padding-block: 16px; scrollbar-width: thin; }
+  :global(.web-game) .equipmentName { font-size: 16px; }
+  :global(.web-game) .practiceChoices { max-width: 1200px; gap: 24px; padding-top: 24px; }
+  :global(.web-game) .practiceChoice { min-height: 200px; padding: 24px; }
+  :global(.web-game) .practiceChoice h3 { font-size: 22px; }
+  :global(.web-game) .practiceChoice p { font-size: 16px; }
+  :global(.web-game) .battleLayout {
+    --answer-width: max(380px, 42%);
+    --battle-toolbar-right: calc(var(--answer-width) + 12px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--answer-width);
+  }
+  :global(.web-game) .battleArena,
+  :global(.web-game) .battlePanel { height: 100%; min-height: 0; }
+  :global(.web-game) .battleArena {
+    --web-impact-bottom: 58%;
+    background: radial-gradient(ellipse at 50% 52%, #28495766, transparent 60%);
+  }
+  :global(.web-game) .battleArena :global(.web-battle-backdrop) { bottom: 46%; }
+  :global(.web-game) .battleArena::before {
+    content: '';
+    position: absolute;
+    inset: 54% 0 0;
+    pointer-events: none;
+    background:
+      linear-gradient(#142e36, #0e1729e6),
+      repeating-linear-gradient(0deg, #c3f5ef0a 0 1px, transparent 1px 48px);
+  }
+  :global(.web-game) .battleArena :global([data-testid="battle-effects"]) { height: 54%; }
+  :global(.web-game) .battleArena :global([data-testid="player-tank"]),
+  :global(.web-game) .battleArena :global([data-testid="enemy-tank"]) { bottom: 46%; }
+  :global(.web-game) .battleArena :global(.web-battle-health) {
+    top: max(72px, calc(54% - clamp(155px, 15vw, 230px) - 72px)) !important;
+  }
+  :global(.web-game) .battlePanel { border-top: 0; border-left: 3px solid #64748b; }
+  :global(.web-game) .battlePanel > div { justify-content: safe center; gap: 8px; padding: 20px; }
+  :global(.web-game) .battlePanel :global([data-testid="battle-question"]) { font-size: clamp(30px, 3vw, 48px) !important; }
+  :global(.web-game) .battlePanel :global([data-testid="battle-keypad"]) { max-width: 520px; gap: 12px; }
+  :global(.web-game) .battlePanel :global([data-testid="battle-keypad"]) button { min-height: 64px; font-size: 28px; }
+  :global(.web-game) .battleArena :global(.web-battle-tank) {
+    width: clamp(190px, 18vw, 280px);
+    height: clamp(155px, 15vw, 230px);
+  }
+}

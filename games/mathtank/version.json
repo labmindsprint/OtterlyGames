@@ -1,4 +1,5 @@
 {
   "version": "1.13",
-  "mode": "website-battle-demo"
+  "mode": "website-full-game-and-battle-demo",
+  "storage": "local-browser"
 }

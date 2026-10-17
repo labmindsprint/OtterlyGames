@@ -1,0 +1,182 @@
+{
+  "earth": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "moon": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "mars": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "jupiter": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "saturn": {
+    "width": 576,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "iss": {
+    "width": 576,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "sun": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "mercury": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "venus": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "asteroid_belt": {
+    "width": 576,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "enceladus": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "uranus": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "neptune": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "pluto": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "oort_cloud": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "alpha_centauri": {
+    "width": 576,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "betelgeuse": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "sirius": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "pillars_of_creation": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "orion_nebula": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "butterfly_nebula": {
+    "width": 576,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "ring_nebula": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "crab_nebula": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "pulsar": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "milky_way": {
+    "width": 576,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "andromeda": {
+    "width": 576,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "sombrero": {
+    "width": 576,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "whirlpool": {
+    "width": 576,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "quasar": {
+    "width": 384,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  },
+  "black_hole": {
+    "width": 576,
+    "height": 384,
+    "frames": 24,
+    "columns": 4
+  }
+}

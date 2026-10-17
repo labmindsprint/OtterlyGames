@@ -1,0 +1,92 @@
+@media (min-width: 1024px) and (min-height: 600px) {
+  :global(.web-game) .battle { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+  :global(.web-game) .arena { height: 100%; min-height: 0; }
+  :global(.web-game) .tank {
+    width: clamp(150px, 18vw, 250px);
+    height: clamp(115px, 14vw, 185px);
+    top: calc(48% - clamp(115px, 14vw, 185px) / 2);
+    bottom: auto;
+  }
+  :global(.web-game) .arena :global(.web-universe-ground) {
+    top: calc(48% + clamp(115px, 14vw, 185px) / 2 - 18px);
+    bottom: auto;
+    background: linear-gradient(#203857aa, transparent);
+  }
+  :global(.web-game) .world { top: 40px; width: min(58%, 360px); height: calc(48% - 48px); }
+  :global(.web-game) .question { justify-content: safe center; border-left: 1px solid #475569; }
+  :global(.web-game) .question :global([data-testid="universe-question"]) { font-size: clamp(24px, 2.2vw, 34px); }
+}
+.mapViewport { isolation: isolate; }
+.mapCanvas {
+  background:
+    radial-gradient(ellipse at 15% 45%, #6d3c8638, transparent 25%),
+    radial-gradient(ellipse at 40% 20%, #216e9333, transparent 30%),
+    radial-gradient(ellipse at 70% 65%, #70468b38, transparent 28%);
+}
+.mapNebula {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 35px 50px, #fff4cabb, transparent),
+    radial-gradient(1px 1px at 180px 140px, #99e9ffcc, transparent),
+    radial-gradient(2px 2px at 290px 70px, #e5baffaa, transparent);
+  background-size: 340px 210px;
+}
+.mapNebula::before,
+.mapNebula::after {
+  content: '';
+  position: absolute;
+  width: min(55vw, 720px);
+  height: 95%;
+  top: 0;
+  left: 8%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #8358bf33, #463b8540 30%, transparent 70%);
+  filter: blur(18px);
+  animation: nebulaDrift 24s ease-in-out infinite alternate;
+}
+.mapNebula::after { left: 45%; top: 8%; background: radial-gradient(ellipse, #35b6d126, transparent 65%); animation-delay: -12s; }
+.mapArtwork { filter: drop-shadow(0 0 22px #9e7edd55); }
+.mapWorld { z-index: 1; }
+.mapFog { border: 1px solid #b6b2ff0d; }
+.mapFog::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1px solid #b6b2ff26;
+  border-radius: 50%;
+  transform: rotate(-25deg) scaleY(.65);
+  box-shadow: 0 0 28px #9587ff26;
+}
+.mapCanvas[data-moving='false'] .mapNebula::before,
+.mapCanvas[data-moving='false'] .mapNebula::after { animation-play-state: paused; }
+@keyframes nebulaDrift {
+  from { transform: translate3d(-20px, -8px, 0) scale(.95); opacity: .65; }
+  to { transform: translate3d(25px, 12px, 0) scale(1.08); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mapNebula::before, .mapNebula::after { animation: none; }
+}
+@media (orientation: landscape) and (max-height: 350px) {
+  .mapWorld { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; }
+  .mapArtwork { grid-column: 1; grid-row: 1 / 4; }
+  .mapWorld > div:not(:first-child), .mapWorld > p { grid-column: 2; margin-block: 0; }
+  .mapWorld > div:last-child { margin-top: 2px; }
+  .mapWorld span { font-size: 11px; }
+  .mapFog { top: 0 !important; height: 100% !important; }
+  .mapFog > span { font-size: 1rem; }
+  .mapFog > p { margin-top: 2px; font-size: 11px; }
+}
+@media (orientation: landscape) and (max-height: 350px) {
+  :global(.web-game) .question { padding: .375rem; gap: .25rem; }
+  :global(.web-game) .question > div { margin-block: 0; flex-shrink: 0; }
+  :global(.web-game) .question > div:first-child > div { width: 32px; height: 32px; }
+  :global(.web-game) .question :global([data-testid="universe-question"]) { font-size: 1rem; line-height: 1.25; }
+  :global(.web-game) .question :global([data-testid^="universe-answer-"]) {
+    min-height: 44px;
+    padding: .25rem;
+    font-size: 1rem;
+  }
+}
