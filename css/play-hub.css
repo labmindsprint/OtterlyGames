@@ -1,0 +1,368 @@
+/* ============================================================================
+   OTTERLY GAMES — Play hub + game landing pages (Theme B "Playful Dark, Evolved")
+   Requires /css/tokens.css. Loaded after catalogue.css (hub) or
+   web-game.css + game-intros.css (game pages) and only restyles chrome around the
+   games. It never changes #universe-frame, its fullscreen rules or the
+   embedding geometry in web-game.css.
+
+   Scopes (set on <body> next to .theme-b):
+     .play-hub-page   /play/ catalogue
+     .play-game-page  every game landing page; accent via .play-clock,
+                      .play-tank, .play-ninja, .play-zombie, .play-pigeon,
+                      .play-shepherd (--accent, --accent-soft, --cta)
+   ========================================================================== */
+
+/* ==========================================================================
+   1. PLAY HUB
+   ========================================================================== */
+.play-hub-page .catalogue-main {
+  width: 100%; max-width: calc(var(--wrap) + 2 * var(--gutter)); margin-inline: auto;
+  padding: var(--s-6) var(--gutter) var(--s-8);
+}
+.play-hub-page .catalogue-hero { padding: var(--s-4) 0 var(--s-5); }
+.play-hub-page .catalogue-eyebrow {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  font: 800 var(--fs-xs)/1 var(--font-head); letter-spacing: 0.14em; color: var(--purple-soft);
+}
+.play-hub-page .catalogue-eyebrow::before { content: ""; width: 22px; height: 3px; border-radius: 3px; background: currentColor; opacity: 0.7; }
+.play-hub-page .catalogue-hero h1 {
+  max-width: 14ch; margin: var(--s-4) 0 var(--s-4);
+  font-size: clamp(2.6rem, 7.4vw, 4.6rem); font-weight: 900; line-height: 1.02; letter-spacing: -0.02em;
+}
+.play-hub-page .catalogue-hero h1 span {
+  background: linear-gradient(95deg, var(--orange-soft), var(--pink-soft) 55%, var(--purple-soft));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.play-hub-page .catalogue-hero-copy { max-width: 34rem; color: var(--text-2); font-size: var(--fs-lg); }
+
+/* Filters stay available but quiet */
+.play-hub-page .catalogue-controls { gap: var(--s-3); margin-top: var(--s-2); }
+.play-hub-page .catalogue-search {
+  background: var(--surface-1); border: 1px solid var(--line); border-radius: var(--r-pill); padding: 0 var(--s-5);
+}
+.play-hub-page .catalogue-search:focus-within { outline: 3px solid var(--focus); outline-offset: 3px; }
+.play-hub-page .catalogue-search svg { stroke: var(--text-3); }
+.play-hub-page .catalogue-search input { color: var(--text); font-size: var(--fs-sm); }
+.play-hub-page .catalogue-search input::placeholder { color: var(--text-3); }
+.play-hub-page .catalogue-categories { gap: var(--s-2); }
+.play-hub-page .catalogue-categories button {
+  min-height: var(--tap); padding: 0 var(--s-4); color: var(--text-2);
+  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); border-radius: var(--r-pill);
+  font-size: var(--fs-sm); font-weight: 600; transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.play-hub-page .catalogue-categories button:hover { color: var(--text); border-color: var(--line-strong); background: rgba(255, 255, 255, 0.09); }
+.play-hub-page .catalogue-categories [aria-pressed="true"] {
+  background: var(--purple-soft); border-color: var(--purple-soft); color: var(--text-on-accent); font-weight: 800;
+}
+.play-hub-page .catalogue-count { margin: var(--s-5) 0 var(--s-4); color: var(--text-3); font-size: var(--fs-sm); }
+
+/* ---- Grid: 12 columns, groups + sizes come from the card data ---- */
+.play-hub-page .catalogue-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--s-4); }
+.play-hub-page .catalogue-card {
+  grid-column: span 12; position: relative; isolation: isolate;
+  background: var(--surface-1); border: 1px solid var(--line); border-radius: var(--r-lg);
+  box-shadow: var(--edge-light), var(--elev-1); color: var(--text);
+  transition: transform 0.25s var(--ease), border-color 0.2s, box-shadow 0.25s var(--ease);
+}
+.play-hub-page .catalogue-card:hover { transform: translateY(-3px); border-color: var(--line-strong); box-shadow: var(--edge-light), var(--elev-2); }
+.play-hub-page .catalogue-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+.play-hub-page .catalogue-card h3 { color: var(--text); font-weight: 800; letter-spacing: -0.01em; }
+.play-hub-page .catalogue-genre { color: var(--accent-soft); font: 800 var(--fs-xs)/1.3 var(--font-head); letter-spacing: 0.08em; }
+.play-hub-page .catalogue-description { color: var(--text-2); }
+.play-hub-page .catalogue-note { color: var(--text-3); font-size: var(--fs-xs); }
+.play-hub-page .catalogue-play { color: var(--accent-soft); font: 800 var(--fs-sm)/1 var(--font-head); min-height: var(--tap); }
+.play-hub-page .catalogue-play > span { width: auto; height: auto; background: none; border-radius: 0; font-size: 1em; display: inline; }
+.play-hub-page .catalogue-art-badge {
+  top: var(--s-3); left: var(--s-3); z-index: 3; padding: 0 var(--s-3); min-height: 26px; display: inline-flex; align-items: center;
+  background: rgba(14, 12, 23, 0.72); border: 1px solid var(--line-strong); color: var(--text); font: 700 0.6875rem/1 var(--font-head);
+}
+
+/* Group headings (inserted by js/play-hub.js) */
+.play-hub-page .hub-group-head { grid-column: 1 / -1; margin-top: var(--s-5); max-width: 40rem; }
+.play-hub-page .hub-group-head:first-child { margin-top: 0; }
+.play-hub-page .hub-group-head .hub-eyebrow {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  font: 800 var(--fs-xs)/1 var(--font-head); letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-soft);
+}
+.play-hub-page .hub-group-head .hub-eyebrow::before { content: ""; width: 22px; height: 3px; border-radius: 3px; background: currentColor; opacity: 0.7; }
+.play-hub-page .hub-group-head h2 { margin-top: var(--s-3); font-size: clamp(1.5rem, 3.4vw, 2.1rem); font-weight: 800; letter-spacing: -0.01em; line-height: 1.15; }
+.play-hub-page .hub-group-head p:not(.hub-eyebrow) { margin-top: var(--s-2); color: var(--text-2); font-size: var(--fs-sm); }
+.play-hub-page .hub-group-head--fun { --accent-soft: var(--text-3); margin-top: var(--s-7); padding-top: var(--s-6); border-top: 1px solid var(--line); max-width: none; }
+.play-hub-page .hub-group-head--fun > * { max-width: 40rem; }
+.play-hub-page .hub-group-head--fun h2 { font-size: clamp(1.25rem, 2.6vw, 1.5rem); color: var(--text-2); }
+
+/* ---- Flagship tiles: Clock Master + Math Tank with real phone art ---- */
+.play-hub-page [data-game-card="clock-master"],
+.play-hub-page [data-game-card="math-tank"] {
+  --accent: var(--purple); --accent-soft: var(--purple-soft); --accent2: var(--amber); --cta: var(--amber-soft);
+  border-radius: var(--r-xl); box-shadow: var(--edge-light), var(--elev-2);
+  background:
+    radial-gradient(30rem 22rem at 100% 0%, color-mix(in srgb, var(--accent) 34%, transparent), transparent 62%),
+    radial-gradient(22rem 18rem at 0% 100%, color-mix(in srgb, var(--accent2) 20%, transparent), transparent 65%),
+    linear-gradient(180deg, var(--surface-2), var(--surface-1));
+}
+.play-hub-page [data-game-card="math-tank"] { --accent: var(--pink); --accent-soft: var(--pink-soft); --accent2: #14b8a6; --cta: var(--pink-soft); }
+.play-hub-page [data-game-card="clock-master"]:hover,
+.play-hub-page [data-game-card="math-tank"]:hover { box-shadow: var(--edge-light), var(--elev-3); }
+.play-hub-page [data-game-card="clock-master"] .catalogue-art,
+.play-hub-page [data-game-card="math-tank"] .catalogue-art {
+  display: block; aspect-ratio: auto; height: 290px; background: none; overflow: hidden;
+}
+.play-hub-page [data-game-card="clock-master"] .catalogue-art > img,
+.play-hub-page [data-game-card="math-tank"] .catalogue-art > img { display: none; }
+.play-hub-page [data-game-card="clock-master"] .catalogue-art::before,
+.play-hub-page [data-game-card="clock-master"] .catalogue-art::after,
+.play-hub-page [data-game-card="math-tank"] .catalogue-art::before,
+.play-hub-page [data-game-card="math-tank"] .catalogue-art::after {
+  content: ""; position: absolute; top: 44px; left: 50%; width: 168px; aspect-ratio: 540 / 960;
+  border: 6px solid #2a2342; border-radius: 26px; background-color: #2a2342; background-size: cover; background-position: top center;
+  box-shadow: 0 30px 60px -18px rgba(5, 3, 14, 0.8), 0 0 0 1px var(--line-strong);
+}
+.play-hub-page [data-game-card="clock-master"] .catalogue-art::before { background-image: url("/images/clockmaster/home.webp"); transform: translateX(-122%) rotate(-7deg); top: 64px; opacity: 0.92; }
+.play-hub-page [data-game-card="clock-master"] .catalogue-art::after { background-image: url("/images/clockmaster/race.webp"); transform: translateX(-2%) rotate(5deg); z-index: 1; }
+.play-hub-page [data-game-card="math-tank"] .catalogue-art::before { background-image: url("/images/mathtank/home.webp"); transform: translateX(-122%) rotate(-7deg); top: 64px; opacity: 0.92; }
+.play-hub-page [data-game-card="math-tank"] .catalogue-art::after { background-image: url("/images/mathtank/battle.webp"); transform: translateX(-2%) rotate(5deg); z-index: 1; }
+.play-hub-page [data-game-card="clock-master"] .catalogue-card-body,
+.play-hub-page [data-game-card="math-tank"] .catalogue-card-body { position: relative; z-index: 2; padding: var(--s-5) var(--s-5) var(--s-6); gap: var(--s-3); }
+.play-hub-page [data-game-card="clock-master"] h3,
+.play-hub-page [data-game-card="math-tank"] h3 { margin: 0; font-size: clamp(2rem, 4.6vw, 2.9rem); font-weight: 900; line-height: 1.02; }
+.play-hub-page [data-game-card="clock-master"] .catalogue-description,
+.play-hub-page [data-game-card="math-tank"] .catalogue-description { max-width: 30rem; font-size: var(--fs-base); }
+.play-hub-page [data-game-card="clock-master"] .catalogue-note,
+.play-hub-page [data-game-card="math-tank"] .catalogue-note { margin: 0 0 var(--s-3); }
+.play-hub-page [data-game-card="clock-master"] .catalogue-play,
+.play-hub-page [data-game-card="math-tank"] .catalogue-play {
+  align-self: flex-start; justify-content: center; gap: var(--s-2); min-height: 52px; padding: 0 var(--s-6); margin-top: auto;
+  background: var(--cta); color: var(--text-on-accent); border-radius: var(--r-pill); font-size: 1rem;
+  box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--cta) 70%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+@media (min-width: 760px) {
+  .play-hub-page [data-game-card="clock-master"],
+  .play-hub-page [data-game-card="math-tank"] { grid-column: span 6; }
+  .play-hub-page [data-game-card="clock-master"] .catalogue-art,
+  .play-hub-page [data-game-card="math-tank"] .catalogue-art { height: 330px; }
+  .play-hub-page [data-game-card="clock-master"] .catalogue-art::before,
+  .play-hub-page [data-game-card="clock-master"] .catalogue-art::after,
+  .play-hub-page [data-game-card="math-tank"] .catalogue-art::before,
+  .play-hub-page [data-game-card="math-tank"] .catalogue-art::after { width: 190px; }
+}
+@media (min-width: 760px) and (max-width: 1099px) {
+  .play-hub-page [data-game-card="clock-master"] .catalogue-art::before,
+  .play-hub-page [data-game-card="clock-master"] .catalogue-art::after,
+  .play-hub-page [data-game-card="math-tank"] .catalogue-art::before,
+  .play-hub-page [data-game-card="math-tank"] .catalogue-art::after { width: 140px; }
+  .play-hub-page [data-game-card="clock-master"] .catalogue-art::before,
+  .play-hub-page [data-game-card="math-tank"] .catalogue-art::before { transform: translateX(-104%) rotate(-7deg); }
+}
+
+/* ---- Space Academy: compact entry ---- */
+.play-hub-page [data-game-card="space-academy"] {
+  --accent: var(--blue); --accent-soft: var(--blue-soft);
+  flex-direction: row; align-items: center; gap: var(--s-4); padding: var(--s-4) var(--s-5);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--blue) 18%, var(--surface-1)), var(--surface-1) 70%);
+}
+.play-hub-page [data-game-card="space-academy"] .catalogue-art {
+  flex: none; width: 64px; height: 64px; aspect-ratio: 1; background: none; overflow: visible; display: grid; place-items: center;
+}
+.play-hub-page [data-game-card="space-academy"] .catalogue-art > img {
+  width: 100%; height: 100%; border-radius: 50%; object-fit: cover; filter: none; box-shadow: 0 0 24px rgba(59, 130, 246, 0.5);
+}
+.play-hub-page [data-game-card="space-academy"] .catalogue-art-badge { display: none; }
+.play-hub-page [data-game-card="space-academy"] .catalogue-card-body {
+  padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; column-gap: var(--s-6);
+}
+.play-hub-page [data-game-card="space-academy"] h3 { margin: var(--s-1) 0; font-size: 1.35rem; }
+.play-hub-page [data-game-card="space-academy"] .catalogue-note { margin: var(--s-2) 0 0; }
+.play-hub-page [data-game-card="space-academy"] .catalogue-play { margin-top: var(--s-2); justify-content: flex-start; min-height: var(--tap); }
+@media (min-width: 760px) {
+  .play-hub-page [data-game-card="space-academy"] { padding: var(--s-5) var(--s-6); gap: var(--s-5); }
+  .play-hub-page [data-game-card="space-academy"] .catalogue-art { width: 84px; height: 84px; }
+  .play-hub-page [data-game-card="space-academy"] .catalogue-card-body { grid-template-columns: minmax(0, 1fr) auto; }
+  .play-hub-page [data-game-card="space-academy"] .catalogue-card-body > *:not(.catalogue-play) { grid-column: 1; }
+  .play-hub-page [data-game-card="space-academy"] .catalogue-play { grid-column: 2; grid-row: 1 / span 4; margin: 0; }
+}
+
+/* ---- Just for fun: quiet Creative Arcade group ---- */
+.play-hub-page [data-categories~="creative-arcade"] {
+  --accent-soft: var(--text-3);
+  background: var(--surface-1); border-radius: var(--r-md); box-shadow: none;
+}
+.play-hub-page [data-categories~="creative-arcade"] .catalogue-art { aspect-ratio: 16 / 9; opacity: 0.88; }
+.play-hub-page [data-categories~="creative-arcade"] .catalogue-art-badge { background: rgba(14, 12, 23, 0.8); }
+.play-hub-page [data-categories~="creative-arcade"] .catalogue-card-body { padding: var(--s-4); }
+.play-hub-page [data-categories~="creative-arcade"] h3 { margin: var(--s-1) 0; font-size: 1.15rem; }
+.play-hub-page [data-categories~="creative-arcade"] .catalogue-description { font-size: var(--fs-sm); }
+.play-hub-page [data-categories~="creative-arcade"] .catalogue-note { margin: var(--s-2) 0 var(--s-3); }
+.play-hub-page [data-categories~="creative-arcade"] .catalogue-play { color: var(--purple-soft); font-size: var(--fs-sm); }
+.play-hub-page [data-categories~="creative-arcade"]:hover { border-color: var(--line-strong); }
+
+@media (min-width: 560px) {
+  .play-hub-page [data-categories~="creative-arcade"] { grid-column: span 6; }
+}
+@media (min-width: 1100px) {
+  .play-hub-page [data-categories~="creative-arcade"] { grid-column: span 3; }
+}
+@media (max-width: 559px) {
+  .play-hub-page [data-categories~="creative-arcade"] { flex-direction: row; align-items: stretch; }
+  .play-hub-page [data-categories~="creative-arcade"] .catalogue-art { flex: 0 0 38%; aspect-ratio: auto; min-height: 120px; }
+  .play-hub-page [data-categories~="creative-arcade"] .catalogue-art-badge { display: none; }
+  .play-hub-page [data-categories~="creative-arcade"] .catalogue-card-body { padding: var(--s-3) var(--s-4); }
+}
+
+.play-hub-page .catalogue-empty { background: var(--surface-1); border: 1px dashed var(--line-strong); border-radius: var(--r-lg); }
+.play-hub-page .catalogue-empty p { color: var(--text-2); }
+.play-hub-page .catalogue-empty button { min-height: var(--tap); background: var(--purple-soft); color: var(--text-on-accent); border-radius: var(--r-pill); padding: 0 var(--s-5); font-weight: 800; }
+.play-hub-page .catalogue-support { margin-top: var(--s-6); padding-top: var(--s-5); border-top: 1px solid var(--line); color: var(--text-3); font-size: var(--fs-sm); align-items: center; }
+.play-hub-page .catalogue-support a { display: inline-flex; align-items: center; min-height: var(--tap); color: var(--purple-soft); }
+
+/* ==========================================================================
+   2. GAME LANDING PAGES
+   ========================================================================== */
+.play-clock { --accent: var(--purple); --accent-soft: var(--purple-soft); --cta: var(--amber-soft); }
+.play-tank { --accent: var(--pink); --accent-soft: var(--pink-soft); --cta: var(--pink-soft); }
+.play-ninja { --accent: var(--purple); --accent-soft: var(--purple-soft); }
+.play-zombie { --accent: var(--green); --accent-soft: var(--green-soft); }
+.play-pigeon { --accent: var(--blue); --accent-soft: var(--blue-soft); }
+.play-shepherd { --accent: var(--orange); --accent-soft: var(--orange-soft); }
+
+.play-game-page .game-intro-page { max-width: 1200px; padding: var(--s-4) clamp(20px, 4vw, 28px) var(--s-7); }
+.play-game-page .game-back {
+  display: inline-flex; align-items: center; min-height: var(--tap); margin-bottom: var(--s-2); padding-right: var(--s-3);
+  color: var(--text-2); font-size: var(--fs-sm); font-weight: 600; text-decoration: none;
+}
+.play-game-page .game-back:hover { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+.play-game-page .game-noscript { border-color: color-mix(in srgb, var(--amber) 50%, transparent); background: var(--surface-1); color: var(--amber-soft); border-radius: var(--r-md); }
+
+/* Hero */
+.play-game-page .game-intro { position: relative; isolation: isolate; gap: var(--s-7); margin-bottom: var(--s-7); }
+.play-game-page .game-intro::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(36rem 24rem at 88% 40%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 66%);
+}
+.play-game-page .game-kicker {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  font: 800 var(--fs-xs)/1.3 var(--font-head); letter-spacing: 0.14em; color: var(--accent-soft);
+}
+.play-game-page .game-kicker::before { content: ""; flex: none; width: 22px; height: 3px; border-radius: 3px; background: currentColor; opacity: 0.7; }
+.play-game-page .game-intro h1 { margin: var(--s-4) 0 var(--s-3); font-size: clamp(2.6rem, 7.6vw, 4.6rem); font-weight: 900; line-height: 1.02; letter-spacing: -0.02em; }
+.play-game-page .game-hook { max-width: 30rem; margin-bottom: var(--s-4); color: var(--accent-soft); font-size: clamp(1.25rem, 2.6vw, 1.7rem); font-weight: 800; letter-spacing: -0.01em; }
+.play-game-page .game-description { max-width: 33rem; color: var(--text-2); font-size: var(--fs-base); }
+.play-game-page .game-intro .web-game-actions { margin: var(--s-5) 0 var(--s-2); gap: var(--s-3) var(--s-4); }
+.play-game-page .game-intro .web-game-install-note { max-width: 32rem; margin: var(--s-3) 0 0; color: var(--amber-soft); font-size: var(--fs-sm); font-weight: 600; }
+.play-game-page .game-quick-links { margin-top: var(--s-3); gap: 0 var(--s-5); color: var(--text-3); font-size: var(--fs-sm); }
+.play-game-page .game-quick-links a, .play-game-page .game-quick-links span { display: inline-flex; align-items: center; min-height: var(--tap); }
+.play-game-page .game-quick-links a { color: var(--purple-soft); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; }
+.play-game-page .game-quick-links a:hover { color: var(--text); text-decoration-color: currentColor; }
+.play-game-page .web-game-store { border-radius: var(--r-sm); text-decoration: none; }
+
+/* Primary "Play" gestures */
+.play-game-page .game-intro .web-game-primary,
+.play-game-page .game-start,
+.play-game-page .game-placeholder-actions button,
+.play-game-page .game-dock button {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+  min-height: 52px; padding: 0 var(--s-6); border: 0; border-radius: var(--r-pill);
+  background: var(--cta, var(--accent-soft)); color: var(--text-on-accent);
+  font: 800 1rem/1 var(--font-head); letter-spacing: 0.01em; text-decoration: none; cursor: pointer;
+  box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--cta, var(--accent-soft)) 70%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.18s var(--ease), filter 0.18s;
+}
+.play-game-page .game-intro .web-game-primary:hover,
+.play-game-page .game-start:hover,
+.play-game-page .game-placeholder-actions button:hover,
+.play-game-page .game-dock button:hover { background: var(--cta, var(--accent-soft)); filter: brightness(1.07); transform: translateY(-2px); }
+.play-game-page .game-intro .web-game-primary { flex: 0 0 auto; min-width: 0; }
+.play-game-page .game-dock button { min-height: var(--tap); padding: 0 var(--s-5); }
+
+/* Phone preview (clock + tank) and scene (arcade) */
+.play-game-page .game-preview {
+  position: relative; width: min(250px, 100%); padding: 0; overflow: hidden;
+  border: 6px solid #2a2342; border-radius: 32px; background: #2a2342;
+  box-shadow: 0 30px 60px -18px rgba(5, 3, 14, 0.8), 0 0 0 1px var(--line-strong), 0 0 90px -20px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.play-game-page .game-preview img { border-radius: 0; }
+.play-game-page .game-preview figcaption { padding: var(--s-3) var(--s-3) var(--s-3); background: var(--surface-2); color: var(--text-2); font-size: var(--fs-xs); }
+.play-game-page .game-intro-scene {
+  border: 1px solid var(--line-strong); border-radius: var(--r-xl); background: var(--surface-2);
+  box-shadow: var(--edge-light), var(--elev-2), 0 0 90px -30px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.play-game-page .game-intro-scene--arcade { background: var(--surface-2); }
+.play-game-page .game-scene-caption { color: var(--text); }
+
+/* Play area */
+.play-game-page .game-player-heading { margin-bottom: var(--s-4); }
+.play-game-page .game-player-heading h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); font-weight: 800; letter-spacing: -0.01em; }
+.play-game-page .game-player-heading p { margin-top: var(--s-1); color: var(--text-2); font-size: var(--fs-sm); }
+.play-game-page .web-game-player {
+  border: 1px solid var(--line-strong); border-radius: var(--r-lg); background: var(--surface-1);
+  box-shadow: var(--edge-light), var(--elev-2);
+}
+.play-game-page .web-game-toolbar { min-height: 60px; padding: var(--s-2) var(--s-4); background: var(--surface-2); border-bottom: 1px solid var(--line); color: var(--text); font: 800 var(--fs-sm)/1.2 var(--font-head); }
+.play-game-page .web-game-toolbar button {
+  min-height: var(--tap); padding: 0 var(--s-4); border: 1px solid var(--line-strong); border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.05); color: var(--text); font: 700 var(--fs-sm)/1 var(--font-body);
+}
+.play-game-page .web-game-toolbar button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.12); }
+.play-game-page .web-game-placeholder {
+  min-height: 240px;
+  background: radial-gradient(28rem 16rem at 50% 0%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 70%), var(--surface-1);
+}
+.play-game-page .game-placeholder-actions p { max-width: 24rem; color: var(--text); font: 800 var(--fs-lg)/1.3 var(--font-head); }
+.play-game-page .web-game-status { color: var(--text-2); }
+.play-game-page .game-save-note { max-width: 46rem; margin: var(--s-4) 0; color: var(--text-3); font-size: var(--fs-sm); }
+.play-game-page .game-save-note a, .play-game-page .web-game-details a { color: var(--purple-soft); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+.play-game-page .game-save-note a:hover, .play-game-page .web-game-details a:hover { color: var(--text); text-decoration-color: currentColor; }
+
+/* Parent notes + practice */
+.play-game-page .game-practice { margin-top: var(--s-6); padding: var(--s-5) 0; border-block: 1px solid var(--line); }
+.play-game-page .game-practice h2 { font-size: clamp(1.35rem, 2.8vw, 1.75rem); font-weight: 800; }
+.play-game-page .game-practice p:last-child { color: var(--text-2); font-size: var(--fs-sm); }
+.play-game-page .game-practice-links { gap: 0; }
+.play-game-page .game-practice-links a, .play-game-page .game-practice-links button {
+  display: inline-flex; align-items: center; min-height: var(--tap); color: var(--purple-soft); font: 600 var(--fs-sm)/1.3 var(--font-body);
+  text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; text-align: left;
+}
+.play-game-page .game-practice-links a:hover, .play-game-page .game-practice-links button:hover { color: var(--text); text-decoration-color: currentColor; }
+.play-game-page .web-game-details { gap: var(--s-4); margin-top: var(--s-6); }
+.play-game-page .web-game-details article {
+  padding: var(--s-5); background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.012)), var(--surface-1);
+  border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--edge-light);
+}
+.play-game-page .web-game-details h2 { margin-bottom: var(--s-2); font-size: var(--fs-h3); font-weight: 800; color: var(--text); }
+.play-game-page .web-game-details p { color: var(--text-2); font-size: var(--fs-sm); line-height: 1.65; }
+.play-game-page .web-game-brand-note { color: var(--text-3); font-size: var(--fs-xs); }
+
+/* Arcade lesson cards + footer */
+.play-game-page .game-learn { margin-bottom: var(--s-7); }
+.play-game-page .game-section-heading h2 { font-weight: 800; }
+.play-game-page .game-section-heading > p { color: var(--text-3); font-size: var(--fs-sm); }
+.play-game-page .game-lesson { background: var(--surface-1); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--edge-light); }
+.play-game-page .game-lesson-number { color: var(--accent-soft); }
+.play-game-page .game-lesson p { color: var(--text-2); font-size: var(--fs-sm); }
+.play-game-page .game-arcade-footer { background: linear-gradient(180deg, var(--surface-2), var(--surface-1)); border: 1px solid var(--line-strong); border-radius: var(--r-lg); box-shadow: var(--edge-light), var(--elev-1); }
+.play-game-page .game-arcade-footer p { color: var(--text-2); }
+.play-game-page .game-arcade-note { color: var(--text-3); font-size: var(--fs-sm); }
+.play-game-page .game-arcade-note a { color: var(--purple-soft); }
+.play-game-page .game-dock { background: rgba(30, 26, 51, 0.92); border: 1px solid var(--line-strong); border-radius: var(--r-lg); box-shadow: var(--elev-3); }
+.play-game-page .game-dock > span { color: var(--text); }
+
+@media (max-width: 700px) {
+  .play-game-page .game-intro-page { padding: var(--s-3) 20px var(--s-6); }
+  .play-game-page .game-intro { gap: var(--s-6); margin-bottom: var(--s-6); }
+  .play-game-page .game-intro h1 { font-size: clamp(2.5rem, 12vw, 3.4rem); }
+  .play-game-page .game-hook { font-size: 1.3rem; }
+  .play-game-page .game-intro .web-game-primary { flex: 1 1 100%; }
+  .play-game-page .game-preview { width: min(220px, 100%); }
+}
+@media (max-width: 360px) {
+  .play-game-page .game-intro-page { padding-inline: 16px; }
+}
+@media (max-height: 600px) and (min-width: 701px) {
+  .play-game-page .game-intro h1 { font-size: 2.6rem; }
+  .play-game-page .game-intro { gap: var(--s-6); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .play-hub-page .catalogue-card:hover, .play-game-page .web-game-primary:hover, .play-game-page .game-start:hover,
+  .play-game-page .game-placeholder-actions button:hover, .play-game-page .game-dock button:hover { transform: none; }
+}

@@ -4,7 +4,7 @@
    Single source of truth for brand tokens.
    ============================================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+@import url('/css/fonts.css');
 
 /* --- CSS Custom Properties (Single Source of Truth) --- */
 :root {
@@ -36,9 +36,9 @@
 
   /* Text */
   --text-primary: #f0f0f8;
-  --text-secondary: #9898b0;
+  --text-secondary: #b2b2c8;
   --t1: #f0f0f8;
-  --t2: #9898b0;
+  --t2: #b2b2c8;
 
   /* Typography */
   --font-heading: 'Nunito', sans-serif;
@@ -59,6 +59,10 @@ h1, h2, h3, h4 { font-family: var(--font-heading); }
 a { text-decoration: none; color: inherit; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 img { max-width: 100%; display: block; }
+:focus-visible { outline: 3px solid var(--pastel-amber); outline-offset: 4px; }
+#main-content, main[id], section[id], h2[id], h3[id] { scroll-margin-top: 85px; }
+input, select, textarea { font: inherit; }
+button, a, input, select, textarea { touch-action: manipulation; }
 
 /* --- Utility Classes --- */
 .gradient-text {
@@ -76,11 +80,11 @@ img { max-width: 100%; display: block; }
 }
 
 /* --- Animations --- */
-.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in { opacity: 1; transform: none; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
-.fade-in-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in-left { opacity: 1; transform: none; }
 .fade-in-left.visible { opacity: 1; transform: translateX(0); }
-.fade-in-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in-right { opacity: 1; transform: none; }
 .fade-in-right.visible { opacity: 1; transform: translateX(0); }
 
 /* Stagger delays */
@@ -96,3 +100,12 @@ img { max-width: 100%; display: block; }
 .stagger-10 { transition-delay: 0.45s; }
 .stagger-11 { transition-delay: 0.5s; }
 .stagger-12 { transition-delay: 0.55s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

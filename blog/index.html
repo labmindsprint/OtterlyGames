@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
   <title>The Otter Side — Blog | Parenting, Learning & Games — Otterly Games</title>
   <meta name="description" content="The Otter Side: A blog about parenting, kid academics, and educational gaming. Real stories from a mom building learning apps for children.">
   <meta name="keywords" content="parenting blog, educational games for kids, math tips for parents, screen time advice, learning apps, teaching kids math, clock learning, homeschool resources">
@@ -41,165 +42,351 @@
   <!-- Shared CSS (single source of truth) -->
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
-
-  <!-- Page-specific styles (hero + grid layout) -->
-  <style>
-    .blog-hero {
-      position: relative; min-height: 420px;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 7rem 1.5rem 3rem; overflow: hidden;
-    }
-    .blog-hero-bg {
-      position: absolute; top: 0; bottom: 0; z-index: 0;
-      width: 100%; max-width: 1400px;
-      left: 50%; transform: translateX(-50%);
-      background: url('/images/Blog.png') center/cover no-repeat;
-      -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
-      mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
-    }
-    .blog-hero-bg::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(10,10,15,0.05) 0%, rgba(10,10,15,0.25) 60%, rgba(10,10,15,0.7) 85%, #0a0a0f 100%);
-    }
-    .blog-hero-content {
-      position: relative; z-index: 1; max-width: 600px;
-    }
-    .blog-hero h1 {
-      font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 0.75rem;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.4);
-    }
-    .blog-hero p {
-      font-size: 1.05rem; color: var(--text-secondary); max-width: 480px; margin: 0 auto;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
-    }
-    .blog-main {
-      padding: 3rem 1.5rem 4rem;
-      max-width: 1100px; margin: 0 auto;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/blog.css">
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+
+
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
+
+  <meta name="google-adsense-account" content="ca-pub-5489426086320283">
 </head>
-<body data-og-includes="nav,footer">
-
-  <!-- Hero -->
-  <section class="blog-hero">
-    <div class="blog-hero-bg"></div>
-    <div class="blog-hero-content">
-      <h1 class="fade-in">The <span class="gradient-text">Otter</span> Side</h1>
-      <p class="fade-in">Parenting, learning, and everything in between. Real stories from a mom building educational games.</p>
+<body class="blog-page blog-hub-page theme-b">
+<!-- og:nav:start -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/images/brand/otter-mark-80.webp" alt="" width="40" height="40">
+      <span class="brand-text">Otterly Games</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/learn/">Lessons</a>
+      <a href="/tools/">Tools</a>
+      <a href="/parents/">For parents</a>
+      <a href="/blog/">Blog</a>
+      <a href="/Arcade/">Creative Arcade</a>
     </div>
-  </section>
-
-  <!-- Breadcrumb -->
-  <nav style="max-width:1100px;margin:0 auto;padding:1rem 1.5rem 0" aria-label="Breadcrumb">
-    <ol style="display:flex;gap:.5rem;list-style:none;padding:0;margin:0;font-size:.85rem;color:#9898b0">
-      <li><a href="/" style="color:#c4b5fd;text-decoration:none">Home</a></li>
-      <li style="color:#4a4a60">/</li>
-      <li aria-current="page">Blog</li>
-    </ol>
-  </nav>
-
-  <!-- Blog intro + prose for SEO -->
-  <section style="max-width:800px;margin:0 auto;padding:2rem 1.5rem 0">
-    <h2 style="font-size:1.5rem;font-weight:900;margin-bottom:.75rem;color:#f0f0f8">Welcome to <span class="gradient-text">The Otter Side</span></h2>
-    <p style="color:#9898b0;font-size:1rem;line-height:1.8;margin-bottom:1rem">The Otter Side is where we share everything we've learned on this journey from homework tears to educational game development. Written by a mom who builds learning apps for kids, our articles cover <strong style="color:#f0f0f8">practical parenting strategies</strong>, <strong style="color:#f0f0f8">math teaching tips</strong>, honest app reviews, and real stories about raising confident learners.</p>
-    <p style="color:#9898b0;font-size:1rem;line-height:1.8;margin-bottom:1rem">Whether you're looking for ways to make multiplication practice less painful, need advice on managing screen time, or want step-by-step guides for teaching tricky concepts like telling time or division, you'll find honest, experience-based advice here. Every article is written from the perspective of a parent who's been in the trenches — no jargon, no judgment, just practical help.</p>
-  </section>
-
-  <!-- Blog Posts (rendered from registry, with static noscript fallback) -->
-  <div class="blog-main">
-    <div id="blog-container" class="blog-grid">
-      <!-- OG.renderBlogGrid populates this from _data/blogs.json -->
-    </div>
-
-    <!-- Static fallback for Googlebot / noscript -->
-    <noscript>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem">
-        <a href="/blog/division-for-kids-explained-simply.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
-          <div style="font-size:2rem;margin-bottom:.5rem">➗</div>
-          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Learning Guide</span>
-          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">Division for Kids Explained Simply</h3>
-          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">How to teach division to kids in a way they actually understand. A parent's step-by-step guide.</p>
-          <span style="font-size:.8rem;color:#9898b0">Mar 2, 2026 · 8 min read</span>
-        </a>
-        <a href="/blog/how-to-help-a-child-who-hates-math.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
-          <div style="font-size:2rem;margin-bottom:.5rem">💪</div>
-          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Parenting Tips</span>
-          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">How to Help a Child Who Hates Math</h3>
-          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">Practical strategies for parents on how to turn math dread into confidence.</p>
-          <span style="font-size:.8rem;color:#9898b0">Feb 28, 2026 · 9 min read</span>
-        </a>
-        <a href="/blog/times-tables-games-online-free.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
-          <div style="font-size:2rem;margin-bottom:.5rem">✖️</div>
-          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Learning Resources</span>
-          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">Free Times Tables Games Online</h3>
-          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">Free online times tables games for kids. Practice multiplication from 2× to 12×.</p>
-          <span style="font-size:.8rem;color:#9898b0">Feb 25, 2026 · 7 min read</span>
-        </a>
-        <a href="/blog/best-math-apps-for-kids.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
-          <div style="font-size:2rem;margin-bottom:.5rem">📲</div>
-          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">App Reviews</span>
-          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">Best Math Apps for Kids in 2025</h3>
-          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">Honest reviews of 20+ math apps for kids aged 4–9. Free and paid picks that actually teach math.</p>
-          <span style="font-size:.8rem;color:#9898b0">Feb 22, 2026 · 10 min read</span>
-        </a>
-        <a href="/blog/how-to-teach-a-child-to-tell-time.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
-          <div style="font-size:2rem;margin-bottom:.5rem">🕐</div>
-          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Learning Guide</span>
-          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">How to Teach a Child to Tell Time</h3>
-          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">A complete step-by-step guide to teaching kids to read analog and digital clocks.</p>
-          <span style="font-size:.8rem;color:#9898b0">Feb 20, 2026 · 8 min read</span>
-        </a>
-        <a href="/blog/screen-time-that-actually-helps.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
-          <div style="font-size:2rem;margin-bottom:.5rem">📱</div>
-          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Digital Parenting</span>
-          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">Screen Time That Actually Helps</h3>
-          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">A mom who builds educational apps shares her honest approach to kids' screen time.</p>
-          <span style="font-size:.8rem;color:#9898b0">Feb 14, 2026 · 6 min read</span>
-        </a>
-        <a href="/blog/5-ways-to-make-math-fun-at-home.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
-          <div style="font-size:2rem;margin-bottom:.5rem">🧮</div>
-          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Parenting Tips</span>
-          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">5 Ways to Make Math Fun at Home</h3>
-          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">Forget boring flashcards. Five tried-and-tested ways to make math enjoyable at home.</p>
-          <span style="font-size:.8rem;color:#9898b0">Feb 12, 2026 · 7 min read</span>
-        </a>
-        <a href="/blog/why-my-kids-clock-struggle-inspired-an-app.html" style="display:block;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;padding:1.5rem;text-decoration:none;color:inherit">
-          <div style="font-size:2rem;margin-bottom:.5rem">🕐</div>
-          <span style="font-size:.75rem;font-weight:700;color:#c4b5fd;text-transform:uppercase">Our Story</span>
-          <h3 style="font-size:1.1rem;font-weight:800;color:#f0f0f8;margin:.5rem 0">Why My Kid's Clock Struggle Inspired an App</h3>
-          <p style="color:#9898b0;font-size:.9rem;line-height:1.6">The true story behind Clock Master — how one mom's frustration led to building an educational game.</p>
-          <span style="font-size:.8rem;color:#9898b0">Feb 10, 2026 · 5 min read</span>
-        </a>
-      </div>
-    </noscript>
+    <a href="/play/" class="nav-cta nav-play">Play online <span aria-hidden="true">&nearr;</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
+</nav>
+<!-- og:nav:end -->
 
-  <!-- Blog topics overview for SEO -->
-  <section style="max-width:800px;margin:0 auto;padding:2rem 1.5rem 0">
-    <h2 style="font-size:1.3rem;font-weight:900;margin-bottom:.75rem;color:#f0f0f8">What We Write About</h2>
-    <p style="color:#9898b0;font-size:.95rem;line-height:1.8;margin-bottom:1rem"><strong style="color:#f0f0f8">Parenting Tips</strong> — Actionable advice for helping children with homework, building confidence in maths, and turning everyday moments into learning opportunities. We cover topics like helping children who hate maths, making multiplication practice enjoyable, and setting up productive homework routines.</p>
-    <p style="color:#9898b0;font-size:.95rem;line-height:1.8;margin-bottom:1rem"><strong style="color:#f0f0f8">Learning Guides</strong> — Step-by-step instructions for teaching specific skills. From telling the time on analogue clocks to understanding division with remainders, each guide breaks complex topics into simple, age-appropriate steps that parents can follow at home.</p>
-    <p style="color:#9898b0;font-size:.95rem;line-height:1.8;margin-bottom:1rem"><strong style="color:#f0f0f8">App Reviews & Resources</strong> — Honest reviews of educational apps and free online tools. We test everything with real children before recommending it, and we always note the privacy and safety implications for families.</p>
-    <p style="color:#9898b0;font-size:.95rem;line-height:1.8;margin-bottom:1rem"><strong style="color:#f0f0f8">Digital Parenting</strong> — Practical guidance on screen time, educational technology, and raising digitally literate children. We share what works in our own family — the successes and the mistakes.</p>
-  </section>
+  <main id="main-content" class="blog-main" tabindex="-1">
+    <header class="blog-hero">
+      <div class="wrap blog-hero-grid">
+        <div class="blog-hero-copy">
+          <p class="eyebrow">Parent guides</p>
+          <h1 id="blog-title">The <span>Otter</span> Side</h1>
+          <p class="blog-pitch">Parenting, learning, and everything in between. Real stories from a mom building educational games.</p>
+        </div>
+        <div class="blog-hero-art" aria-hidden="true"><div class="blog-orb"><img src="/images/brand/otter-buddy-320.webp" alt="" width="320" height="320" decoding="async"></div></div>
+      </div>
+    </header>
 
-  <!-- Shared includes + registry -->
+    <section class="wrap blog-listing" aria-labelledby="guides-heading">
+      <h2 class="sr-only" id="guides-heading">All parent guides</h2>
+
+      <div class="blog-live">
+        <span class="blog-topic-anchor" id="topic-all"></span><span class="blog-topic-anchor" id="topic-time"></span><span class="blog-topic-anchor" id="topic-maths"></span><span class="blog-topic-anchor" id="topic-screen"></span><span class="blog-topic-anchor" id="topic-games"></span>
+        <nav class="blog-filters" aria-label="Filter guides by topic">
+          <ul class="blog-chips" role="list">
+          <li><a class="blog-chip" href="/blog/#topic-all" data-topic="all" aria-current="true">All guides <span class="blog-chip-count">19</span></a></li>
+          <li><a class="blog-chip blog-tone-amber" href="/blog/#topic-time" data-topic="time"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> Telling time <span class="blog-chip-count">4</span></a></li>
+          <li><a class="blog-chip blog-tone-pink" href="/blog/#topic-maths" data-topic="maths"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Maths at home <span class="blog-chip-count">10</span></a></li>
+          <li><a class="blog-chip blog-tone-blue" href="/blog/#topic-screen" data-topic="screen"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-eye"/></svg> Screen time <span class="blog-chip-count">3</span></a></li>
+          <li><a class="blog-chip blog-tone-purple" href="/blog/#topic-games" data-topic="games"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"/></svg> Games &amp; apps <span class="blog-chip-count">5</span></a></li>
+          </ul>
+        </nav>
+        <p class="sr-only" role="status" aria-live="polite" data-blog-status></p>
+        <ul class="blog-posts" role="list" data-blog-grid>
+        <li class="blog-item blog-item--feature" data-topics="games screen">
+          <article class="surface blog-post blog-tone-purple">
+            <div class="blog-post-img"><img src="/images/brand/about-800.webp" alt="" width="800" height="457" fetchpriority="high" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"/></svg> Games &amp; apps</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/kids-can-make-games-with-ai.html">Your Kid Can Build a Game with AI — Here's How</a></h3>
+              <p>An adult-led introduction to game making: explain HTML and Git, check provider age rules, and review AI-generated code together before running or sharing it.</p>
+              <p class="blog-post-meta"><span>May 29, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 12 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="time">
+          <article class="surface blog-post blog-tone-amber">
+            <div class="blog-post-img"><img src="/images/clockmaster/companions.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> Telling time</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/what-is-the-best-way-to-practise-telling-time-at-home.html">What's the Best Way to Practise Telling Time at Home?</a></h3>
+              <p>Short, calm routines for practising telling time at home, with a five-minute plan, everyday clock moments and common mistakes.</p>
+              <p class="blog-post-meta"><span>Oct 18, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 5 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="time">
+          <article class="surface blog-post blog-tone-amber">
+            <div class="blog-post-img"><img src="/images/clockmaster/race.webp" alt="" width="540" height="960" loading="lazy" decoding="async" style="object-position:50% 40%">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> Telling time</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/am-and-pm-explained-for-kids.html">AM and PM Explained: A Simple Guide for Kids</a></h3>
+              <p>Why the clock goes around twice a day, how noon and midnight work, and simple ways to practise AM and PM together.</p>
+              <p class="blog-post-meta"><span>Oct 18, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 5 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="maths">
+          <article class="surface blog-post blog-tone-pink">
+            <div class="blog-post-img"><img src="/images/mathtank/universe.webp" alt="" width="540" height="960" loading="lazy" decoding="async" style="object-position:50% 40%">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Maths at home</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/how-to-teach-long-division-step-by-step.html">How to Teach Long Division: A Step-by-Step Guide for Parents</a></h3>
+              <p>A parent's step-by-step guide to long division: divide, multiply, subtract, bring down, with worked examples and common mistakes.</p>
+              <p class="blog-post-meta"><span>Oct 18, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 6 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="maths">
+          <article class="surface blog-post blog-tone-pink">
+            <div class="blog-post-img"><img src="/images/mathtank/garage.webp" alt="" width="540" height="960" loading="lazy" decoding="async" style="object-position:50% 30%">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Maths at home</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/times-tables-practice-without-a-timer.html">Times Tables Practice Without the Timer Pressure</a></h3>
+              <p>Patterns, worked examples and a calm five-minute routine for learning multiplication facts without a countdown.</p>
+              <p class="blog-post-meta"><span>Oct 18, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 5 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="games">
+          <article class="surface blog-post blog-tone-purple">
+            <div class="blog-post-img"><img src="/images/brand/blog-800.webp" alt="" width="800" height="457" loading="lazy" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"/></svg> Games &amp; apps</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/spelling-games-vs-spelling-practice.html">Spelling Games vs Spelling Practice: What Helps?</a></h3>
+              <p>What spelling games and spelling practice are each good for, and a short routine that combines them at home.</p>
+              <p class="blog-post-meta"><span>Oct 18, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 5 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="maths">
+          <article class="surface blog-post blog-tone-pink">
+            <div class="blog-post-img"><img src="/images/brand/tools-800.webp" alt="" width="800" height="457" loading="lazy" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Maths at home</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/how-to-teach-fractions-to-kids.html">How to Teach Fractions to Kids (Without the Tears)</a></h3>
+              <p>Teaching fractions to kids doesn't have to be hard. A step-by-step parent's guide using food, LEGO, and everyday life to make fractions click.</p>
+              <p class="blog-post-meta"><span>Mar 12, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 9 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="screen">
+          <article class="surface blog-post blog-tone-blue">
+            <div class="blog-post-img"><img src="/images/blog/how-much-screen-time-is-actually-ok-what-research-says.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-eye"/></svg> Screen time</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/how-much-screen-time-is-actually-ok-what-research-says.html">How Much Screen Time Is Actually OK? A Family Guide</a></h3>
+              <p>A practical family guide to choosing content, planning breaks, and balancing screens with everyday life. Not medical advice or a universal daily allowance.</p>
+              <p class="blog-post-meta"><span>Mar 7, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 5 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="maths">
+          <article class="surface blog-post blog-tone-pink">
+            <div class="blog-post-img"><img src="/images/mathtank/battle.webp" alt="" width="540" height="960" loading="lazy" decoding="async" style="object-position:50% 38%">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Maths at home</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/division-for-kids-explained-simply.html">Division for Kids Explained Simply</a></h3>
+              <p>How to teach division to kids in a way they actually understand. A parent's step-by-step guide.</p>
+              <p class="blog-post-meta"><span>Mar 2, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 8 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="games maths">
+          <article class="surface blog-post blog-tone-purple">
+            <div class="blog-post-img"><img src="/images/mathtank/home.webp" alt="" width="540" height="960" loading="lazy" decoding="async" style="object-position:50% 6%">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"/></svg> Games &amp; apps</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/why-gamified-learning-works-better-than-worksheets.html">Games or Worksheets? Choosing Practice That Fits</a></h3>
+              <p>Games, paper activities, and hands-on practice can serve different needs. Choose a format together and look for understanding, not just a higher score.</p>
+              <p class="blog-post-meta"><span>Mar 1, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 5 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="maths">
+          <article class="surface blog-post blog-tone-pink">
+            <div class="blog-post-img"><img class="blog-img--crop-low" src="/images/blog/why-kids-struggle-with-word-problems-and-how-to-help.jpg" alt="" width="1200" height="630" loading="lazy" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Maths at home</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/why-kids-struggle-with-word-problems-and-how-to-help.html">Why Kids Struggle with Word Problems (And How to Help)</a></h3>
+              <p>Why do kids find word problems so hard — and what can parents actually do to help? A practical guide.</p>
+              <p class="blog-post-meta"><span>Mar 1, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 5 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="maths">
+          <article class="surface blog-post blog-tone-pink">
+            <div class="blog-post-img"><img src="/images/clockmaster/universe.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Maths at home</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/is-my-child-behind-in-math-age-by-age-milestones.html">Is My Child Behind in Math? Age-by-Age Milestones</a></h3>
+              <p>Broad examples of early math skills, not a diagnostic checklist. Find a comfortable starting point and discuss concerns with your child's teacher.</p>
+              <p class="blog-post-meta"><span>Mar 1, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 4 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="maths">
+          <article class="surface blog-post blog-tone-pink">
+            <div class="blog-post-img"><img src="/images/brand/blog-800.webp" alt="" width="800" height="457" loading="lazy" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Maths at home</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/how-to-help-a-child-who-hates-math.html">How to Help a Child Who Hates Math</a></h3>
+              <p>Practical strategies for parents on how to turn math dread into confidence.</p>
+              <p class="blog-post-meta"><span>Feb 28, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 9 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="maths games">
+          <article class="surface blog-post blog-tone-pink">
+            <div class="blog-post-img"><img src="/images/brand/otter-tank-640.webp" alt="" width="640" height="366" loading="lazy" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Maths at home</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/times-tables-games-online-free.html">Free Times Tables Games Online</a></h3>
+              <p>Free online times tables games for kids. Practice multiplication from 2× to 12×.</p>
+              <p class="blog-post-meta"><span>Feb 25, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 7 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="games">
+          <article class="surface blog-post blog-tone-purple">
+            <div class="blog-post-img"><img src="/images/mathtank/garage.webp" alt="" width="540" height="960" loading="lazy" decoding="async" style="object-position:50% 22%">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"/></svg> Games &amp; apps</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/best-math-apps-for-kids.html">Choosing Math Apps for Kids — A Parent's Shortlist</a></h3>
+              <p>A practical checklist, our own Math Tank, and other options to explore. Not an independent benchmark.</p>
+              <p class="blog-post-meta"><span>Feb 22, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 5 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="time">
+          <article class="surface blog-post blog-tone-amber">
+            <div class="blog-post-img"><img src="/images/clockmaster/lesson.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> Telling time</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/how-to-teach-a-child-to-tell-time.html">How to Teach a Child to Tell Time</a></h3>
+              <p>A complete step-by-step guide to teaching kids to read analog and digital clocks.</p>
+              <p class="blog-post-meta"><span>Feb 20, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 8 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="screen">
+          <article class="surface blog-post blog-tone-blue">
+            <div class="blog-post-img"><img src="/images/clockmaster/home.webp" alt="" width="540" height="960" loading="lazy" decoding="async" style="object-position:50% 28%">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-eye"/></svg> Screen time</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/screen-time-that-actually-helps.html">Screen Time That Actually Helps</a></h3>
+              <p>A mom who builds educational apps shares her honest approach to kids' screen time.</p>
+              <p class="blog-post-meta"><span>Feb 14, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 6 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="maths">
+          <article class="surface blog-post blog-tone-pink">
+            <div class="blog-post-img"><img src="/images/mathtank/customize.webp" alt="" width="540" height="960" loading="lazy" decoding="async" style="object-position:50% 18%">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Maths at home</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/5-ways-to-make-math-fun-at-home.html">5 Ways to Make Math Fun at Home</a></h3>
+              <p>Forget boring flashcards. Five tried-and-tested ways to make math enjoyable at home.</p>
+              <p class="blog-post-meta"><span>Feb 12, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 7 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="time">
+          <article class="surface blog-post blog-tone-amber">
+            <div class="blog-post-img"><img src="/images/clockmaster/feature.webp" alt="" width="1024" height="500" loading="lazy" decoding="async" style="object-position:0% 50%">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> Telling time</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/why-my-kids-clock-struggle-inspired-an-app.html">Why My Kid's Clock Struggle Inspired an App</a></h3>
+              <p>The true story behind Clock Master — how one mom's frustration led to building an educational game.</p>
+              <p class="blog-post-meta"><span>Feb 10, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 5 min read</span></p>
+            </div>
+          </article>
+        </li>
+        </ul>
+        <p class="blog-empty" data-blog-empty hidden>No guides here yet. <a href="/blog/">See all guides</a>.</p>
+      </div>
+
+      <div class="blog-nojs">
+        <h2 class="blog-nojs-title">All guides at a glance</h2>
+    <!-- og:blog-fallback:start -->
+<noscript>
+  <div class="blog-grid">
+    <a href="/blog/what-is-the-best-way-to-practise-telling-time-at-home.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">🕐</span><div class="blog-card-body"><span class="blog-card-cat">Learning Guide</span><h3>What&#39;s the Best Way to Practise Telling Time at Home?</h3><p>Short, calm routines for practising telling time at home, with a five-minute plan, everyday clock moments and common mistakes.</p><div class="blog-meta"><span>Oct 18, 2026</span><span aria-hidden="true">·</span><span>5 min read</span></div></div></a>
+    <a href="/blog/am-and-pm-explained-for-kids.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">🕐</span><div class="blog-card-body"><span class="blog-card-cat">Learning Guide</span><h3>AM and PM Explained: A Simple Guide for Kids</h3><p>Why the clock goes around twice a day, how noon and midnight work, and simple ways to practise AM and PM together.</p><div class="blog-meta"><span>Oct 18, 2026</span><span aria-hidden="true">·</span><span>5 min read</span></div></div></a>
+    <a href="/blog/how-to-teach-long-division-step-by-step.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">➗</span><div class="blog-card-body"><span class="blog-card-cat">Learning Guide</span><h3>How to Teach Long Division: A Step-by-Step Guide for Parents</h3><p>A parent&#39;s step-by-step guide to long division: divide, multiply, subtract, bring down, with worked examples and common mistakes.</p><div class="blog-meta"><span>Oct 18, 2026</span><span aria-hidden="true">·</span><span>6 min read</span></div></div></a>
+    <a href="/blog/times-tables-practice-without-a-timer.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">✖️</span><div class="blog-card-body"><span class="blog-card-cat">Learning Guide</span><h3>Times Tables Practice Without the Timer Pressure</h3><p>Patterns, worked examples and a calm five-minute routine for learning multiplication facts without a countdown.</p><div class="blog-meta"><span>Oct 18, 2026</span><span aria-hidden="true">·</span><span>5 min read</span></div></div></a>
+    <a href="/blog/spelling-games-vs-spelling-practice.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">🎮</span><div class="blog-card-body"><span class="blog-card-cat">Learning Guide</span><h3>Spelling Games vs Spelling Practice: What Helps?</h3><p>What spelling games and spelling practice are each good for, and a short routine that combines them at home.</p><div class="blog-meta"><span>Oct 18, 2026</span><span aria-hidden="true">·</span><span>5 min read</span></div></div></a>
+    <a href="/blog/kids-can-make-games-with-ai.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">🧠</span><div class="blog-card-body"><span class="blog-card-cat">Digital Parenting</span><h3>Your Kid Can Build a Game with AI — Here&#39;s How</h3><p>An adult-led introduction to game making: explain HTML and Git, check provider age rules, and review AI-generated code together before running or sharing it.</p><div class="blog-meta"><span>May 29, 2026</span><span aria-hidden="true">·</span><span>12 min read</span></div></div></a>
+    <a href="/blog/how-to-teach-fractions-to-kids.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">🍕</span><div class="blog-card-body"><span class="blog-card-cat">Learning Guide</span><h3>How to Teach Fractions to Kids (Without the Tears)</h3><p>Teaching fractions to kids doesn&#39;t have to be hard. A step-by-step parent&#39;s guide using food, LEGO, and everyday life to make fractions click.</p><div class="blog-meta"><span>Mar 12, 2026</span><span aria-hidden="true">·</span><span>9 min read</span></div></div></a>
+    <a href="/blog/how-much-screen-time-is-actually-ok-what-research-says.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">📺</span><div class="blog-card-body"><span class="blog-card-cat">Digital Parenting</span><h3>How Much Screen Time Is Actually OK? A Family Guide</h3><p>A practical family guide to choosing content, planning breaks, and balancing screens with everyday life. Not medical advice or a universal daily allowance.</p><div class="blog-meta"><span>Mar 7, 2026</span><span aria-hidden="true">·</span><span>5 min read</span></div></div></a>
+    <a href="/blog/division-for-kids-explained-simply.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">➗</span><div class="blog-card-body"><span class="blog-card-cat">Learning Guide</span><h3>Division for Kids Explained Simply</h3><p>How to teach division to kids in a way they actually understand. A parent&#39;s step-by-step guide.</p><div class="blog-meta"><span>Mar 2, 2026</span><span aria-hidden="true">·</span><span>8 min read</span></div></div></a>
+    <a href="/blog/why-gamified-learning-works-better-than-worksheets.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">🎮</span><div class="blog-card-body"><span class="blog-card-cat">Learning Guide</span><h3>Games or Worksheets? Choosing Practice That Fits</h3><p>Games, paper activities, and hands-on practice can serve different needs. Choose a format together and look for understanding, not just a higher score.</p><div class="blog-meta"><span>Mar 1, 2026</span><span aria-hidden="true">·</span><span>5 min read</span></div></div></a>
+    <a href="/blog/why-kids-struggle-with-word-problems-and-how-to-help.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">💬</span><div class="blog-card-body"><span class="blog-card-cat">Learning Guide</span><h3>Why Kids Struggle with Word Problems (And How to Help)</h3><p>Why do kids find word problems so hard — and what can parents actually do to help? A practical guide.</p><div class="blog-meta"><span>Mar 1, 2026</span><span aria-hidden="true">·</span><span>5 min read</span></div></div></a>
+    <a href="/blog/is-my-child-behind-in-math-age-by-age-milestones.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">📊</span><div class="blog-card-body"><span class="blog-card-cat">Learning Guide</span><h3>Is My Child Behind in Math? Age-by-Age Milestones</h3><p>Broad examples of early math skills, not a diagnostic checklist. Find a comfortable starting point and discuss concerns with your child&#39;s teacher.</p><div class="blog-meta"><span>Mar 1, 2026</span><span aria-hidden="true">·</span><span>4 min read</span></div></div></a>
+    <a href="/blog/how-to-help-a-child-who-hates-math.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">💪</span><div class="blog-card-body"><span class="blog-card-cat">Parenting Tips</span><h3>How to Help a Child Who Hates Math</h3><p>Practical strategies for parents on how to turn math dread into confidence.</p><div class="blog-meta"><span>Feb 28, 2026</span><span aria-hidden="true">·</span><span>9 min read</span></div></div></a>
+    <a href="/blog/times-tables-games-online-free.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">✖️</span><div class="blog-card-body"><span class="blog-card-cat">Learning Resources</span><h3>Free Times Tables Games Online</h3><p>Free online times tables games for kids. Practice multiplication from 2× to 12×.</p><div class="blog-meta"><span>Feb 25, 2026</span><span aria-hidden="true">·</span><span>7 min read</span></div></div></a>
+    <a href="/blog/best-math-apps-for-kids.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">📲</span><div class="blog-card-body"><span class="blog-card-cat">App Reviews</span><h3>Choosing Math Apps for Kids — A Parent&#39;s Shortlist</h3><p>A practical checklist, our own Math Tank, and other options to explore. Not an independent benchmark.</p><div class="blog-meta"><span>Feb 22, 2026</span><span aria-hidden="true">·</span><span>5 min read</span></div></div></a>
+    <a href="/blog/how-to-teach-a-child-to-tell-time.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">🕐</span><div class="blog-card-body"><span class="blog-card-cat">Learning Guide</span><h3>How to Teach a Child to Tell Time</h3><p>A complete step-by-step guide to teaching kids to read analog and digital clocks.</p><div class="blog-meta"><span>Feb 20, 2026</span><span aria-hidden="true">·</span><span>8 min read</span></div></div></a>
+    <a href="/blog/screen-time-that-actually-helps.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">📱</span><div class="blog-card-body"><span class="blog-card-cat">Digital Parenting</span><h3>Screen Time That Actually Helps</h3><p>A mom who builds educational apps shares her honest approach to kids&#39; screen time.</p><div class="blog-meta"><span>Feb 14, 2026</span><span aria-hidden="true">·</span><span>6 min read</span></div></div></a>
+    <a href="/blog/5-ways-to-make-math-fun-at-home.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">🧮</span><div class="blog-card-body"><span class="blog-card-cat">Parenting Tips</span><h3>5 Ways to Make Math Fun at Home</h3><p>Forget boring flashcards. Five tried-and-tested ways to make math enjoyable at home.</p><div class="blog-meta"><span>Feb 12, 2026</span><span aria-hidden="true">·</span><span>7 min read</span></div></div></a>
+    <a href="/blog/why-my-kids-clock-struggle-inspired-an-app.html" class="blog-card"><span class="blog-card-emoji" aria-hidden="true">🕐</span><div class="blog-card-body"><span class="blog-card-cat">Our Story</span><h3>Why My Kid&#39;s Clock Struggle Inspired an App</h3><p>The true story behind Clock Master — how one mom&#39;s frustration led to building an educational game.</p><div class="blog-meta"><span>Feb 10, 2026</span><span aria-hidden="true">·</span><span>5 min read</span></div></div></a>
+  </div>
+</noscript>
+<!-- og:blog-fallback:end -->
+      </div>
+    </section>
+
+    <section class="wrap blog-about" aria-label="About the blog">
+      <div class="blog-about-grid">
+        <div class="surface blog-prose">
+          <h2>Welcome to <span>The Otter Side</span></h2>
+          <p>The Otter Side is where we share everything we've learned on this journey from homework tears to educational game development. Written by a mom who builds learning apps for kids, our articles cover <strong>practical parenting strategies</strong>, <strong>math teaching tips</strong>, honest app reviews, and real stories about raising confident learners.</p>
+          <p>Whether you're looking for ways to make multiplication practice less painful, need advice on managing screen time, or want step-by-step guides for teaching tricky concepts like telling time or division, you'll find honest, experience-based advice here. Every article is written from the perspective of a parent who's been in the trenches — no jargon, no judgment, just practical help.</p>
+        </div>
+        <div class="surface blog-prose">
+          <h2>What We Write About</h2>
+          <p><strong>Parenting Tips</strong> — Actionable advice for helping children with homework, building confidence in maths, and turning everyday moments into learning opportunities. We cover topics like helping children who hate maths, making multiplication practice enjoyable, and setting up productive homework routines.</p>
+          <p><strong>Learning Guides</strong> — Step-by-step instructions for teaching specific skills. From telling the time on analogue clocks to understanding division with remainders, each guide breaks complex topics into simple, age-appropriate steps that parents can follow at home.</p>
+          <p><strong>App Choices &amp; Resources</strong> — Practical checklists for comparing educational apps and free tools. We make Clock Master and Math Tank and identify that ownership when discussing them. Our shortlists are not independent rankings or measured learning studies.</p>
+          <p><strong>Digital Parenting</strong> — Practical guidance on screen time, educational technology, and raising digitally literate children. We share what works in our own family — the successes and the mistakes.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <script src="/js/includes.js" defer></script>
-  <script src="/js/registry.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.OG && OG.renderBlogGrid) {
-        OG.renderBlogGrid('#blog-container');
-      }
-    });
-  </script>
-  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-  <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
+  <script src="/js/blog.js" defer></script>
+
+<!-- og:footer:start -->
+<footer class="footer">
+  <a href="/" class="footer-brand">Otterly Games</a>
+  <p class="footer-tagline">Learning like no otter. Browser games, little discoveries and practice on paper.</p>
+  <div class="footer-links">
+    <a href="/play/">Play online</a>
+    <a href="/learn/">Learn by skill</a>
+    <a href="/parents/">Parents &amp; teachers</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Parent guides</a>
+    <a href="/about.html">Our story</a>
+    <a href="/Arcade/">Creative arcade</a>
+  </div>
+  <div class="footer-links footer-links--small">
+    <a href="/contact.html">Contact &amp; support</a>
+    <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 Otterly Games. Made by a mum, for curious minds.</p>
+</footer>
+<!-- og:footer:end -->
 </body>
 </html>

@@ -1,0 +1,119 @@
+.game-intro-page { max-width: 1200px; margin: auto; padding: 108px 28px 56px; }
+.game-back { display: inline-block; color: var(--text-secondary); font-size: .8rem; margin-bottom: 22px; }
+.game-noscript { margin-bottom: 24px; padding: 16px; border: 1px solid #8c7446; border-radius: 12px; color: var(--pastel-amber); font-size: .9rem; }
+.game-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .8fr); gap: 48px; align-items: center; margin-bottom: 32px; }
+.game-intro > * { min-width: 0; }
+.game-kicker { color: var(--pastel-purple); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .13em; }
+.game-intro h1 { margin: 14px 0; font-size: clamp(2.4rem, 4.4vw, 3.8rem); line-height: 1.08; letter-spacing: -.04em; text-wrap: balance; }
+.game-hook { max-width: 450px; color: var(--pastel-purple); font: 800 clamp(1.25rem, 2.2vw, 1.7rem)/1.3 var(--font-heading); letter-spacing: -.02em; margin-bottom: 18px; }
+.game-description { max-width: 480px; color: #c9c7d8; font-size: .98rem; }
+.game-intro .web-game-actions { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-start; gap: 12px 16px; margin: 24px 0 10px; }
+.game-intro .web-game-primary, .game-start { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 14px 24px; border: 1px solid #d6caff; border-radius: 13px; background: var(--pastel-purple); color: #201436; font-size: 1rem; font-weight: 800; text-decoration: none; box-shadow: 0 6px 24px #9b72e51a; }
+.game-intro .web-game-primary:hover, .game-start:hover { background: #d7ccff; }
+.game-intro .web-game-store img { width: 200px; height: auto; }
+.game-intro .web-game-install-note { max-width: 440px; margin: 8px 0; font-size: .78rem; font-weight: 400; }
+.game-quick-links { display: flex; gap: 12px 20px; flex-wrap: wrap; margin-top: 18px; color: var(--text-secondary); font-size: .8rem; }
+.game-quick-links a { text-decoration: underline; text-underline-offset: 4px; }
+.game-intro-scene { position: relative; isolation: isolate; aspect-ratio: 1 / 1; display: grid; align-items: center; border: 1px solid #584271; border-radius: 30px; background: radial-gradient(ellipse at 50% 40%, #503263, #201930 75%); overflow: hidden; }
+.game-intro-scene::before { content: ""; position: absolute; inset: 8%; z-index: -1; border: 1px solid #f9a8d414; border-radius: 50%; }
+.game-intro-scene > svg { display: block; width: 100%; height: 100%; }
+.game-scene-caption { position: absolute; left: 24px; right: 24px; bottom: 18px; color: #e5d5ed; text-align: center; font-size: .72rem; letter-spacing: .035em; }
+.game-preview { width: 220px; max-width: 100%; justify-self: center; padding: 6px; border: 1px solid #66517d; border-radius: 22px; background: #30253e; box-shadow: 0 18px 45px #0004; }
+.game-preview img { width: 100%; height: auto; border-radius: 16px; }
+.game-preview figcaption { padding: 11px 7px 7px; color: #e5d5ed; font-size: .72rem; line-height: 1.4; text-align: center; }
+.game-preview--tank { border-color: #42615c; background: #1c3436; }
+.game-intro-scene--arcade { aspect-ratio: 8 / 6; background: #231b37; }
+.game-intro-scene--arcade > svg { width: 100%; height: auto; }
+.game-intro-scene--arcade::before { display: none; }
+.game-intro-scene--arcade .game-scene-caption { bottom: 12px; color: #eee5ff; }
+.game-learn { margin: 0 0 52px; }
+.game-section-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 20px; justify-content: space-between; margin-bottom: 20px; }
+.game-section-heading h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1.25; letter-spacing: -.025em; }
+.game-section-heading > p { color: var(--text-secondary); font-size: .8rem; }
+.game-lesson-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.game-lesson { min-width: 0; padding: 24px; border: 1px solid var(--dark-border); border-radius: 18px; background: var(--dark-card); }
+.game-lesson-number { display: block; margin-bottom: 14px; color: var(--pastel-pink); font: 800 1.2rem/1 var(--font-heading); }
+.game-lesson h3 { margin-bottom: 8px; font-size: 1.15rem; }
+.game-lesson p { color: var(--text-secondary); font-size: .85rem; }
+.game-lesson a, .game-lesson button { display: inline-block; margin-top: 16px; color: var(--pastel-purple); text-decoration: underline; text-underline-offset: 4px; font-size: .85rem; font-weight: 600; }
+.game-player-heading { margin-bottom: 16px; }
+.game-player-heading h2 { font-size: 1.7rem; letter-spacing: -.025em; }
+.game-player-heading p { color: var(--text-secondary); font-size: .83rem; margin-top: 4px; }
+.game-save-note { margin: 18px 0; color: var(--text-secondary); font-size: .8rem; }
+.game-save-note a { color: var(--pastel-purple); }
+.game-placeholder-actions { display: grid; gap: 16px; justify-items: center; text-align: center; }
+.game-placeholder-actions button { padding: 12px 22px; border-radius: 11px; background: var(--pastel-purple); color: #201436; min-height: 48px; font-size: .95rem; font-weight: 700; }
+.game-practice { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 20px; margin-top: 30px; padding: 24px 0; border-block: 1px solid var(--dark-border); }
+.game-practice h2 { margin: 8px 0; font-size: 1.5rem; line-height: 1.2; }
+.game-practice p:last-child { color: var(--text-secondary); font-size: .85rem; }
+.game-practice-links { display: grid; justify-items: start; gap: 12px; }
+.game-practice-links a, .game-practice-links button { color: var(--pastel-purple); text-decoration: underline; text-underline-offset: 4px; font-size: .82rem; }
+.game-dock { position: fixed; z-index: 900; bottom: max(16px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 24px; max-width: calc(100% - 32px); padding: 10px 12px 10px 20px; border: 1px solid #74618e; border-radius: 18px; background: #1d182dee; box-shadow: 0 12px 45px #0008; backdrop-filter: blur(16px); }
+.game-dock > span { color: #e7def4; font: 800 .95rem var(--font-heading); white-space: nowrap; }
+.game-dock button { min-height: 44px; padding: 10px 20px; border-radius: 10px; background: var(--pastel-purple); color: #201436; font-weight: 700; white-space: nowrap; }
+.game-intro-page [hidden], .game-dock[hidden] { display: none !important; }
+.game-arcade-footer { margin: 32px 0; padding: 28px; border: 1px solid #54436d; border-radius: 18px; background: #21192f; }
+.game-arcade-footer h2 { margin-bottom: 8px; font-size: 1.4rem; }
+.game-arcade-footer p { max-width: 720px; margin-bottom: 18px; color: #c9c7d8; font-size: .9rem; }
+.game-arcade-note { padding-top: 20px; color: var(--text-secondary); font-size: .8rem; }
+.game-arcade-note a { color: var(--pastel-purple); text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 960px) {
+  .game-intro { gap: 28px; }
+  .game-intro .web-game-actions { gap: 10px; }
+  .game-lesson { padding: 20px; }
+}
+@media (max-width: 700px) {
+  .game-intro-page { padding: 92px 20px 40px; }
+  .game-back { margin-bottom: 18px; }
+  .game-intro { grid-template-columns: 1fr; gap: 28px; margin-bottom: 36px; }
+  .game-intro h1 { font-size: clamp(2.35rem, 9vw, 3.3rem); }
+  .game-hook { font-size: 1.4rem; margin-bottom: 14px; }
+  .game-description { font-size: .92rem; }
+  .game-intro .web-game-actions { gap: 10px 16px; margin-top: 20px; }
+  .game-intro .web-game-primary { flex: 1; min-width: 180px; }
+  .game-intro .web-game-store img { width: 190px; }
+  .game-intro-scene { width: 100%; max-width: 440px; margin: auto; aspect-ratio: 8 / 7; border-radius: 24px; }
+  .game-intro-scene > svg { height: 100%; max-height: 100%; }
+  .game-intro-scene--arcade { aspect-ratio: 8 / 6; }
+  .game-intro-scene--arcade > svg { height: auto; }
+  .game-preview { width: 155px; }
+  .game-practice { grid-template-columns: 1fr; }
+  .game-scene-caption { font-size: .65rem; bottom: 12px; }
+  .game-lesson-grid { grid-template-columns: 1fr; gap: 12px; }
+  .game-lesson { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 0 14px; padding: 20px; }
+  .game-lesson-number { grid-row: 1 / 4; margin: 4px 0 0; font-size: 1rem; }
+  .game-lesson h3, .game-lesson p, .game-lesson a, .game-lesson button { grid-column: 2; }
+  .game-lesson a, .game-lesson button { justify-self: start; margin-top: 10px; }
+  .game-learn { margin-bottom: 36px; }
+  .game-dock { gap: 16px; }
+  html:not([data-nav-ready]) .game-intro-page { padding-top: 24px; }
+}
+@media (max-width: 360px) {
+  .game-intro-page { padding-inline: 16px; }
+  .game-intro .web-game-primary { width: 100%; flex-basis: 100%; }
+  .game-lesson { padding: 16px; }
+  .game-dock { gap: 10px; padding-left: 14px; }
+  .game-dock > span { font-size: .85rem; }
+}
+@media (max-height: 600px) and (min-width: 701px) {
+  .game-intro-page { padding-top: 90px; }
+  .game-intro { align-items: start; gap: 36px; }
+  .game-intro h1 { font-size: 2.4rem; }
+  .game-intro-scene { max-width: 400px; align-self: center; }
+  .game-intro .web-game-store img { width: 190px; }
+}
+@media (max-height: 450px) and (min-width: 701px) {
+  .game-intro-page { padding-top: 84px; }
+  .game-back { margin-bottom: 12px; }
+  .game-intro { gap: 24px; }
+  .game-intro h1 { font-size: 2rem; margin: 8px 0; }
+  .game-kicker { font-size: .65rem; }
+  .game-hook { display: none; }
+  .game-description { font-size: .85rem; line-height: 1.5; }
+  .game-intro .web-game-actions { margin: 12px 0 6px; gap: 10px; }
+  .game-intro .web-game-primary { min-height: 48px; padding: 12px 18px; font-size: .9rem; }
+  .game-intro-scene { max-width: 260px; }
+  .game-preview { width: 145px; }
+  .game-intro .web-game-install-note { margin: 6px 0; font-size: .73rem; }
+  .game-quick-links { margin-top: 12px; font-size: .75rem; }
+}

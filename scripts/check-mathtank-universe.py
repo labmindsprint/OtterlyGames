@@ -241,23 +241,29 @@ with sync_playwright() as p:
     print("PASS blocked storage produces an explicit error before gameplay")
     context.close()
 
-    # A real configured unit sends a child-directed, non-personalized request.
+    # Operator flags are not visitor consent or verified provider/child-treatment readiness.
     context = browser.new_context()
     context.route("**/_data/web-ads.json", lambda route: route.fulfill(
         content_type="application/json",
         body=json.dumps({"enabled": True, "privacySetupVerified": True, "mathTankSlot": "1234567890"})))
-    context.route("https://pagead2.googlesyndication.com/**", lambda route: route.fulfill(
-        content_type="application/javascript", body=""))
+    ad_requests, ad_errors = [], []
+    context.on("request", lambda request: ad_requests.append(request.url)
+               if "googlesyndication.com" in request.url or "doubleclick.net" in request.url else None)
+    context.route("https://pagead2.googlesyndication.com/**", lambda route: route.abort())
     page = context.new_page()
+    page.on("console", lambda message: ad_errors.append(message.text) if message.type == "error" else None)
     page.goto(args.url + "/play/math-tank.html")
-    expect(page.locator("[data-web-game-ad]")).to_be_visible()
-    expect(page.locator("ins.adsbygoogle")).to_have_attribute("data-tag-for-age-treatment", "1")
-    expect(page.locator("ins.adsbygoogle")).to_have_attribute("data-ad-slot", "1234567890")
-    assert page.evaluate("window.adsbygoogle.requestNonPersonalizedAds") == 1
+    expect(page.locator("[data-web-game-ad]")).to_have_attribute("data-web-ad-state", "blocked")
+    expect(page.locator("[data-web-game-ad]")).to_have_attribute("data-web-ad-error", "activation-unimplemented")
+    expect(page.locator("[data-web-game-ad]")).not_to_be_visible()
+    expect(page.locator("ins.adsbygoogle")).not_to_have_attribute("data-ad-slot", re.compile(".+"))
+    assert page.evaluate("typeof window.adsbygoogle") == "undefined"
+    assert any("not visitor consent" in error for error in ad_errors), ad_errors
     page.locator("ins.adsbygoogle").evaluate("el => el.dataset.adStatus = 'unfilled'")
     expect(page.locator("[data-web-game-ad]")).not_to_be_visible()
     page.get_by_role("button", name="Play Math Tank", exact=True).click()
     expect(page.locator("#universe-frame")).to_be_visible()
-    print("PASS isolated configured display unit with child-directed treatment; no fill does not block play")
+    assert not ad_requests, ad_requests
+    print("PASS operator-only display-ad configuration is blocked with no provider request; gameplay is unaffected")
     context.close()
     browser.close()

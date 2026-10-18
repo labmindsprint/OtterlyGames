@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minute Hand Lesson — Learn What the Long Hand Means | Otterly Games</title>
+  <title>Minute Hand Lesson — Learn What the Long Hand Means</title>
   <meta name="description" content="Interactive minute hand lesson for kids. Drag the long hand around the clock and see minutes change. Learn to count by 5s and read every minute.">
   <meta name="keywords" content="minute hand lesson, learn minute hand, clock minute hand for kids, what does the long hand mean, telling time minutes, count by fives clock">
   <link rel="canonical" href="https://otterlygames.com/tools/minute-hand.html">
@@ -11,7 +11,7 @@
   <meta property="og:description" content="Drag the long hand around the clock and watch the minutes change. Interactive, no quiz — just explore.">
   <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Minute Hand Lesson for Kids">
+  <meta name="twitter:title" content="Minute Hand Lesson — Learn What the Long Hand Means">
   <meta name="twitter:description" content="Interactive lesson — drag the minute hand to learn how clocks work. Free, no signup.">
   <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Minute Hand Lesson","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"}}</script>
@@ -25,6 +25,8 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/tools.css">
   <style>
     body{min-height:100vh;display:flex;flex-direction:column}
     .hero{padding:6.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(26,26,46,.5) 0%,var(--db) 100%)}
@@ -32,8 +34,8 @@
     .main{flex:1;max-width:550px;margin:0 auto;padding:2rem 1.5rem 3rem;width:100%}
     .lesson-box{background:var(--ds);border:1px solid var(--dbr);border-radius:.75rem;padding:1.2rem;margin-bottom:1.5rem;text-align:center}
     .lesson-box h3{font-size:1rem;margin-bottom:.3rem;color:var(--pa)}.lesson-box p{font-size:.85rem;color:var(--t2);line-height:1.5}
-    .clock-area{background:var(--dc);border:1px solid var(--dbr);border-radius:1.5rem;padding:2rem;text-align:center;margin-bottom:1.5rem}
-    .clock-container{position:relative;width:260px;height:260px;margin:0 auto 1.5rem;touch-action:none}
+    .clock-area{background:var(--dc);border:1px solid var(--dbr);border-radius:1.5rem;padding:clamp(1rem,4vw,2rem);text-align:center;margin-bottom:1.5rem}
+    .clock-container{position:relative;width:min(260px,100%);aspect-ratio:1;margin:0 auto 1.5rem;touch-action:none}
     .clock-svg{width:100%;height:100%;cursor:grab}
     .clock-svg:active{cursor:grabbing}
     .time-display{font-size:2.5rem;font-weight:900;font-family:'Nunito',sans-serif;color:var(--pk);margin-bottom:.5rem;letter-spacing:2px}
@@ -50,19 +52,46 @@
     .promo{text-align:center;padding:2rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:2rem}.promo h3{font-size:1.1rem;margin-bottom:.3rem}.promo p{color:var(--t2);font-size:.9rem;margin-bottom:1rem}
     .promo a{display:inline-block;padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.85rem;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f}
   </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
-</head>
-<body data-og-includes="nav,footer">
 
-  <section class="hero">
-    <h1>⏱️ The <span class="gt">Minute</span> Hand</h1>
-    <p>Grab the long hand and drag it around. Watch the minutes count up!</p>
-  </section>
+
+
+</head>
+<body class="theme-b tools-page">
+<!-- og:nav:start -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/images/brand/otter-mark-80.webp" alt="" width="40" height="40">
+      <span class="brand-text">Otterly Games</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/learn/">Lessons</a>
+      <a href="/tools/">Tools</a>
+      <a href="/parents/">For parents</a>
+      <a href="/blog/">Blog</a>
+      <a href="/Arcade/">Creative Arcade</a>
+    </div>
+    <a href="/play/" class="nav-cta nav-play">Play online <span aria-hidden="true">&nearr;</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<!-- og:nav:end -->
+
+
+
+<main id="main-content" tabindex="-1">
+  <header class="tools-head">
+    <div class="tools-head-inner">
+      <nav class="tools-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/tools/">Tools</a></li><li aria-current="page">Minute Hand</li></ol></nav>
+      <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-minute"></use></svg>Telling the time · Ages 5–7</p>
+      <h1>The <span class="gt">Minute</span> Hand</h1>
+      <p class="tools-lead">Grab the long hand and drag it around. Watch the minutes count up!</p>
+      <p class="tools-note"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-lightbulb"></use></svg><span><strong>For parents:</strong> count the minutes in fives together as the long hand moves. Nothing is scored.</span></p>
+    </div>
+  </header>
 
   <div class="main">
-    <a href="/tools/" style="display:inline-flex;align-items:center;gap:.4rem;color:#9898b0;font-size:.85rem;font-weight:600;margin-bottom:.75rem;transition:color .2s;text-decoration:none" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='#9898b0'">← All Tools</a>
     <div class="lesson-box">
       <h3>📖 What is the Minute Hand?</h3>
       <p>The <strong style="color:var(--pk)">long, thin hand</strong> tells you the <strong style="color:var(--t1)">minutes</strong> past the hour. Each number on the clock equals <strong style="color:var(--pa)">5 minutes</strong>. It takes 60 minutes to go all the way around!</p>
@@ -100,10 +129,19 @@
 
     <div class="promo">
       <h3>🦦 Love this? Try Clock Master!</h3>
-      <p>Race cars by telling time! Full game with achievements, car customization & space tracks.</p>
-      <a href="/apps/clock-master.html">Learn About Clock Master →</a>
+      <p>Guided chapters, races, space journeys, and achievements are available in the full browser game. Saves stay on this browser and device.</p>
+      <a href="/play/clock-master.html">Play Clock Master Online →</a>
     </div>
   </div>
+
+  <section class="tools-next" aria-labelledby="next-title">
+    <h2 id="next-title">What to do next</h2>
+    <div class="tools-next-list">
+      <a class="tools-next-card tools-next-card--lesson" href="/learn/telling-time.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-book"></use></svg><span><small>Lesson</small><strong>Telling time</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      <a class="tools-next-card tools-next-card--game" href="/play/clock-master.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"></use></svg><span><small>Game</small><strong>Clock Master</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      <a class="tools-next-card" href="/tools/am-pm.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-sun-moon"></use></svg><span><small>Next tool</small><strong>AM &amp; PM</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+    </div>
+  </section>
 
   <!-- Educational prose -->
   <section style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
@@ -115,7 +153,7 @@
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem"><strong style="color:#f0f0f8">Stage 1 — O'clock and half past:</strong> Most children start by recognising :00 (minute hand on 12) and :30 (minute hand on 6). "Half past" is a satisfying milestone because the hand is clearly at the bottom of the clock.</p>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem"><strong style="color:#f0f0f8">Stage 2 — Quarter past and quarter to:</strong> The minute hand at 3 (:15) and 9 (:45) introduces the concept of "quarter" of an hour — 15 minutes out of 60. This connects nicely to fraction learning in maths class.</p>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem"><strong style="color:#f0f0f8">Stage 3 — Every five minutes:</strong> Children learn all 12 positions: :05, :10, :15, :20, :25, :30, :35, :40, :45, :50, :55, and :00. Our tool above starts in "Count by 5s" mode to practice this stage.</p>
-    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem"><strong style="color:#f0f0f8">Stage 4 — Every single minute:</strong> The final stage involves reading the small tick marks between the numbers. Switch our tool to "Every Minute" mode to practice reading times like 3:17 or 3:42. This is the trickiest part and typically suits ages 7+.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem"><strong style="color:#f0f0f8">Stage 4 — Every single minute:</strong> When five-minute intervals are comfortable, switch to "Every Minute" mode for times such as 3:17 or 3:42. Follow your child's readiness rather than a fixed age. The <a href="/learn/telling-time.html" style="color:#c4b5fd">telling-time path</a> includes ways to combine both hands.</p>
 
     <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Tips for Parents</h2>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem"><strong style="color:#f0f0f8">Practice counting by fives first:</strong> Before touching a clock, make sure your child can fluently count 5, 10, 15, 20... up to 60. Use coins, fingers, or a number line — whatever works. This skip-counting skill is the foundation of reading minutes.</p>
@@ -136,8 +174,8 @@
       <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">Count by 5s using the numbers on the clock face: 12 = :00, 1 = :05, 2 = :10, 3 = :15, 4 = :20, 5 = :25, 6 = :30, 7 = :35, 8 = :40, 9 = :45, 10 = :50, 11 = :55. For individual minutes, count the small tick marks between the numbers.</p>
     </details>
     <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
-      <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">What does "half past" mean?</summary>
-      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">"Half past" means 30 minutes after the hour, which is when the minute hand points to the 6. Since 30 is half of 60, the minute hand has completed half of its journey around the clock face. So "half past three" means 3:30 — the minute hand is on the 6 and the hour hand is between 3 and 4.</p>
+      <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">      What does half past mean?</summary>
+            <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">'Half past' means 30 minutes after the hour, which is when the minute hand points to the 6. Since 30 is half of 60, the minute hand has completed half of its journey around the clock face. So 'half past three' means 3:30 — the minute hand is on the 6 and the hour hand is between 3 and 4.</p>
     </details>
   </section>
 
@@ -245,11 +283,8 @@
       const svg = document.getElementById('clockSvg');
       const rect = svg.getBoundingClientRect();
       const scaleX = 260 / rect.width, scaleY = 260 / rect.height;
-      let clientX, clientY;
-      if (e.touches) { clientX = e.touches[0].clientX; clientY = e.touches[0].clientY; }
-      else { clientX = e.clientX; clientY = e.clientY; }
-      const x = (clientX - rect.left) * scaleX - cx;
-      const y = (clientY - rect.top) * scaleY - cy;
+      const x = (e.clientX - rect.left) * scaleX - cx;
+      const y = (e.clientY - rect.top) * scaleY - cy;
       let ang = Math.atan2(y, x) * 180 / Math.PI + 90;
       if (ang < 0) ang += 360;
       return ang;
@@ -262,31 +297,61 @@
     }
 
     const container = document.getElementById('clockContainer');
-    container.addEventListener('mousedown', startDrag);
-    container.addEventListener('touchstart', startDrag, { passive: false });
+    let dragPointerId = null;
+    container.addEventListener('pointerdown', startDrag);
+    container.addEventListener('pointermove', handleDrag);
+    container.addEventListener('pointerup', stopDrag);
+    container.addEventListener('pointercancel', stopDrag);
+    container.addEventListener('lostpointercapture', stopDrag);
 
     function startDrag(e) {
-      e.preventDefault(); dragging = true; handleDrag(e);
-      document.addEventListener('mousemove', handleDrag);
-      document.addEventListener('touchmove', handleDrag, { passive: false });
-      document.addEventListener('mouseup', stopDrag);
-      document.addEventListener('touchend', stopDrag);
+      if (!e.isPrimary || e.button !== 0 || dragging) return;
+      e.preventDefault();
+      dragPointerId = e.pointerId;
+      dragging = true;
+      // Keep capture on the wrapper: drawing replaces the SVG's child nodes.
+      container.setPointerCapture(e.pointerId);
+      handleDrag(e);
     }
     function handleDrag(e) {
-      if (!dragging) return; e.preventDefault();
+      if (!dragging || e.pointerId !== dragPointerId) return;
+      e.preventDefault();
       currentMinute = snapToMinute(getAngle(e));
       drawClock(); updateDisplay();
     }
-    function stopDrag() {
+    function stopDrag(e) {
+      if (e.pointerId !== dragPointerId) return;
       dragging = false;
-      document.removeEventListener('mousemove', handleDrag);
-      document.removeEventListener('touchmove', handleDrag);
-      document.removeEventListener('mouseup', stopDrag);
-      document.removeEventListener('touchend', stopDrag);
+      dragPointerId = null;
+      if (container.hasPointerCapture(e.pointerId)) container.releasePointerCapture(e.pointerId);
     }
 
     drawClock();
     updateDisplay();
   </script>
+
+</main>
+<!-- og:footer:start -->
+<footer class="footer">
+  <a href="/" class="footer-brand">Otterly Games</a>
+  <p class="footer-tagline">Learning like no otter. Browser games, little discoveries and practice on paper.</p>
+  <div class="footer-links">
+    <a href="/play/">Play online</a>
+    <a href="/learn/">Learn by skill</a>
+    <a href="/parents/">Parents &amp; teachers</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Parent guides</a>
+    <a href="/about.html">Our story</a>
+    <a href="/Arcade/">Creative arcade</a>
+  </div>
+  <div class="footer-links footer-links--small">
+    <a href="/contact.html">Contact &amp; support</a>
+    <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 Otterly Games. Made by a mum, for curious minds.</p>
+</footer>
+<!-- og:footer:end -->
 </body>
 </html>

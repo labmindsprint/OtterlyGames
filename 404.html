@@ -6,30 +6,8 @@
   <title>Page Not Found — Otterly Games</title>
   <meta name="robots" content="noindex">
   <link rel="stylesheet" href="/css/base.css">
-  <style>
-    .page-404 {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 2rem;
-    }
-    .page-404 h1 {
-      font-size: 8rem; line-height: 1; margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .page-404 h2 { font-size: 1.5rem; margin-bottom: 1rem; }
-    .page-404 p { color: var(--text-secondary); margin-bottom: 2rem; }
-    .page-404 .btn-home {
-      display: inline-block; padding: 0.8rem 2rem; border-radius: 999px;
-      font-weight: 700; font-size: 1rem;
-      background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
-      color: #0a0a0f; transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .page-404 .btn-home:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(196,181,253,0.3);
-    }
-  </style>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/pages.css">
   <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
@@ -38,11 +16,11 @@
   <link rel="manifest" href="/site.webmanifest">
   <!-- Note: No AdSense on 404 pages per Google policy. No analytics on noindex pages. -->
 </head>
-<body>
-  <div class="page-404">
-    <div>
+<body class="theme-b page-404">
+  <main id="main-content" class="nf-wrap" tabindex="-1">
+    <div class="nf-card">
       <h1>404</h1>
-      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto 1.5rem;display:block;">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin:0 auto 1.5rem;display:block;">
         <ellipse cx="60" cy="65" rx="30" ry="38" fill="#8B6F47"/>
         <ellipse cx="60" cy="70" rx="22" ry="28" fill="#D4B896"/>
         <circle cx="60" cy="38" r="22" fill="#8B6F47"/>
@@ -62,9 +40,17 @@
         <text x="30" y="42" font-size="12" opacity="0.4">?</text>
       </svg>
       <h2>This page has drifted away...</h2>
-      <p>Like an otter without its buddy. Let's get you back to safe waters.</p>
+      <p>Like an otter without its buddy. The page may have moved, or the link may be mistyped. Try one of these instead.</p>
+      <nav aria-label="Helpful pages">
+        <ul class="nf-links">
+          <li><a href="/play/">Play online</a></li>
+          <li><a href="/learn/">Lessons</a></li>
+          <li><a href="/tools/">Tools</a></li>
+          <li><a href="/parents/">For parents</a></li>
+        </ul>
+      </nav>
       <a href="/" class="btn-home">Swim Back Home 🦦</a>
     </div>
-  </div>
+  </main>
 </body>
 </html>

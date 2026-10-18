@@ -1,5 +1,38 @@
 {
   "enabled": false,
+  "siteApprovalVerified": false,
   "privacySetupVerified": false,
-  "mathTankSlot": ""
+  "mathTankSlot": "",
+  "placements": {
+    "blogArticleEnd": {
+      "enabled": false,
+      "slot": "8415103601",
+      "paths": [
+        "/blog/5-ways-to-make-math-fun-at-home.html",
+        "/blog/best-math-apps-for-kids.html",
+        "/blog/division-for-kids-explained-simply.html",
+        "/blog/how-much-screen-time-is-actually-ok-what-research-says.html",
+        "/blog/how-to-help-a-child-who-hates-math.html",
+        "/blog/how-to-teach-a-child-to-tell-time.html",
+        "/blog/how-to-teach-fractions-to-kids.html",
+        "/blog/is-my-child-behind-in-math-age-by-age-milestones.html",
+        "/blog/kids-can-make-games-with-ai.html",
+        "/blog/screen-time-that-actually-helps.html",
+        "/blog/times-tables-games-online-free.html",
+        "/blog/why-gamified-learning-works-better-than-worksheets.html",
+        "/blog/why-kids-struggle-with-word-problems-and-how-to-help.html",
+        "/blog/why-my-kids-clock-struggle-inspired-an-app.html",
+        "/blog/what-is-the-best-way-to-practise-telling-time-at-home.html",
+        "/blog/am-and-pm-explained-for-kids.html",
+        "/blog/how-to-teach-long-division-step-by-step.html",
+        "/blog/times-tables-practice-without-a-timer.html",
+        "/blog/spelling-games-vs-spelling-practice.html"
+      ]
+    },
+    "parentGuideEnd": {
+      "enabled": false,
+      "slot": "1983311217",
+      "paths": ["/parents/"]
+    }
+  }
 }

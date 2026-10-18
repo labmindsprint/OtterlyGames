@@ -1,0 +1,96 @@
+{
+  "categories": [
+    { "id": "learning", "label": "Learning" },
+    { "id": "creative-arcade", "label": "Creative Arcade" },
+    { "id": "action", "label": "Action" },
+    { "id": "adventure", "label": "Adventure" },
+    { "id": "strategy", "label": "Strategy" },
+    { "id": "comedy", "label": "Comedy" }
+  ],
+  "games": [
+    {
+      "id": "clock-master",
+      "title": "Clock Master",
+      "url": "/play/clock-master.html",
+      "categories": ["learning", "adventure"],
+      "genre": "Clocks, cars & discoveries",
+      "description": "Move the hands, race a car and discover a universe of time.",
+      "note": "Guided lessons or timed races. Progress saves locally.",
+      "art": "/images/brand/clock-master-320.webp",
+      "fit": "icon",
+      "tone": "purple"
+    },
+    {
+      "id": "math-tank",
+      "title": "Math Tank",
+      "url": "/play/math-tank.html",
+      "categories": ["learning", "action", "adventure"],
+      "genre": "Number facts meet adventure",
+      "description": "Build number skills, customise your tank and take on a battle.",
+      "note": "Untimed practice or cartoon tank combat. Local saves.",
+      "art": "/images/brand/otter-tank-640.webp",
+      "fit": "wide",
+      "tone": "pink"
+    },
+    {
+      "id": "space-academy",
+      "title": "Space Academy",
+      "url": "/play/space-academy.html",
+      "categories": ["learning", "adventure"],
+      "genre": "Seven learning adventures",
+      "description": "Build rockets, rovers and stations through seven different maths and reasoning campaigns.",
+      "note": "PP1-Class 5. Untimed, with hints and local explorer slots.",
+      "art": "/games/clockmaster/art/universe/earth.webp",
+      "fit": "icon",
+      "tone": "blue"
+    },
+    {
+      "id": "ninja-shuriken",
+      "title": "Ninja Shuriken",
+      "url": "/play/ninja-shuriken.html",
+      "categories": ["creative-arcade", "action"],
+      "genre": "Creative Arcade / Action",
+      "description": "Keep moving, throw shurikens and survive the next wave.",
+      "note": "Cartoon weapons and zombie combat.",
+      "art": "/images/games/arcade-worlds.svg#ninja",
+      "fit": "scene",
+      "tone": "purple"
+    },
+    {
+      "id": "zombie-hide-and-seek",
+      "title": "Zombie Hide & Seek",
+      "url": "/play/zombie-hide-and-seek.html",
+      "categories": ["creative-arcade", "action", "strategy"],
+      "genre": "Creative Arcade / Stealth",
+      "description": "Hide in the maze, set a trap and find your way to the exit.",
+      "note": "Zombie pursuit, dark settings and traps.",
+      "art": "/images/games/arcade-worlds.svg#zombie",
+      "fit": "scene",
+      "tone": "green"
+    },
+    {
+      "id": "captain-pigeon",
+      "title": "Captain Pigeon Pooper",
+      "url": "/play/captain-pigeon.html",
+      "categories": ["creative-arcade", "action", "comedy"],
+      "genre": "Creative Arcade / Comedy",
+      "description": "One unlikely hero. One city. A very unusual superpower.",
+      "note": "Toilet humour, cartoon crime and shooting.",
+      "art": "/images/games/arcade-worlds.svg#pigeon",
+      "fit": "scene",
+      "tone": "blue"
+    },
+    {
+      "id": "dog-shepherd",
+      "title": "Dog Shepherd",
+      "url": "/play/dog-shepherd.html",
+      "categories": ["creative-arcade", "strategy", "comedy"],
+      "genre": "Creative Arcade / Strategy",
+      "description": "Keep the flock safe. Just try not to scare your own sheep.",
+      "note": "Wolves chasing sheep and cartoon peril.",
+      "art": "/images/games/arcade-worlds.svg#shepherd",
+      "fit": "scene",
+      "tone": "green"
+    }
+  ]
+}

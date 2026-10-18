@@ -23,6 +23,8 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/tools.css">
   <style>
     body{min-height:100vh;display:flex;flex-direction:column}
     .hero{padding:6.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(26,26,46,.5) 0%,var(--dark-bg) 100%)}
@@ -45,34 +47,93 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Spelling Bee"}]}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does this spelling bee tool work?","acceptedAnswer":{"@type":"Answer","text":"Click the 'Hear the Word' button to listen to the word spoken aloud. Read the hint for context, then type the correct spelling into the box and press Check. The tool tracks your correct answers and streak. Choose Easy, Medium or Hard to match your child's level."}},{"@type":"Question","name":"What age is this spelling tool suitable for?","acceptedAnswer":{"@type":"Answer","text":"Easy mode suits ages 4–6 with simple CVC words (cat, dog, sun). Medium is aimed at ages 6–8 with common words that include blends and silent letters. Hard challenges ages 8–11 with multi-syllable words like 'beautiful' and 'necessary'."}},{"@type":"Question","name":"Can I use this spelling bee on a phone or tablet?","acceptedAnswer":{"@type":"Answer","text":"Yes! The tool works on phones, tablets and computers. It uses your browser's built-in speech synthesis to read words aloud. For the best experience, use Chrome, Edge or Safari."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does this spelling bee tool work?","acceptedAnswer":{"@type":"Answer","text":"Press Hear the Word to listen to the word, which also plays automatically. Read the hint, type the spelling into the box and press Check Spelling. The tool tracks your correct answers and streak. Choose Easy, Medium or Hard to match your child's level."}},{"@type":"Question","name":"What age is this spelling tool suitable for?","acceptedAnswer":{"@type":"Answer","text":"Ages are a rough guide, not an assessment. Easy is aimed at about ages 4–6 with short words such as cat, dog and sun. Medium is aimed at about ages 6–8 with common words that include blends and silent letters. Hard is aimed at about ages 8–11 with longer words such as 'beautiful' and 'necessary'."}},{"@type":"Question","name":"Can I use this spelling bee on a phone or tablet?","acceptedAnswer":{"@type":"Answer","text":"Yes, if the browser supports speech. Words are read aloud using your browser's built-in speech synthesis, and support varies by device. Without speech the tool can't play the words and shows a message, so try Chrome or Edge instead."}}]}
   </script>
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+
+
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
+
 </head>
-<body data-og-includes="nav,footer">
-  <noscript><div style="max-width:600px;margin:6rem auto 2rem;padding:2rem;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;text-align:center;color:#f0f0f8;font-family:sans-serif"><h2 style="margin-bottom:.5rem">🐝 Spelling Bee</h2><p style="color:#9898b0;margin-bottom:.5rem">This interactive spelling tool reads words aloud and lets your child practise spelling with three difficulty levels and voice guidance.</p><p style="color:#9898b0">Please <strong>enable JavaScript</strong> in your browser to use this tool.</p></div></noscript>
-  <section class="hero"><h1>🐝 <span class="gt">Spelling</span> Bee</h1><p>Listen to the word, read the hint, and spell it correctly</p></section>
+<body class="theme-b tools-page">
+<!-- og:nav:start -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/images/brand/otter-mark-80.webp" alt="" width="40" height="40">
+      <span class="brand-text">Otterly Games</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/learn/">Lessons</a>
+      <a href="/tools/">Tools</a>
+      <a href="/parents/">For parents</a>
+      <a href="/blog/">Blog</a>
+      <a href="/Arcade/">Creative Arcade</a>
+    </div>
+    <a href="/play/" class="nav-cta nav-play">Play online <span aria-hidden="true">&nearr;</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<!-- og:nav:end -->
+
+  <noscript><div style="max-width:600px;margin:6rem auto 2rem;padding:2rem;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;text-align:center;color:#f0f0f8;font-family:sans-serif">
+<span tabindex="-1"></span>
+<h2 style="margin-bottom:.5rem">🐝 Spelling Bee</h2><p style="color:#9898b0;margin-bottom:.5rem">This interactive spelling tool reads words aloud and lets your child practise spelling with three difficulty levels and voice guidance.</p><p style="color:#9898b0">Please <strong>enable JavaScript</strong> in your browser to use this tool.</p></div></noscript>
+
+<main id="main-content" tabindex="-1">
+  <header class="tools-head">
+    <div class="tools-head-inner">
+      <nav class="tools-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/tools/">Tools</a></li><li aria-current="page">Spelling Bee</li></ol></nav>
+      <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-spell"></use></svg>Spelling · Ages 4–11</p>
+      <h1><span class="gt">Spelling</span> Bee</h1>
+      <p class="tools-lead">Listen to the word, read the hint, and spell it correctly</p>
+      <p class="tools-note"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-lightbulb"></use></svg><span><strong>For parents:</strong> words are read aloud using your browser's speech support, which varies by device. Try the first level together.</span></p>
+    </div>
+  </header>
+
   <div class="main">
-    <a href="/tools/" style="display:inline-flex;align-items:center;gap:.4rem;color:#9898b0;font-size:.85rem;font-weight:600;margin-bottom:.75rem;transition:color .2s;text-decoration:none" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='#9898b0'">← All Tools</a>
     <div class="lvl-btns"><button class="lvl-btn active" onclick="setLvl('easy')">Easy</button><button class="lvl-btn" onclick="setLvl('medium')">Medium</button><button class="lvl-btn" onclick="setLvl('hard')">Hard</button></div>
     <div class="stats"><span>✅ <strong id="ct">0</strong></span><span>🔥 Streak <strong id="sk">0</strong></span></div>
     <div id="spellArea"></div>
   </div>
+  <section class="tools-next" aria-labelledby="next-title">
+    <h2 id="next-title">What to do next</h2>
+    <div class="tools-next-list">
+      <a class="tools-next-card tools-next-card--lesson" href="/learn/spelling.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-book"></use></svg><span><small>Lesson</small><strong>Spelling</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      <a class="tools-next-card tools-next-card--game" href="/play/"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"></use></svg><span><small>Games</small><strong>Play online</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      <a class="tools-next-card" href="/tools/"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-compass"></use></svg><span><small>More</small><strong>All tools</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+    </div>
+  </section>
+
   <section style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
     <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Why Spelling Practice Matters</h2>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Spelling is more than memorising letter sequences — it builds <strong style="color:#c4b5fd">phonemic awareness</strong>, vocabulary and reading fluency. Children who spell well tend to read more confidently and write more freely.</p>
-    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">This tool combines listening, reading a hint and typing the word — engaging three learning channels at once for stronger retention.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">This tool combines listening, a written hint, and typing. Try the <a href="/learn/spelling.html" style="color:#c4b5fd">spelling learning path</a> for a sequence that also includes saying and writing words away from the screen.</p>
     <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Choosing the Right Level</h2>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem"><strong style="color:#c4b5fd">Easy</strong> uses simple 3–4 letter CVC words (cat, dog, sun) — perfect for early readers aged 4–6. <strong style="color:#c4b5fd">Medium</strong> introduces common words with blends, digraphs and silent letters for ages 6–8. <strong style="color:#c4b5fd">Hard</strong> tackles multi-syllable words like “beautiful” and “necessary” for ages 8–11.</p>
-    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">Let your child start at their comfort level and move up when they can consistently spell 10+ words in a row (watch the streak counter!).</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">Start with comfortable words and choose another level when ready. The streak counter is feedback, not a required target. Make a <a href="/tools/worksheet-builder.html" style="color:#c4b5fd">paper spelling sheet</a> if writing a few words together would be useful.</p>
     <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Tips for Better Spelling</h2>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Encourage children to <em>say the word out loud</em> before typing it. Breaking words into syllables ("but-ter-fly") makes long words less intimidating. After getting a word wrong, look at the correct spelling together and spot the tricky part.</p>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7">Pair this tool with reading — children who read for pleasure naturally encounter correct spellings in context, reinforcing what they practise here.</p>
   </section>
+  <!-- FAQ -->
+  <section style="max-width:700px;margin:1.5rem auto;padding:0 1.5rem">
+    <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem">Frequently Asked Questions</h3>
+    <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
+      <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">How does this spelling bee tool work?</summary>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">Press Hear the Word to listen to the word, which also plays automatically. Read the hint, type the spelling into the box and press Check Spelling. The tool tracks your correct answers and streak. Choose Easy, Medium or Hard to match your child's level.</p>
+    </details>
+    <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
+      <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">What age is this spelling tool suitable for?</summary>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">Ages are a rough guide, not an assessment. Easy is aimed at about ages 4–6 with short words such as cat, dog and sun. Medium is aimed at about ages 6–8 with common words that include blends and silent letters. Hard is aimed at about ages 8–11 with longer words such as 'beautiful' and 'necessary'.</p>
+    </details>
+    <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
+      <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">Can I use this spelling bee on a phone or tablet?</summary>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">Yes, if the browser supports speech. Words are read aloud using your browser's built-in speech synthesis, and support varies by device. Without speech the tool can't play the words and shows a message, so try Chrome or Edge instead.</p>
+    </details>
+  </section>
+
   <div style="max-width:700px;margin:1.5rem auto 2rem;padding:0 1.5rem">
     <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem;text-align:center">📚 Related Tools</h3>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem">
@@ -131,5 +192,29 @@
     }
     nextWord();
   </script>
+
+</main>
+<!-- og:footer:start -->
+<footer class="footer">
+  <a href="/" class="footer-brand">Otterly Games</a>
+  <p class="footer-tagline">Learning like no otter. Browser games, little discoveries and practice on paper.</p>
+  <div class="footer-links">
+    <a href="/play/">Play online</a>
+    <a href="/learn/">Learn by skill</a>
+    <a href="/parents/">Parents &amp; teachers</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Parent guides</a>
+    <a href="/about.html">Our story</a>
+    <a href="/Arcade/">Creative arcade</a>
+  </div>
+  <div class="footer-links footer-links--small">
+    <a href="/contact.html">Contact &amp; support</a>
+    <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 Otterly Games. Made by a mum, for curious minds.</p>
+</footer>
+<!-- og:footer:end -->
 </body>
 </html>

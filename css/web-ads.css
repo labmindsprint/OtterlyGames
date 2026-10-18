@@ -1,0 +1,69 @@
+[data-editorial-ad][hidden],
+[data-web-game-ad][hidden] {
+  display: none !important;
+}
+
+.editorial-ad {
+  max-width: 780px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-block: 1px solid var(--dark-border, #2a2a3e);
+  text-align: center;
+}
+
+.editorial-ad-label {
+  margin: 0 0 1rem;
+  color: var(--text-secondary, #b2b2c8);
+  font-size: .75rem;
+}
+
+.editorial-ad [data-web-ad-unit] {
+  min-width: 0;
+}
+
+.ad-privacy-controls {
+  max-width: 780px;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem;
+  color: var(--text-secondary, #b2b2c8);
+  font-size: .8125rem;
+}
+
+.ad-privacy-controls p {
+  margin: 0 0 .75rem;
+}
+
+.ad-privacy-controls button,
+.ad-privacy-controls a {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  min-height: 44px;
+  margin: 0 1rem .5rem 0;
+  padding: .5rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--pastel-purple, #c4b5fd);
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.ad-privacy-controls button[hidden] {
+  display: none;
+}
+
+.ad-privacy-controls button:focus-visible,
+.ad-privacy-controls a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media print {
+  [data-editorial-ad],
+  [data-web-game-ad],
+  .ad-privacy-controls {
+    display: none !important;
+  }
+}

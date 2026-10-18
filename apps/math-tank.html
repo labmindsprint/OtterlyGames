@@ -22,7 +22,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Math Tank: Learn × Battle",
-    "operatingSystem": "Android",
+    "operatingSystem": "Web browser, Android",
     "applicationCategory": "EducationalApplication",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "description": "Math-powered tank battle game focused on multiplication and division for kids aged 4-9"
@@ -41,11 +41,13 @@
   </script>
   <!-- Shared CSS -->
   <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/components.css">
   <!-- Page layout (legacy app page styles) -->
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/dark-brand.css">
   <link rel="stylesheet" href="/css/math-tank.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/pages.css">
   <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
@@ -53,15 +55,39 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+
+
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
+
+  <meta name="google-adsense-account" content="ca-pub-5489426086320283">
 </head>
-<body data-og-includes="nav,footer">
+<body class="shell-b page-apps">
+<!-- og:nav:start -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/images/brand/otter-mark-80.webp" alt="" width="40" height="40">
+      <span class="brand-text">Otterly Games</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/learn/">Lessons</a>
+      <a href="/tools/">Tools</a>
+      <a href="/parents/">For parents</a>
+      <a href="/blog/">Blog</a>
+      <a href="/Arcade/">Creative Arcade</a>
+    </div>
+    <a href="/play/" class="nav-cta nav-play">Play online <span aria-hidden="true">&nearr;</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<!-- og:nav:end -->
+
 
   <!-- App Hero -->
-  <section class="app-hero math-tank-bg">
+
+<span id="main-content" tabindex="-1"></span>
+<section class="app-hero math-tank-bg">
     <div class="container">
       <div class="breadcrumbs">
         <a href="/">Home</a> <span>/</span> <a href="/#games">Games</a> <span>/</span> Math Tank
@@ -71,7 +97,7 @@
           <img class="mt-icon" src="/images/mathtank-icon.png" alt="Math Tank icon" width="112" height="112">
           <h1>Math Tank</h1>
           <p class="app-card-tagline">Learn × Battle — Master Math Through Epic Tank Battles!</p>
-          <p>Math Tank turns multiplication and division into an adventure. Answer math questions to fire missiles, defeat pirate tanks, explore space, and practice times tables — all at your own pace. No pressure, just fun.</p>
+          <p>Math Tank turns multiplication and division into an adventure. Choose timed tank battles and space missions, or take your time in untimed Practice and guided lessons. Pick from four battle difficulty levels to find a comfortable challenge.</p>
           <div class="app-meta">
             <div class="app-meta-item">
               <div class="app-meta-value">4-9</div>
@@ -91,12 +117,13 @@
             </div>
           </div>
           <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-            <a href="/play/math-tank.html" class="store-badge" style="font-size:1rem;padding:1rem 2rem;">Play the Full Game Online</a>
+            <a href="/play/math-tank.html" class="store-badge" style="font-size:1rem;padding:1rem 2rem;">Play Math Tank Online</a>
             <a href="https://play.google.com/store/apps/details?id=com.namasya.mathtank" target="_blank" rel="noopener" class="store-badge" style="font-size:1rem;padding:1rem 2rem;">
               <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-              Get on Google Play
+              Android App (Optional)
             </a>
           </div>
+          <p>No installation or account for browser play. Progress saves in this browser on this device, with no Android or cross-device sync. Prefer offline play? Choose the Android app.</p>
         </div>
         <div class="app-hero-mockup fade-in">
           <img class="mt-phone-shot" src="/images/mathtank/home.webp" alt="The refreshed Math Tank home with illustrated tanks and visual activity buttons" width="540" height="960" fetchpriority="high">
@@ -120,7 +147,7 @@
         </button>
         <iframe id="math-demo-frame" title="Play Math Tank Battle" allow="autoplay" hidden></iframe>
       </div>
-      <p class="mt-demo-link"><a href="/games/mathtank/?mode=battle">Open the battle full size</a></p>
+      <p class="mt-demo-link"><a href="/games/mathtank/?mode=battle">Open the battle full size</a> &middot; <a href="/play/math-tank.html">Play all Math Tank activities online</a></p>
     </div>
   </section>
 
@@ -145,12 +172,12 @@
           <h3>Epic Tank Battles</h3>
           <p>The core of Math Tank — answer multiplication and division questions to fire missiles at enemy pirate tanks! Faster correct answers mean more powerful shots. Defeat enemies to earn coins for upgrades.</p>
           <ul class="feature-list">
-            <li>4 difficulty levels — Easy (×1-5), Medium (+division), Hard (×6-10), God (×11-20)</li>
+            <li>4 selectable difficulty levels — Easy (×1-5), Medium (+division), Hard (×6-10), God (×11-20)</li>
             <li>10 unique missiles — Laser Beam, Ice Shard, Lightning Bolt, and more</li>
             <li>Each missile has 4 power levels based on answer speed</li>
             <li>Special effects — Freeze, Burn, Chain, Pull, Phase</li>
             <li>Age-based timer bonuses — gentler for younger players</li>
-            <li>3 free battles daily, more available via optional ads</li>
+            <li>3 free battles daily; optional ads for extra battles are available only in the Android app</li>
           </ul>
         </div>
       </div>
@@ -203,7 +230,7 @@
         <div class="feature-visual" style="background:linear-gradient(135deg,#FEF3C7,#FED7AA);">🏋️♾️</div>
         <div class="feature-content">
           <h3>Unlimited Free Practice</h3>
-          <p>No timer. No coins. No fuel cost. Just pure, pressure-free multiplication and division practice — perfect for building confidence with times tables at your child's own pace.</p>
+          <p>No timer and no fuel cost in Practice mode. Work on multiplication and division at your child's own pace, with time to think through each answer. Battle and Universe modes are timed.</p>
           <ul class="feature-list">
             <li>Multiplication table practice (choose any table)</li>
             <li>Division table practice</li>
@@ -241,7 +268,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <h2 class="section-title">Difficulty Levels</h2>
-        <p class="section-subtitle">Designed to grow with your child — from basic times tables to advanced multiplication.</p>
+        <p class="section-subtitle">Choose one of four battle levels — from basic times tables to advanced multiplication. Difficulty does not automatically adapt to the learner.</p>
       </div>
       <div style="max-width:700px;margin:0 auto;" class="fade-in">
         <table class="times-table" style="border-radius:var(--radius-lg);overflow:hidden;">
@@ -256,7 +283,7 @@
           </tbody>
         </table>
         <p style="text-align:center;margin-top:1rem;font-size:0.875rem;color:var(--gray-400);">
-          Younger players (age 5-6) get bonus timer seconds so everyone can succeed!
+          Younger players (age 5-6) get bonus timer seconds. Choose untimed Practice whenever a countdown is not helpful.
         </p>
       </div>
     </div>
@@ -266,11 +293,14 @@
   <section class="cta-section">
     <div class="container fade-in">
       <h2 class="section-title">Ready for <span class="text-gradient-warm">Battle?</span></h2>
-      <p>Download Math Tank and let your child master multiplication through epic battles!</p>
+      <p>Play the full game online: battles, universe missions, lessons, practice, garage, achievements, and progress. Browser saves stay on this browser and device only. Clearing site data removes them, private browsing may discard them, and working local storage is required.</p>
+      <p>Browser rewarded videos and ad-only rewards are unavailable, not simulated. Earned coins, unlocks, and daily limits remain. The optional Android app supports offline play and can show AdMob banners and optional rewarded videos when online. See our <a href="/privacy.html">privacy policy</a>.</p>
+      <p>For a step-by-step start, visit <a href="/learn/times-tables.html">times tables</a> or <a href="/learn/division.html">division</a>, then make a <a href="/tools/worksheet-builder.html">paper practice sheet</a>.</p>
       <div class="cta-actions">
+        <a href="/play/math-tank.html" class="btn btn-primary btn-lg">Play Math Tank Online</a>
         <a href="https://play.google.com/store/apps/details?id=com.namasya.mathtank" target="_blank" rel="noopener" class="store-badge" style="font-size:1rem;padding:1rem 2rem;">
           <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-          Get on Google Play
+          Android App for Offline Play
         </a>
         <a href="/apps/clock-master.html" class="btn btn-secondary btn-lg">Also try: Clock Master →</a>
       </div>
@@ -280,7 +310,30 @@
   <!-- Shared includes -->
   <script src="/js/includes.js" defer></script>
   <script src="/js/math-demo.js" defer></script>
-  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-  <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
+
+
+
+<!-- og:footer:start -->
+<footer class="footer">
+  <a href="/" class="footer-brand">Otterly Games</a>
+  <p class="footer-tagline">Learning like no otter. Browser games, little discoveries and practice on paper.</p>
+  <div class="footer-links">
+    <a href="/play/">Play online</a>
+    <a href="/learn/">Learn by skill</a>
+    <a href="/parents/">Parents &amp; teachers</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Parent guides</a>
+    <a href="/about.html">Our story</a>
+    <a href="/Arcade/">Creative arcade</a>
+  </div>
+  <div class="footer-links footer-links--small">
+    <a href="/contact.html">Contact &amp; support</a>
+    <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 Otterly Games. Made by a mum, for curious minds.</p>
+</footer>
+<!-- og:footer:end -->
 </body>
 </html>

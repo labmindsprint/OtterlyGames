@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
   <title>Why My Kid's Struggle with Clocks Inspired Me to Build an App — Otterly Games</title>
   <meta name="description" content="The true story behind Clock Master. How one mom's frustration with her child's clock-reading homework led to building an educational game played by thousands of families.">
   <meta name="keywords" content="learn to tell time, kids clock app, teaching time to children, clock learning game, mom developer story">
@@ -17,10 +18,12 @@
   <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
   <meta name="pinterest-rich-pin" content="true">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","headline":"Why My Kid's Struggle with Clocks Inspired Me to Build an App","author":{"@type":"Person","name":"Otterly Games"},"publisher":{"@type":"Organization","name":"Otterly Games","logo":{"@type":"ImageObject","url":"https://otterlygames.com/images/Otter-mascot.png"}},"datePublished":"2026-02-10","dateModified":"2026-02-10","image":"https://otterlygames.com/images/og-default.png","description":"The true story behind Clock Master \u2014 how one mom's frustration led to building an educational game."}
+  {"@context":"https://schema.org","@type":"Article","headline":"Why My Kid's Struggle with Clocks Inspired Me to Build an App","author":{"@type":"Person","name":"Otterly Games"},"publisher":{"@type":"Organization","name":"Otterly Games","logo":{"@type":"ImageObject","url":"https://otterlygames.com/images/brand/otter-buddy-320.webp"}},"datePublished":"2026-02-10","dateModified":"2026-02-10","image":"https://otterlygames.com/images/og-default.png","description":"The true story behind Clock Master \u2014 how one mom's frustration led to building an educational game."}
   </script>
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/blog.css">
   <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
@@ -31,37 +34,82 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://otterlygames.com/blog/"},{"@type":"ListItem","position":3,"name":"Why My Kid's Clock Struggle Inspired an App"}]}
   </script>
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+
+
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
+
+  <meta name="google-adsense-account" content="ca-pub-5489426086320283">
+  <link rel="stylesheet" href="/css/web-ads.css">
+  <script src="/js/web-game-ads.js" defer></script>
+  <script src="/js/article.js" defer></script>
 </head>
-<body data-og-includes="nav,footer">
+<body class="blog-page article-page theme-b">
+<!-- og:nav:start -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/images/brand/otter-mark-80.webp" alt="" width="40" height="40">
+      <span class="brand-text">Otterly Games</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/learn/">Lessons</a>
+      <a href="/tools/">Tools</a>
+      <a href="/parents/">For parents</a>
+      <a href="/blog/">Blog</a>
+      <a href="/Arcade/">Creative Arcade</a>
+    </div>
+    <a href="/play/" class="nav-cta nav-play">Play online <span aria-hidden="true">&nearr;</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<!-- og:nav:end -->
 
-  <article>
-    <section class="post-hero">
-      <div class="container">
-        <div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <a href="/blog/">Blog</a> <span>/</span> Our Story</div>
-        <div class="post-meta">
-          <span class="post-category">Our Story</span>
-          <span>February 10, 2026</span>
-          <span>·</span>
-          <span>5 min read</span>
-        </div>
-        <h1 class="post-title">Why My Kid's Struggle with Clocks Inspired Me to Build an App</h1>
+
+
+<main id="main-content" class="article-main" tabindex="-1">
+  <header class="article-head wrap">
+    <nav class="article-crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li aria-current="page">Our Story</li>
+      </ol>
+    </nav>
+    <div class="article-head-grid">
+      <div class="article-head-copy blog-tone-amber">
+        <p class="article-meta"><span class="chip"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> Telling time</span>
+          <time datetime="2026-02-10">February 10, 2026</time><span aria-hidden="true">·</span><span class="article-readtime"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 5 min read</span></p>
+        <h1 class="article-title">Why My Kid's Struggle with Clocks Inspired Me to Build an App</h1>
+        <p class="article-dek">The true story behind Clock Master — how one mom's frustration led to building an educational game.</p>
       </div>
-    </section>
+      <figure class="article-cover"><img src="/images/clockmaster/feature.webp" alt="" width="1024" height="500" fetchpriority="high" decoding="async" style="object-position:0% 50%"></figure>
+    </div>
+  </header>
 
-    <div class="post-content">
+  <div class="wrap article-layout">
+    <aside class="article-toc" aria-labelledby="toc-title" data-article-toc>
+      <p class="article-toc-title" id="toc-title">In this article</p>
+      <ol class="article-toc-list" id="toc-list">
+          <li><a href="#the-search-for-help">The Search for Help</a></li>
+          <li><a href="#the-ridiculous-idea">The Ridiculous Idea</a></li>
+          <li><a href="#from-side-project-to-clock-master">From Side Project to Clock Master</a></li>
+          <li><a href="#what-i-learned-along-the-way">What I Learned Along the Way</a></li>
+          <li><a href="#and-then-came-math-tank">And Then Came Math Tank</a></li>
+          <li><a href="#what-s-next">What's Next</a></li>
+      </ol>
+    </aside>
+    <div class="article-col">
+      <article class="article-body">
       <p>It was a Tuesday evening. Homework time. My son stared at the analog clock on his worksheet with a look I knew all too well — a mix of confusion and frustration that was about to turn into tears.</p>
 
       <p>"Mama, I don't understand. Why does the little hand mean hours and the big hand means minutes? That doesn't make sense!"</p>
 
-      <p>She had a point. To a 5-year-old, it really doesn't make intuitive sense. And honestly? In that moment, I struggled to explain it in a way that clicked. We'd been at it for 20 minutes, and we were both exhausted.</p>
+      <p>He had a point. To a 5-year-old, it really doesn't make intuitive sense. And honestly? In that moment, I struggled to explain it in a way that clicked. We'd been at it for 20 minutes, and we were both exhausted.</p>
 
-      <h2>The Search for Help</h2>
+      <h2 id="the-search-for-help">The Search for Help</h2>
 
-      <p>That night, after she went to bed, I did what every modern parent does — I searched for an app. Surely, in 2025, there must be a great app that teaches kids to read clocks, right?</p>
+      <p>That night, after he went to bed, I searched for an app that would help us practise reading clocks.</p>
 
       <p>What I found was... disappointing:</p>
 
@@ -74,7 +122,7 @@
 
       <p>Not a single app hit all three basics: <strong>free, safe, and actually fun</strong>.</p>
 
-      <h2>The Ridiculous Idea</h2>
+      <h2 id="the-ridiculous-idea">The Ridiculous Idea</h2>
 
       <p>I'm not a developer. I'm a mom. But I had a background in product management and a stubbornness that my husband describes as "concerning." So I thought: <em>What if I just... build one?</em></p>
 
@@ -82,80 +130,143 @@
 
       <blockquote>"Mama, can I play the clock game again?" — my son, at breakfast, voluntarily asking to practice telling time.</blockquote>
 
-      <p>That sentence changed everything. She wasn't asking to do homework. She was asking to <em>play</em>. The same child who cried over clock worksheets was now excited about telling time because it was wrapped in a game.</p>
+      <p>That sentence changed how I thought about our practice time. He was asking to <em>play</em>. That was encouraging for our family, not proof that a game would work the same way for every child.</p>
 
-      <h2>From Side Project to Clock Master</h2>
+      <h2 id="from-side-project-to-clock-master">From Side Project to Clock Master</h2>
 
       <p>Over the next few months, the app grew. I added:</p>
 
       <ul>
-        <li><strong>8 structured lessons</strong> — from the hour hand all the way to time addition and subtraction</li>
+        <li><strong>Guided lessons</strong> — now 11 clock chapters, including the hands, reading time, time arithmetic, and clock angles</li>
         <li><strong>A racing game</strong> — answer clock questions to boost your car. My son's competitive streak kicked in.</li>
-        <li><strong>Space exploration</strong> — fly a rocket through 30 real celestial objects by solving time problems. She now knows more about nebulae than I do.</li>
-        <li><strong>Foxy</strong> — a fox mascot that guides first-time players through the app with voice narration. My son named her.</li>
+        <li><strong>Space exploration</strong> — fly a rocket to 30 space destinations by solving time problems and read facts along the way.</li>
+        <li><strong>Otterly and friends</strong> — animated companions and voice guidance in the current Clock Master game.</li>
         <li><strong>A parental gate</strong> — because I know what it's like to have a child accidentally change all the settings.</li>
       </ul>
 
-      <p>Most importantly, I kept it <strong>honest and transparent</strong>. No subscriptions. No data collection. No accounts. No in-app purchases. Just clearly-labeled ads with child-directed settings. Everything I wished those other apps had done.</p>
+      <p>The games need no account and keep progress locally. Today you can play the full browser games with browser-only saves and no native rewarded videos, or choose Android for offline play. Android can show AdMob banners and optional rewarded ads when online. Hosting and other services still process some information, as our <a href="/privacy.html">privacy policy</a> explains. There are no in-app purchases.</p>
 
-      <h2>What I Learned Along the Way</h2>
+      <h2 id="what-i-learned-along-the-way">What I Learned Along the Way</h2>
 
       <p>Building Clock Master taught me something broader about how kids learn:</p>
 
       <ol>
-        <li><strong>Context matters more than repetition.</strong> My son learned more from 10 minutes of the racing game than 30 minutes of worksheets. The clock questions weren't homework — they were fuel for his car.</li>
-        <li><strong>Small wins build confidence.</strong> Earning coins, unlocking a new car color, getting a trophy — these tiny dopamine hits kept her coming back, and each one required correctly reading the time.</li>
-        <li><strong>Voice guidance enables independence.</strong> Once I added text-to-speech, she could learn without me hovering. That was a game-changer for both of us.</li>
-        <li><strong>Kids don't want "educational" — they want fun.</strong> If it's genuinely fun, the learning happens without resistance.</li>
+        <li><strong>Context can invite practice.</strong> Clock questions gave the race a purpose. That helped us begin, but I did not measure a learning gain against worksheets.</li>
+        <li><strong>Notice more than rewards.</strong> Coins and car colours are enjoyable; asking how he read the clock tells me more about what he understands.</li>
+        <li><strong>Guidance needs options.</strong> Voice instructions can help, and an adult can still pause to explain or choose a quieter activity.</li>
+        <li><strong>Keep the format flexible.</strong> A game, a paper clock, and a conversation each have a place. No one format removes every difficulty.</li>
       </ol>
 
-      <h2>And Then Came Math Tank</h2>
+      <h2 id="and-then-came-math-tank">And Then Came Math Tank</h2>
 
       <p>A few months later, multiplication tables entered our lives. Same struggle, same tears, same search for a good app. But this time, I didn't search. I built.</p>
 
-      <p><a href="/apps/math-tank.html">Math Tank</a> took the same philosophy — learning disguised as play — and applied it to multiplication and division. Instead of a car race, it's tank battles. Instead of clock questions, it's times tables. Same Foxy guide. Same parental gate. Same commitment to free, safe, and fun.</p>
+      <p><a href="/play/math-tank.html">Math Tank</a> applied the same interest in playful practice to multiplication and division, with guided lessons, untimed practice, and timed tank battles. Families can choose a challenge rather than treating the game as a replacement for every other way of learning.</p>
 
       <div class="callout">
-        <h4>🦦 The Otterly Games Philosophy</h4>
+        <p class="callout-title">The Otterly Games Philosophy</p>
         <p>Every feature in our apps passes one test: "Would I want this for my own child?" If the answer is no, it doesn't ship. That's it. That's the strategy.</p>
       </div>
 
-      <h2>What's Next</h2>
+      <h2 id="what-s-next">What's Next</h2>
 
       <p>Otterly Games is just getting started. I'm one mom with a laptop, some AI tools, and a deep understanding of what parents actually need. If these games help even one other parent avoid a tearful homework session, it will all have been worth it.</p>
 
       <p>If you've found our apps helpful, I'd love to hear from you. And if you want to support this tiny operation, you can <a href="https://ko-fi.com/otterly_games"  target="_blank" rel="noopener">buy me a coffee on Ko-fi</a>. Every cup helps keep the lights on. ☕</p>
 
-      <div class="post-cta">
-        <h3>🦦 Try Clock Master</h3>
-        <p>The app born from this story. Free, safe, and actually fun.</p>
-        <a href="/apps/clock-master.html" class="btn btn-primary">Learn More →</a>
-      </div>
-    </div>
-  </article>
+        <aside class="article-cta blog-tone-amber" aria-labelledby="try-together-title">
+          <p class="eyebrow" id="try-together-title">Try this together</p>
+          <h3>Try Clock Master</h3>
+          <p>The game born from this story, now playable in the browser. Or start with a hands-on activity from our <a href="/learn/telling-time.html">telling-time path</a>.</p>
+          <div class="article-cta-actions">
+        <a class="btn btn--amber" href="/play/clock-master.html">Play Clock Master online <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+        <a class="btn btn--ghost" href="/tools/clock-lessons.html">Clock lessons <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+          </div>
+        </aside>
+      </article>
 
-  <aside class="author-bio">
-    <img src="/images/Otter-mascot.png" alt="Otterly Games" class="author-bio-avatar">
-    <div class="author-bio-info">
-      <span class="author-bio-name">Written by Otterly Games</span>
-      <p class="author-bio-desc">A mom-built studio creating safe educational games that kids actually want to play. Clock Master and Math Tank are used by families across 50+ countries. Zero data collected, COPPA certified. <a href="/about.html">Read our story →</a></p>
+      <aside class="article-author" aria-label="About the author">
+        <img src="/images/brand/otter-buddy-320.webp" alt="Otterly Games" class="author-bio-avatar" width="64" height="64" loading="lazy">
+        <div class="author-bio-info">
+          <span class="author-bio-name">Written by Otterly Games</span>
+          <p class="author-bio-desc">A mom-built studio making Clock Master, Math Tank, and free learning tools for families. Our guides share practical activities and our own product perspective. <a href="/about.html">Read our story →</a></p>
+        </div>
+      </aside>
     </div>
-  </aside>
+  </div>
 
-  <section class="related-posts" id="related-posts"></section>
-  <nav class="post-nav" id="post-nav"></nav>
+  <section class="wrap article-related" id="related-posts" aria-labelledby="related-title">
+    <div class="section-head">
+      <div><p class="eyebrow">Keep reading</p><h2 id="related-title">More guides for parents</h2></div>
+      <a class="text-link" href="/blog/">All parent guides <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+    </div>
+    <ul class="blog-posts blog-posts--related" role="list">
+        <li class="blog-item" data-topics="time">
+          <article class="surface blog-post blog-tone-amber">
+            <div class="blog-post-img"><img src="/images/clockmaster/lesson.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> Telling time</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/how-to-teach-a-child-to-tell-time.html">How to Teach a Child to Tell Time</a></h3>
+              <p>A complete step-by-step guide to teaching kids to read analog and digital clocks.</p>
+              <p class="blog-post-meta"><span>Feb 20, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 8 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="games screen">
+          <article class="surface blog-post blog-tone-purple">
+            <div class="blog-post-img"><img src="/images/brand/about-800.webp" alt="" width="800" height="457" loading="lazy" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"/></svg> Games &amp; apps</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/kids-can-make-games-with-ai.html">Your Kid Can Build a Game with AI — Here's How</a></h3>
+              <p>An adult-led introduction to game making: explain HTML and Git, check provider age rules, and review AI-generated code together before running or sharing it.</p>
+              <p class="blog-post-meta"><span>May 29, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 12 min read</span></p>
+            </div>
+          </article>
+        </li>
+        <li class="blog-item" data-topics="maths">
+          <article class="surface blog-post blog-tone-pink">
+            <div class="blog-post-img"><img src="/images/brand/tools-800.webp" alt="" width="800" height="457" loading="lazy" decoding="async">
+              <span class="chip blog-post-tag"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Maths at home</span></div>
+            <div class="blog-post-body">
+              <h3><a href="/blog/how-to-teach-fractions-to-kids.html">How to Teach Fractions to Kids (Without the Tears)</a></h3>
+              <p>Teaching fractions to kids doesn't have to be hard. A step-by-step parent's guide using food, LEGO, and everyday life to make fractions click.</p>
+              <p class="blog-post-meta"><span>Mar 12, 2026</span><span aria-hidden="true">·</span><span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> 9 min read</span></p>
+            </div>
+          </article>
+        </li>
+    </ul>
+  </section>
+  </main>
 
   <script src="/js/includes.js" defer></script>
-  <script src="/js/registry.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.OG) {
-        OG.renderRelatedPosts('#related-posts');
-        OG.renderPostNav('#post-nav');
-      }
-    });
-  </script>
-  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-  <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
+
+<!-- og:editorial-ad:start -->
+<aside class="editorial-ad" data-editorial-ad hidden aria-label="Advertisement">
+  <p class="editorial-ad-label">Advertisement</p>
+  <div data-web-ad-unit></div>
+</aside>
+<!-- og:editorial-ad:end -->
+<!-- og:footer:start -->
+<footer class="footer">
+  <a href="/" class="footer-brand">Otterly Games</a>
+  <p class="footer-tagline">Learning like no otter. Browser games, little discoveries and practice on paper.</p>
+  <div class="footer-links">
+    <a href="/play/">Play online</a>
+    <a href="/learn/">Learn by skill</a>
+    <a href="/parents/">Parents &amp; teachers</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Parent guides</a>
+    <a href="/about.html">Our story</a>
+    <a href="/Arcade/">Creative arcade</a>
+  </div>
+  <div class="footer-links footer-links--small">
+    <a href="/contact.html">Contact &amp; support</a>
+    <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 Otterly Games. Made by a mum, for curious minds.</p>
+</footer>
+<!-- og:footer:end -->
 </body>
 </html>

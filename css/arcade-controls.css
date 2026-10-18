@@ -1,0 +1,117 @@
+body[data-arcade-controls] .game-page { height: 100dvh; position: relative; }
+body[data-arcade-controls] .game-area { position: relative; min-width: 0; }
+body[data-arcade-controls] .game-canvas-col { min-width: 0; min-height: 0; align-self: stretch; }
+body[data-arcade-controls] #hud { flex-shrink: 0; max-height: 100%; }
+.arcade-stage {
+  position: relative; flex-shrink: 0; overflow: hidden; border: 1px solid var(--border);
+  border-radius: 10px; box-shadow: 0 8px 32px #0006; background: var(--bg);
+}
+body[data-arcade-controls] .shuriken-card > span { display: block; }
+body[data-arcade-controls] .arcade-stage > canvas {
+  width: 100%; height: 100%; max-width: none; max-height: none;
+  border: 0; border-radius: inherit; box-shadow: none; touch-action: none;
+}
+.arcade-tools { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.arcade-tools button, .arcade-modal button {
+  min-width: 44px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--border);
+  border-radius: 8px; color: var(--ink); background: var(--surface); font: 700 13px var(--font-heading);
+  cursor: pointer; touch-action: manipulation;
+}
+.arcade-tools button:disabled { opacity: .4; cursor: default; }
+body[data-arcade-controls] .game-topbar { gap: 10px; padding: 0 10px; }
+body[data-arcade-controls] .game-topbar[inert] { opacity: .5; }
+body[data-arcade-controls] .game-topbar .back-link { min-height: 44px; flex-shrink: 0; }
+body[data-arcade-controls] .game-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.arcade-hud {
+  flex-shrink: 0; padding: 5px 12px; min-height: 28px; margin: 0;
+  font-size: 12px; line-height: 1.5; color: var(--ink); background: var(--panel);
+  border-bottom: 1px solid var(--border); text-align: center;
+}
+.arcade-touch-controls { display: none; }
+.arcade-modal[hidden] { display: none; }
+.arcade-modal {
+  position: absolute; inset: 0; z-index: 100; display: flex; padding: 12px;
+  align-items: center; justify-content: center; background: #070711e8;
+}
+.arcade-modal-panel {
+  width: min(100%, 500px); max-height: 100%; padding: 24px; overflow-y: auto;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 14px; text-align: center;
+}
+.arcade-modal-panel h2 { margin: 0 0 12px; font-size: clamp(20px, 5vw, 28px); color: var(--accent); }
+.arcade-modal-panel p { margin: 10px 0; font-size: 14px; line-height: 1.6; color: var(--ink); }
+.arcade-modal-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 18px; }
+.arcade-modal-actions button:first-child { background: var(--accent); color: var(--bg); }
+.arcade-modal-back { display: inline-flex; align-items: center; min-height: 44px; margin-top: 8px; color: var(--accent); text-decoration: underline; }
+.arcade-notice { position: absolute; top: 8px; left: 10px; right: 10px; z-index: 4; pointer-events: none; text-align: center; }
+.arcade-notice:not(:empty) { padding: 8px; background: #141420ec; border-radius: 8px; font-size: 13px; color: var(--warn); }
+.mobile-instructions { display: none; }
+body[data-arcade-controls] #overlay { overflow-y: auto; padding: 16px; }
+body[data-arcade-controls] #overlay > .panel { max-height: 100%; overflow-y: auto; }
+body[data-arcade-controls] #gameContainer #overlay { justify-content: flex-start; }
+body[data-arcade-controls] #gameContainer #overlay > :first-child { margin-top: auto; }
+body[data-arcade-controls] #gameContainer #overlay > :last-child { margin-bottom: auto; }
+body[data-arcade-controls] :focus-visible { outline: 3px solid var(--warn); outline-offset: 2px; }
+
+@media (max-width: 900px), (pointer: coarse) {
+  body[data-arcade-controls] .game-sidebar, body[data-arcade-controls] #hud,
+  body[data-arcade-controls] .brand-mark, body[data-arcade-controls] #ui { display: none; }
+  body[data-arcade-controls] .game-canvas-col { padding: 6px; }
+  body[data-arcade-controls] .game-device-note { font-size: 10px; padding: 4px 8px; }
+  body[data-arcade-controls] .game-topbar { gap: 5px; }
+  body[data-arcade-controls] .game-title { font-size: 13px; }
+  body[data-arcade-controls] .game-topbar .back-link { font-size: 12px; padding: 6px; }
+  .arcade-tools button { padding: 6px 8px; font-size: 12px; }
+  .arcade-touch-controls {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    min-height: 126px; flex-shrink: 0; padding: 8px max(10px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+    background: var(--panel); border-top: 1px solid var(--border); z-index: 20;
+  }
+  .arcade-touch-controls[data-active="false"] > * { visibility: hidden; }
+  .arcade-stick {
+    width: 104px; height: 104px; flex-shrink: 0; position: relative; border-radius: 50%;
+    border: 2px solid #c4b5fd80; background: #24203c; touch-action: none; user-select: none;
+    -webkit-user-select: none; -webkit-touch-callout: none;
+  }
+  .arcade-stick::before, .arcade-stick::after { content: ''; position: absolute; background: #c4b5fd30; }
+  .arcade-stick::before { top: 49%; left: 10%; width: 80%; height: 2px; }
+  .arcade-stick::after { top: 10%; left: 49%; width: 2px; height: 80%; }
+  .arcade-stick-knob {
+    display: block; position: absolute; width: 40px; height: 40px; top: 30px; left: 30px;
+    border-radius: 50%; background: var(--accent); box-shadow: 0 3px 10px #0006; z-index: 1;
+  }
+  .arcade-stick-label { position: absolute; bottom: 9px; left: 0; right: 0; font-size: 9px; font-weight: 800; color: var(--ink); }
+  .arcade-actions { display: grid; grid-template-columns: repeat(3, minmax(48px, 1fr)); gap: 6px; width: min(56%, 258px); }
+  .arcade-action {
+    min-width: 48px; min-height: 48px; padding: 5px 3px; border-radius: 10px; border: 1px solid #c4b5fd66;
+    background: #29223c; color: var(--ink); font: 800 11px var(--font-heading); cursor: pointer;
+    touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+  }
+  .arcade-action small { display: block; min-height: 10px; font-size: 9px; font-weight: 500; color: var(--accent-3); }
+  .arcade-action--primary { background: var(--accent); color: var(--bg); }
+  .arcade-action--primary small { color: #302344; }
+  .arcade-action:disabled { opacity: .45; cursor: default; }
+  .arcade-action[data-held="true"] { border-color: var(--warn); box-shadow: inset 0 0 0 2px var(--warn); }
+  .mobile-instructions { display: block; }
+  .keyboard-instructions { display: none; }
+  body[data-arcade-controls] #overlay h1 { font-size: 27px; text-align: center; }
+  body[data-arcade-controls] #overlay h2.title { font-size: 25px; }
+  body[data-arcade-controls] #overlay h2 { font-size: 17px; text-align: center; }
+  body[data-arcade-controls] #overlay p { font-size: 13px; text-align: center; }
+  body[data-arcade-controls] #overlay .panel { padding: 16px; }
+  body[data-arcade-controls] #overlay .keys-grid { display: none; }
+  body[data-arcade-controls] #overlay .start-btn { margin-top: 12px; min-height: 44px; }
+  body[data-arcade-controls] #garage { padding: 16px 10px; }
+  body[data-arcade-controls] .shuriken-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  body[data-arcade-controls] .shuriken-card { padding: 12px 6px; }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  body[data-arcade-controls] .game-device-note { display: none; }
+  .arcade-touch-controls {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: transparent; border: 0; pointer-events: none;
+  }
+  .arcade-touch-controls > * { pointer-events: auto; }
+  .arcade-actions { width: 210px; }
+  .arcade-modal-panel { padding: 14px; }
+}

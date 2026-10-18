@@ -10,12 +10,12 @@
     <meta property="og:title" content="Ninja Shuriken — Free Browser Game">
     <meta property="og:description" content="Throw shurikens, defeat zombie waves, and unlock epic powers. Free, no ads, no login.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://otterlygames.com/images/Otter-mascot.png">
+    <meta property="og:image" content="https://otterlygames.com/images/brand/otter-buddy-320.webp">
     <meta property="og:url" content="https://otterlygames.com/Arcade/game.html">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Ninja Shuriken — Free Browser Game">
     <meta name="twitter:description" content="Throw shurikens, defeat zombie waves, and unlock epic powers. Free, no ads, no login.">
-    <meta name="twitter:image" content="https://otterlygames.com/images/Otter-mascot.png">
+    <meta name="twitter:image" content="https://otterlygames.com/images/brand/otter-buddy-320.webp">
     <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
@@ -24,8 +24,8 @@
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"VideoGame","name":"Ninja Shuriken","description":"Throw shurikens to defeat zombie waves. Unlock powers every 10 kills and buy new weapons in the Garage.","playMode":"SinglePlayer","gamePlatform":"Web Browser","applicationCategory":"Game","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Otterly Games","url":"https://otterlygames.com"},"url":"https://otterlygames.com/Arcade/game.html"}
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+
+
     <link rel="stylesheet" href="/css/arcade-game.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -128,15 +128,19 @@
         .buy-btn:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; }
         .back-btn { background: var(--surface); color: var(--ink); border: 1px solid var(--border); }
     </style>
+  <script src="/js/includes.js" defer></script>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 <div class="game-page">
+    <div class="game-device-note" role="note">Kids' ideas, parent support and AI-assisted code. <a href="/play/#creative-arcade">More kid-built games &rarr;</a></div>
   <div class="game-topbar">
-    <a href="index.html" class="back-link">← Arcade</a>
+    <a href="/play/#creative-arcade" class="back-link">← Games</a>
     <span class="game-title">Ninja Shuriken</span>
-    <span class="brand-mark"><img src="/images/Otter-mascot.png" alt="Otterly">Otterly Arcade</span>
+    <span class="brand-mark"><img src="/images/brand/otter-buddy-320.webp" alt="Otterly">Otterly Arcade</span>
   </div>
-  <div class="game-area">
+  <div class="game-area" id="main-content" tabindex="-1">
     <div class="game-canvas-col">
     <div id="gameContainer">
         <canvas id="game" width="900" height="600"></canvas>
@@ -150,10 +154,11 @@
         <div id="overlay">
             <h1>🌀 Ninja Shuriken</h1>
             <h2>Throw shurikens to defeat zombies!</h2>
-            <p>WASD / Arrow Keys — Move</p>
+            <p class="mobile-instructions">Drag the thumbstick to move. Hold Throw to shoot. Powers unlock as you defeat zombies.</p>
+            <div class="keyboard-instructions"><p>WASD / Arrow Keys — Move</p>
             <p>SPACE — Throw Shuriken</p>
             <p>1-5 — Use Powers (unlock every 10 kills)</p>
-            <p>G — Open Garage (between levels)</p>
+            <p>G — Open Garage (between levels)</p></div>
             <p>Kill 25 zombies per level!</p>
             <button class="start-btn" id="startBtn">START GAME</button>
         </div>
@@ -179,6 +184,7 @@
   </div>
 </div>
 
+    <script src="/js/arcade-controls.js"></script>
     <script>
     const canvas = document.getElementById('game');
     const ctx = canvas.getContext('2d');
@@ -228,6 +234,8 @@
     let selectedShuriken = 0;
     let powerCooldowns = [0, 0, 0, 0, 0];
     let gameRunning = false;
+    let gamePaused = false;
+    let animationFrame = 0;
     let garageOpen = false;
     let lastTime = 0;
 
@@ -381,14 +389,48 @@
         }
     }
 
+    const controls = ArcadeControls.create({
+        canvas, width: W, height: H, keys,
+        actions: [
+            { id: 'throw', label: 'Throw', description: 'Hold to throw shurikens', primary: true,
+                press: () => { if (gameRunning && !gamePaused) throwShuriken(); } },
+            ...POWERS.map((power, index) => ({
+                id: power.id, label: ['Shock', 'Meteor', 'Lightning', 'Freeze', 'Vortex'][index],
+                description: power.name + '. Unlock at ' + power.unlockAt + ' total kills.',
+                press: () => { if (gameRunning && !gamePaused) activatePower(index); },
+            })),
+        ],
+        getState: () => ({
+            active: gameRunning && !gamePaused, paused: gamePaused,
+            phase: gamePaused ? 'paused' : gameRunning ? 'playing' : 'menu',
+            status: player ? `HP ${Math.max(0, Math.ceil(player.hp))} · Level ${level} · Kills ${kills}/25 · Coins ${coins}` :
+                'Defeat 25 zombies to finish a level. Coins and power unlocks are earned in this run.',
+            actions: Object.fromEntries(POWERS.map((power, index) => [power.id, {
+                disabled: totalKills < power.unlockAt || powerCooldowns[index] > 0,
+                detail: totalKills < power.unlockAt ? power.unlockAt + ' kills' :
+                    powerCooldowns[index] > 0 ? Math.ceil(powerCooldowns[index]) + 's' : 'Ready',
+            }])),
+        }),
+        pause: () => { gamePaused = true; },
+        resume: () => { gamePaused = false; lastTime = performance.now(); },
+        restart: () => window.restartGame(),
+        help: ['Move with the thumbstick, WASD or arrow keys. Shurikens fly in the direction you last moved.',
+            'Hold Throw on touchscreens, or press Space. The original weapon cooldown still applies.',
+            'Defeat 25 zombies per level. Powers unlock every 10 total kills; their cooldowns still apply.',
+            'Open the Garage between levels to spend earned coins. Progress lasts for this run, not after a reload.'],
+    });
+
     // ─── Input ───
     window.addEventListener('keydown', e => {
+        if (ArcadeControls.ignoreKeyEvent(e)) return;
+        if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) e.preventDefault();
+        if (e.code === 'KeyP' && !e.repeat) { controls.togglePause(); return; }
         keys[e.code] = true;
         if (e.code === 'Space') {
             e.preventDefault();
-            if (gameRunning) throwShuriken();
+            if (gameRunning && !gamePaused) throwShuriken();
         }
-        if (gameRunning) {
+        if (gameRunning && !gamePaused) {
             for (let i = 0; i < POWERS.length; i++) {
                 if (e.code === POWERS[i].key) activatePower(i);
             }
@@ -835,7 +877,7 @@
     // ─── Update ───
     function update(dt) {
         // Player movement
-        let dx = 0, dy = 0;
+        let dx = controls.direction.x, dy = controls.direction.y;
         if (keys['KeyA'] || keys['ArrowLeft']) dx -= 1;
         if (keys['KeyD'] || keys['ArrowRight']) dx += 1;
         if (keys['KeyW'] || keys['ArrowUp']) dy -= 1;
@@ -853,6 +895,7 @@
         player.y = Math.max(20, Math.min(H - 20, player.y));
 
         if (player.throwCooldown > 0) player.throwCooldown -= dt;
+        if (controls.held('throw')) throwShuriken();
         if (player.throwAnim > 0) player.throwAnim -= dt;
         if (player.invincible > 0) player.invincible -= dt;
 
@@ -1022,6 +1065,7 @@
 
     // ─── Render ───
     function render() {
+        controls.beginFrame(ctx, player);
         ctx.clearRect(0, 0, W, H);
         drawBackground();
         enemies.forEach(e => { if (e.alive) drawEnemy(e); });
@@ -1034,7 +1078,7 @@
             ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size);
         });
         ctx.globalAlpha = 1;
-        drawPowerHUD();
+        if (!controls.mobile) drawPowerHUD();
         drawNotifications();
     }
 
@@ -1043,9 +1087,15 @@
         if (!gameRunning) return;
         const dt = Math.min((timestamp - lastTime) / 1000, 0.05);
         lastTime = timestamp;
-        update(dt);
+        if (!gamePaused) update(dt);
         render();
-        requestAnimationFrame(gameLoop);
+        if (gameRunning) animationFrame = requestAnimationFrame(gameLoop);
+    }
+    function runGameLoop() {
+        cancelAnimationFrame(animationFrame);
+        lastTime = performance.now();
+        animationFrame = requestAnimationFrame(gameLoop);
+        canvas.focus({ preventScroll: true });
     }
 
     // ─── Garage ───
@@ -1062,13 +1112,13 @@
         SHURIKEN_TYPES.forEach((t, i) => {
             const sel = i === selectedShuriken ? ' selected' : '';
             const lock = !t.owned ? ' locked' : '';
-            html += `<div class="shuriken-card${sel}${lock}" onclick="garageSelect(${i})">`;
-            html += `<div class="icon">${t.icon}</div>`;
-            html += `<div class="name">${t.name}</div>`;
-            html += `<div class="stats">DMG: ${t.damage} | SPD: ${Math.round(t.speed / 50)}</div>`;
-            html += `<div class="stats">${t.desc}</div>`;
-            html += t.owned ? `<div class="owned">✓ OWNED</div>` : `<div class="price">🪙 ${t.price}</div>`;
-            html += `</div>`;
+            html += `<button type="button" class="shuriken-card${sel}${lock}" aria-label="${t.name}" aria-pressed="${i === selectedShuriken}" onclick="garageSelect(${i})">`;
+            html += `<span class="icon">${t.icon}</span>`;
+            html += `<span class="name">${t.name}</span>`;
+            html += `<span class="stats">DMG: ${t.damage} | SPD: ${Math.round(t.speed / 50)}</span>`;
+            html += `<span class="stats">${t.desc}</span>`;
+            html += t.owned ? `<span class="owned">✓ OWNED</span>` : `<span class="price">🪙 ${t.price}</span>`;
+            html += `</button>`;
         });
         html += `</div><div class="garage-btns">`;
         const selType = SHURIKEN_TYPES[selectedShuriken];
@@ -1097,11 +1147,12 @@
         level = 1; coins = 0; totalKills = 0;
         powerCooldowns = [0, 0, 0, 0, 0];
         notifications = [];
+        controls.clear();
+        gamePaused = false;
         gameRunning = true;
         overlay.classList.add('hidden');
         initLevel();
-        lastTime = performance.now();
-        requestAnimationFrame(gameLoop);
+        runGameLoop();
     }
 
     function levelComplete() {
@@ -1122,15 +1173,17 @@
             <p>Enemies get tougher each level!</p>
             <p style="color:#ffd54f; margin-top:8px;">Press G to open the Shuriken Garage!</p>
             <button class="start-btn" onclick="nextLevel()">NEXT LEVEL</button>
+            <button class="start-btn" onclick="openGarage()">OPEN GARAGE</button>
         `;
     }
     window.nextLevel = function() {
         if (!SHURIKEN_TYPES[selectedShuriken].owned) selectedShuriken = SHURIKEN_TYPES.findIndex(t => t.owned);
         gameRunning = true;
+        gamePaused = false;
+        controls.clear();
         overlay.classList.add('hidden');
         initLevel();
-        lastTime = performance.now();
-        requestAnimationFrame(gameLoop);
+        runGameLoop();
     };
     function gameOver() {
         gameRunning = false;
@@ -1148,11 +1201,12 @@
         notifications = [];
         SHURIKEN_TYPES.forEach((t, i) => { t.owned = i === 0; });
         selectedShuriken = 0;
+        controls.clear();
+        gamePaused = false;
         gameRunning = true;
         overlay.classList.add('hidden');
         initLevel();
-        lastTime = performance.now();
-        requestAnimationFrame(gameLoop);
+        runGameLoop();
     };
     startBtn.addEventListener('click', startGame);
     </script>

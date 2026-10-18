@@ -10,12 +10,12 @@
 <meta property="og:title" content="Zombie Hide & Seek — Free Browser Game">
 <meta property="og:description" content="Sneak through mazes, place traps, and escape zombies. Free, no ads, no login.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://otterlygames.com/images/Otter-mascot.png">
+<meta property="og:image" content="https://otterlygames.com/images/brand/otter-buddy-320.webp">
 <meta property="og:url" content="https://otterlygames.com/Arcade/zombie.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Zombie Hide & Seek — Free Browser Game">
 <meta name="twitter:description" content="Sneak through mazes, place traps, and escape zombies. Free, no ads, no login.">
-<meta name="twitter:image" content="https://otterlygames.com/images/Otter-mascot.png">
+<meta name="twitter:image" content="https://otterlygames.com/images/brand/otter-buddy-320.webp">
 <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
@@ -24,8 +24,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"VideoGame","name":"Zombie Hide & Seek","description":"Sneak through procedurally generated mazes, hide in bushes, place spike, bear, and mine traps, and reach the glowing exit before zombies catch you.","playMode":"SinglePlayer","gamePlatform":"Web Browser","applicationCategory":"Game","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Otterly Games","url":"https://otterlygames.com"},"url":"https://otterlygames.com/Arcade/zombie.html"}
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+
+
 <link rel="stylesheet" href="/css/arcade-game.css">
 <style>
   /* Game-specific overrides */
@@ -47,15 +47,19 @@
   .action-btn:hover { filter: brightness(1.1); }
   .traprow .swatch { border-radius: 50%; }
 </style>
+  <script src="/js/includes.js" defer></script>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 <div class="game-page">
+<div class="game-device-note" role="note">Kids' ideas, parent support and AI-assisted code. <a href="/play/#creative-arcade">More kid-built games &rarr;</a></div>
   <div class="game-topbar">
-    <a href="index.html" class="back-link">← Arcade</a>
+    <a href="/play/#creative-arcade" class="back-link">← Games</a>
     <span class="game-title">Zombie Hide & Seek</span>
-    <span class="brand-mark"><img src="/images/Otter-mascot.png" alt="Otterly">Otterly Arcade</span>
+    <span class="brand-mark"><img src="/images/brand/otter-buddy-320.webp" alt="Otterly">Otterly Arcade</span>
   </div>
-  <div class="game-area">
+  <div class="game-area" id="main-content" tabindex="-1">
     <div class="game-canvas-col">
       <canvas id="game" width="800" height="608"></canvas>
     </div>
@@ -95,6 +99,7 @@
   </div>
 </div>
 
+<script src="/js/arcade-controls.js"></script>
 <script>
 // ============================================================
 //  Zombie Hide & Seek — single-file game
@@ -145,14 +150,20 @@ function makeMaze() {
 
 // ---------- Game state ----------
 let maze, bushes, exitTile, player, zombies, traps, gameOver, won, t0, lastTime, alertText, alertUntil;
+let paused = false, introOpen = true, activeTime = 0;
 
 const TRAP = {
   SPIKE: 'spike',
   BEAR:  'bear',
   MINE:  'mine'
 };
+const MAZE_HINT = 'Sneak through the maze. Bushes hide you from sight.';
 
-function reset() {
+function reset(showIntro = false) {
+  controls.clear();
+  paused = false;
+  introOpen = showIntro;
+  activeTime = 0;
   maze = makeMaze();
 
   // Pick bushes (hiding spots) on floor tiles, not too close to spawn
@@ -199,9 +210,9 @@ function reset() {
 
   gameOver = false;
   won = false;
-  t0 = performance.now();
-  lastTime = t0;
-  alertText = 'Sneak through the maze. Bushes hide you from sight.';
+  t0 = activeTime;
+  lastTime = performance.now();
+  alertText = MAZE_HINT;
   alertUntil = t0 + 99999;
 }
 
@@ -322,6 +333,9 @@ function findPath(sx, sy, gx, gy) {
 // ---------- Input ----------
 const keys = {};
 window.addEventListener('keydown', e => {
+  if (ArcadeControls.ignoreKeyEvent(e)) return;
+  if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code)) e.preventDefault();
+  if (e.code === 'KeyP' && !e.repeat) { controls.togglePause(); return; }
   keys[e.key.toLowerCase()] = true;
   if (e.key === '1') tryPlaceTrap(TRAP.SPIKE);
   if (e.key === '2') tryPlaceTrap(TRAP.BEAR);
@@ -331,9 +345,44 @@ window.addEventListener('keydown', e => {
 window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
 
 let inventory = { spike: Infinity, bear: Infinity, mine: Infinity };
+const controls = ArcadeControls.create({
+  canvas, width: W, height: H, keys, map: true,
+  actions: [
+    {id:'sneak',label:'Sneak',description:'Hold Sneak to move quietly',hold:true,primary:true},
+    {id:'spike',label:'Spike',description:'Place a spike trap',press:()=>tryPlaceTrap(TRAP.SPIKE)},
+    {id:'bear',label:'Bear trap',press:()=>tryPlaceTrap(TRAP.BEAR)},
+    {id:'mine',label:'Mine',description:'Place a mine trap',press:()=>tryPlaceTrap(TRAP.MINE)},
+  ],
+  getState: () => ({
+    active: !introOpen&&!paused&&!gameOver, paused,
+    phase: introOpen?'splash':paused?'paused':gameOver?(won?'win':'gameover'):'playing',
+    message: activeTime<alertUntil&&alertText!==MAZE_HINT ? alertText : '',
+    status: player ? `${Math.floor(activeTime/1000)}s · ${isHidden(player)?'Hidden':'Visible'} · ${
+      zombies.some(z=>!z.dead&&z.state==='chase')?'Being chased':zombies.filter(z=>!z.dead).length+' zombies'
+    }` : 'Reach the glowing exit. Bushes hide you from zombies.',
+    menu: introOpen ? {
+      key:'intro',title:'Zombie Hide & Seek',
+      text:['Sneak through a new maze, hide in bushes and reach the glowing exit.',
+        'Use the thumbstick or WASD to move. Hold Sneak to be quieter; tap a trap button to place it.',
+        'The camera follows you. Choose Map for a whole-maze view. This game includes dark settings and zombie pursuit.'],
+      buttons:[{label:'Start maze',run:()=>{introOpen=false;lastTime=performance.now();}}],
+    } : gameOver ? {
+      key:won?'win':'gameover',title:won?'You escaped!':'The zombies caught you',
+      text:[`Time: ${Math.floor(activeTime/1000)} seconds. A new maze gives you another route to explore.`],
+      buttons:[{label:'Play a new maze',run:()=>reset()}],
+    } : null,
+  }),
+  pause:()=>{paused=true;},
+  resume:()=>{paused=false;lastTime=performance.now();},
+  restart:()=>reset(),
+  help:['Move with the thumbstick, WASD or arrow keys. The camera follows you; Map shows the whole maze.',
+    'Hold Sneak or Shift to move more quietly. Bushes hide you from sight.',
+    'Place a Spike, Bear trap or Mine on your current tile. You cannot stack traps or place one on the exit.',
+    'Reach the glowing exit. Pause freezes the clock, trap arming and zombie stun time; a new maze starts a new run.'],
+});
 
 function tryPlaceTrap(kind) {
-  if (gameOver) return;
+  if (gameOver || paused || introOpen) return;
   const t = tileAt(player.x, player.y);
   // Don't place on exit or on existing trap
   if (t.x === exitTile.x && t.y === exitTile.y) {
@@ -349,23 +398,23 @@ function tryPlaceTrap(kind) {
     x: t.x * TILE + TILE/2,
     y: t.y * TILE + TILE/2,
     active: true,
-    armTime: performance.now() + 400 // don't trigger on yourself
+    armTime: activeTime + 400 // don't trigger on yourself
   });
   showAlert(`Placed ${kind} trap.`, 'ok');
 }
 
 // ---------- Update ----------
 function update(dt) {
-  if (gameOver) return;
+  if (gameOver || paused || introOpen) return;
 
   // Player input
-  let vx = 0, vy = 0;
+  let vx = controls.direction.x, vy = controls.direction.y;
   if (keys['w'] || keys['arrowup'])    vy -= 1;
   if (keys['s'] || keys['arrowdown'])  vy += 1;
   if (keys['a'] || keys['arrowleft'])  vx -= 1;
   if (keys['d'] || keys['arrowright']) vx += 1;
 
-  player.sneaking = !!keys['shift'];
+  player.sneaking = !!keys['shift'] || controls.held('sneak');
   const len = Math.hypot(vx, vy);
   player.moving = len > 0;
   if (len > 0) {
@@ -437,7 +486,7 @@ function update(dt) {
         tr.active = false;
         showAlert('Zombie impaled!', 'ok');
       } else if (tr.kind === TRAP.BEAR && (bodyTouchBear || onSameTile)) {
-        z.stunUntil = performance.now() + 4000;
+        z.stunUntil = activeTime + 4000;
         z.state = 'stunned';
         z.path = [];
         tr.active = false;
@@ -445,7 +494,7 @@ function update(dt) {
       } else if (tr.kind === TRAP.MINE && (bodyTouchMine || onSameTile)) {
         // Boom! kill all in radius
         tr.active = false;
-        tr.exploding = performance.now();
+        tr.exploding = activeTime;
         let killed = 0;
         for (const z2 of zombies) {
           if (z2.dead) continue;
@@ -493,7 +542,7 @@ function updateZombie(z, dt, playerHidden) {
   z.eye += dt;
   // Stun
   if (z.state === 'stunned') {
-    if (performance.now() > z.stunUntil) {
+    if (activeTime > z.stunUntil) {
       z.state = 'patrol';
       z.path = [];
     } else {
@@ -620,6 +669,7 @@ function stepToward(z, tx, ty, dt, speed) {
 
 // ---------- Render ----------
 function draw() {
+  controls.beginFrame(ctx, player);
   // Background
   ctx.fillStyle = '#06080b';
   ctx.fillRect(0, 0, W, H);
@@ -696,7 +746,7 @@ function drawBush(x, y) {
 }
 
 function drawExit(x, y) {
-  const t = (performance.now() / 400) % (Math.PI * 2);
+  const t = (activeTime / 400) % (Math.PI * 2);
   const glow = 0.55 + 0.25 * Math.sin(t);
   ctx.save();
   ctx.fillStyle = `rgba(245, 158, 11, ${glow})`;
@@ -715,9 +765,9 @@ function drawExit(x, y) {
 function drawTrap(tr) {
   ctx.save();
   if (!tr.active) {
-    if (tr.exploding && performance.now() - tr.exploding < 400) {
+    if (tr.exploding && activeTime - tr.exploding < 400) {
       // Mine explosion flash
-      const age = (performance.now() - tr.exploding) / 400;
+      const age = (activeTime - tr.exploding) / 400;
       const r = TILE * 2.2 * age;
       ctx.fillStyle = `rgba(245, 158, 11, ${1 - age})`;
       ctx.beginPath(); ctx.arc(tr.x, tr.y, r, 0, Math.PI * 2); ctx.fill();
@@ -759,7 +809,7 @@ function drawTrap(tr) {
       ctx.stroke();
     }
   } else if (tr.kind === TRAP.MINE) {
-    const pulse = 0.6 + 0.4 * Math.sin(performance.now() / 200);
+    const pulse = 0.6 + 0.4 * Math.sin(activeTime / 200);
     ctx.fillStyle = `rgba(245, 158, 11, ${pulse})`;
     ctx.beginPath(); ctx.arc(tr.x, tr.y, 8, 0, Math.PI * 2); ctx.fill();
     ctx.fillStyle = '#7c2d12';
@@ -797,7 +847,7 @@ function drawPlayer(p) {
   // HIDDEN badge floating above the player so the state is obvious.
   if (hidden) {
     ctx.save();
-    const pulse = 0.7 + 0.3 * Math.sin(performance.now() / 200);
+    const pulse = 0.7 + 0.3 * Math.sin(activeTime / 200);
     ctx.fillStyle = `rgba(110, 231, 183, ${pulse})`;
     ctx.font = 'bold 11px Segoe UI';
     ctx.textAlign = 'center';
@@ -904,7 +954,7 @@ function updateHUD() {
   const anyChase = zombies.some(z => !z.dead && z.state === 'chase');
   const anySearch = zombies.some(z => !z.dead && z.state === 'search');
   document.getElementById('ui-detected').textContent = anyChase ? 'CHASING!' : (anySearch ? 'Searching' : 'No');
-  document.getElementById('ui-time').textContent = Math.floor((performance.now() - t0) / 1000) + 's';
+  document.getElementById('ui-time').textContent = Math.floor((activeTime - t0) / 1000) + 's';
 
   document.getElementById('ui-spike').textContent = '∞';
   document.getElementById('ui-bear').textContent = '∞';
@@ -914,7 +964,7 @@ function updateHUD() {
   document.getElementById('ui-mine').className = 'count';
 
   const status = document.getElementById('status');
-  if (performance.now() < alertUntil) {
+  if (activeTime < alertUntil) {
     status.textContent = alertText;
     status.className = alertClass;
   } else if (gameOver) {
@@ -938,22 +988,23 @@ let alertClass = '';
 function showAlert(text, kind) {
   alertText = text;
   alertClass = kind === 'danger' ? 'danger' : kind === 'warn' ? 'warn' : '';
-  alertUntil = performance.now() + 2200;
+  alertUntil = activeTime + 2200;
 }
 
 // ---------- Main loop ----------
 function loop(now) {
   const dt = Math.min(0.04, (now - lastTime) / 1000);
   lastTime = now;
+  if (!paused && !introOpen && !gameOver) activeTime += dt * 1000;
   update(dt);
   draw();
   updateHUD();
   requestAnimationFrame(loop);
 }
 
-document.getElementById('restart').addEventListener('click', reset);
+document.getElementById('restart').addEventListener('click', () => reset());
 
-reset();
+reset(true);
 requestAnimationFrame(loop);
 </script>
 </body>

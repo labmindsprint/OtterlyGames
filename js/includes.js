@@ -15,7 +15,7 @@
   async function loadComponent(url, where) {
     try {
       const resp = await fetch(url);
-      if (!resp.ok) return;
+      if (!resp.ok) throw new Error('Component request failed (' + resp.status + ')');
       const html = await resp.text();
 
       if (where === 'body-start') {
@@ -35,15 +35,23 @@
    * Mark the current nav link as active.
    */
   function highlightActiveLink() {
-    const path = location.pathname;
-    document.querySelectorAll('.nav-links a').forEach(function (a) {
+    const path = location.pathname.replace(/index\.html$/, '');
+    const section = document.body.dataset.navSection || (path === '/about.html' ? '/parents/' :
+      path.startsWith('/apps/') ? '/play/' : path);
+    const navLinks = document.querySelectorAll('.nav-links a, .nav-play');
+    const hasExact = Array.from(navLinks).some(function (a) {
+      return a.getAttribute('href') === path;
+    });
+    navLinks.forEach(function (a) {
       const href = a.getAttribute('href');
       if (!href) return;
       // Remove any existing active class
       a.classList.remove('active');
+      a.removeAttribute('aria-current');
       // Exact match or prefix match (but not '/')
-      if (href === path || (href !== '/' && href !== '/#games' && path.startsWith(href))) {
+      if (href === path || (!hasExact && href.endsWith('/') && href !== '/' && section.startsWith(href))) {
         a.classList.add('active');
+        a.setAttribute('aria-current', href === path ? 'page' : 'location');
       }
     });
   }
@@ -53,12 +61,33 @@
    */
   function initNavToggle() {
     var toggle = document.getElementById('navToggle');
-    if (toggle) {
-      toggle.addEventListener('click', function () {
-        var links = document.getElementById('navLinks');
-        if (links) links.classList.toggle('open');
-      });
+    var links = document.getElementById('navLinks');
+    if (!toggle || !links || toggle.dataset.navigationReady) return;
+    toggle.dataset.navigationReady = 'true';
+    document.documentElement.setAttribute('data-nav-ready', '');
+    function setOpen(open) {
+      links.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
     }
+    setOpen(false);
+    // Older pages have an inline toggle listener. Only this shared handler owns it.
+    toggle.addEventListener('click', function (event) {
+      event.stopImmediatePropagation();
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    }, true);
+    links.addEventListener('click', function (event) {
+      if (event.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.nav')) setOpen(false);
+    });
+    matchMedia('(min-width: 961px)').addEventListener('change', function () { setOpen(false); });
   }
 
   /**
@@ -91,9 +120,11 @@
     window.addEventListener('scroll', function () {
       btn.classList.toggle('show', window.scrollY > 500);
     });
-    btn.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    if (!btn.hasAttribute('onclick')) {
+      btn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+      });
+    }
   }
 
   /* ---- Boot ---- */
@@ -123,11 +154,13 @@
     });
   } else {
     // Nav/footer already inline — just wire up behaviour
-    document.addEventListener('DOMContentLoaded', function () {
+    function enhance() {
       highlightActiveLink();
       initNavToggle();
       initFadeObserver();
       initScrollTop();
-    });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', enhance);
+    else enhance();
   }
 })();

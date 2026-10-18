@@ -1,10 +1,9 @@
-"""Browser checks for the static Clock Master bundle and both website embeds.
+"""Browser checks for the static Clock Master bundle, demo and game launcher.
 
 Run against a local static server; output screenshots outside the repository.
-Third-party ads, analytics, fonts, and donations are excluded from these checks.
+Unexpected third-party requests fail these checks.
 """
 import argparse
-import json
 import re
 from pathlib import Path
 from playwright.sync_api import expect, sync_playwright
@@ -36,18 +35,12 @@ with sync_playwright() as p:
           window.__gameMessages=[];
           window.addEventListener('message', e=>window.__gameMessages.push(e.data?.type));
         """)
-        def route_request(route):
-            if route.request.url.startswith(args.url):
-                route.continue_()
-            else:
-                stub = "window.kofiWidgetOverlay={draw(){}};" if "ko-fi.com" in route.request.url else ""
-                route.fulfill(status=200, content_type="application/javascript", body=stub)
-        context.route("**/*", route_request)
         page = context.new_page()
         page.set_default_timeout(15000)
-        errors, missing = [], []
+        errors, missing, external = [], [], []
         page.on("pageerror", lambda error: errors.append(error.stack))
         page.on("response", lambda r: missing.append(r.url) if r.url.startswith(args.url) and r.status >= 400 else None)
+        page.on("request", lambda r: external.append(r.url) if not r.url.startswith((args.url + "/", "data:", "blob:")) else None)
         page.goto(args.url + "/apps/clock-master.html", wait_until="domcontentloaded")
         expect(page.get_by_role("heading", name="11 Guided Clock Chapters")).to_be_attached()
         for image in page.locator(".cm-icon,.cm-phone-shot,.cm-feature img").all():
@@ -66,6 +59,7 @@ with sync_playwright() as p:
         expect(frame.locator(".race-feedback")).to_have_attribute("data-feedback", "correct")
         # Scrolling the embed out of sight must pause gameplay, not just hide it.
         page.evaluate("window.scrollTo({top:0,behavior:'instant'})")
+        expect(page.locator("#clock-demo-frame")).not_to_be_in_viewport()
         expect(frame.get_by_role("dialog", name="Race paused", exact=True)).to_be_attached()
         page.locator("#clock-demo").scroll_into_view_if_needed()
         frame.get_by_role("button", name="Resume race", exact=True).click()
@@ -83,24 +77,24 @@ with sync_playwright() as p:
         expect(frame.get_by_role("dialog", name="Race results", exact=True)).to_be_visible()
         assert page.evaluate("window.__gameMessages.includes('gameEnd')")
         page.goto(args.url + "/")
-        page.locator("#play").scroll_into_view_if_needed()
-        page.locator("#playStartOverlay").click()
-        home = page.frame_locator("#clock-frame")
-        expect(home.locator(".race-ready-content")).to_be_visible()
+        page.get_by_role("link", name="Play Clock Master", exact=True).click()
+        assert page.locator("#universe-frame").get_attribute("src") is None
+        page.locator("#launch-game").click()
+        home = page.frame_locator("#universe-frame")
+        home.get_by_role("button", name="Time Race Game", exact=True).click()
         home.get_by_role("button", name="Start Race!", exact=True).click()
-        # Switching games during the countdown must freeze it until returning.
-        page.get_by_role("button", name="Math Tank", exact=False).click()
-        page.wait_for_timeout(3600)
-        expect(home.locator(".race-countdown")).to_be_attached()
-        page.get_by_role("button", name="Clock Master", exact=False).click()
         expect(home.locator(".race-answer").first).to_be_visible()
-        page.get_by_role("button", name="Math Tank", exact=False).click()
+        page.locator("#universe-frame").evaluate(
+            "e=>scrollTo({top:scrollY+e.getBoundingClientRect().bottom+1,behavior:'instant'})")
+        expect(page.locator("#universe-frame")).not_to_be_in_viewport()
         expect(home.locator('[role="dialog"][aria-label="Race paused"]')).to_be_attached()
-        page.get_by_role("button", name="Clock Master", exact=False).click()
+        page.wait_for_timeout(1500)
+        page.locator("#launch-game").click()
         home.get_by_role("button", name="Resume race", exact=True).click()
         page.wait_for_timeout(400)
         page.screenshot(path=str(args.output / f"home-demo-{width}.png"))
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+        assert not external, external
         # Full-size home, animated companion, universe assets, and scoped manifest.
         page.goto(args.url + "/games/clockmaster/")
         page.get_by_role("button", name="Play with Otterly", exact=True).click()
@@ -114,19 +108,12 @@ with sync_playwright() as p:
         assert manifest["scope"] == "/games/clockmaster/"
         for icon in manifest["icons"]:
             assert page.request.get(args.url + icon["src"]).ok
-        unrelated = [url for url in missing if "/games/mathtank/" in url]
-        if unrelated:
-            print("Existing Math Tank missing assets (outside this check): " + json.dumps(unrelated), flush=True)
-        assert not [url for url in missing if url not in unrelated], missing
-        known_math_errors = [e for e in errors if "/games/mathtank/_next/" in e and
-                            re.search(r"Minified React error #(418|423);", e)]
-        if known_math_errors:
-            print(f"Existing Math Tank hydration errors (outside this check): {len(known_math_errors)}", flush=True)
-        assert not [e for e in errors if e not in known_math_errors], errors
+        assert not missing, missing
+        assert not errors, errors
+        assert not external, external
         print(f"PASS website + embeds + assets at {width}x{height}", flush=True)
         context.close()
     context = browser.new_context(viewport={"width": 1280, "height": 900})
-    context.route("**/*", route_request)
     context.add_init_script("""
       window.__audio=[];
       const play=HTMLMediaElement.prototype.play;
@@ -150,6 +137,7 @@ with sync_playwright() as p:
     game.wait_for_function("window.__audio.some(a=>!a.paused)")
     assert game.evaluate("window.__audio.every(a=>new URL(a.src).pathname.startsWith('/games/clockmaster/audio/'))")
     page.evaluate("window.scrollTo({top:0,behavior:'instant'})")
+    expect(page.locator("#clock-demo-frame")).not_to_be_in_viewport()
     game.wait_for_function("window.__audio.every(a=>a.paused)")
     page.locator("#clock-demo").scroll_into_view_if_needed()
     game.get_by_role("button", name="Resume race", exact=True).click()

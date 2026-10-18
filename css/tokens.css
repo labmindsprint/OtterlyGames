@@ -1,0 +1,307 @@
+/* ============================================================================
+   OTTERLY GAMES — Theme B "Playful Dark, Evolved": tokens + shared primitives
+   ----------------------------------------------------------------------------
+   OPT-IN ONLY. Nothing here applies unless the page sets a scope class:
+
+     <body class="theme-b">   full theme: page background, type, primitives,
+                              plus the restyled shared nav and footer
+     <body class="shell-b">   shell only: tokens + restyled shared nav/footer
+                              (for pages that are not themed yet)
+
+   Every rule is scoped under .theme-b / .shell-b, and base typography uses
+   :where() so it stays at specificity (0,1,0) and never beats a page's own
+   class selectors. Custom properties live on the scope class (not :root), so
+   loading this file on an un-opted page changes nothing.
+
+   Load order: /css/base.css (fonts + reset), /css/components.css (shared
+   nav/footer markup rules), this file, then the page stylesheet
+   (e.g. /css/home.css). Fonts come from css/fonts.css via base.css (local files).
+
+   Contents
+     1. Tokens (elevation, text, accents, shadows, radii, spacing, type)
+     2. Base (body, mesh glow, headings, links, focus)
+     3. Primitives (.wrap .icon .eyebrow .section-head .text-link .btn .chip
+                    .surface .pill)
+     4. Shared nav + footer (same markup, restyled)
+     5. Reduced motion
+   Primitive class names are generic on purpose; page CSS should use its own
+   prefix (home-, learn-, ...) for page components.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. TOKENS
+   ========================================================================== */
+.theme-b, .shell-b {
+  /* Elevation tiers: each step lighter and a touch more purple. No pure black/white. */
+  --surface-0: #0e0c17;   /* page */
+  --surface-1: #161325;   /* resting card */
+  --surface-2: #1e1a33;   /* raised card / glass base */
+  --surface-3: #292345;   /* hover, pressed, overlays */
+  --line: rgba(196, 181, 253, 0.14);
+  --line-strong: rgba(196, 181, 253, 0.28);
+  --edge-light: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  /* Text (AA on surface-0..3) */
+  --text: #ece9f7;
+  --text-2: #bdb8d6;
+  --text-3: #9d97bd;
+  --text-on-accent: #1a1230;
+
+  /* Brand accents: bright = fills/glows, soft = text on dark */
+  --purple: #8b5cf6;  --purple-soft: #c4b5fd;
+  --pink: #ec4899;    --pink-soft: #f9a8d4;
+  --orange: #fb923c;  --orange-soft: #fdba74;
+  --blue: #3b82f6;    --blue-soft: #93c5fd;
+  --green: #22c55e;   --green-soft: #86efac;
+  --amber: #fbbf24;   --amber-soft: #fcd34d;
+  --focus: #7dd3fc;
+
+  /* Per-component accent hooks (override on a tile/section) */
+  --accent: var(--purple);
+  --accent-soft: var(--purple-soft);
+
+  /* Shadows */
+  --elev-1: 0 1px 2px rgba(5, 3, 14, 0.5), 0 6px 16px -6px rgba(5, 3, 14, 0.55);
+  --elev-2: 0 2px 4px rgba(5, 3, 14, 0.45), 0 18px 40px -14px rgba(5, 3, 14, 0.7);
+  --elev-3: 0 4px 8px rgba(5, 3, 14, 0.45), 0 30px 70px -20px rgba(5, 3, 14, 0.85);
+
+  /* Radius */
+  --r-sm: 10px; --r-md: 16px; --r-lg: 24px; --r-xl: 32px; --r-pill: 999px;
+
+  /* Spacing (4px base) */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 72px; --s-9: 104px;
+
+  /* Type (families are defined in css/fonts.css) */
+  --font-head: 'Nunito', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-lg: 1.25rem;
+  --fs-h3: clamp(1.25rem, 2.4vw, 1.5rem);
+  --fs-h2: clamp(1.75rem, 4.2vw, 2.75rem);
+  --fs-h1: clamp(2.6rem, 8vw, 5rem);
+
+  /* Layout, targets, motion */
+  --wrap: 1200px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --tap: 44px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ==========================================================================
+   2. BASE (full theme only)
+   ========================================================================== */
+body.theme-b {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--surface-0);
+  color: var(--text);
+  font: 400 var(--fs-base)/1.6 var(--font-body);
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
+/* Soft brand glows behind everything */
+body.theme-b::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(60rem 38rem at 8% 0, rgba(139, 92, 246, 0.22), transparent 60%),
+    radial-gradient(46rem 32rem at 98% 0, rgba(236, 72, 153, 0.14), transparent 60%),
+    radial-gradient(40rem 40rem at 0% 52%, rgba(139, 92, 246, 0.10), transparent 62%),
+    radial-gradient(40rem 40rem at 100% 76%, rgba(251, 146, 60, 0.08), transparent 62%),
+    radial-gradient(52rem 34rem at 60% 100%, rgba(251, 146, 60, 0.10), transparent 62%);
+}
+.theme-b :where(img, svg) { display: block; max-width: 100%; }
+.theme-b :where(ul, ol) { list-style: none; }
+.theme-b :where(h1, h2, h3) { font-family: var(--font-head); line-height: 1.1; letter-spacing: -0.01em; text-wrap: balance; }
+.theme-b :where(h1) { font-size: var(--fs-h1); font-weight: 900; }
+.theme-b :where(h2) { font-size: var(--fs-h2); font-weight: 800; }
+.theme-b :where(h3) { font-size: var(--fs-h3); font-weight: 800; }
+.theme-b :where(p) { text-wrap: pretty; }
+.theme-b :where(a) { color: var(--purple-soft); text-underline-offset: 3px; }
+.theme-b :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.theme-b main:focus { outline: none; }
+.theme-b [hidden] { display: none !important; }
+
+/* ==========================================================================
+   3. PRIMITIVES
+   ========================================================================== */
+.theme-b .wrap { width: 100%; max-width: calc(var(--wrap) + 2 * var(--gutter)); margin-inline: auto; padding-inline: var(--gutter); }
+
+.theme-b .icon { width: 1.25em; height: 1.25em; flex: none; }
+
+.theme-b .eyebrow {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  font: 800 var(--fs-xs)/1 var(--font-head); letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent-soft);
+}
+.theme-b .eyebrow::before { content: ""; width: 22px; height: 3px; border-radius: 3px; background: currentColor; opacity: 0.7; }
+
+.theme-b .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--s-4) var(--s-6); margin-bottom: var(--s-6); }
+.theme-b .section-head > div { max-width: 40rem; }
+.theme-b .section-head h2 { margin-top: var(--s-3); }
+.theme-b .section-head p:not(.eyebrow) { margin-top: var(--s-3); color: var(--text-2); }
+
+.theme-b .text-link {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  min-height: var(--tap); font-weight: 600; color: var(--accent-soft); text-decoration: none;
+}
+.theme-b .text-link .icon { width: 1.05em; height: 1.05em; transition: transform 0.2s var(--ease); }
+.theme-b .text-link:hover { color: var(--text); }
+.theme-b .text-link:hover .icon { transform: translateX(3px); }
+
+/* Buttons: .btn (purple) + --amber --pink --orange --blue --green --ghost, --lg for hero/flagship CTAs */
+.theme-b .btn {
+  --btn-bg: var(--purple-soft);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+  min-height: var(--tap); padding: 0 var(--s-5);
+  background: var(--btn-bg); color: var(--text-on-accent);
+  font: 800 var(--fs-sm)/1 var(--font-head); letter-spacing: 0.01em; text-decoration: none; white-space: nowrap;
+  border: 0; border-radius: var(--r-pill); cursor: pointer;
+  box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--btn-bg) 70%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), filter 0.18s;
+}
+.theme-b .btn:hover { color: var(--text-on-accent); transform: translateY(-2px); filter: brightness(1.06); }
+.theme-b .btn:active { transform: translateY(0); }
+.theme-b .btn .icon { width: 1.1em; height: 1.1em; }
+.theme-b .btn--lg { min-height: 52px; padding: 0 var(--s-6); font-size: 1rem; }
+.theme-b .btn--primary { --btn-bg: var(--purple-soft); }
+.theme-b .btn--pink { --btn-bg: var(--pink-soft); }
+.theme-b .btn--amber { --btn-bg: var(--amber-soft); }
+.theme-b .btn--orange { --btn-bg: var(--orange-soft); }
+.theme-b .btn--blue { --btn-bg: var(--blue-soft); }
+.theme-b .btn--green { --btn-bg: var(--green-soft); }
+.theme-b .btn--ghost { background: rgba(255, 255, 255, 0.05); color: var(--text); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.theme-b .btn--ghost:hover { background: rgba(255, 255, 255, 0.1); color: var(--text); }
+
+/* Glass / elevated surface */
+.theme-b .surface {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)), var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--edge-light), var(--elev-1);
+}
+
+/* Chip: small status/label capsule, coloured by --accent / --accent-soft */
+.theme-b .chip {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  min-height: 32px; padding: 0 var(--s-3);
+  font: 700 var(--fs-xs)/1 var(--font-head); letter-spacing: 0.02em;
+  color: var(--accent-soft); background: color-mix(in srgb, var(--accent) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  border-radius: var(--r-pill);
+}
+.theme-b .chip .icon { width: 1.15em; height: 1.15em; }
+
+/* Pill: neutral navigation capsule (44px target) */
+.theme-b .pill {
+  display: inline-flex; align-items: center; gap: var(--s-2); min-height: var(--tap); padding: 0 var(--s-4);
+  color: var(--text); text-decoration: none; font-weight: 600; font-size: var(--fs-sm);
+  background: rgba(255, 255, 255, 0.05); border: 1px solid var(--line); border-radius: var(--r-pill);
+  transition: background 0.2s, border-color 0.2s;
+}
+.theme-b .pill:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--line-strong); color: var(--text); }
+.theme-b .pill .icon { width: 1em; height: 1em; color: var(--accent-soft); }
+
+/* ==========================================================================
+   4. SHARED NAV + FOOTER (restyle of _includes/nav.html and footer.html)
+   Mobile menu keeps the existing contract: #navToggle toggles .open on
+   #navLinks (js/includes.js) and html[data-nav-ready] reveals the button.
+   ========================================================================== */
+:is(.theme-b, .shell-b) .skip-link {
+  background: var(--text); color: var(--text-on-accent);
+  padding: var(--s-3) var(--s-4); border-radius: var(--r-sm); font-weight: 700;
+}
+
+:is(.theme-b, .shell-b) .nav {
+  position: sticky; top: 0; left: auto; right: auto; z-index: 100; height: auto; min-height: 68px;
+  background: rgba(14, 12, 23, 0.78);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3); backdrop-filter: blur(16px) saturate(1.3);
+  border-bottom: 1px solid var(--line);
+}
+:is(.theme-b, .shell-b) .nav-inner {
+  max-width: calc(var(--wrap) + 2 * var(--gutter)); padding: 0 var(--gutter);
+  height: auto; min-height: 68px; gap: var(--s-3); justify-content: flex-start;
+}
+:is(.theme-b, .shell-b) .nav-brand {
+  gap: var(--s-3); min-height: var(--tap); margin-right: auto; color: var(--text);
+  font: 900 1.15rem/1 var(--font-head); letter-spacing: -0.01em;
+}
+:is(.theme-b, .shell-b) .nav-brand img { width: 40px; height: 40px; border-radius: 12px; }
+:is(.theme-b, .shell-b) .nav-brand .brand-text { background: none; -webkit-text-fill-color: currentColor; color: var(--text); }
+:is(.theme-b, .shell-b) .nav-links { gap: 2px; margin-left: 0; }
+:is(.theme-b, .shell-b) .nav-links a {
+  display: flex; align-items: center; min-height: var(--tap); padding: 0 var(--s-4);
+  font-size: var(--fs-sm); font-weight: 600; color: var(--text-2); border-radius: var(--r-sm);
+  transition: color 0.15s, background 0.15s;
+}
+:is(.theme-b, .shell-b) .nav-links a:hover { color: var(--text); background: rgba(255, 255, 255, 0.06); }
+:is(.theme-b, .shell-b) .nav-links a.active,
+:is(.theme-b, .shell-b) .nav-links a[aria-current] { color: var(--text); background: color-mix(in srgb, var(--purple) 22%, transparent); }
+:is(.theme-b, .shell-b) .nav-cta {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+  min-height: var(--tap); padding: 0 var(--s-5); margin-left: 0;
+  background: var(--purple-soft); color: var(--text-on-accent) !important;
+  font: 800 0.875rem/1 var(--font-head); white-space: nowrap;
+  box-shadow: 0 8px 22px -8px rgba(196, 181, 253, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+:is(.theme-b, .shell-b) .nav-cta:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 8px 22px -8px rgba(196, 181, 253, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+:is(.theme-b, .shell-b) .nav-play.active,
+:is(.theme-b, .shell-b) .nav-play[aria-current] { background: var(--amber-soft); }
+:is(.theme-b, .shell-b) .nav-toggle {
+  flex: none; width: var(--tap); min-width: var(--tap); height: var(--tap); padding: 0; gap: 5px;
+  background: rgba(255, 255, 255, 0.06); border: 1px solid var(--line); border-radius: 12px;
+}
+:is(.theme-b, .shell-b) .nav-toggle span { width: 18px; background: var(--text); transition: transform 0.2s var(--ease), opacity 0.2s; }
+:is(.theme-b, .shell-b) .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+:is(.theme-b, .shell-b) .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+:is(.theme-b, .shell-b) .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 960px) {
+  :is(.theme-b, .shell-b) .nav-inner { gap: var(--s-2); padding-inline: var(--gutter); }
+  :is(.theme-b, .shell-b) .nav-brand { font-size: 1.1rem; gap: var(--s-2); }
+  :is(.theme-b, .shell-b) .nav-brand img { width: 36px; height: 36px; }
+  :is(.theme-b, .shell-b) .nav-cta { padding: 0 var(--s-4); }
+  :is(.theme-b, .shell-b) .nav-links {
+    top: 100%; max-height: calc(100dvh - 68px);
+    padding: var(--s-3) var(--gutter) var(--s-4); gap: 2px;
+    background: var(--surface-1); border-bottom: 1px solid var(--line); box-shadow: var(--elev-2);
+  }
+  :is(.theme-b, .shell-b) .nav-links a { padding: 0 var(--s-4); text-align: left; }
+}
+@media (max-width: 380px) {
+  :is(.theme-b, .shell-b) .nav-inner { gap: 6px; padding-inline: 12px; }
+  :is(.theme-b, .shell-b) .nav-brand { font-size: 0.95rem; gap: 6px; }
+  :is(.theme-b, .shell-b) .nav-brand img { width: 30px; height: 30px; border-radius: 10px; }
+  :is(.theme-b, .shell-b) .nav-cta { padding: 0 10px; font-size: 0.8rem; }
+}
+
+:is(.theme-b, .shell-b) .footer {
+  display: grid; gap: var(--s-4); justify-items: start; text-align: left;
+  margin-top: var(--s-8); padding: var(--s-7) max(var(--gutter), calc((100% - var(--wrap)) / 2)) var(--s-6);
+  background: linear-gradient(180deg, transparent, rgba(22, 19, 37, 0.9) 30%);
+  border-top: 1px solid var(--line); font-size: var(--fs-base); color: var(--text-3);
+}
+:is(.theme-b, .shell-b) .footer-brand { display: inline-flex; align-items: center; min-height: var(--tap); font: 900 1.5rem/1.2 var(--font-head); color: var(--text); }
+:is(.theme-b, .shell-b) .footer-tagline { max-width: 36rem; margin: 0; color: var(--text-2); }
+:is(.theme-b, .shell-b) .footer-links { justify-content: flex-start; gap: 0 var(--s-5); margin: 0; }
+:is(.theme-b, .shell-b) .footer-links a { display: inline-flex; align-items: center; min-height: var(--tap); padding: 0; color: var(--text-2); font-weight: 600; transition: color 0.15s; }
+:is(.theme-b, .shell-b) .footer-links a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+:is(.theme-b, .shell-b) .footer-links--small { font-size: var(--fs-sm); }
+:is(.theme-b, .shell-b) .footer-links--small a { font-weight: 400; color: var(--text-3); }
+:is(.theme-b, .shell-b) .footer > p:last-child { margin: 0; font-size: var(--fs-sm); color: var(--text-3); }
+
+/* ==========================================================================
+   5. REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  :is(.theme-b, .shell-b), :is(.theme-b, .shell-b) *, :is(.theme-b, .shell-b) *::before, :is(.theme-b, .shell-b) *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  :is(.theme-b, .shell-b) .btn:hover, :is(.theme-b, .shell-b) .nav-cta:hover, .theme-b .text-link:hover .icon { transform: none; }
+}

@@ -21,6 +21,7 @@ export function prepareClockMaster(work, site, source) {
   copyFileSync(join(overlays, 'activeDelay.ts'), join(root, 'src', 'app', 'lib', 'activeDelay.ts'));
   patch('src/styles/index.css', "@import './audio.css';", "@import './audio.css';\n@import './browser.css';");
   patch('index.html', ', user-scalable=no', '');
+  patch('index.html', '<!-- Favicon -->', '<meta name="robots" content="noindex,follow" />\n      <link rel="canonical" href="https://otterlygames.com/play/clock-master.html" />\n      <!-- Favicon -->');
   patch('src/app/App.tsx', "if (!isWebsiteBuild || window.parent === window) return;", "if (!isWebsiteBuild) return;\n    let parentPaused = false;\n    const syncPause = () => {\n      const paused = parentPaused || document.hidden;\n      setWebsitePaused(paused); setEmbedPaused(paused);\n      if (paused) { pauseBackgroundMusic(); void stopTTS(); } else resumeBackgroundMusic();\n    };\n    document.addEventListener('visibilitychange', syncPause);");
   patch('src/app/App.tsx', "const paused = event.data.type === 'pauseAudio';", "parentPaused = event.data.type === 'pauseAudio';\n      syncPause();\n      const paused = parentPaused || document.hidden;");
   patch('src/app/App.tsx', "window.parent.postMessage({ type: 'clockReady' }, window.location.origin);", "syncPause();\n    window.parent.postMessage({ type: 'clockReady' }, window.location.origin);");

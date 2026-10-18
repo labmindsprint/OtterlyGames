@@ -10,12 +10,12 @@
 <meta property="og:title" content="Captain Pigeon Pooper — Free Browser Game">
 <meta property="og:description" content="Fly a pigeon, spot criminals, and deliver gravity-assisted justice. Free, no ads, no login.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://otterlygames.com/images/Otter-mascot.png">
+<meta property="og:image" content="https://otterlygames.com/images/brand/otter-buddy-320.webp">
 <meta property="og:url" content="https://otterlygames.com/Arcade/pigeon.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Captain Pigeon Pooper — Free Browser Game">
 <meta name="twitter:description" content="Fly a pigeon, spot criminals, and deliver gravity-assisted justice. Free, no ads, no login.">
-<meta name="twitter:image" content="https://otterlygames.com/images/Otter-mascot.png">
+<meta name="twitter:image" content="https://otterlygames.com/images/brand/otter-buddy-320.webp">
 <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
@@ -24,8 +24,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"VideoGame","name":"Captain Pigeon Pooper","description":"Fly a pigeon across the city, spot criminals with red auras, and deliver gravity-assisted justice from above.","playMode":"SinglePlayer","gamePlatform":"Web Browser","applicationCategory":"Game","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Otterly Games","url":"https://otterlygames.com"},"url":"https://otterlygames.com/Arcade/pigeon.html"}
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+
+
 <link rel="stylesheet" href="/css/arcade-game.css">
 <style>
   /* Game-specific overrides only */
@@ -126,15 +126,19 @@
   }
   .panel .small { font-size: 12px; color: var(--muted); margin-top: 14px; }
 </style>
+  <script src="/js/includes.js" defer></script>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 <div class="game-page">
+<div class="game-device-note" role="note">Kids' ideas, parent support and AI-assisted code. <a href="/play/#creative-arcade">More kid-built games &rarr;</a></div>
   <div class="game-topbar">
-    <a href="index.html" class="back-link">← Arcade</a>
+    <a href="/play/#creative-arcade" class="back-link">← Games</a>
     <span class="game-title">Captain Pigeon Pooper</span>
-    <span class="brand-mark"><img src="/images/Otter-mascot.png" alt="Otterly">Otterly Arcade</span>
+    <span class="brand-mark"><img src="/images/brand/otter-buddy-320.webp" alt="Otterly">Otterly Arcade</span>
   </div>
-<div class="game-area">
+<div class="game-area" id="main-content" tabindex="-1">
   <div class="game-canvas-col">
     <canvas id="game" width="960" height="600"></canvas>
 
@@ -146,6 +150,7 @@
         <p>You are <b>Captain Pigeon Pooper</b>. Your weapon: gravity-assisted justice.</p>
         <p><b>Spot the bad guys</b> — they glow <span style="color:#ef4444"><b>red</b></span>. Then drop the poop.</p>
         <p style="color:#fbbf24;">⚠️ Some crooks are <b>armed</b> — they will shoot back at you. Dodge their tracers and poop them fast.</p>
+        <p class="mobile-instructions">Drag the thumbstick to fly. Tap Drop for a straight drop, or tap a spot in the city to aim a throw.</p>
 
         <div class="keys-grid">
           <div><span class="key">W</span> <span class="key">A</span> <span class="key">S</span> <span class="key">D</span></div>
@@ -215,6 +220,7 @@
 </div>
 </div>
 
+<script src="/js/arcade-controls.js"></script>
 <script>
 // =====================================================================
 // CAPTAIN PIGEON POOPER
@@ -285,13 +291,32 @@ const cars = [];
 // ---------- Input ----------
 const keys = {};
 let mouse = { x: 0, y: 0, down: false, overCanvas: false };
+const controls = ArcadeControls.create({
+  canvas, width: W, height: H, keys, keepHeight: true,
+  actions: [{ id: 'drop', label: 'Drop', description: 'Drop poop straight down', primary: true,
+    press: () => { if (game.state === GameState.PLAYING) shoot(false); } }],
+  getState: () => ({
+    active: game.state === GameState.PLAYING, paused: game.state === GameState.PAUSED,
+    phase: game.state,
+    status: `Lives ${game.lives} · Ammo ${game.ammo}/${game.maxAmmo} · Score ${game.score} · Stops ${game.stops} · Wave ${game.wave}`,
+    actions: { drop: { disabled: game.ammo <= 0, detail: `${game.ammo}/${game.maxAmmo} ammo` } },
+  }),
+  pause: () => { game.state = GameState.PAUSED; },
+  resume: () => { game.state = GameState.PLAYING; lastTime = performance.now(); },
+  restart,
+  help: ['Fly with the thumbstick, WASD or arrow keys. Tap Drop or press Space to drop straight down.',
+    'Tap the city, or click it with a mouse, to aim a throw at that exact spot. You can steer and aim with two fingers.',
+    'Criminals glow red. Avoid civilians; some criminals shoot back. Ammo reloads using the original game rules.',
+    'The camera follows you across the city while keeping the sky and street in view.'],
+});
 
 window.addEventListener('keydown', e => {
+  if (ArcadeControls.ignoreKeyEvent(e)) return;
+  if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code)) e.preventDefault();
   keys[e.code] = true;
   if (e.code === 'Space') e.preventDefault();
   if (e.code === 'KeyR') restart();
-  if (e.code === 'KeyP' && game.state === GameState.PLAYING) game.state = GameState.PAUSED;
-  else if (e.code === 'KeyP' && game.state === GameState.PAUSED) game.state = GameState.PLAYING;
+  if (e.code === 'KeyP' && !e.repeat) controls.togglePause();
   // Space = straight DROP
   if (e.code === 'Space' && game.state === GameState.PLAYING) shoot(false);
   if (game.state === GameState.SPLASH && (e.code === 'Space' || e.code === 'Enter')) startGame();
@@ -299,19 +324,23 @@ window.addEventListener('keydown', e => {
 });
 window.addEventListener('keyup', e => { keys[e.code] = false; });
 
-canvas.addEventListener('mousemove', e => {
-  const r = canvas.getBoundingClientRect();
-  mouse.x = (e.clientX - r.left) * (W / r.width);
-  mouse.y = (e.clientY - r.top)  * (H / r.height);
+canvas.addEventListener('pointermove', e => {
+  const point = controls.point(e);
+  mouse.x = point.x;
+  mouse.y = point.y;
   mouse.overCanvas = true;
 });
-canvas.addEventListener('mouseleave', () => { mouse.overCanvas = false; });
-canvas.addEventListener('mousedown', e => {
+canvas.addEventListener('pointerleave', () => { mouse.overCanvas = false; });
+canvas.addEventListener('pointerdown', e => {
+  if (e.button !== 0) return;
+  const point = controls.point(e);
+  mouse.x = point.x; mouse.y = point.y;
   mouse.down = true;
   // Mouse click = AIMED THROW toward cursor
   if (game.state === GameState.PLAYING) shoot(true, mouse.x, mouse.y);
 });
-canvas.addEventListener('mouseup',   () => { mouse.down = false; });
+canvas.addEventListener('pointerup',   () => { mouse.down = false; });
+canvas.addEventListener('pointercancel', () => { mouse.down = false; });
 
 document.getElementById('startBtn').addEventListener('click', startGame);
 
@@ -595,7 +624,7 @@ function update(dt) {
   }
 
   // Player input
-  let ax = 0, ay = 0;
+  let ax = controls.direction.x, ay = controls.direction.y;
   if (keys['KeyA'] || keys['ArrowLeft'])  ax -= 1;
   if (keys['KeyD'] || keys['ArrowRight']) ax += 1;
   if (keys['KeyW'] || keys['ArrowUp'])    ay -= 1;
@@ -880,9 +909,10 @@ function gameOver() {
 
 // ---------- Render ----------
 function render() {
+  controls.beginFrame(ctx, player);
   ctx.save();
   // screen shake
-  if (game.shake > 0) {
+  if (game.shake > 0 && game.state === GameState.PLAYING) {
     const s = game.shake * 8;
     ctx.translate((Math.random() - 0.5) * s, (Math.random() - 0.5) * s);
   }
@@ -930,7 +960,7 @@ function render() {
   ctx.restore();
 
   // HUD overlay (no shake)
-  drawHUDOverlay();
+  if (!controls.mobile) drawHUDOverlay();
 }
 
 function drawSky() {
@@ -1570,9 +1600,11 @@ function drawFX(e) {
     ctx.restore();
   } else if (e.kind === 'feather') {
     // gravity-pulled little white feather
-    e.vy += 220 * 0.016;       // gentle gravity
-    e.x += e.vx * 0.016;
-    e.y += e.vy * 0.016;
+    if (game.state === GameState.PLAYING) {
+      e.vy += 220 * 0.016;
+      e.x += e.vx * 0.016;
+      e.y += e.vy * 0.016;
+    }
     const k = e.t / e.life;
     ctx.save();
     ctx.globalAlpha = 1 - k;
@@ -1671,11 +1703,14 @@ function showOverlayGameOver() {
 }
 
 function startGame() {
+  controls.clear();
   overlay.classList.add('hidden');
   game.state = GameState.PLAYING;
+  canvas.focus({ preventScroll: true });
 }
 
 function restart() {
+  controls.clear();
   // reset everything
   game.state = GameState.SPLASH;
   game.score = 0;
@@ -1711,6 +1746,7 @@ function restart() {
       <p>You are <b>Captain Pigeon Pooper</b>. Your weapon: gravity-assisted justice.</p>
       <p><b>Spot the bad guys</b> — they glow <span style="color:#ef4444"><b>red</b></span>. Then drop the poop.</p>
       <p style="color:#fbbf24;">⚠️ Some crooks are <b>armed</b> — they will shoot back at you. Dodge their tracers and poop them fast.</p>
+      <p class="mobile-instructions">Drag the thumbstick to fly. Tap Drop for a straight drop, or tap a spot in the city to aim a throw.</p>
       <div class="keys-grid">
         <div><span class="key">W</span> <span class="key">A</span> <span class="key">S</span> <span class="key">D</span></div>
         <div>Fly around the sky</div>

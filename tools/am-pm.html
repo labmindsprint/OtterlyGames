@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AM and PM Lesson — Morning vs Afternoon for Kids | Otterly Games</title>
-  <meta name="description" content="Interactive AM and PM lesson for kids. Slide through a full day and learn which activities happen in AM (morning) and PM (afternoon/evening). Visual and fun.">
+  <title>AM and PM Lesson — Morning vs Afternoon for Kids</title>
+  <meta name="description" content="Interactive AM and PM lesson for kids. Slide through a full day and see which activities happen in AM (morning) and PM (afternoon/evening).">
   <meta name="keywords" content="AM PM lesson for kids, learn AM PM, morning afternoon evening clock, what is AM PM, telling time AM PM, 12 hour clock for kids">
   <link rel="canonical" href="https://otterlygames.com/tools/am-pm.html">
   <meta property="og:title" content="AM and PM Lesson — Morning vs Afternoon for Kids">
   <meta property="og:description" content="Slide through a full day and see what AM and PM mean. Interactive visual lesson — no quiz.">
   <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AM and PM Lesson for Kids">
+  <meta name="twitter:title" content="AM and PM Lesson — Morning vs Afternoon for Kids">
   <meta name="twitter:description" content="Learn AM and PM by exploring a visual day timeline. Free, interactive, no signup.">
   <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AM and PM Lesson","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"AM and PM Lesson"}]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does AM stand for?","acceptedAnswer":{"@type":"Answer","text":"AM stands for 'ante meridiem', which is Latin for 'before midday'. AM covers the 12 hours from midnight (12:00 AM) to just before noon (11:59 AM). For children, think of AM as the sleeping-and-morning half of the day."}},{"@type":"Question","name":"What does PM stand for?","acceptedAnswer":{"@type":"Answer","text":"PM stands for 'post meridiem', meaning 'after midday' in Latin. PM covers the 12 hours from noon (12:00 PM) through the afternoon, evening, and night until just before midnight (11:59 PM)."}},{"@type":"Question","name":"Why is 12:00 noon PM and not AM?","acceptedAnswer":{"@type":"Answer","text":"12:00 noon marks the exact moment the sun crosses its highest point (the meridian). Since PM means 'after midday', noon is labelled 12:00 PM by convention. Similarly, midnight is labelled 12:00 AM because it starts the 'before midday' period. This is one of the trickiest parts of the 12-hour clock for children to learn."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does AM stand for?","acceptedAnswer":{"@type":"Answer","text":"AM stands for 'ante meridiem', meaning 'before midday'. In 12-hour notation, AM begins at midnight and runs until just before noon."}},{"@type":"Question","name":"What does PM stand for?","acceptedAnswer":{"@type":"Answer","text":"PM stands for 'post meridiem', meaning 'after midday'. In 12-hour notation, PM begins at noon and runs until just before midnight."}},{"@type":"Question","name":"Why is 12:00 noon PM and not AM?","acceptedAnswer":{"@type":"Answer","text":"By convention, noon is written 12:00 PM and midnight is written 12:00 AM. Writing 'noon' or 'midnight' can make a schedule clearer. Clock noon is not necessarily the exact moment the sun is highest at your location."}}]}</script>
   <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
@@ -25,6 +25,8 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/tools.css">
   <style>
     body{min-height:100vh;display:flex;flex-direction:column}
     .hero{padding:6.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(26,26,46,.5) 0%,var(--db) 100%)}
@@ -71,19 +73,46 @@
     .promo{text-align:center;padding:2rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:2rem}.promo h3{font-size:1.1rem;margin-bottom:.3rem}.promo p{color:var(--t2);font-size:.9rem;margin-bottom:1rem}
     .promo a{display:inline-block;padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.85rem;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f}
   </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
-</head>
-<body data-og-includes="nav,footer">
 
-  <section class="hero">
-    <h1>🌅 <span class="gt">AM</span> and <span class="gt">PM</span></h1>
-    <p>Slide through a full day and see when it's morning, afternoon, and night!</p>
-  </section>
+
+
+</head>
+<body class="theme-b tools-page">
+<!-- og:nav:start -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/images/brand/otter-mark-80.webp" alt="" width="40" height="40">
+      <span class="brand-text">Otterly Games</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/learn/">Lessons</a>
+      <a href="/tools/">Tools</a>
+      <a href="/parents/">For parents</a>
+      <a href="/blog/">Blog</a>
+      <a href="/Arcade/">Creative Arcade</a>
+    </div>
+    <a href="/play/" class="nav-cta nav-play">Play online <span aria-hidden="true">&nearr;</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<!-- og:nav:end -->
+
+
+
+<main id="main-content" tabindex="-1">
+  <header class="tools-head">
+    <div class="tools-head-inner">
+      <nav class="tools-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/tools/">Tools</a></li><li aria-current="page">AM &amp; PM</li></ol></nav>
+      <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-sun-moon"></use></svg>Telling the time · Ages 5–8</p>
+      <h1><span class="gt">AM</span> and <span class="gt">PM</span></h1>
+      <p class="tools-lead">Slide through a full day and see when it's morning, afternoon, and night!</p>
+      <p class="tools-note"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-lightbulb"></use></svg><span><strong>For parents:</strong> slide to a time and ask what your child usually does then. Linking times to daily routine helps the words stick.</span></p>
+    </div>
+  </header>
 
   <div class="main">
-    <a href="/tools/" style="display:inline-flex;align-items:center;gap:.4rem;color:#9898b0;font-size:.85rem;font-weight:600;margin-bottom:.75rem;transition:color .2s;text-decoration:none" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='#9898b0'">← All Tools</a>
     <div class="lesson-box">
       <h3>📖 What do AM and PM mean?</h3>
       <p><strong style="color:var(--pb)">AM</strong> = from midnight to noon (sleeping → morning → school). <strong style="color:var(--pk)">PM</strong> = from noon to midnight (afternoon → evening → bedtime). Each one lasts <strong style="color:var(--pa)">12 hours</strong>!</p>
@@ -144,16 +173,25 @@
 
     <div class="promo">
       <h3>🦦 Love this? Try Clock Master!</h3>
-      <p>Race cars by telling time! Full game with achievements, car customization & space tracks.</p>
-      <a href="/apps/clock-master.html">Learn About Clock Master →</a>
+      <p>Guided chapters, races, space journeys, and achievements are available in the full browser game. Saves stay on this browser and device.</p>
+      <a href="/play/clock-master.html">Play Clock Master Online →</a>
     </div>
   </div>
+
+  <section class="tools-next" aria-labelledby="next-title">
+    <h2 id="next-title">What to do next</h2>
+    <div class="tools-next-list">
+      <a class="tools-next-card tools-next-card--lesson" href="/learn/telling-time.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-book"></use></svg><span><small>Lesson</small><strong>Telling time</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      <a class="tools-next-card tools-next-card--game" href="/play/clock-master.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"></use></svg><span><small>Game</small><strong>Clock Master</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      <a class="tools-next-card" href="/tools/clock-lessons.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"></use></svg><span><small>Next tool</small><strong>Clock Lessons</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+    </div>
+  </section>
 
   <!-- Educational prose for SEO -->
   <section style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
     <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Teaching Children AM and PM</h2>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Understanding AM and PM is a key milestone in learning to tell the time. For most children aged 5 to 8, the idea that the clock goes around <strong style="color:#c4b5fd">twice in one day</strong> feels genuinely confusing. After all, 3 o'clock happens twice — once in the afternoon and once in the middle of the night. That's a strange concept when you're five years old.</p>
-    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">The best way to introduce AM and PM is through your child's <strong style="color:#c4b5fd">daily routine</strong>. Breakfast happens in the AM. School starts in the AM. Lunch is the turning point — that's when we switch to PM. Dinner, bath time, and bedtime are all PM. By anchoring the concept to activities they already know, children build an intuitive understanding before you ever mention Latin.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">Use familiar daily events as examples, while remembering that routines vary. AM runs from midnight to before noon; PM runs from noon to before midnight. The change happens at noon, not at a particular family's lunchtime. For related clock activities, follow the <a href="/learn/telling-time.html" style="color:#c4b5fd">telling-time learning path</a>.</p>
 
     <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Why the 12-Hour Clock Is Tricky</h2>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">The 12-hour clock is the standard in everyday life in many countries, but it introduces two complications for young learners. First, the same number (like 7) means different things depending on whether it's AM or PM. Second, the transition points — 12:00 noon is PM, not AM, and 12:00 midnight is AM, not PM — break the pattern children expect.</p>
@@ -171,15 +209,15 @@
     <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem">Frequently Asked Questions</h3>
     <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
       <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">What does AM stand for?</summary>
-      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">AM stands for "ante meridiem", which is Latin for "before midday". AM covers the 12 hours from midnight (12:00 AM) to just before noon (11:59 AM). For children, think of AM as the sleeping-and-morning half of the day.</p>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">AM stands for 'ante meridiem', meaning 'before midday'. In 12-hour notation, AM begins at midnight and runs until just before noon.</p>
     </details>
     <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
       <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">What does PM stand for?</summary>
-      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">PM stands for "post meridiem", meaning "after midday" in Latin. PM covers the 12 hours from noon (12:00 PM) through the afternoon, evening, and night until just before midnight (11:59 PM).</p>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">PM stands for 'post meridiem', meaning 'after midday'. In 12-hour notation, PM begins at noon and runs until just before midnight.</p>
     </details>
     <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
       <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">Why is 12:00 noon PM and not AM?</summary>
-      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">12:00 noon marks the exact moment the sun crosses its highest point (the meridian). Since PM means "after midday", noon is labelled 12:00 PM by convention. Similarly, midnight is labelled 12:00 AM because it starts the "before midday" period. This is one of the trickiest parts of the 12-hour clock for children to learn.</p>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">By convention, noon is written 12:00 PM and midnight is written 12:00 AM. Writing 'noon' or 'midnight' can make a schedule clearer. Clock noon is not necessarily the exact moment the sun is highest at your location.</p>
     </details>
   </section>
 
@@ -327,5 +365,29 @@
     update(6);
     thumbStyle.textContent = `input[type="range"]::-webkit-slider-thumb{background:#93c5fd}`;
   </script>
+
+</main>
+<!-- og:footer:start -->
+<footer class="footer">
+  <a href="/" class="footer-brand">Otterly Games</a>
+  <p class="footer-tagline">Learning like no otter. Browser games, little discoveries and practice on paper.</p>
+  <div class="footer-links">
+    <a href="/play/">Play online</a>
+    <a href="/learn/">Learn by skill</a>
+    <a href="/parents/">Parents &amp; teachers</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Parent guides</a>
+    <a href="/about.html">Our story</a>
+    <a href="/Arcade/">Creative arcade</a>
+  </div>
+  <div class="footer-links footer-links--small">
+    <a href="/contact.html">Contact &amp; support</a>
+    <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 Otterly Games. Made by a mum, for curious minds.</p>
+</footer>
+<!-- og:footer:end -->
 </body>
 </html>

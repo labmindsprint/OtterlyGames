@@ -4,7 +4,26 @@
    Import this in every game page BEFORE game-specific styles.
    ============================================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+@import url('/css/fonts.css');
+@import url('/css/arcade-controls.css');
+
+.game-device-note {
+  flex-shrink: 0;
+  background: #251e36;
+  color: #eee7fb;
+  padding: 0.5rem 1rem;
+  font-size: 0.78rem;
+  text-align: center;
+  line-height: 1.5;
+}
+.game-device-note a { color: #fcd34d; text-decoration: underline; }
+.skip-link {
+  position: fixed; top: .5rem; left: .75rem; z-index: 10000;
+  padding: .7rem 1rem; border-radius: .5rem;
+  background: var(--warn, #fcd34d); color: #10101a;
+  font-weight: 700; transform: translateY(-160%);
+}
+.skip-link:focus { transform: translateY(0); }
 
 /* --- Unified CSS Variables --- */
 :root {

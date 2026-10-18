@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hour Hand Lesson — Learn What the Short Hand Means | Otterly Games</title>
+  <title>Hour Hand Lesson — Learn What the Short Hand Means</title>
   <meta name="description" content="Interactive hour hand lesson for kids. Drag the short hand around the clock to see the hour change. No quiz, just explore and learn at your own pace.">
   <meta name="keywords" content="hour hand lesson, learn hour hand, clock hour hand for kids, what does the short hand mean, telling time hour hand">
   <link rel="canonical" href="https://otterlygames.com/tools/hour-hand.html">
@@ -11,12 +11,12 @@
   <meta property="og:description" content="Drag the short hand around the clock and watch the hour change. Interactive, no quiz — just explore.">
   <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Hour Hand Lesson for Kids">
+  <meta name="twitter:title" content="Hour Hand Lesson — Learn What the Short Hand Means">
   <meta name="twitter:description" content="Interactive lesson — drag the hour hand to learn how clocks work. Free, no signup.">
   <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hour Hand Lesson","applicationCategory":"EducationalApplication","offers":{"@type":"Offer","price":"0"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Hour Hand Lesson"}]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the hour hand on a clock?","acceptedAnswer":{"@type":"Answer","text":"The hour hand is the shorter, thicker hand on an analogue clock. It points to the current hour and moves slowly — taking a full 12 hours to complete one trip around the clock face. When the hour hand points directly to a number, it's exactly that o'clock (e.g. pointing to 3 means 3 o'clock)."}},{"@type":"Question","name":"At what age should children learn the hour hand?","acceptedAnswer":{"@type":"Answer","text":"Most children are ready to learn the hour hand between ages 4 and 6. Start with 'o'clock' times only (1 o'clock, 2 o'clock, etc.) before introducing half hours. Children who can count to 12 and recognise written numbers are ready for this first step in telling time."}},{"@type":"Question","name":"Why do clocks have two hands?","acceptedAnswer":{"@type":"Answer","text":"Clocks have two main hands because we measure time in two units: hours and minutes. The short (hour) hand shows which hour it is, while the long (minute) hand shows how many minutes have passed since the last full hour. The hour hand moves slowly (once around in 12 hours) while the minute hand moves faster (once around every 60 minutes)."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the hour hand on a clock?","acceptedAnswer":{"@type":"Answer","text":"The hour hand is the shorter hand on a typical analogue clock. It completes a rotation in 12 hours. At an exact hour it points to that number, then gradually moves towards the next."}},{"@type":"Question","name":"At what age should children learn the hour hand?","acceptedAnswer":{"@type":"Answer","text":"There is no fixed age deadline in this tool. Recognising the numbers 1 to 12 can help. Try a few o'clock times together and choose the next step with your child's teacher if needed."}},{"@type":"Question","name":"Why do clocks have two hands?","acceptedAnswer":{"@type":"Answer","text":"The two main hands show hours and minutes. The hour hand completes a rotation in 12 hours; the minute hand completes one in 60 minutes."}}]}</script>
   <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
@@ -25,6 +25,8 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/tools.css">
   <style>
     body{min-height:100vh;display:flex;flex-direction:column}
     .hero{padding:6.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(26,26,46,.5) 0%,var(--dark-bg) 100%)}
@@ -32,8 +34,8 @@
     .main{flex:1;max-width:550px;margin:0 auto;padding:2rem 1.5rem 3rem;width:100%}
     .lesson-box{background:var(--ds);border:1px solid var(--dbr);border-radius:.75rem;padding:1.2rem;margin-bottom:1.5rem;text-align:center}
     .lesson-box h3{font-size:1rem;margin-bottom:.3rem;color:var(--pa)}.lesson-box p{font-size:.85rem;color:var(--t2);line-height:1.5}
-    .clock-area{background:var(--dc);border:1px solid var(--dbr);border-radius:1.5rem;padding:2rem;text-align:center;margin-bottom:1.5rem}
-    .clock-container{position:relative;width:260px;height:260px;margin:0 auto 1.5rem;touch-action:none}
+    .clock-area{background:var(--dc);border:1px solid var(--dbr);border-radius:1.5rem;padding:clamp(1rem,4vw,2rem);text-align:center;margin-bottom:1.5rem}
+    .clock-container{position:relative;width:min(260px,100%);aspect-ratio:1;margin:0 auto 1.5rem;touch-action:none}
     .clock-svg{width:100%;height:100%;cursor:grab}
     .clock-svg:active{cursor:grabbing}
     .time-display{font-size:2.5rem;font-weight:900;font-family:'Nunito',sans-serif;color:var(--pp);margin-bottom:.5rem;letter-spacing:2px}
@@ -46,19 +48,46 @@
     .promo{text-align:center;padding:2rem;background:var(--dc);border:1px solid var(--dbr);border-radius:1rem;margin-top:2rem}.promo h3{font-size:1.1rem;margin-bottom:.3rem}.promo p{color:var(--t2);font-size:.9rem;margin-bottom:1rem}
     .promo a{display:inline-block;padding:.6rem 1.4rem;border-radius:999px;font-weight:700;font-size:.85rem;background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f}
   </style>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
-</head>
-<body data-og-includes="nav,footer">
 
-  <section class="hero">
-    <h1>🕐 The <span class="gt">Hour</span> Hand</h1>
-    <p>Grab the short hand and drag it around the clock. Watch the hour change!</p>
-  </section>
+
+
+</head>
+<body class="theme-b tools-page">
+<!-- og:nav:start -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/images/brand/otter-mark-80.webp" alt="" width="40" height="40">
+      <span class="brand-text">Otterly Games</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/learn/">Lessons</a>
+      <a href="/tools/">Tools</a>
+      <a href="/parents/">For parents</a>
+      <a href="/blog/">Blog</a>
+      <a href="/Arcade/">Creative Arcade</a>
+    </div>
+    <a href="/play/" class="nav-cta nav-play">Play online <span aria-hidden="true">&nearr;</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<!-- og:nav:end -->
+
+
+
+<main id="main-content" tabindex="-1">
+  <header class="tools-head">
+    <div class="tools-head-inner">
+      <nav class="tools-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/tools/">Tools</a></li><li aria-current="page">Hour Hand</li></ol></nav>
+      <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-hour"></use></svg>Telling the time · Ages 4–6</p>
+      <h1>The <span class="gt">Hour</span> Hand</h1>
+      <p class="tools-lead">Grab the short hand and drag it around the clock. Watch the hour change!</p>
+      <p class="tools-note"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-lightbulb"></use></svg><span><strong>For parents:</strong> let your child drag the hand and say each hour aloud. There is no quiz, score or timer.</span></p>
+    </div>
+  </header>
 
   <div class="main">
-    <a href="/tools/" style="display:inline-flex;align-items:center;gap:.4rem;color:#9898b0;font-size:.85rem;font-weight:600;margin-bottom:.75rem;transition:color .2s;text-decoration:none" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='#9898b0'">← All Tools</a>
     <div class="lesson-box">
       <h3>📖 What is the Hour Hand?</h3>
       <p>The <strong style="color:var(--pp)">short, thick hand</strong> on a clock tells you the <strong style="color:var(--t1)">hour</strong>. It moves slowly — it takes a whole hour to move from one number to the next!</p>
@@ -90,10 +119,19 @@
 
     <div class="promo">
       <h3>🦦 Love this? Try Clock Master!</h3>
-      <p>Race cars by telling time! Full game with achievements, car customization & space tracks.</p>
-      <a href="/apps/clock-master.html">Learn About Clock Master →</a>
+      <p>Guided chapters, races, space journeys, and achievements are available in the full browser game. Saves stay on this browser and device.</p>
+      <a href="/play/clock-master.html">Play Clock Master Online →</a>
     </div>
   </div>
+
+  <section class="tools-next" aria-labelledby="next-title">
+    <h2 id="next-title">What to do next</h2>
+    <div class="tools-next-list">
+      <a class="tools-next-card tools-next-card--lesson" href="/learn/telling-time.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-book"></use></svg><span><small>Lesson</small><strong>Telling time</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      <a class="tools-next-card tools-next-card--game" href="/play/clock-master.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"></use></svg><span><small>Game</small><strong>Clock Master</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      <a class="tools-next-card" href="/tools/minute-hand.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-minute"></use></svg><span><small>Next tool</small><strong>Minute Hand</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+    </div>
+  </section>
 
   <!-- Educational prose -->
   <section style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
@@ -102,8 +140,8 @@
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">What makes the hour hand interesting (and sometimes confusing) is how slowly it moves. Unlike the minute hand, which zips around the clock face once every hour, the hour hand takes a full <strong style="color:#c4b5fd">12 hours</strong> to complete one rotation. That means it barely moves in the time between breakfast and mid-morning snack. This is why we teach children to start with "o'clock" times only — the hour hand is clearly pointing at a number at those moments.</p>
 
     <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">When to Introduce the Hour Hand</h2>
-    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Most children aged <strong style="color:#c4b5fd">4 to 6</strong> are ready to learn the hour hand, provided they can count to 12 and recognise the written numbers. The key is to keep the minute hand fixed at 12 (showing exact o'clock times) so your child can focus on one hand at a time. This is exactly what our interactive tool above does — the minute hand stays still while your child drags the hour hand to explore each position.</p>
-    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">Once children are confident with all 12 hours, you can move on to the <a href="/tools/minute-hand.html" style="color:#c4b5fd;text-decoration:underline">minute hand lesson</a>, where they learn to count by fives and read beyond the hour.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Recognising the numbers 1 to 12 can help with this activity. Try a few o'clock times together rather than treating an age range as a deadline. The tool keeps the minute hand at 12 so your child can explore one hand at a time.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">Once children are comfortable with the hours, try the <a href="/tools/minute-hand.html" style="color:#c4b5fd;text-decoration:underline">minute hand lesson</a>. Our <a href="/learn/telling-time.html" style="color:#c4b5fd">telling-time learning path</a> helps you choose the next activity without rushing ahead.</p>
 
     <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Teaching Tips for Parents</h2>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem"><strong style="color:#f0f0f8">Use a real clock:</strong> After your child practices with our digital tool, transfer the skill to a real analogue clock or toy clock with movable hands. The physical interaction reinforces the concept.</p>
@@ -117,15 +155,15 @@
     <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem">Frequently Asked Questions</h3>
     <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
       <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">What is the hour hand on a clock?</summary>
-      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">The hour hand is the shorter, thicker hand on an analogue clock. It points to the current hour and moves slowly — taking a full 12 hours to complete one trip around the clock face. When the hour hand points directly to a number, it's exactly that o'clock (e.g. pointing to 3 means 3 o'clock).</p>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">The hour hand is the shorter hand on a typical analogue clock. It completes a rotation in 12 hours. At an exact hour it points to that number, then gradually moves towards the next.</p>
     </details>
     <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
       <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">At what age should children learn the hour hand?</summary>
-      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">Most children are ready to learn the hour hand between ages 4 and 6. Start with "o'clock" times only (1 o'clock, 2 o'clock, etc.) before introducing half hours. Children who can count to 12 and recognise written numbers are ready for this first step in telling time.</p>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">There is no fixed age deadline in this tool. Recognising the numbers 1 to 12 can help. Try a few o'clock times together and choose the next step with your child's teacher if needed.</p>
     </details>
     <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
       <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">Why do clocks have two hands?</summary>
-      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">Clocks have two main hands because we measure time in two units: hours and minutes. The short (hour) hand shows which hour it is, while the long (minute) hand shows how many minutes have passed since the last full hour. The hour hand moves slowly (once around in 12 hours) while the minute hand moves faster (once around every 60 minutes).</p>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">The two main hands show hours and minutes. The hour hand completes a rotation in 12 hours; the minute hand completes one in 60 minutes.</p>
     </details>
   </section>
 
@@ -203,11 +241,8 @@
       const rect = svg.getBoundingClientRect();
       const scaleX = 260 / rect.width;
       const scaleY = 260 / rect.height;
-      let clientX, clientY;
-      if (e.touches) { clientX = e.touches[0].clientX; clientY = e.touches[0].clientY; }
-      else { clientX = e.clientX; clientY = e.clientY; }
-      const x = (clientX - rect.left) * scaleX - cx;
-      const y = (clientY - rect.top) * scaleY - cy;
+      const x = (e.clientX - rect.left) * scaleX - cx;
+      const y = (e.clientY - rect.top) * scaleY - cy;
       let ang = Math.atan2(y, x) * 180 / Math.PI + 90;
       if (ang < 0) ang += 360;
       return ang;
@@ -219,21 +254,25 @@
     }
 
     const container = document.getElementById('clockContainer');
-    container.addEventListener('mousedown', startDrag);
-    container.addEventListener('touchstart', startDrag, { passive: false });
+    let dragPointerId = null;
+    container.addEventListener('pointerdown', startDrag);
+    container.addEventListener('pointermove', handleDrag);
+    container.addEventListener('pointerup', stopDrag);
+    container.addEventListener('pointercancel', stopDrag);
+    container.addEventListener('lostpointercapture', stopDrag);
 
     function startDrag(e) {
+      if (!e.isPrimary || e.button !== 0 || dragging) return;
       e.preventDefault();
+      dragPointerId = e.pointerId;
       dragging = true;
+      // Keep capture on the wrapper: drawing replaces the SVG's child nodes.
+      container.setPointerCapture(e.pointerId);
       handleDrag(e);
-      document.addEventListener('mousemove', handleDrag);
-      document.addEventListener('touchmove', handleDrag, { passive: false });
-      document.addEventListener('mouseup', stopDrag);
-      document.addEventListener('touchend', stopDrag);
     }
 
     function handleDrag(e) {
-      if (!dragging) return;
+      if (!dragging || e.pointerId !== dragPointerId) return;
       e.preventDefault();
       const ang = getAngle(e);
       currentHour = snapToHour(ang);
@@ -241,16 +280,39 @@
       updateDisplay();
     }
 
-    function stopDrag() {
+    function stopDrag(e) {
+      if (e.pointerId !== dragPointerId) return;
       dragging = false;
-      document.removeEventListener('mousemove', handleDrag);
-      document.removeEventListener('touchmove', handleDrag);
-      document.removeEventListener('mouseup', stopDrag);
-      document.removeEventListener('touchend', stopDrag);
+      dragPointerId = null;
+      if (container.hasPointerCapture(e.pointerId)) container.releasePointerCapture(e.pointerId);
     }
 
     drawClock();
     updateDisplay();
   </script>
+
+</main>
+<!-- og:footer:start -->
+<footer class="footer">
+  <a href="/" class="footer-brand">Otterly Games</a>
+  <p class="footer-tagline">Learning like no otter. Browser games, little discoveries and practice on paper.</p>
+  <div class="footer-links">
+    <a href="/play/">Play online</a>
+    <a href="/learn/">Learn by skill</a>
+    <a href="/parents/">Parents &amp; teachers</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Parent guides</a>
+    <a href="/about.html">Our story</a>
+    <a href="/Arcade/">Creative arcade</a>
+  </div>
+  <div class="footer-links footer-links--small">
+    <a href="/contact.html">Contact &amp; support</a>
+    <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 Otterly Games. Made by a mum, for curious minds.</p>
+</footer>
+<!-- og:footer:end -->
 </body>
 </html>

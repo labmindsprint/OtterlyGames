@@ -42,6 +42,7 @@ npm-debug.log*
 # Cache
 .cache/
 .parcel-cache/
+__pycache__/
 
 # Source code folders (not needed for site hosting)
 ClockMaster-main/

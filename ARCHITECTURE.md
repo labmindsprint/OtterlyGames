@@ -1,744 +1,431 @@
-# Otterly Games — Site Architecture Audit & Blueprint
+# Otterly Games — Static website architecture
 
-## 1. Current State: Problems Found
+## Boundaries
 
-### 1.1 Tool Inventory Mismatch (Critical)
+This repository remains a GitHub Pages website: HTML, CSS, vanilla JavaScript,
+local fonts and static assets. `scripts\build-site.mjs` is a small Node-only
+pre-publication step, not a framework, web server or game bundler. Its output is
+checked in and served directly. Root `.nojekyll` preserves the current mix of
+public pages and underscore-prefixed source/data directories.
 
-**12 tool pages exist** in `tools/`, but they are listed inconsistently:
+The full Math Tank and Clock Master runtimes in `games` have their own
+production-source overlay/export pipelines. The website build neither imports
+their source nor rewrites their exports. It never changes native projects,
+`ads.txt`, `app-ads.txt`, stylesheets, shared JavaScript, assets or account
+settings.
 
-| Tool File              | tools/index.html | Homepage | Schema JSON-LD |
-|------------------------|:---:|:---:|:---:|
-| multiplication-practice | ✅ | ✅ | ✅ |
-| division-practice       | ✅ | ✅ | ✅ |
-| multiplication-table    | ✅ | ✅ | ✅ |
-| column-multiplication   | ✅ | ❌ | ✅ |
-| long-division           | ✅ | ✅ | ✅ |
-| math-quiz               | ✅ | ✅ | ✅ |
-| calculator              | ✅ | ❌ | ✅ |
-| spelling-bee            | ✅ | ✅ | ✅ |
-| clock-lessons           | ✅ | ❌ | ✅ |
-| **hour-hand**           | ❌ | ✅ | ❌ |
-| **minute-hand**         | ❌ | ✅ | ❌ |
-| **am-pm**               | ❌ | ❌ | ❌ |
+## Sources of truth
 
-**Impact**: Hour Hand, Minute Hand are linked from the homepage but **invisible** from the
-Tools listing page. AM-PM exists on disk but is orphaned — linked from nowhere. Schema
-says "9 tools" but 12 exist.
+The site serves parents looking for help with children's learning. Lessons,
+useful tools and original parent articles are discovery entry points; Clock
+Master and Math Tank are the flagship learning games. Home curates those routes
+before recreational Arcade games. Play online owns the full game catalogue.
+Website display advertising is AdSense-only and remains a separate, disabled
+integration with approval and privacy gates;
+content and navigation must remain useful without an ad request or installation.
+Useful parent content and tools support organic discovery and the goal of
+sustainable advertising revenue, not extra clicks or interruptions to practice.
 
-### 1.2 CSS Duplication (High)
+| Source | Responsibility |
+| --- | --- |
+| `_data\public-pages.json` | Explicit indexable route inventory, canonical origin, custom-game shell exceptions and static verification eligibility |
+| `_includes\nav.html`, `_includes\footer.html` | Canonical site navigation, skip link and footer |
+| `_data\games.json`, `scripts\site-games.mjs` | Validated Play online catalogue, game/category ordering, local cover art, content notes and ItemList metadata |
+| `_includes\arcade-games.html` | Direct-play cards for the standalone Creative Arcade hub |
+| `_data\tools.json` | Tool links, categories, ordering, descriptions and counts |
+| `_data\blogs.json` | Article links, titles, excerpts and listing order |
+| Public HTML outside generated markers | Page-specific content, tool/game logic and authored metadata |
+| `css\fonts.css`, `images\brand` | Locally hosted font and optimized brand assets |
+| `js\includes.js` | Shared navigation behavior and optional include fallback, not the primary rendered shell |
+| `js\game-catalogue.js`, `css\catalogue.css` | Progressive search/category filters and responsive, games-first discovery |
+| `css\tokens.css` | Opt-in Theme B design tokens, primitives and shared nav/footer restyle (only under `.theme-b` / `.shell-b`) |
+| `css\learn.css` | Theme B learning hub and four skill pages (`learn\*.html`), scoped to `.learn-page`; Space Academy `learn\olympiad\` keeps its own styles |
+| `css\tools.css`, `js\tools-hub.js`, `css\parents.css`, `js\parents.js` | Theme B tools hub (skill groups rendered from `_data\tools.json`), tool pages and worksheet builder (scoped to `.tools-page`; widget logic and print CSS unchanged) and the Parents page (`.parents-page`; contents list + `<details>` accordions) |
+| `css\home.css`, `js\home.js`, `css\game-intros.css` | Curated brand homepage (scoped to `.home-page`) with its clock/times-table mini tools, static gameplay previews and optional practice/help layouts |
+| `css\blog.css`, `js\blog.js`, `js\article.js` | Theme B blog hub (static image-led cards; topic chips are `#topic-*` anchors filtered by CSS `:target`, `blog.js` upgrades them) and articles (cover header, ~68ch measure, `<h2>` contents list collapsed on mobile by `article.js`, callouts, "Try this together" block, related guides), scoped to `.blog-page` / `.article-page`; editorial ad hooks stay in `css\web-ads.css` |
+| `css\play-hub.css`, `js\play-hub.js`, `css\pages.css` | Theme B for the Play hub (flagship tiles, "Just for fun" arcade group), game landing pages (chrome only; iframe/fullscreen geometry stays in `css\web-game.css`) and root/`apps\` pages, scoped by body classes |
+| `js\space-academy\curriculum.mjs`, `questions.mjs` | Seven grade maps, original question families, deterministic seeds, answer proofs and content version |
+| `js\space-academy\progress.mjs`, `storage.mjs` | Validated explorer/grade progression and atomic, isolated IndexedDB saves |
+| `scripts\build-space-academy.mjs` | Indexable grade/chapter examples generated from the actual question engine |
 
-| Component | Where CSS Lives |
-|-----------|----------------|
-| `.tool-card` (homepage) | `css/homepage.css` (inline-card with icon+text layout) |
-| `.tool-card` (tools index) | Inline `<style>` in `tools/index.html` (emoji + h3 + p + cta layout) |
-| `.tool-card` (dark-brand) | `css/dark-brand.css` (yet another definition) |
-| Nav bar | Copy-pasted inline in **every** tool & blog page, plus `css/homepage.css` |
-| Footer | Copy-pasted inline in **every** tool & blog page |
-| CSS Variables | `--pp/#c4b5fd` in tool pages vs `--pastel-purple/#c4b5fd` in index pages |
-| Base reset | Repeated in every single HTML file |
+The route inventory covers the homepage, app information, browser-game hub and
+launchers, tool hub/details, blog hub/articles, learning hub/paths, parents,
+support, about/contact/policies and the Arcade hub/games.
+Directory `index.html` routes normalize to `/directory/`; the root normalizes
+to `/`. New public HTML in the root or public content directories must be
+listed explicitly. The build reports unlisted files rather than silently
+publishing them in a sitemap.
 
-**Impact**: A brand change (colors, fonts, nav links) requires editing **15+ files**
-manually. Tool pages and the tools listing page use completely different card HTML
-structures, so visual improvements to one don't apply to the other.
+Tools and blog detail URLs must exactly match their registry URLs. Adding a
+file alone does not make it discoverable. Adding an inventory entry without its
+file, metadata or registry entry also fails validation.
 
-### 1.3 No Shared Components
+## Shared shell contract
 
-Every page is a fully self-contained HTML file with:
-- Its own `<style>` block (nav, footer, variables, reset, page-specific)
-- Its own copy of the nav HTML with hard-coded links
-- Its own copy of the footer HTML
-- Its own Google Analytics + AdSense snippet
-- Its own favicon definition
-
-**Impact**: Silo development. Fix the nav in one tool page? The other 14 pages still
-have the old nav.
-
-### 1.4 Blog Has the Same Problem
-
-Homepage hardcodes 3 blog cards. Blog index has its own card list. Adding a new blog
-post requires editing:
-1. The new blog post HTML file
-2. `blog/index.html` (add to listing)
-3. `index.html` (update the preview section)
-4. `sitemap.xml`
-
-### 1.5 Adding a New Tool Today = 5 Manual Edits
-
-1. Create `tools/new-tool.html` (copy-paste 60+ lines of boilerplate)
-2. Add card to `tools/index.html`
-3. Add card to `index.html` homepage section
-4. Update Schema JSON-LD `numberOfItems` + `itemListElement` in `tools/index.html`
-5. Update `sitemap.xml`
-
-If any step is forgotten, the tool is partially orphaned — exactly the problem with
-hour-hand, minute-hand, and am-pm.
-
----
-
-## 2. Target Architecture
-
-### 2.1 Design Principles
-
-| Principle | Rule |
-|-----------|------|
-| **Single Source of Truth** | Every tool and blog post is defined once in a central registry |
-| **DRY Components** | Nav, footer, head-meta, analytics = shared includes, defined once |
-| **Data-Driven Rendering** | Listing pages and homepage previews render from the same data |
-| **Convention > Configuration** | New tool = add file + one registry entry; everything else auto-generates |
-| **Progressive Enhancement** | Works as static HTML; JS adds interactivity only |
-| **No Build Step Required** | All solutions work with vanilla HTML/CSS/JS on GitHub Pages |
-
-### 2.2 File Structure (Target)
-
-```
-/
-├── _data/
-│   ├── tools.json          ← Single registry of ALL tools
-│   ├── blogs.json           ← Single registry of ALL blog posts
-│   └── site.json            ← Brand-level config (name, colors, analytics IDs)
-│
-├── _includes/
-│   ├── nav.html             ← Shared navigation (injected by JS)
-│   ├── footer.html          ← Shared footer (injected by JS)
-│   └── head-common.html     ← Analytics, AdSense, favicon, fonts
-│
-├── css/
-│   ├── base.css             ← Reset, variables, typography, utilities
-│   ├── components.css       ← .tool-card, .blog-card, .nav, .footer (ONE definition)
-│   ├── homepage.css          ← Homepage-specific layout
-│   └── tool-page.css         ← Shared layout for individual tool pages
-│
-├── js/
-│   ├── includes.js          ← Loads nav + footer from _includes/
-│   ├── registry.js          ← Reads tools.json + blogs.json, renders grids
-│   └── main.js              ← Scroll effects, nav toggle, shared UX
-│
-├── tools/
-│   ├── index.html           ← Renders ALL tools from tools.json automatically
-│   ├── hour-hand.html        ← Individual tool page (uses shared CSS + JS)
-│   ├── minute-hand.html
-│   ├── am-pm.html
-│   └── ...
-│
-├── blog/
-│   ├── index.html           ← Renders ALL posts from blogs.json automatically
-│   └── *.html
-│
-├── index.html               ← Homepage (tools preview + blog preview from JSON)
-└── sitemap.xml               ← Can be auto-generated from registry
-```
-
----
-
-## 3. Implementation Plan
-
-### Phase 1: Registry (Single Source of Truth)
-
-Create `_data/tools.json` — the canonical list of every tool:
-
-```json
-{
-  "tools": [
-    {
-      "id": "hour-hand",
-      "title": "Hour Hand",
-      "shortTitle": "Hour Hand",
-      "emoji": "🖐️",
-      "description": "Drag the short hand, see the hour",
-      "fullDescription": "Interactive hour hand lesson for kids. Drag the short hand around the clock to see the hour change.",
-      "url": "/tools/hour-hand.html",
-      "category": "time",
-      "ageRange": "Ages 5–8",
-      "cta": "Learn Free →",
-      "featured": true,
-      "order": 1
-    },
-    {
-      "id": "minute-hand",
-      "title": "Minute Hand",
-      "shortTitle": "Minute Hand",
-      "emoji": "⏱️",
-      "description": "Grab the long hand, count minutes",
-      "fullDescription": "Interactive minute hand lesson for kids. Drag the long hand around the clock and see minutes change.",
-      "url": "/tools/minute-hand.html",
-      "category": "time",
-      "ageRange": "Ages 5–8",
-      "cta": "Learn Free →",
-      "featured": true,
-      "order": 2
-    },
-    {
-      "id": "am-pm",
-      "title": "AM & PM",
-      "shortTitle": "AM & PM",
-      "emoji": "🌅",
-      "description": "Learn morning vs afternoon",
-      "fullDescription": "Interactive AM and PM lesson for kids. Slide through a full day and learn which activities happen in AM and PM.",
-      "url": "/tools/am-pm.html",
-      "category": "time",
-      "ageRange": "Ages 5–8",
-      "cta": "Learn Free →",
-      "featured": false,
-      "order": 3
-    }
-  ]
-}
-```
-
-Similarly `_data/blogs.json`:
-
-```json
-{
-  "posts": [
-    {
-      "id": "division-for-kids",
-      "title": "Division for Kids Explained Simply",
-      "excerpt": "How to teach division to kids in a way they actually understand.",
-      "url": "/blog/division-for-kids-explained-simply.html",
-      "date": "2026-03-02",
-      "displayDate": "Mar 2, 2026",
-      "featured": true,
-      "order": 1
-    }
-  ]
-}
-```
-
-### Phase 2: Shared Components
-
-#### `_includes/nav.html` — one nav, used everywhere:
+New content pages start with:
 
 ```html
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-brand">
-      <img src="/images/Otter-mascot.png" alt="Otterly Games" width="40" height="40">
-      <span class="brand-text">Otterly Games</span>
-    </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-links" id="navLinks">
-      <a href="/#games">Games</a>
-      <a href="/tools/">Tools</a>
-      <a href="/blog/">Blog</a>
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/#games" class="nav-cta">Get Our Games →</a>
-    </div>
-  </div>
-</nav>
-```
-
-#### `js/includes.js` — inject shared components:
-
-```js
-(function() {
-  // Load and inject a component
-  async function loadComponent(url, targetSelector, position) {
-    try {
-      const resp = await fetch(url);
-      if (!resp.ok) return;
-      const html = await resp.text();
-      const target = document.querySelector(targetSelector);
-      if (target) target.insertAdjacentHTML(position, html);
-    } catch(e) { console.warn('Component load failed:', url, e); }
-  }
-
-  // Inject nav at top of body, footer at bottom
-  loadComponent('/_includes/nav.html', 'body', 'afterbegin');
-  loadComponent('/_includes/footer.html', 'body', 'beforeend');
-
-  // Highlight active nav link
-  document.addEventListener('DOMContentLoaded', () => {
-    const path = location.pathname;
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      const href = a.getAttribute('href');
-      if (href === path || (href !== '/' && path.startsWith(href))) {
-        a.classList.add('active');
-      }
-    });
-    // Nav toggle
-    const toggle = document.getElementById('navToggle');
-    if (toggle) toggle.addEventListener('click', () =>
-      document.getElementById('navLinks').classList.toggle('open')
-    );
-  });
-})();
-```
-
-### Phase 3: Data-Driven Rendering
-
-#### `js/registry.js` — render tool grids and blog previews from JSON:
-
-```js
-const OG = window.OG || {};
-
-OG.loadRegistry = async function() {
-  if (OG._tools) return;
-  try {
-    const [toolsResp, blogsResp] = await Promise.all([
-      fetch('/_data/tools.json'),
-      fetch('/_data/blogs.json')
-    ]);
-    OG._tools = (await toolsResp.json()).tools;
-    OG._blogs = (await blogsResp.json()).posts;
-  } catch(e) { console.warn('Registry load failed', e); }
-};
-
-// Render FULL tools grid (for tools/index.html)
-OG.renderToolsGrid = async function(containerSelector, options = {}) {
-  await OG.loadRegistry();
-  const container = document.querySelector(containerSelector);
-  if (!container || !OG._tools) return;
-
-  const categories = {};
-  OG._tools.forEach(t => {
-    if (!categories[t.category]) categories[t.category] = [];
-    categories[t.category].push(t);
-  });
-
-  const categoryLabels = { math: '🧮 Math Practice & Drills', time: '🕐 Time & Clocks', language: '📚 English' };
-
-  let html = '';
-  for (const [cat, tools] of Object.entries(categories)) {
-    tools.sort((a,b) => a.order - b.order);
-    html += `<div class="tools-category fade-in">
-      <div class="tools-category-header"><h2>${categoryLabels[cat] || cat}</h2></div>
-      <div class="tools-grid">
-        ${tools.map(t => OG._toolCardFull(t)).join('')}
-      </div>
-    </div>`;
-  }
-  container.innerHTML = html;
-};
-
-// Render PREVIEW tools grid (for homepage)
-OG.renderToolsPreview = async function(containerSelector, maxItems = 8) {
-  await OG.loadRegistry();
-  const container = document.querySelector(containerSelector);
-  if (!container || !OG._tools) return;
-
-  const featured = OG._tools
-    .filter(t => t.featured)
-    .sort((a,b) => a.order - b.order)
-    .slice(0, maxItems);
-
-  container.innerHTML = featured.map(t =>
-    `<a href="${t.url}" class="tool-card fade-in" data-category="${t.category}">
-      <span class="tool-icon">${t.emoji}</span>
-      <div class="tool-text">
-        <strong>${t.shortTitle}</strong>
-        <small>${t.description}</small>
-      </div>
-    </a>`
-  ).join('');
-};
-
-// Render blog previews (for homepage)
-OG.renderBlogPreview = async function(containerSelector, maxItems = 3) {
-  await OG.loadRegistry();
-  const container = document.querySelector(containerSelector);
-  if (!container || !OG._blogs) return;
-
-  const featured = OG._blogs
-    .filter(p => p.featured)
-    .sort((a,b) => new Date(b.date) - new Date(a.date))
-    .slice(0, maxItems);
-
-  container.innerHTML = featured.map(p =>
-    `<a href="${p.url}" class="blog-preview-card fade-in">
-      <span class="blog-preview-date">${p.displayDate}</span>
-      <h4>${p.title}</h4>
-      <p>${p.excerpt}</p>
-    </a>`
-  ).join('');
-};
-
-// Full tool card template (for tools/index.html)
-OG._toolCardFull = function(t) {
-  return `<a href="${t.url}" class="tool-card">
-    <span class="tool-emoji">${t.emoji}</span>
-    <h3>${t.title}</h3>
-    <span class="age-badge">${t.ageRange}</span>
-    <p>${t.fullDescription}</p>
-    <span class="tool-cta">${t.cta}</span>
-  </a>`;
-};
-
-window.OG = OG;
-```
-
-### Phase 4: Shared CSS
-
-#### `css/base.css` — universal reset + variables + typography:
-
-```css
-/* Single source of truth for variables */
-:root {
-  --pastel-purple: #c4b5fd;
-  --pastel-pink: #f9a8d4;
-  --pastel-blue: #93c5fd;
-  --pastel-green: #86efac;
-  --pastel-amber: #fcd34d;
-  --dark-bg: #0a0a0f;
-  --dark-card: #141420;
-  --dark-surface: #1a1a2e;
-  --dark-border: #2a2a3e;
-  --text-primary: #f0f0f8;
-  --text-secondary: #9898b0;
-  --font-heading: 'Nunito', sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-}
-```
-
-#### `css/components.css` — ONE definition for tool-card, blog-card, nav, footer:
-
-All `.tool-card`, `.blog-card`, `.nav`, `.footer` styles live here — used by
-every page. No more inline `<style>` blocks redefining them.
-
----
-
-## 4. Migration Path (Step by Step)
-
-The migration does NOT require rewriting everything at once. It's incremental:
-
-### Step 1: Create `_data/tools.json` with all 12 tools ✅ (no disruption)
-### Step 2: Create `_data/blogs.json` with all 8 posts ✅ (no disruption)
-### Step 3: Create `css/base.css` + `css/components.css`
-   - Extract shared nav, footer, card, variable styles
-   - Existing pages continue to work (additive)
-### Step 4: Create `js/includes.js` + `js/registry.js`
-### Step 5: Update `tools/index.html`
-   - Remove hardcoded cards → `<div id="tools-container"></div>` + `OG.renderToolsGrid()`
-   - Remove inline styles → `<link rel="stylesheet" href="/css/base.css">` + `<link rel="stylesheet" href="/css/components.css">`
-   - Remove inline nav/footer → loaded by `includes.js`
-### Step 6: Update `index.html` homepage
-   - Tools preview section → `<div id="tools-preview"></div>` + `OG.renderToolsPreview()`
-   - Blog preview section → `<div id="blog-preview"></div>` + `OG.renderBlogPreview()`
-### Step 7: Update individual tool pages
-   - Replace inline nav/footer/styles with shared CSS + includes.js
-   - This can be done one page at a time
-### Step 8: Update individual blog pages (same pattern)
-
----
-
-## 5. Adding a New Tool (After Migration)
-
-**One step**:
-
-1. Create `tools/new-tool.html` using the tool page template
-2. Add one entry to `_data/tools.json`
-
-That's it. The tool automatically appears on:
-- `tools/index.html` (renders from JSON)
-- Homepage tools preview (if `"featured": true`)
-- Schema JSON-LD (generated from JSON)
-
-No more forgetting to update 5 files. No more orphaned tools.
-
----
-
-## 6. Adding a New Blog Post (After Migration)
-
-1. Create `blog/new-post.html` using the blog page template
-2. Add one entry to `_data/blogs.json`
-
-Automatically appears on blog index and homepage preview.
-
----
-
-## 7. Immediate Fixes (Before Full Migration)
-
-Even before the full architecture migration, these gaps should be fixed **now**:
-
-### 7.1 Add missing tools to `tools/index.html`
-- **Hour Hand** (exists as file, linked from homepage, missing from tools listing)
-- **Minute Hand** (same)
-- **AM & PM** (exists as file, orphaned entirely)
-
-### 7.2 Update Schema JSON-LD
-- Change `numberOfItems` from 9 → 12
-- Add Hour Hand, Minute Hand, AM & PM to `itemListElement`
-
-### 7.3 Add missing tools to homepage
-- **Calculator**, **Column Multiplication**, **Clock Lessons** are on the tools page
-  but not on the homepage preview (or at minimum ensure the "View all tools →" link
-  is prominent)
-
-### 7.4 Update `sitemap.xml`
-- Ensure `am-pm.html`, `hour-hand.html`, `minute-hand.html` are listed
-
----
-
-## 8. Tool Page Template
-
-Standard structure for any new tool page. **Every section marked MANDATORY must
-be present before the page goes live.** See Section 10 for the content-quality
-rules that drive these requirements.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{TOOL_TITLE}} | Otterly Games</title>
-  <meta name="description" content="{{TOOL_DESCRIPTION}}">
-  <link rel="canonical" href="https://otterlygames.com/tools/{{TOOL_SLUG}}.html">
-  <!-- OG + Twitter meta tags -->
-  <!-- Schema JSON-LD: WebApplication + BreadcrumbList + FAQPage (MANDATORY) -->
-  <link rel="icon" href="data:image/svg+xml,...">
-  <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/tool-page.css">
-  <script src="/js/includes.js" defer></script>
-  <!-- Analytics (from base.css or a shared snippet) -->
-  <!-- ⚠️  NO AdSense on noindex pages (404, redirects, error pages) -->
-</head>
-<body>
-  <!-- Nav injected by includes.js -->
-
-  <!-- MANDATORY: Breadcrumb back-link -->
-  <a href="/tools/" class="breadcrumb-back">← All Tools</a>
-
-  <section class="hero">
-    <h1>{{TOOL_TITLE}}</h1>
-    <p>{{TOOL_SUBTITLE}}</p>
-  </section>
-
-  <main class="main">
-    <!-- Tool-specific interactive content here -->
+<body data-og-includes="nav,footer">
+  <main id="main-content">
+    <!-- Authored page content -->
   </main>
-
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- MANDATORY: Educational Prose (min 400 words, see §10.3)   -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <section class="edu-prose" style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
-    <h2>{{TOPIC_HEADING_1}}</h2>
-    <p>…original educational content…</p>
-
-    <h2>{{TOPIC_HEADING_2}}</h2>
-    <p>…original educational content…</p>
-
-    <h2>Teaching Tips for Parents</h2>
-    <p>…actionable parenting advice…</p>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- MANDATORY: FAQ Section (min 3 Q&As, see §10.3)            -->
-  <!-- Must match the FAQPage schema in <head>                   -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <section class="faq-section" style="max-width:700px;margin:1.5rem auto;padding:0 1.5rem">
-    <h2>Frequently Asked Questions</h2>
-    <details><summary>{{QUESTION_1}}</summary><p>{{ANSWER_1}}</p></details>
-    <details><summary>{{QUESTION_2}}</summary><p>{{ANSWER_2}}</p></details>
-    <details><summary>{{QUESTION_3}}</summary><p>{{ANSWER_3}}</p></details>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- MANDATORY: Related Tools grid (min 3 links, see §10.3)    -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <section class="related-tools" style="max-width:700px;margin:1.5rem auto;padding:0 1.5rem">
-    <h2>Related Tools</h2>
-    <div class="related-grid">
-      <a href="/tools/{{RELATED_1}}.html" class="related-card">…</a>
-      <a href="/tools/{{RELATED_2}}.html" class="related-card">…</a>
-      <a href="/tools/{{RELATED_3}}.html" class="related-card">…</a>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <!-- MANDATORY: <noscript> fallback (see §10.4)                -->
-  <!-- Googlebot must see meaningful content without JS           -->
-  <!-- ═══════════════════════════════════════════════════════════ -->
-  <noscript>
-    <section style="max-width:700px;margin:2rem auto;padding:1rem 1.5rem">
-      <h2>{{TOOL_TITLE}}</h2>
-      <p>This interactive tool requires JavaScript. {{TOOL_STATIC_DESCRIPTION}}</p>
-      <p><a href="/tools/">← Browse all free learning tools</a></p>
-    </section>
-  </noscript>
-
-  <!-- Footer injected by includes.js -->
-  <script src="/js/main.js"></script>
+  <script src="/js/includes.js" defer></script>
 </body>
-</html>
 ```
 
----
+Keep one unique, nonempty `<title>` and description, and a canonical for the
+page's public URL. The build validates unique public titles/descriptions and
+ensures exactly one self-referencing canonical.
 
-## 9. Checklist: What Makes a Good Tool Page
+The build replaces existing `nav.nav` and `footer.footer`, or fills the
+explicit include opt-in, with:
 
-### 9a. Technical Quality
-
-- [ ] Listed in `_data/tools.json`
-- [ ] Has proper `<title>` and `<meta description>`
-- [ ] Has canonical URL
-- [ ] Has OG + Twitter meta tags
-- [ ] Has Schema JSON-LD: **WebApplication + BreadcrumbList + FAQPage**
-- [ ] Uses shared nav (via includes.js or inline from template)
-- [ ] Uses shared footer
-- [ ] Uses shared CSS (base.css + components.css)
-- [ ] Mobile responsive
-- [ ] Has breadcrumb back to Tools (visible `← All Tools` link)
-- [ ] Cross-links to ≥ 3 related tools
-- [ ] Included in sitemap.xml
-- [ ] Has `<noscript>` fallback with static description + link back to tools index
-
-### 9b. Content Quality (AdSense Gate — see §10)
-
-- [ ] **≥ 400 words** of original educational prose below the interactive tool
-- [ ] **≥ 3 FAQ items** (visible `<details>` elements matching FAQPage schema)
-- [ ] Prose is **unique** — not duplicated from another tool page
-- [ ] Prose provides **genuine teaching value** for parents (tips, milestones, explanations)
-- [ ] Related Tools section with ≥ 3 cross-links to sibling tool pages
-- [ ] **No AdSense script** on any page that has `<meta name="robots" content="noindex">`
-- [ ] Googlebot can see ≥ 500 words of static HTML **without executing JavaScript**
-
-> **Rule: No page goes live until EVERY box is checked.** A page that fails 9b
-> is "thin content" and risks another AdSense rejection for the entire domain.
-
----
-
-## Summary
-
-| Problem | Root Cause | Solution |
-|---------|-----------|----------|
-| 3 tools missing from tools listing | No single registry | `_data/tools.json` |
-| Tools on homepage ≠ tools on listing page | Hardcoded in two places | Render both from same JSON |
-| Nav/footer vary across 15+ pages | Copy-paste development | Shared includes |
-| CSS defined 3+ times for `.tool-card` | No shared stylesheet | `css/components.css` |
-| Adding a tool requires 5 edits | No convention | JSON registry + auto-render |
-| Brand change = edit 15+ files | No shared variables | `css/base.css` with single `:root` |
-| **AdSense "Low value content" rejection** | Thin tool pages, JS-only listing pages, ads on 404 | §10: Content minimums, `<noscript>` fallbacks, AdSense placement rules |
-| Googlebot sees empty listing pages | No `<noscript>` fallback for JS-rendered content | §10.4: Every JS-rendered block needs static HTML fallback |
-| AdSense on noindex pages | No policy awareness in template | §10.5: Never place AdSense on noindex/error pages |
-| Tool pages with < 200 words | No content-quality gate | §10.3: Min 400 words prose + FAQ + related tools per tool page |
-| Missing FAQPage schema on tool pages | No structured data checklist | §10.6: Required schema types per page type |
-
----
-
-## 10. AdSense & Content Quality Standards
-
-> **Context:** In early 2026 Google AdSense rejected the site for **"Low value
-> content"**, citing failure to meet *minimum content requirements*, *unique &
-> high-quality content*, and *webmaster quality guidelines (thin content)*.
-> This section documents the root causes and the enforceable rules that prevent
-> a repeat.
-
-### 10.1 What Went Wrong (Root-Cause Analysis)
-
-| # | Problem | Why It Matters | Pages Affected |
-|---|---------|---------------|----------------|
-| 1 | **JS-only listing pages** — `blog/index.html` and `tools/index.html` rendered their entire content via JavaScript. Googlebot's renderer sometimes doesn't execute JS, so Google saw near-empty pages (~40 words of static text). | Google treats a page with no crawlable body text as "thin content". Two key index pages appearing empty tanks the site-wide quality score. | `blog/index.html`, `tools/index.html` |
-| 2 | **AdSense on a `noindex` 404 page** — `404.html` loaded the AdSense script despite having `<meta name="robots" content="noindex">`. | Google explicitly flags AdSense on non-indexable pages as a policy violation. It signals that ads are placed without regard for user or crawler experience. | `404.html` |
-| 3 | **Thin interactive-only tool pages** — `am-pm.html`, `hour-hand.html`, `minute-hand.html` had an interactive widget but zero educational prose, no FAQ, no related links, and no `<noscript>` fallback. | Without JS the page was essentially blank. Even with JS, the total crawlable text was < 200 words — well below the threshold Google expects for a page displaying ads. | `tools/am-pm.html`, `tools/hour-hand.html`, `tools/minute-hand.html` |
-| 4 | **No `<noscript>` fallbacks anywhere** — Pages that depend on JS for core content had no static alternative. | Crawlers, accessibility tools, and users with JS disabled saw empty containers. | All JS-rendered listing pages, thin tool pages |
-| 5 | **Missing structured data** — Thin pages lacked `FAQPage` and `BreadcrumbList` schema, reducing their perceived richness in Google's evaluation. | While schema alone doesn't fix thin content, its absence meant Google had fewer signals to understand the page's purpose and value. | `tools/am-pm.html`, `tools/hour-hand.html`, `tools/minute-hand.html` |
-
-### 10.2 The Fix Applied
-
-| Page | What Was Added |
-|------|----------------|
-| `blog/index.html` | BreadcrumbList schema, visible breadcrumb nav, ~200-word intro prose, `<noscript>` fallback with all 8 blog post cards as static HTML, ~300-word "What We Write About" section |
-| `404.html` | Removed AdSense and Analytics scripts entirely |
-| `tools/index.html` | BreadcrumbList schema, visible breadcrumb nav, `<noscript>` fallback with all 12 tools as static HTML cards organized by category |
-| `tools/am-pm.html` | FAQPage schema (3 Q&As), breadcrumb back-link, ~500 words educational prose, FAQ section, related tools grid (3 tools), `<noscript>` fallback |
-| `tools/hour-hand.html` | FAQPage schema (3 Q&As), breadcrumb back-link, ~600 words educational prose, FAQ section, related tools grid (3 tools), `<noscript>` fallback |
-| `tools/minute-hand.html` | FAQPage schema (3 Q&As), breadcrumb back-link, ~700 words educational prose, FAQ section, related tools grid (3 tools), `<noscript>` fallback |
-
-### 10.3 Content Minimum Standards (Mandatory)
-
-These are hard rules. No page should be published or merged without meeting them.
-
-#### Per-Page Word Counts
-
-| Page Type | Min Static Words | Required Sections |
-|-----------|:---:|---|
-| **Tool page** | 400 | Educational prose (≥ 2 `<h2>` subsections), FAQ (≥ 3 `<details>`), Related Tools (≥ 3 links), `<noscript>` |
-| **Blog post** | 700 | Full article body, author/date, breadcrumb, related posts |
-| **Listing page** (tools index, blog index) | 200 | Intro paragraph, `<noscript>` fallback with **every** item as static HTML |
-| **App page** | 300 | Feature list, screenshots/description, download links, SoftwareApplication schema |
-| **Static page** (about, contact, privacy) | 200 | Substantive original content relevant to site purpose |
-
-> **"Static words"** = text visible in the raw HTML source without executing
-> JavaScript. This is what Googlebot's initial parser sees.
-
-#### Content Must Be Unique
-
-- Every tool page's prose must be **original** — not copied/paraphrased from
-  another tool page on the site.
-- FAQ answers must be **specific** to that tool's subject. Generic filler like
-  "This tool is great for kids" repeated across pages counts as duplicate content.
-- Use the tool's subject matter to generate genuinely helpful educational
-  guidance (teaching tips, developmental milestones, common mistakes, etc.).
-
-### 10.4 Noscript & Static Fallback Rules
-
-| Rule | Rationale |
-|------|-----------|
-| Every page that renders **any** content via JavaScript MUST have a `<noscript>` block with equivalent static HTML | Googlebot may not execute JS. Without fallback, the page appears empty → thin content. |
-| Listing pages (`blog/index.html`, `tools/index.html`) must include **every item** in the `<noscript>` block as a static card (title, excerpt, link) | Partial fallbacks still leave the page looking thin. Full coverage ensures Google sees the complete content catalogue. |
-| The `<noscript>` block must be **kept in sync** with `_data/tools.json` / `_data/blogs.json` | When a new tool or blog post is added, its static card must be added to the relevant `<noscript>` block too. |
-| Interactive tool pages must have enough **non-JS prose** (edu-prose + FAQ + related tools) that the page exceeds 400 words even if the `<canvas>`/`<script>` tool doesn't render | The educational sections are pure HTML — they always render. This is the safety net. |
-
-### 10.5 AdSense Placement Rules
-
-| Rule | Detail |
-|------|---------|
-| **Never** place AdSense on `noindex` pages | 404, redirects, error pages, staging previews. Google explicitly flags this. |
-| **Never** place AdSense on pages with < 400 static words | The page will be classified as thin content with ads = policy violation. |
-| **Never** place AdSense on pages that are substantially JS-rendered without a full `<noscript>` fallback | Google's ad crawler may see an empty page — instant flag. |
-| AdSense `<script>` goes in `<head>` of approved pages only | Keep it out of shared includes if any include is used on noindex pages. Consider a conditional like `data-adsense="true"` attribute. |
-| After **any** structural site change, re-audit ad placement | New pages, moved pages, or template changes can inadvertently put ads on thin/noindex pages. |
-
-### 10.6 Structured Data Requirements
-
-| Page Type | Required Schema Types |
-|-----------|-----------------------|
-| Tool page | `WebApplication` + `BreadcrumbList` + `FAQPage` |
-| Blog post | `Article` (or `BlogPosting`) + `BreadcrumbList` |
-| Listing page | `CollectionPage` + `ItemList` + `BreadcrumbList` |
-| App page | `SoftwareApplication` + `BreadcrumbList` |
-| Homepage | `Organization` + `WebSite` |
-
-- FAQPage schema `mainEntity` array must **exactly match** the visible FAQ
-  `<details>` elements on the page (same questions, same answers).
-- `ItemList.numberOfItems` must match the actual count of items rendered.
-- Run Google's Rich Results Test on every new page before publishing.
-
-### 10.7 New Page Launch Checklist (Pre-Publish Gate)
-
-Before any new page is deployed to production:
-
-```
-□  Word count ≥ minimum for page type (§10.3)
-□  Content is original — not duplicated from another page on the site
-□  <noscript> fallback present if any content is JS-rendered
-□  AdSense script is absent if page is noindex or below word threshold
-□  All required Schema JSON-LD types are present (§10.6)
-□  Schema data matches visible page content
-□  Page is listed in _data/tools.json or _data/blogs.json
-□  Page is listed in sitemap.xml
-□  Google Rich Results Test passes
-□  Page renders meaningful content with JavaScript disabled
-□  Breadcrumb visible and links back to parent listing
-□  ≥ 3 cross-links to related pages within the site
+```html
+<!-- og:nav:start -->
+<!-- Exact _includes\nav.html source -->
+<!-- og:nav:end -->
 ```
 
-> **Enforcement:** Treat this checklist as a merge-blocking gate. Every page
-> must satisfy it before going live. A single thin page can trigger an
-> AdSense rejection for the **entire domain**, not just that page.
+The footer uses `og:footer:start` / `og:footer:end`. Marker pairs must be
+unique and ordered. Future builds replace the whole marked block, so editing a
+copied/generated nav is not a lasting change. Breadcrumbs, post navigation and
+custom game navigation with other classes are not site chrome and are retained.
+Ambiguous duplicate shared nav/footer elements fail rather than being guessed.
+Legacy app pages load `components.css` after their older page styles. Legacy
+theme rules must not force header font sizes with `!important`; the shared
+component stylesheet owns responsive header geometry.
 
-### 10.8 Ongoing Maintenance
+After baking, the build removes `data-og-includes` from `<body>`/`<html>` so
+the fallback script does not fetch a second shell. It adds or normalizes exactly
+one `/js/includes.js` script with `defer`. Legacy inline mobile-nav click
+handlers are retained and reported with path/line; the shared behavior must
+arbitrate them without double toggling. The builder never regex-deletes a
+script that might also contain game code.
 
-- **When adding a tool:** Add entry to `_data/tools.json`, add static card to
-  `tools/index.html` `<noscript>`, update `sitemap.xml`, and ensure the tool
-  page itself passes the full §10.7 checklist.
-- **When adding a blog post:** Add entry to `_data/blogs.json`, add static card
-  to `blog/index.html` `<noscript>`, update `sitemap.xml`.
-- **Quarterly audit:** Review all pages against §10.3 word-count minimums.
-  Tools that have grown stale or lost content should be refreshed.
-- **After any AdSense change:** Re-verify that no noindex page loads the
-  AdSense script.
+The nav template owns exactly one `a.skip-link[href="#main-content"]`. A first
+`<main>` without an ID receives that ID and `tabindex="-1"`. Existing IDs such
+as Arcade's `main#games` remain intact, with a focusable alias before the main.
+Pages without a main get a safe focusable anchor before their first content
+section/article/heading. No tool, game pointer region or script is wrapped.
+
+### Standalone Arcade exceptions
+
+`Arcade\game.html`, `pigeon.html`, `shepherd.html` and `zombie.html` are
+full-viewport canvas games with their own top bar and overflow rules. They
+remain indexable, but explicitly use `shell: "custom"`: no full website nav or
+footer is inserted. They receive the shared skip link, a focusable game-area
+target, the deferred behavior script, canonical/policy checks and optimized
+asset URLs. Their keyboard controls and game scripts remain authored code.
+`js\arcade-controls.js` and `css\arcade-controls.css` add touch movement/actions,
+pause/help and a responsive camera around those original game functions. World
+dimensions and gameplay rules remain independent of canvas backing resolution.
+Pointer mapping uses the camera transform rather than assuming a stretched
+canvas. Pausing clears held input; Zombie's trap, stun and elapsed timers use
+active game time, not time spent in the background.
+
+Play online includes the four recreational games alongside the three learning
+games. Both hubs use `og:arcade-games:start/end` blocks generated from the shared
+card include; missing/malformed markers, duplicate or foreign game links, and
+embedded script/resource tags fail the build. The Arcade listing uses the normal
+website shell and highlights Creative Arcade in its navigation. Personal portfolio pages
+remain excluded from the public inventory and preserve their noindex policy.
+
+## Space Academy: original website game
+
+`play\space-academy.html` is a standalone website game, not another native export
+or a small iframe demo. Its controller and styles are isolated under
+`js\space-academy`, `css\space-academy.css` and `css\campaign-activities.css`. Storage opens only after the
+deliberate Open gesture. No server, account, model API, analytics or ad SDK is
+involved. `js\seeded-random.mjs` is shared with the worksheet generator without
+changing worksheet seed behaviour.
+
+Question bank v2 preserves the seven grade IDs and 56 chapter IDs/routes.
+`curriculum.mjs` maps each chapter to separate Explore, Reason and Stretch
+family lists and exports their `FAMILIES` metadata. These target foundations,
+paper-style reasoning and higher-order linked conditions respectively, not
+validated exam difficulty bands. The plans change representations and inference
+steps as well as quantities: abacus transfers, linked models, marked grids,
+embedded figures, nets, routes, scales, calendars, purchases, fraction changes
+and graph updates are assigned by grade/level. Class 5 adds HCF/LCM situations
+and decimal statements rather than introducing a separate chapter route.
+
+`questions.mjs` defaults to content version 2 and dispatches version 1 requests
+to the frozen `questions-v1.mjs` / `curriculum-v1.mjs` sources. A question retains
+`options: string[]`, `correctIndex` and `answer`; optional `optionVisuals` and
+choice feedback remain aligned through shuffling. Semantic visual descriptors
+include descriptions. `question-display.mjs` owns plain-text
+`choiceLabel(question, index)` and `choiceDescription(question, index)`;
+`art.mjs` owns `answerChoice(question, index)` for labels plus artwork, including
+legacy shape choices. Consumers must not display internal graphical option
+keys. Static examples use the same answer renderer as the game.
+
+`otterly-space-academy` / object store `academy` / key `save` is independent of
+the existing games. Each of three anonymous explorers has grade-specific
+journeys. Transactions validate the current save, enforce a revision check and
+resolve only after commit. Open/re-read probes test writes and removal too.
+Storage errors block; stale writes abort and visibly load the latest save.
+Saved version 1 missions and reviews regenerate against the frozen original
+bank. Existing rewards and history are retained, while version 2 skill evidence
+is kept separate. Share links carry `bank=1` or `bank=2` plus question settings
+and an anonymous seed, never saved answers. Unsupported content snapshots are
+not silently replaced; future version changes require an explicit migration
+policy.
+
+Answers and hint use persist before moving on. `campaigns.mjs` maps chapters to
+six stable system IDs and partitions all 30 worlds into seven different grade
+routes. Participation credit is bounded per chapter and counts different
+questions only after a mission completes, independent of correctness or hints.
+Every completed mission grants one charge, but farming one chapter cannot earn
+every system. Stage requirements grow from three core systems to all six.
+`campaign-activities.mjs` supplies seven deterministic board reducers, validates
+models/state and computes completion from actual placements/routes/resources.
+Every move persists through the same revision-checked transaction. Activity and
+workbench rerenders retain focus and normal/fullscreen scroll positions.
+
+Presentation is a render-only layer over those rules. `app.mjs` draws each tab
+(Play launchpad, Build workshop, Explore with flight and discovery, Worlds
+Passport, Progress) as a game scene, and `css\space-academy.css` owns the layout
+contexts: desktop, short laptop, phone portrait and short landscape. Decorative
+motion lives inside `prefers-reduced-motion: no-preference`, and text stays at
+12px or larger. `coaching.mjs` is display-only copy. None of this changes the
+frozen question and artwork sources, the progression rules or the anchors that
+`scripts\prepare-space-academy-android.mjs` checks in `app.mjs`.
+
+Root save schema 2 validates schema-1 input with frozen `progress-v1.mjs` before
+cloning/migrating it. A read persists migration atomically, including its revision
+increase; failed transactions leave the old save intact. Old mission snapshots,
+earned/fitted systems, paint, review, charges and pending destinations survive.
+Legacy chapter completions contribute to appropriate new objectives without
+faking skill evidence. A per-explorer Passport unions all legacy and campaign
+arrivals, never pending flights or another explorer's collection. New campaign
+arrivals advance only that grade's route; already collected objects permit a
+free activity-based revisit. The charge invariant is completed missions minus
+legacy arrivals, paid campaign arrivals and any reserved paid flight. Legacy
+pending flights finish their original route without a second debit.
+Duplicate completion/arrival is idempotent. Backups contain all local explorers;
+confirmed restore affects this database only. Reset affects one explorer's
+grades and Passport, not siblings or other games.
+
+Reports separate content versions and challenge levels, deduplicate repeated
+question IDs and exclude hints from independent accuracy. They use up to 20
+recent independent questions, require five before suggestions and describe
+trends as small samples. They are not IQ scores, diagnoses or validated
+competition predictions.
+
+The collection, seven grade indexes and 56 chapter pages under
+`learn\olympiad` are generated before the main site build. Every route remains
+explicit in the public inventory; generated-file ownership guards prevent
+overwriting unrelated pages. Samples use the real seeded generator and render
+without JavaScript, including diagram choices, correct-answer artwork and worked
+explanations. The 64-page collection lists actual per-level formats from the
+curriculum rather than generic difficulty or number-range claims. Regenerate
+with `node .\scripts\build-space-academy.mjs --write` before the main site build,
+only after concurrent content edits have finished; `--check` verifies freshness.
+
+The October 2026 content rebuild compared SOF's official 2026-27 Class 1-5
+samples, CREST's 2023-24 Set A Class 1-5 previous-year papers, Junior/Senior KG
+samples and a Unified Council UIMO Class 5 sample. The review covered 13
+documents / 63 pages, with 18 representative rendered pages visually inspected.
+Only the CREST previous-year papers are administered-paper references; the
+others are samples. SOF's topic syllabi remain the primary grade anchor;
+provider boundaries differ and PP1/PP2 are readiness, not official SOF levels.
+Official source links are public, but downloaded PDFs, screenshots and extracted
+paper text are research artifacts, not website assets. All question diagrams
+and answer-choice artwork are original. This is neither provider-endorsed nor
+complete syllabus coverage. Reference comparison and programmatic answer checks
+do not replace independent educator calibration.
+
+`campaign-crafts.mjs` draws seven different modular spacecraft, including a
+carrier for the rover in flight. Stable part IDs retain ownership across the
+save migration while each grade has its own names, geometry and matching slots.
+Flight art includes only fitted parts, not imaginary earned upgrades.
+`art.mjs` draws question artwork and reads the existing Clock Master
+universe posters/atlases without editing them. It crossfades real atlas frames
+rather than rotating a flat poster. Active-time clocks pause for hidden,
+offscreen, manually paused and dialog states, and respect runtime reduced-motion
+changes. A pending flight survives reload without a second charge. The site
+controller handles persisted-page restoration; game exports, app-demo query
+modes and same-origin iframe message contracts remain unchanged.
+
+## Game discovery and introductions
+
+`og:game-catalogue:start/end` in the Play online hub is generated
+from `_data\games.json`. Each entry needs a unique ID and public landing URL,
+known categories, descriptive text, a content note and local art. The build
+rejects unlisted landing routes, missing art/symbols and malformed data before
+writing anything. All links and ItemList entries are static; search only
+enhances the rendered cards. New titles/categories need no hand-edited hub HTML.
+The legacy `#creative-arcade` and `#learning-games` entrances select their matching
+categories on load and hash navigation rather than pointing to an unrelated mixed list.
+The Creative Arcade hub retains its guarded `og:arcade-games` direct-play
+fragment; a missing legacy marker is still a build error.
+
+The root is an authored, brand-led page with bounded editorial spotlights,
+Creative Arcade entrances, real gameplay imagery and the original family story.
+It has no catalogue/search marker. The full collection lives on Play online;
+new games do not require expanding Home into another listing. Existing
+`/apps/` demos, runtime query modes and completion/pause message contracts remain.
+
+Clock Master and Math Tank use `web-game.js` for a single deliberate launch path
+shared by the hero, optional practice, placeholder and contextual dock. It assigns
+the iframe source once, retains progress on Return to game, validates readiness
+message origin/source and pauses offscreen/hidden gameplay. The dock does not
+cover a visible game or compete with another visible launch control. Actual
+Fullscreen API behavior and optional Android badges remain independent of the
+introduction.
+
+Game introductions are static and use real screenshots rather than replacement
+clock parts or arithmetic stickers. Optional practice follows the player, never
+an apparent entrance course. The removed scroll-effects script is not loaded
+by any page. Layout and typography adapt to phone and short-landscape sizes;
+scrolling never starts a game.
+
+Arcade landing pages use original local SVG cover illustrations and link to
+untouched standalone games. Their optional how-to-play blocks are not lessons.
+Space Academy keeps its independent welcome/Open flow, curriculum and saves.
+Do not run native export pipelines for catalogue or landing-page work.
+
+## Static discovery and registry fallbacks
+
+The sitemap is generated only from `_data\public-pages.json`, never a blanket
+HTML glob. It omits runtime exports, archives, art generators and the 404 page.
+No current-date freshness is invented. `lastmod` is omitted unless a route
+explicitly supplies a known, valid `YYYY-MM-DD` value; file mtime and article
+publication date are not treated as modification evidence.
+
+The tools and blog hubs retain JavaScript enhancement, but their complete
+noscript lists are generated from the same registries:
+
+- `og:tools-fallback:start` / `og:tools-fallback:end`
+- `og:blog-fallback:start` / `og:blog-fallback:end`
+
+For the first migration the build replaces the hub's single legacy noscript
+listing. Ambiguous/missing fallbacks fail. Generated cards use existing shared
+classes without fade-in hiding, and registry text is HTML-escaped. The Theme B
+blog hub already ships every card as static HTML, so its generated noscript copy
+is kept in the page but visually hidden (`.blog-nojs`).
+`data-tool-count` text and the tools hub `ItemList` count/links are regenerated
+as well. Changing a title or URL is detected even if the item count is unchanged.
+
+### Legacy index policy
+
+Only the explicit `ARCHIVE_ROUTES` allowlist in the build gets
+`<meta name="robots" content="noindex,follow">`:
+
+- `index-old-backup.html`, `index-v2-backup.html`, `index-v3-backup.html`,
+  `index-v3.html`
+- `sangram.html` and `sangram-v2.html` through `sangram-v6.html`
+- `Arcade\index-old.html`
+- `math-tank-feature-graphic.html`, `og-image-generator.html`
+
+These files are not deleted, redirected, rebuilt as public pages or included
+in the sitemap. Existing `noindex` directives, including `nofollow`, are kept.
+Their existing code/art is otherwise unchanged. `noindex` is
+not access control and does not disable their historical scripts if visited
+directly. Runtime noindex metadata is owned by the corresponding game export
+pipeline; running the public-page build cannot repair a runtime export.
+
+## Guarded public-page policy
+
+The build recognizes the existing standalone GA4 SDK/bootstrap, AdSense
+SDK/standard queue initialization and Ko-fi overlay SDK/init. It removes only
+these validated elements. A source change that combines a tracker with game
+code, uses an unrecognized initialization or contains an active inline tracking
+handler fails with a path/line diagnostic. All validation finishes before any
+output is written. Ordinary external links, affiliate links, contact-form
+submission behavior and inactive placement markup are not removed.
+
+Remote Google font `<link>` elements, including matching preconnects, are
+removed from public HTML; fonts are self-hosted by the shared stylesheets.
+Inline Google font imports/URLs are reported for explicit migration, not
+silently erased. This checker does not scan or rewrite external CSS/JavaScript
+dependencies, so new third-party integrations still need a separate review.
+
+The five known old brand-art URLs are deterministically rewritten in public
+HTML, inline styles and same-site absolute metadata URLs:
+
+| Old URL | Local optimized URL |
+| --- | --- |
+| `/images/Otter-mascot.png` | `/images/brand/otter-buddy-320.webp` |
+| `/images/Otter-tank.png` | `/images/brand/otter-tank-640.webp` |
+| `/images/About.png` | `/images/brand/about-800.webp` |
+| `/images/Blog.png` | `/images/brand/blog-800.webp` |
+| `/images/tool.png` | `/images/brand/tools-800.webp` |
+
+Original assets, foreign URLs, archives and runtime exports are retained.
+The navigation template independently chooses its small logo.
+
+Selected marketing routes retain only the static
+`google-adsense-account` meta verification for
+`ca-pub-5489426086320283`. This is not an advertising SDK, site approval or a
+consent platform. Display placements remain disabled; Google publisher/site
+approval, applicable child treatment and an actual
+privacy/consent implementation must be settled independently before activation. The build does
+not change any monetization configuration, create accounts or enable ads.
+The two registered responsive editorial units are stored in `_data\web-ads.json`;
+their creation is not site approval. Keep account-level Auto ads off so a future
+SDK cannot bypass the explicit manual placements.
+
+The editorial placement is generated from `_includes\editorial-ad.html` inside
+one `og:editorial-ad:start/end` block immediately before the shared footer.
+Only registered blog detail routes and `/parents/` receive it, after all
+authored content rather than among learning controls. The build rejects
+unmanaged, duplicate, misplaced or ineligible blocks and executable/interactive
+template content. It adds one local `web-ads.css` stylesheet and one deferred
+`web-game-ads.js` loader; the existing Math Tank placement is preserved.
+
+The aside starts hidden, has an Advertisement label and consumes no layout
+space while disabled. Eligibility is a placement decision, not age verification
+or permission to serve. `web-game-ads.js` now implements the manual AdSense /
+Google Privacy & messaging adapter; all production switches remain false.
+`siteApprovalVerified` and `privacySetupVerified` are independent operator gates,
+not visitor decisions. Only an eligible opted-in placement can load the Google
+tag, with ad requests paused and personalization disabled before loading.
+The tag itself bootstraps published Google messages. TCF and GPP listeners,
+not an operator flag or Consent Mode for Analytics, authorize the eventual unit.
+The adapter checks Google disclosure/purpose permissions, publisher restrictions,
+US National/California/Florida choices and Global Privacy Control. Unsupported,
+missing, refused or errored privacy data fail closed. It rechecks the kill switch
+after consent and uses TFAT child treatment and restricted data processing.
+Privacy revision, opt-out, leaving the page and missing fill remove or suppress
+the unit without refreshing it. Google's default US opt-out entrypoint remains.
+Disabled pages create no controls, queue or SDK and have no layout cost; enabled
+paused bootstrap does contact Google and may read existing Google-domain cookies.
+Live approval, messaging/child-privacy review and public disclosures are still
+required before activation. No consent message or live ad was published by
+implementing or testing this code.
+
+## Commands and validation
+
+Use Node 22 or newer. There is no package install for this build:
+
+```powershell
+node --test .\scripts\build-site.test.mjs
+node .\scripts\build-site.mjs --check
+node .\scripts\build-site.mjs --write
+node .\scripts\build-site.mjs --check
+python -m http.server 4195 --bind 127.0.0.1
+```
+
+Wait for concurrent page editing to finish before `--write`. Default invocation
+is read-only `--check`. Check mode exits 1 for stale HTML/sitemap or errors and
+prints pending recognized policy cleanup with source path/line. Invalid CLI
+arguments exit 2. Write mode refuses **all** writes if validation fails; on
+success it writes only changed, explicitly scoped public HTML, known archive
+robots metadata and `sitemap.xml`. It does not emit a second site tree.
+
+Tests import the pure transforms and exercise the filesystem/CLI using unique
+fixtures under the repository's ignored `build\site-build-fixtures` directory.
+They clean up their own fixtures and never use the operating system temporary
+directory. `--root <fixture-root>` is available for isolated integration tests.
+Coverage includes shell idempotence, custom-nav preservation, skip targets,
+script deduplication, guarded policy cleanup, mixed-code refusal, asset mapping,
+canonical routes, sitemap exclusions, archive-only noindex, fallbacks/counts,
+read-only drift detection and refusing partial writes.
+
+The build is a source-consistency check, not proof of browser UX, accessibility
+conformance or advertising/privacy approval. Before an authorized publication,
+serve the built files and verify no-JavaScript navigation/listings, mobile-nav
+keyboard behavior, actual tool controls/printing, full browser-game launch/save
+behavior, links, requests and responsive layouts. Game export/regression
+commands remain documented in the root README and each game's overlay README.

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free Printable Worksheet Generator: Math &amp; Clocks</title>
+  <meta name="description" content="Make free multiplication, exact-division and analogue-clock worksheets in your browser. Print a clean sheet, add an answer key or share the same questions.">
+  <link rel="canonical" href="https://otterlygames.com/tools/worksheet-builder.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Otterly Games">
+  <meta property="og:title" content="Free Printable Worksheet Generator: Math &amp; Clocks">
+  <meta property="og:description" content="Make free multiplication, exact-division and analogue-clock worksheets in your browser. Print a clean sheet, add an answer key or share the same questions.">
+  <meta property="og:url" content="https://otterlygames.com/tools/worksheet-builder.html">
+  <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Printable Worksheet Generator: Math &amp; Clocks">
+  <meta name="twitter:description" content="Make free multiplication, exact-division and analogue-clock worksheets in your browser. Print a clean sheet, add an answer key or share the same questions.">
+  <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Printable Worksheet Generator"}]}</script>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/growth.css">
+  <link rel="stylesheet" href="/css/worksheet-builder.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/tools.css">
+  <script src="/js/includes.js" defer></script>
+  <script src="/js/worksheet-builder.js" type="module"></script>
+</head>
+<body class="theme-b tools-page">
+<!-- og:nav:start -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/images/brand/otter-mark-80.webp" alt="" width="40" height="40">
+      <span class="brand-text">Otterly Games</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/learn/">Lessons</a>
+      <a href="/tools/">Tools</a>
+      <a href="/parents/">For parents</a>
+      <a href="/blog/">Blog</a>
+      <a href="/Arcade/">Creative Arcade</a>
+    </div>
+    <a href="/play/" class="nav-cta nav-play">Play online <span aria-hidden="true">&nearr;</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<!-- og:nav:end -->
+
+  <main id="main-content" class="growth-main worksheet-builder" tabindex="-1">
+    <header class="growth-hero worksheet-screen-only">
+      <nav class="tools-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/tools/">Tools</a></li>      <li aria-current="page">Worksheet Generator</li></ol></nav>
+      <p class="growth-eyebrow">FREE TOOL · SCREEN TO PAPER</p>
+            <h1>Printable Worksheet Generator</h1>
+      <p>A little practice you can take away from the screen. Choose multiplication, exact division or clock reading. Print a clean worksheet, optionally add an answer key, or share a link that recreates the same questions.</p>
+      <p class="growth-note">No account, child names, saved answers or timer. Questions are generated in this browser. A shared link includes only the activity settings and sheet seed; it is not a progress backup.</p>
+    </header>
+
+    <noscript>
+      <section class="growth-card">
+        <h2>JavaScript is needed to build a sheet</h2>
+        <p>No worksheet has been generated. You can still use our <a href="/learn/times-tables.html">equal-groups example</a>, <a href="/learn/division.html">sharing activity</a> or <a href="/learn/telling-time.html">telling-time plan</a> to make a few questions on paper.</p>
+      </section>
+    </noscript>
+
+    <section class="growth-section worksheet-screen-only" aria-labelledby="settings-title">
+      <h2 id="settings-title">Make a sheet that fits today</h2>
+      <form id="worksheet-settings" class="growth-card worksheet-controls" novalidate>
+        <div class="worksheet-fields">
+          <div class="worksheet-field">
+            <label for="activity">Activity</label>
+            <select id="activity" name="activity">
+              <option value="multiplication">Multiplication</option>
+              <option value="division">Exact division</option>
+              <option value="clock">Read an analogue clock</option>
+            </select>
+          </div>
+          <div id="table-field" class="worksheet-field">
+            <label id="table-label" for="table">Times table</label>
+            <select id="table" name="table" aria-describedby="table-help">
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6" selected>6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <p id="table-help" class="worksheet-help">Multipliers or whole-number quotients run from 1 to 12.</p>
+          </div>
+          <div id="clock-field" class="worksheet-field" hidden>
+            <label for="clock-step">Clock steps</label>
+            <select id="clock-step" name="clock" disabled>
+              <option value="hours">Whole hours</option>
+              <option value="five-minutes" selected>Five-minute steps</option>
+            </select>
+          </div>
+          <div class="worksheet-field">
+            <label for="question-count">Question count</label>
+            <select id="question-count" name="count" aria-describedby="count-help">
+              <option value="5">5 questions</option>
+              <option value="10" selected>10 questions</option>
+              <option value="12">12 questions</option>
+              <option value="20">20 questions (five-minute clocks)</option>
+            </select>
+            <p id="count-help" class="worksheet-help">Fixed tables and whole hours have 12 different questions; requests for 20 are reduced to 12.</p>
+          </div>
+          <div class="worksheet-field">
+            <label for="sheet-seed">Sheet seed</label>
+            <input id="sheet-seed" name="seed" type="text" value="otterly-1" maxlength="32" pattern="[A-Za-z0-9_-]{1,32}" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="seed-help">
+            <p id="seed-help" class="worksheet-help">A code for the question order: 1–32 letters, numbers, hyphens or underscores. Do not use a child's name or personal details. The same settings and seed recreate the same sheet.</p>
+          </div>
+        </div>
+        <div class="growth-actions">
+          <button id="build-sheet" class="growth-button" type="submit" disabled>Build this sheet</button>
+          <button id="fresh-sheet" class="growth-button growth-button--secondary" type="button" disabled>Generate fresh sheet</button>
+        </div>
+      </form>
+      <div id="builder-feedback" class="growth-note worksheet-feedback" role="status" aria-live="polite" aria-atomic="true">
+        <p>Loading the local worksheet generator. No sheet has been created yet.</p>
+      </div>
+    </section>
+
+    <section id="sheet-tools" class="worksheet-screen-only worksheet-print-tools" aria-label="Print and share this sheet" hidden>
+      <label class="worksheet-key-toggle" for="include-answer-key">
+        <input id="include-answer-key" type="checkbox">
+        <span>Show and print the answer key on a separate page</span>
+      </label>
+      <div class="growth-actions">
+        <button id="print-worksheet" class="growth-button" type="button" disabled>Print worksheet</button>
+        <button id="copy-sheet-link" class="growth-button growth-button--secondary" type="button" disabled>Copy sheet link</button>
+      </div>
+      <p class="worksheet-help">The print dialog can also save a PDF. Use A4 or Letter, portrait, with the browser's normal scale. For a cleaner sheet, turn off the browser's own headers and footers.</p>
+      <p id="copy-feedback" class="worksheet-feedback" role="status" aria-live="polite"></p>
+      <div id="share-fallback" class="worksheet-field" hidden>
+        <label for="share-link">Copyable sheet link</label>
+        <input id="share-link" type="url" readonly aria-describedby="share-help">
+        <p id="share-help" class="worksheet-help">Select this link, then use your device's Copy command. It shares questions, not completed answers. The answer key stays hidden when the link is opened.</p>
+      </div>
+    </section>
+
+    <section id="worksheet" class="worksheet-sheet" aria-labelledby="worksheet-title" hidden>
+      <header class="worksheet-sheet-header">
+        <p class="worksheet-brand">OTTERLY GAMES · PRACTICE AT YOUR PACE</p>
+        <h2 id="worksheet-title">Your practice sheet</h2>
+        <p id="worksheet-code" class="worksheet-code"></p>
+        <p id="worksheet-instructions"></p>
+      </header>
+      <ol id="worksheet-questions" class="worksheet-questions"></ol>
+      <p class="worksheet-sheet-footer">Take your time. Show your thinking on paper. · otterlygames.com/tools/worksheet-builder.html</p>
+    </section>
+
+    <section id="answer-key" class="worksheet-sheet worksheet-answer-key" aria-labelledby="answer-key-title" hidden>
+      <header class="worksheet-sheet-header">
+        <p class="worksheet-brand">OTTERLY GAMES · FOR CHECKING TOGETHER</p>
+        <h2 id="answer-key-title">Answer key</h2>
+        <p id="answer-key-code" class="worksheet-code"></p>
+      </header>
+      <ol id="answer-key-list" class="worksheet-key-list"></ol>
+      <p class="worksheet-sheet-footer">Match the activity and sheet seed before checking. A shared link starts with the answer key hidden.</p>
+    </section>
+
+    <section class="growth-section worksheet-screen-only" aria-labelledby="use-title">
+      <h2 id="use-title">Use a sheet as a starting point, not a test</h2>
+      <div class="growth-grid">
+        <article class="growth-card">
+          <h3>Choose fewer when helpful</h3>
+          <p>Start with five questions and stop when you have something to discuss. A fixed times table, divisor or whole-hour clock has 12 unique questions. Five-minute clocks have 144 possible times, so a 20-question sheet can also avoid repeats.</p>
+        </article>
+        <article class="growth-card">
+          <h3>Check the idea, not the speed</h3>
+          <p>Use the <a href="/learn/times-tables.html">times-tables</a>, <a href="/learn/division.html">division</a> or <a href="/learn/telling-time.html">telling-time path</a> for a worked example. Division sheets use exact positive whole-number answers only. Clocks use 12-hour faces without AM or PM.</p>
+        </article>
+        <article class="growth-card">
+          <h3>Keep the same questions</h3>
+          <p>Build with a chosen seed to return to a sheet, or use Generate fresh sheet for a new seed. The link contains only the activity, table or clock step, question count and seed. It does not store completed answers or create an account. Opening the page still makes a normal request to the website host.</p>
+        </article>
+      </div>
+      <p class="growth-note">For classroom bookmarks, non-commercial embedding and browser-save guidance, see <a href="/parents/">Parents &amp; teachers</a>. Optional adult support information is on the separate <a href="/support.html">support page</a>.</p>
+    </section>
+
+    <section class="tools-next worksheet-screen-only" aria-labelledby="next-title">
+      <h2 id="next-title">What to do next</h2>
+      <div class="tools-next-list">
+        <a class="tools-next-card tools-next-card--lesson" href="/learn/times-tables.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-book"></use></svg><span><small>Lesson</small><strong>Times tables</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+        <a class="tools-next-card tools-next-card--lesson" href="/learn/division.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-book"></use></svg><span><small>Lesson</small><strong>Division</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+        <a class="tools-next-card tools-next-card--game" href="/play/clock-master.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"></use></svg><span><small>Game</small><strong>Clock Master</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+        <a class="tools-next-card tools-next-card--game" href="/play/math-tank.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"></use></svg><span><small>Game</small><strong>Math Tank</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      </div>
+    </section>
+  </main>
+
+<!-- og:footer:start -->
+<footer class="footer">
+  <a href="/" class="footer-brand">Otterly Games</a>
+  <p class="footer-tagline">Learning like no otter. Browser games, little discoveries and practice on paper.</p>
+  <div class="footer-links">
+    <a href="/play/">Play online</a>
+    <a href="/learn/">Learn by skill</a>
+    <a href="/parents/">Parents &amp; teachers</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Parent guides</a>
+    <a href="/about.html">Our story</a>
+    <a href="/Arcade/">Creative arcade</a>
+  </div>
+  <div class="footer-links footer-links--small">
+    <a href="/contact.html">Contact &amp; support</a>
+    <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 Otterly Games. Made by a mum, for curious minds.</p>
+</footer>
+<!-- og:footer:end -->
+</body>
+</html>

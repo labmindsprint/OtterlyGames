@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learn to Read a Clock | Interactive Clock Lessons — Otterly Games</title>
+  <title>Learn to Read a Clock | Interactive Clock Lessons</title>
   <meta name="description" content="Free interactive clock lessons for kids. Learn to read analog clocks step by step — hours, half past, quarter past, and minutes. From Clock Master.">
   <link rel="canonical" href="https://otterlygames.com/tools/clock-lessons.html">
   <meta property="og:title" content="Learn to Read a Clock | Interactive Clock Lessons">
   <meta property="og:description" content="Free interactive clock lessons for kids. Learn to read analog clocks step by step.">
   <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Interactive Clock Lessons for Kids">
+  <meta name="twitter:title" content="Learn to Read a Clock | Interactive Clock Lessons">
   <meta name="twitter:description" content="Learn to read analog clocks step by step — hours, half past, quarter past, and minutes.">
   <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
   <meta name="pinterest-rich-pin" content="true">
@@ -23,6 +23,8 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/tools.css">
   <style>
     body{min-height:100vh;display:flex;flex-direction:column}
     .hero{padding:6.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(26,26,46,.5) 0%,var(--db) 100%)}
@@ -31,8 +33,8 @@
     .mode-btns{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:1.5rem}
     .mode-btn{padding:.5rem 1.1rem;border-radius:999px;font-weight:700;font-size:.8rem;background:var(--dc);border:1px solid var(--dbr);color:var(--t2);transition:.2s}
     .mode-btn:hover{border-color:var(--pp)}.mode-btn.active{background:linear-gradient(135deg,var(--pp),var(--pk));color:#0a0a0f;border-color:transparent}
-    .clock-area{background:var(--dc);border:1px solid var(--dbr);border-radius:1.5rem;padding:2rem;text-align:center;margin-bottom:1.5rem}
-    .clock-svg{margin:0 auto 1.5rem;width:220px;height:220px}
+    .clock-area{background:var(--dc);border:1px solid var(--dbr);border-radius:1.5rem;padding:clamp(1rem,4vw,2rem);text-align:center;margin-bottom:1.5rem}
+    .clock-svg{display:block;margin:0 auto 1.5rem;width:min(220px,100%);height:auto;aspect-ratio:1}
     .question{font-size:1.1rem;font-weight:700;margin-bottom:1rem}
     .options{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1rem}
     .opt-btn{padding:.8rem;border-radius:12px;font-weight:700;font-size:1rem;background:var(--ds);border:1px solid var(--dbr);color:var(--t1);transition:.2s}
@@ -51,19 +53,52 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Clock Lessons"}]}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"At what age should a child learn to tell the time?","acceptedAnswer":{"@type":"Answer","text":"Most children can learn to read hours on an analogue clock by age 5–6. Half past and quarter past/to follow around age 6–7. Reading to 5-minute and 1-minute intervals usually comes between ages 7 and 9. Every child is different, so use the difficulty levels to match your child's readiness."}},{"@type":"Question","name":"Why learn analogue clocks when digital is everywhere?","acceptedAnswer":{"@type":"Answer","text":"Analogue clocks teach children to visualise time passing. A digital display shows a number, but an analogue face shows how far through the hour you are, how long until the next hour, and the relationship between minutes and hours. These spatial concepts support deeper time sense."}},{"@type":"Question","name":"How does this clock lesson tool work?","acceptedAnswer":{"@type":"Answer","text":"Choose a difficulty level (Hours Only, Half Past, Quarter, By 5 Min, or Any Minute). The tool shows an analogue clock face with a random time. You pick the correct time from multiple-choice options. Immediate feedback and a streak counter help motivate practice."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where should a child start with telling time?","acceptedAnswer":{"@type":"Answer","text":"Begin with a comfortable level, such as Hours Only, then explore half hours and smaller intervals when ready. Curricula and children's needs vary; this tool does not assess readiness or set an age deadline."}},{"@type":"Question","name":"Why explore analogue clocks alongside digital time?","acceptedAnswer":{"@type":"Answer","text":"An analogue face gives a visual model of minutes around an hour and the movement of the hands. Compare it with a digital display and discuss how both show the same time."}},{"@type":"Question","name":"How does this clock lesson tool work?","acceptedAnswer":{"@type":"Answer","text":"Choose Hours Only, Half Past, Quarter, By 5 Min, or Any Minute. The tool shows a clock and multiple-choice answers, then gives feedback. The level is chosen manually; there is no automatic readiness assessment."}}]}
   </script>
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+
+
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
+
 </head>
-<body data-og-includes="nav,footer">
-  <noscript><div style="max-width:600px;margin:6rem auto 2rem;padding:2rem;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;text-align:center;color:#f0f0f8;font-family:sans-serif"><h2 style="margin-bottom:.5rem">🕐 Clock Lessons</h2><p style="color:#9898b0;margin-bottom:.5rem">This interactive tool teaches children to read analogue clocks step by step — from hours only through to any minute. Choose your level and practise with instant feedback.</p><p style="color:#9898b0">Please <strong>enable JavaScript</strong> in your browser to use this tool.</p></div></noscript>
-  <section class="hero"><h1>🕐 <span class="gt">Clock</span> Lessons</h1><p>Learn to read analog clocks — from hours to minutes, step by step</p></section>
+<body class="theme-b tools-page">
+<!-- og:nav:start -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/images/brand/otter-mark-80.webp" alt="" width="40" height="40">
+      <span class="brand-text">Otterly Games</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/learn/">Lessons</a>
+      <a href="/tools/">Tools</a>
+      <a href="/parents/">For parents</a>
+      <a href="/blog/">Blog</a>
+      <a href="/Arcade/">Creative Arcade</a>
+    </div>
+    <a href="/play/" class="nav-cta nav-play">Play online <span aria-hidden="true">&nearr;</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<!-- og:nav:end -->
+
+  <noscript><div style="max-width:600px;margin:6rem auto 2rem;padding:2rem;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;text-align:center;color:#f0f0f8;font-family:sans-serif">
+<span tabindex="-1"></span>
+<h2 style="margin-bottom:.5rem">🕐 Clock Lessons</h2><p style="color:#9898b0;margin-bottom:.5rem">This interactive tool teaches children to read analogue clocks step by step — from hours only through to any minute. Choose your level and practise with instant feedback.</p><p style="color:#9898b0">Please <strong>enable JavaScript</strong> in your browser to use this tool.</p></div></noscript>
+
+<main id="main-content" tabindex="-1">
+  <header class="tools-head">
+    <div class="tools-head-inner">
+      <nav class="tools-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/tools/">Tools</a></li><li aria-current="page">Clock Lessons</li></ol></nav>
+      <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"></use></svg>Telling the time · Ages 5–8</p>
+      <h1><span class="gt">Clock</span> Lessons</h1>
+      <p class="tools-lead">Learn to read analog clocks — from hours to minutes, step by step</p>
+      <p class="tools-note"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-lightbulb"></use></svg><span><strong>For parents:</strong> pick the mode that matches where your child is now, from hours to every minute. Answers are checked on screen.</span></p>
+    </div>
+  </header>
+
   <div class="main">
-    <a href="/tools/" style="display:inline-flex;align-items:center;gap:.4rem;color:#9898b0;font-size:.85rem;font-weight:600;margin-bottom:.75rem;transition:color .2s;text-decoration:none" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='#9898b0'">← All Tools</a>
     <div class="mode-btns">
       <button class="mode-btn active" onclick="setMode('hours')">Hours Only</button>
       <button class="mode-btn" onclick="setMode('half')">Half Past</button>
@@ -79,12 +114,21 @@
       <div class="options" id="options"></div>
       <div class="feedback" id="fb"></div>
     </div>
-    <div class="promo"><h3>🦦 Love this? Try Clock Master!</h3><p>Race cars by answering clock questions! Full game with space tracks and car customization.</p><a href="/apps/clock-master.html">Learn About Clock Master →</a></div>
+    <div class="promo"><h3>🦦 Try Clock Master Online</h3><p>Guided clock chapters, races, space journeys, and customization — all in the browser, with local saves and no account.</p><a href="/play/clock-master.html">Play Clock Master Online →</a></div>
   </div>
+  <section class="tools-next" aria-labelledby="next-title">
+    <h2 id="next-title">What to do next</h2>
+    <div class="tools-next-list">
+      <a class="tools-next-card tools-next-card--lesson" href="/learn/telling-time.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-book"></use></svg><span><small>Lesson</small><strong>Telling time</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      <a class="tools-next-card tools-next-card--game" href="/play/clock-master.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"></use></svg><span><small>Game</small><strong>Clock Master</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      <a class="tools-next-card tools-next-card--paper" href="/tools/worksheet-builder.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-printer"></use></svg><span><small>On paper</small><strong>Practice sheet</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+    </div>
+  </section>
+
   <section style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
     <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Teaching Children to Tell the Time</h2>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Telling the time is one of the most practical skills a child can learn, yet it can be surprisingly tricky. The key is to <strong style="color:#c4b5fd">break it into stages</strong>: hours first, then half past, quarter past/to, five-minute intervals, and finally any minute.</p>
-    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">This tool mirrors that progression with five difficulty levels, so your child only sees times they’re ready for. Master one level before moving to the next.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">Choose one of five levels yourself; the tool does not automatically assess readiness. The <a href="/learn/telling-time.html" style="color:#c4b5fd">telling-time learning path</a> connects the hour hand, minute hand, and reading practice. You can also make a <a href="/tools/worksheet-builder.html" style="color:#c4b5fd">paper clock practice sheet</a>, or read <a href="/blog/how-to-teach-a-child-to-tell-time.html" style="color:#c4b5fd">how to teach a child to tell time</a> for ideas to use at home.</p>
     <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Why Analogue Clocks Still Matter</h2>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">In a digital world, you might wonder why children need to read a dial. Analogue clocks give children a <em>visual model</em> of time: they can see how far through the hour they are, how long until a deadline, and how 60 minutes map around a circle.</p>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">This spatial understanding of time supports scheduling, estimation and mental arithmetic — skills that a digital readout alone doesn’t develop.</p>
@@ -92,6 +136,23 @@
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Put a real analogue clock in your child’s bedroom and reference it throughout the day: “Lunch is at half past twelve — what does the clock look like then?” Regular real-world connections reinforce what they practise here.</p>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7">For children who struggle, start with the <em>Hours Only</em> mode and celebrate every correct answer. Confidence at each stage is more important than rushing ahead.</p>
   </section>
+  <!-- FAQ -->
+  <section style="max-width:700px;margin:1.5rem auto;padding:0 1.5rem">
+    <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem">Frequently Asked Questions</h3>
+    <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
+      <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">Where should a child start with telling time?</summary>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">Begin with a comfortable level, such as Hours Only, then explore half hours and smaller intervals when ready. Curricula and children's needs vary; this tool does not assess readiness or set an age deadline.</p>
+    </details>
+    <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
+      <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">Why explore analogue clocks alongside digital time?</summary>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">An analogue face gives a visual model of minutes around an hour and the movement of the hands. Compare it with a digital display and discuss how both show the same time.</p>
+    </details>
+    <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
+      <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">How does this clock lesson tool work?</summary>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">Choose Hours Only, Half Past, Quarter, By 5 Min, or Any Minute. The tool shows a clock and multiple-choice answers, then gives feedback. The level is chosen manually; there is no automatic readiness assessment.</p>
+    </details>
+  </section>
+
   <div style="max-width:700px;margin:1.5rem auto 2rem;padding:0 1.5rem">
     <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem;text-align:center">📚 Related Tools</h3>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem">
@@ -197,5 +258,29 @@
     }
     newQ();
   </script>
+
+</main>
+<!-- og:footer:start -->
+<footer class="footer">
+  <a href="/" class="footer-brand">Otterly Games</a>
+  <p class="footer-tagline">Learning like no otter. Browser games, little discoveries and practice on paper.</p>
+  <div class="footer-links">
+    <a href="/play/">Play online</a>
+    <a href="/learn/">Learn by skill</a>
+    <a href="/parents/">Parents &amp; teachers</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Parent guides</a>
+    <a href="/about.html">Our story</a>
+    <a href="/Arcade/">Creative arcade</a>
+  </div>
+  <div class="footer-links footer-links--small">
+    <a href="/contact.html">Contact &amp; support</a>
+    <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 Otterly Games. Made by a mum, for curious minds.</p>
+</footer>
+<!-- og:footer:end -->
 </body>
 </html>

@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Math Speed Quiz for Kids | 30-Second Challenge — Otterly Games</title>
+  <title>Math Speed Quiz for Kids | 30-Second Challenge</title>
   <meta name="description" content="Free 30-second math speed quiz. Easy, Medium, and Hard modes. Beat your high score with multiplication, division, and more!">
   <link rel="canonical" href="https://otterlygames.com/tools/math-quiz.html">
   <meta property="og:title" content="Math Speed Quiz for Kids | 30-Second Challenge">
   <meta property="og:description" content="Free 30-second math speed quiz. Easy, Medium, and Hard modes. Beat your high score!">
   <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Math Speed Quiz — 30-Second Challenge">
+  <meta name="twitter:title" content="Math Speed Quiz for Kids | 30-Second Challenge">
   <meta name="twitter:description" content="Free 30-second math speed quiz. Easy, Medium, and Hard modes. Beat your high score!">
   <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
   <meta name="pinterest-rich-pin" content="true">
@@ -23,6 +23,8 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/tools.css">
   <style>
     body{min-height:100vh;display:flex;flex-direction:column}
     .hero{padding:6.5rem 1.5rem 2rem;text-align:center;background:linear-gradient(180deg,rgba(26,26,46,.5) 0%,var(--db) 100%)}
@@ -50,33 +52,92 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://otterlygames.com/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://otterlygames.com/tools/"},{"@type":"ListItem","position":3,"name":"Math Speed Quiz"}]}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a math speed quiz?","acceptedAnswer":{"@type":"Answer","text":"A math speed quiz gives you a fixed time (in this case 30 seconds) to answer as many arithmetic questions as you can. It builds mental math fluency by encouraging quick recall of number facts. Score, accuracy and best streak are tracked so children can beat their own records."}},{"@type":"Question","name":"Is timed math practice good for kids?","acceptedAnswer":{"@type":"Answer","text":"Short bursts of timed practice can be very effective for building fluency, as long as the emphasis is on beating your own score rather than competing with others. If a child feels anxious, switch to an untimed tool first to build confidence, then come back to the speed quiz."}},{"@type":"Question","name":"What does each difficulty level cover?","acceptedAnswer":{"@type":"Answer","text":"Easy mode covers multiplication from 2×2 to 12×12. Medium adds division facts. Hard introduces bigger numbers plus addition and subtraction, testing mental arithmetic across all four operations."}}]}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a math speed quiz?","acceptedAnswer":{"@type":"Answer","text":"This quiz gives 30 seconds to answer arithmetic questions and shows score, accuracy, and best streak. It is a speed challenge, not a lesson, word-problem activity, or assessment of overall math ability."}},{"@type":"Question","name":"Is timed math practice right for every child?","acceptedAnswer":{"@type":"Answer","text":"No. Some children enjoy a countdown and others prefer thinking time. Choose untimed practice if speed is unhelpful, and pause if a child is frustrated."}},{"@type":"Question","name":"What does each difficulty level cover?","acceptedAnswer":{"@type":"Answer","text":"Easy uses multiplication with factors from 2 to 11. Medium mixes multiplication and exact division. Hard mixes larger multiplication, addition, and subtraction. Levels are selected manually, not automatically adapted."}}]}
   </script>
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+
+
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
+
 </head>
-<body data-og-includes="nav,footer">
-  <noscript><div style="max-width:600px;margin:6rem auto 2rem;padding:2rem;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;text-align:center;color:#f0f0f8;font-family:sans-serif"><h2 style="margin-bottom:.5rem">⚡ Math Speed Quiz</h2><p style="color:#9898b0;margin-bottom:.5rem">A 30-second math challenge with Easy, Medium and Hard modes. Answer as many arithmetic questions as you can and beat your high score!</p><p style="color:#9898b0">Please <strong>enable JavaScript</strong> in your browser to use this tool.</p></div></noscript>
-  <section class="hero"><h1>⚡ <span class="gt">Speed</span> Quiz</h1><p>30-second math challenge — how many can you answer?</p></section>
+<body class="theme-b tools-page">
+<!-- og:nav:start -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/images/brand/otter-mark-80.webp" alt="" width="40" height="40">
+      <span class="brand-text">Otterly Games</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/learn/">Lessons</a>
+      <a href="/tools/">Tools</a>
+      <a href="/parents/">For parents</a>
+      <a href="/blog/">Blog</a>
+      <a href="/Arcade/">Creative Arcade</a>
+    </div>
+    <a href="/play/" class="nav-cta nav-play">Play online <span aria-hidden="true">&nearr;</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<!-- og:nav:end -->
+
+  <noscript><div style="max-width:600px;margin:6rem auto 2rem;padding:2rem;background:#141420;border:1px solid #2a2a3e;border-radius:1rem;text-align:center;color:#f0f0f8;font-family:sans-serif">
+<span tabindex="-1"></span>
+<h2 style="margin-bottom:.5rem">⚡ Math Speed Quiz</h2><p style="color:#9898b0;margin-bottom:.5rem">A 30-second math challenge with Easy, Medium and Hard modes. Answer as many arithmetic questions as you can and beat your high score!</p><p style="color:#9898b0">Please <strong>enable JavaScript</strong> in your browser to use this tool.</p></div></noscript>
+
+<main id="main-content" tabindex="-1">
+  <header class="tools-head">
+    <div class="tools-head-inner">
+      <nav class="tools-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/tools/">Tools</a></li><li aria-current="page">Speed Quiz</li></ol></nav>
+      <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-bolt"></use></svg>Times tables &amp; division · Ages 6–11</p>
+      <h1><span class="gt">Speed</span> Quiz</h1>
+      <p class="tools-lead">30-second math challenge — how many can you answer?</p>
+      <p class="tools-note"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-lightbulb"></use></svg><span><strong>For parents:</strong> this is the one timed tool, so treat it as an optional warm-up. If a countdown adds stress, use the untimed practice tools instead.</span></p>
+    </div>
+  </header>
+
   <div class="main">
-    <a href="/tools/" style="display:inline-flex;align-items:center;gap:.4rem;color:#9898b0;font-size:.85rem;font-weight:600;margin-bottom:.75rem;transition:color .2s;text-decoration:none" onmouseover="this.style.color='#c4b5fd'" onmouseout="this.style.color='#9898b0'">← All Tools</a>
     <div class="mode-btns"><button class="mode-btn active" onclick="setMode('easy')">Easy</button><button class="mode-btn" onclick="setMode('medium')">Medium</button><button class="mode-btn" onclick="setMode('hard')">Hard</button></div>
     <div class="game-box" id="gameBox"></div>
   </div>
+  <section class="tools-next" aria-labelledby="next-title">
+    <h2 id="next-title">What to do next</h2>
+    <div class="tools-next-list">
+      <a class="tools-next-card tools-next-card--lesson" href="/learn/times-tables.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-book"></use></svg><span><small>Lesson</small><strong>Times tables</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      <a class="tools-next-card tools-next-card--game" href="/play/math-tank.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"></use></svg><span><small>Game</small><strong>Math Tank</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+      <a class="tools-next-card" href="/tools/multiplication-practice.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"></use></svg><span><small>Untimed</small><strong>Multiplication Practice</strong></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"></use></svg></a>
+    </div>
+  </section>
+
   <section style="max-width:700px;margin:2rem auto;padding:0 1.5rem">
-    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Why Timed Math Practice Works</h2>
-    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Short, timed challenges build <strong style="color:#c4b5fd">math fluency</strong> — the ability to recall number facts quickly and accurately. Fluency frees up working memory so children can focus on harder problem-solving later.</p>
-    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">The 30-second format keeps sessions fun and low-pressure. Children compete against their own high score, not against others, which research shows is more motivating for most learners.</p>
+    <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">An Optional Timed Challenge</h2>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">This quiz gives 30 seconds to answer arithmetic questions. It is a speed challenge, not a lesson, a word-problem activity, or an assessment of a child's overall math ability.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">Some children enjoy a countdown; others prefer thinking time. Start with the <a href="/learn/times-tables.html" style="color:#c4b5fd">times-tables learning path</a> or <a href="/tools/multiplication-practice.html" style="color:#c4b5fd">untimed practice</a> if speed is not helpful today.</p>
     <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Choosing the Right Difficulty</h2>
-    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem"><strong style="color:#c4b5fd">Easy</strong> focuses on multiplication with small numbers (2×2 to 12×12) — perfect for building times-table speed. <strong style="color:#c4b5fd">Medium</strong> adds division, testing whether children can work backwards from a product. <strong style="color:#c4b5fd">Hard</strong> throws in larger numbers with addition and subtraction for a full mental workout.</p>
-    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">Start on Easy until your child consistently scores 8+, then move up. The jump between levels keeps things challenging without feeling impossible.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem"><strong style="color:#c4b5fd">Easy</strong> uses multiplication with factors from 2 to 11. <strong style="color:#c4b5fd">Medium</strong> mixes multiplication and exact division. <strong style="color:#c4b5fd">Hard</strong> mixes larger multiplication, addition, and subtraction. Choose a level yourself; it does not adapt automatically.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:1.5rem">Choose familiar questions first and stop if the timer becomes frustrating. There is no required score before moving on or taking a break.</p>
     <h2 style="font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:#f0f0f8;margin-bottom:.6rem">Tips for Parents</h2>
     <p style="color:#9898b0;font-size:.92rem;line-height:1.7;margin-bottom:.5rem">Celebrate the <em>streak</em> counter as much as the score — getting several in a row shows real fluency. If a child gets frustrated, pause the quiz and switch to our untimed <a href="/tools/multiplication-practice.html" style="color:#c4b5fd">Multiplication Practice</a> to rebuild confidence.</p>
-    <p style="color:#9898b0;font-size:.92rem;line-height:1.7">Try using the quiz as a warm-up before homework — a 30-second burst activates the mathematical brain and makes follow-up work feel easier.</p>
+    <p style="color:#9898b0;font-size:.92rem;line-height:1.7">After a round, discuss a calculation together without the timer. A <a href="/tools/worksheet-builder.html" style="color:#c4b5fd">paper practice sheet</a> is another way to leave room for working out an answer.</p>
   </section>
+  <!-- FAQ -->
+  <section style="max-width:700px;margin:1.5rem auto;padding:0 1.5rem">
+    <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem">Frequently Asked Questions</h3>
+    <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
+      <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">What is a math speed quiz?</summary>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">This quiz gives 30 seconds to answer arithmetic questions and shows score, accuracy, and best streak. It is a speed challenge, not a lesson, word-problem activity, or assessment of overall math ability.</p>
+    </details>
+    <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
+      <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">Is timed math practice right for every child?</summary>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">No. Some children enjoy a countdown and others prefer thinking time. Choose untimed practice if speed is unhelpful, and pause if a child is frustrated.</p>
+    </details>
+    <details style="background:#141420;border:1px solid #2a2a3e;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:.75rem">
+      <summary style="font-weight:700;font-size:.95rem;color:#f0f0f8;cursor:pointer">What does each difficulty level cover?</summary>
+      <p style="color:#9898b0;font-size:.9rem;line-height:1.7;margin-top:.5rem">Easy uses multiplication with factors from 2 to 11. Medium mixes multiplication and exact division. Hard mixes larger multiplication, addition, and subtraction. Levels are selected manually, not automatically adapted.</p>
+    </details>
+  </section>
+
   <div style="max-width:700px;margin:1.5rem auto 2rem;padding:0 1.5rem">
     <h3 style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:#f0f0f8;margin-bottom:.8rem;text-align:center">📚 Related Tools</h3>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem">
@@ -108,7 +169,7 @@
       document.getElementById('gameBox').innerHTML=`
         <div style="font-size:3rem;margin-bottom:1rem">⚡</div>
         <h2>30-Second Challenge</h2>
-        <p style="color:var(--t2);margin-bottom:.5rem">${mode==='easy'?'Multiplication (2-12)':mode==='medium'?'Multiplication & Division':'Big numbers, +, −, ×'}</p>
+        <p style="color:var(--t2);margin-bottom:.5rem">${mode==='easy'?'Multiplication (2-11)':mode==='medium'?'Multiplication & Division':'Big numbers, +, −, ×'}</p>
         ${hs>0?`<p style="color:var(--pa);font-weight:700">🏆 Best: ${hs}</p>`:''}
         <button class="start-btn" onclick="startGame()">Start! →</button>`;
     }
@@ -161,5 +222,29 @@
     document.addEventListener('keydown',e=>{if(state==='playing'){if(e.key>='0'&&e.key<='9')press(e.key);else if(e.key==='Backspace'){e.preventDefault();input=input.slice(0,-1);const a=document.getElementById('ans');if(a)a.innerHTML=input||'<span class="cursor"></span>'}else if(e.key==='Enter')chk()}else if(e.key==='Enter'&&state==='idle')startGame()});
     renderIdle();
   </script>
+
+</main>
+<!-- og:footer:start -->
+<footer class="footer">
+  <a href="/" class="footer-brand">Otterly Games</a>
+  <p class="footer-tagline">Learning like no otter. Browser games, little discoveries and practice on paper.</p>
+  <div class="footer-links">
+    <a href="/play/">Play online</a>
+    <a href="/learn/">Learn by skill</a>
+    <a href="/parents/">Parents &amp; teachers</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Parent guides</a>
+    <a href="/about.html">Our story</a>
+    <a href="/Arcade/">Creative arcade</a>
+  </div>
+  <div class="footer-links footer-links--small">
+    <a href="/contact.html">Contact &amp; support</a>
+    <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 Otterly Games. Made by a mum, for curious minds.</p>
+</footer>
+<!-- og:footer:end -->
 </body>
 </html>

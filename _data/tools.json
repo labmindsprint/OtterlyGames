@@ -72,7 +72,7 @@
       "emoji": "✖️",
       "category": "math",
       "ageRange": "Ages 5–9",
-      "description": "Timed multiplication drills",
+      "description": "Untimed times-table practice",
       "fullDescription": "Study times tables 2×–12×, then drill with typed answers. No timer, no pressure.",
       "url": "/tools/multiplication-practice.html",
       "cta": "Practice Free →",
@@ -156,6 +156,19 @@
       "cta": "Open Calculator →",
       "featured": false,
       "order": 7
+    },
+    {
+      "id": "worksheet-builder",
+      "title": "Printable Worksheet Generator",
+      "emoji": "🖨️",
+      "category": "math",
+      "ageRange": "Choose a starting skill",
+      "description": "Print maths and clock practice",
+      "fullDescription": "Build multiplication, exact-division or analogue-clock worksheets locally. Recreate a sheet with its seed, share settings and print an optional separate answer key. No timer or account.",
+      "url": "/tools/worksheet-builder.html",
+      "cta": "Build a Sheet →",
+      "featured": true,
+      "order": 8
     },
     {
       "id": "spelling-bee",

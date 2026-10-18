@@ -1,0 +1,81 @@
+/* Creative Arcade hub, Direction B. Scoped to body.arcade-hub-page; loads after arcade.css. */
+.arcade-hub-page .arcade-hero {
+  min-height: 0; display: block; text-align: left; padding: var(--s-8) 0 var(--s-6); overflow: visible;
+}
+.arcade-hub-page .arcade-hero::before { display: none; }
+.arcade-hub-page .arcade-hero .container { max-width: calc(var(--wrap) + 2 * var(--gutter)); padding-inline: var(--gutter); margin-inline: auto; }
+.arcade-hub-page .arcade-hero .breadcrumbs { margin-bottom: var(--s-5); font-size: var(--fs-sm); color: var(--text-3); }
+.arcade-hub-page .arcade-hero .breadcrumbs a { color: var(--text-2); display: inline-flex; align-items: center; min-height: 32px; }
+.arcade-hub-page .arcade-hero h1 {
+  font-size: clamp(2.4rem, 7vw, 4.25rem); margin-bottom: var(--s-4); max-width: 14ch;
+  background: none; -webkit-text-fill-color: currentColor; color: var(--text);
+}
+.arcade-hub-page .arcade-hero p { margin: 0 0 var(--s-5); max-width: 40rem; font-size: var(--fs-base); color: var(--text-2); line-height: 1.6; }
+.arcade-hub-page .arcade-badges { justify-content: flex-start; gap: var(--s-2); margin-bottom: var(--s-5); }
+.arcade-hub-page .arcade-badge {
+  background: var(--surface-1); border: 1px solid var(--line); color: var(--text);
+  padding: 0.45rem 0.9rem; font-size: var(--fs-xs); font-weight: 700;
+}
+.arcade-hub-page .arcade-device-note {
+  max-width: 44rem; margin: 0; padding: var(--s-4) var(--s-5);
+  background: var(--surface-1); border: 1px solid var(--line); border-radius: var(--r-md);
+  box-shadow: var(--edge-light); font-size: var(--fs-sm); color: var(--text-2);
+}
+.arcade-hub-page .arcade-device-note strong { color: var(--text); }
+.arcade-hub-page .arcade-device-note a { color: var(--purple-soft); }
+
+.arcade-hub-page .arcade-main { max-width: calc(var(--wrap) + 2 * var(--gutter)); padding: var(--s-6) var(--gutter) var(--s-8); }
+.arcade-hub-page .arcade-header { align-items: end; flex-wrap: wrap; gap: var(--s-2) var(--s-5); margin-bottom: var(--s-5); }
+.arcade-hub-page .arcade-header h2 { font-size: var(--fs-h2); }
+.arcade-hub-page .arcade-header .count { color: var(--text-3); font-size: var(--fs-sm); }
+.arcade-hub-page .arcade-grid { gap: var(--s-5); }
+
+.arcade-hub-page .game-card { color: var(--text);
+  background: var(--surface-1); border: 1px solid var(--line); border-radius: var(--r-lg);
+  box-shadow: var(--edge-light), var(--elev-1);
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.arcade-hub-page .game-card:hover { transform: translateY(-4px); border-color: var(--line-strong); box-shadow: var(--edge-light), var(--elev-2); }
+.arcade-hub-page .game-card:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.arcade-hub-page .game-card .body { padding: var(--s-5); gap: var(--s-2); }
+.arcade-hub-page .game-card h3 { font-family: var(--font-head); font-size: var(--fs-h3); font-weight: 900; }
+.arcade-hub-page .game-card .desc { color: var(--text-2); font-size: var(--fs-sm); }
+.arcade-hub-page .game-card .content-note { color: var(--text-3); font-size: var(--fs-xs); }
+.arcade-hub-page .game-card .tag-genre {
+  background: rgba(14, 12, 23, 0.75); color: var(--text); border-color: var(--line);
+  font-size: 0.72rem; font-weight: 700; padding: 5px 10px; border-radius: var(--r-pill);
+}
+.arcade-hub-page .game-card .tag-free {
+  background: var(--green-soft); color: #052e16; box-shadow: none;
+  font-size: 0.72rem; padding: 5px 10px; border-radius: var(--r-pill);
+}
+.arcade-hub-page .game-card .card-footer { border-top-color: var(--line); gap: var(--s-3); flex-wrap: wrap; }
+.arcade-hub-page .control-note { color: var(--text-3); font-size: var(--fs-xs); }
+.arcade-hub-page .play-btn {
+  display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 var(--s-5);
+  background: var(--purple-soft); color: var(--text-on-accent); font-weight: 800; font-size: var(--fs-sm);
+  border-radius: var(--r-pill); box-shadow: none;
+}
+.arcade-hub-page .game-card:hover .play-btn { filter: brightness(1.06); box-shadow: none; transform: none; }
+
+.arcade-hub-page .ai-banner { max-width: none; width: 100%; margin: 0; padding: 0 var(--gutter) var(--s-8); background: none; border: 0; }
+.arcade-hub-page .ai-banner-inner {
+  max-width: var(--wrap); margin: 0 auto; padding: var(--s-6);
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-lg);
+  box-shadow: var(--edge-light), var(--elev-1); text-align: left;
+}
+.arcade-hub-page .ai-banner-inner h3 { font-size: var(--fs-h3); margin-bottom: var(--s-3); color: var(--text); }
+.arcade-hub-page .ai-banner-inner p { max-width: 46rem; margin: 0 0 var(--s-4); color: var(--text-2); font-size: var(--fs-sm); }
+.arcade-hub-page .ai-banner-inner a {
+  display: inline-flex; align-items: center; min-height: var(--tap); padding: 0; background: none; border-radius: 0;
+  color: var(--purple-soft); font-weight: 800; font-size: var(--fs-sm); text-decoration: underline;
+}
+.arcade-hub-page .ai-banner-inner a:hover { color: var(--text); transform: none; box-shadow: none; }
+
+@media (max-width: 720px) {
+  .arcade-hub-page .arcade-grid { grid-template-columns: minmax(0, 1fr); }
+  .arcade-hub-page .arcade-hero { padding-top: var(--s-7); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arcade-hub-page .game-card, .arcade-hub-page .game-card:hover { transition: none; transform: none; }
+}

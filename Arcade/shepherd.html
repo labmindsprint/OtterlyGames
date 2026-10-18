@@ -10,12 +10,12 @@
 <meta property="og:title" content="Dog Shepherd — Free Browser Game">
 <meta property="og:description" content="Herd sheep, outsmart wolves, and master 7 dog abilities. Free, no ads, no login.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://otterlygames.com/images/Otter-mascot.png">
+<meta property="og:image" content="https://otterlygames.com/images/brand/otter-buddy-320.webp">
 <meta property="og:url" content="https://otterlygames.com/Arcade/shepherd.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dog Shepherd — Free Browser Game">
 <meta name="twitter:description" content="Herd sheep, outsmart wolves, and master 7 dog abilities. Free, no ads, no login.">
-<meta name="twitter:image" content="https://otterlygames.com/images/Otter-mascot.png">
+<meta name="twitter:image" content="https://otterlygames.com/images/brand/otter-buddy-320.webp">
 <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
@@ -24,8 +24,8 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"VideoGame","name":"Dog Shepherd","description":"Herd sheep to safety while outsmarting wolves. Use bark, dash, howl, and fetch abilities across increasingly difficult waves.","playMode":"SinglePlayer","gamePlatform":"Web Browser","applicationCategory":"Game","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"Otterly Games","url":"https://otterlygames.com"},"url":"https://otterlygames.com/Arcade/shepherd.html"}
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
+
+
 <link rel="stylesheet" href="/css/arcade-game.css">
 <style>
 /* Game-specific overrides */
@@ -53,15 +53,19 @@ canvas{border-radius:12px 0 0 12px;border-right:none}
 .ability .cd-fill{position:absolute;bottom:0;left:0;right:0;background:rgba(196,181,253,.3);transition:height .1s}
 .ability .uses{position:absolute;top:1px;right:3px;font-size:9px;color:var(--warn);font-weight:700}
 </style>
+  <script src="/js/includes.js" defer></script>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 <div class="game-page">
+<div class="game-device-note" role="note">Kids' ideas, parent support and AI-assisted code. <a href="/play/#creative-arcade">More kid-built games &rarr;</a></div>
 <div class="game-topbar">
-  <a href="index.html" class="back-link">← Arcade</a>
+  <a href="/play/#creative-arcade" class="back-link">← Games</a>
   <span class="game-title">Dog Shepherd</span>
-  <span class="brand-mark"><img src="/images/Otter-mascot.png" alt="Otterly">Otterly Arcade</span>
+  <span class="brand-mark"><img src="/images/brand/otter-buddy-320.webp" alt="Otterly">Otterly Arcade</span>
 </div>
-<div class="game-area" style="justify-content:center;align-items:center">
+<div class="game-area" style="justify-content:center;align-items:center" id="main-content" tabindex="-1">
 <canvas id="c" width="900" height="600"></canvas>
 <div id="hud">
   <h2>🐕 Dog Shepherd</h2>
@@ -89,6 +93,7 @@ canvas{border-radius:12px 0 0 12px;border-right:none}
 </div>
 </div>
 
+<script src="/js/arcade-controls.js"></script>
 <script>
 // ───── CANVAS & CONTEXT ─────
 const canvas = document.getElementById('c');
@@ -198,6 +203,58 @@ let boneSpawnTimer = 6;
 const keys = {};
 let mouseX = 0, mouseY = 0;
 let lastTime = 0;
+let pausedFrom = S.PLAYING;
+let aimFetch = false;
+const controls = ArcadeControls.create({
+  canvas, width: W, height: H, keys,
+  actions: [
+    { id: 'bark', label: 'Bark', primary: true, press: () => { if(state===S.PLAYING) doBark(); } },
+    { id: 'wag', label: 'Wag', press: () => { if(state===S.PLAYING) doWag(); } },
+    { id: 'dash', label: 'Dash', press: () => { if(state===S.PLAYING) doDash(); } },
+    { id: 'fetch', label: 'Fetch', description: 'Fetch: then tap a target on the field',
+      press: () => {
+        if(state!==S.PLAYING) return;
+        aimFetch = true;
+        controls.announce('Tap a spot on the field to throw the ball.');
+      } },
+    { id: 'treat', label: 'Treat', press: () => { if(state===S.PLAYING) doTreat(); } },
+    { id: 'howl', label: 'Howl', press: () => { if(state===S.PLAYING) doHowl(); } },
+  ],
+  getState: () => ({
+    active: state===S.PLAYING||state===S.BETWEEN, paused: state===S.PAUSED,
+    phase: ['splash','playing','between','gameover','win','paused'][state],
+    message: controls.mobile&&msgTimer>0 ? waveMsg.replace(/\s*\((SPACE|SHIFT|E|F|Q)\)/g,'') : '',
+    status: state===S.SPLASH ? 'Protect the sheep without frightening them. Tap the field to nudge.' :
+      `Wave ${wave+1}/8 · Sheep ${sheep.filter(s=>!s.dead&&!s.lost).length} · Score ${score} · Panic ${Math.round(panicLevel)}%`,
+    actions: Object.fromEntries([
+      ['bark',barkTimer,Infinity], ['wag',wagTimer,Infinity], ['dash',dashTimer,Infinity],
+      ['fetch',fetchTimer,fetchUses], ['treat',treatTimer,treatUses], ['howl',howlTimer,howlUses],
+    ].map(([id, timer, uses]) => [id, {
+      disabled: state!==S.PLAYING||timer>0||uses===0,
+      detail: timer>0 ? Math.ceil(timer)+'s' : Number.isFinite(uses) ? uses+' left' : 'Ready',
+    }])),
+    menu: state===S.SPLASH ? {
+      key: 'intro', title: 'Dog Shepherd',
+      text: ['A kid imagined a dog with superpowers. Now help the flock survive eight waves of wolves.',
+        'Move with the thumbstick or WASD. Bark to scare wolves, wag to calm sheep, and tap near a sheep to nudge it.'],
+      buttons: [{label:'Start herding',run:startGame}],
+    } : state===S.GAMEOVER||state===S.WIN ? {
+      key: state===S.WIN ? 'win' : 'gameover', title: state===S.WIN ? 'You protected the flock!' : 'Give the flock another try',
+      text: [`Score ${score}. Sheep saved: ${sheepSaved}.`, 'Your next run begins with the original ability uses and cooldowns.'],
+      buttons: [{label:'Play again',run:startGame}],
+    } : null,
+  }),
+  pause: () => {
+    pausedFrom = state; state = S.PAUSED; aimFetch = false;
+    controls.announce('');
+  },
+  resume: () => { state = pausedFrom; lastTime = performance.now(); },
+  restart: startGame,
+  help: ['Move with the thumbstick, WASD or arrow keys. Tap near a sheep to nudge; barking scares sheep as well as wolves.',
+    'Bark, Wag, Dash, Treat and Howl use the original abilities and cooldowns. Their remaining uses appear on the buttons.',
+    'On touchscreens, choose Fetch and then tap a target on the field. With a mouse, point and press F.',
+    'Protect the flock through eight waves. Pausing also freezes the between-wave countdown.'],
+});
 
 // ───── HUD ELEMENTS ─────
 const hWave = document.getElementById('hWave');
@@ -220,8 +277,11 @@ const abHowlUses = document.getElementById('abHowlUses');
 
 // ───── INPUT ─────
 window.addEventListener('keydown', e => {
+  if(ArcadeControls.ignoreKeyEvent(e)) return;
+  if(['Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code)) e.preventDefault();
   if(keys[e.code]) return; // ignore repeats for triggered abilities
   keys[e.code] = true;
+  if(e.code==='KeyP'&&!e.repeat){controls.togglePause();return;}
   if(e.code==='Space'){
     e.preventDefault();
     if(state===S.SPLASH){startGame();return;}
@@ -234,17 +294,18 @@ window.addEventListener('keydown', e => {
   if(e.code==='KeyF') doFetch(mouseX, mouseY);
   if(e.code==='KeyR') doTreat();
   if(e.code==='KeyQ') doHowl();
-  if(e.code==='KeyP') state = S.PAUSED;
 });
 window.addEventListener('keyup', e => {
   keys[e.code] = false;
-  if(e.code==='KeyP' && state===S.PAUSED) state = S.PLAYING;
 });
-canvas.addEventListener('mousemove', e=>{const r=canvas.getBoundingClientRect();mouseX=(e.clientX-r.left)*(canvas.width/r.width);mouseY=(e.clientY-r.top)*(canvas.height/r.height);});
-canvas.addEventListener('click', e=>{
-  if(state===S.SPLASH){startGame();return;}
-  if(state===S.GAMEOVER||state===S.WIN){resetToSplash();return;}
-  if(state===S.PLAYING) doNudge(mouseX,mouseY);
+canvas.addEventListener('pointermove', e=>{
+  const point=controls.point(e);mouseX=point.x;mouseY=point.y;
+});
+canvas.addEventListener('pointerdown', e=>{
+  if(e.button!==0||state!==S.PLAYING) return;
+  const point=controls.point(e);mouseX=point.x;mouseY=point.y;
+  if(aimFetch){doFetch(mouseX,mouseY);aimFetch=false;controls.announce('');}
+  else doNudge(mouseX,mouseY);
 });
 
 // ───── UTILITIES ─────
@@ -317,6 +378,9 @@ function makeBone(){
 
 // ───── GAME START / RESET ─────
 function startGame(){
+  controls.clear();
+  aimFetch = false;
+  controls.announce('');
   state = S.PLAYING;
   score = 0; wave = 0; totalBarks = 0; sheepSaved = 0; panicLevel = 0; bonesCollected = 0;
   barkTimer = 0; wagTimer = 0; dashTimer = 0; dashActive = 0;
@@ -620,7 +684,7 @@ function update(dt){
 
 function updateDog(dt){
   const d = dog;
-  let mx=0,my=0;
+  let mx=controls.direction.x,my=controls.direction.y;
   if(keys['KeyW']||keys['ArrowUp']) my=-1;
   if(keys['KeyS']||keys['ArrowDown']) my=1;
   if(keys['KeyA']||keys['ArrowLeft']) mx=-1;
@@ -1089,6 +1153,7 @@ function updateAbility(el, timer, cd, uses){
 
 // ───── RENDER ─────
 function render(){
+  controls.beginFrame(ctx,dog);
   ctx.clearRect(0,0,W,H);
 
   if(state===S.SPLASH){drawSplash();return;}
@@ -1852,6 +1917,7 @@ function drawPaused(){
 }
 
 function drawWaveMsg(){
+  if(controls.mobile) return;
   const alpha = msgTimer>0.5?1:msgTimer/0.5;
   ctx.globalAlpha = alpha;
   ctx.textAlign='center';

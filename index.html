@@ -2,559 +2,296 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Otterly Games — Learning like no otter</title>
-  <meta name="description" content="Educational games for kids and families. Play Math Tank Universe online without an account, or explore our Android games and free learning tools.">
-  <meta name="keywords" content="educational games for kids, math games, clock learning app, multiplication game, kids learning app">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Otterly Games: Free Telling-Time &amp; Math Games for Kids</title>
+  <meta name="description" content="Free browser games for telling time and times tables. Try Clock Master and Math Tank, plus learning tools and guides for parents. No account needed.">
   <link rel="canonical" href="https://otterlygames.com/">
-  <meta property="og:title" content="Otterly Games — Learning like no otter">
-  <meta property="og:description" content="Play Math Tank Universe online, discover our Android games, and practise with free learning tools.">
+  <meta property="og:title" content="Otterly Games: Free Telling-Time &amp; Math Games for Kids">
+  <meta property="og:description" content="Free browser games for telling time and times tables. Try Clock Master and Math Tank, plus learning tools and guides for parents. No account needed.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://otterlygames.com/images/Otter-mascot.png">
   <meta property="og:url" content="https://otterlygames.com/">
+  <meta property="og:image" content="https://otterlygames.com/images/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Otterly Games — Learning like no otter">
-  <meta name="twitter:description" content="Play Math Tank Universe online, discover our Android games, and practise with free learning tools.">
-  <meta name="twitter:image" content="https://otterlygames.com/images/Otter-mascot.png">
-  <meta name="pinterest-rich-pin" content="true">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Otterly Games",
-    "url": "https://otterlygames.com",
-    "logo": "https://otterlygames.com/images/Otter-mascot.png",
-    "description": "Educational browser games, Android games, and free learning tools for children and families.",
-    "foundingDate": "2026",
-    "sameAs": [
-      "https://play.google.com/store/apps/details?id=com.clockmaster.timeforjuniors",
-      "https://play.google.com/store/apps/details?id=com.namasya.mathtank"
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Otterly Games",
-    "url": "https://otterlygames.com",
-    "description": "Educational browser games, Android games, and free learning tools for children and families.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Otterly Games",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://otterlygames.com/images/Otter-mascot.png"
-      }
-    }
-  }
-  </script>
-  <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <meta name="twitter:title" content="Otterly Games: Free Telling-Time &amp; Math Games for Kids">
+  <meta name="twitter:description" content="Free browser games for telling time and times tables. Try Clock Master and Math Tank, plus learning tools and guides for parents. No account needed.">
+  <meta name="twitter:image" content="https://otterlygames.com/images/og-default.png">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <!-- Shared CSS (single source of truth) -->
+  <link rel="preload" href="/fonts/nunito-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
-  <!-- Page-specific overrides -->
-  <link rel="stylesheet" href="/css/homepage.css">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NX29GXGV7H"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NX29GXGV7H');</script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5489426086320283" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <script src="/js/includes.js" defer></script>
+  <script src="/js/home.js" defer></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://otterlygames.com/#website","name":"Otterly Games","url":"https://otterlygames.com/","description":"Free learning games, lessons, tools and practical parent guides.","inLanguage":"en","publisher":{"@id":"https://otterlygames.com/#organization"}},{"@type":"Organization","@id":"https://otterlygames.com/#organization","name":"Otterly Games","url":"https://otterlygames.com/","logo":{"@type":"ImageObject","url":"https://otterlygames.com/images/brand/otter-buddy-320.webp","width":320,"height":320}}]}
+  </script>
+  <meta name="google-adsense-account" content="ca-pub-5489426086320283">
 </head>
-<body>
-
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-brand">
-        <img src="/images/Otter-mascot.png" alt="Otterly Games">
-        <span class="brand-text">Otterly Games</span>
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
-      <div class="nav-links" id="navLinks">
-        <a href="#games">Games</a>
-        <a href="/play/math-tank.html">Play Math Tank</a>
-        <a href="/play/clock-master.html">Play Clock Master</a>
-        <a href="/Arcade/">Arcade</a>
-        <a href="/tools/">Tools</a>
-        <a href="/blog/">Blog</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-        <a href="#games" class="nav-cta">Get Our Games →</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- SCROLL PROGRESS BAR -->
-  <div class="scroll-progress" id="scrollProgress"></div>
-
-  <!-- HERO + ABOUT COMBINED -->
-  <section class="hero" id="about">
-    <div class="hero-particles">
-      <span class="particle p1">✦</span>
-      <span class="particle p2">✦</span>
-      <span class="particle p3">✧</span>
-      <span class="particle p4">✦</span>
-      <span class="particle p5">✧</span>
-    </div>
-    <div class="hero-about-wrapper">
-      <!-- LEFT: BRAND IDENTITY -->
-      <div class="hero-content">
-        <div class="hero-mascot fade-in">
-          <img src="/images/Otter-mascot.png" alt="Otterly — your learning buddy">
-        </div>
-        <h1 class="fade-in"><span class="gradient-text">Otterly</span> Smart.</h1>
-        <p class="hero-tagline fade-in">
-          Learning like no <span class="gradient-text">otter</span>.
-        </p>
-        <p class="hero-pitch fade-in">
-          A mom turned <strong class="amber">screen time guilt</strong> into
-          <strong class="green">screen time wins</strong>.<br>
-          Games so fun, kids don't realize they're getting smarter.
-        </p>
-        <div class="hero-actions fade-in">
-          <a href="#play" class="btn-glow">▶ Play Now</a>
-          <a href="#games" class="btn-outline">Our Games →</a>
-        </div>
-      </div>
-
-      <!-- RIGHT: THE STORY -->
-      <div class="story-panel fade-in-right">
-        <div class="story-glow"></div>
-        <div class="story-accent"></div>
-        <div class="story-body">
-          <span class="story-label">Our Story</span>
-          <h2>Built by a Mom.<br>Tested by <span class="gradient-text">Real Kids</span>.</h2>
-          <p>
-            My son was in tears over reading a clock. Multiplication felt like punishment.
-            So I built what I wished existed — games that are <em>genuinely fun</em> and
-            <em>genuinely educational</em>. No dark patterns. No data harvesting. Just honest
-            games made with love.
-          </p>
-          <div class="trust-grid">
-            <div class="trust-badge fade-in stagger-1">
-              <span class="trust-icon">🔒</span>
-              <div><strong>No Login</strong><small>Play without an account.</small></div>
-            </div>
-            <div class="trust-badge fade-in stagger-2">
-              <span class="trust-icon">✅</span>
-              <div><strong>For Families</strong><small>Read our privacy policy.</small></div>
-            </div>
-            <div class="trust-badge fade-in stagger-3">
-              <span class="trust-icon">💝</span>
-              <div><strong>Mom-Made</strong><small>With love, not algorithms.</small></div>
-            </div>
-            <div class="trust-badge fade-in stagger-4">
-              <span class="trust-icon">⭐</span>
-              <div><strong>New & Growing</strong><small>More games coming soon.</small></div>
-            </div>
-          </div>
-          <a href="/about.html" class="story-link">Read the full story →</a>
-        </div>
-      </div>
-    </div>
-    <!-- Scroll Indicator -->
-    <a href="#games" class="scroll-indicator" id="scrollIndicator">
-      <span>Scroll</span>
-      <div class="chevrons">
-        <div class="chevron"></div>
-        <div class="chevron"></div>
-      </div>
+<body class="home-page theme-b">
+<!-- og:nav:start -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/images/brand/otter-mark-80.webp" alt="" width="40" height="40">
+      <span class="brand-text">Otterly Games</span>
     </a>
-  </section>
-  <!-- CLOCK MASTER -->
-  <section class="game-section clock-section" id="games">
-    <div class="game-bg" style="background-image: url('/images/clockmaster/feature.webp')"></div>
-    <div class="game-inner">
-      <div class="game-phone fade-in-left" onclick="switchGame('clock')" style="cursor:pointer">
-        <div class="game-phone-screen">
-          <div class="game-phone-camera"></div>
-          <img class="game-phone-preview" src="/images/clockmaster/home.webp" alt="Clock Master with Otterly, clock lessons, racing, and universe exploration" width="540" height="960" loading="lazy">
-          <div class="game-phone-home"></div>
+    <div class="nav-links" id="navLinks">
+      <a href="/learn/">Lessons</a>
+      <a href="/tools/">Tools</a>
+      <a href="/parents/">For parents</a>
+      <a href="/blog/">Blog</a>
+      <a href="/Arcade/">Creative Arcade</a>
+    </div>
+    <a href="/play/" class="nav-cta nav-play">Play online <span aria-hidden="true">&nearr;</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<!-- og:nav:end -->
+
+  <main id="main-content" class="home-main" tabindex="-1">
+    <section class="home-hero" aria-labelledby="home-title">
+      <div class="wrap home-hero-grid">
+        <div class="home-hero-copy">
+          <p class="eyebrow">Otterly Smart.</p>
+          <h1 id="home-title">Learning<br>like no <span>otter.</span></h1>
+          <p class="home-pitch">Clock struggles? Times-table tangles? Try a little lesson, practise together, or jump into one of our learning games.</p>
+          <div class="home-actions">
+            <a class="btn btn--lg btn--amber" href="/play/clock-master.html" data-home-game="clock-master" aria-label="Play Clock Master">Play Clock Master <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></a>
+            <a class="btn btn--lg btn--pink" href="/play/math-tank.html" data-home-game="math-tank" aria-label="Play Math Tank">Play Math Tank <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></a>
+          </div>
+          <p class="home-quick-learning">A smaller step? Try <a href="/tools/clock-lessons.html">clock lessons</a>, <a href="/tools/multiplication-practice.html">maths practice</a> or <a href="/tools/">a learning tool</a>.</p>
+          <p class="home-provenance-wrap"><a class="chip home-provenance" href="/about.html"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-heart"/></svg> Built by a Mom. Tested by Real Kids.</a></p>
+        </div>
+        <div class="home-stage">
+          <div class="home-orb">
+            <img src="/images/brand/otter-buddy-480.webp" alt="" width="480" height="480" fetchpriority="high">
+          </div>
+          <span class="chip home-chip home-chip--a">Free to play</span>
+          <span class="chip home-chip home-chip--b">No account needed</span>
         </div>
       </div>
-      <div class="game-info fade-in-right">
-        <span class="game-tag purple">Clock Master</span>
-        <h2>Time to<br>Race!</h2>
-        <p class="game-pun">"Why was the clock always stressed? It was <em>ticked</em> off!" 🕐</p>
-        <p class="game-desc">
-          Let's be honest — teaching kids to read a clock is <em>otterly</em> painful.
-          "No sweetie, the short hand is hours..." Sound familiar?
-          We turned that struggle into a racing game. Every correct answer
-          gives your car a speed boost. Suddenly kids WANT to know what 3:45 looks like.
-        </p>
-        <ul class="game-features">
-          <li><span class="feat-icon">🏎️</span><span><strong>Race to learn</strong> — Answer clock questions to boost speed</span></li>
-          <li><span class="feat-icon">📈</span><span><strong>11 guided chapters</strong> — From clock hands to angles and time puzzles</span></li>
-          <li><span class="feat-icon">🚀</span><span><strong>Explore the universe</strong> — Discover 30 celestial objects through clock challenges</span></li>
-          <li><span class="feat-icon">🎨</span><span><strong>41 cars and 5 companions</strong> — Original artwork, animated personalities, and Otterly as your guide</span></li>
-        </ul>
-        <a href="#play" class="game-play-btn purple" onclick="switchGame('clock')">▶ Try Clock Master</a>
-        <a href="/play/clock-master.html" class="game-play-btn purple" style="margin-top:1rem">Play the Full Game Online &rarr;</a>
-        <a href="/apps/clock-master.html" style="display:block;margin-top:1rem">Explore Clock Master &rarr;</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- MATH TANK -->
-  <section class="game-section math-section">
-    <div class="game-bg" style="background-image: url('/images/Otter-tank.png')"></div>
-    <div class="game-inner">
-      <div class="game-info fade-in-left">
-        <span class="game-tag pink">Math Tank</span>
-        <h2>Multiply.<br>Divide.<br>Conquer.</h2>
-        <p class="game-pun">"What do you call an otter good at math? An <em>otter-matic</em> calculator!" 🎯</p>
-        <p class="game-desc">
-          Times tables don't have to be torture sessions. In Math Tank,
-          every correct answer fires a missile at enemy tanks.
-          Get it wrong? You take damage. Kids get so competitive they
-          don't realize they're drilling 7×8 for the 50th time.
-          That's <em>otterly</em> genius.
-        </p>
-        <ul class="game-features">
-          <li><span class="feat-icon">💥</span><span><strong>Battle mode</strong> — Solve to shoot, miss and take damage</span></li>
-          <li><span class="feat-icon">🧠</span><span><strong>Adaptive difficulty</strong> — Easy, Medium, Hard, God mode</span></li>
-          <li><span class="feat-icon">🏆</span><span><strong>Daily quests</strong> — Fresh challenges keep kids coming back</span></li>
-          <li><span class="feat-icon">🌌</span><span><strong>Save the Universe</strong> — Epic story mode through space</span></li>
-        </ul>
-        <a href="#play" class="game-play-btn pink" onclick="switchGame('math')">▶ Try Math Tank</a>
-        <a href="/play/math-tank.html" class="game-play-btn pink" style="margin-top:1rem">Play the Full Game Online &rarr;</a>
-        <a href="/apps/math-tank.html" style="display:block;margin-top:1rem">Explore Math Tank &rarr;</a>
-      </div>
-      <div class="game-phone fade-in-right" onclick="switchGame('math')" style="cursor:pointer">
-        <div class="game-phone-screen">
-          <div class="game-phone-camera"></div>
-          <img class="game-phone-preview" src="/images/mathtank/home.webp" alt="Math Tank home with the new illustrated tank, battle, universe, lessons, and garage" width="540" height="960" loading="lazy">
-          <div class="game-phone-home"></div>
+    <section class="home-section home-learning" id="learning-adventures" aria-labelledby="learning-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Our learning adventures</p><h2 id="learning-heading">The game is the practice.</h2></div>
+          <a class="text-link" href="/learn/">Find a learning path <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PLAY & DOWNLOAD -->
-  <section class="play-section" id="play">
-    <div class="play-header">
-      <h2 class="fade-in">Try It <span class="gradient-text">Right Now</span></h2>
-      <p class="fade-in">Pick a game. Play it right here. Love it? Grab it.</p>
-      <div class="play-tabs fade-in">
-        <button class="play-tab active" data-game="clock" onclick="switchGame('clock')">🕐 Clock Master</button>
-        <button class="play-tab" data-game="math" onclick="switchGame('math')">🎯 Math Tank</button>
-      </div>
-    </div>
-    <div class="play-inner fade-in">
-      <!-- LEFT: Phone -->
-      <div class="play-phone-col">
-        <div class="play-phone-wrap" id="playPhoneWrap">
-          <div class="play-phone" id="playPhone">
-            <div class="play-screen">
-              <div class="play-camera"></div>
-              <div class="iframe-scaler" id="iframeScaler">
-                <iframe id="clock-frame" class="play-iframe" allow="autoplay" title="Clock Master"></iframe>
-                <iframe id="math-frame" class="play-iframe" style="display:none" allow="autoplay" title="Math Tank"></iframe>
-              </div>
-              <!-- Game splash preview (visible before play) -->
-              <div class="play-splash" id="playSplash" data-game="clock">
-                <img class="play-splash-bg clock-splash" src="/images/clockmaster/race.webp" alt="Clock Master race: read the clock and choose the matching time" width="540" height="960" loading="lazy">
-                <img class="play-splash-bg math-splash" src="/images/mathtank/battle.webp" alt="Math Tank battle with the new tanks, health bars, and answer keypad" width="540" height="960" loading="lazy">
-              </div>
-              <!-- Tap to Play overlay (on top of splash) -->
-              <button type="button" class="play-start-overlay" id="playStartOverlay" onclick="startGame()">
-                <span class="play-start-btn" id="splashLabel">▶ Play Clock Master</span>
-              </button>
-              <div class="play-overlay" id="gameOverlay">
-                <div style="font-size:2.5rem;margin-bottom:0.5rem">🎉</div>
-                <h3>Great Round!</h3>
-                <p>Download the app for achievements, progress tracking & more</p>
-                <a class="overlay-dl" href="https://play.google.com/store/apps/details?id=com.clockmaster.timeforjuniors" target="_blank" rel="noopener" onclick="closeOverlay()">📲 Get the App</a>
-                <button class="overlay-skip" onclick="dismissOverlay()">Keep Playing</button>
-              </div>
-              <div class="play-home-bar"></div>
+        <div class="home-bento-flag">
+          <article class="home-flag home-feature home-flag--clock">
+            <div class="home-flag-copy">
+              <p class="home-flag-name"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> Clock Master</p>
+              <h3>Time to Race!</h3>
+              <p>Read the clock. Pick the time. Give your car a speed boost. Telling time just got a little more competitive.</p>
+              <p class="home-flag-note">11 guided lessons, car races and space discoveries. Progress saves locally.</p>
+              <a href="/play/clock-master.html" class="btn btn--lg btn--amber">Explore Clock Master <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></a>
             </div>
-            <button class="expand-btn" id="expandBtn" onclick="toggleExpand()" title="Expand game">
-              <svg id="expandIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-              <svg id="contractIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-            </button>
+            <div class="home-flag-art">
+              <div class="home-phone home-phone--back"><img src="/images/clockmaster/home.webp" alt="" width="540" height="960" loading="lazy"></div>
+              <div class="home-phone home-phone--front"><img src="/images/clockmaster/race.webp" alt="Clock Master gameplay: racing cars above a clock question and four possible answers" width="540" height="960" loading="lazy"></div>
+            </div>
+          </article>
+
+          <article class="home-flag home-feature home-flag--tank">
+            <div class="home-flag-copy">
+              <p class="home-flag-name"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Math Tank</p>
+              <h3>Multiply. Divide. Conquer.</h3>
+              <p>Solve to shoot. Customise your tank. Take on a battle, or practise number facts at your own pace.</p>
+              <p class="home-flag-note">Lessons, practice and tank battles. Progress saves locally.</p>
+              <a href="/play/math-tank.html" class="btn btn--lg btn--pink">Explore Math Tank <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></a>
+            </div>
+            <div class="home-flag-art">
+              <div class="home-phone home-phone--back"><img src="/images/mathtank/home.webp" alt="" width="540" height="960" loading="lazy"></div>
+              <div class="home-phone home-phone--front"><img src="/images/mathtank/battle.webp" alt="Math Tank gameplay: two toy tanks, a multiplication question and a number keypad" width="540" height="960" loading="lazy"></div>
+            </div>
+          </article>
+
+          <a class="surface home-space-link" href="/play/space-academy.html">
+            <img src="/games/clockmaster/art/universe/earth.webp" alt="" width="52" height="52" loading="lazy">
+            <span class="home-space-text"><strong>Next stop: Space Academy.</strong><br>Seven different maths and reasoning adventures.</span>
+            <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg>
+          </a>
+        </div>
+        <a class="text-link home-browse" href="/play/">Browse all games <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+      </div>
+    </section>
+
+    <section class="home-section home-tools" id="tools-and-lessons" aria-labelledby="tools-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">Small tools. No big commitment.</p><h2 id="tools-heading">A little lesson. A little practice.</h2><p>Move a clock hand, explore a times table or try a spelling word. Start with one thing.</p></div>
+          <a class="text-link" href="/tools/"><span>All <span data-tool-count>13</span> free tools</span> <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+        </div>
+        <div class="home-bento-tools">
+          <section class="surface home-tile home-tile--clock" aria-labelledby="clock-tile-title">
+            <div class="home-tile-head"><h3 id="clock-tile-title">Try it: move the clock hand</h3><p class="home-tile-sub">Drag the long hand around the clock. The short hand follows.</p></div>
+            <svg class="home-clock" id="miniClock" viewBox="0 0 200 200" role="slider" tabindex="0"
+                 aria-label="Clock. Move the long hand with the arrow keys or by dragging" aria-valuemin="0" aria-valuemax="719" aria-valuenow="210" aria-valuetext="3:30">
+              <circle class="mc-ring" cx="100" cy="100" r="99"/>
+              <circle class="mc-face" cx="100" cy="100" r="92"/>
+              <g class="mc-tick" aria-hidden="true">
+                <line x1="100" y1="14" x2="100" y2="21"/><line x1="100" y1="14" x2="100" y2="21" transform="rotate(30 100 100)"/><line x1="100" y1="14" x2="100" y2="21" transform="rotate(60 100 100)"/><line x1="100" y1="14" x2="100" y2="21" transform="rotate(90 100 100)"/><line x1="100" y1="14" x2="100" y2="21" transform="rotate(120 100 100)"/><line x1="100" y1="14" x2="100" y2="21" transform="rotate(150 100 100)"/><line x1="100" y1="14" x2="100" y2="21" transform="rotate(180 100 100)"/><line x1="100" y1="14" x2="100" y2="21" transform="rotate(210 100 100)"/><line x1="100" y1="14" x2="100" y2="21" transform="rotate(240 100 100)"/><line x1="100" y1="14" x2="100" y2="21" transform="rotate(270 100 100)"/><line x1="100" y1="14" x2="100" y2="21" transform="rotate(300 100 100)"/><line x1="100" y1="14" x2="100" y2="21" transform="rotate(330 100 100)"/>
+              </g>
+              <g aria-hidden="true">
+                <text class="mc-num" x="132" y="44.6">1</text><text class="mc-num" x="155.4" y="68">2</text><text class="mc-num" x="164" y="100">3</text><text class="mc-num" x="155.4" y="132">4</text><text class="mc-num" x="132" y="155.4">5</text><text class="mc-num" x="100" y="164">6</text><text class="mc-num" x="68" y="155.4">7</text><text class="mc-num" x="44.6" y="132">8</text><text class="mc-num" x="36" y="100">9</text><text class="mc-num" x="44.6" y="68">10</text><text class="mc-num" x="68" y="44.6">11</text><text class="mc-num" x="100" y="36">12</text>
+              </g>
+              <line class="mc-hour" x1="100" y1="100" x2="100" y2="58" transform="rotate(105 100 100)"/>
+              <g class="mc-min" transform="rotate(180 100 100)"><line x1="100" y1="108" x2="100" y2="32"/><circle class="mc-grip" cx="100" cy="30" r="11"/><circle class="mc-hit" cx="100" cy="30" r="20"/></g>
+              <circle class="mc-pin" cx="100" cy="100" r="6"/>
+            </svg>
+            <div class="home-clock-readout"><output class="home-clock-time" id="clockTime" for="miniClock">3:30</output></div>
+            <p class="home-clock-says" id="clockSays">The short hand sits between 3 and 4. The long hand shows 30 minutes past.</p>
+            <div class="home-clock-controls" id="clockControls" hidden>
+              <button type="button" class="btn btn--ghost" data-clock-step="-5">&minus;5 min</button>
+              <button type="button" class="btn btn--ghost" data-clock-step="5">+5 min</button>
+            </div>
+            <div class="home-tile-foot"><a class="text-link" href="/tools/clock-lessons.html">Open the clock lessons <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a></div>
+          </section>
+
+          <div class="home-tool-side">
+            <section class="surface home-tile home-tile--peek" aria-labelledby="peek-title">
+              <div class="home-tile-head"><h3 id="peek-title">Peek at a times table</h3><p class="home-tile-sub">Pick a table, then cover the answers and test yourself.</p></div>
+              <div class="home-peek-picker" id="peekPicker" role="group" aria-label="Choose a times table" hidden>
+                <button type="button" data-n="2" aria-pressed="false">2</button><button type="button" data-n="3" aria-pressed="false">3</button><button type="button" data-n="4" aria-pressed="false">4</button><button type="button" data-n="5" aria-pressed="false">5</button><button type="button" data-n="6" aria-pressed="true">6</button><button type="button" data-n="7" aria-pressed="false">7</button><button type="button" data-n="8" aria-pressed="false">8</button><button type="button" data-n="9" aria-pressed="false">9</button><button type="button" data-n="10" aria-pressed="false">10</button><button type="button" data-n="11" aria-pressed="false">11</button><button type="button" data-n="12" aria-pressed="false">12</button>
+              </div>
+              <ul class="home-facts" id="peekFacts" aria-live="polite" aria-label="The 6 times table">
+                <li><span>6 &times; 1 =</span><b>6</b></li><li><span>6 &times; 2 =</span><b>12</b></li><li><span>6 &times; 3 =</span><b>18</b></li><li><span>6 &times; 4 =</span><b>24</b></li><li><span>6 &times; 5 =</span><b>30</b></li><li><span>6 &times; 6 =</span><b>36</b></li><li><span>6 &times; 7 =</span><b>42</b></li><li><span>6 &times; 8 =</span><b>48</b></li><li><span>6 &times; 9 =</span><b>54</b></li><li><span>6 &times; 10 =</span><b>60</b></li><li><span>6 &times; 11 =</span><b>66</b></li><li><span>6 &times; 12 =</span><b>72</b></li>
+              </ul>
+              <div class="home-peek-bar">
+                <button type="button" class="home-switch" id="peekCover" aria-pressed="false" hidden><span class="track" aria-hidden="true"></span> Cover the answers</button>
+                <a class="text-link" href="/tools/multiplication-table.html">Open the times tables <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+              </div>
+            </section>
+
+            <div class="home-tool-links">
+              <a class="home-tool-link tl-purple" href="/tools/clock-lessons.html"><span class="home-tool-ico"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg></span><span><strong>Clock lessons</strong><small>Read the time, step by step.</small></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></a>
+              <a class="home-tool-link tl-amber" href="/tools/hour-hand.html"><span class="home-tool-ico"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-hour"/></svg></span><span><strong>Hour hand</strong><small>Drag the short hand. See the hour.</small></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></a>
+              <a class="home-tool-link tl-orange" href="/tools/minute-hand.html"><span class="home-tool-ico"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-minute"/></svg></span><span><strong>Minute hand</strong><small>Move the long hand. Count minutes.</small></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></a>
+              <a class="home-tool-link tl-pink" href="/tools/multiplication-table.html"><span class="home-tool-ico"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg></span><span><strong>Times tables</strong><small>Explore the 2 to 12 tables.</small></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></a>
+              <a class="home-tool-link tl-blue" href="/tools/division-practice.html"><span class="home-tool-ico"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-divide"/></svg></span><span><strong>Division practice</strong><small>One problem at your own pace.</small></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></a>
+              <a class="home-tool-link tl-green" href="/tools/spelling-bee.html"><span class="home-tool-ico"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-spell"/></svg></span><span><strong>Spelling Bee</strong><small>Listen, spell and try again.</small></span><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <nav class="home-lesson-paths" aria-label="Guided learning paths">
+          <strong>Want a lesson plan?</strong>
+          <a class="pill" href="/learn/telling-time.html">Telling time <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+          <a class="pill" href="/learn/times-tables.html">Times tables <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+          <a class="pill" href="/learn/division.html">Division <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+          <a class="pill" href="/learn/spelling.html">Spelling <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="home-section home-guides" aria-labelledby="parent-guides-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">From The Otter Side / For parents</p><h2 id="parent-guides-heading">A little help for the grown-ups.</h2><p>Start with the sticking point. Find an explanation, then try an activity together.</p></div>
+          <a class="text-link" href="/blog/">All parent guides <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+        </div>
+        <div class="home-guide-grid">
+          <article class="surface home-guide">
+            <div class="home-guide-img home-guide-img--icon"><img src="/images/brand/clock-master-320.webp" alt="" width="320" height="320" loading="lazy">
+              <span class="chip home-guide-tag tl-amber"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-clock"/></svg> Telling time</span></div>
+            <div class="home-guide-body">
+              <h3><a href="/blog/how-to-teach-a-child-to-tell-time.html">How to teach a child to tell time</a></h3>
+              <p>Start with the hour hand, then connect the minutes. A step-by-step guide for practising together.</p>
+              <a class="text-link tl-amber" href="/tools/clock-lessons.html">Try the clock lessons <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+            </div>
+          </article>
+          <article class="surface home-guide">
+            <div class="home-guide-img"><img src="/images/brand/blog-800.webp" alt="" width="800" height="457" loading="lazy">
+              <span class="chip home-guide-tag tl-pink"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-times"/></svg> Maths at home</span></div>
+            <div class="home-guide-body">
+              <h3><a href="/blog/5-ways-to-make-math-fun-at-home.html">5 ways to make maths fun at home</a></h3>
+              <p>Everyday activities to try when another page of sums is not the answer.</p>
+              <a class="text-link tl-pink" href="/learn/times-tables.html">Explore times tables together <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+            </div>
+          </article>
+          <article class="surface home-guide">
+            <div class="home-guide-img"><img src="/images/brand/tools-800.webp" alt="" width="800" height="457" loading="lazy">
+              <span class="chip home-guide-tag tl-blue"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-divide"/></svg> Understanding division</span></div>
+            <div class="home-guide-body">
+              <h3><a href="/blog/division-for-kids-explained-simply.html">Division for kids, explained simply</a></h3>
+              <p>Use sharing and equal groups before moving on to number sentences.</p>
+              <a class="text-link tl-blue" href="/tools/division-practice.html">Try a division problem <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+            </div>
+          </article>
+        </div>
+        <p class="home-parent-start">Not sure where to start? <a href="/parents/">Plan a small learning session</a> or <a href="/tools/worksheet-builder.html">make a printable practice sheet</a>.</p>
+      </div>
+    </section>
+
+    <div class="wrap home-arcade-wrap">
+      <section class="home-arcade" aria-labelledby="arcade-heading">
+        <div class="home-arcade-head">
+          <div>
+            <span class="chip"><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-gamepad"/></svg> Just for fun</span>
+            <h2 id="arcade-heading">The kids had a few other ideas.</h2>
+            <p>Kid-imagined recreational games, built with parent support and AI-assisted coding. Not lessons &mdash; just a change of pace.</p>
+          </div>
+          <a class="btn btn--ghost home-arcade-link" href="/Arcade/">Visit the arcade <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></a>
+        </div>
+        <div class="home-arcade-games">
+          <a href="/play/ninja-shuriken.html" aria-label="Play Ninja Shuriken"><svg viewBox="0 0 800 500" aria-hidden="true" focusable="false"><use href="/images/games/arcade-worlds.svg#ninja"/></svg><span class="n">Ninja Shuriken <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></span></a>
+          <a href="/play/zombie-hide-and-seek.html" aria-label="Play Zombie Hide and Seek"><svg viewBox="0 0 800 500" aria-hidden="true" focusable="false"><use href="/images/games/arcade-worlds.svg#zombie"/></svg><span class="n">Zombie Hide &amp; Seek <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></span></a>
+          <a href="/play/captain-pigeon.html" aria-label="Play Captain Pigeon Pooper"><svg viewBox="0 0 800 500" aria-hidden="true" focusable="false"><use href="/images/games/arcade-worlds.svg#pigeon"/></svg><span class="n">Captain Pigeon Pooper <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></span></a>
+          <a href="/play/dog-shepherd.html" aria-label="Play Dog Shepherd"><svg viewBox="0 0 800 500" aria-hidden="true" focusable="false"><use href="/images/games/arcade-worlds.svg#shepherd"/></svg><span class="n">Dog Shepherd <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></span></a>
+        </div>
+      </section>
+    </div>
+
+    <section class="home-grownups" aria-labelledby="story-heading">
+      <div class="wrap">
+        <div class="home-story">
+          <div class="home-story-img"><img src="/images/brand/about-800.webp" alt="" width="800" height="457" loading="lazy"></div>
+          <div class="home-story-side">
+            <div class="home-story-copy">
+              <p class="eyebrow">A very personal side project</p>
+              <h2 id="story-heading">Built by a Mom. Tested by <span>Real Kids.</span></h2>
+              <p>My son was in tears over reading a clock. Multiplication felt like punishment. So I built what I wished existed: games that are genuinely fun and genuinely educational.</p>
+              <a class="text-link" href="/about.html">The story behind Otterly <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-right"/></svg></a>
+            </div>
+            <a class="home-resource" href="/tools/worksheet-builder.html">
+              <small><svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-sheet"/></svg> Pencils out?</small>
+              <strong>Take the practice off-screen.</strong>
+              <p>Make a fresh clock or number sheet, with optional answers for you.</p>
+              <span class="arrow">Open the worksheet generator <svg class="icon" aria-hidden="true"><use href="/images/icons.svg#i-arrow-up-right"/></svg></span>
+            </a>
           </div>
         </div>
       </div>
+    </section>
+  </main>
 
-      <!-- RIGHT: Download info -->
-      <div class="play-info" id="download">
-        <h3>Get the<br><span class="gradient-text">Full Experience</span></h3>
-        <p class="play-info-desc">All levels, achievements & progress tracking — offline, on your device. Built by a mom who understands screen time.</p>
-        <ul class="play-info-perks">
-          <li><span class="feat-icon">📴</span><span><strong>Works offline</strong> — No Wi-Fi needed</span></li>
-          <li><span class="feat-icon">🏆</span><span><strong>Achievements</strong> — Track your child's progress</span></li>
-          <li><span class="feat-icon">⏱️</span><span><strong>Daily limits</strong> — Built-in screen time controls</span></li>
-          <li><span class="feat-icon">🔒</span><span><strong>No account needed</strong> — See our privacy policy for storage and advertising details</span></li>
-        </ul>
-        <div class="play-info-buttons">
-          <a href="https://play.google.com/store/apps/details?id=com.clockmaster.timeforjuniors&pcampaignid=web_share" target="_blank" rel="noopener" class="game-play-btn purple">
-            <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
-            Clock Master — Google Play
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=com.namasya.mathtank&pcampaignid=web_share" target="_blank" rel="noopener" class="game-play-btn pink">
-            <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/></svg>
-            Math Tank — Google Play
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FREE LEARNING TOOLS -->
-  <section class="tools-section">
-    <div class="tools-inner">
-      <h3 class="fade-in">Free <span class="gradient-text">Learning Tools</span></h3>
-      <p class="fade-in">Practice anytime, right in your browser — no download needed</p>
-      <div id="tools-preview" class="tools-grid--compact">
-        <!-- OG.renderToolsPreview populates this from _data/tools.json -->
-      </div>
-      <a href="/tools/" class="section-more-link fade-in">View all tools &rarr;</a>
-    </div>
-  </section>
-
-  <!-- RECENT BLOG POSTS -->
-  <section class="blog-preview-section">
-    <div class="blog-preview-inner">
-      <h3 class="fade-in">From <span class="gradient-text">The Otter Side</span></h3>
-      <p class="fade-in">Tips, stories & guides from a mom who builds learning games</p>
-      <div id="blog-preview" class="blog-preview-grid">
-        <!-- OG.renderBlogPreview populates this from _data/blogs.json -->
-      </div>
-      <a href="/blog/" class="section-more-link fade-in">Read more on the blog &rarr;</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="/">Home</a><a href="/tools/">Tools</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a>
-    </div>
-    <p style="color:#4a4a60">&copy; 2026 Otterly Games. Built with ❤️ by a mom who gets it.</p>
-  </footer>
-
-  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
-  <script>
-    document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => obs.observe(el));
-    window.addEventListener('scroll', () => {
-      document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 500);
-      const scrollIndicator = document.getElementById('scrollIndicator');
-      if (scrollIndicator) scrollIndicator.classList.toggle('hidden', window.scrollY > 100);
-      // Scroll progress bar
-      const scrollProgress = document.getElementById('scrollProgress');
-      if (scrollProgress) {
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = (window.scrollY / docHeight) * 100;
-        scrollProgress.style.width = scrollPercent + '%';
-      }
-    });
-
-    /* ---- Audio-smart iframe management ---- */
-    const GAME_SRCS = { clock: '/games/clockmaster/?mode=race', math: '/games/mathtank/?mode=battle' };
-    let activeGame = 'clock';
-    let loaded = { clock: false, math: false };
-    let started = false; // user clicked "Tap to Play"
-    let playVisible = false;
-    let overlayTimer;
-
-    function updateClockVisibility() {
-      const frame = document.getElementById('clock-frame');
-      if (loaded.clock) frame.contentWindow.postMessage({
-        type: activeGame === 'clock' && playVisible && !document.hidden ? 'resumeAudio' : 'pauseAudio'
-      }, location.origin);
-    }
-
-    /* Pause every <audio> and AudioContext inside an iframe */
-    function pauseIframeAudio(frame) {
-      try {
-        // Primary: postMessage (game listens for this)
-        if (frame.contentWindow) {
-          frame.contentWindow.postMessage({ type: 'pauseAudio' }, '*');
-        }
-        // Backup: call tracked-audio helper injected by game HTML
-        if (frame.contentWindow && typeof frame.contentWindow.__pauseAllAudio === 'function') {
-          frame.contentWindow.__pauseAllAudio();
-        }
-      } catch (e) { /* cross-origin — ignore */ }
-    }
-
-    /* Load an iframe if not yet loaded */
-    function ensureLoaded(game) {
-      const frame = document.getElementById(game === 'clock' ? 'clock-frame' : 'math-frame');
-      if (!loaded[game]) {
-        frame.src = GAME_SRCS[game];
-        loaded[game] = true;
-      }
-    }
-
-    /* "Tap to Play" handler */
-    function startGame() {
-      started = true;
-      document.getElementById('playStartOverlay').classList.add('hidden');
-      const splash = document.getElementById('playSplash');
-      if (splash) splash.classList.add('hidden');
-      ensureLoaded(activeGame);
-    }
-
-    function switchGame(game) {
-      clearTimeout(overlayTimer);
-      const prev = activeGame;
-      activeGame = game;
-      document.querySelector('#gameOverlay .overlay-dl').href =
-        'https://play.google.com/store/apps/details?id=' +
-        (game === 'math' ? 'com.namasya.mathtank' : 'com.clockmaster.timeforjuniors');
-      document.querySelectorAll('.play-tab').forEach(t => t.classList.toggle('active', t.dataset.game === game));
-      const cf = document.getElementById('clock-frame');
-      const mf = document.getElementById('math-frame');
-
-      // Pause audio in the iframe we're leaving
-      const prevFrames = { clock: cf, math: mf };
-      pauseIframeAudio(prevFrames[prev]);
-
-      // Show / hide
-      cf.style.display = game === 'clock' ? 'block' : 'none';
-      mf.style.display = game === 'math'  ? 'block' : 'none';
-
-      // Update splash preview
-      const splash = document.getElementById('playSplash');
-      if (splash) {
-        splash.setAttribute('data-game', game);
-        const titles = { clock: 'Clock Master', math: 'Math Tank' };
-        document.getElementById('splashLabel').textContent = '▶ Play ' + titles[game];
-      }
-
-      if (started) ensureLoaded(game);
-      updateClockVisibility();
-
-      document.getElementById('gameOverlay').classList.remove('show');
-      document.getElementById('play').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    /* Pause audio when user switches browser tabs or minimises */
-    document.addEventListener('visibilitychange', () => {
-      updateClockVisibility();
-      if (document.hidden) {
-        pauseIframeAudio(document.getElementById('clock-frame'));
-        pauseIframeAudio(document.getElementById('math-frame'));
-        pauseIframeAudio(document.getElementById('equation-frame'));
-      }
-    });
-
-    /* Pause audio when the play section scrolls out of view */
-    const playSection = document.getElementById('play');
-    if (playSection) {
-      const audioObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          playVisible = e.isIntersecting;
-          updateClockVisibility();
-          if (!e.isIntersecting) {
-            pauseIframeAudio(document.getElementById('clock-frame'));
-            pauseIframeAudio(document.getElementById('math-frame'));
-            pauseIframeAudio(document.getElementById('equation-frame'));
-          }
-        });
-      }, { threshold: 0 });
-      audioObs.observe(playSection);
-    }
-
-    let roundsPlayed = 0;
-    window.addEventListener('message', e => {
-      if (e.origin !== location.origin) return;
-      const cf = document.getElementById('clock-frame');
-      const mf = document.getElementById('math-frame');
-      if (e.source === cf.contentWindow && e.data?.type === 'clockReady') updateClockVisibility();
-      const activeFrame = activeGame === 'clock' ? cf : mf;
-      if (e.source !== activeFrame.contentWindow) return;
-      if (e.data && e.data.type === 'gameEnd') {
-        roundsPlayed++;
-        clearTimeout(overlayTimer);
-        if (roundsPlayed >= 1) overlayTimer = setTimeout(() => document.getElementById('gameOverlay').classList.add('show'), 1500);
-      }
-    });
-    function closeOverlay() { document.getElementById('gameOverlay').classList.remove('show'); }
-    function dismissOverlay() {
-      document.getElementById('gameOverlay').classList.remove('show');
-      const cf = document.getElementById('clock-frame'), mf = document.getElementById('math-frame');
-      if (cf.style.display !== 'none') cf.src = cf.src; else mf.src = mf.src;
-    }
-
-    /* Expand / Contract */
-    let isExpanded = false;
-    function toggleExpand() {
-      isExpanded = !isExpanded;
-      const wrap = document.getElementById('playPhoneWrap');
-      const phone = document.getElementById('playPhone');
-      const scaler = document.getElementById('iframeScaler');
-      const expandIcon = document.getElementById('expandIcon');
-      const contractIcon = document.getElementById('contractIcon');
-      const btn = document.getElementById('expandBtn');
-
-      if (isExpanded) {
-        wrap.classList.add('expanded');
-        phone.classList.add('expanded');
-        document.body.style.overflow = 'hidden';
-        expandIcon.style.display = 'none';
-        contractIcon.style.display = 'block';
-        btn.title = 'Contract game';
-        resizeExpandedIframe();
-        window.addEventListener('resize', resizeExpandedIframe);
-      } else {
-        wrap.classList.remove('expanded');
-        phone.classList.remove('expanded');
-        document.body.style.overflow = '';
-        scaler.style.width = '';
-        scaler.style.height = '';
-        scaler.style.transform = '';
-        expandIcon.style.display = 'block';
-        contractIcon.style.display = 'none';
-        btn.title = 'Expand game';
-        window.removeEventListener('resize', resizeExpandedIframe);
-      }
-    }
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && isExpanded) toggleExpand();
-    });
-
-    function resizeExpandedIframe() {
-      const phone = document.getElementById('playPhone');
-      const scaler = document.getElementById('iframeScaler');
-      if (!isExpanded) return;
-      /* The iframe is always 412x915 (9:20 aspect ratio). Scale it to fit the expanded container while maintaining aspect ratio. */
-      const containerW = phone.clientWidth;
-      const containerH = phone.clientHeight;
-      const iframeW = 412;
-      const iframeH = 915;
-      const scale = Math.min(containerW / iframeW, containerH / iframeH);
-      scaler.style.width = iframeW + 'px';
-      scaler.style.height = iframeH + 'px';
-      scaler.style.transform = 'scale(' + scale + ')';
-      scaler.style.transformOrigin = 'top left';
-    }
-  </script>
-  <!-- Data Registry -->
-  <script src="/js/registry.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.OG) {
-        OG.renderToolsPreview('#tools-preview');
-        OG.renderBlogPreview('#blog-preview', 3);
-      }
-    });
-  </script>
-  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-  <script>kofiWidgetOverlay.draw('otterly_games',{'type':'floating-chat','floating-chat.donateButton.text':'Support me','floating-chat.donateButton.background-color':'#00b9fe','floating-chat.donateButton.text-color':'#fff'});</script>
-  <script src="/js/math-demo.js" defer></script>
+<!-- og:footer:start -->
+<footer class="footer">
+  <a href="/" class="footer-brand">Otterly Games</a>
+  <p class="footer-tagline">Learning like no otter. Browser games, little discoveries and practice on paper.</p>
+  <div class="footer-links">
+    <a href="/play/">Play online</a>
+    <a href="/learn/">Learn by skill</a>
+    <a href="/parents/">Parents &amp; teachers</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Parent guides</a>
+    <a href="/about.html">Our story</a>
+    <a href="/Arcade/">Creative arcade</a>
+  </div>
+  <div class="footer-links footer-links--small">
+    <a href="/contact.html">Contact &amp; support</a>
+    <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 Otterly Games. Made by a mum, for curious minds.</p>
+</footer>
+<!-- og:footer:end -->
 </body>
 </html>

@@ -30,18 +30,12 @@ with sync_playwright() as p:
           window.__gameMessages=[];
           addEventListener('message',e=>window.__gameMessages.push(e.data?.type));
         """)
-        def route_request(route):
-            if route.request.url.startswith(args.url):
-                route.continue_()
-            else:
-                stub = "window.kofiWidgetOverlay={draw(){}};" if "ko-fi.com" in route.request.url else ""
-                route.fulfill(status=200, content_type="application/javascript", body=stub)
-        context.route("**/*", route_request)
         page = context.new_page()
         page.set_default_timeout(20000)
-        errors, missing = [], []
+        errors, missing, external = [], [], []
         page.on("pageerror", lambda error: errors.append(str(error)))
         page.on("response", lambda r: missing.append(r.url) if r.url.startswith(args.url) and r.status >= 400 else None)
+        page.on("request", lambda r: external.append(r.url) if not r.url.startswith((args.url + "/", "data:", "blob:")) else None)
         page.goto(args.url + "/apps/math-tank.html")
         for image in page.locator(".mt-icon,.mt-phone-shot,.mt-gallery img").all():
             image.scroll_into_view_if_needed()
@@ -54,6 +48,7 @@ with sync_playwright() as p:
         expect(screen).to_have_attribute("data-phase", "table_review")
         # Offscreen iframes must freeze the review countdown and the question timer.
         page.evaluate("window.scrollTo({top:0,behavior:'instant'})")
+        expect(page.locator("#math-demo-frame")).not_to_be_in_viewport()
         expect(frame.get_by_role("heading", name="PAUSED", exact=True)).to_be_visible()
         page.wait_for_timeout(1000)
         page.locator("#math-demo").scroll_into_view_if_needed()
@@ -62,6 +57,7 @@ with sync_playwright() as p:
         expect(screen).to_have_attribute("data-phase", "player_question")
         question = frame.get_by_test_id("battle-question").inner_text()
         page.evaluate("window.scrollTo({top:0,behavior:'instant'})")
+        expect(page.locator("#math-demo-frame")).not_to_be_in_viewport()
         expect(frame.get_by_role("heading", name="PAUSED", exact=True)).to_be_visible()
         page.wait_for_timeout(10500)
         page.locator("#math-demo").scroll_into_view_if_needed()
@@ -86,36 +82,21 @@ with sync_playwright() as p:
             frame.get_by_role("button", name="Play Again", exact=True).click()
             expect(screen).to_have_attribute("data-phase", "table_review")
         page.goto(args.url + "/")
-        for section in [".clock-section", ".math-section"]:
-            preview = page.locator(section + " .game-phone-preview")
-            preview.scroll_into_view_if_needed()
-            assert preview.evaluate("async e=>{await e.decode();return e.naturalWidth>0&&getComputedStyle(e).objectFit==='contain'}")
-            page.wait_for_timeout(700)
-            page.locator(section + " .game-inner").screenshot(path=str(args.output / f"{section[1:]}-{width}.png"))
-        for game in ["Clock Master", "Math Tank"]:
-            page.locator(".play-tab").filter(has_text=game).click()
-            active = ".clock-splash" if game == "Clock Master" else ".math-splash"
-            preview = page.locator(active)
-            assert preview.evaluate("async e=>{await e.decode();return e.naturalWidth>0&&getComputedStyle(e).objectFit==='contain'}")
-            expect(preview).to_have_css("opacity", "1")
-            expect(page.locator("#playStartOverlay")).to_have_accessible_name("▶ Play " + game)
-            assert page.locator("#playStartOverlay img,#playStartOverlay p").count() == 0
-            assert page.locator("#splashLabel").evaluate("e=>e.getBoundingClientRect().height<=48&&e.scrollWidth<=e.clientWidth")
-            package = "com.clockmaster.timeforjuniors" if game == "Clock Master" else "com.namasya.mathtank"
-            expect(page.locator("#gameOverlay .overlay-dl")).to_have_attribute("href", "https://play.google.com/store/apps/details?id=" + package)
-            page.wait_for_timeout(700)
-            page.locator("#playPhone").screenshot(path=str(args.output / f"preview-{game.replace(' ', '-')}-{width}.png"))
-        page.locator('.play-tab[data-game="math"]').click()
-        page.locator("#playStartOverlay").click()
-        expect(page.locator("#playStartOverlay")).not_to_be_visible()
-        expect(page.locator("#playSplash")).not_to_be_visible()
-        home = page.frame_locator("#math-frame")
-        home.get_by_role("button", name="Start Battle", exact=True).click()
+        page.get_by_role("link", name="Play Math Tank", exact=True).click()
+        assert page.locator("#universe-frame").get_attribute("src") is None
+        page.locator("#launch-game").click()
+        home = page.frame_locator("#universe-frame")
+        home.get_by_role("button", name="Play Math Tank", exact=True).click()
+        home.get_by_role("button", name="Battle", exact=True).click()
+        home.get_by_role("button", name="START BATTLE", exact=True).click()
         expect(home.get_by_test_id("battle-screen")).to_have_attribute("data-phase", "table_review")
         countdown = home.get_by_text(re.compile("Study before battle")).text_content()
-        page.locator('.play-tab[data-game="clock"]').click()
+        page.locator("#universe-frame").evaluate(
+            "e=>scrollTo({top:scrollY+e.getBoundingClientRect().bottom+1,behavior:'instant'})")
+        expect(page.locator("#universe-frame")).not_to_be_in_viewport()
+        expect(home.get_by_role("heading", name="PAUSED", exact=True)).to_be_visible()
         page.wait_for_timeout(6000)
-        page.locator('.play-tab[data-game="math"]').click()
+        page.locator("#launch-game").click()
         expect(home.get_by_role("heading", name="PAUSED", exact=True)).not_to_be_visible()
         remaining = home.get_by_text(re.compile("Study before battle")).text_content()
         assert int(re.search(r"(\d+)s", countdown)[1]) - int(re.search(r"(\d+)s", remaining)[1]) <= 1
@@ -124,6 +105,7 @@ with sync_playwright() as p:
         page.screenshot(path=str(args.output / f"homepage-{width}.png"))
         assert not errors, errors
         assert not missing, missing
-        print(f"PASS app page + homepage demo at {width}x{height}", flush=True)
+        assert not external, external
+        print(f"PASS app demo + catalogue-to-game journey at {width}x{height}", flush=True)
         context.close()
     browser.close()
