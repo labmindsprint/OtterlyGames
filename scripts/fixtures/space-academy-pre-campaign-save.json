@@ -1,0 +1,3082 @@
+{
+  "version": 1,
+  "revision": 124,
+  "activeExplorer": "explorer-1",
+  "explorers": {
+    "explorer-1": {
+      "grade": "class-1",
+      "level": 1,
+      "journeys": {
+        "class-1": {
+          "earned": [],
+          "fitted": [],
+          "paint": "coral",
+          "charges": 0,
+          "visits": [],
+          "flight": null,
+          "active": {
+            "mission": {
+              "id": "m2:class-1:chapter:operations:2:before-campaign-class-1",
+              "contentVersion": 2,
+              "grade": "class-1",
+              "chapter": "operations",
+              "level": 2,
+              "mode": "chapter",
+              "seed": "before-campaign-class-1",
+              "title": "Add, subtract, investigate",
+              "questions": [
+                {
+                  "prompt": "The labelled parts together make the whole bar. What number belongs in the question-mark part?",
+                  "visual": {
+                    "kind": "v2-number-bar",
+                    "description": "Part-whole bar, not to scale. Whole: 21. Known parts: 16. One part is unknown.",
+                    "total": 21,
+                    "segments": [
+                      {
+                        "value": 16
+                      },
+                      {
+                        "value": null
+                      }
+                    ]
+                  },
+                  "explanation": "First combine the known parts: 16 = 16. Subtract this from the whole: 21 − 16 = 5. The parts now add back to 21.",
+                  "hint": "The whole includes the missing part as well as every labelled part.",
+                  "answer": "5",
+                  "proof": {
+                    "family": "bar-unknown",
+                    "diagram": {
+                      "total": 21,
+                      "segments": [
+                        {
+                          "value": 16
+                        },
+                        {
+                          "value": null
+                        }
+                      ]
+                    }
+                  },
+                  "id": "q2-class-1-mystery-1nl30fm",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "mystery",
+                  "level": 2,
+                  "family": "bar-unknown",
+                  "section": "maths",
+                  "options": [
+                    "5",
+                    "16",
+                    "21",
+                    "37"
+                  ],
+                  "correctIndex": 0,
+                  "feedback": [
+                    null,
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    {
+                      "code": "wrong-operation",
+                      "message": "Decide what is being combined, removed, shared or compared."
+                    }
+                  ]
+                },
+                {
+                  "prompt": "The labelled parts together make the whole bar. What number belongs in the question-mark part?",
+                  "visual": {
+                    "kind": "v2-number-bar",
+                    "description": "Part-whole bar, not to scale. Whole: 12. Known parts: 9. One part is unknown.",
+                    "total": 12,
+                    "segments": [
+                      {
+                        "value": 9
+                      },
+                      {
+                        "value": null
+                      }
+                    ]
+                  },
+                  "explanation": "First combine the known parts: 9 = 9. Subtract this from the whole: 12 − 9 = 3. The parts now add back to 12.",
+                  "hint": "The whole includes the missing part as well as every labelled part.",
+                  "answer": "3",
+                  "proof": {
+                    "family": "bar-unknown",
+                    "diagram": {
+                      "total": 12,
+                      "segments": [
+                        {
+                          "value": 9
+                        },
+                        {
+                          "value": null
+                        }
+                      ]
+                    }
+                  },
+                  "id": "q2-class-1-mystery-s341v2",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "mystery",
+                  "level": 2,
+                  "family": "bar-unknown",
+                  "section": "maths",
+                  "options": [
+                    "9",
+                    "3",
+                    "12",
+                    "21"
+                  ],
+                  "correctIndex": 1,
+                  "feedback": [
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    null,
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    {
+                      "code": "wrong-operation",
+                      "message": "Decide what is being combined, removed, shared or compared."
+                    }
+                  ]
+                },
+                {
+                  "prompt": "The labelled parts together make the whole bar. What number belongs in the question-mark part?",
+                  "visual": {
+                    "kind": "v2-number-bar",
+                    "description": "Part-whole bar, not to scale. Whole: 23. Known parts: 12. One part is unknown.",
+                    "total": 23,
+                    "segments": [
+                      {
+                        "value": 12
+                      },
+                      {
+                        "value": null
+                      }
+                    ]
+                  },
+                  "explanation": "First combine the known parts: 12 = 12. Subtract this from the whole: 23 − 12 = 11. The parts now add back to 23.",
+                  "hint": "The whole includes the missing part as well as every labelled part.",
+                  "answer": "11",
+                  "proof": {
+                    "family": "bar-unknown",
+                    "diagram": {
+                      "total": 23,
+                      "segments": [
+                        {
+                          "value": 12
+                        },
+                        {
+                          "value": null
+                        }
+                      ]
+                    }
+                  },
+                  "id": "q2-class-1-mystery-1t5mf27",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "mystery",
+                  "level": 2,
+                  "family": "bar-unknown",
+                  "section": "maths",
+                  "options": [
+                    "12",
+                    "35",
+                    "11",
+                    "23"
+                  ],
+                  "correctIndex": 2,
+                  "feedback": [
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    {
+                      "code": "wrong-operation",
+                      "message": "Decide what is being combined, removed, shared or compared."
+                    },
+                    null,
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    }
+                  ]
+                },
+                {
+                  "prompt": "The labelled parts together make the whole bar. What number belongs in the question-mark part?",
+                  "visual": {
+                    "kind": "v2-number-bar",
+                    "description": "Part-whole bar, not to scale. Whole: 25. Known parts: 7. One part is unknown.",
+                    "total": 25,
+                    "segments": [
+                      {
+                        "value": 7
+                      },
+                      {
+                        "value": null
+                      }
+                    ]
+                  },
+                  "explanation": "First combine the known parts: 7 = 7. Subtract this from the whole: 25 − 7 = 18. The parts now add back to 25.",
+                  "hint": "The whole includes the missing part as well as every labelled part.",
+                  "answer": "18",
+                  "proof": {
+                    "family": "bar-unknown",
+                    "diagram": {
+                      "total": 25,
+                      "segments": [
+                        {
+                          "value": 7
+                        },
+                        {
+                          "value": null
+                        }
+                      ]
+                    }
+                  },
+                  "id": "q2-class-1-mystery-1ivyaui",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "mystery",
+                  "level": 2,
+                  "family": "bar-unknown",
+                  "section": "maths",
+                  "options": [
+                    "18",
+                    "25",
+                    "7",
+                    "32"
+                  ],
+                  "correctIndex": 0,
+                  "feedback": [
+                    null,
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    {
+                      "code": "wrong-operation",
+                      "message": "Decide what is being combined, removed, shared or compared."
+                    }
+                  ]
+                },
+                {
+                  "prompt": "The labelled parts together make the whole bar. What number belongs in the question-mark part?",
+                  "visual": {
+                    "kind": "v2-number-bar",
+                    "description": "Part-whole bar, not to scale. Whole: 28. Known parts: 10. One part is unknown.",
+                    "total": 28,
+                    "segments": [
+                      {
+                        "value": 10
+                      },
+                      {
+                        "value": null
+                      }
+                    ]
+                  },
+                  "explanation": "First combine the known parts: 10 = 10. Subtract this from the whole: 28 − 10 = 18. The parts now add back to 28.",
+                  "hint": "The whole includes the missing part as well as every labelled part.",
+                  "answer": "18",
+                  "proof": {
+                    "family": "bar-unknown",
+                    "diagram": {
+                      "total": 28,
+                      "segments": [
+                        {
+                          "value": 10
+                        },
+                        {
+                          "value": null
+                        }
+                      ]
+                    }
+                  },
+                  "id": "q2-class-1-mystery-13aoocv",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "mystery",
+                  "level": 2,
+                  "family": "bar-unknown",
+                  "section": "maths",
+                  "options": [
+                    "38",
+                    "10",
+                    "28",
+                    "18"
+                  ],
+                  "correctIndex": 3,
+                  "feedback": [
+                    {
+                      "code": "wrong-operation",
+                      "message": "Decide what is being combined, removed, shared or compared."
+                    },
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    null
+                  ]
+                },
+                {
+                  "prompt": "The labelled parts together make the whole bar. What number belongs in the question-mark part?",
+                  "visual": {
+                    "kind": "v2-number-bar",
+                    "description": "Part-whole bar, not to scale. Whole: 20. Known parts: 4. One part is unknown.",
+                    "total": 20,
+                    "segments": [
+                      {
+                        "value": 4
+                      },
+                      {
+                        "value": null
+                      }
+                    ]
+                  },
+                  "explanation": "First combine the known parts: 4 = 4. Subtract this from the whole: 20 − 4 = 16. The parts now add back to 20.",
+                  "hint": "The whole includes the missing part as well as every labelled part.",
+                  "answer": "16",
+                  "proof": {
+                    "family": "bar-unknown",
+                    "diagram": {
+                      "total": 20,
+                      "segments": [
+                        {
+                          "value": 4
+                        },
+                        {
+                          "value": null
+                        }
+                      ]
+                    }
+                  },
+                  "id": "q2-class-1-mystery-kcs6lm",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "mystery",
+                  "level": 2,
+                  "family": "bar-unknown",
+                  "section": "maths",
+                  "options": [
+                    "20",
+                    "4",
+                    "24",
+                    "16"
+                  ],
+                  "correctIndex": 3,
+                  "feedback": [
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    {
+                      "code": "wrong-operation",
+                      "message": "Decide what is being combined, removed, shared or compared."
+                    },
+                    null
+                  ]
+                },
+                {
+                  "prompt": "The labelled parts together make the whole bar. What number belongs in the question-mark part?",
+                  "visual": {
+                    "kind": "v2-number-bar",
+                    "description": "Part-whole bar, not to scale. Whole: 19. Known parts: 6. One part is unknown.",
+                    "total": 19,
+                    "segments": [
+                      {
+                        "value": 6
+                      },
+                      {
+                        "value": null
+                      }
+                    ]
+                  },
+                  "explanation": "First combine the known parts: 6 = 6. Subtract this from the whole: 19 − 6 = 13. The parts now add back to 19.",
+                  "hint": "The whole includes the missing part as well as every labelled part.",
+                  "answer": "13",
+                  "proof": {
+                    "family": "bar-unknown",
+                    "diagram": {
+                      "total": 19,
+                      "segments": [
+                        {
+                          "value": 6
+                        },
+                        {
+                          "value": null
+                        }
+                      ]
+                    }
+                  },
+                  "id": "q2-class-1-mystery-1ust8uv",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "mystery",
+                  "level": 2,
+                  "family": "bar-unknown",
+                  "section": "maths",
+                  "options": [
+                    "25",
+                    "19",
+                    "6",
+                    "13"
+                  ],
+                  "correctIndex": 3,
+                  "feedback": [
+                    {
+                      "code": "wrong-operation",
+                      "message": "Decide what is being combined, removed, shared or compared."
+                    },
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    null
+                  ]
+                },
+                {
+                  "prompt": "The labelled parts together make the whole bar. What number belongs in the question-mark part?",
+                  "visual": {
+                    "kind": "v2-number-bar",
+                    "description": "Part-whole bar, not to scale. Whole: 28. Known parts: 15. One part is unknown.",
+                    "total": 28,
+                    "segments": [
+                      {
+                        "value": 15
+                      },
+                      {
+                        "value": null
+                      }
+                    ]
+                  },
+                  "explanation": "First combine the known parts: 15 = 15. Subtract this from the whole: 28 − 15 = 13. The parts now add back to 28.",
+                  "hint": "The whole includes the missing part as well as every labelled part.",
+                  "answer": "13",
+                  "proof": {
+                    "family": "bar-unknown",
+                    "diagram": {
+                      "total": 28,
+                      "segments": [
+                        {
+                          "value": 15
+                        },
+                        {
+                          "value": null
+                        }
+                      ]
+                    }
+                  },
+                  "id": "q2-class-1-mystery-1jmo9vn",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "mystery",
+                  "level": 2,
+                  "family": "bar-unknown",
+                  "section": "maths",
+                  "options": [
+                    "28",
+                    "43",
+                    "15",
+                    "13"
+                  ],
+                  "correctIndex": 3,
+                  "feedback": [
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    {
+                      "code": "wrong-operation",
+                      "message": "Decide what is being combined, removed, shared or compared."
+                    },
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    null
+                  ]
+                }
+              ]
+            },
+            "index": 1,
+            "answers": [
+              {
+                "choice": 0,
+                "hinted": true
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              }
+            ]
+          },
+          "completed": [],
+          "history": [],
+          "attempts": [
+            {
+              "id": "q2-class-1-mystery-1nl30fm",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": true,
+              "at": "2026-10-17T15:40:00.000Z"
+            }
+          ],
+          "lastResult": null
+        },
+        "class-5": {
+          "earned": [
+            "engine",
+            "body",
+            "cockpit",
+            "nose",
+            "left-fin",
+            "right-fin"
+          ],
+          "fitted": [
+            "engine",
+            "body",
+            "cockpit",
+            "nose",
+            "left-fin",
+            "right-fin"
+          ],
+          "paint": "mint",
+          "charges": 4,
+          "visits": [
+            "earth"
+          ],
+          "flight": {
+            "id": "flight:class-5:1",
+            "destination": "moon"
+          },
+          "active": null,
+          "completed": [
+            "m2:class-5:chapter:numbers:2:before-campaign-numbers",
+            "m2:class-5:chapter:operations:2:before-campaign-operations",
+            "m2:class-5:chapter:fractions:2:before-campaign-fractions",
+            "m2:class-5:chapter:decimals:2:before-campaign-decimals",
+            "m2:class-5:chapter:geometry:2:before-campaign-geometry",
+            "m2:class-5:chapter:reasoning:2:before-campaign-reasoning"
+          ],
+          "history": [
+            {
+              "id": "m2:class-5:chapter:numbers:2:before-campaign-numbers",
+              "title": "Number detectives",
+              "level": 2,
+              "correct": 8,
+              "helped": 0,
+              "count": 8,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "m2:class-5:chapter:operations:2:before-campaign-operations",
+              "title": "Mission mathematics",
+              "level": 2,
+              "correct": 8,
+              "helped": 0,
+              "count": 8,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "m2:class-5:chapter:fractions:2:before-campaign-fractions",
+              "title": "Fraction lab",
+              "level": 2,
+              "correct": 8,
+              "helped": 0,
+              "count": 8,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "m2:class-5:chapter:decimals:2:before-campaign-decimals",
+              "title": "Decimal discoveries",
+              "level": 2,
+              "correct": 8,
+              "helped": 0,
+              "count": 8,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "m2:class-5:chapter:geometry:2:before-campaign-geometry",
+              "title": "Area, perimeter and angles",
+              "level": 2,
+              "correct": 8,
+              "helped": 0,
+              "count": 8,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "m2:class-5:chapter:reasoning:2:before-campaign-reasoning",
+              "title": "Logic launchpad",
+              "level": 2,
+              "correct": 8,
+              "helped": 0,
+              "count": 8,
+              "at": "2026-10-17T15:40:00.000Z"
+            }
+          ],
+          "attempts": [
+            {
+              "id": "q2-class-5-compare-l3dnho",
+              "skill": "compare",
+              "chapter": "numbers",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-place-1yfhcev",
+              "skill": "place",
+              "chapter": "numbers",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-compare-63s984",
+              "skill": "compare",
+              "chapter": "numbers",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-place-sruftf",
+              "skill": "place",
+              "chapter": "numbers",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-compare-156eq10",
+              "skill": "compare",
+              "chapter": "numbers",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-place-126azyg",
+              "skill": "place",
+              "chapter": "numbers",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-compare-1jjr1d7",
+              "skill": "compare",
+              "chapter": "numbers",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-place-ptq3qg",
+              "skill": "place",
+              "chapter": "numbers",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-factors-1j3f2jm",
+              "skill": "factors",
+              "chapter": "operations",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-sharing-1o8yvzf",
+              "skill": "sharing",
+              "chapter": "operations",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-factors-1athm2k",
+              "skill": "factors",
+              "chapter": "operations",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-sharing-1ki7cqc",
+              "skill": "sharing",
+              "chapter": "operations",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-factors-veyq65",
+              "skill": "factors",
+              "chapter": "operations",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-sharing-1xf6m66",
+              "skill": "sharing",
+              "chapter": "operations",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-factors-1oinugh",
+              "skill": "factors",
+              "chapter": "operations",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-sharing-1pkoxz3",
+              "skill": "sharing",
+              "chapter": "operations",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-fraction-compare-21jr3w",
+              "skill": "fraction-compare",
+              "chapter": "fractions",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-fraction-read-5rozgy",
+              "skill": "fraction-read",
+              "chapter": "fractions",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-fraction-compare-fd6k67",
+              "skill": "fraction-compare",
+              "chapter": "fractions",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-fraction-read-64saew",
+              "skill": "fraction-read",
+              "chapter": "fractions",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-fraction-compare-x5eub1",
+              "skill": "fraction-compare",
+              "chapter": "fractions",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-fraction-read-19hqmmb",
+              "skill": "fraction-read",
+              "chapter": "fractions",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-fraction-compare-1l3dftv",
+              "skill": "fraction-compare",
+              "chapter": "fractions",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-fraction-read-182z9m3",
+              "skill": "fraction-read",
+              "chapter": "fractions",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-decimals-15k3nxo",
+              "skill": "decimals",
+              "chapter": "decimals",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-decimals-veccbc",
+              "skill": "decimals",
+              "chapter": "decimals",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-decimals-17ny6o6",
+              "skill": "decimals",
+              "chapter": "decimals",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-decimals-1n5yxzn",
+              "skill": "decimals",
+              "chapter": "decimals",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-decimals-hifvgc",
+              "skill": "decimals",
+              "chapter": "decimals",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-decimals-e04n30",
+              "skill": "decimals",
+              "chapter": "decimals",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-decimals-rnhya",
+              "skill": "decimals",
+              "chapter": "decimals",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-decimals-1rp03oe",
+              "skill": "decimals",
+              "chapter": "decimals",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-solids-1uqb5lb",
+              "skill": "solids",
+              "chapter": "geometry",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-perimeter-1t8zco8",
+              "skill": "perimeter",
+              "chapter": "geometry",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-angles-5b9rw1",
+              "skill": "angles",
+              "chapter": "geometry",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-solids-ud9tmp",
+              "skill": "solids",
+              "chapter": "geometry",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-perimeter-1hh6nfj",
+              "skill": "perimeter",
+              "chapter": "geometry",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-angles-yxp5yz",
+              "skill": "angles",
+              "chapter": "geometry",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-solids-bxnoz5",
+              "skill": "solids",
+              "chapter": "geometry",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-perimeter-1htpm0o",
+              "skill": "perimeter",
+              "chapter": "geometry",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-coding-495ke4",
+              "skill": "coding",
+              "chapter": "reasoning",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-visual-rn5xof",
+              "skill": "visual",
+              "chapter": "reasoning",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-routes-5mbmif",
+              "skill": "routes",
+              "chapter": "reasoning",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-directions-163a4qx",
+              "skill": "directions",
+              "chapter": "reasoning",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-coding-fkh8hj",
+              "skill": "coding",
+              "chapter": "reasoning",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-visual-7u4kge",
+              "skill": "visual",
+              "chapter": "reasoning",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-routes-f1x4qe",
+              "skill": "routes",
+              "chapter": "reasoning",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            },
+            {
+              "id": "q2-class-5-directions-153hdqg",
+              "skill": "directions",
+              "chapter": "reasoning",
+              "level": 2,
+              "contentVersion": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z"
+            }
+          ],
+          "lastResult": {
+            "mission": {
+              "id": "m2:class-5:chapter:reasoning:2:before-campaign-reasoning",
+              "contentVersion": 2,
+              "grade": "class-5",
+              "chapter": "reasoning",
+              "level": 2,
+              "mode": "chapter",
+              "seed": "before-campaign-reasoning",
+              "title": "Logic launchpad",
+              "questions": [
+                {
+                  "family": "code-infer",
+                  "prompt": "Each letter always has the same distinct digit. The examples also determine whether words are read forwards or backwards. What is the code for NEPAL?",
+                  "answer": "89357",
+                  "explanation": "Matching repeated letters across ALL examples gives P = 3, L = 7, A = 5, N = 8, E = 9. Read left to right consistently: NEPAL becomes 89357.",
+                  "hint": "Match repeated letters across different examples. A proposed key and reading direction must fit every example.",
+                  "proof": {
+                    "family": "code-infer",
+                    "givens": {
+                      "kind": "v2-reasoning-code-infer",
+                      "examples": [
+                        {
+                          "word": "PLANE",
+                          "code": "37589"
+                        },
+                        {
+                          "word": "PANEL",
+                          "code": "35897"
+                        },
+                        {
+                          "word": "LEAP",
+                          "code": "7953"
+                        }
+                      ],
+                      "target": "NEPAL",
+                      "orders": [
+                        "forward",
+                        "backward"
+                      ],
+                      "description": "Each letter has one fixed, distinct digit. PLANE is coded 37589; PANEL is coded 35897; LEAP is coded 7953. All words are read in the same direction, either left to right or right to left. Find the code for NEPAL."
+                    }
+                  },
+                  "visual": {
+                    "kind": "v2-reasoning-code-infer",
+                    "examples": [
+                      {
+                        "word": "PLANE",
+                        "code": "37589"
+                      },
+                      {
+                        "word": "PANEL",
+                        "code": "35897"
+                      },
+                      {
+                        "word": "LEAP",
+                        "code": "7953"
+                      }
+                    ],
+                    "target": "NEPAL",
+                    "orders": [
+                      "forward",
+                      "backward"
+                    ],
+                    "description": "Each letter has one fixed, distinct digit. PLANE is coded 37589; PANEL is coded 35897; LEAP is coded 7953. All words are read in the same direction, either left to right or right to left. Find the code for NEPAL."
+                  },
+                  "id": "q2-class-5-coding-495ke4",
+                  "grade": "class-5",
+                  "chapter": "reasoning",
+                  "skill": "coding",
+                  "level": 2,
+                  "section": "reasoning",
+                  "options": [
+                    "93785",
+                    "98357",
+                    "75398",
+                    "89357"
+                  ],
+                  "correctIndex": 3,
+                  "feedback": [
+                    {
+                      "code": "ignored-condition",
+                      "message": "Check the proposed answer against every clue, not just one."
+                    },
+                    {
+                      "code": "code-order",
+                      "message": "Apply the same rule to each position and keep the required order."
+                    },
+                    {
+                      "code": "code-order",
+                      "message": "Apply the same rule to each position and keep the required order."
+                    },
+                    null
+                  ]
+                },
+                {
+                  "family": "figure-analogy",
+                  "prompt": "A changes to B by one picture rule. Which picture completes C → ? using exactly the same rule?",
+                  "answer": "grid:4x4:0100/0111/3101/1002",
+                  "explanation": "The rule from A to B is: reflect left to right. Apply it to every tile of C, including both markings, not just its outline.",
+                  "hint": "Work out where both the cross and dot move from A to B; use that movement on C.",
+                  "proof": {
+                    "family": "figure-analogy",
+                    "givens": {
+                      "kind": "v2-reasoning-analogy",
+                      "a": [
+                        [
+                          1,
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          0,
+                          0,
+                          0
+                        ],
+                        [
+                          2,
+                          3,
+                          1,
+                          0
+                        ],
+                        [
+                          0,
+                          0,
+                          0,
+                          1
+                        ]
+                      ],
+                      "b": [
+                        [
+                          0,
+                          0,
+                          1,
+                          1
+                        ],
+                        [
+                          0,
+                          0,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          1,
+                          3,
+                          2
+                        ],
+                        [
+                          1,
+                          0,
+                          0,
+                          0
+                        ]
+                      ],
+                      "c": [
+                        [
+                          0,
+                          0,
+                          1,
+                          0
+                        ],
+                        [
+                          1,
+                          1,
+                          1,
+                          0
+                        ],
+                        [
+                          1,
+                          0,
+                          1,
+                          3
+                        ],
+                        [
+                          2,
+                          0,
+                          0,
+                          1
+                        ]
+                      ],
+                      "description": "Picture rule A to B, then C to a missing picture. A: Row 1: filled, filled, empty, empty. Row 2: empty, empty, empty, empty. Row 3: crossed, dotted, filled, empty. Row 4: empty, empty, empty, filled. B: Row 1: empty, empty, filled, filled. Row 2: empty, empty, empty, empty. Row 3: empty, filled, dotted, crossed. Row 4: filled, empty, empty, empty. C: Row 1: empty, empty, filled, empty. Row 2: filled, filled, filled, empty. Row 3: filled, empty, filled, dotted. Row 4: crossed, empty, empty, filled."
+                    }
+                  },
+                  "visual": {
+                    "kind": "v2-reasoning-analogy",
+                    "a": [
+                      [
+                        1,
+                        1,
+                        0,
+                        0
+                      ],
+                      [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      [
+                        2,
+                        3,
+                        1,
+                        0
+                      ],
+                      [
+                        0,
+                        0,
+                        0,
+                        1
+                      ]
+                    ],
+                    "b": [
+                      [
+                        0,
+                        0,
+                        1,
+                        1
+                      ],
+                      [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      [
+                        0,
+                        1,
+                        3,
+                        2
+                      ],
+                      [
+                        1,
+                        0,
+                        0,
+                        0
+                      ]
+                    ],
+                    "c": [
+                      [
+                        0,
+                        0,
+                        1,
+                        0
+                      ],
+                      [
+                        1,
+                        1,
+                        1,
+                        0
+                      ],
+                      [
+                        1,
+                        0,
+                        1,
+                        3
+                      ],
+                      [
+                        2,
+                        0,
+                        0,
+                        1
+                      ]
+                    ],
+                    "description": "Picture rule A to B, then C to a missing picture. A: Row 1: filled, filled, empty, empty. Row 2: empty, empty, empty, empty. Row 3: crossed, dotted, filled, empty. Row 4: empty, empty, empty, filled. B: Row 1: empty, empty, filled, filled. Row 2: empty, empty, empty, empty. Row 3: empty, filled, dotted, crossed. Row 4: filled, empty, empty, empty. C: Row 1: empty, empty, filled, empty. Row 2: filled, filled, filled, empty. Row 3: filled, empty, filled, dotted. Row 4: crossed, empty, empty, filled."
+                  },
+                  "id": "q2-class-5-visual-rn5xof",
+                  "grade": "class-5",
+                  "chapter": "reasoning",
+                  "skill": "visual",
+                  "level": 2,
+                  "section": "reasoning",
+                  "options": [
+                    "grid:4x4:2001/1013/1110/0010",
+                    "grid:4x4:0100/0111/2101/1003",
+                    "grid:4x4:0100/0111/3101/1002",
+                    "grid:4x4:0010/1110/1013/2001"
+                  ],
+                  "correctIndex": 2,
+                  "feedback": [
+                    {
+                      "code": "wrong-transform",
+                      "message": "A turn and a mirror image move the parts differently."
+                    },
+                    {
+                      "code": "ignored-mark",
+                      "message": "Check markings and position as well as the shape."
+                    },
+                    null,
+                    {
+                      "code": "wrong-transform",
+                      "message": "A turn and a mirror image move the parts differently."
+                    }
+                  ],
+                  "optionVisuals": [
+                    {
+                      "kind": "v2-reasoning-grid",
+                      "cells": [
+                        [
+                          2,
+                          0,
+                          0,
+                          1
+                        ],
+                        [
+                          1,
+                          0,
+                          1,
+                          3
+                        ],
+                        [
+                          1,
+                          1,
+                          1,
+                          0
+                        ],
+                        [
+                          0,
+                          0,
+                          1,
+                          0
+                        ]
+                      ],
+                      "description": "Marked tile choice. Row 1: crossed, empty, empty, filled. Row 2: filled, empty, filled, dotted. Row 3: filled, filled, filled, empty. Row 4: empty, empty, filled, empty."
+                    },
+                    {
+                      "kind": "v2-reasoning-grid",
+                      "cells": [
+                        [
+                          0,
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          1,
+                          1,
+                          1
+                        ],
+                        [
+                          2,
+                          1,
+                          0,
+                          1
+                        ],
+                        [
+                          1,
+                          0,
+                          0,
+                          3
+                        ]
+                      ],
+                      "description": "Marked tile choice. Row 1: empty, filled, empty, empty. Row 2: empty, filled, filled, filled. Row 3: crossed, filled, empty, filled. Row 4: filled, empty, empty, dotted."
+                    },
+                    {
+                      "kind": "v2-reasoning-grid",
+                      "cells": [
+                        [
+                          0,
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          1,
+                          1,
+                          1
+                        ],
+                        [
+                          3,
+                          1,
+                          0,
+                          1
+                        ],
+                        [
+                          1,
+                          0,
+                          0,
+                          2
+                        ]
+                      ],
+                      "description": "Marked tile choice. Row 1: empty, filled, empty, empty. Row 2: empty, filled, filled, filled. Row 3: dotted, filled, empty, filled. Row 4: filled, empty, empty, crossed."
+                    },
+                    {
+                      "kind": "v2-reasoning-grid",
+                      "cells": [
+                        [
+                          0,
+                          0,
+                          1,
+                          0
+                        ],
+                        [
+                          1,
+                          1,
+                          1,
+                          0
+                        ],
+                        [
+                          1,
+                          0,
+                          1,
+                          3
+                        ],
+                        [
+                          2,
+                          0,
+                          0,
+                          1
+                        ]
+                      ],
+                      "description": "Marked tile choice. Row 1: empty, empty, filled, empty. Row 2: filled, filled, filled, empty. Row 3: filled, empty, filled, dotted. Row 4: crossed, empty, empty, filled."
+                    }
+                  ]
+                },
+                {
+                  "family": "path-count",
+                  "prompt": "How many different routes follow the arrows from S to F? Only circles are junctions; crossings do not join.",
+                  "answer": "10 routes",
+                  "explanation": "Start with one way at S. At each circle, add the ways arriving along its incoming arrows. Keep different incoming routes separate even when they share a later arrow. This gives 10 routes at F; counting arrows or circles alone does not count routes.",
+                  "hint": "Write the number of ways at each junction. For a checkpoint question, keep routes that have visited the checkpoint separate.",
+                  "proof": {
+                    "family": "path-count",
+                    "givens": {
+                      "kind": "v2-reasoning-paths",
+                      "nodes": [
+                        {
+                          "id": "S",
+                          "x": 30,
+                          "y": 145
+                        },
+                        {
+                          "id": "A",
+                          "x": 140,
+                          "y": 55
+                        },
+                        {
+                          "id": "B",
+                          "x": 140,
+                          "y": 145
+                        },
+                        {
+                          "id": "C",
+                          "x": 140,
+                          "y": 235
+                        },
+                        {
+                          "id": "D",
+                          "x": 250,
+                          "y": 55
+                        },
+                        {
+                          "id": "E",
+                          "x": 250,
+                          "y": 145
+                        },
+                        {
+                          "id": "G",
+                          "x": 250,
+                          "y": 235
+                        },
+                        {
+                          "id": "H",
+                          "x": 360,
+                          "y": 55
+                        },
+                        {
+                          "id": "I",
+                          "x": 360,
+                          "y": 235
+                        },
+                        {
+                          "id": "F",
+                          "x": 470,
+                          "y": 145
+                        }
+                      ],
+                      "edges": [
+                        [
+                          "S",
+                          "B"
+                        ],
+                        [
+                          "S",
+                          "A"
+                        ],
+                        [
+                          "S",
+                          "C"
+                        ],
+                        [
+                          "A",
+                          "G"
+                        ],
+                        [
+                          "B",
+                          "E"
+                        ],
+                        [
+                          "C",
+                          "E"
+                        ],
+                        [
+                          "A",
+                          "D"
+                        ],
+                        [
+                          "A",
+                          "E"
+                        ],
+                        [
+                          "C",
+                          "D"
+                        ],
+                        [
+                          "D",
+                          "I"
+                        ],
+                        [
+                          "E",
+                          "I"
+                        ],
+                        [
+                          "G",
+                          "H"
+                        ],
+                        [
+                          "E",
+                          "H"
+                        ],
+                        [
+                          "G",
+                          "I"
+                        ],
+                        [
+                          "H",
+                          "F"
+                        ],
+                        [
+                          "I",
+                          "F"
+                        ]
+                      ],
+                      "start": "S",
+                      "finish": "F",
+                      "checkpoint": null,
+                      "forbidden": null,
+                      "description": "Directed route map. Only labelled circles are junctions; crossing lines do not join. Arrows: S to B; S to A; S to C; A to G; B to E; C to E; A to D; A to E; C to D; D to I; E to I; G to H; E to H; G to I; H to F; I to F. Travel from S to F."
+                    }
+                  },
+                  "visual": {
+                    "kind": "v2-reasoning-paths",
+                    "nodes": [
+                      {
+                        "id": "S",
+                        "x": 30,
+                        "y": 145
+                      },
+                      {
+                        "id": "A",
+                        "x": 140,
+                        "y": 55
+                      },
+                      {
+                        "id": "B",
+                        "x": 140,
+                        "y": 145
+                      },
+                      {
+                        "id": "C",
+                        "x": 140,
+                        "y": 235
+                      },
+                      {
+                        "id": "D",
+                        "x": 250,
+                        "y": 55
+                      },
+                      {
+                        "id": "E",
+                        "x": 250,
+                        "y": 145
+                      },
+                      {
+                        "id": "G",
+                        "x": 250,
+                        "y": 235
+                      },
+                      {
+                        "id": "H",
+                        "x": 360,
+                        "y": 55
+                      },
+                      {
+                        "id": "I",
+                        "x": 360,
+                        "y": 235
+                      },
+                      {
+                        "id": "F",
+                        "x": 470,
+                        "y": 145
+                      }
+                    ],
+                    "edges": [
+                      [
+                        "S",
+                        "B"
+                      ],
+                      [
+                        "S",
+                        "A"
+                      ],
+                      [
+                        "S",
+                        "C"
+                      ],
+                      [
+                        "A",
+                        "G"
+                      ],
+                      [
+                        "B",
+                        "E"
+                      ],
+                      [
+                        "C",
+                        "E"
+                      ],
+                      [
+                        "A",
+                        "D"
+                      ],
+                      [
+                        "A",
+                        "E"
+                      ],
+                      [
+                        "C",
+                        "D"
+                      ],
+                      [
+                        "D",
+                        "I"
+                      ],
+                      [
+                        "E",
+                        "I"
+                      ],
+                      [
+                        "G",
+                        "H"
+                      ],
+                      [
+                        "E",
+                        "H"
+                      ],
+                      [
+                        "G",
+                        "I"
+                      ],
+                      [
+                        "H",
+                        "F"
+                      ],
+                      [
+                        "I",
+                        "F"
+                      ]
+                    ],
+                    "start": "S",
+                    "finish": "F",
+                    "checkpoint": null,
+                    "forbidden": null,
+                    "description": "Directed route map. Only labelled circles are junctions; crossing lines do not join. Arrows: S to B; S to A; S to C; A to G; B to E; C to E; A to D; A to E; C to D; D to I; E to I; G to H; E to H; G to I; H to F; I to F. Travel from S to F."
+                  },
+                  "id": "q2-class-5-routes-5mbmif",
+                  "grade": "class-5",
+                  "chapter": "reasoning",
+                  "skill": "routes",
+                  "level": 2,
+                  "section": "reasoning",
+                  "options": [
+                    "16 routes",
+                    "4 routes",
+                    "10 routes",
+                    "8 routes"
+                  ],
+                  "correctIndex": 2,
+                  "feedback": [
+                    {
+                      "code": "path-constraint",
+                      "message": "Count only paths that follow the arrows and satisfy the checkpoint rule."
+                    },
+                    {
+                      "code": "path-constraint",
+                      "message": "Count only paths that follow the arrows and satisfy the checkpoint rule."
+                    },
+                    null,
+                    {
+                      "code": "path-constraint",
+                      "message": "Count only paths that follow the arrows and satisfy the checkpoint rule."
+                    }
+                  ]
+                },
+                {
+                  "family": "turn-route",
+                  "prompt": "Start facing the arrow shown. After every move and turn, where are you relative to S?",
+                  "answer": "7 m west and 2 m north",
+                  "explanation": "Left and right use the direction you face at that step, not the page. Following all instructions gives a final facing direction of north and a final position of 7 m west and 2 m north.",
+                  "hint": "Turn your imaginary compass after each instruction before reading the next left or right.",
+                  "proof": {
+                    "family": "turn-route",
+                    "givens": {
+                      "kind": "v2-reasoning-turn-route",
+                      "facing": "south",
+                      "ask": "position",
+                      "steps": [
+                        {
+                          "turn": "none",
+                          "distance": 4
+                        },
+                        {
+                          "turn": "right",
+                          "distance": 7
+                        },
+                        {
+                          "turn": "right",
+                          "distance": 6
+                        }
+                      ],
+                      "description": "At S, face south. Step 1: keep facing the same way and move 4 m; Step 2: turn right and move 7 m; Step 3: turn right and move 6 m. Find the final position relative to S."
+                    }
+                  },
+                  "visual": {
+                    "kind": "v2-reasoning-turn-route",
+                    "facing": "south",
+                    "ask": "position",
+                    "steps": [
+                      {
+                        "turn": "none",
+                        "distance": 4
+                      },
+                      {
+                        "turn": "right",
+                        "distance": 7
+                      },
+                      {
+                        "turn": "right",
+                        "distance": 6
+                      }
+                    ],
+                    "description": "At S, face south. Step 1: keep facing the same way and move 4 m; Step 2: turn right and move 7 m; Step 3: turn right and move 6 m. Find the final position relative to S."
+                  },
+                  "id": "q2-class-5-directions-163a4qx",
+                  "grade": "class-5",
+                  "chapter": "reasoning",
+                  "skill": "directions",
+                  "level": 2,
+                  "section": "reasoning",
+                  "options": [
+                    "7 m east and 2 m south",
+                    "13 m west and 4 m south",
+                    "7 m west and 2 m north",
+                    "13 m east and 4 m south"
+                  ],
+                  "correctIndex": 2,
+                  "feedback": [
+                    {
+                      "code": "turn-frame",
+                      "message": "Left and right depend on the direction you are currently facing."
+                    },
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    null,
+                    {
+                      "code": "turn-frame",
+                      "message": "Left and right depend on the direction you are currently facing."
+                    }
+                  ]
+                },
+                {
+                  "family": "code-infer",
+                  "prompt": "Each letter always has the same distinct digit. The examples also determine whether words are read forwards or backwards. What is the code for NEPAL?",
+                  "answer": "75498",
+                  "explanation": "Matching repeated letters across ALL examples gives P = 4, L = 8, A = 9, N = 7, E = 5. Read left to right consistently: NEPAL becomes 75498.",
+                  "hint": "Match repeated letters across different examples. A proposed key and reading direction must fit every example.",
+                  "proof": {
+                    "family": "code-infer",
+                    "givens": {
+                      "kind": "v2-reasoning-code-infer",
+                      "examples": [
+                        {
+                          "word": "PLANE",
+                          "code": "48975"
+                        },
+                        {
+                          "word": "PANEL",
+                          "code": "49758"
+                        },
+                        {
+                          "word": "LEAP",
+                          "code": "8594"
+                        }
+                      ],
+                      "target": "NEPAL",
+                      "orders": [
+                        "forward",
+                        "backward"
+                      ],
+                      "description": "Each letter has one fixed, distinct digit. PLANE is coded 48975; PANEL is coded 49758; LEAP is coded 8594. All words are read in the same direction, either left to right or right to left. Find the code for NEPAL."
+                    }
+                  },
+                  "visual": {
+                    "kind": "v2-reasoning-code-infer",
+                    "examples": [
+                      {
+                        "word": "PLANE",
+                        "code": "48975"
+                      },
+                      {
+                        "word": "PANEL",
+                        "code": "49758"
+                      },
+                      {
+                        "word": "LEAP",
+                        "code": "8594"
+                      }
+                    ],
+                    "target": "NEPAL",
+                    "orders": [
+                      "forward",
+                      "backward"
+                    ],
+                    "description": "Each letter has one fixed, distinct digit. PLANE is coded 48975; PANEL is coded 49758; LEAP is coded 8594. All words are read in the same direction, either left to right or right to left. Find the code for NEPAL."
+                  },
+                  "id": "q2-class-5-coding-fkh8hj",
+                  "grade": "class-5",
+                  "chapter": "reasoning",
+                  "skill": "coding",
+                  "level": 2,
+                  "section": "reasoning",
+                  "options": [
+                    "75498",
+                    "89457",
+                    "54879",
+                    "57498"
+                  ],
+                  "correctIndex": 0,
+                  "feedback": [
+                    null,
+                    {
+                      "code": "code-order",
+                      "message": "Apply the same rule to each position and keep the required order."
+                    },
+                    {
+                      "code": "ignored-condition",
+                      "message": "Check the proposed answer against every clue, not just one."
+                    },
+                    {
+                      "code": "code-order",
+                      "message": "Apply the same rule to each position and keep the required order."
+                    }
+                  ]
+                },
+                {
+                  "family": "figure-analogy",
+                  "prompt": "A changes to B by one picture rule. Which picture completes C → ? using exactly the same rule?",
+                  "answer": "grid:4x4:0211/1100/0000/3011",
+                  "explanation": "The rule from A to B is: turn a quarter-turn anticlockwise. Apply it to every tile of C, including both markings, not just its outline.",
+                  "hint": "Work out where both the cross and dot move from A to B; use that movement on C.",
+                  "proof": {
+                    "family": "figure-analogy",
+                    "givens": {
+                      "kind": "v2-reasoning-analogy",
+                      "a": [
+                        [
+                          1,
+                          0,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          0,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          0,
+                          0,
+                          1
+                        ],
+                        [
+                          1,
+                          2,
+                          0,
+                          3
+                        ]
+                      ],
+                      "b": [
+                        [
+                          0,
+                          0,
+                          1,
+                          3
+                        ],
+                        [
+                          0,
+                          0,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          0,
+                          0,
+                          2
+                        ],
+                        [
+                          1,
+                          0,
+                          0,
+                          1
+                        ]
+                      ],
+                      "c": [
+                        [
+                          3,
+                          0,
+                          1,
+                          0
+                        ],
+                        [
+                          0,
+                          0,
+                          1,
+                          2
+                        ],
+                        [
+                          1,
+                          0,
+                          0,
+                          1
+                        ],
+                        [
+                          1,
+                          0,
+                          0,
+                          1
+                        ]
+                      ],
+                      "description": "Picture rule A to B, then C to a missing picture. A: Row 1: filled, empty, empty, empty. Row 2: empty, empty, empty, empty. Row 3: empty, empty, empty, filled. Row 4: filled, crossed, empty, dotted. B: Row 1: empty, empty, filled, dotted. Row 2: empty, empty, empty, empty. Row 3: empty, empty, empty, crossed. Row 4: filled, empty, empty, filled. C: Row 1: dotted, empty, filled, empty. Row 2: empty, empty, filled, crossed. Row 3: filled, empty, empty, filled. Row 4: filled, empty, empty, filled."
+                    }
+                  },
+                  "visual": {
+                    "kind": "v2-reasoning-analogy",
+                    "a": [
+                      [
+                        1,
+                        0,
+                        0,
+                        0
+                      ],
+                      [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      [
+                        0,
+                        0,
+                        0,
+                        1
+                      ],
+                      [
+                        1,
+                        2,
+                        0,
+                        3
+                      ]
+                    ],
+                    "b": [
+                      [
+                        0,
+                        0,
+                        1,
+                        3
+                      ],
+                      [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      [
+                        0,
+                        0,
+                        0,
+                        2
+                      ],
+                      [
+                        1,
+                        0,
+                        0,
+                        1
+                      ]
+                    ],
+                    "c": [
+                      [
+                        3,
+                        0,
+                        1,
+                        0
+                      ],
+                      [
+                        0,
+                        0,
+                        1,
+                        2
+                      ],
+                      [
+                        1,
+                        0,
+                        0,
+                        1
+                      ],
+                      [
+                        1,
+                        0,
+                        0,
+                        1
+                      ]
+                    ],
+                    "description": "Picture rule A to B, then C to a missing picture. A: Row 1: filled, empty, empty, empty. Row 2: empty, empty, empty, empty. Row 3: empty, empty, empty, filled. Row 4: filled, crossed, empty, dotted. B: Row 1: empty, empty, filled, dotted. Row 2: empty, empty, empty, empty. Row 3: empty, empty, empty, crossed. Row 4: filled, empty, empty, filled. C: Row 1: dotted, empty, filled, empty. Row 2: empty, empty, filled, crossed. Row 3: filled, empty, empty, filled. Row 4: filled, empty, empty, filled."
+                  },
+                  "id": "q2-class-5-visual-7u4kge",
+                  "grade": "class-5",
+                  "chapter": "reasoning",
+                  "skill": "visual",
+                  "level": 2,
+                  "section": "reasoning",
+                  "options": [
+                    "grid:4x4:0211/1100/0000/3011",
+                    "grid:4x4:3010/0012/1001/1001",
+                    "grid:4x4:0311/1100/0000/2011",
+                    "grid:4x4:0103/2100/1001/1001"
+                  ],
+                  "correctIndex": 0,
+                  "feedback": [
+                    null,
+                    {
+                      "code": "wrong-transform",
+                      "message": "A turn and a mirror image move the parts differently."
+                    },
+                    {
+                      "code": "ignored-mark",
+                      "message": "Check markings and position as well as the shape."
+                    },
+                    {
+                      "code": "wrong-transform",
+                      "message": "A turn and a mirror image move the parts differently."
+                    }
+                  ],
+                  "optionVisuals": [
+                    {
+                      "kind": "v2-reasoning-grid",
+                      "cells": [
+                        [
+                          0,
+                          2,
+                          1,
+                          1
+                        ],
+                        [
+                          1,
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          0,
+                          0,
+                          0
+                        ],
+                        [
+                          3,
+                          0,
+                          1,
+                          1
+                        ]
+                      ],
+                      "description": "Marked tile choice. Row 1: empty, crossed, filled, filled. Row 2: filled, filled, empty, empty. Row 3: empty, empty, empty, empty. Row 4: dotted, empty, filled, filled."
+                    },
+                    {
+                      "kind": "v2-reasoning-grid",
+                      "cells": [
+                        [
+                          3,
+                          0,
+                          1,
+                          0
+                        ],
+                        [
+                          0,
+                          0,
+                          1,
+                          2
+                        ],
+                        [
+                          1,
+                          0,
+                          0,
+                          1
+                        ],
+                        [
+                          1,
+                          0,
+                          0,
+                          1
+                        ]
+                      ],
+                      "description": "Marked tile choice. Row 1: dotted, empty, filled, empty. Row 2: empty, empty, filled, crossed. Row 3: filled, empty, empty, filled. Row 4: filled, empty, empty, filled."
+                    },
+                    {
+                      "kind": "v2-reasoning-grid",
+                      "cells": [
+                        [
+                          0,
+                          3,
+                          1,
+                          1
+                        ],
+                        [
+                          1,
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          0,
+                          0,
+                          0,
+                          0
+                        ],
+                        [
+                          2,
+                          0,
+                          1,
+                          1
+                        ]
+                      ],
+                      "description": "Marked tile choice. Row 1: empty, dotted, filled, filled. Row 2: filled, filled, empty, empty. Row 3: empty, empty, empty, empty. Row 4: crossed, empty, filled, filled."
+                    },
+                    {
+                      "kind": "v2-reasoning-grid",
+                      "cells": [
+                        [
+                          0,
+                          1,
+                          0,
+                          3
+                        ],
+                        [
+                          2,
+                          1,
+                          0,
+                          0
+                        ],
+                        [
+                          1,
+                          0,
+                          0,
+                          1
+                        ],
+                        [
+                          1,
+                          0,
+                          0,
+                          1
+                        ]
+                      ],
+                      "description": "Marked tile choice. Row 1: empty, filled, empty, dotted. Row 2: crossed, filled, empty, empty. Row 3: filled, empty, empty, filled. Row 4: filled, empty, empty, filled."
+                    }
+                  ]
+                },
+                {
+                  "family": "path-count",
+                  "prompt": "How many different routes follow the arrows from S to F? Only circles are junctions; crossings do not join.",
+                  "answer": "11 routes",
+                  "explanation": "Start with one way at S. At each circle, add the ways arriving along its incoming arrows. Keep different incoming routes separate even when they share a later arrow. This gives 11 routes at F; counting arrows or circles alone does not count routes.",
+                  "hint": "Write the number of ways at each junction. For a checkpoint question, keep routes that have visited the checkpoint separate.",
+                  "proof": {
+                    "family": "path-count",
+                    "givens": {
+                      "kind": "v2-reasoning-paths",
+                      "nodes": [
+                        {
+                          "id": "S",
+                          "x": 30,
+                          "y": 145
+                        },
+                        {
+                          "id": "A",
+                          "x": 140,
+                          "y": 55
+                        },
+                        {
+                          "id": "B",
+                          "x": 140,
+                          "y": 145
+                        },
+                        {
+                          "id": "C",
+                          "x": 140,
+                          "y": 235
+                        },
+                        {
+                          "id": "D",
+                          "x": 250,
+                          "y": 55
+                        },
+                        {
+                          "id": "E",
+                          "x": 250,
+                          "y": 145
+                        },
+                        {
+                          "id": "G",
+                          "x": 250,
+                          "y": 235
+                        },
+                        {
+                          "id": "H",
+                          "x": 360,
+                          "y": 55
+                        },
+                        {
+                          "id": "I",
+                          "x": 360,
+                          "y": 235
+                        },
+                        {
+                          "id": "F",
+                          "x": 470,
+                          "y": 145
+                        }
+                      ],
+                      "edges": [
+                        [
+                          "S",
+                          "C"
+                        ],
+                        [
+                          "S",
+                          "A"
+                        ],
+                        [
+                          "S",
+                          "B"
+                        ],
+                        [
+                          "A",
+                          "G"
+                        ],
+                        [
+                          "B",
+                          "D"
+                        ],
+                        [
+                          "C",
+                          "G"
+                        ],
+                        [
+                          "C",
+                          "D"
+                        ],
+                        [
+                          "A",
+                          "E"
+                        ],
+                        [
+                          "B",
+                          "G"
+                        ],
+                        [
+                          "A",
+                          "D"
+                        ],
+                        [
+                          "D",
+                          "H"
+                        ],
+                        [
+                          "E",
+                          "I"
+                        ],
+                        [
+                          "G",
+                          "I"
+                        ],
+                        [
+                          "E",
+                          "H"
+                        ],
+                        [
+                          "G",
+                          "H"
+                        ],
+                        [
+                          "H",
+                          "F"
+                        ],
+                        [
+                          "I",
+                          "F"
+                        ]
+                      ],
+                      "start": "S",
+                      "finish": "F",
+                      "checkpoint": null,
+                      "forbidden": null,
+                      "description": "Directed route map. Only labelled circles are junctions; crossing lines do not join. Arrows: S to C; S to A; S to B; A to G; B to D; C to G; C to D; A to E; B to G; A to D; D to H; E to I; G to I; E to H; G to H; H to F; I to F. Travel from S to F."
+                    }
+                  },
+                  "visual": {
+                    "kind": "v2-reasoning-paths",
+                    "nodes": [
+                      {
+                        "id": "S",
+                        "x": 30,
+                        "y": 145
+                      },
+                      {
+                        "id": "A",
+                        "x": 140,
+                        "y": 55
+                      },
+                      {
+                        "id": "B",
+                        "x": 140,
+                        "y": 145
+                      },
+                      {
+                        "id": "C",
+                        "x": 140,
+                        "y": 235
+                      },
+                      {
+                        "id": "D",
+                        "x": 250,
+                        "y": 55
+                      },
+                      {
+                        "id": "E",
+                        "x": 250,
+                        "y": 145
+                      },
+                      {
+                        "id": "G",
+                        "x": 250,
+                        "y": 235
+                      },
+                      {
+                        "id": "H",
+                        "x": 360,
+                        "y": 55
+                      },
+                      {
+                        "id": "I",
+                        "x": 360,
+                        "y": 235
+                      },
+                      {
+                        "id": "F",
+                        "x": 470,
+                        "y": 145
+                      }
+                    ],
+                    "edges": [
+                      [
+                        "S",
+                        "C"
+                      ],
+                      [
+                        "S",
+                        "A"
+                      ],
+                      [
+                        "S",
+                        "B"
+                      ],
+                      [
+                        "A",
+                        "G"
+                      ],
+                      [
+                        "B",
+                        "D"
+                      ],
+                      [
+                        "C",
+                        "G"
+                      ],
+                      [
+                        "C",
+                        "D"
+                      ],
+                      [
+                        "A",
+                        "E"
+                      ],
+                      [
+                        "B",
+                        "G"
+                      ],
+                      [
+                        "A",
+                        "D"
+                      ],
+                      [
+                        "D",
+                        "H"
+                      ],
+                      [
+                        "E",
+                        "I"
+                      ],
+                      [
+                        "G",
+                        "I"
+                      ],
+                      [
+                        "E",
+                        "H"
+                      ],
+                      [
+                        "G",
+                        "H"
+                      ],
+                      [
+                        "H",
+                        "F"
+                      ],
+                      [
+                        "I",
+                        "F"
+                      ]
+                    ],
+                    "start": "S",
+                    "finish": "F",
+                    "checkpoint": null,
+                    "forbidden": null,
+                    "description": "Directed route map. Only labelled circles are junctions; crossing lines do not join. Arrows: S to C; S to A; S to B; A to G; B to D; C to G; C to D; A to E; B to G; A to D; D to H; E to I; G to I; E to H; G to H; H to F; I to F. Travel from S to F."
+                  },
+                  "id": "q2-class-5-routes-f1x4qe",
+                  "grade": "class-5",
+                  "chapter": "reasoning",
+                  "skill": "routes",
+                  "level": 2,
+                  "section": "reasoning",
+                  "options": [
+                    "11 routes",
+                    "4 routes",
+                    "8 routes",
+                    "17 routes"
+                  ],
+                  "correctIndex": 0,
+                  "feedback": [
+                    null,
+                    {
+                      "code": "path-constraint",
+                      "message": "Count only paths that follow the arrows and satisfy the checkpoint rule."
+                    },
+                    {
+                      "code": "path-constraint",
+                      "message": "Count only paths that follow the arrows and satisfy the checkpoint rule."
+                    },
+                    {
+                      "code": "path-constraint",
+                      "message": "Count only paths that follow the arrows and satisfy the checkpoint rule."
+                    }
+                  ]
+                },
+                {
+                  "family": "turn-route",
+                  "prompt": "Start facing the arrow shown. After every move and turn, where are you relative to S?",
+                  "answer": "3 m east and 7 m south",
+                  "explanation": "Left and right use the direction you face at that step, not the page. Following all instructions gives a final facing direction of south and a final position of 3 m east and 7 m south.",
+                  "hint": "Turn your imaginary compass after each instruction before reading the next left or right.",
+                  "proof": {
+                    "family": "turn-route",
+                    "givens": {
+                      "kind": "v2-reasoning-turn-route",
+                      "facing": "south",
+                      "ask": "position",
+                      "steps": [
+                        {
+                          "turn": "none",
+                          "distance": 5
+                        },
+                        {
+                          "turn": "left",
+                          "distance": 3
+                        },
+                        {
+                          "turn": "right",
+                          "distance": 2
+                        }
+                      ],
+                      "description": "At S, face south. Step 1: keep facing the same way and move 5 m; Step 2: turn left and move 3 m; Step 3: turn right and move 2 m. Find the final position relative to S."
+                    }
+                  },
+                  "visual": {
+                    "kind": "v2-reasoning-turn-route",
+                    "facing": "south",
+                    "ask": "position",
+                    "steps": [
+                      {
+                        "turn": "none",
+                        "distance": 5
+                      },
+                      {
+                        "turn": "left",
+                        "distance": 3
+                      },
+                      {
+                        "turn": "right",
+                        "distance": 2
+                      }
+                    ],
+                    "description": "At S, face south. Step 1: keep facing the same way and move 5 m; Step 2: turn left and move 3 m; Step 3: turn right and move 2 m. Find the final position relative to S."
+                  },
+                  "id": "q2-class-5-directions-153hdqg",
+                  "grade": "class-5",
+                  "chapter": "reasoning",
+                  "skill": "directions",
+                  "level": 2,
+                  "section": "reasoning",
+                  "options": [
+                    "1 m west and 5 m south",
+                    "5 m east and 5 m south",
+                    "3 m west and 7 m north",
+                    "3 m east and 7 m south"
+                  ],
+                  "correctIndex": 3,
+                  "feedback": [
+                    {
+                      "code": "turn-frame",
+                      "message": "Left and right depend on the direction you are currently facing."
+                    },
+                    {
+                      "code": "missing-step",
+                      "message": "Check whether another change happens before the final answer."
+                    },
+                    {
+                      "code": "turn-frame",
+                      "message": "Left and right depend on the direction you are currently facing."
+                    },
+                    null
+                  ]
+                }
+              ]
+            },
+            "answers": [
+              {
+                "choice": 3,
+                "hinted": false
+              },
+              {
+                "choice": 2,
+                "hinted": false
+              },
+              {
+                "choice": 2,
+                "hinted": false
+              },
+              {
+                "choice": 2,
+                "hinted": false
+              },
+              {
+                "choice": 0,
+                "hinted": false
+              },
+              {
+                "choice": 0,
+                "hinted": false
+              },
+              {
+                "choice": 0,
+                "hinted": false
+              },
+              {
+                "choice": 3,
+                "hinted": false
+              }
+            ],
+            "part": "right-fin",
+            "correct": 8,
+            "helped": 0
+          }
+        }
+      }
+    },
+    "explorer-2": {
+      "grade": "pp2",
+      "level": 1,
+      "journeys": {
+        "class-1": {
+          "earned": [],
+          "fitted": [],
+          "paint": "coral",
+          "charges": 0,
+          "visits": [],
+          "flight": null,
+          "active": null,
+          "completed": [],
+          "history": [],
+          "attempts": [],
+          "lastResult": null
+        },
+        "pp2": {
+          "earned": [],
+          "fitted": [],
+          "paint": "coral",
+          "charges": 0,
+          "visits": [],
+          "flight": null,
+          "active": {
+            "mission": {
+              "id": "m2:pp2:chapter:shapes:3:before-campaign-pp2",
+              "contentVersion": 2,
+              "grade": "pp2",
+              "chapter": "shapes",
+              "level": 3,
+              "mode": "chapter",
+              "seed": "before-campaign-pp2",
+              "title": "Shape explorers",
+              "questions": [
+                {
+                  "prompt": "Look at the rover parts. I: There are 4 circular parts. II: There are 1 triangular parts. Which statement choice is correct?",
+                  "answer": "Only II",
+                  "explanation": "Circular parts: 1 windows + 2 wheels, making 3. There are 1 triangular noses. Only II.",
+                  "proof": {
+                    "claims": [
+                      4,
+                      1
+                    ]
+                  },
+                  "visual": {
+                    "kind": "v2-everyday-scene",
+                    "vehicles": [
+                      {
+                        "windows": 1
+                      }
+                    ],
+                    "description": "A row of 1 rovers. Each has one rectangular body, one triangular nose, two circular wheels, and these circular window counts: 1."
+                  },
+                  "hint": "For circular parts, include the wheels and windows. Check each statement on its own.",
+                  "id": "q2-pp2-shape-1h0ew1x",
+                  "grade": "pp2",
+                  "chapter": "shapes",
+                  "skill": "shape",
+                  "level": 3,
+                  "family": "scene-statements",
+                  "section": "maths",
+                  "options": [
+                    "Both I and II",
+                    "Only I",
+                    "Only II"
+                  ],
+                  "correctIndex": 2,
+                  "feedback": [
+                    {
+                      "code": "ignored-condition",
+                      "message": "Check the proposed answer against every clue, not just one."
+                    },
+                    {
+                      "code": "ignored-condition",
+                      "message": "Check the proposed answer against every clue, not just one."
+                    },
+                    null
+                  ]
+                },
+                {
+                  "prompt": "Look at the rover parts. I: There are 9 circular parts. II: There are 3 triangular parts. Which statement choice is correct?",
+                  "answer": "Only I",
+                  "explanation": "Circular parts: 3 windows + 2 wheels; 2 windows + 2 wheels, making 9. There are 2 triangular noses. Only I.",
+                  "proof": {
+                    "claims": [
+                      9,
+                      3
+                    ]
+                  },
+                  "visual": {
+                    "kind": "v2-everyday-scene",
+                    "vehicles": [
+                      {
+                        "windows": 3
+                      },
+                      {
+                        "windows": 2
+                      }
+                    ],
+                    "description": "A row of 2 rovers. Each has one rectangular body, one triangular nose, two circular wheels, and these circular window counts: 3, 2."
+                  },
+                  "hint": "For circular parts, include the wheels and windows. Check each statement on its own.",
+                  "id": "q2-pp2-shape-1w97gwi",
+                  "grade": "pp2",
+                  "chapter": "shapes",
+                  "skill": "shape",
+                  "level": 3,
+                  "family": "scene-statements",
+                  "section": "maths",
+                  "options": [
+                    "Only I",
+                    "Only II",
+                    "Both I and II"
+                  ],
+                  "correctIndex": 0,
+                  "feedback": [
+                    null,
+                    {
+                      "code": "ignored-condition",
+                      "message": "Check the proposed answer against every clue, not just one."
+                    },
+                    {
+                      "code": "ignored-condition",
+                      "message": "Check the proposed answer against every clue, not just one."
+                    }
+                  ]
+                },
+                {
+                  "prompt": "Look at the rover parts. I: There are 8 circular parts. II: There are 3 triangular parts. Which statement choice is correct?",
+                  "answer": "Neither I nor II",
+                  "explanation": "Circular parts: 2 windows + 2 wheels; 1 windows + 2 wheels, making 7. There are 2 triangular noses. Neither I nor II.",
+                  "proof": {
+                    "claims": [
+                      8,
+                      3
+                    ]
+                  },
+                  "visual": {
+                    "kind": "v2-everyday-scene",
+                    "vehicles": [
+                      {
+                        "windows": 2
+                      },
+                      {
+                        "windows": 1
+                      }
+                    ],
+                    "description": "A row of 2 rovers. Each has one rectangular body, one triangular nose, two circular wheels, and these circular window counts: 2, 1."
+                  },
+                  "hint": "For circular parts, include the wheels and windows. Check each statement on its own.",
+                  "id": "q2-pp2-shape-jeek3y",
+                  "grade": "pp2",
+                  "chapter": "shapes",
+                  "skill": "shape",
+                  "level": 3,
+                  "family": "scene-statements",
+                  "section": "maths",
+                  "options": [
+                    "Only II",
+                    "Neither I nor II",
+                    "Only I"
+                  ],
+                  "correctIndex": 1,
+                  "feedback": [
+                    {
+                      "code": "ignored-condition",
+                      "message": "Check the proposed answer against every clue, not just one."
+                    },
+                    null,
+                    {
+                      "code": "ignored-condition",
+                      "message": "Check the proposed answer against every clue, not just one."
+                    }
+                  ]
+                },
+                {
+                  "prompt": "Look at the rover parts. I: There are 2 circular parts. II: There are 2 triangular parts. Which statement choice is correct?",
+                  "answer": "Neither I nor II",
+                  "explanation": "Circular parts: 1 windows + 2 wheels, making 3. There are 1 triangular noses. Neither I nor II.",
+                  "proof": {
+                    "claims": [
+                      2,
+                      2
+                    ]
+                  },
+                  "visual": {
+                    "kind": "v2-everyday-scene",
+                    "vehicles": [
+                      {
+                        "windows": 1
+                      }
+                    ],
+                    "description": "A row of 1 rovers. Each has one rectangular body, one triangular nose, two circular wheels, and these circular window counts: 1."
+                  },
+                  "hint": "For circular parts, include the wheels and windows. Check each statement on its own.",
+                  "id": "q2-pp2-shape-bxt2lu",
+                  "grade": "pp2",
+                  "chapter": "shapes",
+                  "skill": "shape",
+                  "level": 3,
+                  "family": "scene-statements",
+                  "section": "maths",
+                  "options": [
+                    "Only I",
+                    "Neither I nor II",
+                    "Only II"
+                  ],
+                  "correctIndex": 1,
+                  "feedback": [
+                    {
+                      "code": "ignored-condition",
+                      "message": "Check the proposed answer against every clue, not just one."
+                    },
+                    null,
+                    {
+                      "code": "ignored-condition",
+                      "message": "Check the proposed answer against every clue, not just one."
+                    }
+                  ]
+                },
+                {
+                  "prompt": "Look at the rover parts. I: There are 4 circular parts. II: There are 1 triangular parts. Which statement choice is correct?",
+                  "answer": "Both I and II",
+                  "explanation": "Circular parts: 2 windows + 2 wheels, making 4. There are 1 triangular noses. Both I and II.",
+                  "proof": {
+                    "claims": [
+                      4,
+                      1
+                    ]
+                  },
+                  "visual": {
+                    "kind": "v2-everyday-scene",
+                    "vehicles": [
+                      {
+                        "windows": 2
+                      }
+                    ],
+                    "description": "A row of 1 rovers. Each has one rectangular body, one triangular nose, two circular wheels, and these circular window counts: 2."
+                  },
+                  "hint": "For circular parts, include the wheels and windows. Check each statement on its own.",
+                  "id": "q2-pp2-shape-1l0n0b4",
+                  "grade": "pp2",
+                  "chapter": "shapes",
+                  "skill": "shape",
+                  "level": 3,
+                  "family": "scene-statements",
+                  "section": "maths",
+                  "options": [
+                    "Only I",
+                    "Only II",
+                    "Both I and II"
+                  ],
+                  "correctIndex": 2,
+                  "feedback": [
+                    {
+                      "code": "ignored-condition",
+                      "message": "Check the proposed answer against every clue, not just one."
+                    },
+                    {
+                      "code": "ignored-condition",
+                      "message": "Check the proposed answer against every clue, not just one."
+                    },
+                    null
+                  ]
+                }
+              ]
+            },
+            "index": 1,
+            "answers": [
+              {
+                "choice": 0,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              }
+            ]
+          },
+          "completed": [],
+          "history": [],
+          "attempts": [
+            {
+              "id": "q2-pp2-shape-1h0ew1x",
+              "skill": "shape",
+              "chapter": "shapes",
+              "level": 3,
+              "contentVersion": 2,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T15:40:00.000Z",
+              "misconception": "ignored-condition"
+            }
+          ],
+          "lastResult": null
+        }
+      }
+    },
+    "explorer-3": {
+      "grade": "class-1",
+      "level": 1,
+      "journeys": {}
+    }
+  }
+}

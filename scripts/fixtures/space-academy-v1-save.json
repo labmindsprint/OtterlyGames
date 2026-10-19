@@ -1,0 +1,1335 @@
+{
+  "version": 1,
+  "revision": 129,
+  "activeExplorer": "explorer-1",
+  "explorers": {
+    "explorer-1": {
+      "grade": "class-1",
+      "level": 1,
+      "journeys": {
+        "class-1": {
+          "earned": [
+            "engine",
+            "body",
+            "cockpit",
+            "nose",
+            "left-fin",
+            "right-fin"
+          ],
+          "fitted": [
+            "engine",
+            "body",
+            "cockpit",
+            "nose",
+            "left-fin",
+            "right-fin"
+          ],
+          "paint": "mint",
+          "charges": 5,
+          "visits": [],
+          "flight": {
+            "id": "flight:class-1:0",
+            "destination": "earth"
+          },
+          "active": null,
+          "completed": [
+            "m1:class-1:chapter:operations:1:v1-compatibility-0",
+            "m1:class-1:chapter:operations:2:v1-compatibility-1",
+            "m1:class-1:chapter:operations:3:v1-compatibility-2",
+            "m1:class-1:chapter:operations:1:v1-compatibility-3",
+            "m1:class-1:chapter:operations:2:v1-compatibility-4",
+            "m1:class-1:chapter:operations:3:v1-compatibility-5"
+          ],
+          "history": [
+            {
+              "id": "m1:class-1:chapter:operations:1:v1-compatibility-0",
+              "title": "Add, subtract, investigate",
+              "level": 1,
+              "correct": 4,
+              "helped": 1,
+              "count": 8,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "m1:class-1:chapter:operations:2:v1-compatibility-1",
+              "title": "Add, subtract, investigate",
+              "level": 2,
+              "correct": 4,
+              "helped": 1,
+              "count": 8,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "m1:class-1:chapter:operations:3:v1-compatibility-2",
+              "title": "Add, subtract, investigate",
+              "level": 3,
+              "correct": 4,
+              "helped": 1,
+              "count": 8,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "m1:class-1:chapter:operations:1:v1-compatibility-3",
+              "title": "Add, subtract, investigate",
+              "level": 1,
+              "correct": 4,
+              "helped": 1,
+              "count": 8,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "m1:class-1:chapter:operations:2:v1-compatibility-4",
+              "title": "Add, subtract, investigate",
+              "level": 2,
+              "correct": 4,
+              "helped": 1,
+              "count": 8,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "m1:class-1:chapter:operations:3:v1-compatibility-5",
+              "title": "Add, subtract, investigate",
+              "level": 3,
+              "correct": 4,
+              "helped": 1,
+              "count": 8,
+              "at": "2026-10-17T12:00:00.000Z"
+            }
+          ],
+          "attempts": [
+            {
+              "id": "q1-class-1-addition-rfmks8",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 1,
+              "correct": true,
+              "hinted": true,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-23krp9",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 1,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-mystery-1vs1rte",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 1,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-142d3qf",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 1,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-y9mw93",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 1,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-mystery-1t8iin6",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 1,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-puk461",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 1,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-1d07qnf",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 1,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-1m9l84l",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 2,
+              "correct": true,
+              "hinted": true,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-1pji1oo",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 2,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-mystery-74iikd",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-li13c5",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 2,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-1jo9wr1",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-mystery-3gy9nq",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 2,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-1unw1th",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-1v6zypa",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 2,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-nbjxv7",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 3,
+              "correct": true,
+              "hinted": true,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-900ju8",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 3,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-mystery-15mg4sg",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 3,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-1mkldnt",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 3,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-obqlo6",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 3,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-mystery-gcivrz",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 3,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-1unw1th",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 3,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-92jv3k",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 3,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-1p4l73l",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 1,
+              "correct": true,
+              "hinted": true,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-6w39mi",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 1,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-mystery-1rp870a",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 1,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-1cz28eh",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 1,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-11xif0j",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 1,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-mystery-1p1wru8",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 1,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-10r19ch",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 1,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-daxezz",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 1,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-tqvmai",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 2,
+              "correct": true,
+              "hinted": true,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-1aywzfv",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 2,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-mystery-gcivrz",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-1e3xe2s",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 2,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-1sy3fei",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-mystery-y6t1ca",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 2,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-brp29w",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 2,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-4k4vs2",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 2,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-bh70ls",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 3,
+              "correct": true,
+              "hinted": true,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-18c12r2",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 3,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-mystery-1hftkpb",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 3,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-1ttulmp",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 3,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-1orus7t",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 3,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-mystery-1lx63rw",
+              "skill": "mystery",
+              "chapter": "operations",
+              "level": 3,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-addition-1hjll39",
+              "skill": "addition",
+              "chapter": "operations",
+              "level": 3,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            },
+            {
+              "id": "q1-class-1-subtraction-myu29o",
+              "skill": "subtraction",
+              "chapter": "operations",
+              "level": 3,
+              "correct": false,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            }
+          ],
+          "lastResult": {
+            "mission": {
+              "id": "m1:class-1:chapter:operations:3:v1-compatibility-5",
+              "contentVersion": 1,
+              "grade": "class-1",
+              "chapter": "operations",
+              "level": 3,
+              "mode": "chapter",
+              "seed": "v1-compatibility-5",
+              "title": "Add, subtract, investigate",
+              "questions": [
+                {
+                  "prompt": "There are 3 blue flags and some yellow flags. There are 7 flags in all. How many are yellow?",
+                  "answer": "4",
+                  "explanation": "Take the 3 blue flags away from the total: 7 - 3 = 4.",
+                  "hint": "Combine the amounts, or work backwards from the total.",
+                  "options": [
+                    "5",
+                    "14",
+                    "4",
+                    "0"
+                  ],
+                  "proof": {
+                    "operation": "difference",
+                    "operands": [
+                      7,
+                      3
+                    ]
+                  },
+                  "id": "q1-class-1-addition-bh70ls",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "addition",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 2
+                },
+                {
+                  "prompt": "17 supplies are ready. The crew uses 15, then uses another 1. How many remain?",
+                  "answer": "1",
+                  "explanation": "Start with 17 and take away the used supplies: 17 - 15 - 1 = 1.",
+                  "hint": "Start with the original amount and take away what was used.",
+                  "options": [
+                    "1",
+                    "11",
+                    "2",
+                    "0"
+                  ],
+                  "proof": {
+                    "operation": "difference",
+                    "operands": [
+                      17,
+                      16
+                    ]
+                  },
+                  "id": "q1-class-1-subtraction-18c12r2",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "subtraction",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 0
+                },
+                {
+                  "prompt": "I think of a number, then add 1. The result is 3. What was my number?",
+                  "answer": "2",
+                  "explanation": "Work backwards: 3 - 1 = 2. The starting number was 2.",
+                  "hint": "Undo the last operation first, then undo the earlier operation.",
+                  "options": [
+                    "3",
+                    "12",
+                    "2",
+                    "0"
+                  ],
+                  "proof": {
+                    "operation": "sharing",
+                    "operands": [
+                      3,
+                      1,
+                      1
+                    ]
+                  },
+                  "id": "q1-class-1-mystery-1hftkpb",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "mystery",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 2
+                },
+                {
+                  "prompt": "There are 6 blue flags and some yellow flags. There are 15 flags in all. How many are yellow?",
+                  "answer": "9",
+                  "explanation": "Take the 6 blue flags away from the total: 15 - 6 = 9.",
+                  "hint": "Combine the amounts, or work backwards from the total.",
+                  "options": [
+                    "0",
+                    "19",
+                    "9",
+                    "10"
+                  ],
+                  "proof": {
+                    "operation": "difference",
+                    "operands": [
+                      15,
+                      6
+                    ]
+                  },
+                  "id": "q1-class-1-addition-1ttulmp",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "addition",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 2
+                },
+                {
+                  "prompt": "47 supplies are ready. The crew uses 26, then uses another 16. How many remain?",
+                  "answer": "5",
+                  "explanation": "Start with 47 and take away the used supplies: 47 - 26 - 16 = 5.",
+                  "hint": "Start with the original amount and take away what was used.",
+                  "options": [
+                    "5",
+                    "0",
+                    "6",
+                    "15"
+                  ],
+                  "proof": {
+                    "operation": "difference",
+                    "operands": [
+                      47,
+                      42
+                    ]
+                  },
+                  "id": "q1-class-1-subtraction-1orus7t",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "subtraction",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 0
+                },
+                {
+                  "prompt": "I think of a number, then add 3. The result is 10. What was my number?",
+                  "answer": "7",
+                  "explanation": "Work backwards: 10 - 3 = 7. The starting number was 7.",
+                  "hint": "Undo the last operation first, then undo the earlier operation.",
+                  "options": [
+                    "17",
+                    "0",
+                    "7",
+                    "8"
+                  ],
+                  "proof": {
+                    "operation": "sharing",
+                    "operands": [
+                      10,
+                      3,
+                      1
+                    ]
+                  },
+                  "id": "q1-class-1-mystery-1lx63rw",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "mystery",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 2
+                },
+                {
+                  "prompt": "There are 31 blue flags and some yellow flags. There are 40 flags in all. How many are yellow?",
+                  "answer": "9",
+                  "explanation": "Take the 31 blue flags away from the total: 40 - 31 = 9.",
+                  "hint": "Combine the amounts, or work backwards from the total.",
+                  "options": [
+                    "0",
+                    "9",
+                    "10",
+                    "19"
+                  ],
+                  "proof": {
+                    "operation": "difference",
+                    "operands": [
+                      40,
+                      31
+                    ]
+                  },
+                  "id": "q1-class-1-addition-1hjll39",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "addition",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 1
+                },
+                {
+                  "prompt": "42 supplies are ready. The crew uses 26, then uses another 9. How many remain?",
+                  "answer": "7",
+                  "explanation": "Start with 42 and take away the used supplies: 42 - 26 - 9 = 7.",
+                  "hint": "Start with the original amount and take away what was used.",
+                  "options": [
+                    "8",
+                    "0",
+                    "17",
+                    "7"
+                  ],
+                  "proof": {
+                    "operation": "difference",
+                    "operands": [
+                      42,
+                      35
+                    ]
+                  },
+                  "id": "q1-class-1-subtraction-myu29o",
+                  "grade": "class-1",
+                  "chapter": "operations",
+                  "skill": "subtraction",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 3
+                }
+              ]
+            },
+            "answers": [
+              {
+                "choice": 2,
+                "hinted": true
+              },
+              {
+                "choice": 1,
+                "hinted": false
+              },
+              {
+                "choice": 2,
+                "hinted": false
+              },
+              {
+                "choice": 3,
+                "hinted": false
+              },
+              {
+                "choice": 0,
+                "hinted": false
+              },
+              {
+                "choice": 3,
+                "hinted": false
+              },
+              {
+                "choice": 1,
+                "hinted": false
+              },
+              {
+                "choice": 0,
+                "hinted": false
+              }
+            ],
+            "part": "right-fin",
+            "correct": 4,
+            "helped": 1
+          }
+        },
+        "pp1": {
+          "earned": [],
+          "fitted": [],
+          "paint": "coral",
+          "charges": 0,
+          "visits": [],
+          "flight": null,
+          "active": {
+            "mission": {
+              "id": "m1:pp1:chapter:counting:1:v1-preschool-bookmark",
+              "contentVersion": 1,
+              "grade": "pp1",
+              "chapter": "counting",
+              "level": 1,
+              "mode": "chapter",
+              "seed": "v1-preschool-bookmark",
+              "title": "Little star counters",
+              "questions": [
+                {
+                  "prompt": "How many objects are in this collection?",
+                  "answer": "1",
+                  "explanation": "Count each object once. There are 1 objects altogether.",
+                  "hint": "Touch or point to each object once; the last number tells how many.",
+                  "visual": {
+                    "kind": "objects",
+                    "groups": [
+                      {
+                        "label": "Count these",
+                        "count": 1,
+                        "symbol": "star"
+                      }
+                    ]
+                  },
+                  "options": [
+                    "3",
+                    "0",
+                    "1",
+                    "2"
+                  ],
+                  "proof": {
+                    "operation": "sum",
+                    "operands": [
+                      1
+                    ]
+                  },
+                  "id": "q1-pp1-count-1gc37rf",
+                  "grade": "pp1",
+                  "chapter": "counting",
+                  "skill": "count",
+                  "level": 1,
+                  "section": "maths",
+                  "correctIndex": 2
+                },
+                {
+                  "prompt": "How many objects are in this collection?",
+                  "answer": "3",
+                  "explanation": "Count each object once. There are 3 objects altogether.",
+                  "hint": "Touch or point to each object once; the last number tells how many.",
+                  "visual": {
+                    "kind": "objects",
+                    "groups": [
+                      {
+                        "label": "Count these",
+                        "count": 3,
+                        "symbol": "triangle"
+                      }
+                    ]
+                  },
+                  "options": [
+                    "3",
+                    "4",
+                    "5",
+                    "2"
+                  ],
+                  "proof": {
+                    "operation": "sum",
+                    "operands": [
+                      3
+                    ]
+                  },
+                  "id": "q1-pp1-count-yvpxwz",
+                  "grade": "pp1",
+                  "chapter": "counting",
+                  "skill": "count",
+                  "level": 1,
+                  "section": "maths",
+                  "correctIndex": 0
+                },
+                {
+                  "prompt": "How many objects are in this collection?",
+                  "answer": "5",
+                  "explanation": "Count each object once. There are 5 objects altogether.",
+                  "hint": "Touch or point to each object once; the last number tells how many.",
+                  "visual": {
+                    "kind": "objects",
+                    "groups": [
+                      {
+                        "label": "Count these",
+                        "count": 5,
+                        "symbol": "star"
+                      }
+                    ]
+                  },
+                  "options": [
+                    "4",
+                    "7",
+                    "5",
+                    "6"
+                  ],
+                  "proof": {
+                    "operation": "sum",
+                    "operands": [
+                      5
+                    ]
+                  },
+                  "id": "q1-pp1-count-mdxkej",
+                  "grade": "pp1",
+                  "chapter": "counting",
+                  "skill": "count",
+                  "level": 1,
+                  "section": "maths",
+                  "correctIndex": 2
+                },
+                {
+                  "prompt": "How many objects are in this collection?",
+                  "answer": "2",
+                  "explanation": "Count each object once. There are 2 objects altogether.",
+                  "hint": "Touch or point to each object once; the last number tells how many.",
+                  "visual": {
+                    "kind": "objects",
+                    "groups": [
+                      {
+                        "label": "Count these",
+                        "count": 2,
+                        "symbol": "star"
+                      }
+                    ]
+                  },
+                  "options": [
+                    "4",
+                    "3",
+                    "1",
+                    "2"
+                  ],
+                  "proof": {
+                    "operation": "sum",
+                    "operands": [
+                      2
+                    ]
+                  },
+                  "id": "q1-pp1-count-yjhq0r",
+                  "grade": "pp1",
+                  "chapter": "counting",
+                  "skill": "count",
+                  "level": 1,
+                  "section": "maths",
+                  "correctIndex": 3
+                },
+                {
+                  "prompt": "How many objects are in this collection?",
+                  "answer": "4",
+                  "explanation": "Count each object once. There are 4 objects altogether.",
+                  "hint": "Touch or point to each object once; the last number tells how many.",
+                  "visual": {
+                    "kind": "objects",
+                    "groups": [
+                      {
+                        "label": "Count these",
+                        "count": 4,
+                        "symbol": "star"
+                      }
+                    ]
+                  },
+                  "options": [
+                    "4",
+                    "3",
+                    "5",
+                    "6"
+                  ],
+                  "proof": {
+                    "operation": "sum",
+                    "operands": [
+                      4
+                    ]
+                  },
+                  "id": "q1-pp1-count-1ij0umn",
+                  "grade": "pp1",
+                  "chapter": "counting",
+                  "skill": "count",
+                  "level": 1,
+                  "section": "maths",
+                  "correctIndex": 0
+                }
+              ]
+            },
+            "index": 1,
+            "answers": [
+              {
+                "choice": 2,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              }
+            ]
+          },
+          "completed": [],
+          "history": [],
+          "attempts": [
+            {
+              "id": "q1-pp1-count-1gc37rf",
+              "skill": "count",
+              "chapter": "counting",
+              "level": 1,
+              "correct": true,
+              "hinted": false,
+              "at": "2026-10-17T12:00:00.000Z"
+            }
+          ],
+          "lastResult": null
+        }
+      }
+    },
+    "explorer-2": {
+      "grade": "class-5",
+      "level": 3,
+      "journeys": {
+        "class-1": {
+          "earned": [],
+          "fitted": [],
+          "paint": "coral",
+          "charges": 0,
+          "visits": [],
+          "flight": null,
+          "active": null,
+          "completed": [],
+          "history": [],
+          "attempts": [],
+          "lastResult": null
+        },
+        "class-5": {
+          "earned": [],
+          "fitted": [],
+          "paint": "coral",
+          "charges": 0,
+          "visits": [],
+          "flight": null,
+          "active": {
+            "mission": {
+              "id": "m1:class-5:chapter:geometry:3:v1-older-bookmark",
+              "contentVersion": 1,
+              "grade": "class-5",
+              "chapter": "geometry",
+              "level": 3,
+              "mode": "chapter",
+              "seed": "v1-older-bookmark",
+              "title": "Area, perimeter and angles",
+              "questions": [
+                {
+                  "prompt": "A rectangular solar panel is 5 cm long and 8 cm wide. What is its area in square centimetres?",
+                  "answer": "40",
+                  "explanation": "Area = length x width = 5 x 8 = 40 square centimetres.",
+                  "hint": "Count equal square units, or multiply the length by the width.",
+                  "options": [
+                    "41",
+                    "50",
+                    "30",
+                    "40"
+                  ],
+                  "proof": {
+                    "operation": "product",
+                    "operands": [
+                      5,
+                      8
+                    ]
+                  },
+                  "id": "q1-class-5-area-ec5gyg",
+                  "grade": "class-5",
+                  "chapter": "geometry",
+                  "skill": "area",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 3
+                },
+                {
+                  "prompt": "A rectangular landing pad has perimeter 30 m and length 6 m. What is its width in metres?",
+                  "answer": "9",
+                  "explanation": "Half the perimeter is 15 m. Subtract the length: 15 - 6 = 9 m.",
+                  "hint": "Add the lengths around the outside. Do not confuse perimeter with area.",
+                  "options": [
+                    "10",
+                    "9",
+                    "19",
+                    "0"
+                  ],
+                  "proof": {
+                    "operation": "missing-side",
+                    "operands": [
+                      30,
+                      6
+                    ]
+                  },
+                  "id": "q1-class-5-perimeter-10fo8zx",
+                  "grade": "class-5",
+                  "chapter": "geometry",
+                  "skill": "perimeter",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 1
+                },
+                {
+                  "prompt": "Two angles together make 360 degrees (a full turn). One is 150 degrees. How many degrees is the other?",
+                  "answer": "210",
+                  "explanation": "360 - 150 = 210 degrees.",
+                  "hint": "A right angle is 90 degrees; a straight angle is 180 degrees.",
+                  "options": [
+                    "200",
+                    "210",
+                    "211",
+                    "220"
+                  ],
+                  "proof": {
+                    "operation": "difference",
+                    "operands": [
+                      360,
+                      150
+                    ]
+                  },
+                  "id": "q1-class-5-angles-xetfzc",
+                  "grade": "class-5",
+                  "chapter": "geometry",
+                  "skill": "angles",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 1
+                },
+                {
+                  "prompt": "A rectangular solar panel is 14 cm long and 6 cm wide. What is its area in square centimetres?",
+                  "answer": "84",
+                  "explanation": "Area = length x width = 14 x 6 = 84 square centimetres.",
+                  "hint": "Count equal square units, or multiply the length by the width.",
+                  "options": [
+                    "74",
+                    "85",
+                    "94",
+                    "84"
+                  ],
+                  "proof": {
+                    "operation": "product",
+                    "operands": [
+                      14,
+                      6
+                    ]
+                  },
+                  "id": "q1-class-5-area-17rpc2g",
+                  "grade": "class-5",
+                  "chapter": "geometry",
+                  "skill": "area",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 3
+                },
+                {
+                  "prompt": "A rectangular landing pad has perimeter 22 m and length 4 m. What is its width in metres?",
+                  "answer": "7",
+                  "explanation": "Half the perimeter is 11 m. Subtract the length: 11 - 4 = 7 m.",
+                  "hint": "Add the lengths around the outside. Do not confuse perimeter with area.",
+                  "options": [
+                    "8",
+                    "17",
+                    "0",
+                    "7"
+                  ],
+                  "proof": {
+                    "operation": "missing-side",
+                    "operands": [
+                      22,
+                      4
+                    ]
+                  },
+                  "id": "q1-class-5-perimeter-16mii1q",
+                  "grade": "class-5",
+                  "chapter": "geometry",
+                  "skill": "perimeter",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 3
+                },
+                {
+                  "prompt": "Two angles together make 90 degrees (a right angle). One is 20 degrees. How many degrees is the other?",
+                  "answer": "70",
+                  "explanation": "90 - 20 = 70 degrees.",
+                  "hint": "A right angle is 90 degrees; a straight angle is 180 degrees.",
+                  "options": [
+                    "60",
+                    "71",
+                    "70",
+                    "80"
+                  ],
+                  "proof": {
+                    "operation": "difference",
+                    "operands": [
+                      90,
+                      20
+                    ]
+                  },
+                  "id": "q1-class-5-angles-n82f43",
+                  "grade": "class-5",
+                  "chapter": "geometry",
+                  "skill": "angles",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 2
+                },
+                {
+                  "prompt": "A rectangular solar panel is 5 cm long and 12 cm wide. What is its area in square centimetres?",
+                  "answer": "60",
+                  "explanation": "Area = length x width = 5 x 12 = 60 square centimetres.",
+                  "hint": "Count equal square units, or multiply the length by the width.",
+                  "options": [
+                    "61",
+                    "70",
+                    "50",
+                    "60"
+                  ],
+                  "proof": {
+                    "operation": "product",
+                    "operands": [
+                      5,
+                      12
+                    ]
+                  },
+                  "id": "q1-class-5-area-1man6gj",
+                  "grade": "class-5",
+                  "chapter": "geometry",
+                  "skill": "area",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 3
+                },
+                {
+                  "prompt": "A rectangular landing pad has perimeter 34 m and length 12 m. What is its width in metres?",
+                  "answer": "5",
+                  "explanation": "Half the perimeter is 17 m. Subtract the length: 17 - 12 = 5 m.",
+                  "hint": "Add the lengths around the outside. Do not confuse perimeter with area.",
+                  "options": [
+                    "6",
+                    "15",
+                    "5",
+                    "0"
+                  ],
+                  "proof": {
+                    "operation": "missing-side",
+                    "operands": [
+                      34,
+                      12
+                    ]
+                  },
+                  "id": "q1-class-5-perimeter-5a4sbw",
+                  "grade": "class-5",
+                  "chapter": "geometry",
+                  "skill": "perimeter",
+                  "level": 3,
+                  "section": "maths",
+                  "correctIndex": 2
+                }
+              ]
+            },
+            "index": 1,
+            "answers": [
+              {
+                "choice": 0,
+                "hinted": true
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              },
+              {
+                "choice": null,
+                "hinted": false
+              }
+            ]
+          },
+          "completed": [],
+          "history": [],
+          "attempts": [
+            {
+              "id": "q1-class-5-area-ec5gyg",
+              "skill": "area",
+              "chapter": "geometry",
+              "level": 3,
+              "correct": false,
+              "hinted": true,
+              "at": "2026-10-17T12:00:00.000Z"
+            }
+          ],
+          "lastResult": null
+        }
+      }
+    },
+    "explorer-3": {
+      "grade": "class-1",
+      "level": 1,
+      "journeys": {}
+    }
+  }
+}

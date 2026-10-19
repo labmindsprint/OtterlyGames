@@ -47,6 +47,7 @@ sustainable advertising revenue, not extra clicks or interruptions to practice.
 | `js\space-academy\curriculum.mjs`, `questions.mjs` | Seven grade maps, original question families, deterministic seeds, answer proofs and content version |
 | `js\space-academy\progress.mjs`, `storage.mjs` | Validated explorer/grade progression and atomic, isolated IndexedDB saves |
 | `scripts\build-space-academy.mjs` | Indexable grade/chapter examples generated from the actual question engine |
+| `scripts\space-academy-bank-lint.mjs` | Quality gate for every Space Academy grade/family/level: wording, filler, variety, option leaks, hint leaks and PP1/PP2 age caps (`--grade`, `--family`, `--level`, `--rule`, `--out`) |
 
 The route inventory covers the homepage, app information, browser-game hub and
 launchers, tool hub/details, blog hub/articles, learning hub/paths, parents,
@@ -132,12 +133,23 @@ remain excluded from the public inventory and preserve their noindex policy.
 
 ## Space Academy: original website game
 
-`play\space-academy.html` is a standalone website game, not another native export
-or a small iframe demo. Its controller and styles are isolated under
+`play\space-academy.html` is the public website page for Space Academy. It follows the
+Math Tank pattern: site navigation, canonical metadata, a Play gesture and an iframe of
+`play\pit-stop.html`, the PIT STOP game (`js\space-academy\pitstop`, noindex, excluded
+from `_data\public-pages.json` by `GAME_DOCUMENTS` in `scripts\build-site.mjs`). The earlier
+standalone controller below (`js\space-academy\app.mjs`) is no longer loaded by that page.
+It is not another native export. Its controller and styles are isolated under
 `js\space-academy`, `css\space-academy.css` and `css\campaign-activities.css`. Storage opens only after the
 deliberate Open gesture. No server, account, model API, analytics or ad SDK is
 involved. `js\seeded-random.mjs` is shared with the worksheet generator without
 changing worksheet seed behaviour.
+
+PIT STOP opens on `needsGuide(save)` (`pitstop\onboarding.mjs`: no `settings.guideSeen`
+and no real progress) with the `guide` screen (`view-onboarding.mjs`, optional
+`settings.guideSeen` and `settings.preferredClass`, both validated by `validateSave`);
+otherwise on the map of `activeClass`, or the class picker if none. The guide is a
+single mounted screen that swaps its panel, commits the class on pick and `guideSeen`
+on finish or skip, and can be replayed (`{ replay: true }`) without touching progress.
 
 Question bank v2 preserves the seven grade IDs and 56 chapter IDs/routes.
 `curriculum.mjs` maps each chapter to separate Explore, Reason and Stretch

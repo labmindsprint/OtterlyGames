@@ -15,7 +15,21 @@
       "tagline": "Multiply. Divide. Conquer!",
       "playStoreUrl": "https://play.google.com/store/apps/details?id=com.namasya.mathtank",
       "order": 2
+    },
+    {
+      "id": "com.otterlygames.spaceacademy",
+      "name": "Otterly Space Academy",
+      "emoji": "🚀",
+      "tagline": "Maths puzzles in space!",
+      "order": 3
+    },
+    {
+      "id": "com.otterlygames.otterelement",
+      "name": "Otter Element",
+      "emoji": "⚛️",
+      "tagline": "Discover the periodic table!",
+      "order": 4
     }
   ],
-  "updatedAt": "2026-03-01T00:00:00Z"
+  "updatedAt": "2026-10-20T00:00:00Z"
 }

@@ -208,7 +208,9 @@ device.
 
 ### Space Academy
 
-Open `play\space-academy.html`; browse original worked examples at
+Open `play\space-academy.html` (the canonical page: site shell, SEO metadata and an
+iframe of the PIT STOP game at `play\pit-stop.html`, a noindex game document that
+`scripts\build-site.mjs` deliberately excludes from the page inventory); browse original worked examples at
 `learn\olympiad\index.html`. Question bank v2 keeps seven grades, 56 stable
 chapter IDs/routes and three challenge levels: Explore for foundations, Reason
 for paper-style connections, and Stretch for higher-order linked conditions.
@@ -296,6 +298,15 @@ node --test $academyTests .\scripts\worksheet-generator.test.mjs
 python -X utf8 .\scripts\check-space-academy.py --url http://127.0.0.1:4198 --output <outside-repo-folder>
 ```
 
+The bank lint (`scripts\space-academy-bank-lint.mjs`, run by `space-academy-bank-lint.test.mjs`)
+draws about 120 seeded questions from every grade/family/level and rejects
+grammar slips (`1 apples`, `3 is`, `a orange`, `p.m..`), meaningless filler labels
+(`Log 458`), too little variety once names are masked, option leaks (shape plus
+superset, raw ids, duplicates, answers in the prompt), hints that contain the
+answer, and PP1/PP2 age-cap breaches. Filters: `node .\scripts\space-academy-bank-lint.mjs
+--grade pp1 --family regex --level 2 --rule hint-leak --out <file>`. Exceptions go in `ALLOW`
+in the script, each with a written justification; keep that list tiny.
+
 The browser checker exercises real question completion, part earning, assembly,
 flight, reports, local backup/restore and scoped resets; all seven actual
 activities, chapter-linked systems and the shared Passport; all
@@ -342,6 +353,68 @@ labelled in the checker; they are not manufactured in production gameplay.
 Launcher checks also cover real game entry, normal iframe bounds and the actual
 Fullscreen API on laptop and short landscape. Only muted audio and a synthetic
 age preference are seeded for those checks, not saved progress or rewards.
+
+## Space Academy first-run guide
+
+A fresh PIT STOP save opens a three-panel comic guide with Ringo the otter
+(`js\space-academy\pitstop\view-onboarding.mjs`, styles in `css\pit-stop-guide.css`):
+welcome, pick your class (PP1 to Class 5 with ship name and age hint) and four
+steps of how the game works: Build (free), Mock test and launch (1 fuel, first one
+free, fuel refills daily), Free roam (free; find schematics) and Print (10-question
+Print test, 7 right, 1 fuel). Finishing it opens the map of the chosen class. Skip
+on the first panel goes to the class picker, so the class is never left unset.
+Saves with progress, or with `settings.guideSeen`, never see it; returning players
+open straight on the map of their active class. The "?" chip on the map and "How to
+play" in the grown-ups panel replay it without changing progress. The rules live in
+`onboarding.mjs`; tests: `node --test scripts\space-academy-pitstop-guide.test.mjs`.
+
+## Space Academy game loop and rewards
+
+1. **Build (free):** practise chapters and weld every rocket part.
+2. **Mock test N of 10 (launch only):** each home flight-plan mock launches the ship
+   to the next celestial object. It shows score, stars and "Unlocked: <object>" and
+   nothing else: no printing, prizes or gear. After all objects are found, mock
+   tests stay as practice.
+3. **Free roam (free):** needs a finished rocket. Zapping enemies and picking up
+   items drops a **schematic** for a gear item, sticker or paint you do not own yet
+   (no duplicates, up to 6 in the cargo hold).
+4. **Print test:** 10 questions mixed across the class's chapters. 7 or more right
+   first time prints every schematic in the cargo hold (gear goes to Flight gear,
+   paints and stickers to Look). Under 7 prints nothing and loses nothing; retry as
+   often as you like. Disabled with a hint when the hold is empty or the rocket is
+   unfinished.
+
+Gear, stickers and paint come only from schematics. The Gear and Look screens say
+how to get each locked item ("Find its schematic in free roam", "Finish your rocket
+first to unlock free roam" or "Schematic in cargo: take a Print test to print it")
+and carry a "Print test (1 fuel)" button with the cargo count; the home map shows
+the same button when cargo is not empty. Rules live in
+`js\space-academy\pitstop\schematics.mjs` (catalogue, cargo, lock hints, printing)
+and `view-print-test.mjs`. Saves keep the earlier shape: `cargo` and `gear` are
+optional and read tolerantly, so older cargo reward objects stay schematics and
+owned items, fuel and launch progress carry over. Tests:
+`node --test scripts\space-academy-schematics.test.mjs`.
+
+## Space Academy fuel
+
+Fuel is burned by a launch mock test (1 fuel, the first mock of each class is free)
+and by every Print test attempt (1 fuel, no free first try). Welding parts,
+chapter practice, flights and free roam are free. Buttons state their cost, for
+example "Start mock test · 1 fuel", "Start mock test · free first try" and "Start
+Print test · 1 fuel" (`js\space-academy\pitstop\fuel.mjs`).
+Each day gives 2 free fuel plus up to 2 rewarded ads (+1 each); bought fuel never
+expires. Supporters with unlimited fuel skip the tank. Progress resets keep fuel
+and supporter status.
+
+- **Android:** the wrapper must set `window.OtterlyNative` (contract in
+  `fuel-bridge.mjs`): a rewarded ad and Play Billing (`fuel-5`, `fuel-15`,
+  `remove-ads` at ₹150). Billing lives in the grown-ups gate. The native side is in
+  `android\space-academy` (see `MONETISATION.md` there); release builds need real AdMob ids.
+- **Website:** no ads or purchases. A ₹150+ Ko-fi supporter gets a signed code:
+  `node scripts\fuel-codes.mjs issue "<name>"`. The private key is in
+  `%USERPROFILE%\.otterly`; back it up and never commit it. `keygen` makes a new
+  pair and invalidates old codes until the public key in `fuel-bridge.mjs` changes.
+- Rehearse with `?test=1&native=fake` on localhost. Tests: `node --test scripts\space-academy-fuel.test.mjs`.
 
 ## Full Clock Master browser game
 

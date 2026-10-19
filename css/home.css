@@ -65,6 +65,8 @@
 .home-page .home-flag:hover { transform: translateY(-3px); box-shadow: var(--edge-light), var(--elev-3); }
 .home-page .home-flag--clock { --accent: #8b5cf6; --accent-soft: var(--purple-soft); --accent2: #fbbf24; }
 .home-page .home-flag--tank { --accent: #ec4899; --accent-soft: var(--pink-soft); --accent2: #14b8a6; }
+.home-page .home-flag--space { --accent: #3b82f6; --accent-soft: var(--blue-soft); --accent2: #f97316; }
+.home-page .home-flag--elem { --accent: #16a34a; --accent-soft: var(--green-soft); --accent2: #38bdf8; }
 .home-page .home-flag-copy { position: relative; z-index: 2; padding: var(--s-6) var(--s-5) var(--s-5); display: grid; gap: var(--s-4); justify-items: start; align-content: start; }
 .home-page .home-flag-name { display: inline-flex; align-items: center; gap: var(--s-2); font: 800 var(--fs-sm)/1 var(--font-head); color: var(--accent-soft); letter-spacing: 0.04em; text-transform: uppercase; }
 .home-page .home-flag-name .icon { width: 1.1em; height: 1.1em; box-sizing: content-box; padding: 6px; border-radius: 10px; background: color-mix(in srgb, var(--accent) 28%, transparent); }
@@ -110,9 +112,18 @@
 }
 @media (min-width: 1100px) {
   .home-page .home-bento-flag { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .home-page .home-space-link { grid-column: 1 / -1; }
   .home-page .home-flag { min-height: 580px; }
   .home-page .home-flag h3 { font-size: clamp(2rem, 3.4vw, 3.1rem); }
+  .home-page .home-flag--space { grid-column: 1 / -1; min-height: 460px; }
+  .home-page .home-flag--space .home-flag-copy { width: 50%; }
+  .home-page .home-flag--space .home-flag-art { width: 50%; }
+  .home-page .home-flag--space .home-phone--front { right: 30%; }
+  .home-page .home-flag--space .home-phone--back { right: 10%; }
+  .home-page .home-flag--elem { grid-column: 1 / -1; min-height: 520px; }
+  .home-page .home-flag--elem .home-flag-copy { width: 50%; }
+  .home-page .home-flag--elem .home-flag-art { width: 50%; }
+  .home-page .home-flag--elem .home-phone--front { right: 30%; }
+  .home-page .home-flag--elem .home-phone--back { right: 10%; }
 }
 
 /* ---- Tools + mini interactives ---- */

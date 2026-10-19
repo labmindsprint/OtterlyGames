@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="230" height="230" viewBox="0 0 230 230" fill="none">
+  <defs>
+    <linearGradient id="arm" x1="32" y1="98" x2="132" y2="124" gradientUnits="userSpaceOnUse"><stop stop-color="#446451"/><stop offset=".35" stop-color="#7c8060"/><stop offset="1" stop-color="#af8c5a"/></linearGradient>
+    <linearGradient id="wood" x1="151" y1="17" x2="197" y2="209" gradientUnits="userSpaceOnUse"><stop stop-color="#c9b17b"/><stop offset=".23" stop-color="#947147"/><stop offset=".5" stop-color="#e2c18a"/><stop offset=".75" stop-color="#927044"/><stop offset="1" stop-color="#c1ac78"/></linearGradient>
+    <linearGradient id="bracer" x1="92" y1="96" x2="116" y2="130" gradientUnits="userSpaceOnUse"><stop stop-color="#a6b3a0"/><stop offset=".55" stop-color="#647d6d"/><stop offset="1" stop-color="#354d41"/></linearGradient>
+  </defs>
+  <path d="m28 103 35-7 30 11 40-4 15 10-6 13-50 2-32-11-24 8z" fill="url(#arm)" stroke="#304332" stroke-width="4" stroke-linejoin="round"/>
+  <path d="m71 101 8 20m10-15 6 21" stroke="#d0ba85" stroke-opacity=".45" stroke-width="3"/>
+  <path d="m88 103 30-1 5 26-30 4-9-17z" fill="url(#bracer)" stroke="#334d3e" stroke-width="3"/>
+  <path d="m92 109 24-2m-21 10 24-3m-18 9 19-2" stroke="#c7ccb1" stroke-opacity=".7" stroke-width="2"/>
+  <path d="m128 105 12-6 13 5 6 9-5 13-17 1-10-8z" fill="#af8c5d" stroke="#3f4c33" stroke-width="3"/>
+  <path d="m141 104 3 15m5-13 2 13" stroke="#6c5b3c" stroke-width="2"/>
+  <path d="M159 17c4 22 28 31 30 54 2 18-17 29-18 43 0 15 20 27 18 47-2 22-26 33-29 53l-8-2c0-27 23-38 24-55 1-17-18-27-18-43 0-16 19-27 18-40-1-18-24-32-25-55z" fill="url(#wood)" stroke="#2b4333" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M159 23c4 21 24 32 25 51m-1 84c-2 20-23 32-24 47" stroke="#f1d59b" stroke-opacity=".75" stroke-width="2"/>
+  <path d="m156 21 5-12 3 17m-8 181 5 15 3-20" fill="#b3b9a1" stroke="#46604d" stroke-width="2"/>
+  <path d="m158 99 15 1 1 30-16-1z" fill="#314c3e" stroke="#b49c67" stroke-width="2"/>
+  <path d="m161 105 10 1m-10 6 10 1m-10 6 10 1m-10 5 10 1" stroke="#b3a377" stroke-width="2"/>
+  <path d="m170 65 12 5m-9 91 10-5" stroke="#e3cf9b" stroke-width="3"/>
+</svg>

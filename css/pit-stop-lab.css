@@ -1,0 +1,304 @@
+/* Pit Stop: rocket lab home, robot-arm weld scenes and launch pad. Loaded after pit-stop.css. */
+
+/* ---------- status bar ---------- */
+.ps-hud { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.ps-mid { display: grid; gap: 10px; min-width: 0; }
+.ps-copy { margin: 10px 0 0; font-size: 13px; line-height: 1.3; text-align: center; color: #9fb0e6; }
+.ps-map > .ps-copy { grid-column: 1 / -1; padding-bottom: 96px; }
+.ps-grown .ps-copy, .ps-start .ps-copy { color: inherit; opacity: .7; }
+.ps-hud-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.ps-gauges { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.ps-gauge {
+  display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; gap: 2px 8px; align-items: center;
+  padding: 6px 10px; background: var(--ps-night2); border: 3px solid var(--ps-ink); border-radius: 12px;
+  box-shadow: 3px 3px 0 var(--ps-ink); min-width: 0;
+}
+.ps-gauge-label { font-size: 15px; letter-spacing: .8px; text-transform: uppercase; color: #9fb0e6; }
+.ps-gauge-text { grid-column: 1 / -1; font-size: 17px; color: var(--ps-paper); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ps-gauge-bar { height: 12px; border: 2px solid var(--ps-ink); border-radius: 8px; background: var(--ps-night); overflow: hidden; }
+.ps-gauge-bar i { display: block; height: 100%; background: repeating-linear-gradient(45deg, var(--ps-gold) 0 8px, #d89a12 8px 16px); transition: width .5s; }
+.ps-gauge .ps-level { grid-column: auto; }
+
+/* ---------- the lab stage ---------- */
+.ps-lab {
+  position: relative; width: min(100%, 52dvh, 480px); aspect-ratio: 1; margin: 0 auto 36px;
+  background:
+    linear-gradient(rgba(159, 176, 230, .09) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, rgba(159, 176, 230, .09) 1px, transparent 1px) 0 0 / 24px 24px,
+    #232a44;
+  border: 4px solid var(--ps-ink); border-radius: 16px; box-shadow: 4px 5px 0 var(--ps-ink); overflow: hidden;
+}
+.ps-lab-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.ps-lab-svg--front { z-index: 3; }
+.ps-lab-ship { position: absolute; left: 25%; top: 13.333%; width: 50%; height: 70%; z-index: 2; }
+.ps-lab-ship .ps-ship { overflow: visible; }
+.ps-lab-scan {
+  position: absolute; left: -8%; right: -8%; top: 0; height: 3px; border-radius: 2px;
+  background: rgba(130, 210, 255, .85); box-shadow: 0 0 10px rgba(130, 210, 255, .9);
+  animation: ps-scan 3.4s linear infinite; pointer-events: none;
+}
+@keyframes ps-scan { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+.ps-lab-plate {
+  position: absolute; left: 0; right: 0; bottom: -34px; margin: 0; padding: 4px 8px; text-align: center;
+  font-size: 16px; letter-spacing: .6px; color: var(--ps-gold); background: var(--ps-ink); border-radius: 0 0 12px 12px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.ps-lab-lamp { animation: ps-lamp 1s steps(1) infinite; }
+.ps-lab-lamp--b { animation-delay: .5s; }
+@keyframes ps-lamp { 0% { fill: #d9534f; } 50% { fill: #5a2a2a; } }
+.ps-lab-vent circle { fill: #fffdf8; stroke: #8a8780; stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: ps-vent 2.8s ease-out infinite; opacity: 0; }
+.ps-lab-vent circle:nth-child(2) { animation-delay: .9s; }
+.ps-lab-vent circle:nth-child(3) { animation-delay: 1.8s; }
+@keyframes ps-vent { 0% { transform: translateY(0) scale(.4); opacity: .9; } 100% { transform: translateY(-42px) scale(1.7); opacity: 0; } }
+
+/* robot arms */
+.ps-arm { animation: ps-arm-in .7s var(--delay, 0s) cubic-bezier(.3, 1.3, .5, 1) backwards; }
+.ps-arm.is-working { animation: ps-arm-in .7s var(--delay, 0s) cubic-bezier(.3, 1.3, .5, 1) backwards, ps-arm-sway 1.8s calc(var(--delay, 0s) + .7s) ease-in-out infinite; }
+@keyframes ps-arm-in { from { transform: translateY(-120px) rotate(-8deg); opacity: 0; } }
+@keyframes ps-arm-sway { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(1.6deg); } }
+.ps-lab-glow { transform-box: fill-box; transform-origin: center; animation: ps-weld-flicker .22s steps(2) infinite; }
+@keyframes ps-weld-flicker { 0% { transform: scale(.8); } 100% { transform: scale(1.25); } }
+.ps-lab-spark { animation: ps-spark .75s ease-out infinite backwards; }
+@keyframes ps-spark { 0% { transform: translate(0, 0); opacity: 1; } 100% { transform: translate(var(--dx), var(--dy)); opacity: 0; } }
+.ps-lab-word {
+  font-family: var(--ps-font); font-size: 22px; font-weight: 900; fill: var(--ps-gold);
+  stroke: var(--ps-ink); stroke-width: 5px; paint-order: stroke; stroke-linejoin: round;
+  transform-box: fill-box; transform-origin: center; animation: ps-word 1.8s ease-out infinite backwards;
+}
+@keyframes ps-word { 0% { transform: scale(0) rotate(-14deg); opacity: 0; } 12% { transform: scale(1.25) rotate(-6deg); opacity: 1; } 22% { transform: scale(1) rotate(-6deg); } 70% { opacity: 1; } 100% { transform: scale(1) rotate(-6deg) translateY(-8px); opacity: 0; } }
+.ps-fx { pointer-events: none; }
+
+/* weld scenes */
+.ps-lab--weld { margin-bottom: 36px; }
+.ps-lab--weld .ps-ship .ps-part { transition: opacity .3s; }
+.ps-lab.is-shake { animation: ps-shake .4s ease-out; }
+@keyframes ps-shake { 0%, 100% { transform: translate(0); } 15% { transform: translate(-5px, 3px) rotate(-.6deg); } 35% { transform: translate(5px, -3px) rotate(.6deg); } 55% { transform: translate(-3px, 2px); } 75% { transform: translate(3px, -1px); } }
+.ps-lab--finale .ps-weld-burst { top: 16%; z-index: 4; animation: ps-pop .6s both; }
+.ps-lab--beat { width: min(92vw, 70dvh, 520px); }
+.ps-weld-host { display: block; }
+.ps-print-layer--weld { cursor: pointer; }
+
+/* the weld bay on the question page */
+.ps-quiz { padding-top: 0; }
+.ps-quiz-top { position: sticky; top: 0; z-index: 6; height: calc(60px + var(--ps-safe-top, env(safe-area-inset-top, 0px))); padding-top: var(--ps-safe-top, env(safe-area-inset-top, 0px)); flex: none; background: var(--ps-paper); }
+.ps-qbody { display: flex; flex-direction: column; gap: 12px; flex: 1; min-width: 0; }
+.ps-bay { position: sticky; top: calc(60px + var(--ps-safe-top, env(safe-area-inset-top, 0px))); z-index: 5; padding-bottom: 8px; background: var(--ps-paper); --bay-ratio: auto; }
+/* The crop is a window onto the workshop; bay.mjs measures it and sets --lab (stage size), --ox and --oy so the weld points always sit inside it. */
+.ps-bay-crop {
+  position: relative; width: 100%; height: clamp(170px, 27dvh, 260px); aspect-ratio: var(--bay-ratio); max-height: calc(100dvh - 96px - var(--ps-safe-top, env(safe-area-inset-top, 0px))); overflow: hidden;
+  background: #232a44; border: 3px solid var(--ps-ink); border-radius: 14px; box-shadow: 3px 4px 0 var(--ps-ink);
+}
+.ps-bay .ps-lab--bay {
+  position: absolute; left: 0; top: 0; width: var(--lab, 100%); margin: 0; border: 0; border-radius: 0; box-shadow: none;
+  translate: var(--ox, 0) var(--oy, 0);
+}
+.ps-bay-plate {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; margin: 0; padding: 2px 8px; text-align: center;
+  font-size: 14px; letter-spacing: .5px; color: var(--ps-gold); background: var(--ps-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.ps-lab-svg--front.is-live .ps-arm { animation: none; }
+.ps-lab--bay.is-bad .ps-lab-ship { filter: sepia(.8) saturate(2.4) hue-rotate(-35deg) brightness(.75); }
+.ps-lab-word--bad { fill: #d9d6cf; }
+@media (min-width: 820px) and (min-height: 521px), (max-height: 520px) and (orientation: landscape) {
+  .ps-quiz--part { display: grid; grid-template-columns: minmax(200px, 40%) minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 22px; align-content: start; max-width: 1080px; }
+  .ps-quiz--part > .ps-quiz-top { grid-column: 1 / -1; }
+  .ps-quiz--part > .ps-bay { grid-column: 1; grid-row: 2; align-self: start; --bay-ratio: .95; }
+  .ps-quiz--part > .ps-bay .ps-bay-crop { height: auto; }
+  .ps-quiz--part > .ps-qbody { grid-column: 2; grid-row: 2; }
+}
+
+/* ---------- panels ---------- */
+.ps-panel { display: grid; gap: 8px; padding: 12px; background: var(--ps-night2); border: 3px solid var(--ps-ink); border-radius: 14px; box-shadow: 3px 3px 0 var(--ps-ink); }
+.ps-panel h2 { font-size: 19px; letter-spacing: .8px; text-transform: uppercase; color: var(--ps-gold); }
+.ps-bom, .ps-checks, .ps-plan { list-style: none; margin: 0; padding: 0; }
+.ps-bom { display: grid; gap: 6px; }
+.ps-bom li { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; padding: 6px 10px; border: 2px dashed #6b78a8; border-radius: 10px; color: #9fb0e6; }
+.ps-bom li.is-done { border-style: solid; border-color: var(--ps-ink); background: rgba(245, 184, 46, .12); color: var(--ps-paper); }
+.ps-bom li.is-next { border-style: solid; border-color: var(--ps-paper); color: var(--ps-paper); }
+.ps-bom-no { font-size: 17px; color: var(--ps-gold); }
+.ps-bom-name { display: grid; line-height: 1.1; font-size: 19px; }
+.ps-bom-name small { font-size: 15px; color: #9fb0e6; }
+.ps-bom-state { font-size: 17px; color: var(--ps-gold); white-space: nowrap; }
+.ps-bom-state svg { width: 18px; height: 18px; }
+.ps-bom-state.is-next { color: var(--ps-blue); letter-spacing: .6px; }
+
+.ps-plan { display: flex; flex-wrap: wrap; gap: 8px 6px; }
+.ps-plan-btn { display: grid; justify-items: center; align-content: start; gap: 2px; width: 100%; padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: pointer; }
+.ps-plan-node { display: grid; justify-items: center; align-content: start; gap: 2px; width: 70px; }
+.ps-plan-art, .ps-mock-target { display: grid; place-items: center; width: 54px; height: 54px; border: 3px solid var(--ps-ink); border-radius: 50%; background: var(--ps-night); overflow: hidden; }
+.ps-plan-art .ps-sky { width: 46px; height: 46px; }
+.ps-plan-art b { font-size: 26px; color: #6b78a8; }
+.ps-plan-node:not(.is-done):not(.is-next) .ps-plan-art { border-style: dashed; border-color: #6b78a8; }
+.ps-plan-node.is-next .ps-plan-art { border-color: var(--ps-paper); box-shadow: 0 0 0 4px var(--ps-blue); }
+.ps-plan-no { font-size: 15px; line-height: 1.05; text-align: center; color: #9fb0e6; overflow-wrap: anywhere; }
+.ps-plan-node.is-done .ps-plan-no { color: var(--ps-paper); }
+
+.ps-checks { display: grid; gap: 8px; }
+.ps-checks li { display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; align-items: center; }
+.ps-check-title { font-size: 18px; }
+.ps-check-name { font-size: 16px; color: #9fb0e6; text-align: right; }
+.ps-checks .ps-level { grid-column: 1 / -1; grid-row: 2; }
+.ps-checks li.is-focus .ps-check-title { color: var(--ps-gold); }
+.ps-checks .ps-level i { border-color: var(--ps-ink); background: var(--ps-night); }
+.ps-checks .ps-level i.is-on { background: var(--ps-gold); }
+.ps-panel .ps-link { justify-self: start; padding: 4px 0; min-height: 40px; }
+
+/* ---------- mock test ---------- */
+.ps-brief--mock { gap: 10px; justify-items: center; }
+.ps-brief--mock h2 { font-size: 28px; }
+.ps-mock-target { width: 96px; height: 96px; }
+.ps-mock-target b { font-size: 52px; color: #6b78a8; }
+.ps-mock-target .ps-sky { width: 82px; height: 82px; }
+.ps-brief--mock .ps-fact { text-align: left; }
+
+/* ---------- launch pad ---------- */
+.ps-launch {
+  position: relative; flex: 1; min-height: 54dvh; overflow: hidden; container-type: inline-size;
+  border: 4px solid var(--ps-ink); border-radius: 18px; box-shadow: 4px 5px 0 var(--ps-ink);
+  background: linear-gradient(to top, #3b4468, #232a44 70%, #181d33);
+}
+.ps-launch-sky { position: absolute; inset: 0; background:
+  radial-gradient(2px 2px at 12% 18%, #fffdf8 50%, transparent 55%), radial-gradient(2px 2px at 70% 12%, #fffdf8 50%, transparent 55%),
+  radial-gradient(3px 3px at 40% 30%, #ffd166 50%, transparent 55%), radial-gradient(2px 2px at 88% 40%, #fffdf8 50%, transparent 55%),
+  radial-gradient(2px 2px at 25% 52%, #fffdf8 50%, transparent 55%), radial-gradient(3px 3px at 80% 66%, #9fb0e6 50%, transparent 55%); }
+/* The ship art fills about 60% of its 300x420 box, so a 64% box shows a ship about 40% of the sky tall; its feet land on the pad. */
+.ps-launch-ship {
+  position: absolute; left: 50%; bottom: -2%; height: min(64%, 137cqw); aspect-ratio: 300 / 420; transform: translateX(-50%); z-index: 2;
+}
+.ps-launch-flame {
+  position: absolute; left: 50%; top: 80%; width: 30%; height: 34%; transform: translateX(-50%) scaleY(0); transform-origin: top; z-index: -1;
+  background: linear-gradient(#fff6c8, #ffd166 35%, #ff6a28 80%, transparent); border-radius: 40% 40% 70% 70% / 20% 20% 80% 80%;
+  clip-path: polygon(0 0, 100% 0, 80% 60%, 50% 100%, 20% 60%);
+}
+.ps-launch-pad { position: absolute; left: 12%; right: 12%; bottom: 4%; height: 5%; background: var(--ps-mid); border: 3px solid var(--ps-ink); border-radius: 6px; z-index: 1; }
+.ps-launch-pad i { position: absolute; bottom: 100%; width: min(44px, 11cqw); height: min(44px, 11cqw); border: 3px solid #8a8780; border-radius: 50%; background: var(--ps-paper); opacity: 0; }
+.ps-launch-pad i:first-child { left: 18%; }
+.ps-launch-pad i:last-child { right: 18%; }
+.ps-launch-count {
+  position: absolute; top: 4%; left: 0; right: 0; z-index: 4; text-align: center; margin: 0;
+  font-size: min(76px, 18cqw, 9dvh); font-weight: 900; line-height: 1; color: var(--ps-gold);
+  -webkit-text-stroke: 6px var(--ps-ink); paint-order: stroke fill; letter-spacing: 1px;
+}
+.ps-launch-count.is-tick { animation: ps-pop .5s both; }
+.ps-launch.is-lift .ps-launch-count { top: 4%; font-size: min(52px, 12.5cqw, 7dvh); }
+.ps-launch.is-shake .ps-launch-ship { animation: ps-pad-shake .12s linear infinite; }
+@keyframes ps-pad-shake { 0%, 100% { translate: -2px 0; } 50% { translate: 2px 1px; } }
+.ps-launch.is-lift .ps-launch-ship { animation: ps-lift 2s cubic-bezier(.6, 0, 1, .7) forwards; }
+.ps-launch.is-lift .ps-launch-flame { animation: ps-flame .12s linear infinite alternate; transform: translateX(-50%) scaleY(1); }
+.ps-launch.is-lift .ps-launch-pad i { animation: ps-smoke 1.8s ease-out forwards; }
+.ps-launch.is-lift .ps-launch-pad i:last-child { animation-delay: .15s; }
+@keyframes ps-lift { 0% { transform: translate(-50%, 0); opacity: 1; } 80% { opacity: 1; } 100% { transform: translate(-50%, -150%); opacity: 0; } }
+@keyframes ps-flame { to { transform: translateX(-50%) scaleY(1.25); } }
+@keyframes ps-smoke { 0% { opacity: .9; transform: scale(.5); } 100% { opacity: 0; transform: translateY(-20px) scale(3.2); } }
+
+@media (max-height: 520px) {
+  .ps-lab { width: min(44dvh, 100%); margin-bottom: 30px; }
+  .ps-launch { min-height: 60dvh; }
+  .ps-launch-count { left: 0; right: auto; width: 34%; top: 50%; translate: 0 -50%; font-size: min(60px, 7cqw, 15dvh); -webkit-text-stroke-width: 5px; }
+  .ps-launch-pad i { width: 26px; height: 26px; }
+  .ps-launch.is-lift .ps-launch-count { font-size: min(34px, 5cqw, 9dvh); }
+}
+
+/* ---------- wide screens: a laptop gets a dashboard, not a phone column ---------- */
+.ps-stage { grid-template: minmax(0, 1fr) / minmax(0, 1fr); }
+.ps-screen.ps-skills { display: flex; margin: 0 auto; padding: 14px 16px calc(14px + env(safe-area-inset-bottom)); }
+@media (min-width: 900px) and (min-height: 560px) {
+  .ps-map { max-width: 1260px; display: grid; grid-template-columns: minmax(340px, 1.2fr) minmax(270px, 1fr) minmax(270px, 1fr); grid-template-rows: auto auto auto auto; gap: 14px 20px; align-content: start; min-height: 0; }
+  .ps-map > .ps-hud { grid-column: 1 / -1; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; }
+  .ps-map .ps-hud-row { display: contents; }
+  .ps-map .ps-head-tools { grid-column: 3; grid-row: 1; justify-self: end; }
+  .ps-map .ps-gauges { grid-column: 2; grid-row: 1; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .ps-map > .ps-lab { grid-column: 1; grid-row: 2; width: min(100%, 44dvh, 520px); margin: 0 auto; align-self: start; }
+  .ps-map .ps-bom { gap: 4px; }
+  .ps-map .ps-bom li { padding: 3px 10px; }
+  .ps-map .ps-bom-name { font-size: 18px; }
+  .ps-map .ps-bom-name small { font-size: 14px; }
+  .ps-map > .ps-mid { display: grid; gap: 14px; grid-column: 2; grid-row: 2 / span 2; align-self: start; }
+  .ps-map > .ps-panel--checks { grid-column: 3; grid-row: 2 / span 2; align-self: start; }
+  .ps-map > .ps-cta { grid-column: 1; grid-row: 3; align-self: start; position: static; background: none; padding: 0; }
+  .ps-classes { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .ps-class { padding-block: 8px; }
+  .ps-class-ship { width: 66px; height: 92px; }
+  .ps-classes .ps-class:last-child { grid-column: auto; justify-self: stretch; width: auto; }
+  .ps-start { max-width: 1000px; }
+  .ps-screen.ps-skills { max-width: 900px; }
+  ul.ps-skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ps-look { max-width: 980px; }
+  .ps-look .ps-cust { max-width: none; display: grid; grid-template-columns: minmax(220px, auto) minmax(0, 1fr); column-gap: 32px; align-items: start; }
+  .ps-look .ps-cust > * { grid-column: 2; }
+  .ps-look .ps-cust > .ps-cust-ship { grid-column: 1; grid-row: 1 / span 6; height: min(64dvh, 480px); }
+  .ps-map { padding-top: 10px; row-gap: 10px; }
+  .ps-map .ps-plan-node { width: 62px; }
+  .ps-map .ps-plan { gap: 6px 4px; }
+  .ps-map .ps-gauge { padding: 4px 10px; }
+  .ps-quiz:not(.ps-quiz--part) { max-width: 720px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-arm, .ps-arm.is-working, .ps-lab-glow, .ps-lab-spark, .ps-lab-word, .ps-lab-scan, .ps-lab-lamp, .ps-lab-vent circle,
+  .ps-lab.is-shake, .ps-launch.is-shake .ps-launch-ship, .ps-launch-count.is-tick, .ps-launch.is-lift .ps-launch-flame { animation: none; }
+  .ps-lab-spark { opacity: 0; }
+  .ps-launch.is-lift .ps-launch-ship { animation: none; transform: translate(-50%, -30%); }
+}
+
+/* ---------- review fixes: result screens, launch skip, look contrast, small phones ---------- */
+.ps-head > h1:only-child { text-align: center; }
+.ps-weld .ps-lab, .ps-weld .ps-lab--beat { width: min(100%, 520px, max(180px, calc(100dvh - 400px))); margin-bottom: 36px; }
+.ps-weld > .ps-cta { position: static; background: none; padding: 0; }
+.ps-weld .ps-result { gap: 6px; }
+.ps-weld .ps-stars span { width: 34px; height: 34px; }
+.ps-try-again { display: flex; align-items: center; gap: 10px; justify-content: center; font-size: 21px; text-align: left; }
+@media (max-height: 760px) { .ps-pit .ps-stage { height: 36dvh; min-height: 180px; } }
+.ps-try-again .ps-ringo { flex: none; }
+.ps-launch-skip { min-width: 180px; min-height: 48px; font-size: 20px; }
+.ps-cta .ps-launch-skip { align-self: center; }
+.ps-look .ps-cust { color: var(--ps-paper); padding-bottom: 96px; }
+.ps-look .ps-cust-hint { color: #fff3c4; font-size: 20px; }
+.ps-look .ps-cust-heading { color: var(--ps-gold); font-size: 19px; }
+.ps-look .ps-cust-earn { margin: 0; font-size: 18px; text-align: center; color: #e4e9ff; }
+.ps-cust-earn { margin: 0; }
+.ps-look .ps-cust-swatch.is-locked { background: #4a5380; border-color: #b8c3ee; }
+.ps-look .ps-cust-stk { background: #4a5380; border-color: #b8c3ee; }
+.ps-look .ps-cust-stk.is-locked .ps-stk-svg { filter: brightness(0) invert(1); opacity: .45; }
+.ps-look .ps-cust-stk.is-on { border-color: var(--ps-blue); background: #d3e6fb; }
+
+@media (max-width: 600px) {
+  .ps-map { gap: 10px; }
+  .ps-map .ps-hud-row { flex-wrap: nowrap; gap: 4px; }
+  .ps-map .ps-chip--class { padding-inline: 10px; font-size: 16px; }
+  .ps-map .ps-head-tools { width: auto; flex: 1; min-width: 0; gap: 4px; flex-wrap: nowrap; justify-content: flex-end; }
+  .ps-map .ps-head-tools .ps-chip--help { display: none; }
+  .ps-map .ps-head-tools .ps-icon-button { width: 38px; height: 38px; flex: none; }
+  .ps-map .ps-head-tools .ps-chip svg { display: none; }
+  .ps-map .ps-head-tools .ps-chip:not(.ps-chip--print) { padding-inline: 7px; font-size: 15px; }
+  .ps-map .ps-head-tools .ps-fuel { justify-content: center; font-size: 14px; padding-inline: 7px; white-space: nowrap; }
+  .ps-map .ps-chip--class .ps-chip-sub { display: none; }
+  .ps-map .ps-hud { gap: 8px; }
+  .ps-map .ps-gauges { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+  .ps-map .ps-gauge { grid-template-rows: auto auto; grid-template-columns: 1fr; padding: 3px 6px; gap: 0; text-align: center; }
+  .ps-map .ps-gauge-label { font-size: 12px; }
+  .ps-map .ps-gauge-text { grid-column: auto; text-align: center; font-size: 14px; }
+  .ps-map .ps-gauge-bar, .ps-map .ps-gauge--rank .ps-level { display: none; }
+  .ps-map .ps-gauge-text { grid-column: auto; text-align: right; }
+  .ps-map .ps-lab { width: min(100%, 30dvh, 300px); margin-bottom: 34px; }
+  .ps-map .ps-panel { padding: 8px 10px; gap: 6px; }
+  .ps-map .ps-panel h2 { font-size: 17px; }
+  .ps-map .ps-bom { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .ps-map .ps-bom li { grid-template-columns: auto 1fr auto; gap: 6px; padding: 4px 8px; }
+  .ps-map .ps-bom-name { font-size: 17px; }
+  .ps-map .ps-bom-name small { display: none; }
+  .ps-map .ps-bom-state { font-size: 15px; }
+  .ps-map .ps-plan { gap: 6px 2px; }
+  .ps-map .ps-plan-node { width: 20%; }
+  .ps-map .ps-plan-art { width: 44px; height: 44px; }
+  .ps-map .ps-plan-art .ps-sky { width: 38px; height: 38px; }
+  .ps-map .ps-plan-no { font-size: 13px; }
+  .ps-map .ps-checks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; }
+  .ps-map .ps-check-title { font-size: 16px; line-height: 1.1; }
+  .ps-map .ps-check-name { display: none; }
+  .ps-map .ps-checks li { grid-template-columns: 1fr; }
+  .ps-map .ps-checks .ps-level { grid-row: auto; }
+  .ps-map .ps-cta { padding-top: 8px; }
+  .ps-map .ps-cta p { font-size: 16px; }
+  .ps-primary--big { min-height: 60px; font-size: 26px; }
+}

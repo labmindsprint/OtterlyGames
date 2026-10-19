@@ -9,6 +9,8 @@ export const ARCHIVE_ROUTES = [
   '/Arcade/index-old.html', '/math-tank-feature-graphic.html', '/og-image-generator.html',
 ];
 const PUBLIC_DIRECTORIES = ['apps', 'play', 'tools', 'blog', 'learn', 'parents', 'Arcade'];
+// Noindex game documents that are embedded by a catalogued page (and shipped by the Android wrapper); they are not site pages.
+const GAME_DOCUMENTS = ['play/pit-stop.html'];
 const CUSTOM_SHELL_ROUTES = [
   '/Arcade/game.html', '/Arcade/pigeon.html', '/Arcade/shepherd.html', '/Arcade/zombie.html',
 ];
@@ -599,7 +601,7 @@ function publicFiles(root) {
     for (const entry of readdirSync(join(root, dir), { withFileTypes: true })) {
       if (entry.isSymbolicLink()) throw new Error(`${join(dir, entry.name)}: Symlinks are not public build inputs`);
       if (entry.isDirectory()) visit(join(dir, entry.name));
-      else if (entry.name.endsWith('.html')) files.push(join(dir, entry.name));
+      else if (entry.name.endsWith('.html') && !GAME_DOCUMENTS.includes(join(dir, entry.name).split(sep).join('/'))) files.push(join(dir, entry.name));
     }
   };
   PUBLIC_DIRECTORIES.forEach(visit);

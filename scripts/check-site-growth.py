@@ -19,10 +19,10 @@ ALL_PAGE_SIZES = [(1366, 768), (800, 1000), (390, 844), (320, 740)]
 CORE = [
     "/", "/play/", "/learn/", "/parents/", "/tools/", "/blog/",
     "/learn/telling-time.html", "/learn/times-tables.html",
-    "/learn/division.html", "/learn/spelling.html",
+    "/learn/division.html", "/learn/spelling.html", "/learn/imo-preparation.html", "/learn/olympiad-mock-test.html",
     "/tools/worksheet-builder.html", "/play/clock-master.html",
     "/play/math-tank.html", "/about.html", "/contact.html", "/support.html",
-    "/apps/clock-master.html", "/apps/math-tank.html",
+    "/apps/clock-master.html", "/apps/math-tank.html", "/apps/space-academy.html", "/apps/otter-element.html",
 ]
 CORE.extend(game["url"] for game in GAME_ENTRIES if game["url"] not in CORE)
 STANDALONE = {"/Arcade/game.html", "/Arcade/pigeon.html",
@@ -248,7 +248,7 @@ def run():
         for route in CORE:
             for size in [s for s in SIZES if s not in ALL_PAGE_SIZES]:
                 record(f"page-{route}-{size[0]}x{size[1]}", lambda r=route, s=size: page_check(r, s))
-        for route in ["/", "/tools/", "/blog/", "/play/", "/learn/", "/parents/", "/apps/clock-master.html", "/apps/math-tank.html"] + [game["url"] for game in GAME_ENTRIES]:
+        for route in ["/", "/tools/", "/blog/", "/play/", "/learn/", "/parents/", "/apps/clock-master.html", "/apps/math-tank.html", "/apps/space-academy.html", "/apps/otter-element.html"] + [game["url"] for game in GAME_ENTRIES]:
             record(f"nojs-{route}", lambda r=route: page_check(r, (390, 844), False))
         for route in ["/", "/play/", "/play/clock-master.html", "/play/ninja-shuriken.html", "/tools/clock-lessons.html", "/tools/multiplication-practice.html", "/blog/"]:
             for size in [(1366, 768), (390, 844)]:
@@ -352,7 +352,7 @@ def run():
                 expect(page.locator('.home-tools a[href="/tools/clock-lessons.html"]').first).to_be_visible()
                 expect(page.locator('.home-tools a[href="/tools/multiplication-table.html"]').first).to_be_visible()
                 expect(page.locator('.home-tools a[href="/learn/telling-time.html"]')).to_be_visible()
-                for link in page.locator(".home-arcade-games > a, [data-home-game], .home-space-link, .home-tools a, .home-guides a").all():
+                for link in page.locator(".home-arcade-games > a, [data-home-game], .home-flag--space a, .home-tools a, .home-guides a").all():
                     response = page.request.get(base + link.get_attribute("href"))
                     assert response.status == 200, link.get_attribute("href")
                 page.locator(".home-browse").click()

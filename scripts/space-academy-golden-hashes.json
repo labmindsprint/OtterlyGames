@@ -1,0 +1,4898 @@
+{
+ "v1|pp1|chapter|counting|1|gold-a": {
+  "mission": "a23b9a554712802f",
+  "art": "c28589e080ab6699"
+ },
+ "v1|pp1|chapter|patterns|1|gold-a": {
+  "mission": "7275908c5ef9fe46",
+  "art": "06f02e6dcbaf10c7"
+ },
+ "v1|pp1|chapter|shapes|1|gold-a": {
+  "mission": "9b1be44ffc60970d",
+  "art": "3187a8ed93e1ca62"
+ },
+ "v1|pp1|chapter|sorting|1|gold-a": {
+  "mission": "026d46adcb11a482",
+  "art": "e2b4bc34f86a6e47"
+ },
+ "v1|pp1|chapter|position|1|gold-a": {
+  "mission": "798c3a4c4944af31",
+  "art": "296c3f38613fcd8c"
+ },
+ "v1|pp1|chapter|comparing|1|gold-a": {
+  "mission": "c9442191fc0e4ddb",
+  "art": "1b28265ba841f796"
+ },
+ "v1|pp1|mixed|-|1|gold-a": {
+  "mission": "373761b3aec453d3",
+  "art": "518757971564f659"
+ },
+ "v1|pp1|chapter|counting|1|gold-b": {
+  "mission": "89d03901ac934f77",
+  "art": "ef33dee326939b30"
+ },
+ "v1|pp1|chapter|patterns|1|gold-b": {
+  "mission": "0d41d3c9b3c6a489",
+  "art": "180402cdccbb522e"
+ },
+ "v1|pp1|chapter|shapes|1|gold-b": {
+  "mission": "986499c491a075d8",
+  "art": "9eabaa3dc54ddb68"
+ },
+ "v1|pp1|chapter|sorting|1|gold-b": {
+  "mission": "ae371c4f0cda6035",
+  "art": "d5edeb1ec0469058"
+ },
+ "v1|pp1|chapter|position|1|gold-b": {
+  "mission": "f419bcc7492cbe90",
+  "art": "fa9eefadf1abb91f"
+ },
+ "v1|pp1|chapter|comparing|1|gold-b": {
+  "mission": "b615e3ef55da9039",
+  "art": "11746c79f05a8a13"
+ },
+ "v1|pp1|mixed|-|1|gold-b": {
+  "mission": "7246b99189d281ac",
+  "art": "126dcca0d5740191"
+ },
+ "v1|pp1|chapter|counting|1|gold-c": {
+  "mission": "cdfde94096262389",
+  "art": "ffb1022b2a6c8216"
+ },
+ "v1|pp1|chapter|patterns|1|gold-c": {
+  "mission": "7528bfd8671009f2",
+  "art": "f8a236a9accabac1"
+ },
+ "v1|pp1|chapter|shapes|1|gold-c": {
+  "mission": "10c92de7b7e50e2d",
+  "art": "2493c47021aa9540"
+ },
+ "v1|pp1|chapter|sorting|1|gold-c": {
+  "mission": "df8df32c29b4535f",
+  "art": "7386fe5f00b00bc1"
+ },
+ "v1|pp1|chapter|position|1|gold-c": {
+  "mission": "f9aff2e823620031",
+  "art": "ec75d70d7b60f61c"
+ },
+ "v1|pp1|chapter|comparing|1|gold-c": {
+  "mission": "cecb20ba0cc94c2c",
+  "art": "36e3a9a41b615f73"
+ },
+ "v1|pp1|mixed|-|1|gold-c": {
+  "mission": "1c1e737cae6732ef",
+  "art": "353fb24b5a06a246"
+ },
+ "v1|pp1|chapter|counting|2|gold-a": {
+  "mission": "9430a9fd3c31d11d",
+  "art": "0337b187537953f1"
+ },
+ "v1|pp1|chapter|patterns|2|gold-a": {
+  "mission": "3cdb79934a1d5093",
+  "art": "75eb74e58fa44196"
+ },
+ "v1|pp1|chapter|shapes|2|gold-a": {
+  "mission": "f8db9c544460a2d5",
+  "art": "0e959e2108199e0b"
+ },
+ "v1|pp1|chapter|sorting|2|gold-a": {
+  "mission": "57d99dc7002484fc",
+  "art": "3882cbb7d2c65600"
+ },
+ "v1|pp1|chapter|position|2|gold-a": {
+  "mission": "2106ecbf6ca05b33",
+  "art": "4fa32fbb260b2998"
+ },
+ "v1|pp1|chapter|comparing|2|gold-a": {
+  "mission": "1f237192562c3de0",
+  "art": "cbc0213f052add5b"
+ },
+ "v1|pp1|mixed|-|2|gold-a": {
+  "mission": "d4b53d4711cd1ad9",
+  "art": "5fb46e9b0aee5d59"
+ },
+ "v1|pp1|chapter|counting|2|gold-b": {
+  "mission": "99f80c3be9566e32",
+  "art": "6b57888d92550854"
+ },
+ "v1|pp1|chapter|patterns|2|gold-b": {
+  "mission": "1ce84ce210f3e05c",
+  "art": "9f078d48e12eedbc"
+ },
+ "v1|pp1|chapter|shapes|2|gold-b": {
+  "mission": "b86370dd3152f548",
+  "art": "e090cffb2ee557ef"
+ },
+ "v1|pp1|chapter|sorting|2|gold-b": {
+  "mission": "e5154eddab47d552",
+  "art": "bcaebcc6f1cf0909"
+ },
+ "v1|pp1|chapter|position|2|gold-b": {
+  "mission": "8dad6f7e15bb3eaa",
+  "art": "bde07f2d3f1b37de"
+ },
+ "v1|pp1|chapter|comparing|2|gold-b": {
+  "mission": "d5ac9648b5bae895",
+  "art": "ab3d6c68989bddf5"
+ },
+ "v1|pp1|mixed|-|2|gold-b": {
+  "mission": "c3925621b8acaaef",
+  "art": "4d4a240f52ca86c7"
+ },
+ "v1|pp1|chapter|counting|2|gold-c": {
+  "mission": "508109299913f1fa",
+  "art": "bde7d3391efdd737"
+ },
+ "v1|pp1|chapter|patterns|2|gold-c": {
+  "mission": "2ddb4f3b37977737",
+  "art": "f8a094710b6a283a"
+ },
+ "v1|pp1|chapter|shapes|2|gold-c": {
+  "mission": "5ecafda30a5e41c3",
+  "art": "f22ba0e37dc0789f"
+ },
+ "v1|pp1|chapter|sorting|2|gold-c": {
+  "mission": "8a5b11f5462bc65f",
+  "art": "717105eccd20c9fa"
+ },
+ "v1|pp1|chapter|position|2|gold-c": {
+  "mission": "91275c649213668f",
+  "art": "b1c06f044bbd958d"
+ },
+ "v1|pp1|chapter|comparing|2|gold-c": {
+  "mission": "7a33dc93d2954f79",
+  "art": "37fe3d8fd1c05eab"
+ },
+ "v1|pp1|mixed|-|2|gold-c": {
+  "mission": "fe7dcbf20f9a9c8c",
+  "art": "90d0d5605ab162fc"
+ },
+ "v1|pp1|chapter|counting|3|gold-a": {
+  "mission": "ab37c1fd1c18e5fa",
+  "art": "8cd20f3c32d93c37"
+ },
+ "v1|pp1|chapter|patterns|3|gold-a": {
+  "mission": "e7cfbee632d071e1",
+  "art": "c9c02f1265d9a3b6"
+ },
+ "v1|pp1|chapter|shapes|3|gold-a": {
+  "mission": "007c9781cd691157",
+  "art": "c51cb836401f5945"
+ },
+ "v1|pp1|chapter|sorting|3|gold-a": {
+  "mission": "0805e9d3f77f2d30",
+  "art": "ab55bdc07f5f92fa"
+ },
+ "v1|pp1|chapter|position|3|gold-a": {
+  "mission": "af3df3d1fca07eaf",
+  "art": "1445f23785afe212"
+ },
+ "v1|pp1|chapter|comparing|3|gold-a": {
+  "mission": "5e678e454777dcfb",
+  "art": "06bb2d5ea632a8a0"
+ },
+ "v1|pp1|mixed|-|3|gold-a": {
+  "mission": "826aa74ad9269b06",
+  "art": "ba165bf060037f88"
+ },
+ "v1|pp1|chapter|counting|3|gold-b": {
+  "mission": "e22d1e2dbbce4a46",
+  "art": "c62f1dac64ef5efe"
+ },
+ "v1|pp1|chapter|patterns|3|gold-b": {
+  "mission": "7b7d5f3b1a5c3471",
+  "art": "aabb33604b75b526"
+ },
+ "v1|pp1|chapter|shapes|3|gold-b": {
+  "mission": "617729e7c4f09c64",
+  "art": "9d37b4bf75c5a3f4"
+ },
+ "v1|pp1|chapter|sorting|3|gold-b": {
+  "mission": "f1a650472c0c2b4e",
+  "art": "82ccb82f180b600f"
+ },
+ "v1|pp1|chapter|position|3|gold-b": {
+  "mission": "4f0b2d00a7cabb6e",
+  "art": "cc474f2fd33980bb"
+ },
+ "v1|pp1|chapter|comparing|3|gold-b": {
+  "mission": "61976ee6e58c805c",
+  "art": "01191edb480e8517"
+ },
+ "v1|pp1|mixed|-|3|gold-b": {
+  "mission": "1f538fe70339a8de",
+  "art": "c0197d309c61f1f4"
+ },
+ "v1|pp1|chapter|counting|3|gold-c": {
+  "mission": "04cd7694e37bbba2",
+  "art": "3ec09aceb6c1a0e4"
+ },
+ "v1|pp1|chapter|patterns|3|gold-c": {
+  "mission": "a60a3bab0313a958",
+  "art": "27eadb5c0966760e"
+ },
+ "v1|pp1|chapter|shapes|3|gold-c": {
+  "mission": "857e060439bc3ced",
+  "art": "542624007f2cfbe3"
+ },
+ "v1|pp1|chapter|sorting|3|gold-c": {
+  "mission": "a0aa0891288f867f",
+  "art": "32dbcc71bdfc6450"
+ },
+ "v1|pp1|chapter|position|3|gold-c": {
+  "mission": "ee8e138bbfdfa879",
+  "art": "83556abe92a18c25"
+ },
+ "v1|pp1|chapter|comparing|3|gold-c": {
+  "mission": "312b44bba25b4da2",
+  "art": "cc477c43babdc21a"
+ },
+ "v1|pp1|mixed|-|3|gold-c": {
+  "mission": "2b3ebd357f9b1304",
+  "art": "708046d492138f56"
+ },
+ "v1|pp2|chapter|numbers|1|gold-a": {
+  "mission": "7fcc482145307dea",
+  "art": "27f3ca9c8ae1ba7b"
+ },
+ "v1|pp2|chapter|operations|1|gold-a": {
+  "mission": "9d99603170e5c0c7",
+  "art": "94a2cd3d0c958496"
+ },
+ "v1|pp2|chapter|patterns|1|gold-a": {
+  "mission": "d1b8a9b2aea9e390",
+  "art": "cbe069e99211a40e"
+ },
+ "v1|pp2|chapter|shapes|1|gold-a": {
+  "mission": "008bde669cbc43f6",
+  "art": "86726a5f6874b15a"
+ },
+ "v1|pp2|chapter|measurement|1|gold-a": {
+  "mission": "892b22f3b5210f58",
+  "art": "8f1ea2a3e4ee70b7"
+ },
+ "v1|pp2|chapter|reasoning|1|gold-a": {
+  "mission": "72a66368f4cb94ab",
+  "art": "e892a060d3898668"
+ },
+ "v1|pp2|mixed|-|1|gold-a": {
+  "mission": "ebc649ed7e4c933e",
+  "art": "8bcb101c13c740cf"
+ },
+ "v1|pp2|chapter|numbers|1|gold-b": {
+  "mission": "632230dce4278281",
+  "art": "ba4a169a513aa9fe"
+ },
+ "v1|pp2|chapter|operations|1|gold-b": {
+  "mission": "777cf22af042cae7",
+  "art": "16bd78f781ab048d"
+ },
+ "v1|pp2|chapter|patterns|1|gold-b": {
+  "mission": "e4d01896083107fa",
+  "art": "30cb76dafef5e61d"
+ },
+ "v1|pp2|chapter|shapes|1|gold-b": {
+  "mission": "6883cfc051cb6cfc",
+  "art": "663156de3444e326"
+ },
+ "v1|pp2|chapter|measurement|1|gold-b": {
+  "mission": "fa5dca692e7dc030",
+  "art": "d7794e2da7e9ad9d"
+ },
+ "v1|pp2|chapter|reasoning|1|gold-b": {
+  "mission": "e00671465c8932a2",
+  "art": "9efe5a14b675a736"
+ },
+ "v1|pp2|mixed|-|1|gold-b": {
+  "mission": "6f8fc2ac27778e52",
+  "art": "72d8a9ea1edf53ea"
+ },
+ "v1|pp2|chapter|numbers|1|gold-c": {
+  "mission": "64a9acb970939239",
+  "art": "dae47a3b6fed2d97"
+ },
+ "v1|pp2|chapter|operations|1|gold-c": {
+  "mission": "acb46a896641d3e1",
+  "art": "946ddaa33132c600"
+ },
+ "v1|pp2|chapter|patterns|1|gold-c": {
+  "mission": "4f4813ef8e822fd4",
+  "art": "fb0c6a8ce4dba5ca"
+ },
+ "v1|pp2|chapter|shapes|1|gold-c": {
+  "mission": "e763ccb5ec248798",
+  "art": "757ccc361bda992d"
+ },
+ "v1|pp2|chapter|measurement|1|gold-c": {
+  "mission": "120b82d40f1caf79",
+  "art": "46af8be0f2e16d98"
+ },
+ "v1|pp2|chapter|reasoning|1|gold-c": {
+  "mission": "246de9b64f44ca3d",
+  "art": "c7f2fdb9d62d1fba"
+ },
+ "v1|pp2|mixed|-|1|gold-c": {
+  "mission": "f1386a37ebed84dc",
+  "art": "97c23f817149d8f8"
+ },
+ "v1|pp2|chapter|numbers|2|gold-a": {
+  "mission": "0c8fdc32d8ba5638",
+  "art": "feda65721538e604"
+ },
+ "v1|pp2|chapter|operations|2|gold-a": {
+  "mission": "71ae625012c157fb",
+  "art": "545c38b0922de197"
+ },
+ "v1|pp2|chapter|patterns|2|gold-a": {
+  "mission": "fe4a4628c639b1a1",
+  "art": "3427a356c605b018"
+ },
+ "v1|pp2|chapter|shapes|2|gold-a": {
+  "mission": "570d5ef9b7dd80cb",
+  "art": "d69531cdbe657d3f"
+ },
+ "v1|pp2|chapter|measurement|2|gold-a": {
+  "mission": "d1c42e6cf183518d",
+  "art": "5cb9a61455b11511"
+ },
+ "v1|pp2|chapter|reasoning|2|gold-a": {
+  "mission": "877a3c73266556d5",
+  "art": "361d851f2bffb607"
+ },
+ "v1|pp2|mixed|-|2|gold-a": {
+  "mission": "54931c3ebd82f8b2",
+  "art": "7be1f01fba155cf5"
+ },
+ "v1|pp2|chapter|numbers|2|gold-b": {
+  "mission": "654dae817ff3ec73",
+  "art": "4bc723f30426e124"
+ },
+ "v1|pp2|chapter|operations|2|gold-b": {
+  "mission": "94daff90d2168945",
+  "art": "545c38b0922de197"
+ },
+ "v1|pp2|chapter|patterns|2|gold-b": {
+  "mission": "f1e1b94d1de023d0",
+  "art": "ff394ab012f5b96a"
+ },
+ "v1|pp2|chapter|shapes|2|gold-b": {
+  "mission": "73b562054ffaeb09",
+  "art": "22b21e425f10f9f4"
+ },
+ "v1|pp2|chapter|measurement|2|gold-b": {
+  "mission": "1804c2897e40a972",
+  "art": "6510fcc172a1dc36"
+ },
+ "v1|pp2|chapter|reasoning|2|gold-b": {
+  "mission": "5631adb535d5bba9",
+  "art": "1e78db3f2e4a27b9"
+ },
+ "v1|pp2|mixed|-|2|gold-b": {
+  "mission": "984006e7cdce9592",
+  "art": "a08ffd183acf2542"
+ },
+ "v1|pp2|chapter|numbers|2|gold-c": {
+  "mission": "be717a0174acbca9",
+  "art": "3765f34f528652ec"
+ },
+ "v1|pp2|chapter|operations|2|gold-c": {
+  "mission": "33cf6d314a83a1cf",
+  "art": "545c38b0922de197"
+ },
+ "v1|pp2|chapter|patterns|2|gold-c": {
+  "mission": "61845e1fa6283498",
+  "art": "142f85b1d97cbda0"
+ },
+ "v1|pp2|chapter|shapes|2|gold-c": {
+  "mission": "c0314d9787d0caa1",
+  "art": "585e0546ea0a3199"
+ },
+ "v1|pp2|chapter|measurement|2|gold-c": {
+  "mission": "2d320a127c217fb6",
+  "art": "4fb499beff8bd8e5"
+ },
+ "v1|pp2|chapter|reasoning|2|gold-c": {
+  "mission": "3e25a28d6bc2facc",
+  "art": "295f29a2e6f33bc6"
+ },
+ "v1|pp2|mixed|-|2|gold-c": {
+  "mission": "e0ca6faef6f8c0e5",
+  "art": "5ba171e9d30e0519"
+ },
+ "v1|pp2|chapter|numbers|3|gold-a": {
+  "mission": "d4a3758f58598dd9",
+  "art": "6e8dce9bd5d1ceac"
+ },
+ "v1|pp2|chapter|operations|3|gold-a": {
+  "mission": "b3fda6ea1a8ca8f3",
+  "art": "545c38b0922de197"
+ },
+ "v1|pp2|chapter|patterns|3|gold-a": {
+  "mission": "5c5547e69e18a873",
+  "art": "5f711175b8158c0c"
+ },
+ "v1|pp2|chapter|shapes|3|gold-a": {
+  "mission": "f1d4acf25e1873d7",
+  "art": "2d5fd44dc151c32b"
+ },
+ "v1|pp2|chapter|measurement|3|gold-a": {
+  "mission": "14364fc9a0b7b6bb",
+  "art": "e4259a8f00a39c72"
+ },
+ "v1|pp2|chapter|reasoning|3|gold-a": {
+  "mission": "6bb2562b8b50c06d",
+  "art": "e8f6bc5e07ff00ce"
+ },
+ "v1|pp2|mixed|-|3|gold-a": {
+  "mission": "2266f4d7e497b726",
+  "art": "e295222032642f60"
+ },
+ "v1|pp2|chapter|numbers|3|gold-b": {
+  "mission": "ea23a3fc677cf10c",
+  "art": "900c71c8b4fd0af4"
+ },
+ "v1|pp2|chapter|operations|3|gold-b": {
+  "mission": "22b67a1f236ec450",
+  "art": "545c38b0922de197"
+ },
+ "v1|pp2|chapter|patterns|3|gold-b": {
+  "mission": "f0f7122920cda28c",
+  "art": "37baae1cd225d10a"
+ },
+ "v1|pp2|chapter|shapes|3|gold-b": {
+  "mission": "ac4d7f8a3be919d2",
+  "art": "d3a83717fad3eb48"
+ },
+ "v1|pp2|chapter|measurement|3|gold-b": {
+  "mission": "dc610465c7069dac",
+  "art": "9be385c904fb70fd"
+ },
+ "v1|pp2|chapter|reasoning|3|gold-b": {
+  "mission": "ab42ac57e0b9be62",
+  "art": "e8e1ae3db9206a50"
+ },
+ "v1|pp2|mixed|-|3|gold-b": {
+  "mission": "4c04b3ee9e1a9deb",
+  "art": "0eae25b1c2047fc0"
+ },
+ "v1|pp2|chapter|numbers|3|gold-c": {
+  "mission": "19b1e4e028722542",
+  "art": "d4defd0534204cf6"
+ },
+ "v1|pp2|chapter|operations|3|gold-c": {
+  "mission": "69a805375306fd87",
+  "art": "545c38b0922de197"
+ },
+ "v1|pp2|chapter|patterns|3|gold-c": {
+  "mission": "81f67d8abd8a071a",
+  "art": "bf9e061f2f6b086c"
+ },
+ "v1|pp2|chapter|shapes|3|gold-c": {
+  "mission": "3e990b2c8411c752",
+  "art": "51be404436544825"
+ },
+ "v1|pp2|chapter|measurement|3|gold-c": {
+  "mission": "aabba247a749bf87",
+  "art": "19d582f3ae40b57a"
+ },
+ "v1|pp2|chapter|reasoning|3|gold-c": {
+  "mission": "c3e88146c2481e44",
+  "art": "64a0f1bdcdb8ce7b"
+ },
+ "v1|pp2|mixed|-|3|gold-c": {
+  "mission": "4ee366746f78ca8d",
+  "art": "1ab95d3fd68a2e46"
+ },
+ "v1|class-1|chapter|numbers|1|gold-a": {
+  "mission": "226e79e98ed6f0dd",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|operations|1|gold-a": {
+  "mission": "92998c7d230c1c7d",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|patterns|1|gold-a": {
+  "mission": "181a3fbc90ab1d9f",
+  "art": "f3852e458e692ccd"
+ },
+ "v1|class-1|chapter|geometry|1|gold-a": {
+  "mission": "916a163492fe14a7",
+  "art": "d5fead8495733405"
+ },
+ "v1|class-1|chapter|measurement|1|gold-a": {
+  "mission": "138b27515388b0f3",
+  "art": "4c940e2473fa1cb9"
+ },
+ "v1|class-1|chapter|time|1|gold-a": {
+  "mission": "69c5381ac2e52bf6",
+  "art": "07d33104c7d4a6e0"
+ },
+ "v1|class-1|chapter|money|1|gold-a": {
+  "mission": "62fbdd869db334ee",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|reasoning|1|gold-a": {
+  "mission": "34a51fd4ff0dcd0a",
+  "art": "6f66b7ea3088bc8d"
+ },
+ "v1|class-1|mixed|-|1|gold-a": {
+  "mission": "32ebaa9c6c9e65a0",
+  "art": "4fadd78ce03ac18d"
+ },
+ "v1|class-1|paper|-|1|gold-a": {
+  "mission": "802213f1842bc498",
+  "art": "79d8a805c30c0afe"
+ },
+ "v1|class-1|chapter|numbers|1|gold-b": {
+  "mission": "14ae7ce10207f60c",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|operations|1|gold-b": {
+  "mission": "33b43be2e5403f1b",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|patterns|1|gold-b": {
+  "mission": "efd7d4a8abc7ef5f",
+  "art": "65e54a9041b0d443"
+ },
+ "v1|class-1|chapter|geometry|1|gold-b": {
+  "mission": "ecf0d942f7a53cd8",
+  "art": "76b221d717240e25"
+ },
+ "v1|class-1|chapter|measurement|1|gold-b": {
+  "mission": "d27ec7bc91966a94",
+  "art": "fd21da5750f0b91b"
+ },
+ "v1|class-1|chapter|time|1|gold-b": {
+  "mission": "c6b9fbd4401fd0f3",
+  "art": "622af5f84fa8e505"
+ },
+ "v1|class-1|chapter|money|1|gold-b": {
+  "mission": "812878104ca5b177",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|reasoning|1|gold-b": {
+  "mission": "2307967100b29c6d",
+  "art": "01ac680a6024477e"
+ },
+ "v1|class-1|mixed|-|1|gold-b": {
+  "mission": "785fbaabbf0adf46",
+  "art": "565f6c39b54d3237"
+ },
+ "v1|class-1|paper|-|1|gold-b": {
+  "mission": "1ad509470c2169c3",
+  "art": "08648a0af27ea5ae"
+ },
+ "v1|class-1|chapter|numbers|1|gold-c": {
+  "mission": "3d59b173713d6943",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|operations|1|gold-c": {
+  "mission": "5b6a704204f77ee8",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|patterns|1|gold-c": {
+  "mission": "87bdbe8e4fdb4bca",
+  "art": "cc5c525a67a552bd"
+ },
+ "v1|class-1|chapter|geometry|1|gold-c": {
+  "mission": "f3fa6684750225a2",
+  "art": "7c7d39b0de5c91da"
+ },
+ "v1|class-1|chapter|measurement|1|gold-c": {
+  "mission": "d67c54d46ce498f6",
+  "art": "cea7c14e20a0ac11"
+ },
+ "v1|class-1|chapter|time|1|gold-c": {
+  "mission": "ee5d0fd3dc761dc7",
+  "art": "9c3b8cef876ea434"
+ },
+ "v1|class-1|chapter|money|1|gold-c": {
+  "mission": "cb3675eab4cebdaf",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|reasoning|1|gold-c": {
+  "mission": "9bda6f4a9d6215a0",
+  "art": "2e567ef981bdfd75"
+ },
+ "v1|class-1|mixed|-|1|gold-c": {
+  "mission": "0a7ee6cc675bcda7",
+  "art": "3c86cc1342d8db08"
+ },
+ "v1|class-1|paper|-|1|gold-c": {
+  "mission": "b59ddca910893bd8",
+  "art": "692a8f0a65e92b9a"
+ },
+ "v1|class-1|chapter|numbers|2|gold-a": {
+  "mission": "c96f763e7a80aac1",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|operations|2|gold-a": {
+  "mission": "43a26735a3b231e4",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|patterns|2|gold-a": {
+  "mission": "6c0f9a68127cb3a0",
+  "art": "24e57f0f8abb10ad"
+ },
+ "v1|class-1|chapter|geometry|2|gold-a": {
+  "mission": "e2b347db340724c0",
+  "art": "e069b5a49d9a5ae4"
+ },
+ "v1|class-1|chapter|measurement|2|gold-a": {
+  "mission": "34277fff9df3d3ba",
+  "art": "05bd151ab1432020"
+ },
+ "v1|class-1|chapter|time|2|gold-a": {
+  "mission": "bce540b83b6b5c8a",
+  "art": "d87e0c5efb265f9b"
+ },
+ "v1|class-1|chapter|money|2|gold-a": {
+  "mission": "1ac48d0481ef51fe",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|reasoning|2|gold-a": {
+  "mission": "3192602f6ab1d8d6",
+  "art": "29edef48c9766d4e"
+ },
+ "v1|class-1|mixed|-|2|gold-a": {
+  "mission": "b58d2801158bcb9e",
+  "art": "9592ff1977b7d3d9"
+ },
+ "v1|class-1|paper|-|2|gold-a": {
+  "mission": "1fed58f2dd4837b9",
+  "art": "c50c63ef2c76ce9e"
+ },
+ "v1|class-1|chapter|numbers|2|gold-b": {
+  "mission": "b04537a5c416e56a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|operations|2|gold-b": {
+  "mission": "6e47035bb4a4c4a2",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|patterns|2|gold-b": {
+  "mission": "4f92f6cbed4d5e3a",
+  "art": "e06f2c194337f365"
+ },
+ "v1|class-1|chapter|geometry|2|gold-b": {
+  "mission": "67a51774351ab16d",
+  "art": "7dc3e1b4b49790c0"
+ },
+ "v1|class-1|chapter|measurement|2|gold-b": {
+  "mission": "351a2ce3dc8affc5",
+  "art": "daadcb3f85bcd019"
+ },
+ "v1|class-1|chapter|time|2|gold-b": {
+  "mission": "b368633d5a8475ac",
+  "art": "0972e5e74b2f6009"
+ },
+ "v1|class-1|chapter|money|2|gold-b": {
+  "mission": "faf559893557fd40",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|reasoning|2|gold-b": {
+  "mission": "fb037df332be072b",
+  "art": "af9b0721739048d9"
+ },
+ "v1|class-1|mixed|-|2|gold-b": {
+  "mission": "c2c0410fa0bfef8b",
+  "art": "231ec364650390c5"
+ },
+ "v1|class-1|paper|-|2|gold-b": {
+  "mission": "dd1e1a3dc98ad010",
+  "art": "d7a8a27b6a310cb9"
+ },
+ "v1|class-1|chapter|numbers|2|gold-c": {
+  "mission": "7c256250b8d4b15c",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|operations|2|gold-c": {
+  "mission": "7df6aba23061db85",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|patterns|2|gold-c": {
+  "mission": "08edf4c11457eecd",
+  "art": "86db13c1f7091283"
+ },
+ "v1|class-1|chapter|geometry|2|gold-c": {
+  "mission": "0a1e4dfc9e8a04fd",
+  "art": "75d3b41c90dd1e63"
+ },
+ "v1|class-1|chapter|measurement|2|gold-c": {
+  "mission": "a8c49700a16dd2e3",
+  "art": "b1290bc46b5219c8"
+ },
+ "v1|class-1|chapter|time|2|gold-c": {
+  "mission": "f8dc83363d5718e9",
+  "art": "a6ce39f9bedd7fda"
+ },
+ "v1|class-1|chapter|money|2|gold-c": {
+  "mission": "e44db5149fc64608",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|reasoning|2|gold-c": {
+  "mission": "b4583e0936df9d43",
+  "art": "30102226d6498368"
+ },
+ "v1|class-1|mixed|-|2|gold-c": {
+  "mission": "352aa275e8c8ff26",
+  "art": "7c5c7a8eb74cd4ca"
+ },
+ "v1|class-1|paper|-|2|gold-c": {
+  "mission": "0ef7adde789446c4",
+  "art": "8c2417e5d3ad50dc"
+ },
+ "v1|class-1|chapter|numbers|3|gold-a": {
+  "mission": "add49349f8f85d03",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|operations|3|gold-a": {
+  "mission": "c33f774cafb154dc",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|patterns|3|gold-a": {
+  "mission": "9853a5cf47f84aa0",
+  "art": "56e925797770734c"
+ },
+ "v1|class-1|chapter|geometry|3|gold-a": {
+  "mission": "3d58db39c20b2935",
+  "art": "38d2ff1715057635"
+ },
+ "v1|class-1|chapter|measurement|3|gold-a": {
+  "mission": "760c2bdc1c782503",
+  "art": "7d876d3a75cf8e60"
+ },
+ "v1|class-1|chapter|time|3|gold-a": {
+  "mission": "1b95e3fafcddf9bc",
+  "art": "e79b7313e127ccf9"
+ },
+ "v1|class-1|chapter|money|3|gold-a": {
+  "mission": "8ccd76d74544942e",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|reasoning|3|gold-a": {
+  "mission": "52f06d205f8bdcc4",
+  "art": "cbcef9934189d7ed"
+ },
+ "v1|class-1|mixed|-|3|gold-a": {
+  "mission": "53a4091363286c3d",
+  "art": "99d3cf8162e885c6"
+ },
+ "v1|class-1|paper|-|3|gold-a": {
+  "mission": "ac0521338622def9",
+  "art": "453ea95e6d73082c"
+ },
+ "v1|class-1|chapter|numbers|3|gold-b": {
+  "mission": "ca0871519bdf8282",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|operations|3|gold-b": {
+  "mission": "e572676f7d4c1738",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|patterns|3|gold-b": {
+  "mission": "d1bbfc64877716a6",
+  "art": "e5c708984c5c63e9"
+ },
+ "v1|class-1|chapter|geometry|3|gold-b": {
+  "mission": "f3d35138d5e81bc4",
+  "art": "eba04d13c412bd58"
+ },
+ "v1|class-1|chapter|measurement|3|gold-b": {
+  "mission": "2c39b79547e6679f",
+  "art": "b6a3ad06113a70c1"
+ },
+ "v1|class-1|chapter|time|3|gold-b": {
+  "mission": "f92c75050d3ad4eb",
+  "art": "d8862147d7f77741"
+ },
+ "v1|class-1|chapter|money|3|gold-b": {
+  "mission": "fd2d80816fd717ff",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|reasoning|3|gold-b": {
+  "mission": "468b40356eb22c16",
+  "art": "145eb225ecb75a38"
+ },
+ "v1|class-1|mixed|-|3|gold-b": {
+  "mission": "2fa0f1c3cbb2d65c",
+  "art": "54ad27e827eb7bf0"
+ },
+ "v1|class-1|paper|-|3|gold-b": {
+  "mission": "7728fb166a568a0e",
+  "art": "83fbb065b18d14a0"
+ },
+ "v1|class-1|chapter|numbers|3|gold-c": {
+  "mission": "d006b851480fe84e",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|operations|3|gold-c": {
+  "mission": "1f8972a82112a941",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|patterns|3|gold-c": {
+  "mission": "19bb61fb099648f2",
+  "art": "364674a1e7323cf7"
+ },
+ "v1|class-1|chapter|geometry|3|gold-c": {
+  "mission": "b007acc1846404e1",
+  "art": "7dd23712658cd33e"
+ },
+ "v1|class-1|chapter|measurement|3|gold-c": {
+  "mission": "bbc1bd49070a080f",
+  "art": "ed79e5552d88bd47"
+ },
+ "v1|class-1|chapter|time|3|gold-c": {
+  "mission": "c8b9cedde87a4ef9",
+  "art": "513295f6f22871b5"
+ },
+ "v1|class-1|chapter|money|3|gold-c": {
+  "mission": "c0bae0d19de4af24",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-1|chapter|reasoning|3|gold-c": {
+  "mission": "9e00ed91c318486e",
+  "art": "68085cc6135282f2"
+ },
+ "v1|class-1|mixed|-|3|gold-c": {
+  "mission": "78d93dddbcd6b5b6",
+  "art": "040c982bbad74c5c"
+ },
+ "v1|class-1|paper|-|3|gold-c": {
+  "mission": "132a9d3328d72540",
+  "art": "ad99703af5ee3e3b"
+ },
+ "v1|class-2|chapter|numbers|1|gold-a": {
+  "mission": "6e10a7969702ce5f",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|operations|1|gold-a": {
+  "mission": "44dd3256b31d38b1",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|patterns|1|gold-a": {
+  "mission": "6630799134aaf9b9",
+  "art": "c8e8771516547b1c"
+ },
+ "v1|class-2|chapter|geometry|1|gold-a": {
+  "mission": "a7558982f9688d74",
+  "art": "e9e6b96ffbe6a7fb"
+ },
+ "v1|class-2|chapter|measurement|1|gold-a": {
+  "mission": "8dd3b6acd9363e7a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|time|1|gold-a": {
+  "mission": "99e709e0de477d2d",
+  "art": "a393cfe76b1f6e8b"
+ },
+ "v1|class-2|chapter|money|1|gold-a": {
+  "mission": "6df3cade082268eb",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|data|1|gold-a": {
+  "mission": "14d910e6a64b59ec",
+  "art": "21dea76fe6abcdc2"
+ },
+ "v1|class-2|mixed|-|1|gold-a": {
+  "mission": "85e9626b752db2fa",
+  "art": "7b0ec7986ef3474d"
+ },
+ "v1|class-2|paper|-|1|gold-a": {
+  "mission": "b93b122281c92e96",
+  "art": "7654d6aac987acaa"
+ },
+ "v1|class-2|chapter|numbers|1|gold-b": {
+  "mission": "dcb7eb0f0aa36ab6",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|operations|1|gold-b": {
+  "mission": "a1450e0dec978f78",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|patterns|1|gold-b": {
+  "mission": "6f19b6d055278550",
+  "art": "58e0fc98294ff1a3"
+ },
+ "v1|class-2|chapter|geometry|1|gold-b": {
+  "mission": "1be921859ae339ff",
+  "art": "ff5becce45c9b402"
+ },
+ "v1|class-2|chapter|measurement|1|gold-b": {
+  "mission": "9175da9a76944e06",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|time|1|gold-b": {
+  "mission": "7f978de53aa4355f",
+  "art": "930afb5988730bfe"
+ },
+ "v1|class-2|chapter|money|1|gold-b": {
+  "mission": "1b5d6ef3e60769eb",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|data|1|gold-b": {
+  "mission": "3b7ccf3b5ad57e5e",
+  "art": "5f629efdfb190aa1"
+ },
+ "v1|class-2|mixed|-|1|gold-b": {
+  "mission": "842e306d6aef5734",
+  "art": "117d38d8764a71db"
+ },
+ "v1|class-2|paper|-|1|gold-b": {
+  "mission": "a382d68031c41ed9",
+  "art": "2c0e82fa368fbfc9"
+ },
+ "v1|class-2|chapter|numbers|1|gold-c": {
+  "mission": "50a60f7fb6e2d399",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|operations|1|gold-c": {
+  "mission": "1499dbb657e918d2",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|patterns|1|gold-c": {
+  "mission": "edd5994222624d9d",
+  "art": "8e6d03cd7bb7d721"
+ },
+ "v1|class-2|chapter|geometry|1|gold-c": {
+  "mission": "a7ab2f2bc85eb14f",
+  "art": "a3f03bc9b7e87b0a"
+ },
+ "v1|class-2|chapter|measurement|1|gold-c": {
+  "mission": "90e5a8697655e49f",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|time|1|gold-c": {
+  "mission": "33405a8d9f80bd69",
+  "art": "a2cf2d8c4679f00c"
+ },
+ "v1|class-2|chapter|money|1|gold-c": {
+  "mission": "0a102b2698367a1e",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|data|1|gold-c": {
+  "mission": "8873262925eb3431",
+  "art": "b2388fc74c684bb0"
+ },
+ "v1|class-2|mixed|-|1|gold-c": {
+  "mission": "19ef59ee027a531f",
+  "art": "dab799607024706d"
+ },
+ "v1|class-2|paper|-|1|gold-c": {
+  "mission": "8b40cde3e70d2dce",
+  "art": "2a860b3f1100c872"
+ },
+ "v1|class-2|chapter|numbers|2|gold-a": {
+  "mission": "9485a5df301ffaca",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|operations|2|gold-a": {
+  "mission": "ec3241510cdb78f9",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|patterns|2|gold-a": {
+  "mission": "6690277dcd64f828",
+  "art": "ca129293da8f5463"
+ },
+ "v1|class-2|chapter|geometry|2|gold-a": {
+  "mission": "7d622e1d3a2b71f7",
+  "art": "eb81eed28024ed20"
+ },
+ "v1|class-2|chapter|measurement|2|gold-a": {
+  "mission": "f6655a5355c0135c",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|time|2|gold-a": {
+  "mission": "874b2b8050040048",
+  "art": "b138eb3f2de3bc0a"
+ },
+ "v1|class-2|chapter|money|2|gold-a": {
+  "mission": "cd729a2400d08471",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|data|2|gold-a": {
+  "mission": "5c3f632569f4d7e9",
+  "art": "628dff2335cf3a26"
+ },
+ "v1|class-2|mixed|-|2|gold-a": {
+  "mission": "5c3c3f2bf6414f80",
+  "art": "f2abf04e1b6c2a98"
+ },
+ "v1|class-2|paper|-|2|gold-a": {
+  "mission": "06597d8c0f812cf9",
+  "art": "c5c4223e8b508afb"
+ },
+ "v1|class-2|chapter|numbers|2|gold-b": {
+  "mission": "fa4a9e42f3a58142",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|operations|2|gold-b": {
+  "mission": "59d774ae04dd57de",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|patterns|2|gold-b": {
+  "mission": "f85a07d8852046a5",
+  "art": "7676329773d1ead5"
+ },
+ "v1|class-2|chapter|geometry|2|gold-b": {
+  "mission": "f8447958e96e13f1",
+  "art": "7e12d05d0a33fd24"
+ },
+ "v1|class-2|chapter|measurement|2|gold-b": {
+  "mission": "d66d403c8cd07e24",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|time|2|gold-b": {
+  "mission": "266a3c8cf762f768",
+  "art": "e5444c10d0efac4f"
+ },
+ "v1|class-2|chapter|money|2|gold-b": {
+  "mission": "52301875d03389ea",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|data|2|gold-b": {
+  "mission": "1c8d00c3a494b5aa",
+  "art": "016176e04599145e"
+ },
+ "v1|class-2|mixed|-|2|gold-b": {
+  "mission": "0da59ff636307a39",
+  "art": "c7e82176e371309b"
+ },
+ "v1|class-2|paper|-|2|gold-b": {
+  "mission": "139a9345c485a45e",
+  "art": "12f90283e312b2fd"
+ },
+ "v1|class-2|chapter|numbers|2|gold-c": {
+  "mission": "480304948a81b6f8",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|operations|2|gold-c": {
+  "mission": "ea3f5819b053a5de",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|patterns|2|gold-c": {
+  "mission": "05c1d893d5a6d057",
+  "art": "95a358e23d1367c3"
+ },
+ "v1|class-2|chapter|geometry|2|gold-c": {
+  "mission": "76c517c127a3e56e",
+  "art": "2c931bbf37e89aac"
+ },
+ "v1|class-2|chapter|measurement|2|gold-c": {
+  "mission": "3bdd8c5e9c5a49ab",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|time|2|gold-c": {
+  "mission": "33f860edaf777060",
+  "art": "9e8f54cb0d597a2e"
+ },
+ "v1|class-2|chapter|money|2|gold-c": {
+  "mission": "fd653a04eee4c62d",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|data|2|gold-c": {
+  "mission": "e60bc019b7713c72",
+  "art": "8eea0d7e09f05565"
+ },
+ "v1|class-2|mixed|-|2|gold-c": {
+  "mission": "4e365656bd5ea005",
+  "art": "29cf6f37847456f3"
+ },
+ "v1|class-2|paper|-|2|gold-c": {
+  "mission": "83bcc2fdec88e27b",
+  "art": "4fde3af70eb5cae5"
+ },
+ "v1|class-2|chapter|numbers|3|gold-a": {
+  "mission": "2399171f1ce12e05",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|operations|3|gold-a": {
+  "mission": "af583ca20679e21c",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|patterns|3|gold-a": {
+  "mission": "0d5d4551e7ae1a74",
+  "art": "72a438d6690ede59"
+ },
+ "v1|class-2|chapter|geometry|3|gold-a": {
+  "mission": "f5c82a4eae641d3f",
+  "art": "8db4116419630e1c"
+ },
+ "v1|class-2|chapter|measurement|3|gold-a": {
+  "mission": "dc4a42070df415d3",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|time|3|gold-a": {
+  "mission": "a76a83771e8d95e5",
+  "art": "8bc7450b1a5e9b8d"
+ },
+ "v1|class-2|chapter|money|3|gold-a": {
+  "mission": "c7c43d5001adf6d3",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|data|3|gold-a": {
+  "mission": "9d3ecbd216315e62",
+  "art": "20c5f4368cdcb372"
+ },
+ "v1|class-2|mixed|-|3|gold-a": {
+  "mission": "3d3747250ed94748",
+  "art": "2e012ac91c084790"
+ },
+ "v1|class-2|paper|-|3|gold-a": {
+  "mission": "62da389d1d794baa",
+  "art": "b63cd654b3d827d8"
+ },
+ "v1|class-2|chapter|numbers|3|gold-b": {
+  "mission": "0cca508d57a5e2a9",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|operations|3|gold-b": {
+  "mission": "d9ab181b731540f2",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|patterns|3|gold-b": {
+  "mission": "cf216ece3aa5da72",
+  "art": "9bc2650f0b6365d3"
+ },
+ "v1|class-2|chapter|geometry|3|gold-b": {
+  "mission": "b2f45b1542a619ff",
+  "art": "5968f501d4a81dc4"
+ },
+ "v1|class-2|chapter|measurement|3|gold-b": {
+  "mission": "75d2245ccb6bec75",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|time|3|gold-b": {
+  "mission": "41b5424736e74e84",
+  "art": "eeb98a6d0a2edb37"
+ },
+ "v1|class-2|chapter|money|3|gold-b": {
+  "mission": "0862c5bef4fcfb7b",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|data|3|gold-b": {
+  "mission": "0d85955cb4b030fe",
+  "art": "5274e610dab753dc"
+ },
+ "v1|class-2|mixed|-|3|gold-b": {
+  "mission": "e45a7ed959b68907",
+  "art": "9efd91eac532a4a9"
+ },
+ "v1|class-2|paper|-|3|gold-b": {
+  "mission": "ea8e1d26bb2f6143",
+  "art": "0fef9709aac887c8"
+ },
+ "v1|class-2|chapter|numbers|3|gold-c": {
+  "mission": "ce57f3de925194ff",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|operations|3|gold-c": {
+  "mission": "63ae6e844aaf01ff",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|patterns|3|gold-c": {
+  "mission": "d050e79ebd984ab7",
+  "art": "3b9e982cbe0b0bb9"
+ },
+ "v1|class-2|chapter|geometry|3|gold-c": {
+  "mission": "0af6fcd54acd5cc4",
+  "art": "f46932bfd3db9e7c"
+ },
+ "v1|class-2|chapter|measurement|3|gold-c": {
+  "mission": "11a0b837f4570da1",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|time|3|gold-c": {
+  "mission": "b84271deb5a562c4",
+  "art": "c52c2269045bfe93"
+ },
+ "v1|class-2|chapter|money|3|gold-c": {
+  "mission": "4b1112678c15cb8f",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-2|chapter|data|3|gold-c": {
+  "mission": "078cebc65f2f4264",
+  "art": "288a90995bf51c3a"
+ },
+ "v1|class-2|mixed|-|3|gold-c": {
+  "mission": "79eeb654e153bdb6",
+  "art": "8b205a8baa262e11"
+ },
+ "v1|class-2|paper|-|3|gold-c": {
+  "mission": "e3a55d9b617126ae",
+  "art": "7e1a96ce257a5312"
+ },
+ "v1|class-3|chapter|numbers|1|gold-a": {
+  "mission": "8a20db2f0fcb8943",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|operations|1|gold-a": {
+  "mission": "1789815697c31a10",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|fractions|1|gold-a": {
+  "mission": "abffe5dfad580751",
+  "art": "45273071ce5bc688"
+ },
+ "v1|class-3|chapter|geometry|1|gold-a": {
+  "mission": "ea9f739614badef8",
+  "art": "de6fc0a128f8f277"
+ },
+ "v1|class-3|chapter|measurement|1|gold-a": {
+  "mission": "54be223b968fe69d",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|time|1|gold-a": {
+  "mission": "e2d3006ed0bdea60",
+  "art": "75b413784b2741a7"
+ },
+ "v1|class-3|chapter|money|1|gold-a": {
+  "mission": "1f57a56f030a3a0f",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|data|1|gold-a": {
+  "mission": "bce6b0fe298a5ae6",
+  "art": "8ee3f341ce3eccb0"
+ },
+ "v1|class-3|chapter|reasoning|1|gold-a": {
+  "mission": "b9f8adb9a8d599b4",
+  "art": "cfaf794cdea21bcd"
+ },
+ "v1|class-3|mixed|-|1|gold-a": {
+  "mission": "c1d6518978f2ffd5",
+  "art": "54f061b8bc2f3a22"
+ },
+ "v1|class-3|paper|-|1|gold-a": {
+  "mission": "d8c5208803a1ddc2",
+  "art": "d6a2f7738481bd59"
+ },
+ "v1|class-3|chapter|numbers|1|gold-b": {
+  "mission": "4264c1d3171100e7",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|operations|1|gold-b": {
+  "mission": "05e307f76bf9566f",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|fractions|1|gold-b": {
+  "mission": "eab5132f47a42d26",
+  "art": "f7b7394aa17d0986"
+ },
+ "v1|class-3|chapter|geometry|1|gold-b": {
+  "mission": "f5e47551a86200c2",
+  "art": "399758870f7d802c"
+ },
+ "v1|class-3|chapter|measurement|1|gold-b": {
+  "mission": "bbfe7a8b6fb721a1",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|time|1|gold-b": {
+  "mission": "b9b6421fce8e6f13",
+  "art": "1bd458209506062d"
+ },
+ "v1|class-3|chapter|money|1|gold-b": {
+  "mission": "b03ffad523010da0",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|data|1|gold-b": {
+  "mission": "892348f3dec431c2",
+  "art": "9abb4df28b58cebe"
+ },
+ "v1|class-3|chapter|reasoning|1|gold-b": {
+  "mission": "cc0feecc9dac2252",
+  "art": "bb589b5359b690de"
+ },
+ "v1|class-3|mixed|-|1|gold-b": {
+  "mission": "56e682c9c43992f3",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|paper|-|1|gold-b": {
+  "mission": "06393a7a40389a5d",
+  "art": "e2e496a70fc60678"
+ },
+ "v1|class-3|chapter|numbers|1|gold-c": {
+  "mission": "bc7644e28c25e5db",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|operations|1|gold-c": {
+  "mission": "ad9b2b0e351894c8",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|fractions|1|gold-c": {
+  "mission": "e2f600867806ce4f",
+  "art": "3a2e635754fd269f"
+ },
+ "v1|class-3|chapter|geometry|1|gold-c": {
+  "mission": "41a9d2a6b9c5d512",
+  "art": "34cb83e0b403bcf3"
+ },
+ "v1|class-3|chapter|measurement|1|gold-c": {
+  "mission": "19a0082bc729c610",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|time|1|gold-c": {
+  "mission": "2474ad85b8898d58",
+  "art": "80b7b1211ee41d60"
+ },
+ "v1|class-3|chapter|money|1|gold-c": {
+  "mission": "e7d81d11a689cd35",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|data|1|gold-c": {
+  "mission": "8c410951b7d07b53",
+  "art": "8749734baced625a"
+ },
+ "v1|class-3|chapter|reasoning|1|gold-c": {
+  "mission": "dc7d2d8aebede16a",
+  "art": "ee1485407d24fbd7"
+ },
+ "v1|class-3|mixed|-|1|gold-c": {
+  "mission": "77cfc067d006d4e1",
+  "art": "dcddb5bbb8ad1308"
+ },
+ "v1|class-3|paper|-|1|gold-c": {
+  "mission": "869330dbfc1bdd44",
+  "art": "aadf8da16020f24d"
+ },
+ "v1|class-3|chapter|numbers|2|gold-a": {
+  "mission": "a92af0f3af5fa3ab",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|operations|2|gold-a": {
+  "mission": "d221a34bff131108",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|fractions|2|gold-a": {
+  "mission": "f60c19823ce0a52d",
+  "art": "e730598990c4e141"
+ },
+ "v1|class-3|chapter|geometry|2|gold-a": {
+  "mission": "84c718779c072a58",
+  "art": "87ae6ed662ff77b2"
+ },
+ "v1|class-3|chapter|measurement|2|gold-a": {
+  "mission": "17fa1cf792c60902",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|time|2|gold-a": {
+  "mission": "dc41eb1bd4c503b4",
+  "art": "cb25709521d8ebc8"
+ },
+ "v1|class-3|chapter|money|2|gold-a": {
+  "mission": "e800879bfce0ede3",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|data|2|gold-a": {
+  "mission": "ae8db0b6b4a5e1d4",
+  "art": "ee23e8a3723e3400"
+ },
+ "v1|class-3|chapter|reasoning|2|gold-a": {
+  "mission": "fba7eaeb46694e7e",
+  "art": "c5d95770b0a6a612"
+ },
+ "v1|class-3|mixed|-|2|gold-a": {
+  "mission": "bf68a0173832a3a5",
+  "art": "9c592a86564cea04"
+ },
+ "v1|class-3|paper|-|2|gold-a": {
+  "mission": "9da69f46f3ce4cb1",
+  "art": "443f794933ee818e"
+ },
+ "v1|class-3|chapter|numbers|2|gold-b": {
+  "mission": "71681f06121ec3eb",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|operations|2|gold-b": {
+  "mission": "dc6a7020165d71c0",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|fractions|2|gold-b": {
+  "mission": "3ad09f0a7301324e",
+  "art": "74b6ac4e90790d3a"
+ },
+ "v1|class-3|chapter|geometry|2|gold-b": {
+  "mission": "3fcf8837c9ac0c1b",
+  "art": "877b24534b16be73"
+ },
+ "v1|class-3|chapter|measurement|2|gold-b": {
+  "mission": "61cbcdcb2c3e5779",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|time|2|gold-b": {
+  "mission": "074c65378b3dc5a0",
+  "art": "55e079a6df3ea79d"
+ },
+ "v1|class-3|chapter|money|2|gold-b": {
+  "mission": "0a5948cce780acb1",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|data|2|gold-b": {
+  "mission": "4da2a5f858889c6e",
+  "art": "b7f3105cb6da8870"
+ },
+ "v1|class-3|chapter|reasoning|2|gold-b": {
+  "mission": "68e3a9103f48aa63",
+  "art": "7ec14b2c827768cb"
+ },
+ "v1|class-3|mixed|-|2|gold-b": {
+  "mission": "7ae9dd574d253861",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|paper|-|2|gold-b": {
+  "mission": "357c45e390b1d3b6",
+  "art": "f3f9d21085a4aeda"
+ },
+ "v1|class-3|chapter|numbers|2|gold-c": {
+  "mission": "9d753e96b86352f0",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|operations|2|gold-c": {
+  "mission": "226b5da08c53aeac",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|fractions|2|gold-c": {
+  "mission": "056e2892c0ed8353",
+  "art": "950518912738aabd"
+ },
+ "v1|class-3|chapter|geometry|2|gold-c": {
+  "mission": "eeff26e060493a20",
+  "art": "5b958eafc22a25c7"
+ },
+ "v1|class-3|chapter|measurement|2|gold-c": {
+  "mission": "4e2f6bc24d117547",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|time|2|gold-c": {
+  "mission": "9cc5e47e2c836485",
+  "art": "916b2cd66a094098"
+ },
+ "v1|class-3|chapter|money|2|gold-c": {
+  "mission": "9f3a09849251b3ee",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|data|2|gold-c": {
+  "mission": "4f138ce3f596862d",
+  "art": "639cbef6679eb301"
+ },
+ "v1|class-3|chapter|reasoning|2|gold-c": {
+  "mission": "9420affb76fd8c8b",
+  "art": "49e36dd0a34e6d79"
+ },
+ "v1|class-3|mixed|-|2|gold-c": {
+  "mission": "8ff82a939f3f8f83",
+  "art": "de31692b775698c0"
+ },
+ "v1|class-3|paper|-|2|gold-c": {
+  "mission": "14da381ad420e3c7",
+  "art": "ba4d33913ff61609"
+ },
+ "v1|class-3|chapter|numbers|3|gold-a": {
+  "mission": "4406a75662e26a8c",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|operations|3|gold-a": {
+  "mission": "80d18bc30cf10a65",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|fractions|3|gold-a": {
+  "mission": "0f00581e947531a3",
+  "art": "42d62259c156314b"
+ },
+ "v1|class-3|chapter|geometry|3|gold-a": {
+  "mission": "0c2a087f4d3318ff",
+  "art": "3d803ca06b7afe60"
+ },
+ "v1|class-3|chapter|measurement|3|gold-a": {
+  "mission": "460104386c5ed1dd",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|time|3|gold-a": {
+  "mission": "66f0f442e161d823",
+  "art": "5b87470bcc289fe3"
+ },
+ "v1|class-3|chapter|money|3|gold-a": {
+  "mission": "7b40e9860cc0d122",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|data|3|gold-a": {
+  "mission": "c73016dcb9c24935",
+  "art": "1d078d17e4a26774"
+ },
+ "v1|class-3|chapter|reasoning|3|gold-a": {
+  "mission": "129466a2b78ac5d8",
+  "art": "e468b0628321b65d"
+ },
+ "v1|class-3|mixed|-|3|gold-a": {
+  "mission": "5f6b83d02fc4c0fa",
+  "art": "75e73ca5fe6fb3ce"
+ },
+ "v1|class-3|paper|-|3|gold-a": {
+  "mission": "2c9fddce21415a60",
+  "art": "4d3169b4e71b0099"
+ },
+ "v1|class-3|chapter|numbers|3|gold-b": {
+  "mission": "481d22818e435eca",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|operations|3|gold-b": {
+  "mission": "59cc1a4c899bca06",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|fractions|3|gold-b": {
+  "mission": "647f44a1d2a63cb4",
+  "art": "96b5f721fa93c74d"
+ },
+ "v1|class-3|chapter|geometry|3|gold-b": {
+  "mission": "dacf02d159c0f389",
+  "art": "b5daf7cf3abd51b3"
+ },
+ "v1|class-3|chapter|measurement|3|gold-b": {
+  "mission": "1d5f82dc32c20a2e",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|time|3|gold-b": {
+  "mission": "4d3857a65567897c",
+  "art": "7b83282394e10fa4"
+ },
+ "v1|class-3|chapter|money|3|gold-b": {
+  "mission": "e89ea5ecc63da9be",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|data|3|gold-b": {
+  "mission": "247596abe7861c35",
+  "art": "45a17f21dce83ebf"
+ },
+ "v1|class-3|chapter|reasoning|3|gold-b": {
+  "mission": "09b512d1aabd77f2",
+  "art": "17bb17e435a7da44"
+ },
+ "v1|class-3|mixed|-|3|gold-b": {
+  "mission": "c3f253e471a8e8c0",
+  "art": "1b89ce16b261a137"
+ },
+ "v1|class-3|paper|-|3|gold-b": {
+  "mission": "4be69a19e9cd3b26",
+  "art": "5b988b17b8b92c73"
+ },
+ "v1|class-3|chapter|numbers|3|gold-c": {
+  "mission": "da34442960a83661",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|operations|3|gold-c": {
+  "mission": "84786e4508caeb9b",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|fractions|3|gold-c": {
+  "mission": "9131a76de7141e71",
+  "art": "7686c0160326aa05"
+ },
+ "v1|class-3|chapter|geometry|3|gold-c": {
+  "mission": "a90ad3d9ab286427",
+  "art": "760ff6d019275cce"
+ },
+ "v1|class-3|chapter|measurement|3|gold-c": {
+  "mission": "1d42428fa83786a5",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|time|3|gold-c": {
+  "mission": "b128e703ed2ad35c",
+  "art": "e0f35e5b9990dd35"
+ },
+ "v1|class-3|chapter|money|3|gold-c": {
+  "mission": "9a2e5df84dc2ddb2",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-3|chapter|data|3|gold-c": {
+  "mission": "145ce27ea79a160e",
+  "art": "5e74029ec983fd9f"
+ },
+ "v1|class-3|chapter|reasoning|3|gold-c": {
+  "mission": "a64e391dd8eca8c3",
+  "art": "7ca5354439b52142"
+ },
+ "v1|class-3|mixed|-|3|gold-c": {
+  "mission": "1ca4835424e3a5e9",
+  "art": "9259c8e0f629a07d"
+ },
+ "v1|class-3|paper|-|3|gold-c": {
+  "mission": "d85b39c6cdb82834",
+  "art": "ab99d68bbf111fb5"
+ },
+ "v1|class-4|chapter|numbers|1|gold-a": {
+  "mission": "56881f0c92840a17",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|operations|1|gold-a": {
+  "mission": "59349c22dc177686",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|fractions|1|gold-a": {
+  "mission": "7652fbce6a99546f",
+  "art": "1b8a84be164e0d39"
+ },
+ "v1|class-4|chapter|geometry|1|gold-a": {
+  "mission": "c8c97396220a1506",
+  "art": "1497fdb732d0433a"
+ },
+ "v1|class-4|chapter|measurement|1|gold-a": {
+  "mission": "e154f38d6df7ce54",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|time|1|gold-a": {
+  "mission": "de90df8cbab7c0a9",
+  "art": "c025270150a4018d"
+ },
+ "v1|class-4|chapter|money|1|gold-a": {
+  "mission": "3fc8fd2ab73ce83a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|data|1|gold-a": {
+  "mission": "79582d606de3f1c6",
+  "art": "23d56e4cb8188bd6"
+ },
+ "v1|class-4|chapter|reasoning|1|gold-a": {
+  "mission": "e187ed21f4d34c8a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|mixed|-|1|gold-a": {
+  "mission": "0c2f7af1b77b34f1",
+  "art": "bb5d354adc4642be"
+ },
+ "v1|class-4|paper|-|1|gold-a": {
+  "mission": "a715464a3a53ecf5",
+  "art": "21be6e31df3158c7"
+ },
+ "v1|class-4|chapter|numbers|1|gold-b": {
+  "mission": "6e830d291ac4bf85",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|operations|1|gold-b": {
+  "mission": "4c98a9791c0ad5d3",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|fractions|1|gold-b": {
+  "mission": "fa5f649b5da04e7a",
+  "art": "f052b39617c2a443"
+ },
+ "v1|class-4|chapter|geometry|1|gold-b": {
+  "mission": "7e04c3d2e16a9f10",
+  "art": "931f5b03a658bfa1"
+ },
+ "v1|class-4|chapter|measurement|1|gold-b": {
+  "mission": "6b4fb16b75421ecc",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|time|1|gold-b": {
+  "mission": "1d15298c88b1b28f",
+  "art": "689cff36a5f9439c"
+ },
+ "v1|class-4|chapter|money|1|gold-b": {
+  "mission": "14337794474397b9",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|data|1|gold-b": {
+  "mission": "88f3c9d73beebeca",
+  "art": "e8182334aa00e7a8"
+ },
+ "v1|class-4|chapter|reasoning|1|gold-b": {
+  "mission": "663994e1e564731a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|mixed|-|1|gold-b": {
+  "mission": "9a952a1a5a3a7158",
+  "art": "7a58b9e3545e6f94"
+ },
+ "v1|class-4|paper|-|1|gold-b": {
+  "mission": "82b582a03b50a728",
+  "art": "b917c871139d130a"
+ },
+ "v1|class-4|chapter|numbers|1|gold-c": {
+  "mission": "c395a74934bc0826",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|operations|1|gold-c": {
+  "mission": "119337dbd3a84638",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|fractions|1|gold-c": {
+  "mission": "76758bcd29616d79",
+  "art": "67c1486ed22fccc2"
+ },
+ "v1|class-4|chapter|geometry|1|gold-c": {
+  "mission": "c09899cb765d96fe",
+  "art": "5246d625631ab7ad"
+ },
+ "v1|class-4|chapter|measurement|1|gold-c": {
+  "mission": "935c1dfd344a703a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|time|1|gold-c": {
+  "mission": "2e8cc54bfeb666a5",
+  "art": "68f33c3593d1d27c"
+ },
+ "v1|class-4|chapter|money|1|gold-c": {
+  "mission": "88f70a067e7dcfb7",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|data|1|gold-c": {
+  "mission": "e6b2d5a53bff9b94",
+  "art": "68f84b1e9cf13185"
+ },
+ "v1|class-4|chapter|reasoning|1|gold-c": {
+  "mission": "cfffe58a684b444a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|mixed|-|1|gold-c": {
+  "mission": "02c2782c064c4c2f",
+  "art": "1a98c14a6b04ef66"
+ },
+ "v1|class-4|paper|-|1|gold-c": {
+  "mission": "25703790874902e2",
+  "art": "2cf5d66b1b2e0abe"
+ },
+ "v1|class-4|chapter|numbers|2|gold-a": {
+  "mission": "a488e3650f6c3ef9",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|operations|2|gold-a": {
+  "mission": "e823492fa9129004",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|fractions|2|gold-a": {
+  "mission": "8b602a140221b4c9",
+  "art": "c87ccf47057ac3c8"
+ },
+ "v1|class-4|chapter|geometry|2|gold-a": {
+  "mission": "6afd03845cf21def",
+  "art": "b2e1a2b644183ba7"
+ },
+ "v1|class-4|chapter|measurement|2|gold-a": {
+  "mission": "00f4d0f9c4a7d76a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|time|2|gold-a": {
+  "mission": "3af168d2d862b90d",
+  "art": "48ad4341d00c5efc"
+ },
+ "v1|class-4|chapter|money|2|gold-a": {
+  "mission": "90a387ccdcbb12c3",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|data|2|gold-a": {
+  "mission": "8e480ea12473e657",
+  "art": "09d197347e18b8d4"
+ },
+ "v1|class-4|chapter|reasoning|2|gold-a": {
+  "mission": "7ee7eb97e7334cdb",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|mixed|-|2|gold-a": {
+  "mission": "5718029c8c162057",
+  "art": "bfdaf63ee755ab55"
+ },
+ "v1|class-4|paper|-|2|gold-a": {
+  "mission": "4bb65d09a97e420f",
+  "art": "4ca4d5908403cb41"
+ },
+ "v1|class-4|chapter|numbers|2|gold-b": {
+  "mission": "c85c07d18826e482",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|operations|2|gold-b": {
+  "mission": "be47d1234188a989",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|fractions|2|gold-b": {
+  "mission": "c72d502f49a45d1e",
+  "art": "c2b68b2d7a5ae385"
+ },
+ "v1|class-4|chapter|geometry|2|gold-b": {
+  "mission": "e7e92024eaec5a1f",
+  "art": "6e9f37f79f935a2b"
+ },
+ "v1|class-4|chapter|measurement|2|gold-b": {
+  "mission": "e1848441979ace3b",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|time|2|gold-b": {
+  "mission": "7a0c97e8ab42ae9e",
+  "art": "d13dd8aa90ff381f"
+ },
+ "v1|class-4|chapter|money|2|gold-b": {
+  "mission": "63c25558226c5a3a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|data|2|gold-b": {
+  "mission": "bbb9dfde2b3c529f",
+  "art": "068b7b4a7d813fb8"
+ },
+ "v1|class-4|chapter|reasoning|2|gold-b": {
+  "mission": "6b3648f1e4cfe6ec",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|mixed|-|2|gold-b": {
+  "mission": "fc88d684f5ffe355",
+  "art": "53d9b5b39a9b8973"
+ },
+ "v1|class-4|paper|-|2|gold-b": {
+  "mission": "7e5276ffc67c82b7",
+  "art": "522fecc566dbd4af"
+ },
+ "v1|class-4|chapter|numbers|2|gold-c": {
+  "mission": "1ae743c350c611a8",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|operations|2|gold-c": {
+  "mission": "b95aa4d4ee7e8b6a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|fractions|2|gold-c": {
+  "mission": "e9a94bcf41dcc559",
+  "art": "d95288931e5a4268"
+ },
+ "v1|class-4|chapter|geometry|2|gold-c": {
+  "mission": "0e605d3222c59596",
+  "art": "cadc9ececaed60ed"
+ },
+ "v1|class-4|chapter|measurement|2|gold-c": {
+  "mission": "b5faa98714dcc8e7",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|time|2|gold-c": {
+  "mission": "ed9f99bfbc93cc36",
+  "art": "a85acf8b92bf0480"
+ },
+ "v1|class-4|chapter|money|2|gold-c": {
+  "mission": "576c1265bbe41c1f",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|data|2|gold-c": {
+  "mission": "354b4b7f615d43f3",
+  "art": "7a6f5b09fd39187d"
+ },
+ "v1|class-4|chapter|reasoning|2|gold-c": {
+  "mission": "5b3227c3a6a27251",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|mixed|-|2|gold-c": {
+  "mission": "8a364695e0c60e29",
+  "art": "b3af6c999760617e"
+ },
+ "v1|class-4|paper|-|2|gold-c": {
+  "mission": "7a43148b3dcfe779",
+  "art": "30e227b7769ea30b"
+ },
+ "v1|class-4|chapter|numbers|3|gold-a": {
+  "mission": "0bb02878a868878a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|operations|3|gold-a": {
+  "mission": "195465e1336fd53f",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|fractions|3|gold-a": {
+  "mission": "4ccb8ab106640399",
+  "art": "f86e0e94ae80c355"
+ },
+ "v1|class-4|chapter|geometry|3|gold-a": {
+  "mission": "3cca8dd0d9ab2315",
+  "art": "dd27f1c58160d7d1"
+ },
+ "v1|class-4|chapter|measurement|3|gold-a": {
+  "mission": "140b97cabbccc89f",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|time|3|gold-a": {
+  "mission": "17ecc787ccec02e3",
+  "art": "2a63f20b530df7cb"
+ },
+ "v1|class-4|chapter|money|3|gold-a": {
+  "mission": "cf1905d4b9f9ffaf",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|data|3|gold-a": {
+  "mission": "8c9e0dc4785c9414",
+  "art": "b6c03e6f4038431d"
+ },
+ "v1|class-4|chapter|reasoning|3|gold-a": {
+  "mission": "ac2774658be08088",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|mixed|-|3|gold-a": {
+  "mission": "0216c6a2a31fb229",
+  "art": "1b7524670a8a458b"
+ },
+ "v1|class-4|paper|-|3|gold-a": {
+  "mission": "6f7dd32c47ad0673",
+  "art": "913fb972e0fbf108"
+ },
+ "v1|class-4|chapter|numbers|3|gold-b": {
+  "mission": "8b823642fa83c193",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|operations|3|gold-b": {
+  "mission": "277db2c46d143895",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|fractions|3|gold-b": {
+  "mission": "49dc0a2eb5229a47",
+  "art": "025bffa6b075ab30"
+ },
+ "v1|class-4|chapter|geometry|3|gold-b": {
+  "mission": "9d39c3703f4a251b",
+  "art": "e411e3241554d9a3"
+ },
+ "v1|class-4|chapter|measurement|3|gold-b": {
+  "mission": "58d917d4b34a3746",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|time|3|gold-b": {
+  "mission": "4ab781b20f39eef4",
+  "art": "a0650b1fdb9ed790"
+ },
+ "v1|class-4|chapter|money|3|gold-b": {
+  "mission": "5c0d375be887dd44",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|data|3|gold-b": {
+  "mission": "22dd6c5a1199d1ae",
+  "art": "af0c75b040095a29"
+ },
+ "v1|class-4|chapter|reasoning|3|gold-b": {
+  "mission": "2a72dd0198488b33",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|mixed|-|3|gold-b": {
+  "mission": "af6033937715137e",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|paper|-|3|gold-b": {
+  "mission": "8df9edfd93c7c378",
+  "art": "ff896b875c575115"
+ },
+ "v1|class-4|chapter|numbers|3|gold-c": {
+  "mission": "3790723f9af7e9b5",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|operations|3|gold-c": {
+  "mission": "53a0d91d657cce0f",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|fractions|3|gold-c": {
+  "mission": "71c6ba3041815b8f",
+  "art": "6a4a7451c62513c3"
+ },
+ "v1|class-4|chapter|geometry|3|gold-c": {
+  "mission": "c653d29625f5b6d4",
+  "art": "fbb892fb7f656933"
+ },
+ "v1|class-4|chapter|measurement|3|gold-c": {
+  "mission": "adfc730fcb79da6c",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|time|3|gold-c": {
+  "mission": "f138815920cda6ff",
+  "art": "e4d27a232181b5c0"
+ },
+ "v1|class-4|chapter|money|3|gold-c": {
+  "mission": "5e0f7e8edbf56526",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|chapter|data|3|gold-c": {
+  "mission": "6c84eaa8a1f40e6a",
+  "art": "3472d0faf3053a53"
+ },
+ "v1|class-4|chapter|reasoning|3|gold-c": {
+  "mission": "0c7111441e21f101",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-4|mixed|-|3|gold-c": {
+  "mission": "a2c6e4b788fdd3b1",
+  "art": "766dd4692d0214a1"
+ },
+ "v1|class-4|paper|-|3|gold-c": {
+  "mission": "74d0b1089bb26f63",
+  "art": "e7d436ab52b08b7c"
+ },
+ "v1|class-5|chapter|numbers|1|gold-a": {
+  "mission": "8631c8766b7b82c8",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|operations|1|gold-a": {
+  "mission": "915c7c128e8d4bf6",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|fractions|1|gold-a": {
+  "mission": "91504289b0eefc8b",
+  "art": "066f30a3a3058fc1"
+ },
+ "v1|class-5|chapter|decimals|1|gold-a": {
+  "mission": "c26ecae427579e46",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|geometry|1|gold-a": {
+  "mission": "f4923a4145ffe5a5",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|measurement|1|gold-a": {
+  "mission": "b9ab6d54e94296a8",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|time|1|gold-a": {
+  "mission": "4e9311bcfabae249",
+  "art": "033e4625ea55f092"
+ },
+ "v1|class-5|chapter|money|1|gold-a": {
+  "mission": "821b7790bbbc5c09",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|data|1|gold-a": {
+  "mission": "5b34806bcc882023",
+  "art": "e0c328d13acb2615"
+ },
+ "v1|class-5|chapter|reasoning|1|gold-a": {
+  "mission": "90b4f1f663f34561",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|mixed|-|1|gold-a": {
+  "mission": "9188fe0cf737b172",
+  "art": "99e2fad9fff47b03"
+ },
+ "v1|class-5|paper|-|1|gold-a": {
+  "mission": "9059a5137d0c969d",
+  "art": "b9c8777d0f1c0d87"
+ },
+ "v1|class-5|chapter|numbers|1|gold-b": {
+  "mission": "665763b2105f1557",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|operations|1|gold-b": {
+  "mission": "3470378e455effe9",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|fractions|1|gold-b": {
+  "mission": "5fe79d5b49e2f666",
+  "art": "4c2f1413bb8ae21f"
+ },
+ "v1|class-5|chapter|decimals|1|gold-b": {
+  "mission": "551ad85bccd4eed9",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|geometry|1|gold-b": {
+  "mission": "4db68a8dc9c1e734",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|measurement|1|gold-b": {
+  "mission": "ae7ff415146d2e78",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|time|1|gold-b": {
+  "mission": "83ff21a6f4ebb0f7",
+  "art": "00a9ee868439abf4"
+ },
+ "v1|class-5|chapter|money|1|gold-b": {
+  "mission": "416bf5a0f8a06489",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|data|1|gold-b": {
+  "mission": "5aa382eab1cabb29",
+  "art": "a98f50d897e4d7c2"
+ },
+ "v1|class-5|chapter|reasoning|1|gold-b": {
+  "mission": "b818904130011eb1",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|mixed|-|1|gold-b": {
+  "mission": "e6c01d14526778b0",
+  "art": "2bd55a8128b61f0f"
+ },
+ "v1|class-5|paper|-|1|gold-b": {
+  "mission": "9572d81cc999ea3d",
+  "art": "6234e7bceb0077d1"
+ },
+ "v1|class-5|chapter|numbers|1|gold-c": {
+  "mission": "f6df5e8dd7a0ece3",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|operations|1|gold-c": {
+  "mission": "f2c6380216adce5d",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|fractions|1|gold-c": {
+  "mission": "7a98144c87c2c6c0",
+  "art": "6fd6a98da8a6196a"
+ },
+ "v1|class-5|chapter|decimals|1|gold-c": {
+  "mission": "664f96b632ef7aa7",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|geometry|1|gold-c": {
+  "mission": "7a51b1c73ebf3240",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|measurement|1|gold-c": {
+  "mission": "d8cd35e15f6ef890",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|time|1|gold-c": {
+  "mission": "963bd3bc2b44eb01",
+  "art": "4b5609e5dfc2efe3"
+ },
+ "v1|class-5|chapter|money|1|gold-c": {
+  "mission": "1e220bb4fe2fb395",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|data|1|gold-c": {
+  "mission": "fca869e2fe7f4255",
+  "art": "2f4c08a3e031d6f4"
+ },
+ "v1|class-5|chapter|reasoning|1|gold-c": {
+  "mission": "3aa419dc451beb19",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|mixed|-|1|gold-c": {
+  "mission": "377331978e1fdb06",
+  "art": "719b7db8aab946df"
+ },
+ "v1|class-5|paper|-|1|gold-c": {
+  "mission": "d9bfe3b808904bff",
+  "art": "ef415dc7483e94fe"
+ },
+ "v1|class-5|chapter|numbers|2|gold-a": {
+  "mission": "49cb66505c3c1b1e",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|operations|2|gold-a": {
+  "mission": "db4a49272b6c7317",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|fractions|2|gold-a": {
+  "mission": "bf67d96da3019d1a",
+  "art": "77e1c6b29194c3a9"
+ },
+ "v1|class-5|chapter|decimals|2|gold-a": {
+  "mission": "ace143a81a57a458",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|geometry|2|gold-a": {
+  "mission": "df871bc0401ccf93",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|measurement|2|gold-a": {
+  "mission": "a72bfc3864b9a2e8",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|time|2|gold-a": {
+  "mission": "d8e64d4fc62147f3",
+  "art": "8ad38c3c907a2e01"
+ },
+ "v1|class-5|chapter|money|2|gold-a": {
+  "mission": "81d46f1eda355a2c",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|data|2|gold-a": {
+  "mission": "69f0cdc3b34bb75d",
+  "art": "3d5b988be2ac547d"
+ },
+ "v1|class-5|chapter|reasoning|2|gold-a": {
+  "mission": "1dd004b48d25e104",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|mixed|-|2|gold-a": {
+  "mission": "660fd95946728d1e",
+  "art": "911cce6ba2ceaba2"
+ },
+ "v1|class-5|paper|-|2|gold-a": {
+  "mission": "b5d0c77cfede3be3",
+  "art": "496f15db105b3114"
+ },
+ "v1|class-5|chapter|numbers|2|gold-b": {
+  "mission": "8087edc0789816c5",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|operations|2|gold-b": {
+  "mission": "fac6739fe05782b3",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|fractions|2|gold-b": {
+  "mission": "6c0f49f20f99d244",
+  "art": "e474dfea6fddd050"
+ },
+ "v1|class-5|chapter|decimals|2|gold-b": {
+  "mission": "f943eb3dcb45ce9a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|geometry|2|gold-b": {
+  "mission": "69dba842ce5f6e80",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|measurement|2|gold-b": {
+  "mission": "b687253c75f01f22",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|time|2|gold-b": {
+  "mission": "672254f579988fa8",
+  "art": "ebe691548b3e3574"
+ },
+ "v1|class-5|chapter|money|2|gold-b": {
+  "mission": "d20a16ab735900e6",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|data|2|gold-b": {
+  "mission": "89e34f7a709c20e8",
+  "art": "05f302a8f4969e4b"
+ },
+ "v1|class-5|chapter|reasoning|2|gold-b": {
+  "mission": "f46646453ffff9c7",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|mixed|-|2|gold-b": {
+  "mission": "a03e8ce2e732b2da",
+  "art": "5357ab0356bddb58"
+ },
+ "v1|class-5|paper|-|2|gold-b": {
+  "mission": "58d5ffebd9ed8e22",
+  "art": "a794f5c6c0716a5b"
+ },
+ "v1|class-5|chapter|numbers|2|gold-c": {
+  "mission": "fa61e4bba9040685",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|operations|2|gold-c": {
+  "mission": "d629fb20062eaedd",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|fractions|2|gold-c": {
+  "mission": "ab67ec40c1825a1e",
+  "art": "8d96e5b6b07fbe04"
+ },
+ "v1|class-5|chapter|decimals|2|gold-c": {
+  "mission": "277d6c74112aaf65",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|geometry|2|gold-c": {
+  "mission": "13e2c766c3599ffe",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|measurement|2|gold-c": {
+  "mission": "0058499ea7d2c203",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|time|2|gold-c": {
+  "mission": "c4460a458e273a9c",
+  "art": "30d1f84c8f7a3ec7"
+ },
+ "v1|class-5|chapter|money|2|gold-c": {
+  "mission": "2554c53016a6521c",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|data|2|gold-c": {
+  "mission": "f78c4faac1b19bac",
+  "art": "b37a1ffd34118d42"
+ },
+ "v1|class-5|chapter|reasoning|2|gold-c": {
+  "mission": "805d8d03e9b4335f",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|mixed|-|2|gold-c": {
+  "mission": "79ee96e0367976d6",
+  "art": "e24ce08895dcdf64"
+ },
+ "v1|class-5|paper|-|2|gold-c": {
+  "mission": "f1d75c4069e625d6",
+  "art": "7f4a671ce85826ae"
+ },
+ "v1|class-5|chapter|numbers|3|gold-a": {
+  "mission": "f044fe2fdf919138",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|operations|3|gold-a": {
+  "mission": "95b310773fdc191a",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|fractions|3|gold-a": {
+  "mission": "27b269d0c592e7e2",
+  "art": "9d47339167683011"
+ },
+ "v1|class-5|chapter|decimals|3|gold-a": {
+  "mission": "bacae60aca8c82d9",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|geometry|3|gold-a": {
+  "mission": "258371f107da9e26",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|measurement|3|gold-a": {
+  "mission": "dc2aca8b9f0ed206",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|time|3|gold-a": {
+  "mission": "cf6e43b3c44f66de",
+  "art": "d6848e339da6378d"
+ },
+ "v1|class-5|chapter|money|3|gold-a": {
+  "mission": "e283175cb9286774",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|data|3|gold-a": {
+  "mission": "02eb20bffee8b842",
+  "art": "b02b3a866ca4b1d0"
+ },
+ "v1|class-5|chapter|reasoning|3|gold-a": {
+  "mission": "d344541a32c60c6f",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|mixed|-|3|gold-a": {
+  "mission": "e8251f69872ab41c",
+  "art": "d10ec71a829cc041"
+ },
+ "v1|class-5|paper|-|3|gold-a": {
+  "mission": "e53ff8414007ba08",
+  "art": "ae7689c9936a8299"
+ },
+ "v1|class-5|chapter|numbers|3|gold-b": {
+  "mission": "2ba6575569d89d57",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|operations|3|gold-b": {
+  "mission": "d9909522bfa1574e",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|fractions|3|gold-b": {
+  "mission": "4823bcace957bb76",
+  "art": "e0813bc6764c4409"
+ },
+ "v1|class-5|chapter|decimals|3|gold-b": {
+  "mission": "78b9e17ce5b92c2b",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|geometry|3|gold-b": {
+  "mission": "16a450b157c06dd6",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|measurement|3|gold-b": {
+  "mission": "1d79f679617a93d7",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|time|3|gold-b": {
+  "mission": "61d544ab092b8e01",
+  "art": "925ad9edf9dae168"
+ },
+ "v1|class-5|chapter|money|3|gold-b": {
+  "mission": "324ec0a5aabefb7d",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|data|3|gold-b": {
+  "mission": "8cf66ee914b82cac",
+  "art": "ab8353a00920e83e"
+ },
+ "v1|class-5|chapter|reasoning|3|gold-b": {
+  "mission": "8ab7262a7d2d6eeb",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|mixed|-|3|gold-b": {
+  "mission": "9d57ff7de2f7e9ac",
+  "art": "7fc762031d10f932"
+ },
+ "v1|class-5|paper|-|3|gold-b": {
+  "mission": "2b6594886f26c8c1",
+  "art": "16853262213f08b4"
+ },
+ "v1|class-5|chapter|numbers|3|gold-c": {
+  "mission": "24be017201944997",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|operations|3|gold-c": {
+  "mission": "b92e08ded14e619b",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|fractions|3|gold-c": {
+  "mission": "13df653281c35817",
+  "art": "2b0f4cff98755f90"
+ },
+ "v1|class-5|chapter|decimals|3|gold-c": {
+  "mission": "6e45452bd71e9fe0",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|geometry|3|gold-c": {
+  "mission": "b1e41f5a37054d03",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|measurement|3|gold-c": {
+  "mission": "ee1c244f5a9fb3a7",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|time|3|gold-c": {
+  "mission": "b88c109f821c9818",
+  "art": "434bdd1da57d1a6b"
+ },
+ "v1|class-5|chapter|money|3|gold-c": {
+  "mission": "9390bc6e68130036",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|chapter|data|3|gold-c": {
+  "mission": "45b24042de856629",
+  "art": "bd3ee62485e588f0"
+ },
+ "v1|class-5|chapter|reasoning|3|gold-c": {
+  "mission": "fd7976fa65c2f338",
+  "art": "538d6440534fa5f6"
+ },
+ "v1|class-5|mixed|-|3|gold-c": {
+  "mission": "65a418bbaa525631",
+  "art": "9013280f40121480"
+ },
+ "v1|class-5|paper|-|3|gold-c": {
+  "mission": "05dbed391497b5e0",
+  "art": "180abb46f8fbec7f"
+ },
+ "v2|pp1|chapter|counting|1|gold-a": {
+  "mission": "a042db8852058b46",
+  "art": "89919beae3ba7fdd"
+ },
+ "v2|pp1|chapter|patterns|1|gold-a": {
+  "mission": "b0ba55c0bde3b4ac",
+  "art": "6b53457646ca4c92"
+ },
+ "v2|pp1|chapter|shapes|1|gold-a": {
+  "mission": "7b23b697e2858b0d",
+  "art": "6f0859810a361613"
+ },
+ "v2|pp1|chapter|sorting|1|gold-a": {
+  "mission": "41944ac19f00c086",
+  "art": "31b05ce6635ea2da"
+ },
+ "v2|pp1|chapter|position|1|gold-a": {
+  "mission": "0c3ba9008cd0e0cd",
+  "art": "98d1a4262beafbb8"
+ },
+ "v2|pp1|chapter|comparing|1|gold-a": {
+  "mission": "7da0e87d004b1095",
+  "art": "e5045f40b8884cdf"
+ },
+ "v2|pp1|mixed|-|1|gold-a": {
+  "mission": "bd77678b11459f94",
+  "art": "cdacea113d54dfee"
+ },
+ "v2|pp1|chapter|counting|1|gold-b": {
+  "mission": "fb2ab664f4dbeaaa",
+  "art": "33e2074a3e743c4f"
+ },
+ "v2|pp1|chapter|patterns|1|gold-b": {
+  "mission": "fb9a000eaccf09b8",
+  "art": "3f48d06791cbd581"
+ },
+ "v2|pp1|chapter|shapes|1|gold-b": {
+  "mission": "d471635fe13ce625",
+  "art": "32b4bc6c1c3a592a"
+ },
+ "v2|pp1|chapter|sorting|1|gold-b": {
+  "mission": "e702b54eca911f98",
+  "art": "e6e1d6f6d89ac962"
+ },
+ "v2|pp1|chapter|position|1|gold-b": {
+  "mission": "6ae57ecd050ff721",
+  "art": "d01cc488c147c907"
+ },
+ "v2|pp1|chapter|comparing|1|gold-b": {
+  "mission": "2017ea40656a5af7",
+  "art": "a2f4746f14d7ef2e"
+ },
+ "v2|pp1|mixed|-|1|gold-b": {
+  "mission": "9142a09221bcc4f0",
+  "art": "b9136b4dde0f5b75"
+ },
+ "v2|pp1|chapter|counting|1|gold-c": {
+  "mission": "a200192c892c7a5b",
+  "art": "7842b9fa5d318824"
+ },
+ "v2|pp1|chapter|patterns|1|gold-c": {
+  "mission": "d7924dab4214ee33",
+  "art": "8adff0f5172839be"
+ },
+ "v2|pp1|chapter|shapes|1|gold-c": {
+  "mission": "79952086994c2488",
+  "art": "05dbfeceed4c6b0c"
+ },
+ "v2|pp1|chapter|sorting|1|gold-c": {
+  "mission": "204d585b30b28a37",
+  "art": "bc40b2f19715d5c2"
+ },
+ "v2|pp1|chapter|position|1|gold-c": {
+  "mission": "018e0993c691472c",
+  "art": "4ef7d301e4e48209"
+ },
+ "v2|pp1|chapter|comparing|1|gold-c": {
+  "mission": "bf6b88c879a2ba98",
+  "art": "fe3df175e608e787"
+ },
+ "v2|pp1|mixed|-|1|gold-c": {
+  "mission": "eb7ac9c6bf12eda2",
+  "art": "444c6c4b762ba425"
+ },
+ "v2|pp1|chapter|counting|2|gold-a": {
+  "mission": "3355d1dad15e722a",
+  "art": "3b4fcd5f35f0dc43"
+ },
+ "v2|pp1|chapter|patterns|2|gold-a": {
+  "mission": "396f16c1525c873b",
+  "art": "40fe06abb8b3ad18"
+ },
+ "v2|pp1|chapter|shapes|2|gold-a": {
+  "mission": "e314c0054f30eac7",
+  "art": "48102c957b3a8e42"
+ },
+ "v2|pp1|chapter|sorting|2|gold-a": {
+  "mission": "5243cde444285892",
+  "art": "2d9a2d562bb381a4"
+ },
+ "v2|pp1|chapter|position|2|gold-a": {
+  "mission": "7a243bc5399440a4",
+  "art": "2e49ecee544f01d6"
+ },
+ "v2|pp1|chapter|comparing|2|gold-a": {
+  "mission": "6545f4614213dfe6",
+  "art": "313ed7eda311129e"
+ },
+ "v2|pp1|mixed|-|2|gold-a": {
+  "mission": "39c76cf761b0cd26",
+  "art": "2fe47ed3c4afb158"
+ },
+ "v2|pp1|chapter|counting|2|gold-b": {
+  "mission": "3d3c148cfbd4a19e",
+  "art": "5d07382bb1fec24e"
+ },
+ "v2|pp1|chapter|patterns|2|gold-b": {
+  "mission": "7d9dbdd098e55668",
+  "art": "1148f76d229e79ae"
+ },
+ "v2|pp1|chapter|shapes|2|gold-b": {
+  "mission": "c69c6142169f07f7",
+  "art": "52029a266ea5eb10"
+ },
+ "v2|pp1|chapter|sorting|2|gold-b": {
+  "mission": "20677e728c62174d",
+  "art": "87b09f7ab8a4a955"
+ },
+ "v2|pp1|chapter|position|2|gold-b": {
+  "mission": "180593ade2023a2a",
+  "art": "6c53ef5b2f06f7e0"
+ },
+ "v2|pp1|chapter|comparing|2|gold-b": {
+  "mission": "415b4b0028f78fff",
+  "art": "3fb7e9f508c314aa"
+ },
+ "v2|pp1|mixed|-|2|gold-b": {
+  "mission": "82db8cd53a025dc0",
+  "art": "6161482eac7947f6"
+ },
+ "v2|pp1|chapter|counting|2|gold-c": {
+  "mission": "6c9f7808e60e64b7",
+  "art": "270037608b10b5a6"
+ },
+ "v2|pp1|chapter|patterns|2|gold-c": {
+  "mission": "4d8fbf4ad371e5b8",
+  "art": "bdc463b0b2640b50"
+ },
+ "v2|pp1|chapter|shapes|2|gold-c": {
+  "mission": "303d4ece59901ff6",
+  "art": "52cb607074f57ac0"
+ },
+ "v2|pp1|chapter|sorting|2|gold-c": {
+  "mission": "23b11e78e963c81b",
+  "art": "d3db15674d037b35"
+ },
+ "v2|pp1|chapter|position|2|gold-c": {
+  "mission": "3f258ce6069f0495",
+  "art": "e6ddc62586c929a0"
+ },
+ "v2|pp1|chapter|comparing|2|gold-c": {
+  "mission": "fa53fd5650bc98b3",
+  "art": "c56d00a2964f8974"
+ },
+ "v2|pp1|mixed|-|2|gold-c": {
+  "mission": "72d850e33d425f79",
+  "art": "83ddf580ac3bdc1a"
+ },
+ "v2|pp1|chapter|counting|3|gold-a": {
+  "mission": "2d42a09071e30ca3",
+  "art": "f1ed34acfb2bee6f"
+ },
+ "v2|pp1|chapter|patterns|3|gold-a": {
+  "mission": "53523453c7a664ff",
+  "art": "424a96c3bd31b907"
+ },
+ "v2|pp1|chapter|shapes|3|gold-a": {
+  "mission": "a2890cb653a91254",
+  "art": "f8ea9b566b18027d"
+ },
+ "v2|pp1|chapter|sorting|3|gold-a": {
+  "mission": "f3735dda948654b3",
+  "art": "846157ed88cb6114"
+ },
+ "v2|pp1|chapter|position|3|gold-a": {
+  "mission": "f9aa928315fd802a",
+  "art": "73575eb352d5c2a5"
+ },
+ "v2|pp1|chapter|comparing|3|gold-a": {
+  "mission": "0561d1bbb91c99d4",
+  "art": "06c9c87f01388ca2"
+ },
+ "v2|pp1|mixed|-|3|gold-a": {
+  "mission": "e5ee4f327d771c7f",
+  "art": "115b275223ea418d"
+ },
+ "v2|pp1|chapter|counting|3|gold-b": {
+  "mission": "29b337f88c6d4ea2",
+  "art": "32126336fa8ff867"
+ },
+ "v2|pp1|chapter|patterns|3|gold-b": {
+  "mission": "44565c8e36e413a1",
+  "art": "bb50a4931ac48d77"
+ },
+ "v2|pp1|chapter|shapes|3|gold-b": {
+  "mission": "2fc104142f21f95b",
+  "art": "b1682e115e34c29c"
+ },
+ "v2|pp1|chapter|sorting|3|gold-b": {
+  "mission": "b01181bf12315cb6",
+  "art": "b16e77fb9996ab66"
+ },
+ "v2|pp1|chapter|position|3|gold-b": {
+  "mission": "1e5d9be8a4257eab",
+  "art": "c2f69ad5b2782aab"
+ },
+ "v2|pp1|chapter|comparing|3|gold-b": {
+  "mission": "7eb480e4c64185e8",
+  "art": "b406f868fad78d3e"
+ },
+ "v2|pp1|mixed|-|3|gold-b": {
+  "mission": "f5da094a656639e1",
+  "art": "22945c9334ed4418"
+ },
+ "v2|pp1|chapter|counting|3|gold-c": {
+  "mission": "a1bac9d36addbdbe",
+  "art": "c1eb8ddb46616994"
+ },
+ "v2|pp1|chapter|patterns|3|gold-c": {
+  "mission": "5eb5306ef625741a",
+  "art": "43d1070a8423ad38"
+ },
+ "v2|pp1|chapter|shapes|3|gold-c": {
+  "mission": "94ef4e3b019490d0",
+  "art": "2db395ece95caf66"
+ },
+ "v2|pp1|chapter|sorting|3|gold-c": {
+  "mission": "263a628116ebeffc",
+  "art": "f170876d1dc27124"
+ },
+ "v2|pp1|chapter|position|3|gold-c": {
+  "mission": "89e3bc1f5dc3b84c",
+  "art": "fd63d8a9ed29815e"
+ },
+ "v2|pp1|chapter|comparing|3|gold-c": {
+  "mission": "809507b0ce73c525",
+  "art": "539fcc0548b42e2f"
+ },
+ "v2|pp1|mixed|-|3|gold-c": {
+  "mission": "9c294a4178813182",
+  "art": "6996954e10dfaf60"
+ },
+ "v2|pp2|chapter|numbers|1|gold-a": {
+  "mission": "ad0809bacbbff479",
+  "art": "a61cc61e4c792133"
+ },
+ "v2|pp2|chapter|operations|1|gold-a": {
+  "mission": "922fc21ca2aa797e",
+  "art": "bf69c1802c7c1ea9"
+ },
+ "v2|pp2|chapter|patterns|1|gold-a": {
+  "mission": "a98c3223b1e55e68",
+  "art": "fdb501b2c91c6288"
+ },
+ "v2|pp2|chapter|shapes|1|gold-a": {
+  "mission": "e67291e243b2e392",
+  "art": "20bfc9dd479e40a4"
+ },
+ "v2|pp2|chapter|measurement|1|gold-a": {
+  "mission": "5e95c4a001ad1ac0",
+  "art": "2f0eb7c3657789c0"
+ },
+ "v2|pp2|chapter|reasoning|1|gold-a": {
+  "mission": "572ced484fd35fd9",
+  "art": "3d511c2bdc1f5044"
+ },
+ "v2|pp2|mixed|-|1|gold-a": {
+  "mission": "090a4069e70c5907",
+  "art": "7525bd7b43c99355"
+ },
+ "v2|pp2|chapter|numbers|1|gold-b": {
+  "mission": "3ea7bfa166a1d214",
+  "art": "bb7e767163a684c9"
+ },
+ "v2|pp2|chapter|operations|1|gold-b": {
+  "mission": "061ab53a921b1621",
+  "art": "c5eae8af7a8e9ec6"
+ },
+ "v2|pp2|chapter|patterns|1|gold-b": {
+  "mission": "dc79763c6a6134ad",
+  "art": "4a7ee8b74d68df02"
+ },
+ "v2|pp2|chapter|shapes|1|gold-b": {
+  "mission": "fc84d3b5b55e219a",
+  "art": "c2e8c5583038fde4"
+ },
+ "v2|pp2|chapter|measurement|1|gold-b": {
+  "mission": "4e776931493e57c8",
+  "art": "0fb77739e5630fee"
+ },
+ "v2|pp2|chapter|reasoning|1|gold-b": {
+  "mission": "1dfe48abc1115b26",
+  "art": "ff08a31c2c965e3d"
+ },
+ "v2|pp2|mixed|-|1|gold-b": {
+  "mission": "3153ad2d8f7f078e",
+  "art": "80def826085326a8"
+ },
+ "v2|pp2|chapter|numbers|1|gold-c": {
+  "mission": "8e7685fe76eefa3b",
+  "art": "b19885b443d698a1"
+ },
+ "v2|pp2|chapter|operations|1|gold-c": {
+  "mission": "1de888f3e982f1d1",
+  "art": "70d44aaf93cf8eb7"
+ },
+ "v2|pp2|chapter|patterns|1|gold-c": {
+  "mission": "a71ef613a916bbb2",
+  "art": "64736616fe339dcb"
+ },
+ "v2|pp2|chapter|shapes|1|gold-c": {
+  "mission": "f62afa20d9a9439a",
+  "art": "dc51cbc5e5f63ce5"
+ },
+ "v2|pp2|chapter|measurement|1|gold-c": {
+  "mission": "40e7b994de9b7e32",
+  "art": "07c306a00e149b97"
+ },
+ "v2|pp2|chapter|reasoning|1|gold-c": {
+  "mission": "ee10b5a5d92632dc",
+  "art": "61bf86540f8728e2"
+ },
+ "v2|pp2|mixed|-|1|gold-c": {
+  "mission": "53e58b4963af2580",
+  "art": "d665f931e48a1dfc"
+ },
+ "v2|pp2|chapter|numbers|2|gold-a": {
+  "mission": "80c1fd815b290572",
+  "art": "71b43d6a95cbbcf0"
+ },
+ "v2|pp2|chapter|operations|2|gold-a": {
+  "mission": "381aee617cefd6ac",
+  "art": "51d4998c94e7942a"
+ },
+ "v2|pp2|chapter|patterns|2|gold-a": {
+  "mission": "ef338fff213e6b35",
+  "art": "5a6bdd2b56c304ee"
+ },
+ "v2|pp2|chapter|shapes|2|gold-a": {
+  "mission": "29ffa715e01871d7",
+  "art": "b03546e53cb5cbfd"
+ },
+ "v2|pp2|chapter|measurement|2|gold-a": {
+  "mission": "942c58ea69347e83",
+  "art": "0d955a1d09a0fabc"
+ },
+ "v2|pp2|chapter|reasoning|2|gold-a": {
+  "mission": "93232239f3eb9c3b",
+  "art": "bfb8967b858b1b5e"
+ },
+ "v2|pp2|mixed|-|2|gold-a": {
+  "mission": "fa87d3fe3cf672ad",
+  "art": "ed8a32a989be7fa0"
+ },
+ "v2|pp2|chapter|numbers|2|gold-b": {
+  "mission": "52766b10c5545ead",
+  "art": "d3c47f3bb8717602"
+ },
+ "v2|pp2|chapter|operations|2|gold-b": {
+  "mission": "b99e966ff44309d5",
+  "art": "ee99c2da314c12ef"
+ },
+ "v2|pp2|chapter|patterns|2|gold-b": {
+  "mission": "f833b5da8a1e5ceb",
+  "art": "3f4093a46c9dfce2"
+ },
+ "v2|pp2|chapter|shapes|2|gold-b": {
+  "mission": "fc5a5e54670ae10b",
+  "art": "113bcde53ee582f7"
+ },
+ "v2|pp2|chapter|measurement|2|gold-b": {
+  "mission": "8849582daf27185d",
+  "art": "1e5ea0b5caccf73b"
+ },
+ "v2|pp2|chapter|reasoning|2|gold-b": {
+  "mission": "6cdc3d56e1f8ccbd",
+  "art": "e311c6fb70e85c12"
+ },
+ "v2|pp2|mixed|-|2|gold-b": {
+  "mission": "44fbd2dcec9f342b",
+  "art": "76716db04eccf98a"
+ },
+ "v2|pp2|chapter|numbers|2|gold-c": {
+  "mission": "621c37aacef6bd1a",
+  "art": "833e27130bd3e351"
+ },
+ "v2|pp2|chapter|operations|2|gold-c": {
+  "mission": "9eef2d7361c7350a",
+  "art": "4768e1b4cb34bf57"
+ },
+ "v2|pp2|chapter|patterns|2|gold-c": {
+  "mission": "d041a89c1ca34002",
+  "art": "ccc5b7de74456622"
+ },
+ "v2|pp2|chapter|shapes|2|gold-c": {
+  "mission": "15617771b9b35b7a",
+  "art": "acb1d7ecfde67f92"
+ },
+ "v2|pp2|chapter|measurement|2|gold-c": {
+  "mission": "83246bf456430bb5",
+  "art": "4d34f1772dfb12e5"
+ },
+ "v2|pp2|chapter|reasoning|2|gold-c": {
+  "mission": "c04a325aead1910d",
+  "art": "4f8153902ac3f2c4"
+ },
+ "v2|pp2|mixed|-|2|gold-c": {
+  "mission": "9edcbcfa011030fe",
+  "art": "aad6f7edae2efcff"
+ },
+ "v2|pp2|chapter|numbers|3|gold-a": {
+  "mission": "87da1d1213b64d64",
+  "art": "f2944cd014b231cb"
+ },
+ "v2|pp2|chapter|operations|3|gold-a": {
+  "mission": "94de820146d849b4",
+  "art": "d5ee2a2d5f30f0e2"
+ },
+ "v2|pp2|chapter|patterns|3|gold-a": {
+  "mission": "a469889eb70560ab",
+  "art": "b3863bf2bd722b7b"
+ },
+ "v2|pp2|chapter|shapes|3|gold-a": {
+  "mission": "5330428b3e6659bb",
+  "art": "7580ecf9269e0561"
+ },
+ "v2|pp2|chapter|measurement|3|gold-a": {
+  "mission": "a20026c65617a908",
+  "art": "90df228b1fad95c3"
+ },
+ "v2|pp2|chapter|reasoning|3|gold-a": {
+  "mission": "40af6675c198700e",
+  "art": "2dabb24f3b3fd876"
+ },
+ "v2|pp2|mixed|-|3|gold-a": {
+  "mission": "8f4f1200649973d1",
+  "art": "bcc3d628f820c1c5"
+ },
+ "v2|pp2|chapter|numbers|3|gold-b": {
+  "mission": "3d95a84c28057287",
+  "art": "5c7a8c4a78dc21c1"
+ },
+ "v2|pp2|chapter|operations|3|gold-b": {
+  "mission": "9e94460c38064260",
+  "art": "2634b74e30546341"
+ },
+ "v2|pp2|chapter|patterns|3|gold-b": {
+  "mission": "f45729cbf5e0b590",
+  "art": "8c888ef8fa06717a"
+ },
+ "v2|pp2|chapter|shapes|3|gold-b": {
+  "mission": "3c47d8687995e34a",
+  "art": "acc317ce1bea5055"
+ },
+ "v2|pp2|chapter|measurement|3|gold-b": {
+  "mission": "848d3a168e2aa444",
+  "art": "85b02e2f64462e17"
+ },
+ "v2|pp2|chapter|reasoning|3|gold-b": {
+  "mission": "b5e5e2e258707477",
+  "art": "72cb296a6fcbb8c0"
+ },
+ "v2|pp2|mixed|-|3|gold-b": {
+  "mission": "d669e00a0871dc12",
+  "art": "d8a066c076111e52"
+ },
+ "v2|pp2|chapter|numbers|3|gold-c": {
+  "mission": "e1529f276826dff7",
+  "art": "74e740f1e274a5fa"
+ },
+ "v2|pp2|chapter|operations|3|gold-c": {
+  "mission": "377b9a1c5467dcff",
+  "art": "0b73e13159da135d"
+ },
+ "v2|pp2|chapter|patterns|3|gold-c": {
+  "mission": "5582273c76674736",
+  "art": "3f57da44fc0b3f98"
+ },
+ "v2|pp2|chapter|shapes|3|gold-c": {
+  "mission": "3eed7e6e99c5ecee",
+  "art": "30945bd8f790a1d9"
+ },
+ "v2|pp2|chapter|measurement|3|gold-c": {
+  "mission": "43991d988deb1d16",
+  "art": "b6cc0f08e2a42a90"
+ },
+ "v2|pp2|chapter|reasoning|3|gold-c": {
+  "mission": "f8edbc83702ccec3",
+  "art": "5d5eade28b9ca732"
+ },
+ "v2|pp2|mixed|-|3|gold-c": {
+  "mission": "526e5d65c73d4e66",
+  "art": "99d2f52e751f54cb"
+ },
+ "v2|class-1|chapter|numbers|1|gold-a": {
+  "mission": "23ae808e1bbf028d",
+  "art": "a2276d9335fa2228"
+ },
+ "v2|class-1|chapter|operations|1|gold-a": {
+  "mission": "07a198d45023d03f",
+  "art": "b6b964520e03da41"
+ },
+ "v2|class-1|chapter|patterns|1|gold-a": {
+  "mission": "c0d15134984df208",
+  "art": "b6989c7447a731cb"
+ },
+ "v2|class-1|chapter|geometry|1|gold-a": {
+  "mission": "1ac2261e26a23465",
+  "art": "fb2ce5e3dd1f768f"
+ },
+ "v2|class-1|chapter|measurement|1|gold-a": {
+  "mission": "86287f267b514b7a",
+  "art": "4e152de6b7c81101"
+ },
+ "v2|class-1|chapter|time|1|gold-a": {
+  "mission": "01bd64ad0daa1fc3",
+  "art": "b2767ed1e0b0a2c9"
+ },
+ "v2|class-1|chapter|money|1|gold-a": {
+  "mission": "6da45725f600f64d",
+  "art": "3de6c99c984ce9b7"
+ },
+ "v2|class-1|chapter|reasoning|1|gold-a": {
+  "mission": "c01fcb90ecf0d513",
+  "art": "0134deea720c52cd"
+ },
+ "v2|class-1|mixed|-|1|gold-a": {
+  "mission": "245336ea51b768a6",
+  "art": "50f6857c8dc5e3e2"
+ },
+ "v2|class-1|paper|-|1|gold-a": {
+  "mission": "33310a0b016fbfea",
+  "art": "c6921b83095fa818"
+ },
+ "v2|class-1|chapter|numbers|1|gold-b": {
+  "mission": "dae884c24055a79c",
+  "art": "fb1eb6feeaaf6b71"
+ },
+ "v2|class-1|chapter|operations|1|gold-b": {
+  "mission": "1b762aa6c61f355e",
+  "art": "03bb21eb50a9822b"
+ },
+ "v2|class-1|chapter|patterns|1|gold-b": {
+  "mission": "5ff728bad7d22a60",
+  "art": "441ea6f03611fc9a"
+ },
+ "v2|class-1|chapter|geometry|1|gold-b": {
+  "mission": "3a307c06751c6ace",
+  "art": "6e66e19d792ff0bc"
+ },
+ "v2|class-1|chapter|measurement|1|gold-b": {
+  "mission": "6f2d4a282232cb93",
+  "art": "98d75683b78ab370"
+ },
+ "v2|class-1|chapter|time|1|gold-b": {
+  "mission": "fe36b73b055f0de9",
+  "art": "16030d1a78d25160"
+ },
+ "v2|class-1|chapter|money|1|gold-b": {
+  "mission": "858bc07bee7ef4ea",
+  "art": "97aab4f122c8123e"
+ },
+ "v2|class-1|chapter|reasoning|1|gold-b": {
+  "mission": "5142344810d0b3fc",
+  "art": "93540aa5930ce7c4"
+ },
+ "v2|class-1|mixed|-|1|gold-b": {
+  "mission": "ed342601bb6f291b",
+  "art": "9ff762c8da12f3a5"
+ },
+ "v2|class-1|paper|-|1|gold-b": {
+  "mission": "11a09c2071303eb2",
+  "art": "6e33269be91b1362"
+ },
+ "v2|class-1|chapter|numbers|1|gold-c": {
+  "mission": "ae1162ef902ea249",
+  "art": "fe1813d50a2234dd"
+ },
+ "v2|class-1|chapter|operations|1|gold-c": {
+  "mission": "d77be82762577192",
+  "art": "ee10b415a443e817"
+ },
+ "v2|class-1|chapter|patterns|1|gold-c": {
+  "mission": "11ff2e6c27f02603",
+  "art": "5c13e08d0d57e16d"
+ },
+ "v2|class-1|chapter|geometry|1|gold-c": {
+  "mission": "be3c1a2546074377",
+  "art": "a074f79a8faee4c7"
+ },
+ "v2|class-1|chapter|measurement|1|gold-c": {
+  "mission": "4f644e3806b59bee",
+  "art": "9e9c40cbf2cefa09"
+ },
+ "v2|class-1|chapter|time|1|gold-c": {
+  "mission": "1728997d2e8962c4",
+  "art": "2e88fca0cc081807"
+ },
+ "v2|class-1|chapter|money|1|gold-c": {
+  "mission": "6be8f1ee13002dd9",
+  "art": "822859cc5f4f5cb3"
+ },
+ "v2|class-1|chapter|reasoning|1|gold-c": {
+  "mission": "13a5f8be4758f002",
+  "art": "d3b96ac66eaf4473"
+ },
+ "v2|class-1|mixed|-|1|gold-c": {
+  "mission": "6a1b159bcabcf348",
+  "art": "ed0e8e16640b6e9d"
+ },
+ "v2|class-1|paper|-|1|gold-c": {
+  "mission": "9c3fdb091a31b6ce",
+  "art": "adbd13d3403b3d74"
+ },
+ "v2|class-1|chapter|numbers|2|gold-a": {
+  "mission": "0aca6f8669085485",
+  "art": "b660900bf3b70281"
+ },
+ "v2|class-1|chapter|operations|2|gold-a": {
+  "mission": "36c92c626307b577",
+  "art": "812b7a849d1b41bb"
+ },
+ "v2|class-1|chapter|patterns|2|gold-a": {
+  "mission": "67e9d16423ff666b",
+  "art": "a708bab1413c91db"
+ },
+ "v2|class-1|chapter|geometry|2|gold-a": {
+  "mission": "730fd1714a8330ba",
+  "art": "223665838d816ee8"
+ },
+ "v2|class-1|chapter|measurement|2|gold-a": {
+  "mission": "4ef87ccabddc3bb3",
+  "art": "f33ed5f95799f899"
+ },
+ "v2|class-1|chapter|time|2|gold-a": {
+  "mission": "bf8b7da24c523f61",
+  "art": "9f4d7c83798154ca"
+ },
+ "v2|class-1|chapter|money|2|gold-a": {
+  "mission": "147ee2235099e72a",
+  "art": "7f663703b995d43e"
+ },
+ "v2|class-1|chapter|reasoning|2|gold-a": {
+  "mission": "9b6d83b336604503",
+  "art": "a261597aec978d05"
+ },
+ "v2|class-1|mixed|-|2|gold-a": {
+  "mission": "5ef22fb8b0b71cac",
+  "art": "13728ce89a536343"
+ },
+ "v2|class-1|paper|-|2|gold-a": {
+  "mission": "06a3041deea77e04",
+  "art": "250c0505c270083e"
+ },
+ "v2|class-1|chapter|numbers|2|gold-b": {
+  "mission": "271fafe1c892bc43",
+  "art": "b9b656933dbd24bb"
+ },
+ "v2|class-1|chapter|operations|2|gold-b": {
+  "mission": "7da9cbc6f354064c",
+  "art": "37cf212fcb9a4ae4"
+ },
+ "v2|class-1|chapter|patterns|2|gold-b": {
+  "mission": "d57b889625b77526",
+  "art": "98a259dd4e5cddf7"
+ },
+ "v2|class-1|chapter|geometry|2|gold-b": {
+  "mission": "bd9c7c6fdd99fe25",
+  "art": "417ea7016317bcb0"
+ },
+ "v2|class-1|chapter|measurement|2|gold-b": {
+  "mission": "8907dd65cda39ff6",
+  "art": "268864effccd90d3"
+ },
+ "v2|class-1|chapter|time|2|gold-b": {
+  "mission": "429aac50e8ee60d3",
+  "art": "65d554a2cb1c3851"
+ },
+ "v2|class-1|chapter|money|2|gold-b": {
+  "mission": "2b2d93acb9970cc1",
+  "art": "780e15639effbb5a"
+ },
+ "v2|class-1|chapter|reasoning|2|gold-b": {
+  "mission": "dff1ce58aca64e33",
+  "art": "8f0dd5ee26eee70e"
+ },
+ "v2|class-1|mixed|-|2|gold-b": {
+  "mission": "8d075429b26647aa",
+  "art": "1737bbb548731d2e"
+ },
+ "v2|class-1|paper|-|2|gold-b": {
+  "mission": "69188d5a41e822f1",
+  "art": "dcff1a8d0b7aaf6d"
+ },
+ "v2|class-1|chapter|numbers|2|gold-c": {
+  "mission": "118394fc4b9d0d9a",
+  "art": "7b801df770144f81"
+ },
+ "v2|class-1|chapter|operations|2|gold-c": {
+  "mission": "871f1d3435f1f407",
+  "art": "db1714ec298ad5fa"
+ },
+ "v2|class-1|chapter|patterns|2|gold-c": {
+  "mission": "1a87c682d1f1fac4",
+  "art": "fe62301cd20a062b"
+ },
+ "v2|class-1|chapter|geometry|2|gold-c": {
+  "mission": "1e7e241dfca55b3c",
+  "art": "6252d6e5fc656aad"
+ },
+ "v2|class-1|chapter|measurement|2|gold-c": {
+  "mission": "c198e5a621a216f0",
+  "art": "8705e92a6548e532"
+ },
+ "v2|class-1|chapter|time|2|gold-c": {
+  "mission": "95c788df6e28b638",
+  "art": "0e4e98efdb5fa085"
+ },
+ "v2|class-1|chapter|money|2|gold-c": {
+  "mission": "52b812c61500bd36",
+  "art": "c96f846d3857638f"
+ },
+ "v2|class-1|chapter|reasoning|2|gold-c": {
+  "mission": "9cd7562fb610228d",
+  "art": "5a81d6740e69e78a"
+ },
+ "v2|class-1|mixed|-|2|gold-c": {
+  "mission": "714e1b096b75ccbb",
+  "art": "29b28b35c39f5c23"
+ },
+ "v2|class-1|paper|-|2|gold-c": {
+  "mission": "8ca78a5cf614c743",
+  "art": "0d288b0bb797b087"
+ },
+ "v2|class-1|chapter|numbers|3|gold-a": {
+  "mission": "376420cc8a990325",
+  "art": "24ab55f70a319674"
+ },
+ "v2|class-1|chapter|operations|3|gold-a": {
+  "mission": "b6520f7638e39e29",
+  "art": "c825f43e1d6faba7"
+ },
+ "v2|class-1|chapter|patterns|3|gold-a": {
+  "mission": "593566708ffc56ca",
+  "art": "fdb4670c37c095ad"
+ },
+ "v2|class-1|chapter|geometry|3|gold-a": {
+  "mission": "77b5d558bb037ebe",
+  "art": "c9a0028b8b953500"
+ },
+ "v2|class-1|chapter|measurement|3|gold-a": {
+  "mission": "d532ea79292a684a",
+  "art": "0c383e3f18716a0c"
+ },
+ "v2|class-1|chapter|time|3|gold-a": {
+  "mission": "44d1d2dbbb150379",
+  "art": "d4926c4290b651f6"
+ },
+ "v2|class-1|chapter|money|3|gold-a": {
+  "mission": "ade7a10848c478d4",
+  "art": "4779a09384a7f03f"
+ },
+ "v2|class-1|chapter|reasoning|3|gold-a": {
+  "mission": "2428312d5a625db9",
+  "art": "b00ad6d03d381fff"
+ },
+ "v2|class-1|mixed|-|3|gold-a": {
+  "mission": "d48cff8045597835",
+  "art": "da0eea890f6652aa"
+ },
+ "v2|class-1|paper|-|3|gold-a": {
+  "mission": "d488040fc52bc2ec",
+  "art": "2ced00fa445bc892"
+ },
+ "v2|class-1|chapter|numbers|3|gold-b": {
+  "mission": "6ba5609da05495ca",
+  "art": "ee79bfa3050ef620"
+ },
+ "v2|class-1|chapter|operations|3|gold-b": {
+  "mission": "ee7d54acf687ce6a",
+  "art": "82487b98fe83a49c"
+ },
+ "v2|class-1|chapter|patterns|3|gold-b": {
+  "mission": "5b59ef496625485b",
+  "art": "517a3b9fbd3d38af"
+ },
+ "v2|class-1|chapter|geometry|3|gold-b": {
+  "mission": "2ed5203db16948f5",
+  "art": "5e6cbb546c3bf3ab"
+ },
+ "v2|class-1|chapter|measurement|3|gold-b": {
+  "mission": "7b92706cc10525b3",
+  "art": "20b0d27896d1bd18"
+ },
+ "v2|class-1|chapter|time|3|gold-b": {
+  "mission": "e40560d3107538cf",
+  "art": "1335b61256c5f32d"
+ },
+ "v2|class-1|chapter|money|3|gold-b": {
+  "mission": "7794d416fd202d82",
+  "art": "dd4cbf53b286e689"
+ },
+ "v2|class-1|chapter|reasoning|3|gold-b": {
+  "mission": "079e9083572a5234",
+  "art": "d8b19983c82f443a"
+ },
+ "v2|class-1|mixed|-|3|gold-b": {
+  "mission": "b9659844a1304fdd",
+  "art": "73e19ad908157a58"
+ },
+ "v2|class-1|paper|-|3|gold-b": {
+  "mission": "9bd2267c0bc211f3",
+  "art": "cfa4cfb6fb97e562"
+ },
+ "v2|class-1|chapter|numbers|3|gold-c": {
+  "mission": "3b9c981d620210db",
+  "art": "6e86667237e20226"
+ },
+ "v2|class-1|chapter|operations|3|gold-c": {
+  "mission": "f30a386265a18b77",
+  "art": "421fb8052dab8c49"
+ },
+ "v2|class-1|chapter|patterns|3|gold-c": {
+  "mission": "79422e73a69a0f7d",
+  "art": "aa7f19e3e3bec631"
+ },
+ "v2|class-1|chapter|geometry|3|gold-c": {
+  "mission": "bd50d217a8284023",
+  "art": "e6949bafc746fa7a"
+ },
+ "v2|class-1|chapter|measurement|3|gold-c": {
+  "mission": "fd29564b6df3f466",
+  "art": "3b40b4ec7d43b817"
+ },
+ "v2|class-1|chapter|time|3|gold-c": {
+  "mission": "5960b114aad79161",
+  "art": "e6f295cef3f4f5a9"
+ },
+ "v2|class-1|chapter|money|3|gold-c": {
+  "mission": "3fd1f779c5632731",
+  "art": "2e6d4344918007f0"
+ },
+ "v2|class-1|chapter|reasoning|3|gold-c": {
+  "mission": "bb07bf97186f0c11",
+  "art": "6619e17bf414307b"
+ },
+ "v2|class-1|mixed|-|3|gold-c": {
+  "mission": "2ad6e679191a00bd",
+  "art": "70eabacb66a44fa9"
+ },
+ "v2|class-1|paper|-|3|gold-c": {
+  "mission": "26b25e53cfd0215b",
+  "art": "0e77f937b9862ce1"
+ },
+ "v2|class-2|chapter|numbers|1|gold-a": {
+  "mission": "499e6c00eeee0139",
+  "art": "52b51e6f73b3e025"
+ },
+ "v2|class-2|chapter|operations|1|gold-a": {
+  "mission": "d330c5fac80e726b",
+  "art": "f407b41702150911"
+ },
+ "v2|class-2|chapter|patterns|1|gold-a": {
+  "mission": "20bc8045d0690dc6",
+  "art": "9105f4f1c5dfb654"
+ },
+ "v2|class-2|chapter|geometry|1|gold-a": {
+  "mission": "beffdd4e9a3b08c4",
+  "art": "69a0a6e43cb5e8a8"
+ },
+ "v2|class-2|chapter|measurement|1|gold-a": {
+  "mission": "1a153b5f02579b95",
+  "art": "ffc8bb21bcd4ef35"
+ },
+ "v2|class-2|chapter|time|1|gold-a": {
+  "mission": "ff56882f161f3b16",
+  "art": "26f30f8357d3da7d"
+ },
+ "v2|class-2|chapter|money|1|gold-a": {
+  "mission": "0c8f804390cf7a69",
+  "art": "139ac7a877d62568"
+ },
+ "v2|class-2|chapter|data|1|gold-a": {
+  "mission": "e52fb508b6422a5e",
+  "art": "4a07030eeb74f06a"
+ },
+ "v2|class-2|mixed|-|1|gold-a": {
+  "mission": "7b0be22935377654",
+  "art": "eec871565136c1de"
+ },
+ "v2|class-2|paper|-|1|gold-a": {
+  "mission": "d9c95f520ea21f43",
+  "art": "b22fea05a98e93c5"
+ },
+ "v2|class-2|chapter|numbers|1|gold-b": {
+  "mission": "256d683a1f36c415",
+  "art": "22186eba21ec6427"
+ },
+ "v2|class-2|chapter|operations|1|gold-b": {
+  "mission": "1280472771269f96",
+  "art": "d1d17103807d2054"
+ },
+ "v2|class-2|chapter|patterns|1|gold-b": {
+  "mission": "3237ca297e20e455",
+  "art": "3992b666cfddc60b"
+ },
+ "v2|class-2|chapter|geometry|1|gold-b": {
+  "mission": "1e79dcfdb891ae93",
+  "art": "f191bfc5c1908a0f"
+ },
+ "v2|class-2|chapter|measurement|1|gold-b": {
+  "mission": "baa43e17bda385ab",
+  "art": "6c89585ea5b8ae74"
+ },
+ "v2|class-2|chapter|time|1|gold-b": {
+  "mission": "d1691f8e09b6a4b4",
+  "art": "4646ef06c2897c02"
+ },
+ "v2|class-2|chapter|money|1|gold-b": {
+  "mission": "cfb63b22aecadd86",
+  "art": "4032591600c3cf46"
+ },
+ "v2|class-2|chapter|data|1|gold-b": {
+  "mission": "32fffc241ef56d36",
+  "art": "234b58fca44f2620"
+ },
+ "v2|class-2|mixed|-|1|gold-b": {
+  "mission": "4702da0734cb7e38",
+  "art": "a3ab043dd42fce46"
+ },
+ "v2|class-2|paper|-|1|gold-b": {
+  "mission": "ab0c776bf5a335b4",
+  "art": "5612c268a16749ee"
+ },
+ "v2|class-2|chapter|numbers|1|gold-c": {
+  "mission": "5b0a0fd6ca40d679",
+  "art": "d19866aacaa355ff"
+ },
+ "v2|class-2|chapter|operations|1|gold-c": {
+  "mission": "4667a5ec0ffc99f5",
+  "art": "d4bad61c48498604"
+ },
+ "v2|class-2|chapter|patterns|1|gold-c": {
+  "mission": "8fa5fdc87d2a20ef",
+  "art": "3d69ac9d02618e10"
+ },
+ "v2|class-2|chapter|geometry|1|gold-c": {
+  "mission": "8fee29c668b89810",
+  "art": "e2c8c8710e89993f"
+ },
+ "v2|class-2|chapter|measurement|1|gold-c": {
+  "mission": "c954395987a4cca7",
+  "art": "030148d5fe4659c7"
+ },
+ "v2|class-2|chapter|time|1|gold-c": {
+  "mission": "d584cd87f5bebc72",
+  "art": "20f565678b4e92ad"
+ },
+ "v2|class-2|chapter|money|1|gold-c": {
+  "mission": "1faf4d7d3feb34ba",
+  "art": "8eeeb7a083da65f3"
+ },
+ "v2|class-2|chapter|data|1|gold-c": {
+  "mission": "dbc50ebb6ff606c7",
+  "art": "afac1bdd65096621"
+ },
+ "v2|class-2|mixed|-|1|gold-c": {
+  "mission": "d93b1430b784520e",
+  "art": "b1bb56c9f4950466"
+ },
+ "v2|class-2|paper|-|1|gold-c": {
+  "mission": "f280f2abd268dd69",
+  "art": "acbb62c8bc332575"
+ },
+ "v2|class-2|chapter|numbers|2|gold-a": {
+  "mission": "e3035a69002978c8",
+  "art": "538bc07e227febb5"
+ },
+ "v2|class-2|chapter|operations|2|gold-a": {
+  "mission": "7a7d4847e5839b90",
+  "art": "0ee14195a9bf8e08"
+ },
+ "v2|class-2|chapter|patterns|2|gold-a": {
+  "mission": "7d6f39db2439537f",
+  "art": "2085ca7c72d31edd"
+ },
+ "v2|class-2|chapter|geometry|2|gold-a": {
+  "mission": "61d08376bd7e6ed1",
+  "art": "de04818ff7092196"
+ },
+ "v2|class-2|chapter|measurement|2|gold-a": {
+  "mission": "30e432cc3817db13",
+  "art": "9d2ee69edb82957b"
+ },
+ "v2|class-2|chapter|time|2|gold-a": {
+  "mission": "fc91a1267dfd377d",
+  "art": "de8961e15b9309f6"
+ },
+ "v2|class-2|chapter|money|2|gold-a": {
+  "mission": "7328972fd38f130b",
+  "art": "461404e158a0d825"
+ },
+ "v2|class-2|chapter|data|2|gold-a": {
+  "mission": "09361b9a97b255fb",
+  "art": "36e5f4d0a1143e8b"
+ },
+ "v2|class-2|mixed|-|2|gold-a": {
+  "mission": "7a5f999273f5bf31",
+  "art": "2cb6aac14fc329d9"
+ },
+ "v2|class-2|paper|-|2|gold-a": {
+  "mission": "9da8982db2f72f39",
+  "art": "a8b2be1b01dccb13"
+ },
+ "v2|class-2|chapter|numbers|2|gold-b": {
+  "mission": "86462f25973086bf",
+  "art": "46c02698204b9402"
+ },
+ "v2|class-2|chapter|operations|2|gold-b": {
+  "mission": "c474c66867a3375b",
+  "art": "7ac062f04a5de619"
+ },
+ "v2|class-2|chapter|patterns|2|gold-b": {
+  "mission": "97547ec9b0dbe3a8",
+  "art": "41fa60da699520a8"
+ },
+ "v2|class-2|chapter|geometry|2|gold-b": {
+  "mission": "1d47145f819fed20",
+  "art": "c734ad55a1834969"
+ },
+ "v2|class-2|chapter|measurement|2|gold-b": {
+  "mission": "3314179b0b990728",
+  "art": "d056bb87b0b46c9b"
+ },
+ "v2|class-2|chapter|time|2|gold-b": {
+  "mission": "4548ac729db48fd7",
+  "art": "378e478e8fc5f028"
+ },
+ "v2|class-2|chapter|money|2|gold-b": {
+  "mission": "255ec8a52ba2448c",
+  "art": "af771c2391db4f39"
+ },
+ "v2|class-2|chapter|data|2|gold-b": {
+  "mission": "b6c67eb782f3594f",
+  "art": "61db3dc1a9905d5d"
+ },
+ "v2|class-2|mixed|-|2|gold-b": {
+  "mission": "a0e142ca8ed89a34",
+  "art": "dd209c76438491c0"
+ },
+ "v2|class-2|paper|-|2|gold-b": {
+  "mission": "ead66bbe4f3eefdd",
+  "art": "f12d8e2baca996c5"
+ },
+ "v2|class-2|chapter|numbers|2|gold-c": {
+  "mission": "73214050d9e9ad8a",
+  "art": "3f9f17958aac3c81"
+ },
+ "v2|class-2|chapter|operations|2|gold-c": {
+  "mission": "9b47934f86367370",
+  "art": "a2da81eef5d7e613"
+ },
+ "v2|class-2|chapter|patterns|2|gold-c": {
+  "mission": "c1ba37076814f444",
+  "art": "5133ada26d2d5b48"
+ },
+ "v2|class-2|chapter|geometry|2|gold-c": {
+  "mission": "79b42fd611fba6e6",
+  "art": "d3715fc2c7d86076"
+ },
+ "v2|class-2|chapter|measurement|2|gold-c": {
+  "mission": "b07a61364764aa23",
+  "art": "9eae3fdaa6621545"
+ },
+ "v2|class-2|chapter|time|2|gold-c": {
+  "mission": "a6b69f5572c28033",
+  "art": "42cff6666df7cb1d"
+ },
+ "v2|class-2|chapter|money|2|gold-c": {
+  "mission": "384176de20876a23",
+  "art": "fdbcce4e791496c5"
+ },
+ "v2|class-2|chapter|data|2|gold-c": {
+  "mission": "11215f7fc7161f6f",
+  "art": "3e3f8cd1da8ad851"
+ },
+ "v2|class-2|mixed|-|2|gold-c": {
+  "mission": "89c5b33977e3f929",
+  "art": "2ba16e48ab8c89b4"
+ },
+ "v2|class-2|paper|-|2|gold-c": {
+  "mission": "42565567f614e352",
+  "art": "e534f50e17b01864"
+ },
+ "v2|class-2|chapter|numbers|3|gold-a": {
+  "mission": "dd0bcb946c33c3c7",
+  "art": "fdc399b1964dc51a"
+ },
+ "v2|class-2|chapter|operations|3|gold-a": {
+  "mission": "9770b08cf7e64d79",
+  "art": "fa3d9dd692a4cdc2"
+ },
+ "v2|class-2|chapter|patterns|3|gold-a": {
+  "mission": "426149846301793f",
+  "art": "27f29dca1438d49b"
+ },
+ "v2|class-2|chapter|geometry|3|gold-a": {
+  "mission": "9a5af2fc842b5918",
+  "art": "5ba222dc32c2d816"
+ },
+ "v2|class-2|chapter|measurement|3|gold-a": {
+  "mission": "5dbd217c006b0fb3",
+  "art": "7624eb819c30cf3f"
+ },
+ "v2|class-2|chapter|time|3|gold-a": {
+  "mission": "b153aa69abd5fc13",
+  "art": "4bbf31a603b69d22"
+ },
+ "v2|class-2|chapter|money|3|gold-a": {
+  "mission": "dcb8da752ff0a334",
+  "art": "0d59646a72aaf8f5"
+ },
+ "v2|class-2|chapter|data|3|gold-a": {
+  "mission": "f395229257697446",
+  "art": "d73e6a8512bd1445"
+ },
+ "v2|class-2|mixed|-|3|gold-a": {
+  "mission": "55d09ff9882a56e1",
+  "art": "81be9e1c5f95c8ba"
+ },
+ "v2|class-2|paper|-|3|gold-a": {
+  "mission": "e1e1c4faa75fc449",
+  "art": "097a62440adf2dc8"
+ },
+ "v2|class-2|chapter|numbers|3|gold-b": {
+  "mission": "87715d1cc3122125",
+  "art": "b3f5f105fd1086ed"
+ },
+ "v2|class-2|chapter|operations|3|gold-b": {
+  "mission": "05c7ff62996480b5",
+  "art": "81404ed3f3f95458"
+ },
+ "v2|class-2|chapter|patterns|3|gold-b": {
+  "mission": "2a09c30a94415d9e",
+  "art": "415a6db839fdacef"
+ },
+ "v2|class-2|chapter|geometry|3|gold-b": {
+  "mission": "1824ff458bb894bd",
+  "art": "dbc59051cdc8d66e"
+ },
+ "v2|class-2|chapter|measurement|3|gold-b": {
+  "mission": "7dcb913e1cd81ca5",
+  "art": "a583c60dcdc141ef"
+ },
+ "v2|class-2|chapter|time|3|gold-b": {
+  "mission": "c2ff36b0d6ee4e63",
+  "art": "ee53f2f1fdf247fe"
+ },
+ "v2|class-2|chapter|money|3|gold-b": {
+  "mission": "86054c476ae2674d",
+  "art": "eb0a8fc2c3548fa3"
+ },
+ "v2|class-2|chapter|data|3|gold-b": {
+  "mission": "2d2f800e67adce97",
+  "art": "74aea28f41a6570d"
+ },
+ "v2|class-2|mixed|-|3|gold-b": {
+  "mission": "aba660076254e145",
+  "art": "e6ca723158746eb3"
+ },
+ "v2|class-2|paper|-|3|gold-b": {
+  "mission": "1c4388808651d8b4",
+  "art": "5103ec48fd19114b"
+ },
+ "v2|class-2|chapter|numbers|3|gold-c": {
+  "mission": "83df7e7b0337b7de",
+  "art": "21b4b5b7d2ce709a"
+ },
+ "v2|class-2|chapter|operations|3|gold-c": {
+  "mission": "828bd7ed1904caae",
+  "art": "2811758b076d16df"
+ },
+ "v2|class-2|chapter|patterns|3|gold-c": {
+  "mission": "c3b2430264ce110d",
+  "art": "58d4096cf5be18e0"
+ },
+ "v2|class-2|chapter|geometry|3|gold-c": {
+  "mission": "a5f10af8fb0579ee",
+  "art": "26593187c77d4baa"
+ },
+ "v2|class-2|chapter|measurement|3|gold-c": {
+  "mission": "850657270258e6d4",
+  "art": "2d87ef455515c07a"
+ },
+ "v2|class-2|chapter|time|3|gold-c": {
+  "mission": "c1f5d39bc3ed307e",
+  "art": "4902ddb1a18e1cc0"
+ },
+ "v2|class-2|chapter|money|3|gold-c": {
+  "mission": "5b0fb6d46a728ff2",
+  "art": "c77d597a314f7857"
+ },
+ "v2|class-2|chapter|data|3|gold-c": {
+  "mission": "c9cc2a0692797921",
+  "art": "c01a52f781d56dc3"
+ },
+ "v2|class-2|mixed|-|3|gold-c": {
+  "mission": "582eea07913a908f",
+  "art": "2712621dbb937564"
+ },
+ "v2|class-2|paper|-|3|gold-c": {
+  "mission": "e83dda6d440e72fe",
+  "art": "a6d4fb0f1210f1ce"
+ },
+ "v2|class-3|chapter|numbers|1|gold-a": {
+  "mission": "0b6cbd7636ff7135",
+  "art": "e6c01d69c957aa57"
+ },
+ "v2|class-3|chapter|operations|1|gold-a": {
+  "mission": "c24f8d711d2ed769",
+  "art": "ba9d0750db01cf98"
+ },
+ "v2|class-3|chapter|fractions|1|gold-a": {
+  "mission": "d6130be84bd398ee",
+  "art": "1ea94da4837fa3fc"
+ },
+ "v2|class-3|chapter|geometry|1|gold-a": {
+  "mission": "2dfc76d6d3edf9e7",
+  "art": "5961dfc9bf012457"
+ },
+ "v2|class-3|chapter|measurement|1|gold-a": {
+  "mission": "dcea06275dca6732",
+  "art": "91dafb46a8cb4fcf"
+ },
+ "v2|class-3|chapter|time|1|gold-a": {
+  "mission": "37b1cb3d06b0a7aa",
+  "art": "647d310db6c3c1af"
+ },
+ "v2|class-3|chapter|money|1|gold-a": {
+  "mission": "50d5248c2bc9794c",
+  "art": "9d8018f8682c929e"
+ },
+ "v2|class-3|chapter|data|1|gold-a": {
+  "mission": "6517aa41c0405d8b",
+  "art": "0b3d807475ff9a21"
+ },
+ "v2|class-3|chapter|reasoning|1|gold-a": {
+  "mission": "d1cf72c64ad3f525",
+  "art": "3dfcf1cb5e83277b"
+ },
+ "v2|class-3|mixed|-|1|gold-a": {
+  "mission": "696b08de2076e853",
+  "art": "545b7081a370a3d2"
+ },
+ "v2|class-3|paper|-|1|gold-a": {
+  "mission": "20e69c088bf762f0",
+  "art": "1f1a5b07910cf0b9"
+ },
+ "v2|class-3|chapter|numbers|1|gold-b": {
+  "mission": "f2759a36f1a0c593",
+  "art": "4999bc7d57e1359b"
+ },
+ "v2|class-3|chapter|operations|1|gold-b": {
+  "mission": "2c8ff21bd1023ad2",
+  "art": "cdfe0e0175cb172b"
+ },
+ "v2|class-3|chapter|fractions|1|gold-b": {
+  "mission": "292473d7dc095a88",
+  "art": "2f10ea16c33a0298"
+ },
+ "v2|class-3|chapter|geometry|1|gold-b": {
+  "mission": "5081424f0985969b",
+  "art": "e8556683fca9a401"
+ },
+ "v2|class-3|chapter|measurement|1|gold-b": {
+  "mission": "7aadc3742689c89a",
+  "art": "c08a16458924a4f3"
+ },
+ "v2|class-3|chapter|time|1|gold-b": {
+  "mission": "92f7202c53577397",
+  "art": "9d9b08b4e975ee8e"
+ },
+ "v2|class-3|chapter|money|1|gold-b": {
+  "mission": "dd50b59eb99e261b",
+  "art": "0e8a2a6dc722e876"
+ },
+ "v2|class-3|chapter|data|1|gold-b": {
+  "mission": "deb4a7dcc9378963",
+  "art": "bb4dfd93f950aa88"
+ },
+ "v2|class-3|chapter|reasoning|1|gold-b": {
+  "mission": "7e94215780f25687",
+  "art": "1193d936a541545f"
+ },
+ "v2|class-3|mixed|-|1|gold-b": {
+  "mission": "b4e770d50f97baf2",
+  "art": "d3c801d41ecebba6"
+ },
+ "v2|class-3|paper|-|1|gold-b": {
+  "mission": "a5785cc4b69de5fd",
+  "art": "99582aef40ea4318"
+ },
+ "v2|class-3|chapter|numbers|1|gold-c": {
+  "mission": "0140ef593398e4ae",
+  "art": "1738cadff9826842"
+ },
+ "v2|class-3|chapter|operations|1|gold-c": {
+  "mission": "9318d760d1f9e4b4",
+  "art": "389f73757a9336a8"
+ },
+ "v2|class-3|chapter|fractions|1|gold-c": {
+  "mission": "981f0a8315eed966",
+  "art": "223a129e0ef807b3"
+ },
+ "v2|class-3|chapter|geometry|1|gold-c": {
+  "mission": "bdc7ca856f538782",
+  "art": "3fb5eb5ce9152f55"
+ },
+ "v2|class-3|chapter|measurement|1|gold-c": {
+  "mission": "b0ed36c2eebcb5e8",
+  "art": "63434045e8670535"
+ },
+ "v2|class-3|chapter|time|1|gold-c": {
+  "mission": "e87417ad86b63ad6",
+  "art": "f7f347f84b6b4940"
+ },
+ "v2|class-3|chapter|money|1|gold-c": {
+  "mission": "87fa9470d640a9c9",
+  "art": "ef9826c72762890e"
+ },
+ "v2|class-3|chapter|data|1|gold-c": {
+  "mission": "03a4b7bf03f85596",
+  "art": "1826a5a510fed20e"
+ },
+ "v2|class-3|chapter|reasoning|1|gold-c": {
+  "mission": "15ef08168a69bc6d",
+  "art": "084fc0b987b6d059"
+ },
+ "v2|class-3|mixed|-|1|gold-c": {
+  "mission": "15425c1b979e4160",
+  "art": "dc467e6697a82c11"
+ },
+ "v2|class-3|paper|-|1|gold-c": {
+  "mission": "5fc969d25fe0a49f",
+  "art": "851ca52ee563efe9"
+ },
+ "v2|class-3|chapter|numbers|2|gold-a": {
+  "mission": "4aee19031596be6b",
+  "art": "fc7a86014b8f2202"
+ },
+ "v2|class-3|chapter|operations|2|gold-a": {
+  "mission": "bc6b15ed27a37c1c",
+  "art": "35d40dfde56a5f63"
+ },
+ "v2|class-3|chapter|fractions|2|gold-a": {
+  "mission": "4d29ea28da049db1",
+  "art": "3c891da5248423be"
+ },
+ "v2|class-3|chapter|geometry|2|gold-a": {
+  "mission": "cb946fc2dcf9787a",
+  "art": "917608180c56e15f"
+ },
+ "v2|class-3|chapter|measurement|2|gold-a": {
+  "mission": "bd7b3b0697db438b",
+  "art": "a172db6ad77a4d66"
+ },
+ "v2|class-3|chapter|time|2|gold-a": {
+  "mission": "4824beb44d7d45a7",
+  "art": "f5854215453ad928"
+ },
+ "v2|class-3|chapter|money|2|gold-a": {
+  "mission": "cbef483a7469915c",
+  "art": "1b81a1c2fa37611e"
+ },
+ "v2|class-3|chapter|data|2|gold-a": {
+  "mission": "9a4208bfef9e2656",
+  "art": "a98e039e711eb1c7"
+ },
+ "v2|class-3|chapter|reasoning|2|gold-a": {
+  "mission": "74f41ed5b00ac369",
+  "art": "21890d5426146a59"
+ },
+ "v2|class-3|mixed|-|2|gold-a": {
+  "mission": "9ad93aa734a53855",
+  "art": "1b09a38050601f31"
+ },
+ "v2|class-3|paper|-|2|gold-a": {
+  "mission": "664bcd57f54e6684",
+  "art": "9e8a93a664649886"
+ },
+ "v2|class-3|chapter|numbers|2|gold-b": {
+  "mission": "49500c6b4734389f",
+  "art": "0a6e632ea6646545"
+ },
+ "v2|class-3|chapter|operations|2|gold-b": {
+  "mission": "c80a89069e538f3f",
+  "art": "3ec67656eae7ce20"
+ },
+ "v2|class-3|chapter|fractions|2|gold-b": {
+  "mission": "78200a2766d995cf",
+  "art": "4a89d46d73d70871"
+ },
+ "v2|class-3|chapter|geometry|2|gold-b": {
+  "mission": "615b48aa0f7124a5",
+  "art": "da814165c676698a"
+ },
+ "v2|class-3|chapter|measurement|2|gold-b": {
+  "mission": "d4f3db970b0d67ba",
+  "art": "b80c333c9ec35c28"
+ },
+ "v2|class-3|chapter|time|2|gold-b": {
+  "mission": "56883819b78e4bbd",
+  "art": "6e4803df555126c6"
+ },
+ "v2|class-3|chapter|money|2|gold-b": {
+  "mission": "7241365833891a0e",
+  "art": "900ec3c3fe33bb4a"
+ },
+ "v2|class-3|chapter|data|2|gold-b": {
+  "mission": "d04fb383ec6a07f8",
+  "art": "97f80fcf278e15a0"
+ },
+ "v2|class-3|chapter|reasoning|2|gold-b": {
+  "mission": "7b2a448a3382521d",
+  "art": "eca07110dc08e56f"
+ },
+ "v2|class-3|mixed|-|2|gold-b": {
+  "mission": "4b94242db5fad256",
+  "art": "34a4319b915ea8bc"
+ },
+ "v2|class-3|paper|-|2|gold-b": {
+  "mission": "50765059f896cc71",
+  "art": "220889f85d066084"
+ },
+ "v2|class-3|chapter|numbers|2|gold-c": {
+  "mission": "778c6a8d16acd22c",
+  "art": "43ac602241bd8a30"
+ },
+ "v2|class-3|chapter|operations|2|gold-c": {
+  "mission": "df3e79c6b47077f5",
+  "art": "f4dbd293a5aa4d25"
+ },
+ "v2|class-3|chapter|fractions|2|gold-c": {
+  "mission": "be9e7bd751d1f8cb",
+  "art": "d0cd9fe135b94adc"
+ },
+ "v2|class-3|chapter|geometry|2|gold-c": {
+  "mission": "640eec8f6861f7a7",
+  "art": "f408f2ba299296fc"
+ },
+ "v2|class-3|chapter|measurement|2|gold-c": {
+  "mission": "aa264ba706cb5c9e",
+  "art": "009ec26712c2f036"
+ },
+ "v2|class-3|chapter|time|2|gold-c": {
+  "mission": "a1ef5b2c38a521e8",
+  "art": "ac07b4aa628d8c6a"
+ },
+ "v2|class-3|chapter|money|2|gold-c": {
+  "mission": "39ef59e67b97c5c7",
+  "art": "b826860df42cabbf"
+ },
+ "v2|class-3|chapter|data|2|gold-c": {
+  "mission": "a3c41b62619b5bf5",
+  "art": "6970d24729bbe0b6"
+ },
+ "v2|class-3|chapter|reasoning|2|gold-c": {
+  "mission": "f309ee3efd2387a9",
+  "art": "ecba86f4b10c96b3"
+ },
+ "v2|class-3|mixed|-|2|gold-c": {
+  "mission": "2a8d0e8375f07756",
+  "art": "fe2ea8821d5c6973"
+ },
+ "v2|class-3|paper|-|2|gold-c": {
+  "mission": "f74c6ff4802bd959",
+  "art": "38ffcadd83696b67"
+ },
+ "v2|class-3|chapter|numbers|3|gold-a": {
+  "mission": "37a11d2d7b35054d",
+  "art": "38e61fe2bda96d5d"
+ },
+ "v2|class-3|chapter|operations|3|gold-a": {
+  "mission": "6c03738510c93028",
+  "art": "fa363d1de9ec2a25"
+ },
+ "v2|class-3|chapter|fractions|3|gold-a": {
+  "mission": "5d0ff40037e2e436",
+  "art": "d3b5a2ab2c12e4e2"
+ },
+ "v2|class-3|chapter|geometry|3|gold-a": {
+  "mission": "30c7e11a78acd97c",
+  "art": "e8ff1299da8593e6"
+ },
+ "v2|class-3|chapter|measurement|3|gold-a": {
+  "mission": "13c3a2e3938cfec9",
+  "art": "cca937a06000d335"
+ },
+ "v2|class-3|chapter|time|3|gold-a": {
+  "mission": "21f323c78e8feef8",
+  "art": "de7ab50a84e3c870"
+ },
+ "v2|class-3|chapter|money|3|gold-a": {
+  "mission": "50d2217666c2faf1",
+  "art": "485bbc4184abd613"
+ },
+ "v2|class-3|chapter|data|3|gold-a": {
+  "mission": "c7d99f080646ac37",
+  "art": "54cc435342fdec32"
+ },
+ "v2|class-3|chapter|reasoning|3|gold-a": {
+  "mission": "f039040be0fc8ebd",
+  "art": "8fbd479990878942"
+ },
+ "v2|class-3|mixed|-|3|gold-a": {
+  "mission": "98667a36c38fa316",
+  "art": "90af5f172d31790a"
+ },
+ "v2|class-3|paper|-|3|gold-a": {
+  "mission": "c2b4ae0a6479a2cb",
+  "art": "89681b48bc2f2115"
+ },
+ "v2|class-3|chapter|numbers|3|gold-b": {
+  "mission": "fa87823f197eb3b9",
+  "art": "d18b7923dd688482"
+ },
+ "v2|class-3|chapter|operations|3|gold-b": {
+  "mission": "40cac3675ae56670",
+  "art": "682099800becbce7"
+ },
+ "v2|class-3|chapter|fractions|3|gold-b": {
+  "mission": "06ec982e3261f9e7",
+  "art": "b83ce6350218d04c"
+ },
+ "v2|class-3|chapter|geometry|3|gold-b": {
+  "mission": "c281777db59a1228",
+  "art": "8e766042d16d7088"
+ },
+ "v2|class-3|chapter|measurement|3|gold-b": {
+  "mission": "bb233b3b66dd869a",
+  "art": "7482ac530b9ce3aa"
+ },
+ "v2|class-3|chapter|time|3|gold-b": {
+  "mission": "5ee107aa4481e272",
+  "art": "b559a3582099b252"
+ },
+ "v2|class-3|chapter|money|3|gold-b": {
+  "mission": "1570aa65a93e3b9d",
+  "art": "d6527d53b5170b30"
+ },
+ "v2|class-3|chapter|data|3|gold-b": {
+  "mission": "525461d834b82404",
+  "art": "7ed792a1e51eb23b"
+ },
+ "v2|class-3|chapter|reasoning|3|gold-b": {
+  "mission": "c4903b32f58bc588",
+  "art": "12163e64f1edcf41"
+ },
+ "v2|class-3|mixed|-|3|gold-b": {
+  "mission": "8540a3324c5549e0",
+  "art": "4d8bf441d1c18c1c"
+ },
+ "v2|class-3|paper|-|3|gold-b": {
+  "mission": "8502584bf857c1ed",
+  "art": "4bda413398f2ce89"
+ },
+ "v2|class-3|chapter|numbers|3|gold-c": {
+  "mission": "63b11ac2fec68e7f",
+  "art": "7cb83dbb0cb378e1"
+ },
+ "v2|class-3|chapter|operations|3|gold-c": {
+  "mission": "01241d0be69167a6",
+  "art": "8aa02e9fda463747"
+ },
+ "v2|class-3|chapter|fractions|3|gold-c": {
+  "mission": "f396472747079a4c",
+  "art": "08bdf77aca3fef13"
+ },
+ "v2|class-3|chapter|geometry|3|gold-c": {
+  "mission": "746e7037c7285c6f",
+  "art": "084fa070a4a9271d"
+ },
+ "v2|class-3|chapter|measurement|3|gold-c": {
+  "mission": "07f144a2aca1c707",
+  "art": "f216794911f448bc"
+ },
+ "v2|class-3|chapter|time|3|gold-c": {
+  "mission": "7a62fc0925a400b8",
+  "art": "96075fe22947ae5e"
+ },
+ "v2|class-3|chapter|money|3|gold-c": {
+  "mission": "3f6f514382a5af9b",
+  "art": "c2c8e3db738552b1"
+ },
+ "v2|class-3|chapter|data|3|gold-c": {
+  "mission": "cf2e3d292cf4b7be",
+  "art": "487a3ab70ecacbd5"
+ },
+ "v2|class-3|chapter|reasoning|3|gold-c": {
+  "mission": "97d5b15bd8e28913",
+  "art": "9278b46054202fb2"
+ },
+ "v2|class-3|mixed|-|3|gold-c": {
+  "mission": "5a85816c076b8355",
+  "art": "a156f69dc55b65d1"
+ },
+ "v2|class-3|paper|-|3|gold-c": {
+  "mission": "78ddf976a956f5db",
+  "art": "e693ef535ff58d6c"
+ },
+ "v2|class-4|chapter|numbers|1|gold-a": {
+  "mission": "3b6e493d153e44b6",
+  "art": "44fb1e70f8c244ca"
+ },
+ "v2|class-4|chapter|operations|1|gold-a": {
+  "mission": "42d26590a8e2c98a",
+  "art": "3d1df0a5bf9de07f"
+ },
+ "v2|class-4|chapter|fractions|1|gold-a": {
+  "mission": "f0dcec1b337373bf",
+  "art": "3760a0db33b0afe9"
+ },
+ "v2|class-4|chapter|geometry|1|gold-a": {
+  "mission": "41d726c7d7ee57a0",
+  "art": "6c7ae5f28c3e27a9"
+ },
+ "v2|class-4|chapter|measurement|1|gold-a": {
+  "mission": "3cf761b8e6e4376d",
+  "art": "0ebed0b2b4622684"
+ },
+ "v2|class-4|chapter|time|1|gold-a": {
+  "mission": "00767a06cb6699d5",
+  "art": "f42b7d5dce124519"
+ },
+ "v2|class-4|chapter|money|1|gold-a": {
+  "mission": "db7c05bde98b47bc",
+  "art": "63d51b39b405113d"
+ },
+ "v2|class-4|chapter|data|1|gold-a": {
+  "mission": "648cc5d11fac7f86",
+  "art": "1cab1fb8d06dbad4"
+ },
+ "v2|class-4|chapter|reasoning|1|gold-a": {
+  "mission": "34e1443b628e8126",
+  "art": "3517a4f5b9be975a"
+ },
+ "v2|class-4|mixed|-|1|gold-a": {
+  "mission": "14b10f55b07a3144",
+  "art": "b78f19cca8a527d2"
+ },
+ "v2|class-4|paper|-|1|gold-a": {
+  "mission": "d9dfc6c0829f9d0b",
+  "art": "616feb5fc4086514"
+ },
+ "v2|class-4|chapter|numbers|1|gold-b": {
+  "mission": "9a7efc84468a2978",
+  "art": "7f63f0b2fb7e4e2d"
+ },
+ "v2|class-4|chapter|operations|1|gold-b": {
+  "mission": "83e334fbe06683da",
+  "art": "3babebe0c8489dd1"
+ },
+ "v2|class-4|chapter|fractions|1|gold-b": {
+  "mission": "e4fc911c2708e770",
+  "art": "6d6682c170fefc28"
+ },
+ "v2|class-4|chapter|geometry|1|gold-b": {
+  "mission": "7c7b789f7dcad40c",
+  "art": "5e1fcf1163e04565"
+ },
+ "v2|class-4|chapter|measurement|1|gold-b": {
+  "mission": "10353c91e777d44a",
+  "art": "607e740da5cbb83e"
+ },
+ "v2|class-4|chapter|time|1|gold-b": {
+  "mission": "44f8af925ce9638d",
+  "art": "b309b5fbdbe3fb7b"
+ },
+ "v2|class-4|chapter|money|1|gold-b": {
+  "mission": "f97a7a90eaadae51",
+  "art": "91adb47808e5af3f"
+ },
+ "v2|class-4|chapter|data|1|gold-b": {
+  "mission": "078c468487c2ca81",
+  "art": "b55370c2261b1dcf"
+ },
+ "v2|class-4|chapter|reasoning|1|gold-b": {
+  "mission": "3255c9e89da727ac",
+  "art": "a2284ef732042271"
+ },
+ "v2|class-4|mixed|-|1|gold-b": {
+  "mission": "54723011574671a2",
+  "art": "2e70f18c4cfbafba"
+ },
+ "v2|class-4|paper|-|1|gold-b": {
+  "mission": "f430bc4f420be8f0",
+  "art": "9a80f54ef6900d27"
+ },
+ "v2|class-4|chapter|numbers|1|gold-c": {
+  "mission": "658468527161079f",
+  "art": "e3a6a941c82a47ec"
+ },
+ "v2|class-4|chapter|operations|1|gold-c": {
+  "mission": "3062ec38c39713b7",
+  "art": "fc7a456800e16542"
+ },
+ "v2|class-4|chapter|fractions|1|gold-c": {
+  "mission": "022722b54bde783c",
+  "art": "65a7a8e4f5c269ad"
+ },
+ "v2|class-4|chapter|geometry|1|gold-c": {
+  "mission": "7b589b9f206b54d7",
+  "art": "befc865675a0cc2b"
+ },
+ "v2|class-4|chapter|measurement|1|gold-c": {
+  "mission": "9c9606b69cb36316",
+  "art": "926004b6396b0d34"
+ },
+ "v2|class-4|chapter|time|1|gold-c": {
+  "mission": "625bd1cbacfdc8dd",
+  "art": "24469ac435fd2a7b"
+ },
+ "v2|class-4|chapter|money|1|gold-c": {
+  "mission": "57bd7301a17362d8",
+  "art": "5abbc479ca01e0c2"
+ },
+ "v2|class-4|chapter|data|1|gold-c": {
+  "mission": "06cc71ad733423c6",
+  "art": "09a6d638436809aa"
+ },
+ "v2|class-4|chapter|reasoning|1|gold-c": {
+  "mission": "2ff78497ca047eee",
+  "art": "03c345921a55f587"
+ },
+ "v2|class-4|mixed|-|1|gold-c": {
+  "mission": "af82c6950e555b82",
+  "art": "d850c43f0250f90f"
+ },
+ "v2|class-4|paper|-|1|gold-c": {
+  "mission": "81d04b12169bdd94",
+  "art": "ba4f1850adf5ae76"
+ },
+ "v2|class-4|chapter|numbers|2|gold-a": {
+  "mission": "cabab1cf2c46e217",
+  "art": "5ffc5a2af89de1a1"
+ },
+ "v2|class-4|chapter|operations|2|gold-a": {
+  "mission": "8d42f95564929fe3",
+  "art": "6d92e51ed4d39791"
+ },
+ "v2|class-4|chapter|fractions|2|gold-a": {
+  "mission": "abe7fe09e6261f87",
+  "art": "bb05d07762704588"
+ },
+ "v2|class-4|chapter|geometry|2|gold-a": {
+  "mission": "47cd794c4625c4ac",
+  "art": "a352880b2c70372a"
+ },
+ "v2|class-4|chapter|measurement|2|gold-a": {
+  "mission": "1aeb90ecba7cbf6e",
+  "art": "a31637828ac62fa5"
+ },
+ "v2|class-4|chapter|time|2|gold-a": {
+  "mission": "08b7010b5eeb1190",
+  "art": "07a5ce03b5a00bd0"
+ },
+ "v2|class-4|chapter|money|2|gold-a": {
+  "mission": "a8e032d484096943",
+  "art": "da087471404735d4"
+ },
+ "v2|class-4|chapter|data|2|gold-a": {
+  "mission": "6275b1dcea50adbc",
+  "art": "19d729f54b573bea"
+ },
+ "v2|class-4|chapter|reasoning|2|gold-a": {
+  "mission": "9c20b5cb0da3ec41",
+  "art": "362710bd396d1e39"
+ },
+ "v2|class-4|mixed|-|2|gold-a": {
+  "mission": "eaab4141a9eced35",
+  "art": "28c56284780efbec"
+ },
+ "v2|class-4|paper|-|2|gold-a": {
+  "mission": "f669c2d97c8cb9d2",
+  "art": "f4146598a2dbfecc"
+ },
+ "v2|class-4|chapter|numbers|2|gold-b": {
+  "mission": "c83615567ee0fc1b",
+  "art": "3882aae2c7b2cbfb"
+ },
+ "v2|class-4|chapter|operations|2|gold-b": {
+  "mission": "05aa7b7a308f0846",
+  "art": "80d327e018a1c3d7"
+ },
+ "v2|class-4|chapter|fractions|2|gold-b": {
+  "mission": "c4b3f2285d41318a",
+  "art": "8ad31bd2a1baf72e"
+ },
+ "v2|class-4|chapter|geometry|2|gold-b": {
+  "mission": "a7feda4814fe9151",
+  "art": "0feb9bfb91bbac19"
+ },
+ "v2|class-4|chapter|measurement|2|gold-b": {
+  "mission": "b9b5365457168a8f",
+  "art": "53ff3f88c4e7a88d"
+ },
+ "v2|class-4|chapter|time|2|gold-b": {
+  "mission": "1d345bc7e4cec9eb",
+  "art": "00a1d71c81fcd706"
+ },
+ "v2|class-4|chapter|money|2|gold-b": {
+  "mission": "9de2841c24d7e74d",
+  "art": "691bfe64ce2d877e"
+ },
+ "v2|class-4|chapter|data|2|gold-b": {
+  "mission": "5f1a9dc9ae539b55",
+  "art": "85970c74e3e1a9cf"
+ },
+ "v2|class-4|chapter|reasoning|2|gold-b": {
+  "mission": "09c3a0a1b74a1eb7",
+  "art": "f62191319cdacfd6"
+ },
+ "v2|class-4|mixed|-|2|gold-b": {
+  "mission": "316edff29789505d",
+  "art": "5d2bd1f16f464c5c"
+ },
+ "v2|class-4|paper|-|2|gold-b": {
+  "mission": "ce90a59e03e250d8",
+  "art": "ed9d0bfe48b3d31a"
+ },
+ "v2|class-4|chapter|numbers|2|gold-c": {
+  "mission": "4b6adad4a6604213",
+  "art": "491f3c704196af19"
+ },
+ "v2|class-4|chapter|operations|2|gold-c": {
+  "mission": "ee0216458e26c3c7",
+  "art": "c7fba53326f88ec2"
+ },
+ "v2|class-4|chapter|fractions|2|gold-c": {
+  "mission": "ceb49e0078452605",
+  "art": "e0ac2a020b85b381"
+ },
+ "v2|class-4|chapter|geometry|2|gold-c": {
+  "mission": "661efb4799e3e1ef",
+  "art": "87610e6f9c9508b5"
+ },
+ "v2|class-4|chapter|measurement|2|gold-c": {
+  "mission": "d6adf4ad8066d5c7",
+  "art": "6759f22ae5285023"
+ },
+ "v2|class-4|chapter|time|2|gold-c": {
+  "mission": "7e067523d026fbaa",
+  "art": "0af7148be4972426"
+ },
+ "v2|class-4|chapter|money|2|gold-c": {
+  "mission": "dcff7ba0121d091c",
+  "art": "b9c405a52698ab9e"
+ },
+ "v2|class-4|chapter|data|2|gold-c": {
+  "mission": "6126f65647e9a414",
+  "art": "b1e2740a6635a201"
+ },
+ "v2|class-4|chapter|reasoning|2|gold-c": {
+  "mission": "2a4937a2bdbdfcd6",
+  "art": "e3d72e949bc82a3b"
+ },
+ "v2|class-4|mixed|-|2|gold-c": {
+  "mission": "e61bd62c6ed5a75b",
+  "art": "e436309e0b17a7f5"
+ },
+ "v2|class-4|paper|-|2|gold-c": {
+  "mission": "18ba5613a1d58425",
+  "art": "8394a9954fc187a6"
+ },
+ "v2|class-4|chapter|numbers|3|gold-a": {
+  "mission": "ee47dd591d71a8e0",
+  "art": "b50805f09f2a4595"
+ },
+ "v2|class-4|chapter|operations|3|gold-a": {
+  "mission": "9569265d74ed8640",
+  "art": "0dbf39ef57939159"
+ },
+ "v2|class-4|chapter|fractions|3|gold-a": {
+  "mission": "c92a3d1a8cc49016",
+  "art": "dd58641a5c38aa08"
+ },
+ "v2|class-4|chapter|geometry|3|gold-a": {
+  "mission": "602db9635c180b61",
+  "art": "950f623e9ad88594"
+ },
+ "v2|class-4|chapter|measurement|3|gold-a": {
+  "mission": "e3da427b771e695e",
+  "art": "c8d06db6a1b025a4"
+ },
+ "v2|class-4|chapter|time|3|gold-a": {
+  "mission": "0f669505f36c56b8",
+  "art": "ff8a300a709abdab"
+ },
+ "v2|class-4|chapter|money|3|gold-a": {
+  "mission": "bd84ef728824fe13",
+  "art": "697f4451be655e71"
+ },
+ "v2|class-4|chapter|data|3|gold-a": {
+  "mission": "c66edb30cf092fe8",
+  "art": "b5c68d3f90ebe3b7"
+ },
+ "v2|class-4|chapter|reasoning|3|gold-a": {
+  "mission": "9d36d626830161cb",
+  "art": "0f28885e7df685fb"
+ },
+ "v2|class-4|mixed|-|3|gold-a": {
+  "mission": "14849bde97004c8b",
+  "art": "ad93ac46a1e05cde"
+ },
+ "v2|class-4|paper|-|3|gold-a": {
+  "mission": "e0ccd6b9c1f0a1cb",
+  "art": "ca247c32d16db503"
+ },
+ "v2|class-4|chapter|numbers|3|gold-b": {
+  "mission": "2955dcf6926e6806",
+  "art": "8db3d55a59067a06"
+ },
+ "v2|class-4|chapter|operations|3|gold-b": {
+  "mission": "379b416bccdec0c9",
+  "art": "7313257bbfdab841"
+ },
+ "v2|class-4|chapter|fractions|3|gold-b": {
+  "mission": "f8590487b58fc392",
+  "art": "50d0aa3b66176259"
+ },
+ "v2|class-4|chapter|geometry|3|gold-b": {
+  "mission": "c2e5816af5bb63dc",
+  "art": "4d85f9c41d6419d9"
+ },
+ "v2|class-4|chapter|measurement|3|gold-b": {
+  "mission": "1c892514db351d65",
+  "art": "ec7a95446904730a"
+ },
+ "v2|class-4|chapter|time|3|gold-b": {
+  "mission": "9db5e8395e2ab790",
+  "art": "02b93abae93f193c"
+ },
+ "v2|class-4|chapter|money|3|gold-b": {
+  "mission": "f12ff113cb9d7b99",
+  "art": "67ac265014f5dd82"
+ },
+ "v2|class-4|chapter|data|3|gold-b": {
+  "mission": "2fcb2ebf59b44cd3",
+  "art": "b203bdb94a956c4e"
+ },
+ "v2|class-4|chapter|reasoning|3|gold-b": {
+  "mission": "80c4f5c1838c9783",
+  "art": "e300805eb4a75009"
+ },
+ "v2|class-4|mixed|-|3|gold-b": {
+  "mission": "c47c5f4cbbb41e60",
+  "art": "a7731d1c639f98f5"
+ },
+ "v2|class-4|paper|-|3|gold-b": {
+  "mission": "fde6073d9a7f58ce",
+  "art": "2b2c1beda87b0bb5"
+ },
+ "v2|class-4|chapter|numbers|3|gold-c": {
+  "mission": "d04f80dcc3e90929",
+  "art": "7c42df950912de79"
+ },
+ "v2|class-4|chapter|operations|3|gold-c": {
+  "mission": "c03d942a3ddbcafd",
+  "art": "4050dd5da4581f3f"
+ },
+ "v2|class-4|chapter|fractions|3|gold-c": {
+  "mission": "e0daa4b9e062ed60",
+  "art": "85a1dcfbae2211bd"
+ },
+ "v2|class-4|chapter|geometry|3|gold-c": {
+  "mission": "0658f3415d3d9fb0",
+  "art": "0720ee9480066a36"
+ },
+ "v2|class-4|chapter|measurement|3|gold-c": {
+  "mission": "ca49ecf45209e860",
+  "art": "ad6f45d929c3f605"
+ },
+ "v2|class-4|chapter|time|3|gold-c": {
+  "mission": "235099560def5731",
+  "art": "d9454cc865d57bf9"
+ },
+ "v2|class-4|chapter|money|3|gold-c": {
+  "mission": "3d20472d3ef74fc3",
+  "art": "ca09d2a9a782bab7"
+ },
+ "v2|class-4|chapter|data|3|gold-c": {
+  "mission": "9d3ce32c0322befa",
+  "art": "c80939b94a42717c"
+ },
+ "v2|class-4|chapter|reasoning|3|gold-c": {
+  "mission": "d3326232c48a5b22",
+  "art": "7915dacffc954e35"
+ },
+ "v2|class-4|mixed|-|3|gold-c": {
+  "mission": "c0bea8108facbcc3",
+  "art": "47f1596c33734588"
+ },
+ "v2|class-4|paper|-|3|gold-c": {
+  "mission": "ea3ba045d108a25f",
+  "art": "3cfaa0f326746827"
+ },
+ "v2|class-5|chapter|numbers|1|gold-a": {
+  "mission": "4c63cdba7eb07240",
+  "art": "871a33a03322b9f1"
+ },
+ "v2|class-5|chapter|operations|1|gold-a": {
+  "mission": "4c37c1ef5b615c8c",
+  "art": "4bdf7051d1248c7f"
+ },
+ "v2|class-5|chapter|fractions|1|gold-a": {
+  "mission": "d1f2cc65e194dceb",
+  "art": "307c2245d8b13c5c"
+ },
+ "v2|class-5|chapter|decimals|1|gold-a": {
+  "mission": "7872db2f370e8099",
+  "art": "919ca0d3dd14ff62"
+ },
+ "v2|class-5|chapter|geometry|1|gold-a": {
+  "mission": "461ac0009a43f0c3",
+  "art": "3f4965aaf474ad57"
+ },
+ "v2|class-5|chapter|measurement|1|gold-a": {
+  "mission": "f291c59f49c8e163",
+  "art": "e1aa3a8cb6f75486"
+ },
+ "v2|class-5|chapter|time|1|gold-a": {
+  "mission": "0512205d98ed7e4a",
+  "art": "430a49c3d6384a8a"
+ },
+ "v2|class-5|chapter|money|1|gold-a": {
+  "mission": "82c8228d223ec701",
+  "art": "c15aa75caf169910"
+ },
+ "v2|class-5|chapter|data|1|gold-a": {
+  "mission": "a9864e638ca6e41a",
+  "art": "06252884ae9a4ca4"
+ },
+ "v2|class-5|chapter|reasoning|1|gold-a": {
+  "mission": "ae2504d7fbb63823",
+  "art": "5066e2b8bf5d69a2"
+ },
+ "v2|class-5|mixed|-|1|gold-a": {
+  "mission": "37ce116ada5257f5",
+  "art": "7fd882f68f42c0ea"
+ },
+ "v2|class-5|paper|-|1|gold-a": {
+  "mission": "4c9a850009d77f91",
+  "art": "edbf4849c7dd060a"
+ },
+ "v2|class-5|chapter|numbers|1|gold-b": {
+  "mission": "1497a52093e20dea",
+  "art": "c7bf3e8e6c57e141"
+ },
+ "v2|class-5|chapter|operations|1|gold-b": {
+  "mission": "f1c8055563ce32fe",
+  "art": "7376c57e330dea69"
+ },
+ "v2|class-5|chapter|fractions|1|gold-b": {
+  "mission": "2e74dccc0205c75b",
+  "art": "cbdfa2a8e033ce0f"
+ },
+ "v2|class-5|chapter|decimals|1|gold-b": {
+  "mission": "2522aabc5c0214f5",
+  "art": "6c26d5d0bd11695a"
+ },
+ "v2|class-5|chapter|geometry|1|gold-b": {
+  "mission": "459325987b0619ea",
+  "art": "5edd34e432c9f681"
+ },
+ "v2|class-5|chapter|measurement|1|gold-b": {
+  "mission": "b70b8638f844fbdd",
+  "art": "2454c65cd7f19979"
+ },
+ "v2|class-5|chapter|time|1|gold-b": {
+  "mission": "b928fc84a72586f8",
+  "art": "eb682d454de0148e"
+ },
+ "v2|class-5|chapter|money|1|gold-b": {
+  "mission": "343fd1c4bb94f2c0",
+  "art": "b00376a5c256bc75"
+ },
+ "v2|class-5|chapter|data|1|gold-b": {
+  "mission": "12dabab27cd8b17d",
+  "art": "635c43614d136afb"
+ },
+ "v2|class-5|chapter|reasoning|1|gold-b": {
+  "mission": "fab0d5295b5be02a",
+  "art": "0917d172636aef34"
+ },
+ "v2|class-5|mixed|-|1|gold-b": {
+  "mission": "c08da297c9bbc35f",
+  "art": "b9291ce3dbd73c4d"
+ },
+ "v2|class-5|paper|-|1|gold-b": {
+  "mission": "fbd4c3c6065cd9e7",
+  "art": "503b72f55846ec0a"
+ },
+ "v2|class-5|chapter|numbers|1|gold-c": {
+  "mission": "c40a21f667305ee7",
+  "art": "be9edc52376a386f"
+ },
+ "v2|class-5|chapter|operations|1|gold-c": {
+  "mission": "d2c6b6ac7b68ce4a",
+  "art": "0c73abe7de92e875"
+ },
+ "v2|class-5|chapter|fractions|1|gold-c": {
+  "mission": "e07566cf387a370f",
+  "art": "779a5978c10e874f"
+ },
+ "v2|class-5|chapter|decimals|1|gold-c": {
+  "mission": "9b6c3daaa2399a8b",
+  "art": "a7a9915000a9c35a"
+ },
+ "v2|class-5|chapter|geometry|1|gold-c": {
+  "mission": "67c9ded99cab45cd",
+  "art": "14daf62137253812"
+ },
+ "v2|class-5|chapter|measurement|1|gold-c": {
+  "mission": "abea2927ff7aba7d",
+  "art": "0ba763045e9e3867"
+ },
+ "v2|class-5|chapter|time|1|gold-c": {
+  "mission": "7c5f6d377d3f0a75",
+  "art": "f9ec197a4a9d629d"
+ },
+ "v2|class-5|chapter|money|1|gold-c": {
+  "mission": "2c57d387f0386f98",
+  "art": "38934ebdfd53d623"
+ },
+ "v2|class-5|chapter|data|1|gold-c": {
+  "mission": "8d8fe34d50597dce",
+  "art": "0d0d29b2315fc5d0"
+ },
+ "v2|class-5|chapter|reasoning|1|gold-c": {
+  "mission": "e394a25531f45b76",
+  "art": "80b2be0c0151f691"
+ },
+ "v2|class-5|mixed|-|1|gold-c": {
+  "mission": "54e4e8c61b56ce3d",
+  "art": "eb8d4cb922c7455e"
+ },
+ "v2|class-5|paper|-|1|gold-c": {
+  "mission": "433a2d29aad0d68f",
+  "art": "43fbb4ec9255eac3"
+ },
+ "v2|class-5|chapter|numbers|2|gold-a": {
+  "mission": "106cee22112c05c3",
+  "art": "280c4ae3a0204292"
+ },
+ "v2|class-5|chapter|operations|2|gold-a": {
+  "mission": "68b9be2bb41ea4ab",
+  "art": "0c9f98e4a6ac24e1"
+ },
+ "v2|class-5|chapter|fractions|2|gold-a": {
+  "mission": "9571d2c0461de407",
+  "art": "52770d87d6834483"
+ },
+ "v2|class-5|chapter|decimals|2|gold-a": {
+  "mission": "a4339558bb8b6953",
+  "art": "c04b4e06cfa0f92b"
+ },
+ "v2|class-5|chapter|geometry|2|gold-a": {
+  "mission": "c8d2da426c857333",
+  "art": "feb7ef813c54d7da"
+ },
+ "v2|class-5|chapter|measurement|2|gold-a": {
+  "mission": "e79ee81e9c8675b8",
+  "art": "6b62f3778b20afc4"
+ },
+ "v2|class-5|chapter|time|2|gold-a": {
+  "mission": "56e7e36cfe7e0183",
+  "art": "58aa489e069eda17"
+ },
+ "v2|class-5|chapter|money|2|gold-a": {
+  "mission": "1d2e84eb6d741559",
+  "art": "9e50047b21f97f69"
+ },
+ "v2|class-5|chapter|data|2|gold-a": {
+  "mission": "f2142625880e7848",
+  "art": "3db6ad877a06356c"
+ },
+ "v2|class-5|chapter|reasoning|2|gold-a": {
+  "mission": "c72e7261b5339fb2",
+  "art": "5d7fd12ab3f3c4df"
+ },
+ "v2|class-5|mixed|-|2|gold-a": {
+  "mission": "8eedc8484767df93",
+  "art": "f24c8553c57216f8"
+ },
+ "v2|class-5|paper|-|2|gold-a": {
+  "mission": "37d79952792332d2",
+  "art": "75ad7fd829545d3e"
+ },
+ "v2|class-5|chapter|numbers|2|gold-b": {
+  "mission": "0dfdfd30d1c87ee1",
+  "art": "4970af2eecb85834"
+ },
+ "v2|class-5|chapter|operations|2|gold-b": {
+  "mission": "cc089877576a02f1",
+  "art": "97baea6350106c5a"
+ },
+ "v2|class-5|chapter|fractions|2|gold-b": {
+  "mission": "94ebb467f7eec4b7",
+  "art": "aa2eda42003b35c9"
+ },
+ "v2|class-5|chapter|decimals|2|gold-b": {
+  "mission": "c86871d36c46670c",
+  "art": "0e46d0fd50fd889f"
+ },
+ "v2|class-5|chapter|geometry|2|gold-b": {
+  "mission": "16fc84d2e5c6c7ea",
+  "art": "4bc43b51f771888e"
+ },
+ "v2|class-5|chapter|measurement|2|gold-b": {
+  "mission": "b5cb04dcfa5b5f2c",
+  "art": "35f4d2439a15e166"
+ },
+ "v2|class-5|chapter|time|2|gold-b": {
+  "mission": "9ebc242307401120",
+  "art": "f7f6e45ce70bbd93"
+ },
+ "v2|class-5|chapter|money|2|gold-b": {
+  "mission": "c4163a5b2a136350",
+  "art": "5187c856e191add3"
+ },
+ "v2|class-5|chapter|data|2|gold-b": {
+  "mission": "b7a53d27233f8167",
+  "art": "791665941bf688cf"
+ },
+ "v2|class-5|chapter|reasoning|2|gold-b": {
+  "mission": "f2fb278e72a799fc",
+  "art": "f09fe8a4cc9f6db6"
+ },
+ "v2|class-5|mixed|-|2|gold-b": {
+  "mission": "a60463151a9dd25e",
+  "art": "90b9da3aca7c4bcf"
+ },
+ "v2|class-5|paper|-|2|gold-b": {
+  "mission": "d75a0c5c50a3704b",
+  "art": "9187bdf3761191b0"
+ },
+ "v2|class-5|chapter|numbers|2|gold-c": {
+  "mission": "c6cdbf42e820d63d",
+  "art": "8d44def1f7d6fadc"
+ },
+ "v2|class-5|chapter|operations|2|gold-c": {
+  "mission": "068d487430cf0336",
+  "art": "184142d247a91762"
+ },
+ "v2|class-5|chapter|fractions|2|gold-c": {
+  "mission": "7a0f0271ce4356e8",
+  "art": "95075adb63d9cda8"
+ },
+ "v2|class-5|chapter|decimals|2|gold-c": {
+  "mission": "50bd5117d0e3eb92",
+  "art": "2352ddedaf2fb28f"
+ },
+ "v2|class-5|chapter|geometry|2|gold-c": {
+  "mission": "d6152ee2c833e97d",
+  "art": "eef047efa1e9fc07"
+ },
+ "v2|class-5|chapter|measurement|2|gold-c": {
+  "mission": "3364a22beea2763c",
+  "art": "a4ab4846cd55e747"
+ },
+ "v2|class-5|chapter|time|2|gold-c": {
+  "mission": "f83f5cd765f9ab17",
+  "art": "b16dd4e4001dc310"
+ },
+ "v2|class-5|chapter|money|2|gold-c": {
+  "mission": "55a5b5993ec337fd",
+  "art": "363779c64102287d"
+ },
+ "v2|class-5|chapter|data|2|gold-c": {
+  "mission": "201e69051a0d9200",
+  "art": "76a189990892669e"
+ },
+ "v2|class-5|chapter|reasoning|2|gold-c": {
+  "mission": "a2589a6e721c1eda",
+  "art": "528b9fcbc5a672ed"
+ },
+ "v2|class-5|mixed|-|2|gold-c": {
+  "mission": "138fc19e75bf62cd",
+  "art": "b098355841721665"
+ },
+ "v2|class-5|paper|-|2|gold-c": {
+  "mission": "4f4caafc8950c32b",
+  "art": "d6122659beeac7d5"
+ },
+ "v2|class-5|chapter|numbers|3|gold-a": {
+  "mission": "3f69cf75931b056d",
+  "art": "aa5c1dc8423102ef"
+ },
+ "v2|class-5|chapter|operations|3|gold-a": {
+  "mission": "76e5f0b42c4b0179",
+  "art": "2b6bddd8eb3bb4ff"
+ },
+ "v2|class-5|chapter|fractions|3|gold-a": {
+  "mission": "24243a97e051614b",
+  "art": "73a7233f38eb402a"
+ },
+ "v2|class-5|chapter|decimals|3|gold-a": {
+  "mission": "fa27a3e73a954a2d",
+  "art": "756d10f5218405ab"
+ },
+ "v2|class-5|chapter|geometry|3|gold-a": {
+  "mission": "3d92513ff4bfec3c",
+  "art": "28921ee7447813af"
+ },
+ "v2|class-5|chapter|measurement|3|gold-a": {
+  "mission": "5fc2e4a20fd93a99",
+  "art": "2eeaeeb92b58ae23"
+ },
+ "v2|class-5|chapter|time|3|gold-a": {
+  "mission": "c1b398d8034df99f",
+  "art": "1125cec748ffb516"
+ },
+ "v2|class-5|chapter|money|3|gold-a": {
+  "mission": "3c5989a1852a11ac",
+  "art": "ff86a9958b5855ff"
+ },
+ "v2|class-5|chapter|data|3|gold-a": {
+  "mission": "ab984a8afb7c67b5",
+  "art": "9d06b90b5a953413"
+ },
+ "v2|class-5|chapter|reasoning|3|gold-a": {
+  "mission": "413c72760ba45a4a",
+  "art": "fe87b6bbc3173313"
+ },
+ "v2|class-5|mixed|-|3|gold-a": {
+  "mission": "1d65d257ebefb43c",
+  "art": "3ab3d43529988677"
+ },
+ "v2|class-5|paper|-|3|gold-a": {
+  "mission": "7f434456f53988f4",
+  "art": "efa0e06a4f0a368e"
+ },
+ "v2|class-5|chapter|numbers|3|gold-b": {
+  "mission": "d58eab37cdd7f062",
+  "art": "39510510c8979e12"
+ },
+ "v2|class-5|chapter|operations|3|gold-b": {
+  "mission": "cb73aae8540bee81",
+  "art": "12a7b03cfb8aaeff"
+ },
+ "v2|class-5|chapter|fractions|3|gold-b": {
+  "mission": "f52ce73cd9e8d7b6",
+  "art": "90b753162d4ae411"
+ },
+ "v2|class-5|chapter|decimals|3|gold-b": {
+  "mission": "fef9162a52310eb9",
+  "art": "e4a925143df31792"
+ },
+ "v2|class-5|chapter|geometry|3|gold-b": {
+  "mission": "af38828655409901",
+  "art": "a0fbd6e6a9b6351c"
+ },
+ "v2|class-5|chapter|measurement|3|gold-b": {
+  "mission": "bbca05207193ddc3",
+  "art": "219fa9df77b155f6"
+ },
+ "v2|class-5|chapter|time|3|gold-b": {
+  "mission": "3e2d84a9ae13aca9",
+  "art": "23baa89ebee1685f"
+ },
+ "v2|class-5|chapter|money|3|gold-b": {
+  "mission": "088e99da2c7251b6",
+  "art": "ac1eb2cae96bbcae"
+ },
+ "v2|class-5|chapter|data|3|gold-b": {
+  "mission": "a7a3f57f679b77a3",
+  "art": "31dab49de48f5bae"
+ },
+ "v2|class-5|chapter|reasoning|3|gold-b": {
+  "mission": "efeec0633d87745d",
+  "art": "0920dc2b8c44ff2e"
+ },
+ "v2|class-5|mixed|-|3|gold-b": {
+  "mission": "b9d928c0fc39cd42",
+  "art": "0fe5091820d301e5"
+ },
+ "v2|class-5|paper|-|3|gold-b": {
+  "mission": "f513298c8ae83e64",
+  "art": "7f919088053e1568"
+ },
+ "v2|class-5|chapter|numbers|3|gold-c": {
+  "mission": "f600885c72fe00a2",
+  "art": "9b7160842b0f97f0"
+ },
+ "v2|class-5|chapter|operations|3|gold-c": {
+  "mission": "d4ca488febcb1e3b",
+  "art": "2071461e292a3e45"
+ },
+ "v2|class-5|chapter|fractions|3|gold-c": {
+  "mission": "110d216c94e7a13f",
+  "art": "2527a836130650d2"
+ },
+ "v2|class-5|chapter|decimals|3|gold-c": {
+  "mission": "638a29b24d2abade",
+  "art": "380eabcae3cd875e"
+ },
+ "v2|class-5|chapter|geometry|3|gold-c": {
+  "mission": "830f549364132f1f",
+  "art": "5de44aebe962fe95"
+ },
+ "v2|class-5|chapter|measurement|3|gold-c": {
+  "mission": "65525a0457b28980",
+  "art": "ba56a670f54b52ed"
+ },
+ "v2|class-5|chapter|time|3|gold-c": {
+  "mission": "1259ee1bb1d1bfbe",
+  "art": "3ae7e466fc3001d3"
+ },
+ "v2|class-5|chapter|money|3|gold-c": {
+  "mission": "5ce14e79399fc37e",
+  "art": "c2702ab6ed218508"
+ },
+ "v2|class-5|chapter|data|3|gold-c": {
+  "mission": "2d028f6fd8e7fbb3",
+  "art": "52cbc693f7b582c9"
+ },
+ "v2|class-5|chapter|reasoning|3|gold-c": {
+  "mission": "daf5dbdf44d5ae60",
+  "art": "d823c4043c118bf7"
+ },
+ "v2|class-5|mixed|-|3|gold-c": {
+  "mission": "114d7636f721698b",
+  "art": "41ade21d8888ce55"
+ },
+ "v2|class-5|paper|-|3|gold-c": {
+  "mission": "d4622d71f68e8a61",
+  "art": "ecef04916e7a82e8"
+ }
+}

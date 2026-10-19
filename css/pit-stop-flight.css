@@ -1,0 +1,272 @@
+/* Pit Stop flight: night-sky steering game. Orange (#ff6a28) is reserved for the target ring and its guide arrow. */
+.ps-flight {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 30%, #3b4468 0%, #2f3650 55%, #272d44 100%);
+  font-family: 'Patrick Hand', 'Segoe Print', cursive;
+  color: #fffdf8;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.ps-flight:focus-visible { box-shadow: inset 0 0 0 3px #fffdf8; }
+
+.ps-flight-stars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform;
+  pointer-events: none;
+}
+.ps-flight-stars-far {
+  width: calc(100% + 256px);
+  height: calc(100% + 256px);
+  background-size: 256px 256px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cg fill='%23fffdf8' fill-opacity='.55'%3E%3Ccircle cx='14' cy='30' r='1.5'/%3E%3Ccircle cx='70' cy='12' r='1.2'/%3E%3Ccircle cx='120' cy='64' r='1.6'/%3E%3Ccircle cx='200' cy='22' r='1.3'/%3E%3Ccircle cx='238' cy='96' r='1.5'/%3E%3Ccircle cx='40' cy='110' r='1.2'/%3E%3Ccircle cx='96' cy='150' r='1.5'/%3E%3Ccircle cx='166' cy='128' r='1.2'/%3E%3Ccircle cx='28' cy='198' r='1.6'/%3E%3Ccircle cx='140' cy='214' r='1.3'/%3E%3Ccircle cx='214' cy='180' r='1.5'/%3E%3Ccircle cx='188' cy='244' r='1.2'/%3E%3Ccircle cx='60' cy='244' r='1.3'/%3E%3C/g%3E%3C/svg%3E");
+}
+.ps-flight-stars-near {
+  width: calc(100% + 320px);
+  height: calc(100% + 320px);
+  background-size: 320px 320px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cg fill='%23fffdf8' fill-opacity='.9'%3E%3Ccircle cx='44' cy='52' r='2.6'/%3E%3Ccircle cx='210' cy='30' r='2.2'/%3E%3Ccircle cx='290' cy='150' r='2.6'/%3E%3Ccircle cx='120' cy='190' r='2.2'/%3E%3Ccircle cx='250' cy='270' r='2.6'/%3E%3Ccircle cx='30' cy='290' r='2.2'/%3E%3C/g%3E%3Cg fill='%23fde9a8' stroke='%232b2b2b' stroke-width='1.2' stroke-linejoin='round'%3E%3Cpath d='M150 96 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z'/%3E%3Cpath d='M70 232 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5z'/%3E%3Cpath d='M260 210 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.ps-flight-world {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  will-change: transform;
+}
+.ps-flight-rocks { position: absolute; left: 0; top: 0; }
+.ps-flight-rock,
+.ps-flight-ship,
+.ps-flight-target {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform;
+}
+.ps-flight-rock svg { display: block; }
+.ps-flight-ship { z-index: 3; pointer-events: none; }
+.ps-flight-ship svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.ps-flight-ship .ps-flame {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: ps-flight-flicker 0.18s ease-in-out infinite alternate;
+}
+.ps-flight-ship.is-thrust .ps-flame { animation-name: ps-flight-flicker-hard; }
+@keyframes ps-flight-flicker { from { transform: scaleY(0.72); } to { transform: scaleY(1); } }
+@keyframes ps-flight-flicker-hard { from { transform: scaleY(1.05); } to { transform: scaleY(1.45); } }
+
+.ps-flight-target { z-index: 1; width: 0; height: 0; }
+.ps-flight-ringgrow { position: absolute; left: 0; top: 0; transition: transform 0.12s linear; }
+.ps-flight-ring { width: 100%; height: 100%; animation: ps-flight-pulse 1.6s ease-in-out infinite; }
+.ps-flight-ring svg { display: block; animation: ps-flight-spin 18s linear infinite; }
+@keyframes ps-flight-pulse { 0%, 100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.07); opacity: 1; } }
+@keyframes ps-flight-spin { to { transform: rotate(360deg); } }
+.ps-flight-object {
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: ps-flight-bob 3.2s ease-in-out infinite;
+}
+.ps-flight-object svg { display: block; overflow: visible; }
+@keyframes ps-flight-bob { 0%, 100% { transform: translateY(-3px); } 50% { transform: translateY(3px); } }
+.is-arrived .ps-flight-target { z-index: 4; }
+.is-arrived .ps-flight-ring { animation: none; opacity: 0; transition: opacity 0.3s; }
+.is-arrived .ps-flight-object { animation: ps-flight-pop 0.55s ease-out forwards; position: absolute; z-index: 4; }
+@keyframes ps-flight-pop { 0% { transform: scale(1); } 45% { transform: scale(1.3); } 100% { transform: scale(1.12); } }
+
+.ps-flight-burst { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 5; pointer-events: none; }
+.ps-flight-burst-ring {
+  position: absolute;
+  left: -40px;
+  top: -40px;
+  width: 80px;
+  height: 80px;
+  box-sizing: border-box;
+  border: 5px solid #ff6a28;
+  border-radius: 50%;
+  animation: ps-flight-burst-ring 0.7s ease-out forwards;
+}
+@keyframes ps-flight-burst-ring { from { transform: scale(0.6); opacity: 1; } to { transform: scale(3.2); opacity: 0; } }
+.ps-flight-spark {
+  position: absolute;
+  left: -9px;
+  top: -9px;
+  width: 18px;
+  height: 18px;
+  background: #f5b82e;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+  transform: rotate(var(--a)) translateY(0) scale(0.4);
+  opacity: 0;
+  animation: ps-flight-spark 0.8s ease-out forwards;
+}
+@keyframes ps-flight-spark {
+  0% { opacity: 1; transform: rotate(var(--a)) translateY(0) scale(0.4); }
+  65% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(var(--a)) translateY(calc(var(--d) * -1)) scale(1.1); }
+}
+
+.ps-flight-arrow {
+  position: absolute;
+  left: -22px;
+  top: -22px;
+  width: 44px;
+  height: 44px;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  will-change: transform;
+}
+.ps-flight-arrow.is-on { opacity: 1; }
+.ps-flight-arrow-in { animation: ps-flight-nudge 0.8s ease-in-out infinite; }
+.ps-flight-arrow svg { display: block; }
+@keyframes ps-flight-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(7px); } }
+
+.ps-flight-hint {
+  position: absolute;
+  left: max(12px, env(safe-area-inset-left));
+  top: max(12px, env(safe-area-inset-top));
+  z-index: 7;
+  max-width: calc(100% - 90px);
+  padding: 6px 14px;
+  font-size: 20px;
+  line-height: 1.2;
+  background: rgba(47, 54, 80, 0.85);
+  border: 3px solid #fffdf8;
+  border-radius: 16px;
+  color: #fffdf8;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+.ps-flight.is-roam .ps-flight-hint { left: 50%; top: auto; bottom: max(16px, env(safe-area-inset-bottom)); transform: translateX(-50%); width: max-content; max-width: max(240px, calc(100% - 340px)); text-align: center; }
+.ps-flight-hint.is-gone { opacity: 0; }
+
+.ps-flight-exit {
+  position: absolute;
+  right: max(12px, env(safe-area-inset-right));
+  top: max(12px, env(safe-area-inset-top));
+  z-index: 8;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: #fffdf8;
+  border: 3px solid #2b2b2b;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #2b2b2b;
+  touch-action: manipulation;
+}
+.ps-flight-exit:active { transform: translateY(2px); box-shadow: 0 1px 0 #2b2b2b; }
+.ps-flight-exit:focus-visible { outline: 3px solid #fde9a8; outline-offset: 2px; }
+
+.ps-flight-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.ps-flight-stick {
+  position: absolute;
+  left: max(16px, env(safe-area-inset-left));
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 8;
+  box-sizing: border-box;
+  border: 3px solid rgba(255, 253, 248, 0.75);
+  border-radius: 50%;
+  background: rgba(255, 253, 248, 0.12);
+  touch-action: none;
+  cursor: grab;
+}
+.ps-flight-stick.is-active { background: rgba(255, 253, 248, 0.2); cursor: grabbing; }
+.ps-flight-knob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  box-sizing: border-box;
+  border: 3px solid #2b2b2b;
+  border-radius: 50%;
+  background: #fffdf8;
+  box-shadow: inset -5px -6px 0 #d9d6cf, 0 3px 0 rgba(43, 43, 43, 0.6);
+  pointer-events: none;
+  will-change: transform;
+}
+.ps-flight-stick-mark {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 7px solid transparent;
+  opacity: 0.8;
+  pointer-events: none;
+}
+.ps-flight-stick-mark.is-up { left: calc(50% - 7px); top: 6px; border-bottom: 10px solid #fffdf8; border-top: 0; }
+.ps-flight-stick-mark.is-down { left: calc(50% - 7px); bottom: 6px; border-top: 10px solid #fffdf8; border-bottom: 0; }
+.ps-flight-stick-mark.is-left { top: calc(50% - 7px); left: 6px; border-right: 10px solid #fffdf8; border-left: 0; }
+.ps-flight-stick-mark.is-right { top: calc(50% - 7px); right: 6px; border-left: 10px solid #fffdf8; border-right: 0; }
+
+/* Steer anywhere: a floating stick under the finger, or a ring at the finger while it holds still to aim. */
+.ps-flight-float {
+  position: absolute; left: 0; top: 0; z-index: 6; box-sizing: border-box; width: 120px; height: 120px; margin: -60px 0 0 -60px;
+  border: 3px solid rgba(255, 253, 248, 0.7); border-radius: 50%; background: rgba(255, 253, 248, 0.12); pointer-events: none; will-change: transform;
+}
+.ps-flight-float[hidden] { display: none; }
+.ps-flight-float-knob {
+  position: absolute; left: 50%; top: 50%; box-sizing: border-box; width: 50px; height: 50px; margin: -25px 0 0 -25px;
+  border: 3px solid #2b2b2b; border-radius: 50%; background: #fffdf8; box-shadow: inset -5px -6px 0 #d9d6cf; will-change: transform;
+}
+.ps-flight-float.is-aim { width: 72px; height: 72px; margin: -36px 0 0 -36px; border-style: dashed; border-color: #fffdf8; background: rgba(255, 253, 248, 0.18); }
+.ps-flight-float.is-aim .ps-flight-float-knob { display: none; }
+
+/* Free roam extras: the "What is this?" button and the hold-to-boost button, bottom right. */
+.ps-flight-boost,
+.ps-flight-ask {
+  position: absolute; z-index: 8; display: grid; place-items: center; padding: 0; box-sizing: border-box; cursor: pointer;
+  border: 3px solid #2b2b2b; border-radius: 50%; box-shadow: 0 3px 0 #2b2b2b; touch-action: none; color: #2b2b2b;
+  right: max(16px, env(safe-area-inset-right));
+}
+.ps-flight-boost { bottom: calc(16px + env(safe-area-inset-bottom)); width: 68px; height: 68px; background: #fffdf8; }
+.ps-flight-ask { bottom: calc(100px + env(safe-area-inset-bottom)); width: 48px; height: 48px; background: #fde9a8; font: inherit; font-size: 28px; line-height: 1; touch-action: manipulation; }
+.ps-flight-boost.is-down { transform: translateY(2px); box-shadow: 0 1px 0 #2b2b2b; background: #ffd166; }
+.ps-flight-ask:active { transform: translateY(2px); box-shadow: 0 1px 0 #2b2b2b; }
+.ps-flight-boost:focus-visible,
+.ps-flight-ask:focus-visible { outline: 3px solid #fde9a8; outline-offset: 2px; }
+.ps-flight.has-card .ps-flight-hint { opacity: 0; }
+
+.ps-flight.is-reduced .ps-flame,
+.ps-flight.is-reduced .ps-flight-ring,
+.ps-flight.is-reduced .ps-flight-ring svg,
+.ps-flight.is-reduced .ps-flight-object,
+.ps-flight.is-reduced .ps-flight-arrow-in { animation: none; }
+.ps-flight.is-reduced .ps-flight-ringgrow { transition: none; }
+.ps-flight.is-reduced .ps-flight-spark,
+.ps-flight.is-reduced .ps-flight-burst-ring { animation-duration: 0.4s; }
+.ps-flight.is-reduced.is-arrived .ps-flight-object { animation: none; transform: scale(1.12); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ps-flight-ship .ps-flame,
+  .ps-flight-ring,
+  .ps-flight-ring svg,
+  .ps-flight-arrow-in { animation: none; }
+}
+
+/* Side thrusters: steering left fires the right nozzle and the other way round. */
+.ps-thruster { position: absolute; top: 56%; width: 46%; height: 15%; opacity: 0; pointer-events: none; transform-origin: 0 50%; transform: scaleX(.3); transition: opacity .1s, transform .12s; }
+.ps-thruster--r { left: 88%; }
+.ps-thruster--l { right: 88%; transform-origin: 100% 50%; }
+.ps-thruster.is-on { opacity: 1; transform: scaleX(calc(.55 + var(--p, 1) * .75)); animation: ps-thr-flicker .12s steps(2) infinite; }
+.ps-thruster .ps-thr-in { animation: ps-thr-in .18s ease-in-out infinite alternate; transform-origin: 2px 15px; }
+@keyframes ps-thr-flicker { 0% { filter: brightness(1); } 100% { filter: brightness(1.25) saturate(1.2); } }
+@keyframes ps-thr-in { from { transform: scaleX(.7); } to { transform: scaleX(1.05); } }
+@media (prefers-reduced-motion: reduce) { .ps-thruster.is-on { animation: none; } }

@@ -1,0 +1,107 @@
+{
+ "role": "boss",
+ "frame": 384,
+ "overlayScale": 2,
+ "states": [
+  1,
+  2,
+  3
+ ],
+ "view": {
+  "size": 336,
+  "scale": 0.8,
+  "shadow": 120,
+  "half": 60,
+  "top": 262,
+  "core": [
+   10,
+   150
+  ],
+  "bar": 150,
+  "barHeight": 11,
+  "knock": 0.35,
+  "plant": 0.07,
+  "rise": 0,
+  "deathTime": 2.0
+ },
+ "attacks": {
+  "slam": "slam",
+  "strike": "strike",
+  "emp": "emp"
+ },
+ "clips": {
+  "emp": {
+   "n": 10,
+   "spanK": 1.0,
+   "ox": 0.5,
+   "oy": 0.91,
+   "fps": 14,
+   "loop": false,
+   "peak": 5,
+   "plants": []
+  },
+  "hit": {
+   "n": 5,
+   "spanK": 1.0,
+   "ox": 0.5,
+   "oy": 0.91,
+   "fps": 14,
+   "loop": false,
+   "peak": 4,
+   "plants": []
+  },
+  "idle": {
+   "n": 8,
+   "spanK": 1.0,
+   "ox": 0.5,
+   "oy": 0.91,
+   "fps": 3.5,
+   "loop": true,
+   "peak": 7,
+   "plants": []
+  },
+  "slam": {
+   "n": 10,
+   "spanK": 1.25,
+   "ox": 0.5,
+   "oy": 0.91,
+   "fps": 14,
+   "loop": false,
+   "peak": 5,
+   "plants": []
+  },
+  "strike": {
+   "n": 10,
+   "spanK": 1.0,
+   "ox": 0.5,
+   "oy": 0.91,
+   "fps": 12,
+   "loop": false,
+   "peak": 4,
+   "plants": []
+  },
+  "walk": {
+   "n": 48,
+   "spanK": 1.0,
+   "ox": 0.5,
+   "oy": 0.91,
+   "fps": 10,
+   "loop": true,
+   "peak": 47,
+   "plants": [
+    0,
+    24
+   ]
+  },
+  "death": {
+   "n": 14,
+   "spanK": 1.5,
+   "ox": 0.35333333333333333,
+   "oy": 0.91,
+   "fps": 9,
+   "loop": false,
+   "peak": 13,
+   "plants": []
+  }
+ }
+}

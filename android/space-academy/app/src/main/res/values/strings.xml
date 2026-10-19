@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Otterly Space Academy</string>
+    <string name="loading_game">Opening the offline game…</string>
+    <string name="reload_game">Reload game</string>
+    <string name="game_unavailable">The game could not open</string>
+    <string name="asset_error">A bundled game file could not be loaded. Reload the game. If this continues, rebuild or reinstall the complete offline app; your last successfully saved progress has not been cleared.</string>
+    <string name="module_error">The game code did not finish starting. Reload the game and check that Android System WebView or Chrome is up to date. If this continues, rebuild the app with its complete offline assets.</string>
+    <string name="renderer_title">The game screen stopped</string>
+    <string name="renderer_error">Android stopped the game screen. Reload to reopen your last successfully saved progress. Reloading does not clear this app’s local saves.</string>
+    <string name="blocked_resource">An unbundled game resource was blocked. This app only loads its offline files. Reload the game; if this continues, the offline bundle needs rebuilding.</string>
+    <string name="blocked_navigation">This link cannot be opened by the offline game.</string>
+    <string name="browser_unavailable">No browser is available to open this link.</string>
+    <string name="invalid_mission_link">That link is not a supported Space Academy mission link.</string>
+    <string name="restore_picker_title">Choose a Space Academy backup</string>
+    <string name="picker_unavailable">Android could not open a document picker. No backup was exported.</string>
+    <string name="restore_unavailable">Android could not open a file picker. Nothing was restored.</string>
+    <string name="restore_single_file">Choose one JSON backup from a document provider.</string>
+    <string name="backup_busy">Another backup is already being exported. Finish or cancel it first.</string>
+    <string name="backup_cancelled">Backup cancelled. No backup file was exported.</string>
+    <string name="backup_saved">Backup exported to the document you selected. Keep it privately; progress is not cloud-synced.</string>
+    <string name="backup_failed">The backup could not be written. The selected document may be incomplete. Try Backup again.</string>
+    <string name="backup_interrupted">The backup could not finish after the app restarted. Choose Backup again; the selected document may be empty.</string>
+    <string name="backup_document_required">The selected destination is not a writable Android document. No backup was exported.</string>
+    <string name="backup_not_visible">Return to the game and press its Backup button to export progress.</string>
+    <string name="use_backup_button">Use the game’s Backup button to export progress.</string>
+</resources>

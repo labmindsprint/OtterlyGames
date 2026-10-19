@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">
+  <!-- Adaptive icon foreground layer: 108x108dp. Rocket art is scaled to sit inside the central 66dp safe circle. -->
+  <defs>
+    <clipPath id="glassClip"><circle cx="256" cy="250" r="108"/></clipPath>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e4f3ff"/>
+      <stop offset="1" stop-color="#a9d3f5"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(54 54) scale(0.13) translate(-256 -262)">
+    <g stroke="#2b2b2b" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+      <!-- flame -->
+      <path d="M198 420 C178 456 226 468 256 496 C286 468 334 456 314 420Z" fill="#ff8a1f"/>
+      <path d="M222 420 C216 442 242 452 256 476 C270 452 296 442 290 420Z" fill="#ffd23f"/>
+      <path d="M240 420 C240 434 252 440 256 452 C260 440 272 434 272 420Z" fill="#fffbe8" stroke="none"/>
+      <!-- fins -->
+      <g><path d="M132 292 C108 318 78 352 62 392 Q52 438 100 430 L142 408Z" fill="#ff7a1a"/>
+        <path d="M118 338 L88 396" fill="none" stroke="#fffdf8" stroke-width="8" opacity="0.7"/></g>
+      <g transform="translate(512 0) scale(-1 1)"><path d="M132 292 C108 318 78 352 62 392 Q52 438 100 430 L142 408Z" fill="#ff7a1a"/>
+        <path d="M118 338 L88 396" fill="none" stroke="#fffdf8" stroke-width="8" opacity="0.7"/></g>
+      <!-- engine bell -->
+      <path d="M190 404 H322 L340 438 H172Z" fill="#2f3650"/>
+      <!-- body -->
+      <path d="M256 30 C330 80 396 170 396 270 L396 408 H116 L116 270 C116 170 182 80 256 30Z" fill="#fffdf8"/>
+      <path d="M356 118 C382 160 394 210 394 270 V406 H350 V270 C350 210 340 150 322 100Z" fill="#2b2b2b" opacity="0.13" stroke="none"/>
+      <path d="M256 30 C286 52 314 82 338 114 Q256 130 174 114 C198 82 226 52 256 30Z" fill="#ff6b2c"/>
+      <path d="M116 380 H396 V408 H116Z" fill="#83E3D1"/>
+      <!-- canopy: teal ring + glass + Ringo -->
+      <circle cx="256" cy="250" r="132" fill="#83E3D1"/>
+      <circle cx="256" cy="250" r="108" fill="url(#glass)"/>
+    </g>
+    <!-- Ringo (from js/space-academy/pitstop/ui.mjs, mood: cheer) -->
+    <g clip-path="url(#glassClip)">
+      <g transform="translate(256 250) scale(3.2) translate(-32 -34)">
+        <circle cx="14" cy="16" r="8" fill="#b9855a" stroke="#2b2b2b" stroke-width="3"/><circle cx="50" cy="16" r="8" fill="#b9855a" stroke="#2b2b2b" stroke-width="3"/>
+        <circle cx="32" cy="34" r="25" fill="#b9855a" stroke="#2b2b2b" stroke-width="3"/>
+        <ellipse cx="32" cy="43" rx="15" ry="11" fill="#efe6d2" stroke="#2b2b2b" stroke-width="2.500"/>
+        <circle cx="23" cy="29" r="3.600" fill="#2b2b2b"/><circle cx="41" cy="29" r="3.600" fill="#2b2b2b"/>
+        <circle cx="24.200" cy="27.800" r="1.200" fill="#fff"/><circle cx="42.200" cy="27.800" r="1.200" fill="#fff"/>
+        <ellipse cx="32" cy="37" rx="4.200" ry="3" fill="#2b2b2b"/>
+        <path d="M24 41q8 10 16 0Z" fill="#fff" stroke="#2b2b2b" stroke-width="3" stroke-linejoin="round"/>
+      </g>
+    </g>
+    <g fill="none" stroke="#2b2b2b" stroke-width="10"><circle cx="256" cy="250" r="132"/><circle cx="256" cy="250" r="108"/></g>
+  </g>
+</svg>

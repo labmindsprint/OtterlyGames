@@ -1,0 +1,183 @@
+/* Free roam combat layer and the flight gear screen. */
+.ps-roam-layer { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 4; pointer-events: none; }
+.ps-roam-layer > * { position: absolute; left: 0; top: 0; will-change: transform; }
+
+/* turrets bolted onto the flying ship */
+.ps-roam-turret { position: absolute; width: 26%; z-index: 2; pointer-events: none; }
+.ps-roam-turret svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ps-roam-turret--l { left: -14%; top: 38%; }
+.ps-roam-turret--r { right: -14%; top: 38%; }
+.ps-roam-turret--c { left: 37%; top: -8%; }
+.ps-flight-ship.is-flicker { opacity: 0.45; }
+
+/* enemies */
+.ps-roam-enemy svg { display: block; width: 100%; height: 100%; }
+.ps-roam-enemy.is-hit svg { filter: brightness(2.2) saturate(0.4); }
+.ps-roam-hp {
+  position: absolute; left: 10%; right: 10%; bottom: -10px; height: 6px; display: block;
+  background: #2b2b2b; border-radius: 3px; opacity: 0; transition: opacity 0.2s;
+}
+.ps-roam-hp.is-on { opacity: 1; }
+.ps-roam-hp b { display: block; height: 100%; width: 100%; background: #ff6a6a; border-radius: 3px; }
+
+/* shots */
+.ps-roam-shot { left: -7px; top: -14px; width: 14px; height: 28px; }
+.ps-roam-shot svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.ps-roam-shot.is-enemy { left: -7px; top: -7px; width: 14px; height: 14px; border: 2px solid #2b2b2b; border-radius: 50%; }
+.ps-roam-bolt { z-index: 5; animation: ps-roam-fade 0.18s ease-out forwards; }
+
+/* shield bubble */
+.ps-roam-shield { z-index: 3; transition: opacity 0.2s; }
+.ps-roam-shield svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.ps-roam-shield.is-block { filter: brightness(1.7); }
+
+/* collectables */
+.ps-roam-pickup { left: -26px; top: -26px; width: 52px; height: 52px; filter: drop-shadow(0 0 8px rgba(255, 217, 102, 0.9)); }
+.ps-roam-pickup svg { display: block; width: 100%; height: 100%; }
+.ps-roam-pickup--paint { filter: drop-shadow(0 0 8px rgba(120, 180, 255, 0.95)); }
+
+/* effects */
+.ps-roam-pop { z-index: 6; width: 0; height: 0; }
+.ps-roam-pop i {
+  position: absolute; left: -4px; top: -4px; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--c); border: 2px solid #2b2b2b; box-sizing: content-box;
+  transform: rotate(var(--a)) translateY(0); animation: ps-roam-spark 0.55s ease-out forwards;
+}
+.ps-roam-pop b {
+  position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); white-space: nowrap;
+  font-size: 22px; color: #fffdf8; -webkit-text-stroke: 5px #2b2b2b; paint-order: stroke fill;
+  animation: ps-roam-word 0.7s ease-out forwards;
+}
+.ps-roam-ring { z-index: 5; width: 0; height: 0; }
+.ps-roam-ring::before {
+  content: ''; position: absolute; left: calc(var(--r) * -1); top: calc(var(--r) * -1);
+  width: calc(var(--r) * 2); height: calc(var(--r) * 2); box-sizing: border-box; border-radius: 50%;
+  border: 5px solid var(--c); box-shadow: 0 0 0 3px #2b2b2b, inset 0 0 0 3px #2b2b2b;
+  animation: ps-roam-ring 0.55s ease-out forwards;
+}
+@keyframes ps-roam-spark { to { transform: rotate(var(--a)) translateY(-44px); opacity: 0; } }
+@keyframes ps-roam-word { 0% { transform: translate(-50%, -50%) scale(0.5); } 30% { transform: translate(-50%, -80%) scale(1.15); } 100% { transform: translate(-50%, -150%) scale(1); opacity: 0; } }
+@keyframes ps-roam-ring { from { transform: scale(0.2); opacity: 1; } to { transform: scale(1); opacity: 0; } }
+@keyframes ps-roam-fade { to { opacity: 0; } }
+
+/* hud */
+.ps-roam-hud {
+  position: absolute; left: 50%; top: max(12px, env(safe-area-inset-top)); transform: translateX(-50%); z-index: 7;
+  display: grid; justify-items: center; gap: 4px; pointer-events: none;
+}
+.ps-roam-hearts { display: flex; gap: 3px; }
+.ps-roam-hearts svg { width: 26px; height: 26px; fill: #5a3340; }
+.ps-roam-hearts svg.is-on { fill: #ff5c6c; }
+.ps-roam-shieldbar {
+  width: 120px; height: 10px; box-sizing: border-box; border: 3px solid #2b2b2b; border-radius: 6px; background: #1b2033; overflow: hidden;
+}
+.ps-roam-shieldbar[hidden] { display: none; }
+.ps-roam-shieldbar i { display: block; height: 100%; background: var(--shield, #5ad1ff); transition: width 0.2s; }
+.ps-roam-quota { display: flex; gap: 6px; }
+.ps-roam-quota > span { display: flex; align-items: center; gap: 4px; padding: 1px 9px 1px 4px; font-size: 17px; color: #fffdf8; background: rgba(8, 10, 24, 0.82); border: 2px solid rgba(255, 253, 248, 0.7); border-radius: 14px; white-space: nowrap; }
+.ps-roam-quota b { min-width: 0.7em; text-align: right; color: #ffd166; font-weight: normal; }
+.ps-roam-quota-art { display: block; width: 24px; height: 24px; }
+.ps-roam-quota-art svg { display: block; width: 100%; height: 100%; }
+.ps-roam-count {
+  padding: 1px 12px; font-size: 16px; color: #fffdf8; background: rgba(8, 10, 24, 0.82);
+  border: 2px solid rgba(255, 253, 248, 0.7); border-radius: 14px; white-space: nowrap;
+}
+.ps-roam-count b { color: #ffd166; font-weight: normal; }
+.ps-roam-banner {
+  position: absolute; left: 50%; top: 26%; transform: translate(-50%, -8px); z-index: 8; margin: 0; max-width: min(88%, 460px);
+  padding: 8px 16px; text-align: center; font-size: 22px; line-height: 1.2; color: #2b2b2b; background: #fde9a8;
+  border: 3px solid #2b2b2b; border-radius: 16px; box-shadow: 0 3px 0 #2b2b2b; opacity: 0; pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+}
+.ps-roam-banner.is-on { opacity: 1; transform: translate(-50%, 0); }
+.ps-roam-card {
+  position: absolute; left: 50%; bottom: calc(160px + env(safe-area-inset-bottom)); transform: translate(-50%, 10px); z-index: 9;
+  box-sizing: border-box; width: min(calc(100% - 24px), 480px); display: grid; gap: 4px; padding: 10px 16px 12px;
+  color: #2b2b2b; background: #fde9a8; border: 3px solid #2b2b2b; border-radius: 18px; box-shadow: 0 4px 0 #2b2b2b;
+  opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s, transform 0.2s, visibility 0s 0.2s;
+}
+.ps-roam-card.is-on { opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0); transition: opacity 0.2s, transform 0.2s; }
+.ps-roam-card-name { font-weight: normal; font-size: 24px; line-height: 1.1; }
+.ps-roam-card-fact { font-size: 20px; line-height: 1.25; }
+.ps-roam-card-acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.ps-roam-card-acts button {
+  min-height: 44px; padding: 4px 16px; font: inherit; font-size: 19px; color: #2b2b2b; background: #fffdf8; cursor: pointer;
+  border: 3px solid #2b2b2b; border-radius: 14px; box-shadow: 0 3px 0 #2b2b2b; touch-action: manipulation;
+}
+.ps-roam-card-acts button[hidden] { display: none; }
+.ps-roam-card-acts button:active { transform: translateY(2px); box-shadow: 0 1px 0 #2b2b2b; }
+.ps-roam-card-acts button:focus-visible { outline: 3px solid #ff6a28; outline-offset: 2px; }
+.ps-flight.is-reduced .ps-roam-card, .ps-flight.is-reduced .ps-roam-card.is-on { transition: none; }
+@media (min-width: 640px), (max-height: 520px) {
+  .ps-roam-card { bottom: calc(20px + env(safe-area-inset-bottom)); width: min(calc(100% - 360px), 520px); }
+  .ps-flight.has-card .ps-roam-banner { top: auto; bottom: 170px; }
+}
+@media (max-height: 480px) {
+  .ps-roam-banner { top: auto; bottom: 62px; font-size: 17px; padding: 5px 12px; max-width: min(70%, 460px); }
+}
+
+.ps-flight.is-reduced .ps-roam-pop i, .ps-flight.is-reduced .ps-roam-pop b, .ps-flight.is-reduced .ps-roam-ring::before { animation-duration: 0.01s; }
+
+/* result and gear screens */
+.ps-gain { display: flex; align-items: center; gap: 12px; margin: 8px auto 0; max-width: 420px; padding: 8px 14px; text-align: left; background: #fde9a8; border: 3px solid #2b2b2b; border-radius: 16px; }
+.ps-gain-icon, .ps-gear-icon { flex: none; width: 52px; height: 52px; display: grid; place-items: center; }
+.ps-gain-icon svg, .ps-gear-icon svg { width: 100%; height: 100%; display: block; }
+.ps-gain b, .ps-gear-text b { display: block; font-weight: normal; font-size: 22px; line-height: 1.1; }
+.ps-gain small, .ps-gear-text small { display: block; font-size: 16px; line-height: 1.2; color: #4a4a4a; }
+.ps-gain--sky { background: #1b2350; color: #fffdf8; }
+.ps-stage.ps-stage--short { height: min(30dvh, 280px); min-height: 150px; }
+.ps-gain { color: #2b2b2b; }
+.ps-gain--sky { color: #fffdf8; }
+@media (min-width: 700px) and (max-height: 760px) {
+  .ps-stage.ps-stage--short { height: 20dvh; min-height: 120px; }
+  .ps-mock-result .ps-cta { position: static; }
+}
+.ps-gain--sky small { color: #c9d4ff; }
+
+.ps-gearbay { display: grid; justify-items: center; gap: 6px; padding: 8px 12px 0; }
+.ps-gearbay-ship { width: min(100%, 36dvh, 280px); }
+.ps-rig { position: relative; width: 100%; aspect-ratio: 1; display: grid; place-items: center; }
+.ps-rig-ship { position: relative; display: block; width: 58%; z-index: 1; }
+.ps-rig-ship svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ps-rig-shield { position: absolute; inset: 0; z-index: 2; opacity: 0.85; pointer-events: none; }
+.ps-rig-shield svg { display: block; width: 100%; height: 100%; }
+.ps-rig-turret { position: absolute; width: 15%; z-index: 3; top: 46%; }
+.ps-rig-turret svg { display: block; width: 100%; height: auto; overflow: visible; }
+.ps-rig-turret--l { left: 17%; }
+.ps-rig-turret--r { right: 17%; }
+.ps-gearlist { list-style: none; margin: 0; padding: 8px 12px 130px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.ps-gear {
+  position: relative; box-sizing: border-box; width: 100%; min-height: 74px; display: flex; align-items: center; gap: 10px; padding: 8px 12px;
+  text-align: left; font: inherit; color: var(--ps-ink); background: var(--ps-paper); border: 3px solid var(--ps-ink); border-radius: 16px; cursor: pointer;
+  box-shadow: 0 3px 0 var(--ps-ink);
+}
+.ps-gear .ps-gear-text { flex: 1; min-width: 0; }
+.ps-gear.is-on { background: var(--ps-good-soft); }
+.ps-gear.is-locked { background: var(--ps-grey); color: var(--ps-mid); cursor: default; box-shadow: none; border-style: dashed; }
+.ps-gear.is-locked .ps-gear-icon { opacity: 0.6; }
+.ps-gear:focus-visible { outline: 3px solid var(--ps-blue); outline-offset: 2px; }
+.ps-gear-state { flex: none; padding: 4px 10px; font-size: 16px; border: 3px solid var(--ps-ink); border-radius: 12px; background: var(--ps-gold-soft); }
+.ps-gear.is-on .ps-gear-state { background: var(--ps-good); color: #fff; }
+.ps-gear:not(.is-locked) {
+  display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; grid-template-areas: "icon text text" "icon pow state";
+  align-items: center; column-gap: 10px; row-gap: 4px;
+}
+.ps-gear:not(.is-locked) .ps-gear-icon { grid-area: icon; }
+.ps-gear:not(.is-locked) .ps-gear-text { grid-area: text; }
+.ps-gear:not(.is-locked) .ps-pow { grid-area: pow; }
+.ps-gear:not(.is-locked) .ps-gear-state { grid-area: state; }
+.ps-pow { flex: none; display: flex; gap: 2px; }
+.ps-pow i { width: 8px; height: 18px; border: 2px solid var(--ps-ink); border-radius: 3px; background: #fff; }
+.ps-pow i.is-on { background: var(--ps-gold); }
+/* Wide screens: ship and loadout on the left, the ten gear cards on the right, nothing scrolls except the card list. */
+@media (min-width: 900px) and (min-height: 540px) {
+  .ps-gears { max-width: 1180px; height: 100dvh; min-height: 0; padding-block: 12px; gap: 8px 28px; overflow: clip;
+    display: grid; grid-template-columns: minmax(300px, 36%) minmax(0, 1fr); grid-template-rows: auto auto minmax(0, 1fr); grid-template-areas: "head head" "bay list" "cta list"; }
+  .ps-gears > .ps-head { grid-area: head; }
+  .ps-gears > .ps-gearbay { grid-area: bay; align-content: start; padding-top: 0; }
+  .ps-gears .ps-gearbay-ship { width: min(100%, 38dvh, 260px); }
+  .ps-gears > .ps-gearlist { grid-area: list; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: start; align-items: stretch; overflow-y: auto; padding: 4px 6px 8px; min-height: 0; }
+  .ps-gears > .ps-cta { grid-area: cta; align-self: end; position: static; background: none; padding: 0; margin: 0; }
+  .ps-gears .ps-gear { min-height: 0; padding: 6px 10px; }
+  .ps-gears .ps-gear-text small { font-size: 15px; }
+}

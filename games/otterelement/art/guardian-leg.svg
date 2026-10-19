@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="110" height="180" viewBox="0 0 110 180" fill="none">
+  <defs>
+    <linearGradient id="bark" x1="45" y1="17" x2="70" y2="157" gradientUnits="userSpaceOnUse"><stop stop-color="#8b7b55"/><stop offset="1" stop-color="#304939"/></linearGradient>
+    <linearGradient id="stone" x1="22" y1="29" x2="88" y2="167" gradientUnits="userSpaceOnUse"><stop stop-color="#a6b6a0"/><stop offset=".45" stop-color="#779b8b"/><stop offset="1" stop-color="#3b6553"/></linearGradient>
+  </defs>
+  <path d="m29 16 42-5 19 31-13 42 9 45-10 32-39 3-18-20 11-46-9-43z" fill="url(#bark)" stroke="#2c4c3b" stroke-width="4" stroke-linejoin="round"/>
+  <path d="m43 28-6 39 12 28-9 42m24-95 6 27-9 29 9 34" stroke="#b5a47a" stroke-opacity=".45" stroke-width="4"/>
+  <path d="m24 24 28-11 28 12 9 27-21 23-37-8-13-23z" fill="url(#stone)" stroke="#2b5140" stroke-width="4"/>
+  <path d="m25 28 27-10 23 10-17 13-36 7" fill="#c4ccb0" opacity=".8"/>
+  <path d="m34 72 27 2 19 21-8 18-35 3-16-17z" fill="url(#stone)" stroke="#305541" stroke-width="4"/>
+  <path d="m36 78 24 1 13 15-37 4-9-3" fill="#a3baa0"/>
+  <path d="m29 113 29-10 22 14-3 28-18 17-33-16z" fill="url(#stone)" stroke="#2e5440" stroke-width="4"/>
+  <path d="m46 107 6 24-6 18" stroke="#c5dfb0" stroke-width="3"/>
+  <path d="m25 145 35 6 23-7 15 18-5 12-64 1-17-11z" fill="url(#stone)" stroke="#2b513d" stroke-width="4"/>
+  <path d="m24 156 29 6 32-5m-45 7-1 8m23-9 1 9m15-11 3 9" stroke="#c2c7a5" stroke-opacity=".65" stroke-width="2.5"/>
+  <path d="m28 35 7-3m36 17 7-5m-43 83 7 5" stroke="#e4dfb8" stroke-opacity=".5" stroke-width="2"/>
+</svg>

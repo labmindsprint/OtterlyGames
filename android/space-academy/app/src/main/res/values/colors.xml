@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="academy_background">#102237</color>
+    <color name="academy_text">#F5F9FC</color>
+    <color name="academy_accent">#83E3D1</color>
+    <color name="academy_warning">#FFF0D1</color>
+    <color name="splash_background">#0D9488</color>
+    <color name="launcher_background">#102237</color>
+</resources>

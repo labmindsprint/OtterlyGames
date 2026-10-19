@@ -1,0 +1,165 @@
+/* First-run comic guide (view-onboarding.mjs): three comic panels, big tap targets, no motion needed. */
+.ps-chip--help { min-width: 44px; padding-inline: 0; font-size: 22px; line-height: 1; }
+
+.ps-guide {
+  display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 10px;
+  height: 100dvh; min-height: 0; max-width: 1040px; overflow: hidden;
+}
+.psg-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; }
+.psg-top [hidden] { display: none; }
+.psg-dots { list-style: none; display: flex; gap: 8px; margin: 0; padding: 0; }
+.psg-dots li { width: 38px; height: 14px; border: 3px solid var(--ps-paper); border-radius: 9px; transition: background-color .2s; }
+.psg-dots li.is-done { background: var(--ps-gold); }
+.psg-dots li.is-now { background: var(--ps-orange); }
+.psg-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.psg-stage { display: flex; flex-direction: column; overflow-y: auto; overscroll-behavior: contain; padding: 4px 8px 10px 4px; }
+.psg-panel {
+  position: relative; width: 100%; margin-block: auto; padding: 16px;
+  display: grid; gap: 14px;
+  background-color: var(--ps-paper); color: var(--ps-ink);
+  background-image: radial-gradient(rgba(43, 43, 43, .08) 1.3px, transparent 1.5px); background-size: 11px 11px;
+  border: 4px solid var(--ps-ink); border-radius: 20px; box-shadow: 6px 7px 0 var(--ps-ink);
+  animation: psg-in .28s ease-out both;
+}
+@keyframes psg-in { from { opacity: 0; transform: translateY(10px) rotate(-.6deg); } to { opacity: 1; transform: none; } }
+
+/* Ringo and his speech bubble */
+.psg-say { display: flex; align-items: flex-end; gap: 12px; }
+.psg-say .ps-ringo { flex: none; animation: psg-bob 2.4s ease-in-out infinite; }
+.psg-say--small { align-items: center; }
+.psg-bubble {
+  position: relative; flex: 1; padding: 10px 16px; display: grid; gap: 4px;
+  background: #fff; border: 3px solid var(--ps-ink); border-radius: 18px; box-shadow: 3px 3px 0 var(--ps-ink);
+}
+.psg-bubble::before {
+  content: ''; position: absolute; left: -11px; bottom: 16px; width: 18px; height: 18px;
+  background: #fff; border-left: 3px solid var(--ps-ink); border-bottom: 3px solid var(--ps-ink); transform: rotate(45deg);
+}
+.psg-say--small .psg-bubble::before { bottom: auto; top: calc(50% - 9px); }
+.psg-bubble h1 { font-size: 30px; line-height: 1.1; outline: none; }
+.psg-bubble p { font-size: 20px; color: #4a4742; }
+.psg-say--small .psg-bubble h1 { font-size: 26px; }
+.psg-say--small .psg-bubble p { font-size: 18px; }
+
+@keyframes psg-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+/* Panel 1 */
+.psg-scene {
+  display: grid; place-items: center; grid-template: 100% / 100%; height: min(36dvh, 330px); min-height: 150px;
+  border: 3px solid var(--ps-ink); border-radius: 14px;
+  background: radial-gradient(circle at 20% 30%, #fff 1.5px, transparent 2px), radial-gradient(circle at 70% 20%, #fff 1.5px, transparent 2px),
+    radial-gradient(circle at 85% 65%, #ffd166 2px, transparent 2.5px), radial-gradient(circle at 35% 75%, #fff 1.5px, transparent 2px), linear-gradient(var(--ps-night2), var(--ps-night));
+}
+.psg-ship { display: block; }
+.psg-ship svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.psg-ship--hero { height: 88%; aspect-ratio: 300 / 420; }
+
+/* Panel 2: class cards */
+.psg-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 7px; }
+.psg-cards li { min-width: 0; }
+.psg-card {
+  position: relative; display: flex; align-items: center; gap: 12px; width: 100%; min-height: 62px; padding: 4px 12px 4px 10px; text-align: left;
+  background: #fff; color: var(--ps-ink); border: 3px solid var(--ps-ink); border-radius: 16px; box-shadow: 3px 3px 0 var(--ps-ink);
+}
+.psg-card:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ps-ink); }
+.psg-card-ship { flex: none; width: 38px; height: 54px; }
+.psg-panel--class { gap: 10px; }
+.psg-card-ship svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.psg-card-text { display: grid; min-width: 0; line-height: 1.15; }
+.psg-card-text b { font-size: 22px; font-weight: 400; }
+.psg-card-text span { font-size: 17px; color: #4a4742; }
+.psg-card-text small { font-size: 16px; color: #2f6f4a; }
+.psg-card-check { display: none; position: absolute; top: -10px; right: -8px; width: 30px; height: 30px; place-items: center; border: 3px solid var(--ps-ink); border-radius: 50%; background: var(--ps-good); color: #fff; font-size: 18px; line-height: 1; }
+.psg-card.is-picked { background: var(--ps-gold-soft); box-shadow: 0 0 0 4px var(--ps-blue), 3px 3px 0 4px var(--ps-ink); }
+.psg-card.is-picked .psg-card-check { display: grid; }
+
+/* Panel 3: four comic steps */
+.psg-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.psg-step {
+  position: relative; display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: 12px; padding: 10px 12px;
+  background: #fff; border: 3px solid var(--ps-ink); border-radius: 14px; box-shadow: 3px 3px 0 var(--ps-ink);
+}
+.psg-no {
+  position: absolute; top: -12px; left: -10px; z-index: 1; display: grid; place-items: center; width: 32px; height: 32px;
+  background: var(--ps-orange); color: #fff; border: 3px solid var(--ps-ink); border-radius: 50%; font-size: 20px; line-height: 1; text-shadow: 0 1px 0 rgba(43, 43, 43, .4);
+}
+.psg-step-art { display: grid; place-items: center; width: 76px; height: 76px; border: 3px solid var(--ps-ink); border-radius: 12px; background: var(--ps-night2); overflow: hidden; }
+.psg-step-art .psg-ship { width: 44px; height: 62px; }
+.psg-step-art .psg-sky { width: 64px; height: 64px; }
+.psg-printer { width: 62px; height: 62px; }
+.psg-duo { display: flex; align-items: center; gap: 0; }
+.psg-duo .gear-icon { width: 38px; height: 38px; margin-right: -4px; }
+.psg-duo .ps-stk-svg { width: 32px; height: 32px; }
+.psg-step-text { display: grid; gap: 3px; min-width: 0; }
+.psg-step-head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.psg-step-head b { font-size: 22px; font-weight: 400; letter-spacing: .3px; text-transform: uppercase; }
+.psg-step-body { font-size: 18px; line-height: 1.25; }
+.psg-pill {
+  display: inline-flex; align-items: center; gap: 3px; padding: 0 10px 0 6px; min-height: 26px; font-size: 16px;
+  border: 2.5px solid var(--ps-ink); border-radius: 999px; background: var(--ps-gold-soft);
+}
+.psg-pill svg { width: 18px; height: 18px; }
+.psg-pill.is-free { padding-left: 10px; background: var(--ps-good-soft); }
+.psg-free { text-align: center; font-size: 18px; color: #4a4742; }
+
+/* Buttons */
+.psg-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: env(safe-area-inset-bottom, 0px); }
+.psg-next { flex: 1; max-width: 360px; margin-left: auto; font-size: 26px; }
+.psg-next:disabled { animation: none; background: var(--ps-mid); box-shadow: 2px 3px 0 var(--ps-ink); cursor: not-allowed; opacity: .8; }
+.psg-back { min-width: 96px; }
+
+/* Wide enough for 2 x 2 steps and 4 class cards in a row (landscape phone, tablet) */
+@media (min-width: 640px) {
+  .psg-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .psg-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .psg-panel--welcome { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: center; }
+  .psg-panel--welcome .psg-scene { height: min(46dvh, 330px); }
+  .psg-bubble h1 { font-size: 34px; }
+}
+/* Roomy desktop: four tall comic cells in a row */
+@media (min-width: 1100px) and (min-height: 600px) {
+  .psg-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .psg-step { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; align-content: start; padding: 20px 14px 14px; }
+  .psg-step-art { width: 110px; height: 110px; }
+  .psg-step-art .psg-ship { width: 62px; height: 88px; }
+  .psg-step-art .psg-sky { width: 90px; height: 90px; }
+  .psg-printer { width: 86px; height: 86px; }
+  .psg-duo .gear-icon { width: 52px; height: 52px; }
+  .psg-duo .ps-stk-svg { width: 44px; height: 44px; }
+  .psg-step-head { justify-content: center; }
+  .psg-step-body { font-size: 19px; }
+  .psg-panel { padding: 22px; }
+}
+/* Short landscape phone: tighten so panels fit without scrolling */
+@media (max-height: 520px) {
+  .ps-guide { gap: 6px; padding-block: 8px; }
+  .psg-panel { padding: 10px 12px; gap: 8px; }
+  .psg-scene { height: min(52dvh, 220px); min-height: 120px; }
+  .psg-bubble { padding: 6px 12px; }
+  .psg-bubble h1, .psg-say--small .psg-bubble h1 { font-size: 24px; }
+  .psg-bubble p { font-size: 17px; }
+  .psg-say .ps-ringo { width: 44px; height: 44px; }
+  .psg-card { min-height: 58px; padding-block: 4px; }
+  .psg-card-ship { width: 34px; height: 48px; }
+  .psg-card-text b { font-size: 21px; }
+  .psg-card-text span, .psg-card-text small { font-size: 15px; }
+  .psg-step { padding: 6px 10px; grid-template-columns: 60px minmax(0, 1fr); gap: 10px; }
+  .psg-step-art { width: 60px; height: 60px; }
+  .psg-step-art .psg-ship { width: 36px; height: 50px; }
+  .psg-step-art .psg-sky { width: 50px; height: 50px; }
+  .psg-printer { width: 50px; height: 50px; }
+  .psg-duo .gear-icon { width: 30px; height: 30px; }
+  .psg-duo .ps-stk-svg { width: 26px; height: 26px; }
+  .psg-step-head b { font-size: 19px; }
+  .psg-step-body { font-size: 16px; line-height: 1.2; }
+  .psg-free { display: none; }
+  .psg-next { min-height: 48px; font-size: 22px; }
+}
+
+/* Reduced motion: no entrance, bobbing or glow. */
+.ps-guide.is-reduced .psg-panel, .ps-guide.is-reduced .psg-say .ps-ringo, .ps-guide.is-reduced .ps-primary, .ps-guide.is-reduced .psg-dots li { animation: none; transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .psg-panel, .psg-say .ps-ringo, .psg-next { animation: none; }
+  .psg-dots li { transition: none; }
+}

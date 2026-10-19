@@ -219,7 +219,7 @@
 /* ==========================================================================
    2. GAME LANDING PAGES
    ========================================================================== */
-.play-clock { --accent: var(--purple); --accent-soft: var(--purple-soft); --cta: var(--amber-soft); }
+.play-clock, .play-academy { --accent: var(--purple); --accent-soft: var(--purple-soft); --cta: var(--amber-soft); }
 .play-tank { --accent: var(--pink); --accent-soft: var(--pink-soft); --cta: var(--pink-soft); }
 .play-ninja { --accent: var(--purple); --accent-soft: var(--purple-soft); }
 .play-zombie { --accent: var(--green); --accent-soft: var(--green-soft); }
