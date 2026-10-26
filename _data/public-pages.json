@@ -124,6 +124,7 @@
     { "route": "/about.html", "adsenseVerification": true },
     { "route": "/contact.html", "adsenseVerification": true },
     { "route": "/privacy.html" },
+    { "route": "/space-academy-delete-account.html" },
     { "route": "/otter-element-privacy.html" },
     { "route": "/terms.html" },
     { "route": "/Arcade/" },

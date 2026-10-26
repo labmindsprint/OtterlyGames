@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete a Space Academy Parent Purchase Account — Otterly Games</title>
+  <meta name="description" content="Adults can delete an Otterly Space Academy parent purchase account with their recovery code. Revokes sessions and store benefits, keeps child progress, minimal purchase records erased after 30 days.">
+  <link rel="canonical" href="https://otterlygames.com/space-academy-delete-account.html">
+  <meta property="og:title" content="Delete a Space Academy Parent Purchase Account — Otterly Games">
+  <meta property="og:description" content="Adult-only deletion of an Otterly Space Academy parent purchase account: what it does, what it does not do, and what is kept for 30 days.">
+  <meta property="og:image" content="https://otterlygames.com/images/brand/otter-buddy-320.webp">
+  <meta property="og:url" content="https://otterlygames.com/space-academy-delete-account.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="referrer" content="no-referrer">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192x192.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <script src="/js/includes.js" defer></script>
+</head>
+<body>
+<!-- og:nav:start -->
+<a href="#main-content" class="skip-link">Skip to content</a>
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/images/brand/otter-mark-80.webp" alt="" width="40" height="40">
+      <span class="brand-text">Otterly Games</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/learn/">Lessons</a>
+      <a href="/tools/">Tools</a>
+      <a href="/parents/">For parents</a>
+      <a href="/blog/">Blog</a>
+      <a href="/Arcade/">Creative Arcade</a>
+    </div>
+    <a href="/play/" class="nav-cta nav-play">Play online <span aria-hidden="true">&nearr;</span></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<!-- og:nav:end -->
+
+<main id="main-content" tabindex="-1">
+  <section class="legal-page">
+    <div class="container">
+      <h1>Delete a Space Academy Parent Purchase Account</h1>
+      <p><strong>Adults only.</strong> This page is for the grown-up who created the optional parent recovery code for Otterly Space Academy. It is not for children.</p>
+      <p><strong>Upcoming purchase update.</strong> Account deletion is for the upcoming Space Academy purchase update. Parent purchase accounts and self-service deletion are not yet enabled for this rollout, so this form may not work yet. Earlier closed-test versions had no parent account to delete. Nothing is sent until you submit the form.</p>
+
+      <h2>What deletion does</h2>
+      <ul>
+        <li>Revokes the account's server sessions and store benefits (such as Remove ads). A device that is offline may keep its cached benefit until its next successful contact with the server</li>
+        <li>Does <strong>not</strong> refund a Google Play purchase. Refunds follow <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">Google Play's refund policy</a></li>
+        <li>Does <strong>not</strong> delete child profiles or progress, which stay on each device</li>
+        <li>Keeps minimal pseudonymous purchase fingerprints for 30 days to prevent fraud, then erases them automatically; server ledger history is removed afterward. The deleted recovery code is blocked during those 30 days</li>
+        <li>Does not affect separate supporter grants from other Otterly Games sources; only this account's store benefits are revoked</li>
+        <li>Cannot be undone. Once the records are erased, the deleted purchase history is gone and cannot be restored, even if the same code is used again to start a fresh account</li>
+      </ul>
+      <p>The recovery code is sent only when you press the delete button, over HTTPS, as a password. It is never put in the web address, saved in the browser, logged or sent by email or our contact form. We do not collect an email address or use Google sign-in for this account. See the <a href="/privacy.html#parent-purchase-account">Privacy Policy</a>.</p>
+      <p>If you use the app, you can also choose Delete parent purchase account in the grown-ups area.</p>
+
+      <form id="osa-delete-form" method="post" action="#" autocomplete="off" novalidate onsubmit="return false;">
+        <fieldset id="osa-delete-fieldset" disabled style="border:0;padding:0;margin:0;min-width:0">
+        <legend class="sr-only">Delete parent purchase account</legend>
+        <div class="form-group">
+          <label for="osa-recovery-code">Parent recovery code</label>
+          <input type="password" id="osa-recovery-code" name="recovery-code" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="osa-code-note" required>
+          <p class="form-note" id="osa-code-note">The code starts with OSA1. Do not share it. If you lost it, deletion from this page is not possible.</p>
+        </div>
+        <div class="form-group">
+          <label for="osa-delete-confirm">
+            <input type="checkbox" id="osa-delete-confirm" name="confirm" required>
+            I am an adult and I want to delete this parent purchase account. I understand it revokes parent sessions and store benefits on the server (an offline device may keep its cached benefit until it next contacts the server), does not give a refund, does not delete child progress, and minimal purchase records are kept for 30 days before automatic erasure.
+          </label>
+        </div>
+        <button type="submit" id="osa-delete-submit" class="btn btn-primary">Delete parent purchase account</button>
+        </fieldset>
+        <p id="osa-delete-status" role="status" aria-live="polite" tabindex="-1">The form is unavailable until this page has finished loading its script.</p>
+      </form>
+      <noscript><p>This page needs JavaScript to send the deletion request. Without it nothing is sent.</p></noscript>
+      <p><a href="/privacy.html">Privacy Policy</a> · <a href="/contact.html">Contact us</a> (do not send your recovery code or purchase details)</p>
+    </div>
+  </section>
+</main>
+<script type="module" src="/js/space-academy-delete-account.mjs"></script>
+
+<!-- og:footer:start -->
+<footer class="footer">
+  <a href="/" class="footer-brand">Otterly Games</a>
+  <p class="footer-tagline">Learning like no otter. Browser games, little discoveries and practice on paper.</p>
+  <div class="footer-links">
+    <a href="/play/">Play online</a>
+    <a href="/learn/">Learn by skill</a>
+    <a href="/parents/">Parents &amp; teachers</a>
+    <a href="/tools/">Tools</a>
+    <a href="/blog/">Parent guides</a>
+    <a href="/about.html">Our story</a>
+    <a href="/Arcade/">Creative arcade</a>
+  </div>
+  <div class="footer-links footer-links--small">
+    <a href="/contact.html">Contact &amp; support</a>
+    <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </div>
+  <p>&copy; 2026 Otterly Games. Made by a mum, for curious minds.</p>
+</footer>
+<!-- og:footer:end -->
+</body>
+</html>
