@@ -81,15 +81,17 @@
 
         <div class="form-group">
           <label for="topic">What's this about?</label>
-          <select id="topic" name="topic" required>
+          <select id="topic" name="topic" aria-describedby="topic-note" required>
             <option value="">Select a topic...</option>
             <option value="feedback">General Feedback</option>
             <option value="bug">Bug Report</option>
             <option value="feature">Feature Request</option>
             <option value="question">Question</option>
+            <option value="otter-element-privacy">Otter Element privacy or data deletion</option>
             <option value="partnership">Partnership / Business</option>
             <option value="other">Other</option>
           </select>
+          <p class="form-note" id="topic-note">You can delete your Otter Element online records yourself, without this form, in the game: Settings → Your data → Delete my data (for installs with a secure online identity). Use this topic for a privacy question, or to ask for online records to be deleted for an older install or an install that has lost its secret, and tell us the app version if you know it. We may ask for more information to check that a request relates to your install, and we cannot promise that every request can be verified or completed. Never send passwords, purchase tokens, receipts, save files or any secret kept by the game.</p>
         </div>
 
         <div class="form-group">
@@ -110,7 +112,7 @@
         <p>Thanks for reaching out! We'll get back to you soon.</p>
       </div>
 
-      <p class="form-note">We aim to reply within five business days. No child account or game-save details are needed.</p>
+      <p class="form-note">We aim to reply within five business days. No child account or game-save details are needed to send a message.</p>
     </div>
   </section>
 

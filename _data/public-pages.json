@@ -124,6 +124,7 @@
     { "route": "/about.html", "adsenseVerification": true },
     { "route": "/contact.html", "adsenseVerification": true },
     { "route": "/privacy.html" },
+    { "route": "/otter-element-privacy.html" },
     { "route": "/terms.html" },
     { "route": "/Arcade/" },
     { "route": "/Arcade/game.html", "shell": "custom" },
