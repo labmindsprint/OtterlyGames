@@ -74,3 +74,14 @@ test('the full-game link is the official Google Play listing and the preview kee
   assert.ok(body.includes('oe-web-preview:'));
   assert.ok(body.includes('closed testing for invited testers'));
 });
+
+test('the landing page teaches schema-first fusing and keeps "pick two atoms" inside the labelled practice bench', () => {
+  const page = readFileSync(join(site, 'apps', 'otter-element.html'), 'utf8');
+  const science = readFileSync(join(site, 'js', 'otter-element-science.js'), 'utf8');
+  const bench = page.match(/<div class="oe-lab-bench"[\s\S]*?<div class="oe-result"/)?.[0] ?? '';
+  assert.ok(bench.includes('Practice bench') && bench.includes('Practice: pick two atoms'), 'the atom picker is labelled as practice');
+  const rest = page.replace(bench, '');
+  assert.ok(!/pick two atoms|combine atoms|fuse atoms|more recipes/i.test(rest), 'the page outside the bench no longer describes picking atoms');
+  assert.ok(rest.includes('pick a schema you have found') && rest.includes("Lab's Molecules tab"), 'the real flow is schema first');
+  assert.ok(!/free recipe|guardian drop|No recipe for/i.test(science), 'the practice results use the current schema wording');
+});

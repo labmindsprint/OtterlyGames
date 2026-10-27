@@ -75,6 +75,7 @@
 .oe-result p{margin:.35rem 0}
 .oe-tag{display:inline-block;margin:.2rem .3rem .2rem 0;padding:.2rem .6rem;border-radius:99px;font-size:.78rem;background:rgba(56,189,248,.2)}
 .oe-fact{font-size:.88rem;opacity:.85}
+.oe-practice-note{font-size:.84rem}
 .oe-pop{animation:oe-pop .35s ease-out}
 @keyframes oe-pop{from{transform:scale(.96);opacity:.4}to{transform:none;opacity:1}}
 .oe-loop{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.75rem;counter-reset:s}

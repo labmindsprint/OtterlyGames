@@ -139,12 +139,12 @@
 
   // Lab
   const RECIPES = [
-    { a: 'H', b: 'H', name: 'Hydrogen gas', formula: 'H2', bay: 'Barrel', effect: 'Fires 4% faster.', source: 'Free recipe', fact: 'Hydrogen is the lightest substance and the fuel of the Sun.' },
-    { a: 'H', b: 'O', name: 'Water', formula: 'H2O', bay: 'Core', effect: '+8% tower health. Splash chill: hits slow enemies by 15% for 2 seconds.', source: 'Free recipe', fact: 'Water expands when it freezes, which is why ice floats.' },
-    { a: 'C', b: 'H', name: 'Methane', formula: 'CH4', bay: 'Barrel', effect: '+8% attack.', source: 'Guardian drop', fact: 'Methane is the main part of natural gas.' },
-    { a: 'H', b: 'N', name: 'Ammonia', formula: 'NH3', bay: 'Core', effect: 'Restores 1.5% more health after each wave.', source: 'Guardian drop', fact: 'Ammonia fertiliser from the Haber process feeds about half the world.' },
-    { a: 'C', b: 'O', name: 'Carbon dioxide', formula: 'CO2', bay: 'Mount', effect: 'Power cooldowns 7% shorter. Fizz burst: hits explode on nearby enemies.', source: 'Guardian drop', fact: 'Dry ice is solid carbon dioxide. It turns straight into gas.' },
-    { a: 'Cl', b: 'Na', name: 'Sodium chloride', formula: 'NaCl', bay: 'Core', effect: '+2% repair, and Salt pan heals 1.5% of maximum health after each cleared wave.', source: 'Free recipe', fact: 'Table salt joins a metal that explodes in water to a gas that is poisonous.' },
+    { a: 'H', b: 'H', name: 'Hydrogen gas', formula: 'H2', bay: 'Barrel', effect: 'Fires 4% faster.', source: 'Starter schema', fact: 'Hydrogen is the lightest substance and the fuel of the Sun.' },
+    { a: 'H', b: 'O', name: 'Water', formula: 'H2O', bay: 'Core', effect: '+8% tower health. Splash chill: hits slow enemies by 15% for 2 seconds.', source: 'Boss schema', fact: 'Water expands when it freezes, which is why ice floats.' },
+    { a: 'C', b: 'H', name: 'Methane', formula: 'CH4', bay: 'Barrel', effect: '+8% attack.', source: 'Boss schema', fact: 'Methane is the main part of natural gas.' },
+    { a: 'H', b: 'N', name: 'Ammonia', formula: 'NH3', bay: 'Core', effect: 'Restores 1.5% more health after each wave.', source: 'Boss schema', fact: 'Ammonia fertiliser from the Haber process feeds about half the world.' },
+    { a: 'C', b: 'O', name: 'Carbon dioxide', formula: 'CO2', bay: 'Mount', effect: 'Power cooldowns 7% shorter. Fizz burst: hits explode on nearby enemies.', source: 'Boss schema', fact: 'Dry ice is solid carbon dioxide. It turns straight into gas.' },
+    { a: 'Cl', b: 'Na', name: 'Sodium chloride', formula: 'NaCl', bay: 'Core', effect: '+2% repair, and Salt pan heals 1.5% of maximum health after each cleared wave.', source: 'Boss schema', fact: 'Table salt joins a metal that explodes in water to a gas that is poisonous.' },
   ];
   const picks = [];
   const slotA = root.querySelector('#oe-slot-a');
@@ -179,13 +179,14 @@
     out.hidden = false;
     out.classList.toggle('is-miss', !r);
     if (!r) {
-      out.innerHTML = `<strong>No recipe for ${picks.join(' + ')} here</strong><p>This demo shows six of the recipes. Try H + O, C + H or Na + Cl. The full game has many more, and some elements cannot bond at all.</p>`;
+      out.innerHTML = `<strong>No molecule for ${picks.join(' + ')} on this practice bench</strong><p>The bench knows six molecules. Try H + O, C + H or Na + Cl. In the game you fuse only the schemas you hold, and some elements cannot bond at all.</p>`;
       return;
     }
     out.innerHTML = `<div class="oe-formula">${r.formula}</div>
       <div><strong>${r.name}</strong>
       <span class="oe-tag">Fits the ${r.bay} bay</span><span class="oe-tag">${r.source}</span>
-      <p><b>Turret bonus:</b> ${r.effect}</p><p class="oe-fact">${r.fact}</p></div>`;
+      <p><b>Turret bonus:</b> ${r.effect}</p><p class="oe-fact">${r.fact}</p>
+      <p class="oe-practice-note">Practice result. Nothing was fused or saved. In the game, you fuse a schema you hold from the Lab's Molecules tab.</p></div>`;
     out.classList.remove('oe-pop'); void out.offsetWidth; out.classList.add('oe-pop');
   });
   drawSlots();
