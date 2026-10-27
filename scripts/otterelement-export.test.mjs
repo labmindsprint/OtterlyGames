@@ -37,6 +37,13 @@ test('the export has an entry page whose scripts and styles exist and stay on th
   for (const ref of local) assert.ok(existsSync(join(root, ref.replace(/^\.?\/?(games\/otterelement\/)?/, ''))), `${ref} is exported`);
 });
 
+test('the entry page runs scripts and connects to its own origin only, so a script added by the host cannot load', () => {
+  const csp = text('index.html').match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)"/)?.[1] ?? '';
+  assert.match(csp, /(^|; )script-src 'self'(;|$)/);
+  assert.match(csp, /(^|; )connect-src 'self' blob: data:(;|$)/);
+  assert.doesNotMatch(csp, /unsafe-inline|unsafe-eval|https?:|\*/);
+});
+
 test('Siege, the developer pages and the game privacy page are not exported', () => {
   for (const name of all) {
     assert.ok(!/^(dev|art\/siege|art\/td[^/]*)\//.test(name), `${name} must not be exported`);

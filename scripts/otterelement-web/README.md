@@ -31,6 +31,8 @@ Publishing is the website's normal path: commit `games/otterelement/` and push t
 
 No Siege, purchases, ads, profile, cloud sync, leaderboards, remote service calls or analytics. Progress is kept in this browser only
 (IndexedDB `otter-element-web-preview` and `oe-web-preview:` local storage keys). Nothing from the Android app's storage is read.
+The entry page also carries a Content-Security-Policy meta tag (`script-src 'self'`, `connect-src 'self' blob: data:`), because
+Cloudflare adds its Web Analytics script to the HTML pages this site serves; the policy stops that script from loading in the game.
 
 ## Staying in step with the game
 

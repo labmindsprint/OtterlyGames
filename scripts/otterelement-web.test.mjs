@@ -26,9 +26,11 @@ test('every patch applies to the current game source, on a copy only', { skip: !
   try {
     const before = readFileSync(join(game, 'src', 'game', 'loop.ts'), 'utf8');
     cpSync(join(game, 'src'), join(workspace, 'src'), { recursive: true, filter: (path) => !/\.test\.tsx?$/.test(path) });
+    cpSync(join(game, 'index.html'), join(workspace, 'index.html'));
     prepareOtterelementWeb(workspace, game);
     const loop = readFileSync(join(workspace, 'src', 'game', 'loop.ts'), 'utf8');
     assert.match(loop, /PREVIEW_NODE_CAP as PLAYABLE_ELEMENTS/);
+    assert.match(readFileSync(join(workspace, 'index.html'), 'utf8'), /<meta http-equiv="Content-Security-Policy" content="script-src 'self'; /);
     for (const file of ['previewEnv.ts', 'previewCap.ts', 'components/PreviewEnd.tsx', 'components/SiegeBadge.tsx', 'components/shop/ShopSheet.tsx']) {
       assert.equal(readFileSync(join(workspace, 'src', file), 'utf8'), readFileSync(join(overlays, file), 'utf8'), `${file} comes from the overlay`);
     }

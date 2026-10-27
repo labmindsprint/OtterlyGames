@@ -33,6 +33,7 @@ function replaceRegion(source, start, end, replacement, where = '') {
 
 const readSource = (path) => readFileSync(path, 'utf8').replace(/\r\n/g, '\n');
 const CAP = "import { PREVIEW_NODE_CAP as PLAYABLE_ELEMENTS } from '../previewEnv';";
+const PREVIEW_CSP = "script-src 'self'; connect-src 'self' blob: data:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'";
 
 /** The patches, by file. Each one is a function of the file's text; nothing is written until every one has matched. */
 function patches() {
@@ -41,6 +42,9 @@ function patches() {
       s = replaceExact(s, "import { StrictMode, useCallback, useState } from 'react';", "import './previewEnv';\nimport { StrictMode, useCallback, useState } from 'react';", 1, w);
       return replaceExact(s, "  if (import.meta.env.DEV) void import('./devDemo').then((demo) => { demo.startSiegeDemo(); });\n", '', 1, w);
     },
+    // Cloudflare adds its analytics script to every HTML page the site serves. The game page allows scripts and
+    // connections from its own origin only, so the preview really does send nothing to a third party.
+    'index.html': (s, w) => replaceExact(s, '    <meta name="color-scheme" content="dark" />\n', `    <meta name="color-scheme" content="dark" />\n    <meta http-equiv="Content-Security-Policy" content="${PREVIEW_CSP}" />\n`, 1, w),
     // The node cap: the loop and the battle see the preview's last node as the last node of the game.
     'src/game/loop.ts': (s, w) => replaceExact(s, "import { PLAYABLE_ELEMENTS, chapterOf } from './data';", `import { chapterOf } from './data';\n${CAP}`, 1, w),
     // A request past the cap (the farming-rate estimate asks for the next node of a finished preview) is fought as the last node, so no later encounter is ever simulated.
