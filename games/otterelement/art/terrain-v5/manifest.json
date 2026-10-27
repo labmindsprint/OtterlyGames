@@ -1,0 +1,8525 @@
+{
+ "version": 5,
+ "generator": "art-terrain v5 / Azure gpt-image-2 (ground edit + generated sprite sheets) + procedural overlays",
+ "canvasCss": [
+  412,
+  915
+ ],
+ "scale": 2,
+ "layout": {
+  "towerAnchor": [
+   0.5,
+   0.44
+  ],
+  "towerAnchorCss": [
+   206,
+   402.6
+  ],
+  "haloRadiusFraction": [
+   0.4,
+   0.26
+  ],
+  "haloNote": "single soft feathered ellipse of lighter ground about 80% of the width (rx 165, ry 107 css) centred on the tower, plus a small irregular paving patch (~62 css wide) under the tower; no rings",
+  "standoffRadiusFraction": 0.34,
+  "groundBelowTower": "ground runs to the bottom edge (HUD overlays it)"
+ },
+ "recommendedTowerScale": {
+  "cssPerImagePx": 0.28,
+  "targetWidthFraction": 0.17,
+  "note": "tower-v2 composite (pedestal + head/barrel scaled x1.35) measures 252 x 453 image px; x0.28 -> 70 x 127 css = 17% of the 412 width. Pedestal base footprint ~50 css, tower base point = pedestal anchor (160,448) of tw-ped"
+ },
+ "enemyScale": {
+  "note": "css per image px = 33.9 / ppu (wisp 160px frame -> 71 css, = 144 world px x 0.494)"
+ },
+ "light": {
+  "key": "upper-left",
+  "azimuthDeg": -40,
+  "keyColor": "warm #ffe3c0 (low intensity)",
+  "rim": "cool, per theme glow colour on the right/lower-right edges",
+  "shadow": {
+   "direction": "lower-right",
+   "skewXDeg": -35,
+   "scaleY": 0.38,
+   "opacity": 0.42,
+   "blurPx": 2.5,
+   "note": "cast shadow = silhouette flipped vertically about the root, scaleY, skewX; draw under props/tower/enemies. Ground contact shadow + AO under the tower is already baked into the ground plate (offset +5,+3 css lower-right)."
+  }
+ },
+ "depthLayers": [
+  "sky(0)",
+  "planet(1)",
+  "ground(2)",
+  "sprite shadows(3)",
+  "tufts+masses sorted by y (10..11)",
+  "tower+enemies (y sorted)",
+  "debris(30+)",
+  "lightshaft overlay(40, screen blend, 0.10-0.18 alpha)",
+  "glints(41, additive)",
+  "HUD"
+ ],
+ "vignette": "a light vignette is baked into the ground; no extra needed",
+ "shared": {
+  "lightshaft": {
+   "file": "shared/lightshaft.webp",
+   "size": [
+    206,
+    458
+   ],
+   "bytes": 8510
+  },
+  "glint": {
+   "file": "shared/glint.webp",
+   "size": [
+    64,
+    64
+   ],
+   "bytes": 434
+  }
+ },
+ "totalBytes": 3097986,
+ "themes": {
+  "lunar": {
+   "name": "Lunar craters",
+   "chapters": [
+    1
+   ],
+   "tint": "#6eaaff",
+   "glow": "#8fe9ff",
+   "layers": {
+    "ground": {
+     "file": "lunar-ground.webp",
+     "size": [
+      824,
+      1830
+     ],
+     "bytes": 181574,
+     "key": "element-image-terrain5-lunar-ground"
+    },
+    "sky": {
+     "file": "lunar-sky.webp",
+     "size": [
+      944,
+      1830
+     ],
+     "bytes": 51030,
+     "key": "element-image-terrain5-lunar-sky"
+    },
+    "planet": {
+     "file": "lunar-planet.webp",
+     "size": [
+      300,
+      300
+     ],
+     "bytes": 24214,
+     "key": "element-image-terrain5-lunar-planet"
+    },
+    "props": {
+     "file": "lunar-props.webp",
+     "size": [
+      1024,
+      442
+     ],
+     "bytes": 101716,
+     "key": "element-image-terrain5-lunar-props"
+    }
+   },
+   "planet": {
+    "centerCss": [
+     80,
+     100
+    ],
+    "sizeCss": 150.0,
+    "motion": {
+     "driftPx": [
+      5,
+      2
+     ],
+     "periodS": 120,
+     "atmospherePulse": 0.08,
+     "note": "draw behind the ground; no rotation of the bitmap, drift + subtle brightness pulse"
+    }
+   },
+   "sky": {
+    "sizeCss": [
+     472.0,
+     915.0
+    ],
+    "drawAtCssX": -30,
+    "parallax": {
+     "maxShiftPx": 10,
+     "periodS": 90
+    }
+   },
+   "sprites": [
+    {
+     "kind": "tuft",
+     "idx": 0,
+     "frame": [
+      0,
+      0,
+      48,
+      95
+     ],
+     "displayCss": [
+      24.0,
+      47.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 1,
+     "frame": [
+      50,
+      0,
+      54,
+      88
+     ],
+     "displayCss": [
+      27.0,
+      44.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 2,
+     "frame": [
+      106,
+      0,
+      59,
+      109
+     ],
+     "displayCss": [
+      29.5,
+      54.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 0,
+     "frame": [
+      167,
+      0,
+      80,
+      79
+     ],
+     "displayCss": [
+      40.0,
+      39.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 1,
+     "frame": [
+      249,
+      0,
+      69,
+      103
+     ],
+     "displayCss": [
+      34.5,
+      51.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 2,
+     "frame": [
+      320,
+      0,
+      84,
+      79
+     ],
+     "displayCss": [
+      42.0,
+      39.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 3,
+     "frame": [
+      406,
+      0,
+      80,
+      90
+     ],
+     "displayCss": [
+      40.0,
+      45.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 0,
+     "frame": [
+      488,
+      0,
+      124,
+      218
+     ],
+     "displayCss": [
+      62.0,
+      109.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 1,
+     "frame": [
+      614,
+      0,
+      129,
+      211
+     ],
+     "displayCss": [
+      64.5,
+      105.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 2,
+     "frame": [
+      745,
+      0,
+      124,
+      227
+     ],
+     "displayCss": [
+      62.0,
+      113.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 3,
+     "frame": [
+      871,
+      0,
+      150,
+      208
+     ],
+     "displayCss": [
+      75.0,
+      104.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 4,
+     "frame": [
+      0,
+      229,
+      142,
+      205
+     ],
+     "displayCss": [
+      71.0,
+      102.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 5,
+     "frame": [
+      144,
+      229,
+      126,
+      209
+     ],
+     "displayCss": [
+      63.0,
+      104.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 6,
+     "frame": [
+      272,
+      229,
+      126,
+      205
+     ],
+     "displayCss": [
+      63.0,
+      102.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 7,
+     "frame": [
+      400,
+      229,
+      132,
+      213
+     ],
+     "displayCss": [
+      66.0,
+      106.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    }
+   ],
+   "instances": [
+    {
+     "id": "mass0",
+     "kind": "mass",
+     "sprite": 10,
+     "pos": [
+      0.03,
+      0.31
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass1",
+     "kind": "mass",
+     "sprite": 8,
+     "pos": [
+      0.965,
+      0.3
+     ],
+     "scale": 0.72,
+     "flipX": 1,
+     "depth": 10.3,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass2",
+     "kind": "mass",
+     "sprite": 9,
+     "pos": [
+      0.045,
+      0.6
+     ],
+     "scale": 0.95,
+     "flipX": 0,
+     "depth": 10.6,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass3",
+     "kind": "mass",
+     "sprite": 14,
+     "pos": [
+      0.955,
+      0.58
+     ],
+     "scale": 0.9,
+     "flipX": 1,
+     "depth": 10.58,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass4",
+     "kind": "mass",
+     "sprite": 11,
+     "pos": [
+      0.06,
+      0.85
+     ],
+     "scale": 1.35,
+     "flipX": 0,
+     "depth": 10.85,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass5",
+     "kind": "mass",
+     "sprite": 13,
+     "pos": [
+      0.95,
+      0.87
+     ],
+     "scale": 1.4,
+     "flipX": 1,
+     "depth": 10.87,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass6",
+     "kind": "mass",
+     "sprite": 7,
+     "pos": [
+      0.24,
+      0.905
+     ],
+     "scale": 1.05,
+     "flipX": 0,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass7",
+     "kind": "mass",
+     "sprite": 12,
+     "pos": [
+      0.78,
+      0.905
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "tuft0",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.12,
+      0.5
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.5,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.0,
+      "phaseS": 0.0
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft1",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.89,
+      0.47
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.47,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.0,
+      "phaseS": 0.83
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft2",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.07,
+      0.72
+     ],
+     "scale": 1.04,
+     "flipX": 0,
+     "depth": 10.72,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 4.2,
+      "phaseS": 1.66
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft3",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.93,
+      0.73
+     ],
+     "scale": 0.94,
+     "flipX": 1,
+     "depth": 10.73,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 3.4,
+      "phaseS": 2.49
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft4",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.2,
+      0.79
+     ],
+     "scale": 1.18,
+     "flipX": 0,
+     "depth": 10.79,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 5.4,
+      "phaseS": 3.32
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft5",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.83,
+      0.8
+     ],
+     "scale": 1.07,
+     "flipX": 1,
+     "depth": 10.8,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 4.6,
+      "phaseS": 0.15
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft6",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.28,
+      0.31
+     ],
+     "scale": 0.97,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 3.8,
+      "phaseS": 0.98
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft7",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.74,
+      0.29
+     ],
+     "scale": 1.22,
+     "flipX": 1,
+     "depth": 10.29,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 3.0,
+      "phaseS": 1.81
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft8",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.15,
+      0.37
+     ],
+     "scale": 1.11,
+     "flipX": 0,
+     "depth": 10.37,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 5.0,
+      "phaseS": 2.64
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft9",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.87,
+      0.36
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.36,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 4.2,
+      "phaseS": 3.47
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft10",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.4,
+      0.84
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.84,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.4,
+      "phaseS": 0.3
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft11",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.62,
+      0.83
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.83,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.4,
+      "phaseS": 1.13
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "debris0",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.17,
+      0.1
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 30.1,
+     "shadow": false,
+     "drift": {
+      "dxPx": 8.0,
+      "dyPx": 3.0,
+      "periodS": 14.0,
+      "rotDeg": 4,
+      "phaseS": 0.0
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris1",
+     "kind": "debris",
+     "sprite": 5,
+     "pos": [
+      0.82,
+      0.14
+     ],
+     "scale": 1.1,
+     "flipX": 1,
+     "depth": 30.14,
+     "shadow": false,
+     "drift": {
+      "dxPx": 10.5,
+      "dyPx": 4.5,
+      "periodS": 16.2,
+      "rotDeg": 6,
+      "phaseS": 2.7
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris2",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.46,
+      0.07
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 30.07,
+     "shadow": false,
+     "drift": {
+      "dxPx": 13.0,
+      "dyPx": 6.0,
+      "periodS": 18.4,
+      "rotDeg": 8,
+      "phaseS": 5.4
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris3",
+     "kind": "debris",
+     "sprite": 6,
+     "pos": [
+      0.63,
+      0.17
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.17,
+     "shadow": false,
+     "drift": {
+      "dxPx": 15.5,
+      "dyPx": 3.0,
+      "periodS": 20.6,
+      "rotDeg": 4,
+      "phaseS": 8.1
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris4",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.35,
+      0.155
+     ],
+     "scale": 0.6,
+     "flipX": 0,
+     "depth": 30.155,
+     "shadow": false,
+     "drift": {
+      "dxPx": 18.0,
+      "dyPx": 4.5,
+      "periodS": 22.8,
+      "rotDeg": 6,
+      "phaseS": 10.8
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris5",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.93,
+      0.05
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.05,
+     "shadow": false,
+     "drift": {
+      "dxPx": 20.5,
+      "dyPx": 6.0,
+      "periodS": 25.0,
+      "rotDeg": 8,
+      "phaseS": 13.5
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    }
+   ],
+   "glints": [
+    {
+     "pos": [
+      0.045,
+      0.505
+     ],
+     "scale": 0.28,
+     "periodS": 2.6,
+     "phaseS": 0.0,
+     "color": "#8fe9ff"
+    },
+    {
+     "pos": [
+      0.96,
+      0.49
+     ],
+     "scale": 0.38,
+     "periodS": 3.3,
+     "phaseS": 1.1,
+     "color": "#8fe9ff"
+    },
+    {
+     "pos": [
+      0.052,
+      0.215
+     ],
+     "scale": 0.48,
+     "periodS": 4.0,
+     "phaseS": 2.2,
+     "color": "#8fe9ff"
+    },
+    {
+     "pos": [
+      0.957,
+      0.225
+     ],
+     "scale": 0.28,
+     "periodS": 4.7,
+     "phaseS": 3.3,
+     "color": "#8fe9ff"
+    },
+    {
+     "pos": [
+      0.055,
+      0.78
+     ],
+     "scale": 0.38,
+     "periodS": 5.4,
+     "phaseS": 4.4,
+     "color": "#8fe9ff"
+    },
+    {
+     "pos": [
+      0.945,
+      0.8
+     ],
+     "scale": 0.48,
+     "periodS": 6.1,
+     "phaseS": 5.5,
+     "color": "#8fe9ff"
+    }
+   ],
+   "towerGrade": {
+    "multiplyRgb": [
+     0.877,
+     0.925,
+     1.0
+    ],
+    "saturation": 0.92,
+    "brightness": 0.95,
+    "rimColor": "#8fe9ff",
+    "rimAlpha": 0.55,
+    "rimSide": "upper-left key edge + cool rim on the right edge",
+    "note": "multiply the tower sprites by multiplyRgb (setTint; every channel <= 1). saturation/brightness/rim are optional extras (not applied by the Phaser tint path)"
+   },
+   "enemyGrade": {
+    "multiplyRgb": [
+     0.937,
+     0.961,
+     1.0
+    ],
+    "saturation": 0.95,
+    "brightness": 0.97
+   }
+  },
+  "basin": {
+   "name": "Mineral basin",
+   "chapters": [
+    2,
+    3
+   ],
+   "tint": "#aa78ff",
+   "glow": "#b08cff",
+   "layers": {
+    "ground": {
+     "file": "basin-ground.webp",
+     "size": [
+      824,
+      1830
+     ],
+     "bytes": 135230,
+     "key": "element-image-terrain5-basin-ground"
+    },
+    "sky": {
+     "file": "basin-sky.webp",
+     "size": [
+      944,
+      1830
+     ],
+     "bytes": 58496,
+     "key": "element-image-terrain5-basin-sky"
+    },
+    "planet": {
+     "file": "basin-planet.webp",
+     "size": [
+      380,
+      380
+     ],
+     "bytes": 39102,
+     "key": "element-image-terrain5-basin-planet"
+    },
+    "props": {
+     "file": "basin-props.webp",
+     "size": [
+      1024,
+      439
+     ],
+     "bytes": 116142,
+     "key": "element-image-terrain5-basin-props"
+    }
+   },
+   "planet": {
+    "centerCss": [
+     318,
+     84
+    ],
+    "sizeCss": 190.0,
+    "motion": {
+     "driftPx": [
+      5,
+      2
+     ],
+     "periodS": 120,
+     "atmospherePulse": 0.08,
+     "note": "draw behind the ground; no rotation of the bitmap, drift + subtle brightness pulse"
+    }
+   },
+   "sky": {
+    "sizeCss": [
+     472.0,
+     915.0
+    ],
+    "drawAtCssX": -30,
+    "parallax": {
+     "maxShiftPx": 10,
+     "periodS": 90
+    }
+   },
+   "sprites": [
+    {
+     "kind": "tuft",
+     "idx": 0,
+     "frame": [
+      0,
+      0,
+      68,
+      109
+     ],
+     "displayCss": [
+      34.0,
+      54.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 1,
+     "frame": [
+      70,
+      0,
+      50,
+      109
+     ],
+     "displayCss": [
+      25.0,
+      54.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 2,
+     "frame": [
+      122,
+      0,
+      57,
+      114
+     ],
+     "displayCss": [
+      28.5,
+      57.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 0,
+     "frame": [
+      181,
+      0,
+      61,
+      79
+     ],
+     "displayCss": [
+      30.5,
+      39.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 1,
+     "frame": [
+      244,
+      0,
+      71,
+      72
+     ],
+     "displayCss": [
+      35.5,
+      36.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 2,
+     "frame": [
+      317,
+      0,
+      49,
+      93
+     ],
+     "displayCss": [
+      24.5,
+      46.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 3,
+     "frame": [
+      368,
+      0,
+      42,
+      74
+     ],
+     "displayCss": [
+      21.0,
+      37.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 0,
+     "frame": [
+      412,
+      0,
+      153,
+      200
+     ],
+     "displayCss": [
+      76.5,
+      100.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 1,
+     "frame": [
+      567,
+      0,
+      137,
+      208
+     ],
+     "displayCss": [
+      68.5,
+      104.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 2,
+     "frame": [
+      706,
+      0,
+      140,
+      190
+     ],
+     "displayCss": [
+      70.0,
+      95.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 3,
+     "frame": [
+      848,
+      0,
+      131,
+      213
+     ],
+     "displayCss": [
+      65.5,
+      106.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 4,
+     "frame": [
+      0,
+      215,
+      140,
+      224
+     ],
+     "displayCss": [
+      70.0,
+      112.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 5,
+     "frame": [
+      142,
+      215,
+      142,
+      211
+     ],
+     "displayCss": [
+      71.0,
+      105.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 6,
+     "frame": [
+      286,
+      215,
+      146,
+      210
+     ],
+     "displayCss": [
+      73.0,
+      105.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 7,
+     "frame": [
+      434,
+      215,
+      142,
+      223
+     ],
+     "displayCss": [
+      71.0,
+      111.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    }
+   ],
+   "instances": [
+    {
+     "id": "mass0",
+     "kind": "mass",
+     "sprite": 10,
+     "pos": [
+      0.03,
+      0.31
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass1",
+     "kind": "mass",
+     "sprite": 8,
+     "pos": [
+      0.965,
+      0.3
+     ],
+     "scale": 0.72,
+     "flipX": 1,
+     "depth": 10.3,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass2",
+     "kind": "mass",
+     "sprite": 9,
+     "pos": [
+      0.045,
+      0.6
+     ],
+     "scale": 0.95,
+     "flipX": 0,
+     "depth": 10.6,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass3",
+     "kind": "mass",
+     "sprite": 14,
+     "pos": [
+      0.955,
+      0.58
+     ],
+     "scale": 0.9,
+     "flipX": 1,
+     "depth": 10.58,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass4",
+     "kind": "mass",
+     "sprite": 11,
+     "pos": [
+      0.06,
+      0.85
+     ],
+     "scale": 1.35,
+     "flipX": 0,
+     "depth": 10.85,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass5",
+     "kind": "mass",
+     "sprite": 13,
+     "pos": [
+      0.95,
+      0.87
+     ],
+     "scale": 1.4,
+     "flipX": 1,
+     "depth": 10.87,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass6",
+     "kind": "mass",
+     "sprite": 7,
+     "pos": [
+      0.24,
+      0.905
+     ],
+     "scale": 1.05,
+     "flipX": 0,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass7",
+     "kind": "mass",
+     "sprite": 12,
+     "pos": [
+      0.78,
+      0.905
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "tuft0",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.12,
+      0.5
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.5,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.0,
+      "phaseS": 0.0
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft1",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.89,
+      0.47
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.47,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.0,
+      "phaseS": 0.83
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft2",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.07,
+      0.72
+     ],
+     "scale": 1.04,
+     "flipX": 0,
+     "depth": 10.72,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 4.2,
+      "phaseS": 1.66
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft3",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.93,
+      0.73
+     ],
+     "scale": 0.94,
+     "flipX": 1,
+     "depth": 10.73,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 3.4,
+      "phaseS": 2.49
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft4",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.2,
+      0.79
+     ],
+     "scale": 1.18,
+     "flipX": 0,
+     "depth": 10.79,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 5.4,
+      "phaseS": 3.32
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft5",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.83,
+      0.8
+     ],
+     "scale": 1.07,
+     "flipX": 1,
+     "depth": 10.8,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 4.6,
+      "phaseS": 0.15
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft6",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.28,
+      0.31
+     ],
+     "scale": 0.97,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 3.8,
+      "phaseS": 0.98
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft7",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.74,
+      0.29
+     ],
+     "scale": 1.22,
+     "flipX": 1,
+     "depth": 10.29,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 3.0,
+      "phaseS": 1.81
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft8",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.15,
+      0.37
+     ],
+     "scale": 1.11,
+     "flipX": 0,
+     "depth": 10.37,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 5.0,
+      "phaseS": 2.64
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft9",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.87,
+      0.36
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.36,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 4.2,
+      "phaseS": 3.47
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft10",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.4,
+      0.84
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.84,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.4,
+      "phaseS": 0.3
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft11",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.62,
+      0.83
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.83,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.4,
+      "phaseS": 1.13
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "debris0",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.17,
+      0.1
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 30.1,
+     "shadow": false,
+     "drift": {
+      "dxPx": 8.0,
+      "dyPx": 3.0,
+      "periodS": 14.0,
+      "rotDeg": 4,
+      "phaseS": 0.0
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris1",
+     "kind": "debris",
+     "sprite": 5,
+     "pos": [
+      0.82,
+      0.14
+     ],
+     "scale": 1.1,
+     "flipX": 1,
+     "depth": 30.14,
+     "shadow": false,
+     "drift": {
+      "dxPx": 10.5,
+      "dyPx": 4.5,
+      "periodS": 16.2,
+      "rotDeg": 6,
+      "phaseS": 2.7
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris2",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.46,
+      0.07
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 30.07,
+     "shadow": false,
+     "drift": {
+      "dxPx": 13.0,
+      "dyPx": 6.0,
+      "periodS": 18.4,
+      "rotDeg": 8,
+      "phaseS": 5.4
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris3",
+     "kind": "debris",
+     "sprite": 6,
+     "pos": [
+      0.63,
+      0.17
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.17,
+     "shadow": false,
+     "drift": {
+      "dxPx": 15.5,
+      "dyPx": 3.0,
+      "periodS": 20.6,
+      "rotDeg": 4,
+      "phaseS": 8.1
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris4",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.35,
+      0.155
+     ],
+     "scale": 0.6,
+     "flipX": 0,
+     "depth": 30.155,
+     "shadow": false,
+     "drift": {
+      "dxPx": 18.0,
+      "dyPx": 4.5,
+      "periodS": 22.8,
+      "rotDeg": 6,
+      "phaseS": 10.8
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris5",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.93,
+      0.05
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.05,
+     "shadow": false,
+     "drift": {
+      "dxPx": 20.5,
+      "dyPx": 6.0,
+      "periodS": 25.0,
+      "rotDeg": 8,
+      "phaseS": 13.5
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    }
+   ],
+   "glints": [
+    {
+     "pos": [
+      0.045,
+      0.505
+     ],
+     "scale": 0.28,
+     "periodS": 2.6,
+     "phaseS": 0.0,
+     "color": "#b08cff"
+    },
+    {
+     "pos": [
+      0.96,
+      0.49
+     ],
+     "scale": 0.38,
+     "periodS": 3.3,
+     "phaseS": 1.1,
+     "color": "#b08cff"
+    },
+    {
+     "pos": [
+      0.052,
+      0.215
+     ],
+     "scale": 0.48,
+     "periodS": 4.0,
+     "phaseS": 2.2,
+     "color": "#b08cff"
+    },
+    {
+     "pos": [
+      0.957,
+      0.225
+     ],
+     "scale": 0.28,
+     "periodS": 4.7,
+     "phaseS": 3.3,
+     "color": "#b08cff"
+    },
+    {
+     "pos": [
+      0.055,
+      0.78
+     ],
+     "scale": 0.38,
+     "periodS": 5.4,
+     "phaseS": 4.4,
+     "color": "#b08cff"
+    },
+    {
+     "pos": [
+      0.945,
+      0.8
+     ],
+     "scale": 0.48,
+     "periodS": 6.1,
+     "phaseS": 5.5,
+     "color": "#b08cff"
+    }
+   ],
+   "towerGrade": {
+    "multiplyRgb": [
+     0.943,
+     0.877,
+     1.0
+    ],
+    "saturation": 0.92,
+    "brightness": 0.95,
+    "rimColor": "#b08cff",
+    "rimAlpha": 0.55,
+    "rimSide": "upper-left key edge + cool rim on the right edge",
+    "note": "multiply the tower sprites by multiplyRgb (setTint; every channel <= 1). saturation/brightness/rim are optional extras (not applied by the Phaser tint path)"
+   },
+   "enemyGrade": {
+    "multiplyRgb": [
+     0.971,
+     0.937,
+     1.0
+    ],
+    "saturation": 0.95,
+    "brightness": 0.97
+   }
+  },
+  "coast": {
+   "name": "Glacier shelf",
+   "chapters": [
+    5,
+    6
+   ],
+   "tint": "#5adcff",
+   "glow": "#7fe0ff",
+   "layers": {
+    "ground": {
+     "file": "coast-ground.webp",
+     "size": [
+      824,
+      1830
+     ],
+     "bytes": 107452,
+     "key": "element-image-terrain5-coast-ground"
+    },
+    "sky": {
+     "file": "coast-sky.webp",
+     "size": [
+      944,
+      1830
+     ],
+     "bytes": 59794,
+     "key": "element-image-terrain5-coast-sky"
+    },
+    "planet": {
+     "file": "coast-planet.webp",
+     "size": [
+      280,
+      280
+     ],
+     "bytes": 16300,
+     "key": "element-image-terrain5-coast-planet"
+    },
+    "props": {
+     "file": "coast-props.webp",
+     "size": [
+      1024,
+      480
+     ],
+     "bytes": 113570,
+     "key": "element-image-terrain5-coast-props"
+    }
+   },
+   "planet": {
+    "centerCss": [
+     80,
+     100
+    ],
+    "sizeCss": 140.0,
+    "motion": {
+     "driftPx": [
+      5,
+      2
+     ],
+     "periodS": 120,
+     "atmospherePulse": 0.08,
+     "note": "draw behind the ground; no rotation of the bitmap, drift + subtle brightness pulse"
+    }
+   },
+   "sky": {
+    "sizeCss": [
+     472.0,
+     915.0
+    ],
+    "drawAtCssX": -30,
+    "parallax": {
+     "maxShiftPx": 10,
+     "periodS": 90
+    }
+   },
+   "sprites": [
+    {
+     "kind": "tuft",
+     "idx": 0,
+     "frame": [
+      0,
+      0,
+      60,
+      107
+     ],
+     "displayCss": [
+      30.0,
+      53.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 1,
+     "frame": [
+      62,
+      0,
+      53,
+      111
+     ],
+     "displayCss": [
+      26.5,
+      55.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 2,
+     "frame": [
+      117,
+      0,
+      78,
+      98
+     ],
+     "displayCss": [
+      39.0,
+      49.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 0,
+     "frame": [
+      197,
+      0,
+      48,
+      60
+     ],
+     "displayCss": [
+      24.0,
+      30.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 1,
+     "frame": [
+      247,
+      0,
+      49,
+      73
+     ],
+     "displayCss": [
+      24.5,
+      36.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 2,
+     "frame": [
+      298,
+      0,
+      62,
+      41
+     ],
+     "displayCss": [
+      31.0,
+      20.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 3,
+     "frame": [
+      362,
+      0,
+      50,
+      71
+     ],
+     "displayCss": [
+      25.0,
+      35.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 0,
+     "frame": [
+      414,
+      0,
+      130,
+      224
+     ],
+     "displayCss": [
+      65.0,
+      112.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 1,
+     "frame": [
+      546,
+      0,
+      123,
+      234
+     ],
+     "displayCss": [
+      61.5,
+      117.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 2,
+     "frame": [
+      671,
+      0,
+      130,
+      216
+     ],
+     "displayCss": [
+      65.0,
+      108.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 3,
+     "frame": [
+      803,
+      0,
+      132,
+      230
+     ],
+     "displayCss": [
+      66.0,
+      115.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 4,
+     "frame": [
+      0,
+      236,
+      123,
+      244
+     ],
+     "displayCss": [
+      61.5,
+      122.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 5,
+     "frame": [
+      125,
+      236,
+      124,
+      242
+     ],
+     "displayCss": [
+      62.0,
+      121.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 6,
+     "frame": [
+      251,
+      236,
+      133,
+      234
+     ],
+     "displayCss": [
+      66.5,
+      117.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 7,
+     "frame": [
+      386,
+      236,
+      105,
+      242
+     ],
+     "displayCss": [
+      52.5,
+      121.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    }
+   ],
+   "instances": [
+    {
+     "id": "mass0",
+     "kind": "mass",
+     "sprite": 10,
+     "pos": [
+      0.03,
+      0.31
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass1",
+     "kind": "mass",
+     "sprite": 8,
+     "pos": [
+      0.965,
+      0.3
+     ],
+     "scale": 0.72,
+     "flipX": 1,
+     "depth": 10.3,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass2",
+     "kind": "mass",
+     "sprite": 9,
+     "pos": [
+      0.045,
+      0.6
+     ],
+     "scale": 0.95,
+     "flipX": 0,
+     "depth": 10.6,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass3",
+     "kind": "mass",
+     "sprite": 14,
+     "pos": [
+      0.955,
+      0.58
+     ],
+     "scale": 0.9,
+     "flipX": 1,
+     "depth": 10.58,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass4",
+     "kind": "mass",
+     "sprite": 11,
+     "pos": [
+      0.06,
+      0.85
+     ],
+     "scale": 1.35,
+     "flipX": 0,
+     "depth": 10.85,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass5",
+     "kind": "mass",
+     "sprite": 13,
+     "pos": [
+      0.95,
+      0.87
+     ],
+     "scale": 1.4,
+     "flipX": 1,
+     "depth": 10.87,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass6",
+     "kind": "mass",
+     "sprite": 7,
+     "pos": [
+      0.24,
+      0.905
+     ],
+     "scale": 1.05,
+     "flipX": 0,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass7",
+     "kind": "mass",
+     "sprite": 12,
+     "pos": [
+      0.78,
+      0.905
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "tuft0",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.12,
+      0.5
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.5,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.0,
+      "phaseS": 0.0
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft1",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.89,
+      0.47
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.47,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.0,
+      "phaseS": 0.83
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft2",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.07,
+      0.72
+     ],
+     "scale": 1.04,
+     "flipX": 0,
+     "depth": 10.72,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 4.2,
+      "phaseS": 1.66
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft3",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.93,
+      0.73
+     ],
+     "scale": 0.94,
+     "flipX": 1,
+     "depth": 10.73,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 3.4,
+      "phaseS": 2.49
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft4",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.2,
+      0.79
+     ],
+     "scale": 1.18,
+     "flipX": 0,
+     "depth": 10.79,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 5.4,
+      "phaseS": 3.32
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft5",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.83,
+      0.8
+     ],
+     "scale": 1.07,
+     "flipX": 1,
+     "depth": 10.8,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 4.6,
+      "phaseS": 0.15
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft6",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.28,
+      0.31
+     ],
+     "scale": 0.97,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 3.8,
+      "phaseS": 0.98
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft7",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.74,
+      0.29
+     ],
+     "scale": 1.22,
+     "flipX": 1,
+     "depth": 10.29,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 3.0,
+      "phaseS": 1.81
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft8",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.15,
+      0.37
+     ],
+     "scale": 1.11,
+     "flipX": 0,
+     "depth": 10.37,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 5.0,
+      "phaseS": 2.64
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft9",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.87,
+      0.36
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.36,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 4.2,
+      "phaseS": 3.47
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft10",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.4,
+      0.84
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.84,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.4,
+      "phaseS": 0.3
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft11",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.62,
+      0.83
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.83,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.4,
+      "phaseS": 1.13
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "debris0",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.17,
+      0.1
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 30.1,
+     "shadow": false,
+     "drift": {
+      "dxPx": 8.0,
+      "dyPx": 3.0,
+      "periodS": 14.0,
+      "rotDeg": 4,
+      "phaseS": 0.0
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris1",
+     "kind": "debris",
+     "sprite": 5,
+     "pos": [
+      0.82,
+      0.14
+     ],
+     "scale": 1.1,
+     "flipX": 1,
+     "depth": 30.14,
+     "shadow": false,
+     "drift": {
+      "dxPx": 10.5,
+      "dyPx": 4.5,
+      "periodS": 16.2,
+      "rotDeg": 6,
+      "phaseS": 2.7
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris2",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.46,
+      0.07
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 30.07,
+     "shadow": false,
+     "drift": {
+      "dxPx": 13.0,
+      "dyPx": 6.0,
+      "periodS": 18.4,
+      "rotDeg": 8,
+      "phaseS": 5.4
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris3",
+     "kind": "debris",
+     "sprite": 6,
+     "pos": [
+      0.63,
+      0.17
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.17,
+     "shadow": false,
+     "drift": {
+      "dxPx": 15.5,
+      "dyPx": 3.0,
+      "periodS": 20.6,
+      "rotDeg": 4,
+      "phaseS": 8.1
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris4",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.35,
+      0.155
+     ],
+     "scale": 0.6,
+     "flipX": 0,
+     "depth": 30.155,
+     "shadow": false,
+     "drift": {
+      "dxPx": 18.0,
+      "dyPx": 4.5,
+      "periodS": 22.8,
+      "rotDeg": 6,
+      "phaseS": 10.8
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris5",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.93,
+      0.05
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.05,
+     "shadow": false,
+     "drift": {
+      "dxPx": 20.5,
+      "dyPx": 6.0,
+      "periodS": 25.0,
+      "rotDeg": 8,
+      "phaseS": 13.5
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    }
+   ],
+   "glints": [
+    {
+     "pos": [
+      0.045,
+      0.505
+     ],
+     "scale": 0.28,
+     "periodS": 2.6,
+     "phaseS": 0.0,
+     "color": "#7fe0ff"
+    },
+    {
+     "pos": [
+      0.96,
+      0.49
+     ],
+     "scale": 0.38,
+     "periodS": 3.3,
+     "phaseS": 1.1,
+     "color": "#7fe0ff"
+    },
+    {
+     "pos": [
+      0.052,
+      0.215
+     ],
+     "scale": 0.48,
+     "periodS": 4.0,
+     "phaseS": 2.2,
+     "color": "#7fe0ff"
+    },
+    {
+     "pos": [
+      0.957,
+      0.225
+     ],
+     "scale": 0.28,
+     "periodS": 4.7,
+     "phaseS": 3.3,
+     "color": "#7fe0ff"
+    },
+    {
+     "pos": [
+      0.055,
+      0.78
+     ],
+     "scale": 0.38,
+     "periodS": 5.4,
+     "phaseS": 4.4,
+     "color": "#7fe0ff"
+    },
+    {
+     "pos": [
+      0.945,
+      0.8
+     ],
+     "scale": 0.48,
+     "periodS": 6.1,
+     "phaseS": 5.5,
+     "color": "#7fe0ff"
+    }
+   ],
+   "towerGrade": {
+    "multiplyRgb": [
+     0.833,
+     0.926,
+     1.0
+    ],
+    "saturation": 0.9,
+    "brightness": 0.95,
+    "rimColor": "#7fe0ff",
+    "rimAlpha": 0.55,
+    "rimSide": "upper-left key edge + cool rim on the right edge",
+    "note": "multiply the tower sprites by multiplyRgb (setTint; every channel <= 1). saturation/brightness/rim are optional extras (not applied by the Phaser tint path)"
+   },
+   "enemyGrade": {
+    "multiplyRgb": [
+     0.913,
+     0.962,
+     1.0
+    ],
+    "saturation": 0.95,
+    "brightness": 0.97
+   }
+  },
+  "canyon": {
+   "name": "Ember dunes",
+   "chapters": [
+    7,
+    8,
+    16
+   ],
+   "tint": "#ff963c",
+   "glow": "#ffb35a",
+   "layers": {
+    "ground": {
+     "file": "canyon-ground.webp",
+     "size": [
+      824,
+      1830
+     ],
+     "bytes": 219786,
+     "key": "element-image-terrain5-canyon-ground"
+    },
+    "sky": {
+     "file": "canyon-sky.webp",
+     "size": [
+      944,
+      1830
+     ],
+     "bytes": 36204,
+     "key": "element-image-terrain5-canyon-sky"
+    },
+    "planet": {
+     "file": "canyon-planet.webp",
+     "size": [
+      256,
+      256
+     ],
+     "bytes": 16294,
+     "key": "element-image-terrain5-canyon-planet"
+    },
+    "props": {
+     "file": "canyon-props.webp",
+     "size": [
+      1024,
+      459
+     ],
+     "bytes": 99446,
+     "key": "element-image-terrain5-canyon-props"
+    }
+   },
+   "planet": {
+    "centerCss": [
+     340,
+     80
+    ],
+    "sizeCss": 128.0,
+    "motion": {
+     "driftPx": [
+      5,
+      2
+     ],
+     "periodS": 120,
+     "atmospherePulse": 0.08,
+     "note": "draw behind the ground; no rotation of the bitmap, drift + subtle brightness pulse"
+    }
+   },
+   "sky": {
+    "sizeCss": [
+     472.0,
+     915.0
+    ],
+    "drawAtCssX": -30,
+    "parallax": {
+     "maxShiftPx": 10,
+     "periodS": 90
+    }
+   },
+   "sprites": [
+    {
+     "kind": "tuft",
+     "idx": 0,
+     "frame": [
+      0,
+      0,
+      61,
+      86
+     ],
+     "displayCss": [
+      30.5,
+      43.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 1,
+     "frame": [
+      63,
+      0,
+      66,
+      100
+     ],
+     "displayCss": [
+      33.0,
+      50.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 2,
+     "frame": [
+      131,
+      0,
+      62,
+      83
+     ],
+     "displayCss": [
+      31.0,
+      41.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 0,
+     "frame": [
+      195,
+      0,
+      65,
+      110
+     ],
+     "displayCss": [
+      32.5,
+      55.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 1,
+     "frame": [
+      262,
+      0,
+      51,
+      115
+     ],
+     "displayCss": [
+      25.5,
+      57.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 2,
+     "frame": [
+      315,
+      0,
+      69,
+      108
+     ],
+     "displayCss": [
+      34.5,
+      54.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 3,
+     "frame": [
+      386,
+      0,
+      66,
+      104
+     ],
+     "displayCss": [
+      33.0,
+      52.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 0,
+     "frame": [
+      454,
+      0,
+      164,
+      214
+     ],
+     "displayCss": [
+      82.0,
+      107.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 1,
+     "frame": [
+      620,
+      0,
+      122,
+      223
+     ],
+     "displayCss": [
+      61.0,
+      111.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 2,
+     "frame": [
+      744,
+      0,
+      148,
+      212
+     ],
+     "displayCss": [
+      74.0,
+      106.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 3,
+     "frame": [
+      894,
+      0,
+      104,
+      210
+     ],
+     "displayCss": [
+      52.0,
+      105.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 4,
+     "frame": [
+      0,
+      225,
+      136,
+      210
+     ],
+     "displayCss": [
+      68.0,
+      105.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 5,
+     "frame": [
+      138,
+      225,
+      146,
+      228
+     ],
+     "displayCss": [
+      73.0,
+      114.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 6,
+     "frame": [
+      286,
+      225,
+      118,
+      216
+     ],
+     "displayCss": [
+      59.0,
+      108.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 7,
+     "frame": [
+      406,
+      225,
+      143,
+      234
+     ],
+     "displayCss": [
+      71.5,
+      117.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    }
+   ],
+   "instances": [
+    {
+     "id": "mass0",
+     "kind": "mass",
+     "sprite": 10,
+     "pos": [
+      0.03,
+      0.31
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass1",
+     "kind": "mass",
+     "sprite": 8,
+     "pos": [
+      0.965,
+      0.3
+     ],
+     "scale": 0.72,
+     "flipX": 1,
+     "depth": 10.3,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass2",
+     "kind": "mass",
+     "sprite": 9,
+     "pos": [
+      0.045,
+      0.6
+     ],
+     "scale": 0.95,
+     "flipX": 0,
+     "depth": 10.6,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass3",
+     "kind": "mass",
+     "sprite": 14,
+     "pos": [
+      0.955,
+      0.58
+     ],
+     "scale": 0.9,
+     "flipX": 1,
+     "depth": 10.58,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass4",
+     "kind": "mass",
+     "sprite": 11,
+     "pos": [
+      0.06,
+      0.85
+     ],
+     "scale": 1.35,
+     "flipX": 0,
+     "depth": 10.85,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass5",
+     "kind": "mass",
+     "sprite": 13,
+     "pos": [
+      0.95,
+      0.87
+     ],
+     "scale": 1.4,
+     "flipX": 1,
+     "depth": 10.87,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass6",
+     "kind": "mass",
+     "sprite": 7,
+     "pos": [
+      0.24,
+      0.905
+     ],
+     "scale": 1.05,
+     "flipX": 0,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass7",
+     "kind": "mass",
+     "sprite": 12,
+     "pos": [
+      0.78,
+      0.905
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "tuft0",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.12,
+      0.5
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.5,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.0,
+      "phaseS": 0.0
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft1",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.89,
+      0.47
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.47,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.0,
+      "phaseS": 0.83
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft2",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.07,
+      0.72
+     ],
+     "scale": 1.04,
+     "flipX": 0,
+     "depth": 10.72,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 4.2,
+      "phaseS": 1.66
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft3",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.93,
+      0.73
+     ],
+     "scale": 0.94,
+     "flipX": 1,
+     "depth": 10.73,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 3.4,
+      "phaseS": 2.49
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft4",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.2,
+      0.79
+     ],
+     "scale": 1.18,
+     "flipX": 0,
+     "depth": 10.79,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 5.4,
+      "phaseS": 3.32
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft5",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.83,
+      0.8
+     ],
+     "scale": 1.07,
+     "flipX": 1,
+     "depth": 10.8,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 4.6,
+      "phaseS": 0.15
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft6",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.28,
+      0.31
+     ],
+     "scale": 0.97,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 3.8,
+      "phaseS": 0.98
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft7",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.74,
+      0.29
+     ],
+     "scale": 1.22,
+     "flipX": 1,
+     "depth": 10.29,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 3.0,
+      "phaseS": 1.81
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft8",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.15,
+      0.37
+     ],
+     "scale": 1.11,
+     "flipX": 0,
+     "depth": 10.37,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 5.0,
+      "phaseS": 2.64
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft9",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.87,
+      0.36
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.36,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 4.2,
+      "phaseS": 3.47
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft10",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.4,
+      0.84
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.84,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.4,
+      "phaseS": 0.3
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft11",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.62,
+      0.83
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.83,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.4,
+      "phaseS": 1.13
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "debris0",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.17,
+      0.1
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 30.1,
+     "shadow": false,
+     "drift": {
+      "dxPx": 8.0,
+      "dyPx": 3.0,
+      "periodS": 14.0,
+      "rotDeg": 4,
+      "phaseS": 0.0
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris1",
+     "kind": "debris",
+     "sprite": 5,
+     "pos": [
+      0.82,
+      0.14
+     ],
+     "scale": 1.1,
+     "flipX": 1,
+     "depth": 30.14,
+     "shadow": false,
+     "drift": {
+      "dxPx": 10.5,
+      "dyPx": 4.5,
+      "periodS": 16.2,
+      "rotDeg": 6,
+      "phaseS": 2.7
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris2",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.46,
+      0.07
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 30.07,
+     "shadow": false,
+     "drift": {
+      "dxPx": 13.0,
+      "dyPx": 6.0,
+      "periodS": 18.4,
+      "rotDeg": 8,
+      "phaseS": 5.4
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris3",
+     "kind": "debris",
+     "sprite": 6,
+     "pos": [
+      0.63,
+      0.17
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.17,
+     "shadow": false,
+     "drift": {
+      "dxPx": 15.5,
+      "dyPx": 3.0,
+      "periodS": 20.6,
+      "rotDeg": 4,
+      "phaseS": 8.1
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris4",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.35,
+      0.155
+     ],
+     "scale": 0.6,
+     "flipX": 0,
+     "depth": 30.155,
+     "shadow": false,
+     "drift": {
+      "dxPx": 18.0,
+      "dyPx": 4.5,
+      "periodS": 22.8,
+      "rotDeg": 6,
+      "phaseS": 10.8
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris5",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.93,
+      0.05
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.05,
+     "shadow": false,
+     "drift": {
+      "dxPx": 20.5,
+      "dyPx": 6.0,
+      "periodS": 25.0,
+      "rotDeg": 8,
+      "phaseS": 13.5
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    }
+   ],
+   "glints": [
+    {
+     "pos": [
+      0.045,
+      0.505
+     ],
+     "scale": 0.28,
+     "periodS": 2.6,
+     "phaseS": 0.0,
+     "color": "#ffb35a"
+    },
+    {
+     "pos": [
+      0.96,
+      0.49
+     ],
+     "scale": 0.38,
+     "periodS": 3.3,
+     "phaseS": 1.1,
+     "color": "#ffb35a"
+    },
+    {
+     "pos": [
+      0.052,
+      0.215
+     ],
+     "scale": 0.48,
+     "periodS": 4.0,
+     "phaseS": 2.2,
+     "color": "#ffb35a"
+    },
+    {
+     "pos": [
+      0.957,
+      0.225
+     ],
+     "scale": 0.28,
+     "periodS": 4.7,
+     "phaseS": 3.3,
+     "color": "#ffb35a"
+    },
+    {
+     "pos": [
+      0.055,
+      0.78
+     ],
+     "scale": 0.38,
+     "periodS": 5.4,
+     "phaseS": 4.4,
+     "color": "#ffb35a"
+    },
+    {
+     "pos": [
+      0.945,
+      0.8
+     ],
+     "scale": 0.48,
+     "periodS": 6.1,
+     "phaseS": 5.5,
+     "color": "#ffb35a"
+    }
+   ],
+   "towerGrade": {
+    "multiplyRgb": [
+     1.0,
+     0.898,
+     0.796
+    ],
+    "saturation": 0.95,
+    "brightness": 0.96,
+    "rimColor": "#ffb35a",
+    "rimAlpha": 0.55,
+    "rimSide": "upper-left key edge + cool rim on the right edge",
+    "note": "multiply the tower sprites by multiplyRgb (setTint; every channel <= 1). saturation/brightness/rim are optional extras (not applied by the Phaser tint path)"
+   },
+   "enemyGrade": {
+    "multiplyRgb": [
+     1.0,
+     0.947,
+     0.894
+    ],
+    "saturation": 0.95,
+    "brightness": 0.97
+   }
+  },
+  "glow": {
+   "name": "Sulfur strata",
+   "chapters": [
+    4,
+    10,
+    12
+   ],
+   "tint": "#d2dc46",
+   "glow": "#c9e85a",
+   "layers": {
+    "ground": {
+     "file": "glow-ground.webp",
+     "size": [
+      824,
+      1830
+     ],
+     "bytes": 189298,
+     "key": "element-image-terrain5-glow-ground"
+    },
+    "sky": {
+     "file": "glow-sky.webp",
+     "size": [
+      944,
+      1830
+     ],
+     "bytes": 50202,
+     "key": "element-image-terrain5-glow-sky"
+    },
+    "planet": {
+     "file": "glow-planet.webp",
+     "size": [
+      296,
+      296
+     ],
+     "bytes": 14622,
+     "key": "element-image-terrain5-glow-planet"
+    },
+    "props": {
+     "file": "glow-props.webp",
+     "size": [
+      1024,
+      463
+     ],
+     "bytes": 107808,
+     "key": "element-image-terrain5-glow-props"
+    }
+   },
+   "planet": {
+    "centerCss": [
+     80,
+     100
+    ],
+    "sizeCss": 148.0,
+    "motion": {
+     "driftPx": [
+      5,
+      2
+     ],
+     "periodS": 120,
+     "atmospherePulse": 0.08,
+     "note": "draw behind the ground; no rotation of the bitmap, drift + subtle brightness pulse"
+    }
+   },
+   "sky": {
+    "sizeCss": [
+     472.0,
+     915.0
+    ],
+    "drawAtCssX": -30,
+    "parallax": {
+     "maxShiftPx": 10,
+     "periodS": 90
+    }
+   },
+   "sprites": [
+    {
+     "kind": "tuft",
+     "idx": 0,
+     "frame": [
+      0,
+      0,
+      49,
+      99
+     ],
+     "displayCss": [
+      24.5,
+      49.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 1,
+     "frame": [
+      51,
+      0,
+      59,
+      104
+     ],
+     "displayCss": [
+      29.5,
+      52.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 2,
+     "frame": [
+      112,
+      0,
+      53,
+      97
+     ],
+     "displayCss": [
+      26.5,
+      48.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 0,
+     "frame": [
+      167,
+      0,
+      65,
+      79
+     ],
+     "displayCss": [
+      32.5,
+      39.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 1,
+     "frame": [
+      234,
+      0,
+      67,
+      84
+     ],
+     "displayCss": [
+      33.5,
+      42.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 2,
+     "frame": [
+      303,
+      0,
+      64,
+      84
+     ],
+     "displayCss": [
+      32.0,
+      42.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 3,
+     "frame": [
+      369,
+      0,
+      73,
+      72
+     ],
+     "displayCss": [
+      36.5,
+      36.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 0,
+     "frame": [
+      444,
+      0,
+      162,
+      231
+     ],
+     "displayCss": [
+      81.0,
+      115.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 1,
+     "frame": [
+      608,
+      0,
+      124,
+      218
+     ],
+     "displayCss": [
+      62.0,
+      109.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 2,
+     "frame": [
+      734,
+      0,
+      128,
+      224
+     ],
+     "displayCss": [
+      64.0,
+      112.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 3,
+     "frame": [
+      0,
+      233,
+      206,
+      190
+     ],
+     "displayCss": [
+      103.0,
+      95.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 4,
+     "frame": [
+      208,
+      233,
+      142,
+      222
+     ],
+     "displayCss": [
+      71.0,
+      111.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 5,
+     "frame": [
+      352,
+      233,
+      153,
+      212
+     ],
+     "displayCss": [
+      76.5,
+      106.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 6,
+     "frame": [
+      507,
+      233,
+      128,
+      224
+     ],
+     "displayCss": [
+      64.0,
+      112.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 7,
+     "frame": [
+      637,
+      233,
+      166,
+      230
+     ],
+     "displayCss": [
+      83.0,
+      115.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    }
+   ],
+   "instances": [
+    {
+     "id": "mass0",
+     "kind": "mass",
+     "sprite": 10,
+     "pos": [
+      0.03,
+      0.31
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass1",
+     "kind": "mass",
+     "sprite": 8,
+     "pos": [
+      0.965,
+      0.3
+     ],
+     "scale": 0.72,
+     "flipX": 1,
+     "depth": 10.3,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass2",
+     "kind": "mass",
+     "sprite": 9,
+     "pos": [
+      0.045,
+      0.6
+     ],
+     "scale": 0.95,
+     "flipX": 0,
+     "depth": 10.6,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass3",
+     "kind": "mass",
+     "sprite": 14,
+     "pos": [
+      0.955,
+      0.58
+     ],
+     "scale": 0.9,
+     "flipX": 1,
+     "depth": 10.58,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass4",
+     "kind": "mass",
+     "sprite": 11,
+     "pos": [
+      0.06,
+      0.85
+     ],
+     "scale": 1.35,
+     "flipX": 0,
+     "depth": 10.85,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass5",
+     "kind": "mass",
+     "sprite": 13,
+     "pos": [
+      0.95,
+      0.87
+     ],
+     "scale": 1.4,
+     "flipX": 1,
+     "depth": 10.87,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass6",
+     "kind": "mass",
+     "sprite": 7,
+     "pos": [
+      0.24,
+      0.905
+     ],
+     "scale": 1.05,
+     "flipX": 0,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass7",
+     "kind": "mass",
+     "sprite": 12,
+     "pos": [
+      0.78,
+      0.905
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "tuft0",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.12,
+      0.5
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.5,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.0,
+      "phaseS": 0.0
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft1",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.89,
+      0.47
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.47,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.0,
+      "phaseS": 0.83
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft2",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.07,
+      0.72
+     ],
+     "scale": 1.04,
+     "flipX": 0,
+     "depth": 10.72,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 4.2,
+      "phaseS": 1.66
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft3",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.93,
+      0.73
+     ],
+     "scale": 0.94,
+     "flipX": 1,
+     "depth": 10.73,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 3.4,
+      "phaseS": 2.49
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft4",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.2,
+      0.79
+     ],
+     "scale": 1.18,
+     "flipX": 0,
+     "depth": 10.79,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 5.4,
+      "phaseS": 3.32
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft5",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.83,
+      0.8
+     ],
+     "scale": 1.07,
+     "flipX": 1,
+     "depth": 10.8,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 4.6,
+      "phaseS": 0.15
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft6",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.28,
+      0.31
+     ],
+     "scale": 0.97,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 3.8,
+      "phaseS": 0.98
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft7",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.74,
+      0.29
+     ],
+     "scale": 1.22,
+     "flipX": 1,
+     "depth": 10.29,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 3.0,
+      "phaseS": 1.81
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft8",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.15,
+      0.37
+     ],
+     "scale": 1.11,
+     "flipX": 0,
+     "depth": 10.37,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 5.0,
+      "phaseS": 2.64
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft9",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.87,
+      0.36
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.36,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 4.2,
+      "phaseS": 3.47
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft10",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.4,
+      0.84
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.84,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.4,
+      "phaseS": 0.3
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft11",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.62,
+      0.83
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.83,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.4,
+      "phaseS": 1.13
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "debris0",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.17,
+      0.1
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 30.1,
+     "shadow": false,
+     "drift": {
+      "dxPx": 8.0,
+      "dyPx": 3.0,
+      "periodS": 14.0,
+      "rotDeg": 4,
+      "phaseS": 0.0
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris1",
+     "kind": "debris",
+     "sprite": 5,
+     "pos": [
+      0.82,
+      0.14
+     ],
+     "scale": 1.1,
+     "flipX": 1,
+     "depth": 30.14,
+     "shadow": false,
+     "drift": {
+      "dxPx": 10.5,
+      "dyPx": 4.5,
+      "periodS": 16.2,
+      "rotDeg": 6,
+      "phaseS": 2.7
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris2",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.46,
+      0.07
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 30.07,
+     "shadow": false,
+     "drift": {
+      "dxPx": 13.0,
+      "dyPx": 6.0,
+      "periodS": 18.4,
+      "rotDeg": 8,
+      "phaseS": 5.4
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris3",
+     "kind": "debris",
+     "sprite": 6,
+     "pos": [
+      0.63,
+      0.17
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.17,
+     "shadow": false,
+     "drift": {
+      "dxPx": 15.5,
+      "dyPx": 3.0,
+      "periodS": 20.6,
+      "rotDeg": 4,
+      "phaseS": 8.1
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris4",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.35,
+      0.155
+     ],
+     "scale": 0.6,
+     "flipX": 0,
+     "depth": 30.155,
+     "shadow": false,
+     "drift": {
+      "dxPx": 18.0,
+      "dyPx": 4.5,
+      "periodS": 22.8,
+      "rotDeg": 6,
+      "phaseS": 10.8
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris5",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.93,
+      0.05
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.05,
+     "shadow": false,
+     "drift": {
+      "dxPx": 20.5,
+      "dyPx": 6.0,
+      "periodS": 25.0,
+      "rotDeg": 8,
+      "phaseS": 13.5
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    }
+   ],
+   "glints": [
+    {
+     "pos": [
+      0.045,
+      0.505
+     ],
+     "scale": 0.28,
+     "periodS": 2.6,
+     "phaseS": 0.0,
+     "color": "#c9e85a"
+    },
+    {
+     "pos": [
+      0.96,
+      0.49
+     ],
+     "scale": 0.38,
+     "periodS": 3.3,
+     "phaseS": 1.1,
+     "color": "#c9e85a"
+    },
+    {
+     "pos": [
+      0.052,
+      0.215
+     ],
+     "scale": 0.48,
+     "periodS": 4.0,
+     "phaseS": 2.2,
+     "color": "#c9e85a"
+    },
+    {
+     "pos": [
+      0.957,
+      0.225
+     ],
+     "scale": 0.28,
+     "periodS": 4.7,
+     "phaseS": 3.3,
+     "color": "#c9e85a"
+    },
+    {
+     "pos": [
+      0.055,
+      0.78
+     ],
+     "scale": 0.38,
+     "periodS": 5.4,
+     "phaseS": 4.4,
+     "color": "#c9e85a"
+    },
+    {
+     "pos": [
+      0.945,
+      0.8
+     ],
+     "scale": 0.48,
+     "periodS": 6.1,
+     "phaseS": 5.5,
+     "color": "#c9e85a"
+    }
+   ],
+   "towerGrade": {
+    "multiplyRgb": [
+     0.962,
+     1.0,
+     0.846
+    ],
+    "saturation": 0.9,
+    "brightness": 0.95,
+    "rimColor": "#c9e85a",
+    "rimAlpha": 0.55,
+    "rimSide": "upper-left key edge + cool rim on the right edge",
+    "note": "multiply the tower sprites by multiplyRgb (setTint; every channel <= 1). saturation/brightness/rim are optional extras (not applied by the Phaser tint path)"
+   },
+   "enemyGrade": {
+    "multiplyRgb": [
+     0.98,
+     1.0,
+     0.922
+    ],
+    "saturation": 0.95,
+    "brightness": 0.97
+   }
+  },
+  "forge": {
+   "name": "Slag plates",
+   "chapters": [
+    9,
+    11,
+    15
+   ],
+   "tint": "#ff8c32",
+   "glow": "#ff7a3a",
+   "layers": {
+    "ground": {
+     "file": "forge-ground.webp",
+     "size": [
+      824,
+      1830
+     ],
+     "bytes": 186196,
+     "key": "element-image-terrain5-forge-ground"
+    },
+    "sky": {
+     "file": "forge-sky.webp",
+     "size": [
+      944,
+      1830
+     ],
+     "bytes": 43674,
+     "key": "element-image-terrain5-forge-sky"
+    },
+    "planet": {
+     "file": "forge-planet.webp",
+     "size": [
+      240,
+      240
+     ],
+     "bytes": 12550,
+     "key": "element-image-terrain5-forge-planet"
+    },
+    "props": {
+     "file": "forge-props.webp",
+     "size": [
+      1024,
+      465
+     ],
+     "bytes": 97256,
+     "key": "element-image-terrain5-forge-props"
+    }
+   },
+   "planet": {
+    "centerCss": [
+     340,
+     80
+    ],
+    "sizeCss": 120.0,
+    "motion": {
+     "driftPx": [
+      5,
+      2
+     ],
+     "periodS": 120,
+     "atmospherePulse": 0.08,
+     "note": "draw behind the ground; no rotation of the bitmap, drift + subtle brightness pulse"
+    }
+   },
+   "sky": {
+    "sizeCss": [
+     472.0,
+     915.0
+    ],
+    "drawAtCssX": -30,
+    "parallax": {
+     "maxShiftPx": 10,
+     "periodS": 90
+    }
+   },
+   "sprites": [
+    {
+     "kind": "tuft",
+     "idx": 0,
+     "frame": [
+      0,
+      0,
+      64,
+      104
+     ],
+     "displayCss": [
+      32.0,
+      52.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 1,
+     "frame": [
+      66,
+      0,
+      51,
+      105
+     ],
+     "displayCss": [
+      25.5,
+      52.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 2,
+     "frame": [
+      119,
+      0,
+      59,
+      108
+     ],
+     "displayCss": [
+      29.5,
+      54.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 0,
+     "frame": [
+      180,
+      0,
+      69,
+      77
+     ],
+     "displayCss": [
+      34.5,
+      38.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 1,
+     "frame": [
+      251,
+      0,
+      65,
+      59
+     ],
+     "displayCss": [
+      32.5,
+      29.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 2,
+     "frame": [
+      318,
+      0,
+      80,
+      56
+     ],
+     "displayCss": [
+      40.0,
+      28.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 3,
+     "frame": [
+      400,
+      0,
+      61,
+      61
+     ],
+     "displayCss": [
+      30.5,
+      30.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 0,
+     "frame": [
+      463,
+      0,
+      142,
+      230
+     ],
+     "displayCss": [
+      71.0,
+      115.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 1,
+     "frame": [
+      607,
+      0,
+      145,
+      215
+     ],
+     "displayCss": [
+      72.5,
+      107.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 2,
+     "frame": [
+      754,
+      0,
+      105,
+      224
+     ],
+     "displayCss": [
+      52.5,
+      112.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 3,
+     "frame": [
+      861,
+      0,
+      132,
+      230
+     ],
+     "displayCss": [
+      66.0,
+      115.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 4,
+     "frame": [
+      0,
+      232,
+      130,
+      228
+     ],
+     "displayCss": [
+      65.0,
+      114.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 5,
+     "frame": [
+      132,
+      232,
+      150,
+      214
+     ],
+     "displayCss": [
+      75.0,
+      107.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 6,
+     "frame": [
+      284,
+      232,
+      111,
+      233
+     ],
+     "displayCss": [
+      55.5,
+      116.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 7,
+     "frame": [
+      397,
+      232,
+      140,
+      228
+     ],
+     "displayCss": [
+      70.0,
+      114.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    }
+   ],
+   "instances": [
+    {
+     "id": "mass0",
+     "kind": "mass",
+     "sprite": 10,
+     "pos": [
+      0.03,
+      0.31
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass1",
+     "kind": "mass",
+     "sprite": 8,
+     "pos": [
+      0.965,
+      0.3
+     ],
+     "scale": 0.72,
+     "flipX": 1,
+     "depth": 10.3,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass2",
+     "kind": "mass",
+     "sprite": 9,
+     "pos": [
+      0.045,
+      0.6
+     ],
+     "scale": 0.95,
+     "flipX": 0,
+     "depth": 10.6,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass3",
+     "kind": "mass",
+     "sprite": 14,
+     "pos": [
+      0.955,
+      0.58
+     ],
+     "scale": 0.9,
+     "flipX": 1,
+     "depth": 10.58,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass4",
+     "kind": "mass",
+     "sprite": 11,
+     "pos": [
+      0.06,
+      0.85
+     ],
+     "scale": 1.35,
+     "flipX": 0,
+     "depth": 10.85,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass5",
+     "kind": "mass",
+     "sprite": 13,
+     "pos": [
+      0.95,
+      0.87
+     ],
+     "scale": 1.4,
+     "flipX": 1,
+     "depth": 10.87,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass6",
+     "kind": "mass",
+     "sprite": 7,
+     "pos": [
+      0.24,
+      0.905
+     ],
+     "scale": 1.05,
+     "flipX": 0,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass7",
+     "kind": "mass",
+     "sprite": 12,
+     "pos": [
+      0.78,
+      0.905
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "tuft0",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.12,
+      0.5
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.5,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.0,
+      "phaseS": 0.0
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft1",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.89,
+      0.47
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.47,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.0,
+      "phaseS": 0.83
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft2",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.07,
+      0.72
+     ],
+     "scale": 1.04,
+     "flipX": 0,
+     "depth": 10.72,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 4.2,
+      "phaseS": 1.66
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft3",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.93,
+      0.73
+     ],
+     "scale": 0.94,
+     "flipX": 1,
+     "depth": 10.73,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 3.4,
+      "phaseS": 2.49
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft4",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.2,
+      0.79
+     ],
+     "scale": 1.18,
+     "flipX": 0,
+     "depth": 10.79,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 5.4,
+      "phaseS": 3.32
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft5",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.83,
+      0.8
+     ],
+     "scale": 1.07,
+     "flipX": 1,
+     "depth": 10.8,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 4.6,
+      "phaseS": 0.15
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft6",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.28,
+      0.31
+     ],
+     "scale": 0.97,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 3.8,
+      "phaseS": 0.98
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft7",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.74,
+      0.29
+     ],
+     "scale": 1.22,
+     "flipX": 1,
+     "depth": 10.29,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 3.0,
+      "phaseS": 1.81
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft8",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.15,
+      0.37
+     ],
+     "scale": 1.11,
+     "flipX": 0,
+     "depth": 10.37,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 5.0,
+      "phaseS": 2.64
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft9",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.87,
+      0.36
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.36,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 4.2,
+      "phaseS": 3.47
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft10",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.4,
+      0.84
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.84,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.4,
+      "phaseS": 0.3
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft11",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.62,
+      0.83
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.83,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.4,
+      "phaseS": 1.13
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "debris0",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.17,
+      0.1
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 30.1,
+     "shadow": false,
+     "drift": {
+      "dxPx": 8.0,
+      "dyPx": 3.0,
+      "periodS": 14.0,
+      "rotDeg": 4,
+      "phaseS": 0.0
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris1",
+     "kind": "debris",
+     "sprite": 5,
+     "pos": [
+      0.82,
+      0.14
+     ],
+     "scale": 1.1,
+     "flipX": 1,
+     "depth": 30.14,
+     "shadow": false,
+     "drift": {
+      "dxPx": 10.5,
+      "dyPx": 4.5,
+      "periodS": 16.2,
+      "rotDeg": 6,
+      "phaseS": 2.7
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris2",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.46,
+      0.07
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 30.07,
+     "shadow": false,
+     "drift": {
+      "dxPx": 13.0,
+      "dyPx": 6.0,
+      "periodS": 18.4,
+      "rotDeg": 8,
+      "phaseS": 5.4
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris3",
+     "kind": "debris",
+     "sprite": 6,
+     "pos": [
+      0.63,
+      0.17
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.17,
+     "shadow": false,
+     "drift": {
+      "dxPx": 15.5,
+      "dyPx": 3.0,
+      "periodS": 20.6,
+      "rotDeg": 4,
+      "phaseS": 8.1
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris4",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.35,
+      0.155
+     ],
+     "scale": 0.6,
+     "flipX": 0,
+     "depth": 30.155,
+     "shadow": false,
+     "drift": {
+      "dxPx": 18.0,
+      "dyPx": 4.5,
+      "periodS": 22.8,
+      "rotDeg": 6,
+      "phaseS": 10.8
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris5",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.93,
+      0.05
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.05,
+     "shadow": false,
+     "drift": {
+      "dxPx": 20.5,
+      "dyPx": 6.0,
+      "periodS": 25.0,
+      "rotDeg": 8,
+      "phaseS": 13.5
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    }
+   ],
+   "glints": [
+    {
+     "pos": [
+      0.045,
+      0.505
+     ],
+     "scale": 0.28,
+     "periodS": 2.6,
+     "phaseS": 0.0,
+     "color": "#ff7a3a"
+    },
+    {
+     "pos": [
+      0.96,
+      0.49
+     ],
+     "scale": 0.38,
+     "periodS": 3.3,
+     "phaseS": 1.1,
+     "color": "#ff7a3a"
+    },
+    {
+     "pos": [
+      0.052,
+      0.215
+     ],
+     "scale": 0.48,
+     "periodS": 4.0,
+     "phaseS": 2.2,
+     "color": "#ff7a3a"
+    },
+    {
+     "pos": [
+      0.957,
+      0.225
+     ],
+     "scale": 0.28,
+     "periodS": 4.7,
+     "phaseS": 3.3,
+     "color": "#ff7a3a"
+    },
+    {
+     "pos": [
+      0.055,
+      0.78
+     ],
+     "scale": 0.38,
+     "periodS": 5.4,
+     "phaseS": 4.4,
+     "color": "#ff7a3a"
+    },
+    {
+     "pos": [
+      0.945,
+      0.8
+     ],
+     "scale": 0.48,
+     "periodS": 6.1,
+     "phaseS": 5.5,
+     "color": "#ff7a3a"
+    }
+   ],
+   "towerGrade": {
+    "multiplyRgb": [
+     1.0,
+     0.861,
+     0.815
+    ],
+    "saturation": 0.95,
+    "brightness": 0.95,
+    "rimColor": "#ff7a3a",
+    "rimAlpha": 0.55,
+    "rimSide": "upper-left key edge + cool rim on the right edge",
+    "note": "multiply the tower sprites by multiplyRgb (setTint; every channel <= 1). saturation/brightness/rim are optional extras (not applied by the Phaser tint path)"
+   },
+   "enemyGrade": {
+    "multiplyRgb": [
+     1.0,
+     0.928,
+     0.904
+    ],
+    "saturation": 0.95,
+    "brightness": 0.97
+   }
+  },
+  "vault": {
+   "name": "Obsidian shards",
+   "chapters": [
+    13,
+    14,
+    19
+   ],
+   "tint": "#a06eff",
+   "glow": "#8a86ff",
+   "layers": {
+    "ground": {
+     "file": "vault-ground.webp",
+     "size": [
+      824,
+      1830
+     ],
+     "bytes": 222962,
+     "key": "element-image-terrain5-vault-ground"
+    },
+    "sky": {
+     "file": "vault-sky.webp",
+     "size": [
+      944,
+      1830
+     ],
+     "bytes": 61226,
+     "key": "element-image-terrain5-vault-sky"
+    },
+    "planet": {
+     "file": "vault-planet.webp",
+     "size": [
+      256,
+      256
+     ],
+     "bytes": 18004,
+     "key": "element-image-terrain5-vault-planet"
+    },
+    "props": {
+     "file": "vault-props.webp",
+     "size": [
+      1024,
+      435
+     ],
+     "bytes": 93608,
+     "key": "element-image-terrain5-vault-props"
+    }
+   },
+   "planet": {
+    "centerCss": [
+     80,
+     100
+    ],
+    "sizeCss": 128.0,
+    "motion": {
+     "driftPx": [
+      5,
+      2
+     ],
+     "periodS": 120,
+     "atmospherePulse": 0.08,
+     "note": "draw behind the ground; no rotation of the bitmap, drift + subtle brightness pulse"
+    }
+   },
+   "sky": {
+    "sizeCss": [
+     472.0,
+     915.0
+    ],
+    "drawAtCssX": -30,
+    "parallax": {
+     "maxShiftPx": 10,
+     "periodS": 90
+    }
+   },
+   "sprites": [
+    {
+     "kind": "tuft",
+     "idx": 0,
+     "frame": [
+      0,
+      0,
+      70,
+      99
+     ],
+     "displayCss": [
+      35.0,
+      49.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 1,
+     "frame": [
+      72,
+      0,
+      69,
+      105
+     ],
+     "displayCss": [
+      34.5,
+      52.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 2,
+     "frame": [
+      143,
+      0,
+      81,
+      98
+     ],
+     "displayCss": [
+      40.5,
+      49.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 0,
+     "frame": [
+      226,
+      0,
+      31,
+      84
+     ],
+     "displayCss": [
+      15.5,
+      42.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 1,
+     "frame": [
+      259,
+      0,
+      39,
+      75
+     ],
+     "displayCss": [
+      19.5,
+      37.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 2,
+     "frame": [
+      300,
+      0,
+      40,
+      70
+     ],
+     "displayCss": [
+      20.0,
+      35.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 3,
+     "frame": [
+      342,
+      0,
+      28,
+      66
+     ],
+     "displayCss": [
+      14.0,
+      33.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 0,
+     "frame": [
+      372,
+      0,
+      104,
+      212
+     ],
+     "displayCss": [
+      52.0,
+      106.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 1,
+     "frame": [
+      478,
+      0,
+      118,
+      212
+     ],
+     "displayCss": [
+      59.0,
+      106.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 2,
+     "frame": [
+      598,
+      0,
+      120,
+      204
+     ],
+     "displayCss": [
+      60.0,
+      102.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 3,
+     "frame": [
+      720,
+      0,
+      101,
+      215
+     ],
+     "displayCss": [
+      50.5,
+      107.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 4,
+     "frame": [
+      823,
+      0,
+      120,
+      204
+     ],
+     "displayCss": [
+      60.0,
+      102.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 5,
+     "frame": [
+      0,
+      217,
+      106,
+      206
+     ],
+     "displayCss": [
+      53.0,
+      103.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 6,
+     "frame": [
+      108,
+      217,
+      126,
+      198
+     ],
+     "displayCss": [
+      63.0,
+      99.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 7,
+     "frame": [
+      236,
+      217,
+      130,
+      218
+     ],
+     "displayCss": [
+      65.0,
+      109.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    }
+   ],
+   "instances": [
+    {
+     "id": "mass0",
+     "kind": "mass",
+     "sprite": 10,
+     "pos": [
+      0.03,
+      0.31
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass1",
+     "kind": "mass",
+     "sprite": 8,
+     "pos": [
+      0.965,
+      0.3
+     ],
+     "scale": 0.72,
+     "flipX": 1,
+     "depth": 10.3,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass2",
+     "kind": "mass",
+     "sprite": 9,
+     "pos": [
+      0.045,
+      0.6
+     ],
+     "scale": 0.95,
+     "flipX": 0,
+     "depth": 10.6,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass3",
+     "kind": "mass",
+     "sprite": 14,
+     "pos": [
+      0.955,
+      0.58
+     ],
+     "scale": 0.9,
+     "flipX": 1,
+     "depth": 10.58,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass4",
+     "kind": "mass",
+     "sprite": 11,
+     "pos": [
+      0.06,
+      0.85
+     ],
+     "scale": 1.35,
+     "flipX": 0,
+     "depth": 10.85,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass5",
+     "kind": "mass",
+     "sprite": 13,
+     "pos": [
+      0.95,
+      0.87
+     ],
+     "scale": 1.4,
+     "flipX": 1,
+     "depth": 10.87,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass6",
+     "kind": "mass",
+     "sprite": 7,
+     "pos": [
+      0.24,
+      0.905
+     ],
+     "scale": 1.05,
+     "flipX": 0,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass7",
+     "kind": "mass",
+     "sprite": 12,
+     "pos": [
+      0.78,
+      0.905
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "tuft0",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.12,
+      0.5
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.5,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.0,
+      "phaseS": 0.0
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft1",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.89,
+      0.47
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.47,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.0,
+      "phaseS": 0.83
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft2",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.07,
+      0.72
+     ],
+     "scale": 1.04,
+     "flipX": 0,
+     "depth": 10.72,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 4.2,
+      "phaseS": 1.66
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft3",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.93,
+      0.73
+     ],
+     "scale": 0.94,
+     "flipX": 1,
+     "depth": 10.73,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 3.4,
+      "phaseS": 2.49
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft4",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.2,
+      0.79
+     ],
+     "scale": 1.18,
+     "flipX": 0,
+     "depth": 10.79,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 5.4,
+      "phaseS": 3.32
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft5",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.83,
+      0.8
+     ],
+     "scale": 1.07,
+     "flipX": 1,
+     "depth": 10.8,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 4.6,
+      "phaseS": 0.15
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft6",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.28,
+      0.31
+     ],
+     "scale": 0.97,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 3.8,
+      "phaseS": 0.98
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft7",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.74,
+      0.29
+     ],
+     "scale": 1.22,
+     "flipX": 1,
+     "depth": 10.29,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 3.0,
+      "phaseS": 1.81
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft8",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.15,
+      0.37
+     ],
+     "scale": 1.11,
+     "flipX": 0,
+     "depth": 10.37,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 5.0,
+      "phaseS": 2.64
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft9",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.87,
+      0.36
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.36,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 4.2,
+      "phaseS": 3.47
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft10",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.4,
+      0.84
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.84,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.4,
+      "phaseS": 0.3
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft11",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.62,
+      0.83
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.83,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.4,
+      "phaseS": 1.13
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "debris0",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.17,
+      0.1
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 30.1,
+     "shadow": false,
+     "drift": {
+      "dxPx": 8.0,
+      "dyPx": 3.0,
+      "periodS": 14.0,
+      "rotDeg": 4,
+      "phaseS": 0.0
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris1",
+     "kind": "debris",
+     "sprite": 5,
+     "pos": [
+      0.82,
+      0.14
+     ],
+     "scale": 1.1,
+     "flipX": 1,
+     "depth": 30.14,
+     "shadow": false,
+     "drift": {
+      "dxPx": 10.5,
+      "dyPx": 4.5,
+      "periodS": 16.2,
+      "rotDeg": 6,
+      "phaseS": 2.7
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris2",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.46,
+      0.07
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 30.07,
+     "shadow": false,
+     "drift": {
+      "dxPx": 13.0,
+      "dyPx": 6.0,
+      "periodS": 18.4,
+      "rotDeg": 8,
+      "phaseS": 5.4
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris3",
+     "kind": "debris",
+     "sprite": 6,
+     "pos": [
+      0.63,
+      0.17
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.17,
+     "shadow": false,
+     "drift": {
+      "dxPx": 15.5,
+      "dyPx": 3.0,
+      "periodS": 20.6,
+      "rotDeg": 4,
+      "phaseS": 8.1
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris4",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.35,
+      0.155
+     ],
+     "scale": 0.6,
+     "flipX": 0,
+     "depth": 30.155,
+     "shadow": false,
+     "drift": {
+      "dxPx": 18.0,
+      "dyPx": 4.5,
+      "periodS": 22.8,
+      "rotDeg": 6,
+      "phaseS": 10.8
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris5",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.93,
+      0.05
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.05,
+     "shadow": false,
+     "drift": {
+      "dxPx": 20.5,
+      "dyPx": 6.0,
+      "periodS": 25.0,
+      "rotDeg": 8,
+      "phaseS": 13.5
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    }
+   ],
+   "glints": [
+    {
+     "pos": [
+      0.045,
+      0.505
+     ],
+     "scale": 0.28,
+     "periodS": 2.6,
+     "phaseS": 0.0,
+     "color": "#8a86ff"
+    },
+    {
+     "pos": [
+      0.96,
+      0.49
+     ],
+     "scale": 0.38,
+     "periodS": 3.3,
+     "phaseS": 1.1,
+     "color": "#8a86ff"
+    },
+    {
+     "pos": [
+      0.052,
+      0.215
+     ],
+     "scale": 0.48,
+     "periodS": 4.0,
+     "phaseS": 2.2,
+     "color": "#8a86ff"
+    },
+    {
+     "pos": [
+      0.957,
+      0.225
+     ],
+     "scale": 0.28,
+     "periodS": 4.7,
+     "phaseS": 3.3,
+     "color": "#8a86ff"
+    },
+    {
+     "pos": [
+      0.055,
+      0.78
+     ],
+     "scale": 0.38,
+     "periodS": 5.4,
+     "phaseS": 4.4,
+     "color": "#8a86ff"
+    },
+    {
+     "pos": [
+      0.945,
+      0.8
+     ],
+     "scale": 0.48,
+     "periodS": 6.1,
+     "phaseS": 5.5,
+     "color": "#8a86ff"
+    }
+   ],
+   "towerGrade": {
+    "multiplyRgb": [
+     0.855,
+     0.855,
+     1.0
+    ],
+    "saturation": 0.9,
+    "brightness": 0.93,
+    "rimColor": "#8a86ff",
+    "rimAlpha": 0.55,
+    "rimSide": "upper-left key edge + cool rim on the right edge",
+    "note": "multiply the tower sprites by multiplyRgb (setTint; every channel <= 1). saturation/brightness/rim are optional extras (not applied by the Phaser tint path)"
+   },
+   "enemyGrade": {
+    "multiplyRgb": [
+     0.924,
+     0.924,
+     1.0
+    ],
+    "saturation": 0.95,
+    "brightness": 0.97
+   }
+  },
+  "ember": {
+   "name": "Basalt fissures",
+   "chapters": [
+    17,
+    18,
+    20
+   ],
+   "tint": "#ff503c",
+   "glow": "#ff5a3a",
+   "layers": {
+    "ground": {
+     "file": "ember-ground.webp",
+     "size": [
+      824,
+      1830
+     ],
+     "bytes": 164972,
+     "key": "element-image-terrain5-ember-ground"
+    },
+    "sky": {
+     "file": "ember-sky.webp",
+     "size": [
+      944,
+      1830
+     ],
+     "bytes": 44910,
+     "key": "element-image-terrain5-ember-sky"
+    },
+    "planet": {
+     "file": "ember-planet.webp",
+     "size": [
+      280,
+      280
+     ],
+     "bytes": 14944,
+     "key": "element-image-terrain5-ember-planet"
+    },
+    "props": {
+     "file": "ember-props.webp",
+     "size": [
+      1024,
+      458
+     ],
+     "bytes": 84964,
+     "key": "element-image-terrain5-ember-props"
+    }
+   },
+   "planet": {
+    "centerCss": [
+     340,
+     80
+    ],
+    "sizeCss": 140.0,
+    "motion": {
+     "driftPx": [
+      5,
+      2
+     ],
+     "periodS": 120,
+     "atmospherePulse": 0.08,
+     "note": "draw behind the ground; no rotation of the bitmap, drift + subtle brightness pulse"
+    }
+   },
+   "sky": {
+    "sizeCss": [
+     472.0,
+     915.0
+    ],
+    "drawAtCssX": -30,
+    "parallax": {
+     "maxShiftPx": 10,
+     "periodS": 90
+    }
+   },
+   "sprites": [
+    {
+     "kind": "tuft",
+     "idx": 0,
+     "frame": [
+      0,
+      0,
+      65,
+      92
+     ],
+     "displayCss": [
+      32.5,
+      46.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 1,
+     "frame": [
+      67,
+      0,
+      65,
+      85
+     ],
+     "displayCss": [
+      32.5,
+      42.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 2,
+     "frame": [
+      134,
+      0,
+      47,
+      101
+     ],
+     "displayCss": [
+      23.5,
+      50.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 0,
+     "frame": [
+      183,
+      0,
+      71,
+      80
+     ],
+     "displayCss": [
+      35.5,
+      40.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 1,
+     "frame": [
+      256,
+      0,
+      54,
+      62
+     ],
+     "displayCss": [
+      27.0,
+      31.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 2,
+     "frame": [
+      312,
+      0,
+      78,
+      45
+     ],
+     "displayCss": [
+      39.0,
+      22.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 3,
+     "frame": [
+      392,
+      0,
+      70,
+      55
+     ],
+     "displayCss": [
+      35.0,
+      27.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 0,
+     "frame": [
+      464,
+      0,
+      127,
+      219
+     ],
+     "displayCss": [
+      63.5,
+      109.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 1,
+     "frame": [
+      593,
+      0,
+      128,
+      194
+     ],
+     "displayCss": [
+      64.0,
+      97.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 2,
+     "frame": [
+      723,
+      0,
+      112,
+      222
+     ],
+     "displayCss": [
+      56.0,
+      111.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 3,
+     "frame": [
+      837,
+      0,
+      140,
+      218
+     ],
+     "displayCss": [
+      70.0,
+      109.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 4,
+     "frame": [
+      0,
+      224,
+      126,
+      205
+     ],
+     "displayCss": [
+      63.0,
+      102.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 5,
+     "frame": [
+      128,
+      224,
+      138,
+      216
+     ],
+     "displayCss": [
+      69.0,
+      108.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 6,
+     "frame": [
+      268,
+      224,
+      107,
+      234
+     ],
+     "displayCss": [
+      53.5,
+      117.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 7,
+     "frame": [
+      377,
+      224,
+      154,
+      228
+     ],
+     "displayCss": [
+      77.0,
+      114.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    }
+   ],
+   "instances": [
+    {
+     "id": "mass0",
+     "kind": "mass",
+     "sprite": 10,
+     "pos": [
+      0.03,
+      0.31
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass1",
+     "kind": "mass",
+     "sprite": 8,
+     "pos": [
+      0.965,
+      0.3
+     ],
+     "scale": 0.72,
+     "flipX": 1,
+     "depth": 10.3,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass2",
+     "kind": "mass",
+     "sprite": 9,
+     "pos": [
+      0.045,
+      0.6
+     ],
+     "scale": 0.95,
+     "flipX": 0,
+     "depth": 10.6,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass3",
+     "kind": "mass",
+     "sprite": 14,
+     "pos": [
+      0.955,
+      0.58
+     ],
+     "scale": 0.9,
+     "flipX": 1,
+     "depth": 10.58,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass4",
+     "kind": "mass",
+     "sprite": 11,
+     "pos": [
+      0.06,
+      0.85
+     ],
+     "scale": 1.35,
+     "flipX": 0,
+     "depth": 10.85,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass5",
+     "kind": "mass",
+     "sprite": 13,
+     "pos": [
+      0.95,
+      0.87
+     ],
+     "scale": 1.4,
+     "flipX": 1,
+     "depth": 10.87,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass6",
+     "kind": "mass",
+     "sprite": 7,
+     "pos": [
+      0.24,
+      0.905
+     ],
+     "scale": 1.05,
+     "flipX": 0,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass7",
+     "kind": "mass",
+     "sprite": 12,
+     "pos": [
+      0.78,
+      0.905
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "tuft0",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.12,
+      0.5
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.5,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.0,
+      "phaseS": 0.0
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft1",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.89,
+      0.47
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.47,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.0,
+      "phaseS": 0.83
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft2",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.07,
+      0.72
+     ],
+     "scale": 1.04,
+     "flipX": 0,
+     "depth": 10.72,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 4.2,
+      "phaseS": 1.66
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft3",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.93,
+      0.73
+     ],
+     "scale": 0.94,
+     "flipX": 1,
+     "depth": 10.73,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 3.4,
+      "phaseS": 2.49
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft4",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.2,
+      0.79
+     ],
+     "scale": 1.18,
+     "flipX": 0,
+     "depth": 10.79,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 5.4,
+      "phaseS": 3.32
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft5",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.83,
+      0.8
+     ],
+     "scale": 1.07,
+     "flipX": 1,
+     "depth": 10.8,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 4.6,
+      "phaseS": 0.15
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft6",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.28,
+      0.31
+     ],
+     "scale": 0.97,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 3.8,
+      "phaseS": 0.98
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft7",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.74,
+      0.29
+     ],
+     "scale": 1.22,
+     "flipX": 1,
+     "depth": 10.29,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 3.0,
+      "phaseS": 1.81
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft8",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.15,
+      0.37
+     ],
+     "scale": 1.11,
+     "flipX": 0,
+     "depth": 10.37,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 5.0,
+      "phaseS": 2.64
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft9",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.87,
+      0.36
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.36,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 4.2,
+      "phaseS": 3.47
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft10",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.4,
+      0.84
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.84,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.4,
+      "phaseS": 0.3
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft11",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.62,
+      0.83
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.83,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.4,
+      "phaseS": 1.13
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "debris0",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.17,
+      0.1
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 30.1,
+     "shadow": false,
+     "drift": {
+      "dxPx": 8.0,
+      "dyPx": 3.0,
+      "periodS": 14.0,
+      "rotDeg": 4,
+      "phaseS": 0.0
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris1",
+     "kind": "debris",
+     "sprite": 5,
+     "pos": [
+      0.82,
+      0.14
+     ],
+     "scale": 1.1,
+     "flipX": 1,
+     "depth": 30.14,
+     "shadow": false,
+     "drift": {
+      "dxPx": 10.5,
+      "dyPx": 4.5,
+      "periodS": 16.2,
+      "rotDeg": 6,
+      "phaseS": 2.7
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris2",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.46,
+      0.07
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 30.07,
+     "shadow": false,
+     "drift": {
+      "dxPx": 13.0,
+      "dyPx": 6.0,
+      "periodS": 18.4,
+      "rotDeg": 8,
+      "phaseS": 5.4
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris3",
+     "kind": "debris",
+     "sprite": 6,
+     "pos": [
+      0.63,
+      0.17
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.17,
+     "shadow": false,
+     "drift": {
+      "dxPx": 15.5,
+      "dyPx": 3.0,
+      "periodS": 20.6,
+      "rotDeg": 4,
+      "phaseS": 8.1
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris4",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.35,
+      0.155
+     ],
+     "scale": 0.6,
+     "flipX": 0,
+     "depth": 30.155,
+     "shadow": false,
+     "drift": {
+      "dxPx": 18.0,
+      "dyPx": 4.5,
+      "periodS": 22.8,
+      "rotDeg": 6,
+      "phaseS": 10.8
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris5",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.93,
+      0.05
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.05,
+     "shadow": false,
+     "drift": {
+      "dxPx": 20.5,
+      "dyPx": 6.0,
+      "periodS": 25.0,
+      "rotDeg": 8,
+      "phaseS": 13.5
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    }
+   ],
+   "glints": [
+    {
+     "pos": [
+      0.045,
+      0.505
+     ],
+     "scale": 0.28,
+     "periodS": 2.6,
+     "phaseS": 0.0,
+     "color": "#ff5a3a"
+    },
+    {
+     "pos": [
+      0.96,
+      0.49
+     ],
+     "scale": 0.38,
+     "periodS": 3.3,
+     "phaseS": 1.1,
+     "color": "#ff5a3a"
+    },
+    {
+     "pos": [
+      0.052,
+      0.215
+     ],
+     "scale": 0.48,
+     "periodS": 4.0,
+     "phaseS": 2.2,
+     "color": "#ff5a3a"
+    },
+    {
+     "pos": [
+      0.957,
+      0.225
+     ],
+     "scale": 0.28,
+     "periodS": 4.7,
+     "phaseS": 3.3,
+     "color": "#ff5a3a"
+    },
+    {
+     "pos": [
+      0.055,
+      0.78
+     ],
+     "scale": 0.38,
+     "periodS": 5.4,
+     "phaseS": 4.4,
+     "color": "#ff5a3a"
+    },
+    {
+     "pos": [
+      0.945,
+      0.8
+     ],
+     "scale": 0.48,
+     "periodS": 6.1,
+     "phaseS": 5.5,
+     "color": "#ff5a3a"
+    }
+   ],
+   "towerGrade": {
+    "multiplyRgb": [
+     1.0,
+     0.887,
+     0.849
+    ],
+    "saturation": 0.95,
+    "brightness": 0.95,
+    "rimColor": "#ff5a3a",
+    "rimAlpha": 0.55,
+    "rimSide": "upper-left key edge + cool rim on the right edge",
+    "note": "multiply the tower sprites by multiplyRgb (setTint; every channel <= 1). saturation/brightness/rim are optional extras (not applied by the Phaser tint path)"
+   },
+   "enemyGrade": {
+    "multiplyRgb": [
+     1.0,
+     0.942,
+     0.922
+    ],
+    "saturation": 0.95,
+    "brightness": 0.97
+   }
+  },
+  "lab": {
+   "name": "Lab reactor deck",
+   "chapters": [],
+   "tint": "#e6c878",
+   "glow": "#6fd8ff",
+   "layers": {
+    "ground": {
+     "file": "lab-ground.webp",
+     "size": [
+      824,
+      1830
+     ],
+     "bytes": 122482,
+     "key": "element-image-terrain5-lab-ground"
+    },
+    "sky": {
+     "file": "lab-sky.webp",
+     "size": [
+      944,
+      1830
+     ],
+     "bytes": 61214,
+     "key": "element-image-terrain5-lab-sky"
+    },
+    "planet": {
+     "file": "lab-planet.webp",
+     "size": [
+      256,
+      256
+     ],
+     "bytes": 13664,
+     "key": "element-image-terrain5-lab-planet"
+    },
+    "props": {
+     "file": "lab-props.webp",
+     "size": [
+      1024,
+      454
+     ],
+     "bytes": 108136,
+     "key": "element-image-terrain5-lab-props"
+    }
+   },
+   "planet": {
+    "centerCss": [
+     80,
+     100
+    ],
+    "sizeCss": 128.0,
+    "motion": {
+     "driftPx": [
+      5,
+      2
+     ],
+     "periodS": 120,
+     "atmospherePulse": 0.08,
+     "note": "draw behind the ground; no rotation of the bitmap, drift + subtle brightness pulse"
+    }
+   },
+   "sky": {
+    "sizeCss": [
+     472.0,
+     915.0
+    ],
+    "drawAtCssX": -30,
+    "parallax": {
+     "maxShiftPx": 10,
+     "periodS": 90
+    }
+   },
+   "sprites": [
+    {
+     "kind": "tuft",
+     "idx": 0,
+     "frame": [
+      0,
+      0,
+      52,
+      97
+     ],
+     "displayCss": [
+      26.0,
+      48.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 1,
+     "frame": [
+      54,
+      0,
+      65,
+      104
+     ],
+     "displayCss": [
+      32.5,
+      52.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "tuft",
+     "idx": 2,
+     "frame": [
+      121,
+      0,
+      74,
+      88
+     ],
+     "displayCss": [
+      37.0,
+      44.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 0,
+     "frame": [
+      197,
+      0,
+      61,
+      89
+     ],
+     "displayCss": [
+      30.5,
+      44.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 1,
+     "frame": [
+      260,
+      0,
+      52,
+      97
+     ],
+     "displayCss": [
+      26.0,
+      48.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 2,
+     "frame": [
+      314,
+      0,
+      62,
+      89
+     ],
+     "displayCss": [
+      31.0,
+      44.5
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "debris",
+     "idx": 3,
+     "frame": [
+      378,
+      0,
+      48,
+      96
+     ],
+     "displayCss": [
+      24.0,
+      48.0
+     ],
+     "root": [
+      0.5,
+      0.5
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 0,
+     "frame": [
+      428,
+      0,
+      160,
+      218
+     ],
+     "displayCss": [
+      80.0,
+      109.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 1,
+     "frame": [
+      590,
+      0,
+      134,
+      223
+     ],
+     "displayCss": [
+      67.0,
+      111.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 2,
+     "frame": [
+      726,
+      0,
+      165,
+      206
+     ],
+     "displayCss": [
+      82.5,
+      103.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 3,
+     "frame": [
+      0,
+      225,
+      145,
+      226
+     ],
+     "displayCss": [
+      72.5,
+      113.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 4,
+     "frame": [
+      147,
+      225,
+      129,
+      228
+     ],
+     "displayCss": [
+      64.5,
+      114.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 5,
+     "frame": [
+      278,
+      225,
+      168,
+      212
+     ],
+     "displayCss": [
+      84.0,
+      106.0
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 6,
+     "frame": [
+      448,
+      225,
+      156,
+      229
+     ],
+     "displayCss": [
+      78.0,
+      114.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    },
+    {
+     "kind": "mass",
+     "idx": 7,
+     "frame": [
+      606,
+      225,
+      146,
+      225
+     ],
+     "displayCss": [
+      73.0,
+      112.5
+     ],
+     "root": [
+      0.5,
+      0.97
+     ]
+    }
+   ],
+   "instances": [
+    {
+     "id": "mass0",
+     "kind": "mass",
+     "sprite": 10,
+     "pos": [
+      0.03,
+      0.31
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass1",
+     "kind": "mass",
+     "sprite": 8,
+     "pos": [
+      0.965,
+      0.3
+     ],
+     "scale": 0.72,
+     "flipX": 1,
+     "depth": 10.3,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass2",
+     "kind": "mass",
+     "sprite": 9,
+     "pos": [
+      0.045,
+      0.6
+     ],
+     "scale": 0.95,
+     "flipX": 0,
+     "depth": 10.6,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass3",
+     "kind": "mass",
+     "sprite": 14,
+     "pos": [
+      0.955,
+      0.58
+     ],
+     "scale": 0.9,
+     "flipX": 1,
+     "depth": 10.58,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass4",
+     "kind": "mass",
+     "sprite": 11,
+     "pos": [
+      0.06,
+      0.85
+     ],
+     "scale": 1.35,
+     "flipX": 0,
+     "depth": 10.85,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass5",
+     "kind": "mass",
+     "sprite": 13,
+     "pos": [
+      0.95,
+      0.87
+     ],
+     "scale": 1.4,
+     "flipX": 1,
+     "depth": 10.87,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass6",
+     "kind": "mass",
+     "sprite": 7,
+     "pos": [
+      0.24,
+      0.905
+     ],
+     "scale": 1.05,
+     "flipX": 0,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "mass7",
+     "kind": "mass",
+     "sprite": 12,
+     "pos": [
+      0.78,
+      0.905
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.905,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 0.0,
+      "periodS": 0,
+      "phaseS": 0
+     },
+     "note": "static framing silhouette; keep outside the combat area"
+    },
+    {
+     "id": "tuft0",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.12,
+      0.5
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.5,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.0,
+      "phaseS": 0.0
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft1",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.89,
+      0.47
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.47,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.0,
+      "phaseS": 0.83
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft2",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.07,
+      0.72
+     ],
+     "scale": 1.04,
+     "flipX": 0,
+     "depth": 10.72,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 4.2,
+      "phaseS": 1.66
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft3",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.93,
+      0.73
+     ],
+     "scale": 0.94,
+     "flipX": 1,
+     "depth": 10.73,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 3.4,
+      "phaseS": 2.49
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft4",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.2,
+      0.79
+     ],
+     "scale": 1.18,
+     "flipX": 0,
+     "depth": 10.79,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 5.4,
+      "phaseS": 3.32
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft5",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.83,
+      0.8
+     ],
+     "scale": 1.07,
+     "flipX": 1,
+     "depth": 10.8,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 4.6,
+      "phaseS": 0.15
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft6",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.28,
+      0.31
+     ],
+     "scale": 0.97,
+     "flipX": 0,
+     "depth": 10.31,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 3.8,
+      "phaseS": 0.98
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft7",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.74,
+      0.29
+     ],
+     "scale": 1.22,
+     "flipX": 1,
+     "depth": 10.29,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 6.2,
+      "periodS": 3.0,
+      "phaseS": 1.81
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft8",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.15,
+      0.37
+     ],
+     "scale": 1.11,
+     "flipX": 0,
+     "depth": 10.37,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.8,
+      "periodS": 5.0,
+      "phaseS": 2.64
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft9",
+     "kind": "tuft",
+     "sprite": 0,
+     "pos": [
+      0.87,
+      0.36
+     ],
+     "scale": 1.0,
+     "flipX": 1,
+     "depth": 10.36,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 5.4,
+      "periodS": 4.2,
+      "phaseS": 3.47
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft10",
+     "kind": "tuft",
+     "sprite": 1,
+     "pos": [
+      0.4,
+      0.84
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 10.84,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 3.0,
+      "periodS": 3.4,
+      "phaseS": 0.3
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "tuft11",
+     "kind": "tuft",
+     "sprite": 2,
+     "pos": [
+      0.62,
+      0.83
+     ],
+     "scale": 1.15,
+     "flipX": 1,
+     "depth": 10.83,
+     "shadow": true,
+     "sway": {
+      "ampDeg": 4.6,
+      "periodS": 5.4,
+      "phaseS": 1.13
+     },
+     "note": "sway = rotate +-ampDeg about the root point (bottom centre), sine, phase offset phaseS"
+    },
+    {
+     "id": "debris0",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.17,
+      0.1
+     ],
+     "scale": 0.9,
+     "flipX": 0,
+     "depth": 30.1,
+     "shadow": false,
+     "drift": {
+      "dxPx": 8.0,
+      "dyPx": 3.0,
+      "periodS": 14.0,
+      "rotDeg": 4,
+      "phaseS": 0.0
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris1",
+     "kind": "debris",
+     "sprite": 5,
+     "pos": [
+      0.82,
+      0.14
+     ],
+     "scale": 1.1,
+     "flipX": 1,
+     "depth": 30.14,
+     "shadow": false,
+     "drift": {
+      "dxPx": 10.5,
+      "dyPx": 4.5,
+      "periodS": 16.2,
+      "rotDeg": 6,
+      "phaseS": 2.7
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris2",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.46,
+      0.07
+     ],
+     "scale": 0.8,
+     "flipX": 0,
+     "depth": 30.07,
+     "shadow": false,
+     "drift": {
+      "dxPx": 13.0,
+      "dyPx": 6.0,
+      "periodS": 18.4,
+      "rotDeg": 8,
+      "phaseS": 5.4
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris3",
+     "kind": "debris",
+     "sprite": 6,
+     "pos": [
+      0.63,
+      0.17
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.17,
+     "shadow": false,
+     "drift": {
+      "dxPx": 15.5,
+      "dyPx": 3.0,
+      "periodS": 20.6,
+      "rotDeg": 4,
+      "phaseS": 8.1
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris4",
+     "kind": "debris",
+     "sprite": 3,
+     "pos": [
+      0.35,
+      0.155
+     ],
+     "scale": 0.6,
+     "flipX": 0,
+     "depth": 30.155,
+     "shadow": false,
+     "drift": {
+      "dxPx": 18.0,
+      "dyPx": 4.5,
+      "periodS": 22.8,
+      "rotDeg": 6,
+      "phaseS": 10.8
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    },
+    {
+     "id": "debris5",
+     "kind": "debris",
+     "sprite": 4,
+     "pos": [
+      0.93,
+      0.05
+     ],
+     "scale": 0.7,
+     "flipX": 1,
+     "depth": 30.05,
+     "shadow": false,
+     "drift": {
+      "dxPx": 20.5,
+      "dyPx": 6.0,
+      "periodS": 25.0,
+      "rotDeg": 8,
+      "phaseS": 13.5
+     },
+     "note": "drifts on a slow sine path around pos, pivot = sprite centre"
+    }
+   ],
+   "glints": [
+    {
+     "pos": [
+      0.045,
+      0.505
+     ],
+     "scale": 0.28,
+     "periodS": 2.6,
+     "phaseS": 0.0,
+     "color": "#6fd8ff"
+    },
+    {
+     "pos": [
+      0.96,
+      0.49
+     ],
+     "scale": 0.38,
+     "periodS": 3.3,
+     "phaseS": 1.1,
+     "color": "#6fd8ff"
+    },
+    {
+     "pos": [
+      0.052,
+      0.215
+     ],
+     "scale": 0.48,
+     "periodS": 4.0,
+     "phaseS": 2.2,
+     "color": "#6fd8ff"
+    },
+    {
+     "pos": [
+      0.957,
+      0.225
+     ],
+     "scale": 0.28,
+     "periodS": 4.7,
+     "phaseS": 3.3,
+     "color": "#6fd8ff"
+    },
+    {
+     "pos": [
+      0.055,
+      0.78
+     ],
+     "scale": 0.38,
+     "periodS": 5.4,
+     "phaseS": 4.4,
+     "color": "#6fd8ff"
+    },
+    {
+     "pos": [
+      0.945,
+      0.8
+     ],
+     "scale": 0.48,
+     "periodS": 6.1,
+     "phaseS": 5.5,
+     "color": "#6fd8ff"
+    }
+   ],
+   "towerGrade": {
+    "multiplyRgb": [
+     0.896,
+     0.972,
+     1.0
+    ],
+    "saturation": 0.9,
+    "brightness": 0.97,
+    "rimColor": "#6fd8ff",
+    "rimAlpha": 0.55,
+    "rimSide": "upper-left key edge + cool rim on the right edge",
+    "note": "multiply the tower sprites by multiplyRgb (setTint; every channel <= 1). saturation/brightness/rim are optional extras (not applied by the Phaser tint path)"
+   },
+   "enemyGrade": {
+    "multiplyRgb": [
+     0.947,
+     0.985,
+     1.0
+    ],
+    "saturation": 0.95,
+    "brightness": 0.97
+   }
+  }
+ }
+}

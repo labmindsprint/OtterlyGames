@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="t" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4edff"/><stop offset="1" stop-color="#cdb8f7"/></linearGradient>
+    <linearGradient id="l" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c7aef5"/><stop offset="1" stop-color="#8f6fe0"/></linearGradient>
+    <linearGradient id="r" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9a7be6"/><stop offset="1" stop-color="#5f45b4"/></linearGradient>
+    <linearGradient id="pl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a69dc"/><stop offset="1" stop-color="#4a3596"/></linearGradient>
+    <linearGradient id="pc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9a0f3"/><stop offset="1" stop-color="#6b4fc4"/></linearGradient>
+    <linearGradient id="pr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6c50c6"/><stop offset="1" stop-color="#35276f"/></linearGradient>
+  </defs>
+  <ellipse cx="32" cy="60" rx="17" ry="3" fill="#000" opacity=".28"/>
+  <g stroke="#2b1f5c" stroke-width="1.2" stroke-linejoin="round">
+    <polygon points="14,22 22,9 26,22" fill="url(#l)"/>
+    <polygon points="50,22 42,9 38,22" fill="url(#r)"/>
+    <polygon points="22,9 42,9 38,22 26,22" fill="url(#t)"/>
+    <polygon points="14,22 26,22 32,56" fill="url(#pl)"/>
+    <polygon points="26,22 38,22 32,56" fill="url(#pc)"/>
+    <polygon points="38,22 50,22 32,56" fill="url(#pr)"/>
+  </g>
+  <path d="M25 12.5 L36 12.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+  <path d="M17.5 23.5 L28.5 50" stroke="#e9deff" stroke-width="1" opacity=".35" stroke-linecap="round"/>
+  <path d="M52 6 v6 M49 9 h6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".9"/>
+</svg>

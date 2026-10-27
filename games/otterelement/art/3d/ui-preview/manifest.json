@@ -1,0 +1,125 @@
+{
+  "purpose": "Static turret preview, frame 3; cropped losslessly from the decoded shipped sheets. PERF_V2=off uses originals.",
+  "files": [
+    {
+      "file": "head.webp",
+      "source": [
+        1200,
+        1120
+      ],
+      "crop": [
+        240,
+        224
+      ],
+      "frame": 3
+    },
+    {
+      "file": "head-accent.webp",
+      "source": [
+        1200,
+        1120
+      ],
+      "crop": [
+        240,
+        224
+      ],
+      "frame": 3
+    },
+    {
+      "file": "barrel0.webp",
+      "source": [
+        1920,
+        1320
+      ],
+      "crop": [
+        384,
+        264
+      ],
+      "frame": 3
+    },
+    {
+      "file": "barrel0-accent.webp",
+      "source": [
+        1920,
+        1320
+      ],
+      "crop": [
+        384,
+        264
+      ],
+      "frame": 3
+    },
+    {
+      "file": "barrel1.webp",
+      "source": [
+        1920,
+        1320
+      ],
+      "crop": [
+        384,
+        264
+      ],
+      "frame": 3
+    },
+    {
+      "file": "barrel1-accent.webp",
+      "source": [
+        1920,
+        1320
+      ],
+      "crop": [
+        384,
+        264
+      ],
+      "frame": 3
+    },
+    {
+      "file": "barrel2.webp",
+      "source": [
+        1920,
+        1320
+      ],
+      "crop": [
+        384,
+        264
+      ],
+      "frame": 3
+    },
+    {
+      "file": "barrel2-accent.webp",
+      "source": [
+        1920,
+        1320
+      ],
+      "crop": [
+        384,
+        264
+      ],
+      "frame": 3
+    },
+    {
+      "file": "barrel3.webp",
+      "source": [
+        1920,
+        1320
+      ],
+      "crop": [
+        384,
+        264
+      ],
+      "frame": 3
+    },
+    {
+      "file": "barrel3-accent.webp",
+      "source": [
+        1920,
+        1320
+      ],
+      "crop": [
+        384,
+        264
+      ],
+      "frame": 3
+    }
+  ]
+}

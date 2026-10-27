@@ -1,0 +1,147 @@
+{
+ "version": 2,
+ "style": "element-creatures-back",
+ "enemies": {
+  "wisp": {
+   "key": "wisp",
+   "file": "wisp-back.webp",
+   "shadowFile": "wisp-back-shadow.webp",
+   "frameW": 160,
+   "frameH": 160,
+   "cols": 8,
+   "rows": 4,
+   "frames": 28,
+   "shadowFrameW": 80,
+   "shadowFrameH": 80,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 76.19,
+   "ember": "#ff8c28",
+   "clips": {
+    "walk": {
+     "start": 0,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 8,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "hit": {
+     "start": 16,
+     "count": 2,
+     "fps": 18,
+     "loop": false
+    },
+    "death": {
+     "start": 18,
+     "count": 10,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "up",
+   "view": "back view, 3/4 top-down from behind, creature faces UP toward the tower; 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "wisp"
+  },
+  "armor": {
+   "key": "armor",
+   "file": "armor-back.webp",
+   "shadowFile": "armor-back-shadow.webp",
+   "frameW": 192,
+   "frameH": 192,
+   "cols": 8,
+   "rows": 4,
+   "frames": 28,
+   "shadowFrameW": 96,
+   "shadowFrameH": 96,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 81.7,
+   "ember": "#ff7f23",
+   "clips": {
+    "walk": {
+     "start": 0,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 8,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "hit": {
+     "start": 16,
+     "count": 2,
+     "fps": 18,
+     "loop": false
+    },
+    "death": {
+     "start": 18,
+     "count": 10,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "up",
+   "view": "back view, 3/4 top-down from behind, creature faces UP toward the tower; 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "armor"
+  },
+  "runner": {
+   "key": "runner",
+   "file": "runner-back.webp",
+   "shadowFile": "runner-back-shadow.webp",
+   "frameW": 160,
+   "frameH": 160,
+   "cols": 8,
+   "rows": 4,
+   "frames": 28,
+   "shadowFrameW": 80,
+   "shadowFrameH": 80,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 82.05,
+   "ember": "#ff7f23",
+   "clips": {
+    "walk": {
+     "start": 0,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 8,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "hit": {
+     "start": 16,
+     "count": 2,
+     "fps": 18,
+     "loop": false
+    },
+    "death": {
+     "start": 18,
+     "count": 10,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "up",
+   "view": "back view, 3/4 top-down from behind, creature faces UP toward the tower; 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "runner"
+  }
+ }
+}

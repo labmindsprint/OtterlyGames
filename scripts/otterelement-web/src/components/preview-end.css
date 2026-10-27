@@ -1,0 +1,20 @@
+.oe-preview-end { display: grid; gap: 12px; }
+.oe-preview-end p { margin: 0; color: var(--ob-text-2); font-size: 13px; line-height: 1.5; }
+.oe-preview-end .oe-preview-fine { font-size: 12px; color: var(--ob-text-muted); }
+.oe-preview-end a { color: var(--ob-gold); }
+.oe-preview-end a.button { text-decoration: none; }
+.oe-preview-end a.button.gold { color: var(--ob-text-on-gold); }
+.oe-fullgame-pill {
+  position: fixed; z-index: 40; right: 10px; bottom: calc(env(safe-area-inset-bottom, 0px) + 78px);
+  display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px;
+  border: 1px solid var(--ob-gold); border-radius: 999px; background: var(--ob-surface); color: var(--ob-gold);
+  font-size: 12px; font-weight: 700; text-decoration: none; box-shadow: var(--ob-shadow-float);
+}
+.oe-fullgame-pill:hover { background: var(--ob-raised); }
+/* On phones the bottom of the screen holds the training buttons, so the link sits in the top bar instead, over the app name. */
+@media (max-width: 480px) {
+  .oe-fullgame-pill {
+    top: calc(env(safe-area-inset-top, 0px) + 14px); bottom: auto; left: 46px; right: auto;
+    padding: 0 9px; gap: 4px; font-size: 11px;
+  }
+}

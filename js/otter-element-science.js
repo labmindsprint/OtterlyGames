@@ -15,17 +15,10 @@
     'Alkali metal': '#f0a090', 'Alkaline earth': '#f0c880', 'Transition metal': '#9cc4ec', 'Post-transition metal': '#a6c9b0',
     Metalloid: '#c5d68a', 'Non-metal': '#8fe0c0', Halogen: '#e8e07a', 'Noble gas': '#c8a8f0', Lanthanoid: '#f0a8cc', Actinoid: '#d894b0',
   };
+  // Only the two elements the browser preview opens carry a power here; they are the game's own names and descriptions.
   const POWERS = {
-    1: ['Fusion bolt', 20, 'One bolt of fused hydrogen hits the toughest enemy, the boss first, for 800% ATK.'],
-    2: ['Helium veil', 40, 'A shield worth 35% of maximum HP that holds for eight seconds.'],
-    3: ['Arc cascade', 28, 'Lightning leaps through up to six enemies, 300% ATK each.'],
-    4: ['Beryl bulwark', 45, 'For eight seconds incoming damage falls by 60% and EMP strikes are blocked.'],
-    5: ['Borate burst', 32, 'Detonates on the densest cluster, 450% ATK to everything in the blast.'],
-    6: ['Diamond lance', 25, 'A crystal lance through every enemy on its line, 500% ATK. Ignores armor.'],
-    7: ['Frost chain', 36, 'A cold arc through up to four enemies, 200% ATK each, slowing them 40% for five seconds.'],
-    8: ['Ozone field', 40, 'A mist field for eight seconds: enemies inside are slowed 45% and take 80% ATK each second.'],
-    9: ['Etch strike', 30, 'Three corrosive strikes on the toughest enemies, 400% ATK each. Ignores armor.'],
-    10: ['Neon flare', 60, 'A flare across the whole field: 350% ATK to all, and enemy attacks are delayed 2.5 seconds.'],
+    1: ['Healing Cloud', 'A cloud that heals the lab and hurts the enemies inside it.'],
+    2: ['Calm Field', 'A cold aurora that slows and weakens every enemy and heals the lab.'],
   };
 
   const family = n => {
@@ -84,7 +77,7 @@
     const power = POWERS[el.n];
     detail.innerHTML = `<span class="oe-chip" style="--fam:${COLORS[el.family]}">${el.symbol}</span>
       <div><strong>#${el.n} ${el.name}</strong><span>${el.family}</span>
-      ${power ? `<p><b>Power: ${power[0]}</b> (${power[1]}s cooldown). ${power[2]}</p>` : '<p>Every element in the game unlocks when you discover it in a battle. Its power and atom are revealed in the game.</p>'}</div>`;
+      ${power ? `<p><b>Power: ${power[0]}.</b> ${power[1]}</p>` : '<p>Every element in the game unlocks when you discover it in a battle. Its power and atom are revealed in the game.</p>'}</div>`;
   }
 
   elements.forEach(el => {

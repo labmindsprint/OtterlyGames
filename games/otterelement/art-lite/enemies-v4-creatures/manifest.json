@@ -1,0 +1,498 @@
+{
+ "version": 2,
+ "style": "element-creatures",
+ "enemies": {
+  "wisp": {
+   "key": "wisp",
+   "file": "wisp.webp",
+   "frameW": 100,
+   "frameH": 100,
+   "cols": 8,
+   "rows": 4,
+   "frames": 26,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 47.619,
+   "ember": "#ff8c28",
+   "clips": {
+    "walk": {
+     "start": 0,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 8,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 16,
+     "count": 10,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "down",
+   "view": "painted 3/4 top-down, single facing (toward screen bottom); 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "wisp"
+  },
+  "runner": {
+   "key": "runner",
+   "file": "runner.webp",
+   "frameW": 100,
+   "frameH": 100,
+   "cols": 8,
+   "rows": 4,
+   "frames": 26,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 51.281,
+   "ember": "#ff7f23",
+   "clips": {
+    "walk": {
+     "start": 0,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 8,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 16,
+     "count": 10,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "down",
+   "view": "painted 3/4 top-down, single facing (toward screen bottom); 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "runner"
+  },
+  "boss": {
+   "key": "boss",
+   "file": "boss.webp",
+   "frameW": 192,
+   "frameH": 192,
+   "cols": 8,
+   "rows": 6,
+   "frames": 42,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 51.892,
+   "ember": "#ff751e",
+   "clips": {
+    "intro": {
+     "start": 0,
+     "count": 6,
+     "fps": 12,
+     "loop": false
+    },
+    "walk": {
+     "start": 6,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 14,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "attack2": {
+     "start": 22,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 30,
+     "count": 12,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "down",
+   "view": "painted 3/4 top-down, single facing (toward screen bottom); 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "boss",
+   "attacks": {
+    "attack": "slam",
+    "attack2": "emp"
+   }
+  },
+  "armor": {
+   "key": "armor",
+   "file": "armor.webp",
+   "frameW": 120,
+   "frameH": 120,
+   "cols": 8,
+   "rows": 4,
+   "frames": 26,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 51.062,
+   "ember": "#ff7f23",
+   "clips": {
+    "walk": {
+     "start": 0,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 8,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 16,
+     "count": 10,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "down",
+   "view": "painted 3/4 top-down, single facing (toward screen bottom); 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "armor"
+  },
+  "boss-scout": {
+   "key": "boss-scout",
+   "file": "boss-scout.webp",
+   "frameW": 192,
+   "frameH": 192,
+   "cols": 8,
+   "rows": 6,
+   "frames": 42,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 54.855,
+   "ember": "#ff8c26",
+   "clips": {
+    "intro": {
+     "start": 0,
+     "count": 6,
+     "fps": 12,
+     "loop": false
+    },
+    "walk": {
+     "start": 6,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 14,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "attack2": {
+     "start": 22,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 30,
+     "count": 12,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "down",
+   "view": "painted 3/4 top-down, single facing (toward screen bottom); 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "boss-scout",
+   "attacks": {
+    "attack": "strike",
+    "attack2": "lunge"
+   }
+  },
+  "boss-walker": {
+   "key": "boss-walker",
+   "file": "boss-walker.webp",
+   "frameW": 192,
+   "frameH": 192,
+   "cols": 8,
+   "rows": 6,
+   "frames": 42,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 48.0,
+   "ember": "#ff7f23",
+   "clips": {
+    "intro": {
+     "start": 0,
+     "count": 6,
+     "fps": 12,
+     "loop": false
+    },
+    "walk": {
+     "start": 6,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 14,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "attack2": {
+     "start": 22,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 30,
+     "count": 12,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "down",
+   "view": "painted 3/4 top-down, single facing (toward screen bottom); 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "boss-walker",
+   "attacks": {
+    "attack": "stomp",
+    "attack2": "cannon"
+   }
+  },
+  "boss-brute": {
+   "key": "boss-brute",
+   "file": "boss-brute.webp",
+   "frameW": 192,
+   "frameH": 192,
+   "cols": 8,
+   "rows": 6,
+   "frames": 42,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 44.648,
+   "ember": "#ff6b19",
+   "clips": {
+    "intro": {
+     "start": 0,
+     "count": 6,
+     "fps": 12,
+     "loop": false
+    },
+    "walk": {
+     "start": 6,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 14,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "attack2": {
+     "start": 22,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 30,
+     "count": 12,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "down",
+   "view": "painted 3/4 top-down, single facing (toward screen bottom); 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "boss-brute",
+   "attacks": {
+    "attack": "slam",
+    "attack2": "punch"
+   }
+  },
+  "boss-crystal": {
+   "key": "boss-crystal",
+   "file": "boss-crystal.webp",
+   "frameW": 192,
+   "frameH": 192,
+   "cols": 8,
+   "rows": 6,
+   "frames": 42,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 50.528,
+   "ember": "#ff932d",
+   "clips": {
+    "intro": {
+     "start": 0,
+     "count": 6,
+     "fps": 12,
+     "loop": false
+    },
+    "walk": {
+     "start": 6,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 14,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "attack2": {
+     "start": 22,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 30,
+     "count": 12,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "down",
+   "view": "painted 3/4 top-down, single facing (toward screen bottom); 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "boss-crystal",
+   "attacks": {
+    "attack": "volley",
+    "attack2": "nova"
+   }
+  },
+  "boss-forge": {
+   "key": "boss-forge",
+   "file": "boss-forge.webp",
+   "frameW": 192,
+   "frameH": 192,
+   "cols": 8,
+   "rows": 6,
+   "frames": 42,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 48.0,
+   "ember": "#ff721e",
+   "clips": {
+    "intro": {
+     "start": 0,
+     "count": 6,
+     "fps": 12,
+     "loop": false
+    },
+    "walk": {
+     "start": 6,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 14,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "attack2": {
+     "start": 22,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 30,
+     "count": 12,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "down",
+   "view": "painted 3/4 top-down, single facing (toward screen bottom); 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "boss-forge",
+   "attacks": {
+    "attack": "hammer",
+    "attack2": "vent"
+   }
+  },
+  "boss-void": {
+   "key": "boss-void",
+   "file": "boss-void.webp",
+   "frameW": 192,
+   "frameH": 192,
+   "cols": 8,
+   "rows": 6,
+   "frames": 42,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 49.23,
+   "ember": "#ff7f23",
+   "clips": {
+    "intro": {
+     "start": 0,
+     "count": 6,
+     "fps": 12,
+     "loop": false
+    },
+    "walk": {
+     "start": 6,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 14,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "attack2": {
+     "start": 22,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 30,
+     "count": 12,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "down",
+   "view": "painted 3/4 top-down, single facing (toward screen bottom); 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "boss-void",
+   "attacks": {
+    "attack": "lash",
+    "attack2": "implode"
+   }
+  }
+ }
+}

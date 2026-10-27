@@ -1,4 +1,13 @@
 {
-  "version": "0.1.0",
-  "syncedAt": "2026-10-19T18:17:47.978Z"
+  "version": "0.1.1",
+  "mode": "website-two-node-preview",
+  "nodeCap": 2,
+  "storage": "local-browser",
+  "syncedAt": "2026-10-27T20:43:11.341Z",
+  "source": {
+    "commit": "acc1c6d493e2c2c75a113b21424167d379a491f0",
+    "uncommittedChanges": true,
+    "fingerprint": "sha256:4de8696dca2665c48788883fde385f11e7efbc3ed7c2b63f4bb93a06578552c4"
+  },
+  "overlay": "sha256:d7ea172c509ac96eb611c002159989f029f21c100f5cb6a2f74ee517c4ef9a32"
 }

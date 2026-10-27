@@ -1,0 +1,616 @@
+{
+ "version": 1,
+ "readme": "Frames are laid out row-major in one sheet. Frame i is at x=(i%cols)*frame[0], y=floor(i/cols)*frame[1]. Draw with CSS background-position on a div sized to one frame (steps animation), or a canvas. status \"planned\": the file does not exist yet, fall back to the static CSS look. tint \"multiply\": neutral art, multiply by a colour; tint \"hue\": CSS filter hue-rotate recolours it.",
+ "totalBytes": 2967774,
+ "assets": {
+  "gem-idle": {
+   "status": "ready",
+   "file": "gem-idle.webp",
+   "frame": [
+    128,
+    128
+   ],
+   "frames": 12,
+   "cols": 6,
+   "rows": 2,
+   "sheet": [
+    768,
+    256
+   ],
+   "fps": 12,
+   "loop": true,
+   "tint": "none",
+   "group": "gem",
+   "note": "Single gem, sparkle glint loop.",
+   "bytes": 31730
+  },
+  "gem-burst": {
+   "status": "ready",
+   "file": "gem-burst.webp",
+   "frame": [
+    256,
+    256
+   ],
+   "frames": 16,
+   "cols": 4,
+   "rows": 4,
+   "sheet": [
+    1024,
+    1024
+   ],
+   "fps": 24,
+   "loop": false,
+   "tint": "none",
+   "group": "gem",
+   "note": "Gem shower reward: gems fly out and fall, plays once.",
+   "bytes": 194936
+  },
+  "pack-small": {
+   "status": "ready",
+   "file": "pack-small.webp",
+   "frame": [
+    256,
+    256
+   ],
+   "frames": 12,
+   "cols": 4,
+   "rows": 3,
+   "sheet": [
+    1024,
+    768
+   ],
+   "fps": 12,
+   "loop": true,
+   "tint": "none",
+   "group": "pack",
+   "note": "Gem pack 30: leather pouch with gems, glints and floating gems.",
+   "bytes": 127490
+  },
+  "pack-medium": {
+   "status": "ready",
+   "file": "pack-medium.webp",
+   "frame": [
+    256,
+    256
+   ],
+   "frames": 12,
+   "cols": 4,
+   "rows": 3,
+   "sheet": [
+    1024,
+    768
+   ],
+   "fps": 12,
+   "loop": true,
+   "tint": "none",
+   "group": "pack",
+   "note": "Gem pack 54: open chest of gems, glints and floating gems.",
+   "bytes": 152140
+  },
+  "pack-large": {
+   "status": "ready",
+   "file": "pack-large.webp",
+   "frame": [
+    256,
+    256
+   ],
+   "frames": 12,
+   "cols": 4,
+   "rows": 3,
+   "sheet": [
+    1024,
+    768
+   ],
+   "fps": 12,
+   "loop": true,
+   "tint": "none",
+   "group": "pack",
+   "note": "Gem pack 120: vault with a heap of gems, glints and floating gems.",
+   "bytes": 186706
+  },
+  "starter-crate": {
+   "status": "ready",
+   "file": "starter-crate.webp",
+   "frame": [
+    256,
+    256
+   ],
+   "frames": 16,
+   "cols": 4,
+   "rows": 4,
+   "sheet": [
+    1024,
+    1024
+   ],
+   "fps": 12,
+   "loop": true,
+   "tint": "none",
+   "group": "starter",
+   "note": "Starter pack hero: glowing crate pulsing with floating items.",
+   "bytes": 209282
+  },
+  "shine-strip": {
+   "status": "ready",
+   "file": "shine-strip.webp",
+   "frame": [
+    192,
+    256
+   ],
+   "frames": 1,
+   "cols": 1,
+   "rows": 1,
+   "sheet": [
+    192,
+    256
+   ],
+   "fps": 0,
+   "loop": true,
+   "tint": "hue",
+   "group": "starter",
+   "note": "Static diagonal shine band (white on transparent). Slide it across any card with CSS, mix-blend-mode: screen.",
+   "bytes": 9560
+  },
+  "chest-common": {
+   "status": "ready",
+   "file": "chest-common.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 18,
+   "cols": 6,
+   "rows": 3,
+   "sheet": [
+    1152,
+    576
+   ],
+   "fps": 12,
+   "loop": false,
+   "tint": "none",
+   "group": "chest",
+   "note": "Supply crate, steel blue: idle (6, loop), shake (4), open + reveal glow (8, hold last frame).",
+   "clips": {
+    "idle": {
+     "start": 0,
+     "count": 6,
+     "loop": true
+    },
+    "shake": {
+     "start": 6,
+     "count": 4,
+     "loop": false
+    },
+    "open": {
+     "start": 10,
+     "count": 8,
+     "loop": false
+    }
+   },
+   "bytes": 143130
+  },
+  "chest-rare": {
+   "status": "ready",
+   "file": "chest-rare.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 18,
+   "cols": 6,
+   "rows": 3,
+   "sheet": [
+    1152,
+    576
+   ],
+   "fps": 12,
+   "loop": false,
+   "tint": "none",
+   "group": "chest",
+   "note": "Supply crate, violet: idle (6, loop), shake (4), open + reveal glow (8, hold last frame).",
+   "clips": {
+    "idle": {
+     "start": 0,
+     "count": 6,
+     "loop": true
+    },
+    "shake": {
+     "start": 6,
+     "count": 4,
+     "loop": false
+    },
+    "open": {
+     "start": 10,
+     "count": 8,
+     "loop": false
+    }
+   },
+   "bytes": 149764
+  },
+  "chest-legendary": {
+   "status": "ready",
+   "file": "chest-legendary.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 18,
+   "cols": 6,
+   "rows": 3,
+   "sheet": [
+    1152,
+    576
+   ],
+   "fps": 12,
+   "loop": false,
+   "tint": "none",
+   "group": "chest",
+   "note": "Supply crate, gold: idle (6, loop), shake (4), open + reveal glow (8, hold last frame).",
+   "clips": {
+    "idle": {
+     "start": 0,
+     "count": 6,
+     "loop": true
+    },
+    "shake": {
+     "start": 6,
+     "count": 4,
+     "loop": false
+    },
+    "open": {
+     "start": 10,
+     "count": 8,
+     "loop": false
+    }
+   },
+   "bytes": 149640
+  },
+  "coin-spin": {
+   "status": "ready",
+   "file": "coin-spin.webp",
+   "frame": [
+    128,
+    128
+   ],
+   "frames": 12,
+   "cols": 6,
+   "rows": 2,
+   "sheet": [
+    768,
+    256
+   ],
+   "fps": 14,
+   "loop": true,
+   "tint": "none",
+   "group": "coin",
+   "note": "Single gold coin spinning.",
+   "bytes": 43544
+  },
+  "coin-shower": {
+   "status": "ready",
+   "file": "coin-shower.webp",
+   "frame": [
+    256,
+    256
+   ],
+   "frames": 16,
+   "cols": 4,
+   "rows": 4,
+   "sheet": [
+    1024,
+    1024
+   ],
+   "fps": 24,
+   "loop": false,
+   "tint": "none",
+   "group": "coin",
+   "note": "Coins pour down and bounce, plays once.",
+   "bytes": 219356
+  },
+  "core-1": {
+   "status": "ready",
+   "file": "core-1.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 6,
+   "rows": 2,
+   "sheet": [
+    1152,
+    384
+   ],
+   "fps": 10,
+   "loop": true,
+   "tint": "none",
+   "group": "core",
+   "note": "Credit core crystal tier 1 (small, growing glow). Idle loop.",
+   "bytes": 105176
+  },
+  "core-2": {
+   "status": "ready",
+   "file": "core-2.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 6,
+   "rows": 2,
+   "sheet": [
+    1152,
+    384
+   ],
+   "fps": 10,
+   "loop": true,
+   "tint": "none",
+   "group": "core",
+   "note": "Credit core crystal tier 2 (medium, growing glow). Idle loop.",
+   "bytes": 124058
+  },
+  "core-3": {
+   "status": "ready",
+   "file": "core-3.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 6,
+   "rows": 2,
+   "sheet": [
+    1152,
+    384
+   ],
+   "fps": 10,
+   "loop": true,
+   "tint": "none",
+   "group": "core",
+   "note": "Credit core crystal tier 3 (large, growing glow). Idle loop.",
+   "bytes": 124440
+  },
+  "vault": {
+   "status": "ready",
+   "file": "vault.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 6,
+   "rows": 2,
+   "sheet": [
+    1152,
+    384
+   ],
+   "fps": 10,
+   "loop": true,
+   "tint": "none",
+   "group": "misc",
+   "note": "Offline storage: moon battery vault, charge glow idle loop.",
+   "bytes": 83992
+  },
+  "turbo-2x": {
+   "status": "ready",
+   "file": "turbo-2x.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 6,
+   "rows": 2,
+   "sheet": [
+    1152,
+    384
+   ],
+   "fps": 14,
+   "loop": true,
+   "tint": "none",
+   "group": "turbo",
+   "note": "Turbo 2x emblem with speed trails.",
+   "bytes": 101412
+  },
+  "turbo-3x": {
+   "status": "ready",
+   "file": "turbo-3x.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 6,
+   "rows": 2,
+   "sheet": [
+    1152,
+    384
+   ],
+   "fps": 16,
+   "loop": true,
+   "tint": "none",
+   "group": "turbo",
+   "note": "Turbo 3x emblem with longer, hotter speed trails.",
+   "bytes": 107790
+  },
+  "autocast": {
+   "status": "ready",
+   "file": "autocast.webp",
+   "frame": [
+    160,
+    160
+   ],
+   "frames": 12,
+   "cols": 6,
+   "rows": 2,
+   "sheet": [
+    960,
+    320
+   ],
+   "fps": 12,
+   "loop": true,
+   "tint": "none",
+   "group": "misc",
+   "note": "Auto-cast emblem: rotating glyph ring.",
+   "bytes": 68176
+  },
+  "paint-splash": {
+   "status": "ready",
+   "file": "paint-splash.webp",
+   "frame": [
+    256,
+    256
+   ],
+   "frames": 12,
+   "cols": 4,
+   "rows": 3,
+   "sheet": [
+    1024,
+    768
+   ],
+   "fps": 20,
+   "loop": false,
+   "tint": "multiply",
+   "group": "fx",
+   "note": "Paint colour burst, neutral white-grey: tint on a canvas: draw frame, globalCompositeOperation multiply + fillRect(colour), then destination-in + draw the frame again (keeps the alpha).",
+   "bytes": 65904
+  },
+  "purchase-burst": {
+   "status": "ready",
+   "file": "purchase-burst.webp",
+   "frame": [
+    256,
+    256
+   ],
+   "frames": 14,
+   "cols": 4,
+   "rows": 4,
+   "sheet": [
+    1024,
+    1024
+   ],
+   "fps": 24,
+   "loop": false,
+   "tint": "none",
+   "group": "fx",
+   "note": "Purchase success burst: ring, sparks and star flash. Plays once.",
+   "bytes": 215772
+  },
+  "fly-trail": {
+   "status": "ready",
+   "file": "fly-trail.webp",
+   "frame": [
+    128,
+    128
+   ],
+   "frames": 8,
+   "cols": 4,
+   "rows": 2,
+   "sheet": [
+    512,
+    256
+   ],
+   "fps": 16,
+   "loop": true,
+   "tint": "none",
+   "group": "fx",
+   "note": "Comet star, tail points left. Rotate/move it from the card to the bar.",
+   "bytes": 31344
+  },
+  "ribbon-best": {
+   "status": "ready",
+   "file": "ribbon-best.webp",
+   "frame": [
+    256,
+    64
+   ],
+   "frames": 12,
+   "cols": 4,
+   "rows": 3,
+   "sheet": [
+    1024,
+    192
+   ],
+   "fps": 12,
+   "loop": true,
+   "tint": "hue",
+   "group": "ribbon",
+   "note": "Best value ribbon (gold) with shine sweep; frames 0-3 hold still then sweep.",
+   "bytes": 35882
+  },
+  "ribbon-popular": {
+   "status": "ready",
+   "file": "ribbon-popular.webp",
+   "frame": [
+    256,
+    64
+   ],
+   "frames": 12,
+   "cols": 4,
+   "rows": 3,
+   "sheet": [
+    1024,
+    192
+   ],
+   "fps": 12,
+   "loop": true,
+   "tint": "hue",
+   "group": "ribbon",
+   "note": "Popular ribbon (teal) with shine sweep. Tintable with hue-rotate.",
+   "bytes": 32634
+  },
+  "star-pop": {
+   "status": "ready",
+   "file": "star-pop.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 6,
+   "rows": 2,
+   "sheet": [
+    1152,
+    384
+   ],
+   "fps": 20,
+   "loop": false,
+   "tint": "none",
+   "group": "fx",
+   "note": "Gold star pop for the wish-list. Plays once, last frame = resting star.",
+   "bytes": 119420
+  },
+  "gift-box": {
+   "status": "ready",
+   "file": "gift-box.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 18,
+   "cols": 6,
+   "rows": 3,
+   "sheet": [
+    1152,
+    576
+   ],
+   "fps": 12,
+   "loop": false,
+   "tint": "none",
+   "group": "misc",
+   "note": "Daily gift box: idle (8, loop) then open (10, hold last frame).",
+   "clips": {
+    "idle": {
+     "start": 0,
+     "count": 8,
+     "loop": true
+    },
+    "open": {
+     "start": 8,
+     "count": 10,
+     "loop": false
+    }
+   },
+   "bytes": 134496
+  }
+ }
+}

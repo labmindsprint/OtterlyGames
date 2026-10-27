@@ -1,0 +1,138 @@
+{
+ "version": 2,
+ "style": "element-creatures-back",
+ "enemies": {
+  "wisp": {
+   "key": "wisp",
+   "file": "wisp-back.webp",
+   "frameW": 100,
+   "frameH": 100,
+   "cols": 8,
+   "rows": 4,
+   "frames": 28,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 47.619,
+   "ember": "#ff8c28",
+   "clips": {
+    "walk": {
+     "start": 0,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 8,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "hit": {
+     "start": 16,
+     "count": 2,
+     "fps": 18,
+     "loop": false
+    },
+    "death": {
+     "start": 18,
+     "count": 10,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "up",
+   "view": "back view, 3/4 top-down from behind, creature faces UP toward the tower; 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "wisp"
+  },
+  "armor": {
+   "key": "armor",
+   "file": "armor-back.webp",
+   "frameW": 120,
+   "frameH": 120,
+   "cols": 8,
+   "rows": 4,
+   "frames": 28,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 51.062,
+   "ember": "#ff7f23",
+   "clips": {
+    "walk": {
+     "start": 0,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 8,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "hit": {
+     "start": 16,
+     "count": 2,
+     "fps": 18,
+     "loop": false
+    },
+    "death": {
+     "start": 18,
+     "count": 10,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "up",
+   "view": "back view, 3/4 top-down from behind, creature faces UP toward the tower; 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "armor"
+  },
+  "runner": {
+   "key": "runner",
+   "file": "runner-back.webp",
+   "frameW": 100,
+   "frameH": 100,
+   "cols": 8,
+   "rows": 4,
+   "frames": 28,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 51.281,
+   "ember": "#ff7f23",
+   "clips": {
+    "walk": {
+     "start": 0,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 8,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "hit": {
+     "start": 16,
+     "count": 2,
+     "fps": 18,
+     "loop": false
+    },
+    "death": {
+     "start": 18,
+     "count": 10,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "up",
+   "view": "back view, 3/4 top-down from behind, creature faces UP toward the tower; 2D puppet animation of Azure gpt-image-2 paintings",
+   "role": "runner"
+  }
+ }
+}

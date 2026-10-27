@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Otter Element: Periodic Table Idle Defence Game for Android | Otterly</title>
-  <meta name="description" content="Otter Element is an idle tower-defence game built on the periodic table. Try a 90-second preview in your browser. Android app coming soon.">
+  <title>Otter Element: Periodic Table Idle Defence Game (Free Preview) | Otterly</title>
+  <meta name="description" content="Otter Element is an idle tower-defence game built on the periodic table. Play its first two elements, Hydrogen and Helium, free in your browser. The full game is made for Android and is in closed testing.">
   <meta name="keywords" content="periodic table game, chemistry game, idle tower defense, element game, idle defense game android, otter element">
   <link rel="canonical" href="https://otterlygames.com/apps/otter-element.html">
   <meta property="og:title" content="Otter Element: Periodic Table Idle Defence Game">
-  <meta property="og:description" content="Defend your tower, discover elements one by one and build a collection that grows while you are away. Try the preview. Android app coming soon.">
+  <meta property="og:description" content="Defend your tower, discover elements one by one and build a collection that grows while you are away. Play Hydrogen and Helium in your browser. Android app in closed testing.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://otterlygames.com/apps/otter-element.html">
   <meta property="og:image" content="https://otterlygames.com/images/otter-element/battle.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Otter Element: Periodic Table Idle Defence Game">
-  <meta name="twitter:description" content="Defend your tower, discover elements one by one and build a collection that grows while you are away. Android app coming soon.">
+  <meta name="twitter:description" content="Defend your tower, discover elements one by one and build a collection that grows while you are away. Play Hydrogen and Helium in your browser. Android app in closed testing.">
   <meta name="twitter:image" content="https://otterlygames.com/images/otter-element/battle.webp">
   <script type="application/ld+json">
   {
@@ -23,7 +23,7 @@
     "name": "Otter Element",
     "operatingSystem": "Android",
     "applicationCategory": "GameApplication",
-    "description": "Idle tower-defence game built around the periodic table. Android release coming soon."
+    "description": "Idle tower-defence game built around the periodic table. The first two elements are playable in a browser; the Android release is in closed testing."
   }
   </script>
   <script type="application/ld+json">
@@ -88,7 +88,11 @@
         <div class="app-meta">
           <div class="app-meta-item">
             <div class="app-meta-value">Android</div>
-            <div class="app-meta-label">Platform</div>
+            <div class="app-meta-label">Full game</div>
+          </div>
+          <div class="app-meta-item">
+            <div class="app-meta-value">Free</div>
+            <div class="app-meta-label">Browser preview</div>
           </div>
           <div class="app-meta-item">
             <div class="app-meta-value">Idle</div>
@@ -96,41 +100,44 @@
           </div>
         </div>
         <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
-          <a href="#preview" class="store-badge" style="font-size:1rem;padding:1rem 2rem;">Try the 90-second preview</a>
+          <a href="#preview" class="store-badge" style="font-size:1rem;padding:1rem 2rem;">Play Hydrogen and Helium free</a>
           <span class="oe-soon" role="note">Android app: coming soon</span>
         </div>
-        <p>The full game is made for Android and is not out yet. We will add the Google Play link here when it is ready. Otter Element is separate from our learning games and has its own <a href="/otter-element-privacy.html">privacy notice</a>.</p>
+        <p class="oe-note">The browser preview opens the first two elements of the real game, Hydrogen and Helium. The full game is made for Android and is in closed testing for invited testers, so there is no public download yet. Otter Element is separate from our learning games and its Android game has its own <a href="/otter-element-privacy.html">privacy notice</a>.</p>
       </div>
-      <div class="oe-demo fade-in" id="preview">
-        <div id="otter-demo" class="oe-demo">
-          <div class="oe-phone">
-            <div class="oe-screen">
-              <iframe id="otter-demo-frame" title="Otter Element preview" hidden allow="autoplay"></iframe>
-              <div class="oe-layer" id="otter-demo-start-layer">
-                <img class="oe-poster" src="/images/otter-element/battle.webp" alt="" width="540" height="1169">
-                <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:1rem">
-                  <h3>Play the preview</h3>
-                  <p>Tap to try Otter Element for 90 seconds. No account needed.</p>
-                  <button type="button" class="store-badge" id="otter-demo-start" style="font-size:1rem;padding:.9rem 1.8rem;">Start preview</button>
-                </div>
-              </div>
-              <div class="oe-badge" hidden>PLAYABLE PREVIEW</div>
-              <div class="oe-layer oe-end" id="otter-demo-end" hidden>
-                <h3>Otter Element is coming soon to Android</h3>
-                <p>That was a short taste. The full game has many more elements, molecules, research and turret powers. The Google Play link will appear here when it is ready.</p>
-                <button type="button" class="store-badge" id="otter-demo-again" style="font-size:1rem;padding:.8rem 1.6rem;">Play preview again</button>
-                <p><a href="/play/">Play our learning games in the browser</a></p>
-              </div>
-              <div class="oe-layer" id="otter-demo-error" role="alert" hidden><p>The preview could not load. Please refresh and try again.</p></div>
-            </div>
+    </div>
+  </div>
+</section>
+
+<section class="oe-play" id="preview" aria-labelledby="oe-play-title">
+  <div class="container">
+    <h2 class="section-title" id="oe-play-title">Play the first two elements</h2>
+    <p class="oe-lead">Fight for Hydrogen, then for Helium. This is the real game up to Helium; the full game goes on from element 3.</p>
+    <div class="oe-player" id="otter-demo">
+      <div class="oe-stage" id="otter-demo-stage">
+        <iframe id="otter-demo-frame" title="Otter Element: Hydrogen and Helium preview" hidden allow="autoplay; fullscreen"></iframe>
+        <div class="oe-layer" id="otter-demo-start-layer">
+          <img class="oe-poster" src="/images/otter-element/preview-battle.webp" alt="" width="540" height="1169">
+          <div class="oe-layer-copy">
+            <h3>Play the preview</h3>
+            <p>Hydrogen and Helium. No account needed, and your progress stays in this browser.</p>
+            <button type="button" class="store-badge" id="otter-demo-start" style="font-size:1rem;padding:.9rem 1.8rem;">Start playing</button>
           </div>
-          <div class="oe-bar" id="otter-demo-bar" hidden>
-            <span class="oe-count" id="otter-demo-count" aria-live="off">1:30</span>
-            <span class="oe-track"><span id="otter-demo-fill"></span></span>
-            <button type="button" class="oe-finish" id="otter-demo-finish">Finish</button>
-          </div>
-          <p class="oe-note">The preview starts a fresh game each time and saves only in this browser. It is a short sample of the Android game.</p>
         </div>
+        <div class="oe-layer" id="otter-demo-error" role="alert" hidden><p>The preview could not load. Please refresh and try again.</p></div>
+      </div>
+      <div class="oe-tools" id="otter-demo-tools" hidden>
+        <button type="button" class="oe-link" id="otter-demo-full" aria-pressed="false">Full screen</button>
+        <a class="oe-link" href="/games/otterelement/?nosplash" target="_blank" rel="noopener">Open in its own tab</a>
+      </div>
+      <div class="oe-about" id="about-preview">
+        <h3>About this preview</h3>
+        <ul>
+          <li>It is the real game, held at the first two elements. When you find Helium, it points you to the full game.</li>
+          <li>It saves only in this browser: your progress and a note that you have seen the end message. Settings has a button to reset this preview, and clearing this site's data erases it too.</li>
+          <li>The preview game has no account, ads, purchases or rankings, and it sends your progress nowhere.</li>
+          <li>The Android game is separate and is in closed testing, so its Google Play listing may not open for everyone yet. Its <a href="/otter-element-privacy.html">privacy notice</a> describes the Android game, not this preview.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -154,7 +161,7 @@
     <ul class="oe-legend" id="oe-legend" aria-label="Element families"></ul>
     <div class="oe-detail" id="oe-detail" aria-live="polite">
       <span class="oe-chip">?</span>
-      <div><strong>Tap any tile</strong><p>Discovering an element reveals its name and symbol. In the game, each element you find also adds to your power list. Hydrogen, for example, gives you Fusion bolt.</p></div>
+      <div><strong>Tap any tile</strong><p>Discovering an element reveals its name and symbol. In the game, each element you find also adds to your power list. Hydrogen, for example, gives you Healing Cloud.</p></div>
     </div>
   </div>
 </section>

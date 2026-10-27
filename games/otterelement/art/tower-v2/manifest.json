@@ -1,0 +1,1809 @@
+{
+ "damage": {
+  "stage1": {
+   "hp": 0.5,
+   "frames": [
+    0,
+    5
+   ],
+   "flicker": [
+    1.0,
+    0.7,
+    1.0,
+    0.85,
+    0.5,
+    1.0
+   ]
+  },
+  "stage2": {
+   "hp": 0.25,
+   "frames": [
+    6,
+    11
+   ],
+   "flicker": [
+    1.0,
+    0.35,
+    0.9,
+    0.15,
+    0.75,
+    0.3
+   ]
+  },
+  "note": "flicker lists multiply the pedestal idle accent alpha, one entry per flicker frame; head damage stays with the engine soot tint"
+ },
+ "families": [
+  {
+   "id": 0,
+   "family": "Carbohydrates",
+   "turret": "Sugar Rush",
+   "emblem": "tw-emblem0",
+   "look": "hex sugar ring around an amber crystal"
+  },
+  {
+   "id": 1,
+   "family": "Hydrocarbons",
+   "turret": "Burner",
+   "emblem": "tw-emblem1",
+   "look": "slotted vent stack under a flame crystal"
+  },
+  {
+   "id": 2,
+   "family": "Oxides",
+   "turret": "Oxidiser",
+   "emblem": "tw-emblem2",
+   "look": "banded cylinder tank with end domes and flare nozzle"
+  },
+  {
+   "id": 3,
+   "family": "Acids",
+   "turret": "Etcher",
+   "emblem": "tw-emblem3",
+   "look": "gold nozzle over a falling drop and etched basin"
+  },
+  {
+   "id": 4,
+   "family": "Bases",
+   "turret": "Neutraliser",
+   "emblem": "tw-emblem4",
+   "look": "glass flask dome on a gold collar"
+  },
+  {
+   "id": 5,
+   "family": "Salts",
+   "turret": "Crystal Lattice",
+   "emblem": "tw-emblem5",
+   "look": "cube lattice cage around a bright cube"
+  },
+  {
+   "id": 6,
+   "family": "Blast & Pyro",
+   "turret": "Blaster",
+   "emblem": "tw-emblem6",
+   "look": "tilted mortar tube bursting into an eight point star"
+  },
+  {
+   "id": 7,
+   "family": "Polymers",
+   "turret": "Net Launcher",
+   "emblem": "tw-emblem7",
+   "look": "stacked gold coils on a light spine"
+  },
+  {
+   "id": 8,
+   "family": "Biomolecules",
+   "turret": "Healer",
+   "emblem": "tw-emblem8",
+   "look": "cross with a double helix of light beads"
+  },
+  {
+   "id": 9,
+   "family": "Gems & Minerals",
+   "turret": "Prism",
+   "emblem": "tw-emblem9",
+   "look": "cut brilliant held by four gold claws"
+  }
+ ],
+ "crownOffset": [
+  0,
+  -268
+ ],
+ "crownScale": 1.35,
+ "fire": {
+  "frames": 7,
+  "fps": 28,
+  "recoilSlide": [
+   -7.0,
+   -9.0,
+   -6.5,
+   -3.8,
+   -1.9,
+   -0.7,
+   0.0
+  ],
+  "headKick": [
+   -1.8,
+   -2.6,
+   -1.8,
+   -1.0,
+   -0.5,
+   -0.2,
+   0.0
+  ],
+  "accentSurge": [
+   2.0,
+   1.7,
+   1.35,
+   1.15,
+   1.05,
+   1.0,
+   1.0
+  ],
+  "note": "recoil is the engine sliding the barrel along rows[i].axis by recoilSlide[f] world px (baked 5-angle recoil would misalign under the residual rotation)"
+ },
+ "version": 2,
+ "generator": "art-tower / Blender 5.2 EEVEE",
+ "ppu": 2,
+ "elev": 30,
+ "frames": 25,
+ "cols": 5,
+ "pitch": -22.0,
+ "tips": [
+  80.0,
+  80.0,
+  85.0,
+  91.0
+ ],
+ "cells": {
+  "head": [
+   240,
+   224
+  ],
+  "barrel0": [
+   384,
+   264
+  ],
+  "barrel1": [
+   384,
+   264
+  ],
+  "barrel2": [
+   384,
+   264
+  ],
+  "barrel3": [
+   384,
+   264
+  ],
+  "pedestal": [
+   320,
+   536
+  ]
+ },
+ "rows": [
+  {
+   "theta": 0.33658,
+   "phi": 0.0,
+   "axis": [
+    0.92718,
+    0.32442
+   ],
+   "tip": [
+    74.17,
+    25.95
+   ],
+   "lens": [
+    24.56,
+    -27.25
+   ],
+   "blink": [
+    -19.32,
+    -41.61
+   ]
+  },
+  {
+   "theta": 0.43943,
+   "phi": 0.21956,
+   "axis": [
+    0.90492,
+    0.42539
+   ],
+   "tip": [
+    72.39,
+    34.03
+   ],
+   "lens": [
+    23.97,
+    -24.57
+   ],
+   "blink": [
+    -15.1,
+    -43.51
+   ]
+  },
+  {
+   "theta": 0.54229,
+   "phi": 0.41486,
+   "axis": [
+    0.84853,
+    0.51128
+   ],
+   "tip": [
+    67.88,
+    40.9
+   ],
+   "lens": [
+    22.48,
+    -22.3
+   ],
+   "blink": [
+    -10.73,
+    -44.77
+   ]
+  },
+  {
+   "theta": 0.64514,
+   "phi": 0.58678,
+   "axis": [
+    0.77209,
+    0.5811
+   ],
+   "tip": [
+    61.77,
+    46.49
+   ],
+   "lens": [
+    20.46,
+    -20.45
+   ],
+   "blink": [
+    -6.54,
+    -45.52
+   ]
+  },
+  {
+   "theta": 0.74799,
+   "phi": 0.7381,
+   "axis": [
+    0.68588,
+    0.63636
+   ],
+   "tip": [
+    54.87,
+    50.91
+   ],
+   "lens": [
+    18.17,
+    -18.98
+   ],
+   "blink": [
+    -2.68,
+    -45.87
+   ]
+  },
+  {
+   "theta": 0.85084,
+   "phi": 0.87266,
+   "axis": [
+    0.59598,
+    0.67955
+   ],
+   "tip": [
+    47.68,
+    54.36
+   ],
+   "lens": [
+    15.79,
+    -17.84
+   ],
+   "blink": [
+    0.8,
+    -45.93
+   ]
+  },
+  {
+   "theta": 0.95369,
+   "phi": 0.99379,
+   "axis": [
+    0.50579,
+    0.71296
+   ],
+   "tip": [
+    40.46,
+    57.04
+   ],
+   "lens": [
+    13.4,
+    -16.96
+   ],
+   "blink": [
+    3.92,
+    -45.79
+   ]
+  },
+  {
+   "theta": 1.05654,
+   "phi": 1.1041,
+   "axis": [
+    0.41718,
+    0.73843
+   ],
+   "tip": [
+    33.37,
+    59.07
+   ],
+   "lens": [
+    11.05,
+    -16.28
+   ],
+   "blink": [
+    6.71,
+    -45.49
+   ]
+  },
+  {
+   "theta": 1.15939,
+   "phi": 1.20637,
+   "axis": [
+    0.33046,
+    0.75757
+   ],
+   "tip": [
+    26.44,
+    60.61
+   ],
+   "lens": [
+    8.75,
+    -15.77
+   ],
+   "blink": [
+    9.23,
+    -45.08
+   ]
+  },
+  {
+   "theta": 1.26224,
+   "phi": 1.30236,
+   "axis": [
+    0.24591,
+    0.77141
+   ],
+   "tip": [
+    19.67,
+    61.71
+   ],
+   "lens": [
+    6.51,
+    -15.41
+   ],
+   "blink": [
+    11.51,
+    -44.59
+   ]
+  },
+  {
+   "theta": 1.36509,
+   "phi": 1.39417,
+   "axis": [
+    0.16292,
+    0.7808
+   ],
+   "tip": [
+    13.03,
+    62.46
+   ],
+   "lens": [
+    4.32,
+    -15.16
+   ],
+   "blink": [
+    13.59,
+    -44.01
+   ]
+  },
+  {
+   "theta": 1.46795,
+   "phi": 1.48318,
+   "axis": [
+    0.08113,
+    0.78623
+   ],
+   "tip": [
+    6.49,
+    62.9
+   ],
+   "lens": [
+    2.15,
+    -15.01
+   ],
+   "blink": [
+    15.49,
+    -43.36
+   ]
+  },
+  {
+   "theta": 1.5708,
+   "phi": 1.5708,
+   "axis": [
+    0.0,
+    0.78801
+   ],
+   "tip": [
+    0.0,
+    63.04
+   ],
+   "lens": [
+    0.0,
+    -14.97
+   ],
+   "blink": [
+    17.25,
+    -42.65
+   ]
+  },
+  {
+   "theta": 1.67365,
+   "phi": 1.65841,
+   "axis": [
+    -0.08113,
+    0.78623
+   ],
+   "tip": [
+    -6.49,
+    62.9
+   ],
+   "lens": [
+    -2.15,
+    -15.01
+   ],
+   "blink": [
+    18.87,
+    -41.85
+   ]
+  },
+  {
+   "theta": 1.7765,
+   "phi": 1.74742,
+   "axis": [
+    -0.16292,
+    0.7808
+   ],
+   "tip": [
+    -13.03,
+    62.46
+   ],
+   "lens": [
+    -4.32,
+    -15.16
+   ],
+   "blink": [
+    20.38,
+    -40.98
+   ]
+  },
+  {
+   "theta": 1.87935,
+   "phi": 1.83923,
+   "axis": [
+    -0.24591,
+    0.77141
+   ],
+   "tip": [
+    -19.67,
+    61.71
+   ],
+   "lens": [
+    -6.51,
+    -15.41
+   ],
+   "blink": [
+    21.76,
+    -40.01
+   ]
+  },
+  {
+   "theta": 1.9822,
+   "phi": 1.93522,
+   "axis": [
+    -0.33046,
+    0.75757
+   ],
+   "tip": [
+    -26.44,
+    60.61
+   ],
+   "lens": [
+    -8.75,
+    -15.77
+   ],
+   "blink": [
+    23.0,
+    -38.94
+   ]
+  },
+  {
+   "theta": 2.08505,
+   "phi": 2.0375,
+   "axis": [
+    -0.41718,
+    0.73843
+   ],
+   "tip": [
+    -33.37,
+    59.07
+   ],
+   "lens": [
+    -11.05,
+    -16.28
+   ],
+   "blink": [
+    24.1,
+    -37.73
+   ]
+  },
+  {
+   "theta": 2.1879,
+   "phi": 2.1478,
+   "axis": [
+    -0.50579,
+    0.71296
+   ],
+   "tip": [
+    -40.46,
+    57.04
+   ],
+   "lens": [
+    -13.4,
+    -16.96
+   ],
+   "blink": [
+    25.0,
+    -36.38
+   ]
+  },
+  {
+   "theta": 2.29075,
+   "phi": 2.26893,
+   "axis": [
+    -0.59598,
+    0.67955
+   ],
+   "tip": [
+    -47.68,
+    54.36
+   ],
+   "lens": [
+    -15.79,
+    -17.84
+   ],
+   "blink": [
+    25.63,
+    -34.84
+   ]
+  },
+  {
+   "theta": 2.39361,
+   "phi": 2.40349,
+   "axis": [
+    -0.68588,
+    0.63636
+   ],
+   "tip": [
+    -54.87,
+    50.91
+   ],
+   "lens": [
+    -18.17,
+    -18.98
+   ],
+   "blink": [
+    25.9,
+    -33.1
+   ]
+  },
+  {
+   "theta": 2.49646,
+   "phi": 2.55481,
+   "axis": [
+    -0.77209,
+    0.5811
+   ],
+   "tip": [
+    -61.77,
+    46.49
+   ],
+   "lens": [
+    -20.46,
+    -20.45
+   ],
+   "blink": [
+    25.64,
+    -31.15
+   ]
+  },
+  {
+   "theta": 2.59931,
+   "phi": 2.72673,
+   "axis": [
+    -0.84853,
+    0.51128
+   ],
+   "tip": [
+    -67.88,
+    40.9
+   ],
+   "lens": [
+    -22.48,
+    -22.3
+   ],
+   "blink": [
+    24.63,
+    -28.99
+   ]
+  },
+  {
+   "theta": 2.70216,
+   "phi": 2.92203,
+   "axis": [
+    -0.90492,
+    0.42539
+   ],
+   "tip": [
+    -72.39,
+    34.03
+   ],
+   "lens": [
+    -23.97,
+    -24.57
+   ],
+   "blink": [
+    22.61,
+    -26.67
+   ]
+  },
+  {
+   "theta": 2.80501,
+   "phi": 3.14159,
+   "axis": [
+    -0.92718,
+    0.32442
+   ],
+   "tip": [
+    -74.17,
+    25.95
+   ],
+   "lens": [
+    -24.56,
+    -27.25
+   ],
+   "blink": [
+    19.32,
+    -24.36
+   ]
+  }
+ ],
+ "assets": [
+  {
+   "key": "tw-head",
+   "file": "tw-head.webp",
+   "frame": [
+    240,
+    224
+   ],
+   "frames": 25,
+   "cols": 5,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    120,
+    112
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-head-a",
+   "blend": "normal",
+   "note": "yaw-baked head, pivot at the cell centre; the engine adds the residual rotation (+-0.4 rad)",
+   "bytes": 147622
+  },
+  {
+   "key": "tw-head-a",
+   "file": "tw-head-a.webp",
+   "frame": [
+    240,
+    224
+   ],
+   "frames": 25,
+   "cols": 5,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    120,
+    112
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint with the family colour, ADD blend, same frame index as tw-head",
+   "bytes": 24194
+  },
+  {
+   "key": "tw-barrel0",
+   "file": "tw-barrel0.webp",
+   "frame": [
+    384,
+    264
+   ],
+   "frames": 25,
+   "cols": 5,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    192,
+    62
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-barrel0-a",
+   "blend": "normal",
+   "note": "yaw-baked barrel, pivot 35 world px above the cell centre; recoil is the engine slide along rows[i].axis",
+   "bytes": 75602
+  },
+  {
+   "key": "tw-barrel0-a",
+   "file": "tw-barrel0-a.webp",
+   "frame": [
+    384,
+    264
+   ],
+   "frames": 25,
+   "cols": 5,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    192,
+    62
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint with the family colour, ADD blend, same frame index as tw-barrel0",
+   "bytes": 18002
+  },
+  {
+   "key": "tw-barrel1",
+   "file": "tw-barrel1.webp",
+   "frame": [
+    384,
+    264
+   ],
+   "frames": 25,
+   "cols": 5,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    192,
+    62
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-barrel1-a",
+   "blend": "normal",
+   "note": "yaw-baked barrel, pivot 35 world px above the cell centre; recoil is the engine slide along rows[i].axis",
+   "bytes": 81212
+  },
+  {
+   "key": "tw-barrel1-a",
+   "file": "tw-barrel1-a.webp",
+   "frame": [
+    384,
+    264
+   ],
+   "frames": 25,
+   "cols": 5,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    192,
+    62
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint with the family colour, ADD blend, same frame index as tw-barrel1",
+   "bytes": 19060
+  },
+  {
+   "key": "tw-barrel2",
+   "file": "tw-barrel2.webp",
+   "frame": [
+    384,
+    264
+   ],
+   "frames": 25,
+   "cols": 5,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    192,
+    62
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-barrel2-a",
+   "blend": "normal",
+   "note": "yaw-baked barrel, pivot 35 world px above the cell centre; recoil is the engine slide along rows[i].axis",
+   "bytes": 99626
+  },
+  {
+   "key": "tw-barrel2-a",
+   "file": "tw-barrel2-a.webp",
+   "frame": [
+    384,
+    264
+   ],
+   "frames": 25,
+   "cols": 5,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    192,
+    62
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint with the family colour, ADD blend, same frame index as tw-barrel2",
+   "bytes": 29166
+  },
+  {
+   "key": "tw-barrel3",
+   "file": "tw-barrel3.webp",
+   "frame": [
+    384,
+    264
+   ],
+   "frames": 25,
+   "cols": 5,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    192,
+    62
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-barrel3-a",
+   "blend": "normal",
+   "note": "yaw-baked barrel, pivot 35 world px above the cell centre; recoil is the engine slide along rows[i].axis",
+   "bytes": 112698
+  },
+  {
+   "key": "tw-barrel3-a",
+   "file": "tw-barrel3-a.webp",
+   "frame": [
+    384,
+    264
+   ],
+   "frames": 25,
+   "cols": 5,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    192,
+    62
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint with the family colour, ADD blend, same frame index as tw-barrel3",
+   "bytes": 30338
+  },
+  {
+   "key": "tw-ped",
+   "file": "tw-ped.webp",
+   "frame": [
+    320,
+    536
+   ],
+   "frames": 1,
+   "cols": 1,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    160,
+    448
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-ped-a",
+   "blend": "normal",
+   "note": "static pedestal; the engine cuts crown/shaft/base from this one image",
+   "bytes": 14484
+  },
+  {
+   "key": "tw-ped-a",
+   "file": "tw-ped-a.webp",
+   "frame": [
+    320,
+    536
+   ],
+   "frames": 1,
+   "cols": 1,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    160,
+    448
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD blend",
+   "bytes": 3264
+  },
+  {
+   "key": "tw-ped-idle-a",
+   "file": "ped-idle-a.webp",
+   "frame": [
+    160,
+    268
+   ],
+   "frames": 14,
+   "cols": 4,
+   "fps": 12,
+   "loop": true,
+   "anchor": [
+    80,
+    224
+   ],
+   "ppu": 1,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "replaces tw-ped-a while idle: core breathing, travelling band, rising light ring (half resolution, scale 2x)",
+   "bytes": 23146
+  },
+  {
+   "key": "tw-ov-core",
+   "file": "tw-ov-core.webp",
+   "frame": [
+    320,
+    536
+   ],
+   "frames": 3,
+   "cols": 3,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    160,
+    448
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-ov-core-a",
+   "blend": "normal",
+   "note": "core module tiers 1..3 side by side (frame = tier-1); pedestal-sized, drawn over the pedestal",
+   "bytes": 23310
+  },
+  {
+   "key": "tw-ov-core-a",
+   "file": "tw-ov-core-a.webp",
+   "frame": [
+    320,
+    536
+   ],
+   "frames": 3,
+   "cols": 3,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    160,
+    448
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 7708
+  },
+  {
+   "key": "tw-ov-mount",
+   "file": "tw-ov-mount.webp",
+   "frame": [
+    320,
+    536
+   ],
+   "frames": 3,
+   "cols": 3,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    160,
+    448
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-ov-mount-a",
+   "blend": "normal",
+   "note": "mount module tiers 1..3 side by side (frame = tier-1); pedestal-sized, drawn over the pedestal",
+   "bytes": 12130
+  },
+  {
+   "key": "tw-ov-mount-a",
+   "file": "tw-ov-mount-a.webp",
+   "frame": [
+    320,
+    536
+   ],
+   "frames": 3,
+   "cols": 3,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    160,
+    448
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 3884
+  },
+  {
+   "key": "tw-muzzle0",
+   "file": "tw-muzzle0.webp",
+   "frame": [
+    256,
+    160
+   ],
+   "frames": 7,
+   "cols": 4,
+   "fps": 28,
+   "loop": false,
+   "anchor": [
+    24,
+    80
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-muzzle0-a",
+   "blend": "add",
+   "note": "fire flash along +x from the barrel tip; the engine rotates it to the aim axis (rows[i].tip). RGB is additive white-hot/gold",
+   "bytes": 4888
+  },
+  {
+   "key": "tw-muzzle0-a",
+   "file": "tw-muzzle0-a.webp",
+   "frame": [
+    256,
+    160
+   ],
+   "frames": 7,
+   "cols": 4,
+   "fps": 28,
+   "loop": false,
+   "anchor": [
+    24,
+    80
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "halo, tint with the family colour",
+   "bytes": 2814
+  },
+  {
+   "key": "tw-muzzle1",
+   "file": "tw-muzzle1.webp",
+   "frame": [
+    256,
+    160
+   ],
+   "frames": 7,
+   "cols": 4,
+   "fps": 28,
+   "loop": false,
+   "anchor": [
+    24,
+    80
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-muzzle1-a",
+   "blend": "add",
+   "note": "fire flash along +x from the barrel tip; the engine rotates it to the aim axis (rows[i].tip). RGB is additive white-hot/gold",
+   "bytes": 5786
+  },
+  {
+   "key": "tw-muzzle1-a",
+   "file": "tw-muzzle1-a.webp",
+   "frame": [
+    256,
+    160
+   ],
+   "frames": 7,
+   "cols": 4,
+   "fps": 28,
+   "loop": false,
+   "anchor": [
+    24,
+    80
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "halo, tint with the family colour",
+   "bytes": 2994
+  },
+  {
+   "key": "tw-muzzle2",
+   "file": "tw-muzzle2.webp",
+   "frame": [
+    256,
+    160
+   ],
+   "frames": 7,
+   "cols": 4,
+   "fps": 28,
+   "loop": false,
+   "anchor": [
+    24,
+    80
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-muzzle2-a",
+   "blend": "add",
+   "note": "fire flash along +x from the barrel tip; the engine rotates it to the aim axis (rows[i].tip). RGB is additive white-hot/gold",
+   "bytes": 7004
+  },
+  {
+   "key": "tw-muzzle2-a",
+   "file": "tw-muzzle2-a.webp",
+   "frame": [
+    256,
+    160
+   ],
+   "frames": 7,
+   "cols": 4,
+   "fps": 28,
+   "loop": false,
+   "anchor": [
+    24,
+    80
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "halo, tint with the family colour",
+   "bytes": 3080
+  },
+  {
+   "key": "tw-muzzle3",
+   "file": "tw-muzzle3.webp",
+   "frame": [
+    256,
+    160
+   ],
+   "frames": 7,
+   "cols": 4,
+   "fps": 28,
+   "loop": false,
+   "anchor": [
+    24,
+    80
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-muzzle3-a",
+   "blend": "add",
+   "note": "fire flash along +x from the barrel tip; the engine rotates it to the aim axis (rows[i].tip). RGB is additive white-hot/gold",
+   "bytes": 8352
+  },
+  {
+   "key": "tw-muzzle3-a",
+   "file": "tw-muzzle3-a.webp",
+   "frame": [
+    256,
+    160
+   ],
+   "frames": 7,
+   "cols": 4,
+   "fps": 28,
+   "loop": false,
+   "anchor": [
+    24,
+    80
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "halo, tint with the family colour",
+   "bytes": 3262
+  },
+  {
+   "key": "tw-flourish",
+   "file": "tw-flourish.webp",
+   "frame": [
+    240,
+    340
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 14,
+   "loop": false,
+   "anchor": [
+    120,
+    300
+   ],
+   "ppu": 1,
+   "layer": "colour",
+   "accent": "tw-flourish-a",
+   "blend": "add",
+   "note": "install / upgrade / tier-up: gold sweep, core flare, ground ring, rising sparkles (world px, ppu 1)",
+   "bytes": 16094
+  },
+  {
+   "key": "tw-flourish-a",
+   "file": "tw-flourish-a.webp",
+   "frame": [
+    240,
+    340
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 14,
+   "loop": false,
+   "anchor": [
+    120,
+    300
+   ],
+   "ppu": 1,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 6698
+  },
+  {
+   "key": "tw-overload",
+   "file": "tw-overload.webp",
+   "frame": [
+    240,
+    340
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 14,
+   "loop": false,
+   "anchor": [
+    120,
+    300
+   ],
+   "ppu": 1,
+   "layer": "colour",
+   "accent": "tw-overload-a",
+   "blend": "add",
+   "note": "destroyed / overload: arcs, white burst, shock ring, embers; the engine keeps its own collapse (world px, ppu 1)",
+   "bytes": 23844
+  },
+  {
+   "key": "tw-overload-a",
+   "file": "tw-overload-a.webp",
+   "frame": [
+    240,
+    340
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 14,
+   "loop": false,
+   "anchor": [
+    120,
+    300
+   ],
+   "ppu": 1,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 7518
+  },
+  {
+   "key": "tw-dmg",
+   "file": "tw-dmg.webp",
+   "frame": [
+    320,
+    536
+   ],
+   "frames": 2,
+   "cols": 2,
+   "fps": 0,
+   "loop": false,
+   "anchor": [
+    160,
+    448
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-dmg-a",
+   "blend": "normal",
+   "note": "frame 0: cracks below 50% HP, frame 1: below 25% HP; normal blend over tw-ped",
+   "bytes": 29766
+  },
+  {
+   "key": "tw-dmg-a",
+   "file": "tw-dmg-a.webp",
+   "frame": [
+    160,
+    268
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 12,
+   "loop": true,
+   "anchor": [
+    80,
+    224
+   ],
+   "ppu": 1,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "crack glow, half resolution (draw at 2x): frames 0-5 flicker loop for <50% HP, frames 6-11 for <25% HP",
+   "bytes": 23132
+  },
+  {
+   "key": "tw-emblem0",
+   "file": "tw-emblem0.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-emblem0-a",
+   "blend": "normal",
+   "note": "Carbohydrates: hex sugar ring around an amber crystal crest, 12 frame spin loop",
+   "bytes": 36676
+  },
+  {
+   "key": "tw-emblem0-a",
+   "file": "tw-emblem0-a.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 6826
+  },
+  {
+   "key": "tw-emblem1",
+   "file": "tw-emblem1.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-emblem1-a",
+   "blend": "normal",
+   "note": "Hydrocarbons: slotted vent stack under a flame crystal crest, 12 frame spin loop",
+   "bytes": 26718
+  },
+  {
+   "key": "tw-emblem1-a",
+   "file": "tw-emblem1-a.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 8588
+  },
+  {
+   "key": "tw-emblem2",
+   "file": "tw-emblem2.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-emblem2-a",
+   "blend": "normal",
+   "note": "Oxides: banded cylinder tank with end domes and flare nozzle crest, 12 frame spin loop",
+   "bytes": 32028
+  },
+  {
+   "key": "tw-emblem2-a",
+   "file": "tw-emblem2-a.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 10148
+  },
+  {
+   "key": "tw-emblem3",
+   "file": "tw-emblem3.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-emblem3-a",
+   "blend": "normal",
+   "note": "Acids: gold nozzle over a falling drop and etched basin crest, 12 frame spin loop",
+   "bytes": 28746
+  },
+  {
+   "key": "tw-emblem3-a",
+   "file": "tw-emblem3-a.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 7836
+  },
+  {
+   "key": "tw-emblem4",
+   "file": "tw-emblem4.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-emblem4-a",
+   "blend": "normal",
+   "note": "Bases: glass flask dome on a gold collar crest, 12 frame spin loop",
+   "bytes": 27108
+  },
+  {
+   "key": "tw-emblem4-a",
+   "file": "tw-emblem4-a.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 2452
+  },
+  {
+   "key": "tw-emblem5",
+   "file": "tw-emblem5.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-emblem5-a",
+   "blend": "normal",
+   "note": "Salts: cube lattice cage around a bright cube crest, 12 frame spin loop",
+   "bytes": 35738
+  },
+  {
+   "key": "tw-emblem5-a",
+   "file": "tw-emblem5-a.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 6788
+  },
+  {
+   "key": "tw-emblem6",
+   "file": "tw-emblem6.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-emblem6-a",
+   "blend": "normal",
+   "note": "Blast & Pyro: tilted mortar tube bursting into an eight point star crest, 12 frame spin loop",
+   "bytes": 34212
+  },
+  {
+   "key": "tw-emblem6-a",
+   "file": "tw-emblem6-a.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 9882
+  },
+  {
+   "key": "tw-emblem7",
+   "file": "tw-emblem7.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-emblem7-a",
+   "blend": "normal",
+   "note": "Polymers: stacked gold coils on a light spine crest, 12 frame spin loop",
+   "bytes": 60152
+  },
+  {
+   "key": "tw-emblem7-a",
+   "file": "tw-emblem7-a.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 5078
+  },
+  {
+   "key": "tw-emblem8",
+   "file": "tw-emblem8.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-emblem8-a",
+   "blend": "normal",
+   "note": "Biomolecules: cross with a double helix of light beads crest, 12 frame spin loop",
+   "bytes": 33968
+  },
+  {
+   "key": "tw-emblem8-a",
+   "file": "tw-emblem8-a.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 13952
+  },
+  {
+   "key": "tw-emblem9",
+   "file": "tw-emblem9.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "colour",
+   "accent": "tw-emblem9-a",
+   "blend": "normal",
+   "note": "Gems & Minerals: cut brilliant held by four gold claws crest, 12 frame spin loop",
+   "bytes": 24876
+  },
+  {
+   "key": "tw-emblem9-a",
+   "file": "tw-emblem9-a.webp",
+   "frame": [
+    192,
+    192
+   ],
+   "frames": 12,
+   "cols": 4,
+   "fps": 10,
+   "loop": true,
+   "anchor": [
+    96,
+    96
+   ],
+   "ppu": 2,
+   "layer": "accent",
+   "accent": null,
+   "blend": "add",
+   "note": "tint, ADD",
+   "bytes": 5096
+  }
+ ]
+}

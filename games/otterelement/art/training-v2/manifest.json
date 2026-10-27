@@ -1,0 +1,86 @@
+{
+ "pack": "training-v2",
+ "base": "/art/training-v2/",
+ "assets": {
+  "icon-luck": {
+   "1x": {
+    "file": "icon-luck.webp",
+    "px": 96,
+    "bytes": 6108
+   },
+   "2x": {
+    "file": "icon-luck@192.webp",
+    "px": 192,
+    "bytes": 18130
+   },
+   "anchor": [
+    0.5,
+    0.5
+   ]
+  },
+  "icon-attack-range": {
+   "1x": {
+    "file": "icon-attack-range.webp",
+    "px": 96,
+    "bytes": 4282
+   },
+   "2x": {
+    "file": "icon-attack-range@192.webp",
+    "px": 192,
+    "bytes": 11848
+   },
+   "anchor": [
+    0.5,
+    0.5
+   ]
+  },
+  "icon-repair": {
+   "1x": {
+    "file": "icon-repair.webp",
+    "px": 96,
+    "bytes": 7042
+   },
+   "2x": {
+    "file": "icon-repair@192.webp",
+    "px": 192,
+    "bytes": 20532
+   },
+   "anchor": [
+    0.5,
+    0.5
+   ]
+  },
+  "icon-attack": {
+   "1x": {
+    "file": "icon-attack.webp",
+    "px": 96,
+    "bytes": 5484
+   },
+   "2x": {
+    "file": "icon-attack@192.webp",
+    "px": 192,
+    "bytes": 16508
+   },
+   "anchor": [
+    0.5,
+    0.5
+   ]
+  },
+  "icon-health": {
+   "1x": {
+    "file": "icon-health.webp",
+    "px": 96,
+    "bytes": 5554
+   },
+   "2x": {
+    "file": "icon-health@192.webp",
+    "px": 192,
+    "bytes": 15564
+   },
+   "anchor": [
+    0.5,
+    0.5
+   ]
+  }
+ }
+}

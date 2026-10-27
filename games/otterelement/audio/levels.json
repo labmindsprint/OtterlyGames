@@ -1,16 +1,16 @@
 {
  "files": [
   {
-   "file": "discovery-plucks.wav",
-   "sample_rate": 24000,
-   "channels": 1,
-   "duration_seconds": 1.28,
-   "bytes": 61484,
-   "peak_dbfs": -7.54,
-   "rms_dbfs": -28.45,
-   "lufs": -25.84,
-   "tail_rms_dbfs": -92.67,
-   "dc_offset": 4e-07,
+   "file": "discovery-chime.wav",
+   "sample_rate": 44100,
+   "channels": 2,
+   "duration_seconds": 2.1,
+   "bytes": 370484,
+   "peak_dbfs": -16.5,
+   "rms_dbfs": -31.7,
+   "lufs": -27.15,
+   "tail_rms_dbfs": -94.68,
+   "dc_offset": 0.0,
    "loop_seam_ratio": 0.0
   },
   {

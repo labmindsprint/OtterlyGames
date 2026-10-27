@@ -1,0 +1,322 @@
+{
+ "version": 3,
+ "style": "void-machines",
+ "enemies": {
+  "wisp": {
+   "key": "wisp",
+   "frameW": 100,
+   "frameH": 100,
+   "cols": 8,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 47.619,
+   "ember": "#ff6a1f",
+   "facing": "down",
+   "view": "orthographic top-down, 52deg elevation, single facing (toward screen bottom)",
+   "role": "wisp",
+   "file": "wisp.webp",
+   "frames": 28,
+   "rows": 4,
+   "clips": {
+    "walk": {
+     "start": 0,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 8,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 16,
+     "count": 10,
+     "fps": 18,
+     "loop": false
+    },
+    "hit": {
+     "start": 26,
+     "count": 2,
+     "fps": 12,
+     "loop": false
+    }
+   },
+   "back": {
+    "file": "wisp-back.webp",
+    "frameW": 100,
+    "frameH": 100,
+    "cols": 8,
+    "rows": 4,
+    "frames": 28,
+    "anchor": [
+     0.5,
+     0.7
+    ],
+    "ppu": 47.619,
+    "facing": "up",
+    "view": "3/4 from behind, facing up toward the tower",
+    "clips": {
+     "walk-back": {
+      "start": 0,
+      "count": 8,
+      "fps": 12,
+      "loop": true
+     },
+     "attack-back": {
+      "start": 8,
+      "count": 8,
+      "fps": 16,
+      "loop": false
+     },
+     "hit-back": {
+      "start": 16,
+      "count": 2,
+      "fps": 12,
+      "loop": false
+     },
+     "death-back": {
+      "start": 18,
+      "count": 10,
+      "fps": 18,
+      "loop": false
+     }
+    }
+   }
+  },
+  "runner": {
+   "key": "runner",
+   "frameW": 100,
+   "frameH": 100,
+   "cols": 8,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 51.281,
+   "ember": "#ff5a1a",
+   "facing": "down",
+   "view": "orthographic top-down, 52deg elevation, single facing (toward screen bottom)",
+   "role": "runner",
+   "file": "runner.webp",
+   "frames": 28,
+   "rows": 4,
+   "clips": {
+    "walk": {
+     "start": 0,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 8,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 16,
+     "count": 10,
+     "fps": 18,
+     "loop": false
+    },
+    "hit": {
+     "start": 26,
+     "count": 2,
+     "fps": 12,
+     "loop": false
+    }
+   },
+   "back": {
+    "file": "runner-back.webp",
+    "frameW": 100,
+    "frameH": 100,
+    "cols": 8,
+    "rows": 4,
+    "frames": 28,
+    "anchor": [
+     0.5,
+     0.7
+    ],
+    "ppu": 51.281,
+    "facing": "up",
+    "view": "3/4 from behind, facing up toward the tower",
+    "clips": {
+     "walk-back": {
+      "start": 0,
+      "count": 8,
+      "fps": 12,
+      "loop": true
+     },
+     "attack-back": {
+      "start": 8,
+      "count": 8,
+      "fps": 16,
+      "loop": false
+     },
+     "hit-back": {
+      "start": 16,
+      "count": 2,
+      "fps": 12,
+      "loop": false
+     },
+     "death-back": {
+      "start": 18,
+      "count": 10,
+      "fps": 18,
+      "loop": false
+     }
+    }
+   }
+  },
+  "armor": {
+   "key": "armor",
+   "frameW": 120,
+   "frameH": 120,
+   "cols": 8,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 51.062,
+   "ember": "#ff6a1c",
+   "facing": "down",
+   "view": "orthographic top-down, 52deg elevation, single facing (toward screen bottom)",
+   "role": "armor",
+   "file": "armor.webp",
+   "frames": 28,
+   "rows": 4,
+   "clips": {
+    "walk": {
+     "start": 0,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 8,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 16,
+     "count": 10,
+     "fps": 18,
+     "loop": false
+    },
+    "hit": {
+     "start": 26,
+     "count": 2,
+     "fps": 12,
+     "loop": false
+    }
+   },
+   "back": {
+    "file": "armor-back.webp",
+    "frameW": 120,
+    "frameH": 120,
+    "cols": 8,
+    "rows": 4,
+    "frames": 28,
+    "anchor": [
+     0.5,
+     0.7
+    ],
+    "ppu": 51.062,
+    "facing": "up",
+    "view": "3/4 from behind, facing up toward the tower",
+    "clips": {
+     "walk-back": {
+      "start": 0,
+      "count": 8,
+      "fps": 12,
+      "loop": true
+     },
+     "attack-back": {
+      "start": 8,
+      "count": 8,
+      "fps": 16,
+      "loop": false
+     },
+     "hit-back": {
+      "start": 16,
+      "count": 2,
+      "fps": 12,
+      "loop": false
+     },
+     "death-back": {
+      "start": 18,
+      "count": 10,
+      "fps": 18,
+      "loop": false
+     }
+    }
+   }
+  },
+  "boss": {
+   "key": "boss",
+   "frameW": 192,
+   "frameH": 192,
+   "cols": 8,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 51.892,
+   "ember": "#ff5a1a",
+   "facing": "down",
+   "view": "orthographic top-down, 52deg elevation, single facing (toward screen bottom)",
+   "role": "boss",
+   "attacks": {
+    "attack": "slam",
+    "attack2": "emp"
+   },
+   "file": "boss.webp",
+   "frames": 44,
+   "rows": 6,
+   "clips": {
+    "intro": {
+     "start": 0,
+     "count": 6,
+     "fps": 12,
+     "loop": false
+    },
+    "walk": {
+     "start": 6,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 14,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "attack2": {
+     "start": 22,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 30,
+     "count": 12,
+     "fps": 18,
+     "loop": false
+    },
+    "hit": {
+     "start": 42,
+     "count": 2,
+     "fps": 12,
+     "loop": false
+    }
+   }
+  }
+ },
+ "schemaBack": "entry.back = separate atlas (same frame size, 8 cols, same anchor/ppu) with clips walk-back, attack-back, [attack2-back], hit-back, death-back; start indices are relative to the back atlas"
+}
