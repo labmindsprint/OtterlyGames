@@ -153,4 +153,10 @@ test('page markup follows the privacy and deletion requirements', () => {
   assert.equal(els.fieldset.disabled, false);
   const privacy = readFileSync(new URL('../privacy.html', import.meta.url), 'utf8');
   assert.match(privacy, /href="\/space-academy-delete-account\.html"/);
+  const csp = html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)"/)?.[1] ?? '';
+  assert.match(csp, /script-src 'self' 'unsafe-hashes' 'sha256-2rvfFrggTCtyF5WOiTri1gDS8Boibj4Njn0e\+VCBmDI='/);
+  assert.match(csp, /connect-src 'self' https:\/\/otterly-rank-rqvoeb\.azurewebsites\.net(;|$)/);
+  assert.match(csp, /form-action 'none'/);
+  assert.doesNotMatch(csp, /unsafe-inline|unsafe-eval|cloudflareinsights/);
+  assert.match(privacy, /<strong>Cloudflare:<\/strong>[^]*cloudflareinsights\.com/);
 });
