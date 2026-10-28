@@ -3,6 +3,7 @@ import { armAudio, setSound } from './audio.mjs';
 import { loadShip } from './ships/index.mjs';
 import { esc } from './ui.mjs';
 import { needsGuide } from './onboarding.mjs';
+import { installPurchaseRecovery } from './purchase-sync.mjs';
 
 const VIEWS = {
   start: ['./views.mjs', 'start'],
@@ -104,6 +105,7 @@ async function boot() {
   if (new URLSearchParams(location.search).get('test') === '1') window.__pitstop = app;
   const params = new URLSearchParams(location.search);
   if (params.get('demo')) await startDemo(params);
+  else app.purchases = installPurchaseRecovery(app);
   setSound(store.state.settings.sound !== false);
   armAudio();
   app.go(params.get('demo') === 'gear' ? 'gear' : params.get('demo') === 'roam' ? 'roam' : home(), {}, { replace: true });

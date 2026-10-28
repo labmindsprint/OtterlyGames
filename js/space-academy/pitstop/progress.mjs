@@ -35,8 +35,9 @@ export function validateSave(save) {
     throw new Error('The saved fuel tank is damaged.');
   }
   if (save.premium !== undefined && (!isObject(save.premium) || typeof save.premium.unlimited !== 'boolean')) throw new Error('The saved supporter status is damaged.');
-  const { guideSeen, preferredClass } = save.settings;
-  if ((guideSeen !== undefined && typeof guideSeen !== 'boolean') ||
+  const { guideSeen, preferredClass, tipsSeen } = save.settings;
+  if ((tipsSeen !== undefined && (!Array.isArray(tipsSeen) || tipsSeen.length > 16 || tipsSeen.some(id => typeof id !== 'string'))) ||
+      (guideSeen !== undefined && typeof guideSeen !== 'boolean') ||
       (preferredClass !== undefined && preferredClass !== null && !classById(preferredClass))) {
     throw new Error('The saved guide settings are damaged.');
   }

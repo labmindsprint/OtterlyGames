@@ -140,7 +140,7 @@ test('the Pit Stop entry, every screen, every ship and every referenced asset ar
   for (const path of paths) {
     assert.doesNotMatch(path, /^(?:play\/space-academy\.html|js\/space-academy\/app\.mjs|games\/)/, `retired/large asset: ${path}`);
     assert.doesNotMatch(path, /\.(?:test\.mjs|md|py|svg|jpg)$/, `dev-only or master file: ${path}`);
-    if (/^images\/|\.(?:png|webp)$/.test(path)) assert.match(path, /^images\/brand\/(?:otter-buddy-320\.webp|osa-icon-512\.png)$/, `only the launch splash art is an image: ${path}`);
+    if (/^images\/|\.(?:png|webp)$/.test(path)) assert.match(path, /^images\/(?:brand\/(?:otter-buddy-320\.webp|osa-icon-512\.png)|ringo\/ringo-(?:happy|think|cheer)(?:-bust)?\.webp)$/, `only the launch splash art and Ringo guide art are images: ${path}`);
   }
   assert.ok(paths.has('css/otterly-brand-splash.css') && paths.has('js/otterly-brand-splash.js') && paths.has('fonts/Fredoka-OFL.txt'), 'brand splash bundled with its font licence');
   assert.match(html, /id="brand-splash"[\s\S]*Otterly Games[\s\S]*Otterly Space Academy/, 'brand splash markup is in the launcher');

@@ -25,6 +25,7 @@ export function show(app, { mission }) {
   const total = questions.length;
   const outcome = [];
   let index = 0;
+  let furthest = 0;
   let timer = 0;
   let bay = null;
   let welds = 0;
@@ -39,7 +40,8 @@ export function show(app, { mission }) {
     return `<ol class="ps-pips" aria-label="Question ${index + 1} of ${total}">${questions.map((_, position) => {
       const done = outcome[position];
       const cls = done ? (done.correct ? 'is-good' : 'is-miss') : position === index ? 'is-now' : '';
-      return `<li class="${cls}"></li>`;
+      const reachable = position <= furthest && position !== index;
+      return `<li class="${cls}">${reachable ? `<button type="button" class="ps-pip-go" data-go="${position}" aria-label="Go to question ${position + 1}"></button>` : ''}</li>`;
     }).join('')}</ol>`;
   };
 
@@ -76,6 +78,15 @@ export function show(app, { mission }) {
       </footer>`;
     root.querySelector('.ps-screen').focus({ preventScroll: true });
     window.scrollTo(0, 0);
+    if (outcome[index]) {
+      // Revisiting an answered question is review only: the score stays as first recorded.
+      state.done = true;
+      root.querySelectorAll('[data-choice]').forEach(button => { button.disabled = true; });
+      mark(question.correctIndex, 'is-good');
+      say(question.explanation, 'think');
+      showNext(index + 1 >= total ? 'Finish' : 'Next');
+      return;
+    }
     if (voiceOn()) voice.speak(voice.questionSpeech(question));
   };
 
@@ -151,6 +162,15 @@ export function show(app, { mission }) {
     if (busy) return;
     if (index + 1 >= total) { finish(); return; }
     index += 1;
+    furthest = Math.max(furthest, index);
+    draw();
+  };
+
+  const goTo = position => {
+    if (busy || position === index || position > furthest) return;
+    window.clearTimeout(timer);
+    voice.stop();
+    index = position;
     draw();
   };
 
@@ -214,6 +234,8 @@ export function show(app, { mission }) {
   };
 
   const onClick = event => {
+    const jump = event.target.closest('[data-go]');
+    if (jump) { goTo(Number(jump.dataset.go)); return; }
     const target = event.target.closest('[data-act],[data-choice]');
     if (!target) return;
     if (target.dataset.choice !== undefined) { choose(Number(target.dataset.choice)); return; }

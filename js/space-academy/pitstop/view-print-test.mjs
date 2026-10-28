@@ -78,7 +78,7 @@ export function printTest(app) {
     <footer class="ps-cta">${!gate.ok
     ? `<p>${esc(gate.reason)}</p><button type="button" class="ps-primary ps-primary--big" disabled>Start Print test · 1 fuel</button>${shipComplete(save, classId) ? chip('roam', ICONS.ship, 'Free roam: find schematics (free)') : ''}`
     : fuel.canStart
-      ? `<p class="ps-fuel-note">${esc(fuelNote(fuel, 'print'))}</p><button type="button" class="ps-primary ps-primary--big" data-act="start">Start Print test · 1 fuel</button>`
+      ? `<p class="ps-fuel-note">${esc(fuelNote(fuel, 'print'))}</p><button type="button" class="ps-primary ps-primary--big" data-act="start">Start Print test · 1 fuel</button>${held.length ? '' : chip('roam', ICONS.ship, 'No schematics yet? Free roam (free)')}`
       : emptyTank(fuel)}</footer>`, 'print-test');
   if (gate.ok && !fuel.canStart) revealAdButton(app.root, fuel);
   return wire(app, classId);

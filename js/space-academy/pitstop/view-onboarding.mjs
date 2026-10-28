@@ -1,18 +1,19 @@
 // First-run comic guide: welcome, pick a class, how the game works. Also replayed from the map and the grown-ups page.
 import { CLASSES, classById } from './data.mjs';
 import { loadShip, shipSVG } from './ships/index.mjs';
+import { sources } from './fuel-bridge.mjs';
 import { SKY } from './sky.mjs';
 import { gearIcon } from './gear.mjs';
 import { STICKER_IDS, stickerSVG } from './stickers.mjs';
-import { ICONS, esc, ringo } from './ui.mjs';
-import { CLASS_AGES, PANELS, STEPS, chooseClass, finishGuide } from './onboarding.mjs';
+import { ICONS, esc, noBreakHyphens, ringo } from './ui.mjs';
+import { CLASS_AGES, grownupsCopy, STEPS, chooseClass, finishGuide, panelsFor } from './onboarding.mjs';
 
 const PRINTER = `<svg class="psg-printer" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
   <path d="M18 24V8h28v16" fill="#fff" stroke="#2b2b2b" stroke-width="3" stroke-linejoin="round"/><path d="M24 14h16M24 19h10" stroke="#4a8fe0" stroke-width="2.5" stroke-linecap="round"/>
   <rect x="7" y="24" width="50" height="22" rx="6" fill="#d9d6cf" stroke="#2b2b2b" stroke-width="3"/><circle cx="48" cy="33" r="3" fill="#ff6a28" stroke="#2b2b2b" stroke-width="1.5"/>
   <path d="M17 41h30v16H17Z" fill="#fff" stroke="#2b2b2b" stroke-width="3" stroke-linejoin="round"/><path d="M23 48h18M23 53h11" stroke="#4a8fe0" stroke-width="2.5" stroke-linecap="round"/></svg>`;
 
-const PANEL_NAMES = { welcome: 'Welcome', class: 'Pick your class', how: 'How it works' };
+const PANEL_NAMES = { welcome: 'Welcome', class: 'Pick your class', how: 'How it works', adfree: 'For grown-ups' };
 
 function stepArt(art, classId) {
   const info = classById(classId);
@@ -58,8 +59,19 @@ function howPanel(classId) {
   </section>`;
 }
 
+function adFreePanel() {
+  const { title, line } = grownupsCopy(sources().native);
+  return `<section class="psg-panel psg-panel--adfree" aria-labelledby="psg-title">
+    <div class="psg-say">${ringo(84, 'happy')}
+      <div class="psg-bubble"><h1 id="psg-title" tabindex="-1" data-focus>${noBreakHyphens(title)}</h1><p>${noBreakHyphens(line)}</p></div></div>
+    <button type="button" class="ps-chip psg-adfree" data-g="adfree">${ICONS.lock}<span>Open For grown-ups</span></button>
+    <p class="psg-free">Only a grown-up can open it. You can always do this later from the lock on the map.</p>
+  </section>`;
+}
+
 export async function guide(app, params = {}) {
   await Promise.all(CLASSES.map(item => loadShip(item.id)));
+  const PANELS = panelsFor(app.state());
   const replay = Boolean(params.replay) && Boolean(app.state().activeClass);
   let index = replay ? 2 : 0;
   let busy = false;
@@ -84,7 +96,7 @@ export async function guide(app, params = {}) {
 
   const render = (focus = true) => {
     const panel = PANELS[index];
-    stage.innerHTML = panel === 'welcome' ? welcomePanel(art()) : panel === 'class' ? classPanel(active(), replay) : howPanel(art());
+    stage.innerHTML = panel === 'welcome' ? welcomePanel(art()) : panel === 'class' ? classPanel(active(), replay) : panel === 'how' ? howPanel(art()) : adFreePanel();
     stage.scrollTop = 0;
     screen.dataset.panel = panel;
     screen.querySelectorAll('.psg-dots li').forEach((dot, position) => {
@@ -107,13 +119,13 @@ export async function guide(app, params = {}) {
     render();
   };
 
-  const finish = async () => {
+  const finish = async (view = active() ? 'map' : 'start') => {
     if (busy) return;
     busy = true;
     try {
       const done = finishGuide(app.state());
       if (done !== app.state()) await app.commit(done);
-      app.go(active() ? 'map' : 'start');
+      app.go(view);
     } catch (error) { busy = false; app.fail(error); }
   };
 
@@ -155,6 +167,7 @@ export async function guide(app, params = {}) {
     if (button.dataset.g === 'next') onNext();
     if (button.dataset.g === 'back') go(index - 1);
     if (button.dataset.g === 'skip') onSkip();
+    if (button.dataset.g === 'adfree') finish('grownups');
   };
 
   const onKey = event => {

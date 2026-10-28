@@ -53,9 +53,11 @@ export function gear(app) {
       <p class="ps-lead"><span>${load.turrets.length} of ${MAX_TURRETS} turrets · ${load.shield ? '1 of 1 shield' : 'no shield yet'}. Tap gear to install or remove it.</span></p>
     </section>
     <ul class="ps-gearlist">${cards}</ul>
-    <footer class="ps-cta"><p>${owned.length} of ${GEAR_ORDER.length} printed</p>
+    <footer class="ps-cta"><p>${owned.length} of ${GEAR_ORDER.length} printed${shipDone ? ' · missing gear? Schematics drop in Free roam.' : ''}</p>
+      ${shipDone ? chip('roam', ICONS.ship, 'Free roam: find schematics (free)') : ''}
       <button type="button" class="ps-primary ps-primary--big" data-act="map">Back to map</button>      </footer>`, 'gears');
   return listen(app, async (act, target) => {
+    if (act === 'roam') app.go('roam');
     if (act === 'map') app.go('map');
     if (act === 'print') app.go('print-test');
     if (act === 'toggle') {

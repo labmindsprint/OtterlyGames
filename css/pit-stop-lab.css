@@ -99,7 +99,7 @@
 .ps-lab-svg--front.is-live .ps-arm { animation: none; }
 .ps-lab--bay.is-bad .ps-lab-ship { filter: sepia(.8) saturate(2.4) hue-rotate(-35deg) brightness(.75); }
 .ps-lab-word--bad { fill: #d9d6cf; }
-@media (min-width: 820px) and (min-height: 521px), (max-height: 520px) and (orientation: landscape) {
+@media (min-width: 820px) and (min-height: 521px) and (orientation: landscape), (max-height: 520px) and (orientation: landscape) {
   .ps-quiz--part { display: grid; grid-template-columns: minmax(200px, 40%) minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 22px; align-content: start; max-width: 1080px; }
   .ps-quiz--part > .ps-quiz-top { grid-column: 1 / -1; }
   .ps-quiz--part > .ps-bay { grid-column: 1; grid-row: 2; align-self: start; --bay-ratio: .95; }
@@ -202,8 +202,8 @@
 /* ---------- wide screens: a laptop gets a dashboard, not a phone column ---------- */
 .ps-stage { grid-template: minmax(0, 1fr) / minmax(0, 1fr); }
 .ps-screen.ps-skills { display: flex; margin: 0 auto; padding: 14px 16px calc(14px + env(safe-area-inset-bottom)); }
-@media (min-width: 900px) and (min-height: 560px) {
-  .ps-map { max-width: 1260px; display: grid; grid-template-columns: minmax(340px, 1.2fr) minmax(270px, 1fr) minmax(270px, 1fr); grid-template-rows: auto auto auto auto; gap: 14px 20px; align-content: start; min-height: 0; }
+@media (min-width: 900px) and (min-height: 560px) and (orientation: landscape) {
+  .ps-map { max-width: 1260px; display: grid; grid-template-columns: minmax(340px, 1.2fr) minmax(270px, 1fr) minmax(270px, 1fr); grid-template-rows: auto auto auto auto; gap: 14px 20px; align-content: center; min-height: 100dvh; }
   .ps-map > .ps-hud { grid-column: 1 / -1; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; }
   .ps-map .ps-hud-row { display: contents; }
   .ps-map .ps-head-tools { grid-column: 3; grid-row: 1; justify-self: end; }
@@ -213,9 +213,9 @@
   .ps-map .ps-bom li { padding: 3px 10px; }
   .ps-map .ps-bom-name { font-size: 18px; }
   .ps-map .ps-bom-name small { font-size: 14px; }
-  .ps-map > .ps-mid { display: grid; gap: 14px; grid-column: 2; grid-row: 2 / span 2; align-self: start; }
-  .ps-map > .ps-panel--checks { grid-column: 3; grid-row: 2 / span 2; align-self: start; }
-  .ps-map > .ps-cta { grid-column: 1; grid-row: 3; align-self: start; position: static; background: none; padding: 0; }
+  .ps-map > .ps-mid { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px; grid-column: 2; grid-row: 2 / span 2; align-self: stretch; }
+  .ps-map > .ps-panel--checks { grid-column: 3; grid-row: 2 / span 2; align-self: stretch; }
+  .ps-map > .ps-cta { grid-column: 1; grid-row: 3; align-self: end; position: static; background: none; padding: 0; }
   .ps-classes { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
   .ps-class { padding-block: 8px; }
   .ps-class-ship { width: 66px; height: 92px; }
@@ -232,6 +232,12 @@
   .ps-map .ps-plan { gap: 6px 4px; }
   .ps-map .ps-gauge { padding: 4px 10px; }
   .ps-quiz:not(.ps-quiz--part) { max-width: 720px; }
+}
+/* Narrower landscape tablets: gauges drop to their own row so none are squeezed. */
+@media (min-width: 900px) and (max-width: 1179px) and (orientation: landscape) {
+  .ps-map > .ps-hud { grid-template-columns: auto minmax(0, 1fr); }
+  .ps-map .ps-gauges { grid-column: 1 / -1; grid-row: 2; }
+  .ps-map .ps-head-tools { grid-column: 2; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -298,7 +304,7 @@
   .ps-map .ps-check-name { display: none; }
   .ps-map .ps-checks li { grid-template-columns: 1fr; }
   .ps-map .ps-checks .ps-level { grid-row: auto; }
-  .ps-map .ps-cta { padding-top: 8px; }
+  .ps-map .ps-cta { padding-top: 30px; }
   .ps-map .ps-cta p { font-size: 16px; }
   .ps-primary--big { min-height: 60px; font-size: 26px; }
 }

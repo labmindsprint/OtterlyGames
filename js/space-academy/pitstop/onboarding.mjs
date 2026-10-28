@@ -16,7 +16,17 @@ export const STEPS = [
   { id: 'print', title: 'Print', art: 'print', cost: '1 fuel', body: 'Take a 10-question Print test. Get 7 or more right to print the schematics you found.' },
 ];
 
-export const PANELS = ['welcome', 'class', 'how'];
+export const PANELS = ['welcome', 'class', 'how', 'adfree'];
+
+// The ad-free panel is for grown-ups who have not bought it yet; it never shows once unlimited fuel is owned.
+export const panelsFor = save => (save.premium?.unlimited === true ? PANELS.filter(name => name !== 'adfree') : PANELS);
+
+export const AD_FREE_LINE = 'Grown-ups: go ad-free with unlimited fuel to give mock tests!';
+
+// The website shows no ads, so its grown-ups step only mentions the unlimited fuel a supporter code unlocks.
+export const grownupsCopy = native => (native
+  ? { title: 'Ad-free for grown-ups', line: AD_FREE_LINE }
+  : { title: 'Unlimited fuel for grown-ups', line: 'Grown-ups: supporters can unlock unlimited fuel to give mock tests!' });
 
 // Real progress means the player is not new, whatever the guide flag says (saves from before the guide existed).
 export function hasProgress(save) {

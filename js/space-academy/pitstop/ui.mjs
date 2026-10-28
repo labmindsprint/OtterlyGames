@@ -1,23 +1,22 @@
 export const esc = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;')
   .replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 
+// Escapes text and keeps hyphenated words (ad-free, Grown-ups) on one line instead of wrapping at the hyphen.
+export const noBreakHyphens = value => esc(value).replace(/\b[A-Za-z]+(?:-[A-Za-z]+)+\b/g, word => `<span class="nb">${word}</span>`);
+
 export const INK = '#2b2b2b';
 
-// Ringo the otter: the friendly guide. mood is 'happy', 'think' or 'cheer'.
+// Ringo the otter: the friendly guide, rendered in Blender (store-assets/ringo).
+// mood is 'happy', 'think' or 'cheer'; small sizes use the head-and-scarf crop.
+const RINGO = {
+  happy: ['/images/ringo/ringo-happy.webp', '/images/ringo/ringo-happy-bust.webp'],
+  think: ['/images/ringo/ringo-think.webp', '/images/ringo/ringo-think-bust.webp'],
+  cheer: ['/images/ringo/ringo-cheer.webp', '/images/ringo/ringo-cheer-bust.webp']
+};
 export function ringo(size = 56, mood = 'happy') {
-  const mouth = mood === 'think' ? '<path d="M26 44q6-3 12 0" fill="none" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>'
-    : mood === 'cheer' ? '<path d="M24 41q8 10 16 0Z" fill="#fff" stroke="#2b2b2b" stroke-width="3" stroke-linejoin="round"/>'
-      : '<path d="M24 42q8 7 16 0" fill="none" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>';
-  return `<svg class="ps-ringo" width="${size}" height="${size}" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-    <circle cx="14" cy="16" r="8" fill="#b9855a" stroke="#2b2b2b" stroke-width="3"/><circle cx="50" cy="16" r="8" fill="#b9855a" stroke="#2b2b2b" stroke-width="3"/>
-    <circle cx="32" cy="34" r="25" fill="#b9855a" stroke="#2b2b2b" stroke-width="3"/>
-    <ellipse cx="32" cy="43" rx="15" ry="11" fill="#efe6d2" stroke="#2b2b2b" stroke-width="2.5"/>
-    <circle cx="23" cy="29" r="3.6" fill="#2b2b2b"/><circle cx="41" cy="29" r="3.6" fill="#2b2b2b"/>
-    <circle cx="24.2" cy="27.8" r="1.2" fill="#fff"/><circle cx="42.2" cy="27.8" r="1.2" fill="#fff"/>
-    <ellipse cx="32" cy="37" rx="4.2" ry="3" fill="#2b2b2b"/>${mouth}
-  </svg>`;
+  const [full, bust] = RINGO[mood] || RINGO.happy;
+  return `<img class="ps-ringo" src="${size <= 64 ? bust : full}" width="${size}" height="${size}" alt="" aria-hidden="true" decoding="async" draggable="false">`;
 }
-
 export const ICONS = {
   skills: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 27V15h6v12M13 27V6h6v21M21 27V11h6v16" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>',
   ship: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c6 5 7 12 6 19h-12c-1-7 0-14 6-19Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M10 20 4 27l6-1M22 20l6 7-6-1M13 28h6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',

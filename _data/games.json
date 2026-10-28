@@ -37,9 +37,9 @@
       "title": "Space Academy",
       "url": "/play/space-academy.html",
       "categories": ["learning", "adventure"],
-      "genre": "Seven learning adventures",
-      "description": "Build rockets, rovers and stations through seven different maths and reasoning campaigns.",
-      "note": "PP1-Class 5. Untimed, with hints and local explorer slots.",
+      "genre": "Olympiad-style maths game",
+      "description": "Solve puzzles to build a rocket for your class, then take Olympiad-style maths mock tests to launch.",
+      "note": "PP1-Class 5. Untimed, with hints. Not an official Olympiad.",
       "art": "/games/clockmaster/art/universe/earth.webp",
       "fit": "icon",
       "tone": "blue"

@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { CLASSES } from '../js/space-academy/pitstop/data.mjs';
 import { applyPart, applySetting, blankSave, validateSave } from '../js/space-academy/pitstop/progress.mjs';
-import { CLASS_AGES, STEPS, chooseClass, finishGuide, hasProgress, needsGuide } from '../js/space-academy/pitstop/onboarding.mjs';
+import { CLASS_AGES, STEPS, chooseClass, finishGuide, grownupsCopy, hasProgress, needsGuide } from '../js/space-academy/pitstop/onboarding.mjs';
+import { tipView } from '../js/space-academy/pitstop/tour.mjs';
 
 const answers = chapter => [{ chapter, correct: true }, { chapter, correct: true }];
 const withProgress = () => {
@@ -90,4 +91,12 @@ test('the guide is wired in: stylesheet, route, grown-ups replay and map chip', 
   assert.match(read('js/space-academy/pitstop/main.mjs'), /guide: \['\.\/view-onboarding\.mjs', 'guide'\]/);
   assert.match(read('js/space-academy/pitstop/views.mjs'), /data-act="guide"/);
   assert.match(read('js/space-academy/pitstop/lab.mjs'), /data-act="guide"/);
+});
+
+test('the website never promises ad removal; only the app keeps the ad-free wording', () => {
+  const save = applySetting(chooseClass(withProgress(), 'class-2'), { tipsSeen: ['build', 'mock', 'launch'] });
+  assert.equal(tipView(save, true).line, 'Grown-ups can go ad-free here.');
+  assert.match(tipView(save, false).line, /unlimited fuel/);
+  assert.doesNotMatch(tipView(save, false).line + JSON.stringify(grownupsCopy(false)), /\bads?\b|ad-free/i);
+  assert.match(grownupsCopy(true).line, /ad-free/);
 });

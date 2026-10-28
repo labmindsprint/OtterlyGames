@@ -51,6 +51,7 @@ export class PitSave {
     validateSave(next);
     const database = this.database;
     if (!database) throw new Error('The save is closed. Reload the page.');
+    const expectedRevision = this.state.revision;
     await new Promise((resolve, reject) => {
       let failure = null;
       const transaction = database.transaction(STORE, 'readwrite');
@@ -58,7 +59,7 @@ export class PitSave {
       const read = store.get(KEY);
       read.onsuccess = () => {
         const current = read.result === undefined ? this.state : read.result;
-        if (current.revision !== this.state.revision) {
+        if (current.revision !== expectedRevision) {
           this.state = validateSave(current);
           failure = new SaveConflict('Another tab changed this journey. The latest progress was loaded; try that again.');
           transaction.abort();

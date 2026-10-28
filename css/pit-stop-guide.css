@@ -57,7 +57,8 @@
 
 /* Panel 2: class cards */
 .psg-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 7px; }
-.psg-cards li { min-width: 0; }
+.psg-cards { grid-auto-rows: 1fr; }
+.psg-cards li { display: flex; min-width: 0; }
 .psg-card {
   position: relative; display: flex; align-items: center; gap: 12px; width: 100%; min-height: 62px; padding: 4px 12px 4px 10px; text-align: left;
   background: #fff; color: var(--ps-ink); border: 3px solid var(--ps-ink); border-radius: 16px; box-shadow: 3px 3px 0 var(--ps-ink);
@@ -104,6 +105,8 @@
 .psg-free { text-align: center; font-size: 18px; color: #4a4742; }
 
 /* Buttons */
+.psg-adfree { justify-self: center; min-height: 52px; padding-inline: 20px; font-size: 20px; }
+.psg-adfree svg { width: 22px; height: 22px; }
 .psg-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: env(safe-area-inset-bottom, 0px); }
 .psg-next { flex: 1; max-width: 360px; margin-left: auto; font-size: 26px; }
 .psg-next:disabled { animation: none; background: var(--ps-mid); box-shadow: 2px 3px 0 var(--ps-ink); cursor: not-allowed; opacity: .8; }
@@ -116,6 +119,50 @@
   .psg-panel--welcome { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: center; }
   .psg-panel--welcome .psg-scene { height: min(46dvh, 330px); }
   .psg-bubble h1 { font-size: 34px; }
+}
+/* Tablet in portrait: two big class cards per row so the panel uses the height instead of floating in the middle */
+@media (min-width: 560px) and (min-height: 700px) and (orientation: portrait) {
+  .psg-panel { padding: 24px; gap: 20px; }
+  .psg-panel--class { gap: 18px; }
+  .psg-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .psg-cards li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .psg-card { min-height: 112px; gap: 18px; padding: 8px 18px 8px 16px; }
+  .psg-card-ship { width: 62px; height: 88px; }
+  .psg-card-text b { font-size: 30px; }
+  .psg-card-text span { font-size: 22px; }
+  .psg-card-text small { font-size: 20px; }
+  .psg-say .ps-ringo { width: 72px; height: 72px; }
+  .psg-bubble h1 { font-size: 38px; }
+  .psg-bubble p { font-size: 23px; }
+  .psg-steps { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .psg-step { grid-template-columns: 110px minmax(0, 1fr); padding: 16px 18px; gap: 18px; }
+  .psg-step-art { width: 110px; height: 110px; }
+  .psg-step-art .psg-ship { width: 62px; height: 88px; }
+  .psg-step-art .psg-sky { width: 90px; height: 90px; }
+  .psg-printer { width: 86px; height: 86px; }
+  .psg-duo .gear-icon { width: 52px; height: 52px; }
+  .psg-duo .ps-stk-svg { width: 44px; height: 44px; }
+  .psg-step-head b { font-size: 28px; }
+  .psg-step-body { font-size: 22px; }
+  .psg-pill { font-size: 19px; min-height: 30px; }
+  .psg-free { font-size: 22px; }
+  .psg-scene { height: min(40dvh, 460px); }
+  .psg-panel--welcome { grid-template-columns: minmax(0, 1fr); }
+  .psg-panel--welcome .psg-scene { height: min(42dvh, 460px); }
+  .psg-next { min-height: 68px; font-size: 32px; }
+}
+/* Tablet in landscape: bigger cards so the panel is not a small island */
+@media (min-width: 900px) and (min-height: 600px) and (orientation: landscape) {
+  .psg-panel--class { padding: 24px; gap: 18px; }
+  .psg-cards { gap: 16px; }
+  .psg-card { min-height: 104px; gap: 16px; padding: 8px 16px; }
+  .psg-card-ship { width: 56px; height: 80px; }
+  .psg-card-text b { font-size: 28px; }
+  .psg-card-text span { font-size: 21px; }
+  .psg-card-text small { font-size: 19px; }
+  .psg-say .ps-ringo { width: 68px; height: 68px; }
+  .psg-bubble h1 { font-size: 36px; }
+  .psg-bubble p { font-size: 22px; }
 }
 /* Roomy desktop: four tall comic cells in a row */
 @media (min-width: 1100px) and (min-height: 600px) {

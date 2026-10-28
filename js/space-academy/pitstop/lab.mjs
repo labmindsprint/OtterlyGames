@@ -10,6 +10,17 @@ import { chip, copyright, grownupsButton, listen, mount, nextAction, shipPicture
 import { fuelStatus } from './fuel.mjs';
 import { fuelBadge } from './view-fuel.mjs';
 import { PRINT_ICON } from './view-print-test.mjs';
+import { startTour } from './spotlight.mjs';
+
+// Free roam is the main way to find schematics, so the lab always shows it: a big card once the rocket is built, a locked hint before.
+function roamCard(complete, cargo, built, total) {
+  if (!complete) {
+    const left = total - built;
+    return `<button type="button" class="ps-roamcard is-locked" data-act="roam-locked" aria-label="Free roam is locked. Weld ${left} more ${left === 1 ? 'part' : 'parts'} to unlock it."><span class="ps-roamcard-icon">${ICONS.lock}</span><span class="ps-roamcard-text"><b>Free roam</b><small>Build your rocket to unlock: zap enemies, find schematics</small></span></button>`;
+  }
+  const sub = cargo > 0 ? `${cargo} ${cargo === 1 ? 'schematic' : 'schematics'} waiting to print. Find more!` : 'Zap enemies and find schematics for gear and paint. Free!';
+  return `<button type="button" class="ps-roamcard" data-act="roam"><span class="ps-roamcard-icon">${ICONS.ship}</span><span class="ps-roamcard-text"><b>Free roam${cargo > 0 ? '' : ' <i class="ps-new">NEW</i>'}</b><small>${sub}</small></span></button>`;
+}
 
 function gauge(label, value, total, text) {
   const pct = total ? Math.round(value / total * 100) : 0;
@@ -53,7 +64,7 @@ export function map(app) {
   const plan = info.sky.map((id, index) => {
     const seen = Boolean(state.flown[id]);
     const open = ready === id;
-    return `<li class="ps-plan-node ${seen ? 'is-done' : open ? 'is-next' : ''}"><button type="button" class="ps-plan-btn" data-act="plan" data-index="${index}" aria-label="Mock test ${index + 1}: ${seen ? `${esc(SKY[id].name)}, visit again` : open ? `${esc(SKY[id].name)}, ready to launch` : 'locked, tap to see what unlocks it'}">
+    return `<li class="ps-plan-node ${seen ? 'is-done' : open ? 'is-next' : ''}"><button type="button" class="ps-plan-btn" data-act="plan" data-index="${index}"${index === flown ? ' data-ob="plan-next"' : ''} aria-label="Mock test ${index + 1}: ${seen ? `${esc(SKY[id].name)}, visit again` : open ? `${esc(SKY[id].name)}, ready to launch` : 'locked, tap to see what unlocks it'}">
           <span class="ps-plan-art">${seen || open ? skyArt(id) : '<b aria-hidden="true">?</b>'}</span><span class="ps-plan-no">${seen || open ? esc(SKY[id].name) : `Mock ${index + 1}`}</span></button></li>`;
   }).join('');
 
@@ -86,11 +97,12 @@ export function map(app) {
       <button type="button" class="ps-link" data-act="skills">${focus ? `Needs work: ${esc(focus.title)} · open Skills` : 'Open Skills'}</button></section>
     <footer class="ps-cta">
       <p>${ringo(30, 'cheer')}<span>${esc(action.sub)}</span></p>
-      <button type="button" class="ps-primary ps-primary--big" data-act="go">${esc(action.label)}</button>
-      ${complete ? '<button type="button" class="ps-link" data-act="roam">Free roam (free): zap enemies, find schematics</button>' : ''}
+      ${roamCard(complete, cargo, built.length, info.parts.length)}
+      <button type="button" class="ps-primary ps-primary--big" data-act="go" data-ob="go">${esc(action.label)}</button>
           </footer>${copyright}`, 'map');
         if (next) app.root.querySelector(`.ps-lab-ship [data-part="${next.id}"]`)?.classList.add('is-next');
-  return listen(app, (act, target) => {
+  const stopTour = startTour(app);
+  const off = listen(app, (act, target) => {
     if (act === 'classes') app.go('start');
     if (act === 'print') app.go('print-test');
     if (act === 'guide') app.go('guide', { replay: true });
@@ -99,6 +111,10 @@ export function map(app) {
     if (act === 'look') app.go('look');
     if (act === 'gear') app.go('gear');
     if (act === 'roam') app.go('roam');
+    if (act === 'roam-locked') {
+      const left = info.parts.length - built.length;
+      app.toast(`Free roam unlocks when your rocket is built: ${left} part${left === 1 ? '' : 's'} left to weld.`);
+    }
     if (act === 'go') app.go(action.view, action.params);
     if (act === 'plan') {
       const index = Number(target.dataset.index);
@@ -114,4 +130,5 @@ export function map(app) {
       app.toast(`Take Mock test ${flown + 1} first. Mock test ${index + 1} unlocks after it.`);
     }
   });
+  return () => { stopTour(); off(); };
 }

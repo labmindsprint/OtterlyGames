@@ -15,6 +15,8 @@ import { applyAdFuel, applySpend, fuelStatus } from './fuel.mjs';
 import { sources, watchAd } from './fuel-bridge.mjs';
 import * as voice from './tts.mjs';
 import { emptyTank, fuelBadge, fuelNote, fuelSection, revealAdButton, wireFuelSection } from './view-fuel.mjs';
+import { replayTips } from './tour.mjs';
+import { GATE_MAX_WRONG, GATE_PAUSE_MS, isCorrect, newChallenge } from './gate.mjs';
 
 export { nextAction };
 export const paintColor = (save, classId) => PAINTS.find(item => item.id === classState(save, classId).paint)?.color ?? null;
@@ -28,7 +30,7 @@ export const soundButton = app => {
   const on = app.state().settings.sound !== false;
   return `<button type="button" class="ps-icon-button" data-act="sound" aria-pressed="${on}" aria-label="${on ? 'Mute sound and music' : 'Turn sound and music on'}">${on ? ICONS.speak : ICONS.mute}</button>`;
 };
-export const grownupsButton = `<button type="button" class="ps-icon-button" data-act="grownups" aria-label="For grown-ups: purchases, remove ads, settings">${ICONS.lock}</button>`;
+export const grownupsButton = `<button type="button" class="ps-icon-button" data-act="grownups" data-ob="grownups" aria-label="For grown-ups: fuel, support and settings">${ICONS.lock}</button>`;
 export const copyright = `<p class="ps-copy">© ${new Date().getFullYear()} Otterly Games. All rights reserved. Otterly Space Academy is a trademark of Otterly Games.</p>`;
 export const listen = (app, handler) => {
   const onClick = async event => {
@@ -106,7 +108,7 @@ export async function pit(app, params = {}) {
         <p class="ps-result-line">${ringo(44, 'cheer')}<span>${params.right} of ${params.total} right first time.</span></p>
         ${stars(params.stars)}
       </section>
-      <footer class="ps-cta" hidden><p>${esc(action.sub)}</p><button type="button" class="ps-primary ps-primary--big" data-act="go">${esc(action.label)}</button></footer>`, 'weld');
+      <footer class="ps-cta" hidden>${shipComplete(save, classId) ? `<p class="ps-gain ps-gain--roam"><span class="ps-gain-icon">${ICONS.ship}</span><span><b>Free roam unlocked!</b><small>Fly anywhere, zap enemies, find schematics. Free.</small></span></p><button type="button" class="ps-chip" data-act="roam">${ICONS.ship}<span>Fly now</span></button>` : ''}<p>${esc(action.sub)}</p><button type="button" class="ps-primary ps-primary--big" data-act="go">${esc(action.label)}</button></footer>`, 'weld');
     weld = mountWeld(app.root.querySelector('[data-weld]'), {
       classId, partId: part.id, label: part.label, built, paint: paintColor(save, classId),
       mode: 'finale', reduced: app.reduced(), steps: params.total, step: params.total,
@@ -117,7 +119,7 @@ export async function pit(app, params = {}) {
         app.root.querySelector('.ps-primary')?.focus({ preventScroll: true });
       },
     });
-    const off = listen(app, act => { if (act === 'go') app.go(action.view, action.params); });
+    const off = listen(app, act => { if (act === 'go') app.go(action.view, action.params); if (act === 'roam') app.go('roam'); });
     return () => { weld.destroy(); off(); };
   }
 
@@ -306,9 +308,10 @@ export async function mockResult(app, { right, total }) {
       ${unlocked ? `<p class="ps-gain ps-gain--sky"><span class="ps-gain-icon">${skyArt(action.params.objectId)}</span><span><b>Unlocked: ${esc(SKY[action.params.objectId].name)}</b><small>Mock test ${info.sky.indexOf(action.params.objectId) + 1} of ${info.sky.length} · ready to visit!</small></span></p>` : ''}
     </section>
     <footer class="ps-cta"><p>${esc(action.sub)}</p>
-      <button type="button" class="ps-primary ps-primary--big" data-act="go">${esc(unlocked ? action.label : 'Back to map')}</button></footer>`, 'mock-result');
+      <button type="button" class="ps-primary ps-primary--big" data-act="go">${esc(unlocked ? action.label : 'Back to map')}</button>${chip('roam', ICONS.ship, 'Free roam: find schematics (free)')}</footer>`, 'mock-result');
   play(unlocked ? 'stars' : 'tap');
   return listen(app, act => {
+    if (act === 'roam') app.go('roam');
     if (act === 'go') app.go(unlocked ? action.view : 'map', unlocked ? action.params : {});
   });
 }
@@ -398,33 +401,58 @@ export function grownups(app) {
   const save = app.state();
   mount(app, `<header class="ps-head">${chip('back', ICONS.back, 'Back to map')}<h1>For grown-ups</h1></header>
     <section class="ps-gate" data-gate>
-      <p>Press and hold the button for two seconds.</p>
-      <button type="button" class="ps-primary" data-hold>Hold to open</button>
+      <form class="ps-gate-form" data-form autocomplete="off" novalidate>
+        <p>Grown-ups only. Solve this to open:</p>
+        <p class="ps-gate-q" data-q aria-live="polite"></p>
+        <label class="ps-gate-label">Your answer
+          <input class="ps-gate-input" data-answer type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" autocapitalize="off" spellcheck="false">
+        </label>
+        <p class="ps-gate-msg" data-msg role="status" aria-live="polite"></p>
+        <button type="submit" class="ps-primary" data-open>Open</button>
+      </form>
     </section>
     <section class="ps-grown" data-panel hidden>
-      <p>${sources().native
-        ? 'Progress is saved only on this device. Your answers and progress are not sent to Otterly Games. Optional rewarded ads and purchases are handled by Google (AdMob and Google Play), which receive the technical details they need to work. See our privacy page.'
-        : 'Progress is saved only on this device, in this browser. Clearing site data or private browsing removes it. Your answers and progress are not sent to Otterly Games, and this website shows no ads.'}</p>
+      ${sources().native
+        ? '<p>Your child profiles and progress stay on this device. Ad-free purchases use a grown-up account with no email or Google sign-in.</p><details class="ps-fuel-details"><summary>Privacy &amp; purchase details</summary><p>Your answers, child profiles and progress stay on this device. An optional parent recovery code is sent to our server transiently to authenticate; no email or Google sign-in is used. We keep a pseudonymous owner identifier, hashed sessions and hashed purchase records to restore unlimited fuel on your devices and prevent fraud. Google Play handles payments; we do not receive card details. Optional rewarded ads use Google AdMob. Signing out does not delete server records; a parent can delete the purchase account from this screen or at <a href="https://otterlygames.com/space-academy-delete-account.html" target="_blank" rel="noopener noreferrer">our deletion page</a>. Minimal purchase records are erased 30 days after deletion. See our <a href="https://otterlygames.com/privacy.html" target="_blank" rel="noopener noreferrer">privacy page</a>.</p></details>'
+        : '<p>Progress is saved only on this device, in this browser. Clearing site data or private browsing removes it. Your answers and progress are not sent to Otterly Games, and this website shows no ads.</p>'}
       <p>Questions follow Olympiad-style chapters for each class. The Skills page shows where a child needs more practice.</p>
       <label class="ps-toggle"><input type="checkbox" data-motion ${app.reduced() ? 'checked' : ''}> Reduce motion</label>
       <label class="ps-toggle"><input type="checkbox" data-sound ${save.settings.sound !== false ? 'checked' : ''}> Sound and music</label>
       ${voice.isSupported() ? `<label class="ps-toggle"><input type="checkbox" data-voice ${voice.isEnabled(voice.defaultOn(save.activeClass)) ? 'checked' : ''}> Read questions aloud</label>` : ''}
-      <p><button type="button" class="ps-chip" data-act="guide">${ICONS.bulb}<span>How to play</span></button> <a class="ps-chip" href="/learn/">Lessons for practice</a></p>
+      <p><button type="button" class="ps-chip" data-act="guide">${ICONS.bulb}<span>How to play</span></button> <button type="button" class="ps-chip" data-act="tips">${ICONS.bulb}<span>Replay tips</span></button> <a class="ps-chip" href="/learn/">Lessons for practice</a></p>
       ${fuelSection()}
       <button type="button" class="ps-chip ps-chip--danger" data-act="reset">Reset all progress</button>
       ${copyright}
     </section>`, 'grownups');
   let unwire = () => {};
   wireFuelSection(app).then(stop => { unwire = stop; }, error => app.fail(error));
-  const gate = app.root.querySelector('[data-hold]');
-  let hold = 0;
+  const form = app.root.querySelector('[data-form]');
+  const question = form.querySelector('[data-q]');
+  const answer = form.querySelector('[data-answer]');
+  const message = form.querySelector('[data-msg]');
+  const openBtn = form.querySelector('[data-open]');
+  let challenge = newChallenge();
+  let wrong = 0;
+  let pause = 0;
+  const ask = () => { challenge = newChallenge(); question.textContent = `${challenge.text} = ?`; answer.value = ''; };
   const open = () => { app.root.querySelector('[data-gate]').hidden = true; app.root.querySelector('[data-panel]').hidden = false; };
-  const begin = () => { window.clearTimeout(hold); gate.classList.add('is-holding'); hold = window.setTimeout(open, 2000); };
-  const end = () => { window.clearTimeout(hold); gate.classList.remove('is-holding'); };
-  gate.addEventListener('pointerdown', begin);
-  for (const name of ['pointerup', 'pointerleave', 'pointercancel']) gate.addEventListener(name, end);
-  gate.addEventListener('keydown', event => { if (event.key === ' ' || event.key === 'Enter') begin(); });
-  gate.addEventListener('keyup', end);
+  const lock = () => {
+    answer.disabled = openBtn.disabled = true;
+    message.textContent = 'Too many tries. Please wait 30 seconds.';
+    pause = window.setTimeout(() => {
+      wrong = 0; answer.disabled = openBtn.disabled = false; message.textContent = ''; ask(); answer.focus();
+    }, GATE_PAUSE_MS);
+  };
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (isCorrect(challenge, answer.value)) { open(); return; }
+    wrong += 1;
+    ask();
+    if (wrong >= GATE_MAX_WRONG) lock();
+    else { message.textContent = 'Not quite. Here is a new question.'; answer.focus(); }
+  });
+  ask();
+  const end = () => window.clearTimeout(pause);
   const motion = app.root.querySelector('[data-motion]');
   motion.addEventListener('change', async () => {
     try { await app.commit(applySetting(app.state(), { reducedMotion: motion.checked })); } catch (error) { app.fail(error); }
@@ -438,6 +466,12 @@ export function grownups(app) {
   const off = listen(app, async act => {
     if (act === 'back') app.go(app.state().activeClass ? 'map' : 'start');
     if (act === 'guide') app.go('guide', { replay: true });
+    if (act === 'tips') {
+      try {
+        await app.commit(replayTips(app.state()));
+        app.go(app.state().activeClass ? 'map' : 'start');
+      } catch (error) { app.fail(error); }
+    }
     if (act === 'reset' && window.confirm('Reset every ship, star and skill on this device?')) {
       try {
         // Resetting progress must not refill the tank or drop a purchase.
