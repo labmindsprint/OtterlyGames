@@ -1,6 +1,8 @@
 import {
+  QUESTION_COUNTS,
   clockHandEndpoints,
   generateWorksheet,
+  isAcademyPaper,
   parseSettings,
   settingsToSearch,
 } from './worksheet-generator.mjs';
@@ -9,6 +11,9 @@ const form = document.getElementById('worksheet-settings');
 const activityControl = document.getElementById('activity');
 const tableControl = document.getElementById('table');
 const clockControl = document.getElementById('clock-step');
+const levelControl = document.getElementById('level');
+const gradeControl = document.getElementById('academy-grade');
+const chapterControl = document.getElementById('academy-chapter');
 const countControl = document.getElementById('question-count');
 const seedControl = document.getElementById('sheet-seed');
 const printButton = document.getElementById('print-worksheet');
@@ -21,7 +26,77 @@ const shareFallback = document.getElementById('share-fallback');
 const shareLink = document.getElementById('share-link');
 const copyFeedback = document.getElementById('copy-feedback');
 const worksheet = document.getElementById('worksheet');
+const sourceNote = document.getElementById('sheet-source');
+const ARITHMETIC_LEVEL_LABELS = {
+  1: 'Level 1: numbers within 20',
+  2: 'Level 2: two-digit numbers within 100',
+  3: 'Level 3: three-digit numbers within 1,000',
+};
+const ACADEMY_LEVEL_LABELS = {
+  1: 'Level 1: Explore',
+  2: 'Level 2: Reason',
+  3: 'Level 3: Stretch',
+  all: 'All three levels mixed',
+};
 let currentLink = '';
+let academyModule = null;
+let academyLoading = null;
+let latestBuild = 0;
+let chapterGrade = null;
+
+let styleLoading = null;
+
+function loadAcademyStyle() {
+  styleLoading ??= new Promise((resolve, reject) => {
+    const style = document.createElement('link');
+    style.rel = 'stylesheet';
+    style.href = '/css/space-academy.css';
+    style.addEventListener('load', resolve);
+    style.addEventListener('error', () => {
+      style.remove();
+      reject(new Error('The Space Academy picture styles could not be loaded.'));
+    });
+    document.head.append(style);
+  });
+  styleLoading.catch(() => { styleLoading = null; });
+  return styleLoading;
+}
+
+let importAttempts = 0;
+
+function loadAcademy() {
+  academyLoading ??= (async () => {
+    // The question banks and diagram art are large, so they load only when a Space Academy sheet is chosen.
+    // Browsers can remember a failed module URL, so a retry asks for a distinct URL.
+    const target = importAttempts ? `./worksheet-academy.mjs?retry=${importAttempts}` : './worksheet-academy.mjs';
+    importAttempts += 1;
+    const [module] = await Promise.all([import(target), loadAcademyStyle()]);
+    academyModule = module;
+    return module;
+  })();
+  academyLoading.catch(() => { academyLoading = null; });
+  return academyLoading;
+}
+
+function fillChapters(selected) {
+  if (!academyModule) return;
+  const grade = academyModule.academyCatalog().find(item => item.id === gradeControl.value);
+  const options = [new Option('Mixed chapters', 'mixed')];
+  if (grade.paper) {
+    options.push(new Option(`Full practice paper (${grade.id === 'class-5' ? 50 : 35} questions)`, 'paper'));
+  }
+  for (const chapter of grade.chapters) options.push(new Option(chapter.title, chapter.id));
+  chapterControl.replaceChildren(...options);
+  chapterControl.value = options.some(option => option.value === selected) ? selected : 'mixed';
+}
+
+function fillLevels(academy) {
+  const labels = academy ? ACADEMY_LEVEL_LABELS : ARITHMETIC_LEVEL_LABELS;
+  const options = Object.entries(labels).map(([value, text]) => new Option(text, value));
+  const selected = levelControl.value;
+  levelControl.replaceChildren(...options);
+  levelControl.value = options.some(option => option.value === selected) ? selected : '1';
+}
 
 function element(tag, text, className) {
   const node = document.createElement(tag);
@@ -41,34 +116,79 @@ function feedback(message, warnings = []) {
 }
 
 function updateActivityControls() {
-  const clocks = activityControl.value === 'clock';
-  document.getElementById('table-field').hidden = clocks;
-  document.getElementById('clock-field').hidden = !clocks;
-  tableControl.disabled = clocks;
-  clockControl.disabled = !clocks;
-  document.getElementById('table-label').textContent =
-    activityControl.value === 'division' ? 'Divide by' : 'Times table';
-  document.getElementById('count-help').textContent = clocks && clockControl.value === 'five-minutes'
+  const activity = activityControl.value;
+  const academy = activity === 'academy';
+  const arithmetic = activity === 'addition' || activity === 'subtraction';
+  const tables = activity === 'multiplication' || activity === 'division';
+  const clocks = activity === 'clock';
+  const show = (id, control, visible) => {
+    document.getElementById(id).hidden = !visible;
+    control.disabled = !visible;
+  };
+  show('table-field', tableControl, tables);
+  show('clock-field', clockControl, clocks);
+  show('level-field', levelControl, arithmetic || academy);
+  show('grade-field', gradeControl, academy);
+  show('chapter-field', chapterControl, academy);
+  fillLevels(academy);
+  if (academy && !academyModule) {
+    loadAcademy().then(() => {
+      if (activityControl.value !== 'academy') return;
+      fillChapters(chapterControl.value);
+      chapterGrade = gradeControl.value;
+      updateActivityControls();
+    }, error => {
+      if (activityControl.value !== 'academy') return;
+      buildButton.disabled = false;
+      feedback(`Space Academy options could not be loaded. ${error.message} Check your connection, then choose Build this sheet to try again. Your existing sheet has not changed.`);
+    });
+  } else if (academy && chapterGrade !== gradeControl.value) {
+    fillChapters(chapterControl.value);
+    chapterGrade = gradeControl.value;
+  }
+  const paper = academy && chapterControl.value === 'paper';
+  document.getElementById('count-field').hidden = paper;
+  countControl.disabled = paper;
+  document.getElementById('table-label').textContent = activity === 'division' ? 'Divide by' : 'Times table';
+  document.getElementById('level-label').textContent = academy ? 'Challenge level' : 'Number size';
+  document.getElementById('level-help').textContent = academy
+    ? 'Explore builds an idea, Reason connects clues and Stretch asks for higher-order thinking. All levels mixes them.'
+    : 'About half of the questions need carrying or borrowing. Level 2 uses the 10 to 50 numbers of our Math Speed Quiz.';
+  document.getElementById('count-help').textContent = {
+    'multiplication-array': 'There are 16 different pictured questions. A request for 20 is reduced to 12, without repeats.',
+    'division-groups': 'There are 25 different pictured sharing questions, so every count up to 20 avoids repeats.',
+    addition: 'Each sheet seed makes new questions without repeats.',
+    subtraction: 'Each sheet seed makes new questions without repeats.',
+    academy: 'Different questions from the chosen grade, chapter and level. A full practice paper has a fixed length.',
+  }[activity] ?? (clocks && clockControl.value === 'five-minutes'
     ? 'Up to 20 different times, with no repeated clock on a sheet.'
-    : 'There are 12 different questions. A request for 20 is reduced to 12, without repeats.';
+    : 'There are 12 different questions. A request for 20 is reduced to 12, without repeats.');
 }
 
 function setControls(settings) {
   activityControl.value = settings.activity;
+  gradeControl.value = settings.grade;
+  fillLevels(settings.activity === 'academy');
+  levelControl.value = String(settings.level);
+  if (academyModule) {
+    fillChapters(settings.chapter);
+    chapterGrade = gradeControl.value;
+  }
   tableControl.value = String(settings.table);
   clockControl.value = settings.clock;
-  countControl.value = String(settings.count);
+  if (QUESTION_COUNTS.includes(settings.count)) countControl.value = String(settings.count);
   seedControl.value = settings.seed;
   updateActivityControls();
 }
 
 function readControls() {
-  return {
-    activity: activityControl.value,
-    ...(activityControl.value === 'clock' ? { clock: clockControl.value } : { table: tableControl.value }),
-    count: countControl.value,
-    seed: seedControl.value,
-  };
+  const activity = activityControl.value;
+  const input = { activity, count: countControl.value, seed: seedControl.value };
+  if (activity === 'clock') input.clock = clockControl.value;
+  if (activity === 'multiplication' || activity === 'division') input.table = tableControl.value;
+  if (['addition', 'subtraction', 'academy'].includes(activity)) input.level = levelControl.value;
+  if (activity === 'academy') Object.assign(input, { grade: gradeControl.value, chapter: chapterControl.value });
+  return input;
 }
 
 function svgElement(tag, attributes) {
@@ -127,47 +247,189 @@ function clockGraphic(question, index) {
   return svg;
 }
 
-function sheetTitle(settings) {
+function counterRow(parent, count, left, top, columns, spacing) {
+  for (let index = 0; index < count; index += 1) {
+    parent.append(svgElement('circle', {
+      cx: left + (index % columns) * spacing + spacing / 2,
+      cy: top + Math.floor(index / columns) * spacing + spacing / 2,
+      r: 6.5,
+      class: 'picture-counter',
+    }));
+  }
+}
+
+function groupsGraphic(question, index) {
+  const { groups, each } = question.visual;
+  const spacing = 18;
+  const width = each * spacing + 12;
+  const height = groups * (spacing + 10);
+  const svg = svgElement('svg', {
+    viewBox: `0 0 ${width} ${height}`,
+    width,
+    class: 'worksheet-picture-art',
+    role: 'img',
+    'aria-label': `Question ${index}: ${groups} groups with ${each} counters in each group.`,
+  });
+  for (let row = 0; row < groups; row += 1) {
+    svg.append(svgElement('rect', {
+      x: 1, y: row * (spacing + 10) + 1, width: width - 2, height: spacing + 6, rx: 9, class: 'picture-group',
+    }));
+    counterRow(svg, each, 6, row * (spacing + 10) + 4, each, spacing);
+  }
+  return svg;
+}
+
+function sharingGraphic(question, index) {
+  const { total, friends } = question.visual;
+  const spacing = 18;
+  const columns = 10;
+  const pileRows = Math.ceil(total / columns);
+  const plateTop = pileRows * spacing + 16;
+  const plateWidth = 44;
+  const width = Math.max(columns * spacing, friends * (plateWidth + 8));
+  const svg = svgElement('svg', {
+    viewBox: `0 0 ${width} ${plateTop + 38}`,
+    width,
+    class: 'worksheet-picture-art',
+    role: 'img',
+    'aria-label': `Question ${index}: ${total} counters in one pile and ${friends} empty plates for ${friends} friends.`,
+  });
+  counterRow(svg, total, 0, 0, columns, spacing);
+  for (let friend = 0; friend < friends; friend += 1) {
+    svg.append(svgElement('ellipse', {
+      cx: friend * (plateWidth + 8) + plateWidth / 2 + 2, cy: plateTop + 18, rx: plateWidth / 2, ry: 16, class: 'picture-plate',
+    }));
+  }
+  return svg;
+}
+
+const ARITHMETIC_TITLES = { 1: 'numbers within 20', 2: 'numbers within 100', 3: 'numbers within 1,000' };
+
+function sheetTitle(sheet) {
+  const { settings } = sheet;
   if (settings.activity === 'clock') {
     return settings.clock === 'hours' ? 'Read the clock: whole hours' : 'Read the clock: five-minute steps';
   }
+  if (settings.activity === 'academy') {
+    const { grade, title, paper, readiness } = sheet.heading;
+    return paper ? `${grade} Olympiad-style practice paper` : `${grade} ${readiness ? 'picture practice' : 'practice'}: ${title}`;
+  }
+  if (settings.activity === 'addition' || settings.activity === 'subtraction') {
+    return `${settings.activity === 'addition' ? 'Addition' : 'Subtraction'}: ${ARITHMETIC_TITLES[settings.level]}`;
+  }
+  if (settings.activity === 'multiplication-array') return 'Multiplication with equal-group pictures';
+  if (settings.activity === 'division-groups') return 'Division with sharing pictures';
   return settings.activity === 'division'
     ? `Exact division: divide by ${settings.table}`
     : `Multiplication: ${settings.table} times table`;
 }
 
+const INSTRUCTIONS = {
+  clock: 'Write each time as hour:minutes. The short hand shows the hour; the long hand shows the minutes. No AM or PM is needed.',
+  division: 'Find each whole-number answer. There are no remainders. Check by multiplying your answer by the divisor.',
+  multiplication: 'Find each product. Use equal groups, a drawing or a known fact if it helps.',
+  addition: 'Add the numbers. Use a number line, objects or a column on paper if it helps.',
+  subtraction: 'Subtract to find the difference. Check by adding your answer to the smaller number.',
+  'multiplication-array': 'Each picture shows equal groups. Count how many are in each group and find how many counters there are altogether.',
+  'division-groups': 'Share the counters equally between the plates. Write how many counters each friend gets. Nothing is left over.',
+};
+
+function academyInstructions(sheet) {
+  if (sheet.heading.readiness) {
+    return 'Look carefully at each picture and circle the letter of the best answer. This is readiness practice, not an exam.';
+  }
+  return sheet.heading.paper
+    ? 'Choose the best answer for every question and circle its letter. Original Otterly practice in an Olympiad style; it is not an official SOF or CREST paper.'
+    : 'Circle the letter of the best answer. The questions are original Space Academy practice.';
+}
+
+function levelText(settings) {
+  if (settings.activity === 'academy') return ACADEMY_LEVEL_LABELS[settings.level];
+  return ['addition', 'subtraction'].includes(settings.activity) ? ARITHMETIC_LEVEL_LABELS[settings.level] : '';
+}
+
+function pictureQuestion(question, index) {
+  const caption = question.kind === 'groups'
+    ? `${question.left} groups of counters`
+    : `Share ${question.left} counters equally among ${question.right} friends`;
+  const body = element('div', undefined, 'worksheet-picture-body');
+  body.append(element('span', caption, 'worksheet-picture-caption'),
+    question.kind === 'groups' ? groupsGraphic(question, index) : sharingGraphic(question, index));
+  return body;
+}
+
+function renderSource(sheet) {
+  const { settings } = sheet;
+  const note = element('p');
+  const link = (text, href) => {
+    const anchor = element('a', text);
+    anchor.href = href;
+    return anchor;
+  };
+  if (settings.activity === 'academy') {
+    note.append(sheet.heading.readiness
+      ? 'Picture readiness practice from Space Academy. It is not an exam and not an official paper. '
+      : 'Original Space Academy practice with diagrams and picture choices. It is not an official SOF or CREST paper and not complete exam preparation. ',
+    link('Open Space Academy', '/play/space-academy.html'), `. Choose ${sheet.heading.grade} and the matching topic in the game.`);
+  } else if (['multiplication-array', 'division-groups'].includes(settings.activity)) {
+    note.append('These pictures follow the equal-groups and sharing pictures in ', link('Math Tank', '/play/math-tank.html'), '.');
+  } else if (['addition', 'subtraction'].includes(settings.activity)) {
+    note.append('Ranges follow our ', link('Math Speed Quiz', '/tools/math-quiz.html'),
+      '. Math Tank practises multiplication and division, so this sheet is Otterly practice, not a Math Tank mode.');
+  } else if (settings.activity === 'clock') {
+    note.append('Practise the same skill in ', link('Clock Master', '/play/clock-master.html'), '.');
+  } else {
+    note.append('Facts follow the questions in ', link('Math Tank', '/play/math-tank.html'), '.');
+  }
+  sourceNote.replaceChildren(note);
+  sourceNote.hidden = false;
+}
+
 function renderSheet(sheet) {
   const { settings, questions } = sheet;
+  const academy = settings.activity === 'academy';
   worksheet.hidden = false;
   worksheet.dataset.activity = settings.activity;
   worksheet.dataset.count = String(questions.length);
-  document.getElementById('worksheet-title').textContent = sheetTitle(settings);
+  worksheet.dataset.paper = String(isAcademyPaper(settings));
+  document.getElementById('worksheet-title').textContent = sheetTitle(sheet);
+  const level = levelText(settings);
   document.getElementById('worksheet-code').textContent =
-    `${questions.length} questions · Sheet seed: ${settings.seed}`;
-  document.getElementById('worksheet-instructions').textContent = settings.activity === 'clock'
-    ? 'Write each time as hour:minutes. The short hand shows the hour; the long hand shows the minutes. No AM or PM is needed.'
-    : settings.activity === 'division'
-      ? 'Find each whole-number answer. There are no remainders. Check by multiplying your answer by the divisor.'
-      : 'Find each product. Use equal groups, a drawing or a known fact if it helps.';
+    `${questions.length} questions${level ? ` · ${level}` : ''} · Sheet seed: ${settings.seed}`;
+  document.getElementById('worksheet-instructions').textContent =
+    academy ? academyInstructions(sheet) : INSTRUCTIONS[settings.activity];
 
   const questionList = document.getElementById('worksheet-questions');
   const keyList = document.getElementById('answer-key-list');
   questionList.replaceChildren();
   keyList.replaceChildren();
+  let section = null;
   questions.forEach((question, index) => {
-    const item = element('li', undefined, 'worksheet-question');
-    item.append(element('span', `${index + 1}.`, 'worksheet-question-number'));
-    if (question.kind === 'clock') item.append(clockGraphic(question, index + 1));
-    else item.append(element('span', question.prompt, 'worksheet-equation'));
-    const blank = element('span', undefined, 'worksheet-answer-space');
-    blank.setAttribute('aria-label', 'Blank answer space');
-    item.append(blank);
+    if (academy && sheet.heading.paper && question.section !== section) {
+      section = question.section;
+      questionList.append(element('li', academyModule.SECTION_TITLES[section], 'worksheet-section-heading'));
+    }
+    const item = element('li', undefined, academy ? 'worksheet-question worksheet-mcq' : 'worksheet-question');
+    const keyItem = element('li');
+    if (academy) {
+      item.innerHTML = academyModule.questionMarkup(question, index + 1);
+      keyItem.innerHTML = `<span class="worksheet-key-number">${index + 1}.</span>${academyModule.answerMarkup(question)}`;
+    } else {
+      item.append(element('span', `${index + 1}.`, 'worksheet-question-number'));
+      if (question.kind === 'clock') item.append(clockGraphic(question, index + 1));
+      else if (question.visual) item.append(pictureQuestion(question, index + 1));
+      if (question.kind !== 'clock') item.append(element('span', question.prompt, 'worksheet-equation'));
+      const blank = element('span', undefined, 'worksheet-answer-space');
+      blank.setAttribute('aria-label', 'Blank answer space');
+      item.append(blank);
+      keyItem.textContent = question.kind === 'clock' ? question.answer : `${question.prompt} ${question.answer}`;
+    }
     questionList.append(item);
-    keyList.append(element('li', question.kind === 'clock' ? question.answer : `${question.prompt} ${question.answer}`));
+    keyList.append(keyItem);
   });
 
   document.getElementById('answer-key-code').textContent =
-    `${sheetTitle(settings)} · ${questions.length} questions · Sheet seed: ${settings.seed}`;
+    `${sheetTitle(sheet)} · ${questions.length} questions · Sheet seed: ${settings.seed}`;
   answerKey.hidden = !includeKey.checked;
   document.getElementById('sheet-tools').hidden = false;
   printButton.disabled = false;
@@ -176,10 +438,10 @@ function renderSheet(sheet) {
   freshButton.disabled = false;
   shareFallback.hidden = true;
   copyFeedback.textContent = '';
+  renderSource(sheet);
 }
 
-function applySettings(input, initialWarnings = []) {
-  const sheet = generateWorksheet(input);
+function showSheet(sheet, initialWarnings) {
   const warnings = [...initialWarnings, ...sheet.warnings];
   setControls(sheet.settings);
   renderSheet(sheet);
@@ -194,7 +456,29 @@ function applySettings(input, initialWarnings = []) {
   feedback(`${sheet.questions.length} unique questions ready. Take your time; there is no timer.`, warnings);
 }
 
+function applySettings(input, initialWarnings = []) {
+  const build = latestBuild += 1;
+  if (input.activity !== 'academy') {
+    try {
+      showSheet(generateWorksheet(input), initialWarnings);
+    } catch (error) {
+      feedback(`This sheet could not be built. ${error.message} Your existing sheet has not changed.`);
+    }
+    return undefined;
+  }
+  feedback('Loading Space Academy questions. No sheet has changed yet.');
+  return loadAcademy().then(module => {
+    if (build === latestBuild) showSheet(module.generateAcademyWorksheet(input), initialWarnings);
+  }).catch(error => {
+    if (build === latestBuild) {
+      buildButton.disabled = false;
+      feedback(`The Space Academy sheet could not be built. ${error.message} Choose Build this sheet to try again. Your existing sheet has not changed.`);
+    }
+  });
+}
+
 function markDirty() {
+  latestBuild += 1;
   updateActivityControls();
   printButton.disabled = true;
   copyButton.disabled = true;

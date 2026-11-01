@@ -265,6 +265,76 @@
       "readTime": "5 min read",
       "featured": false,
       "order": 19
+    },
+    {
+      "id": "maths-olympiad-practice-at-home-classes-1-5",
+      "title": "Maths Olympiad Practice at Home: Classes 1–5",
+      "excerpt": "A calm weekly routine for Olympiad-style maths practice at home in Classes 1 to 5, with a worked bar-model example and free Space Academy missions.",
+      "url": "/blog/maths-olympiad-practice-at-home-classes-1-5.html",
+      "date": "2026-11-01",
+      "displayDate": "Nov 1, 2026",
+      "emoji": "🚀",
+      "category": "Learning Guide",
+      "categoryClass": "guide",
+      "readTime": "7 min read",
+      "featured": false,
+      "order": 20
+    },
+    {
+      "id": "learn-multiplication-visually-with-math-tank",
+      "title": "Learn Multiplication Visually with Math Tank",
+      "excerpt": "See multiplication as equal groups the way Math Tank’s Multiplication Basics lesson shows it, with worked steps, a free game link and matching worksheets.",
+      "url": "/blog/learn-multiplication-visually-with-math-tank.html",
+      "date": "2026-11-01",
+      "displayDate": "Nov 1, 2026",
+      "emoji": "🍎",
+      "category": "Learning Guide",
+      "categoryClass": "guide",
+      "readTime": "6 min read",
+      "featured": false,
+      "order": 21
+    },
+    {
+      "id": "understand-division-visually-with-math-tank",
+      "title": "Understand Division Visually with Math Tank",
+      "excerpt": "See division as fair sharing the way Math Tank’s Division Concept lesson shows it, then connect it to multiplication with an original fact-family diagram.",
+      "url": "/blog/understand-division-visually-with-math-tank.html",
+      "date": "2026-11-01",
+      "displayDate": "Nov 1, 2026",
+      "emoji": "➗",
+      "category": "Learning Guide",
+      "categoryClass": "guide",
+      "readTime": "6 min read",
+      "featured": false,
+      "order": 22
+    },
+    {
+      "id": "otter-element-beginner-guide-hydrogen-helium-first-upgrades",
+      "title": "Otter Element Beginner Guide: Hydrogen, Helium and Your First Upgrades",
+      "excerpt": "A first-session guide to the free Otter Element browser preview: what to train first, how Hydrogen is discovered, and what the preview leaves for the full game.",
+      "url": "/blog/otter-element-beginner-guide-hydrogen-helium-first-upgrades.html",
+      "date": "2026-11-01",
+      "displayDate": "Nov 1, 2026",
+      "emoji": "⚛️",
+      "category": "Learning Guide",
+      "categoryClass": "guide",
+      "readTime": "6 min read",
+      "featured": false,
+      "order": 23
+    },
+    {
+      "id": "atoms-elements-molecules-difference",
+      "title": "Atoms, Elements and Molecules: What’s the Difference?",
+      "excerpt": "A plain-language guide to atoms, elements and molecules with simple diagrams, plus an honest note on how Otter Element’s schematic lab differs from real chemistry.",
+      "url": "/blog/atoms-elements-molecules-difference.html",
+      "date": "2026-11-01",
+      "displayDate": "Nov 1, 2026",
+      "emoji": "🔬",
+      "category": "Learning Guide",
+      "categoryClass": "guide",
+      "readTime": "6 min read",
+      "featured": false,
+      "order": 24
     }
   ]
 }

@@ -17,6 +17,9 @@ const sampleSeed = (grade, chapter, level = 1) => `guide-${grade.id}-${chapter.i
 const settingsLink = (grade, chapter, level = 1) => gameLink({
   grade: grade.id, chapter: chapter.id, level, seed: sampleSeed(grade, chapter, level), contentVersion: CONTENT_VERSION,
 });
+const worksheetLink = (grade, chapter = 'mixed') => `/tools/worksheet-builder.html?${new URLSearchParams({
+  activity: 'academy', grade: grade.id, chapter, level: '1',
+})}`;
 
 function paperReferences(grade) {
   return `<ul>${grade.paperReferences.map(reference =>
@@ -129,13 +132,13 @@ function chapterPage(grade, chapter, origin) {
     route: chapterRoute(grade.id, chapter.id),
     title: grade.year > 0 ? `${grade.label} ${chapter.title}: Maths Olympiad Practice Questions` : `${grade.label}: ${chapter.title} - Maths & Reasoning Practice`,
     description: `${grade.label} ${chapter.title.toLowerCase()}: original sample questions, worked methods and three practice levels. ${chapter.description}`,
-    heading: `${grade.label}: ${chapter.title}`,
+    heading: `${grade.label} ${chapter.title}: ${grade.year > 0 ? 'Maths Olympiad Practice' : 'Maths & Reasoning Practice'}`,
     intro: chapter.description,
     breadcrumbs: [
       { label: 'Space Academy', route: COLLECTION }, { label: grade.label, route: gradeRoute(grade) },
       { label: chapter.title, route: chapterRoute(grade.id, chapter.id) },
     ],
-    actions: `<a class="growth-button" href="${e(gameLink({ grade: grade.id, chapter: chapter.id }))}">Play mission</a><a class="growth-button growth-button--secondary" href="${gradeRoute(grade)}">Chapters</a>`,
+    actions: `<a class="growth-button" href="${e(gameLink({ grade: grade.id, chapter: chapter.id }))}">Play mission</a><a class="growth-button growth-button--secondary" href="${gradeRoute(grade)}">Chapters</a><a class="growth-button growth-button--secondary" href="${e(worksheetLink(grade, chapter.id))}">Build a chapter worksheet</a>`,
     content: `<section class="growth-section al-examples" aria-labelledby="samples-title"><h2 id="samples-title">Try a quick challenge</h2>
       ${sampleIntro()}
       <div class="sa-guide-samples">${samples}</div>
@@ -172,13 +175,13 @@ function gradePage(grade, origin) {
     description: grade.year > 0
       ? `${grade.label} maths olympiad practice: ${grade.chapters.length} chapters of original IMO-style questions, worked answers, reasoning and an untimed practice paper. No sign-up.`
       : `${grade.label} original practice across ${grade.chapters.length} chapters: ${grade.description} Read examples, play untimed missions and keep local progress.`,
-    heading: `${grade.label}: ${campaign.title}`,
-    intro: grade.description,
+    heading: `${grade.label} ${grade.year > 0 ? 'Maths Olympiad Practice' : 'Maths & Picture Reasoning Practice'}`,
+    intro: `${campaign.title}. ${grade.description}`,
     breadcrumbs: [{ label: 'Space Academy', route: COLLECTION }, { label: grade.label, route: gradeRoute(grade) }],
-    actions: `<a class="growth-button" href="${e(gameLink({ grade: grade.id, chapter: first.id }))}">Play ${grade.label}</a><a class="growth-button growth-button--secondary" href="#grade-chapters">Choose a chapter</a>`,
+    actions: `<a class="growth-button" href="${e(gameLink({ grade: grade.id, chapter: first.id }))}">Play ${grade.label}</a><a class="growth-button growth-button--secondary" href="#grade-chapters">Choose a chapter</a><a class="growth-button growth-button--secondary" href="${e(worksheetLink(grade, grade.year > 0 ? 'paper' : 'mixed'))}">Build ${e(grade.label)} ${grade.year > 0 ? 'practice paper' : 'worksheet'}</a>`,
     content: `<section class="growth-section al-examples" aria-labelledby="samples-title"><h2 id="samples-title">Try a quick puzzle</h2>${sampleIntro()}<div class="sa-guide-samples">${sample(example, 'Reason', settingsLink(grade, reasoning, 2))}</div></section>
     <section class="growth-section" aria-labelledby="grade-chapters"><h2 id="grade-chapters">Pick a chapter</h2><p>Choose Explore, Reason or Stretch inside each chapter.</p>
-      <div class="growth-grid">${grade.chapters.map(chapter => `<article class="growth-card"><h3><a href="${chapterRoute(grade.id, chapter.id)}">${e(chapter.title)}</a></h3><p>${e(chapter.description)}</p><a class="growth-button growth-button--secondary" href="${chapterRoute(grade.id, chapter.id)}">Try this chapter</a></article>`).join('')}</div>
+      <div class="growth-grid">${grade.chapters.map(chapter => `<article class="growth-card"><h3><a href="${chapterRoute(grade.id, chapter.id)}">${e(grade.label)} ${e(chapter.title)}</a></h3><p>${e(chapter.description)}</p><a class="growth-button growth-button--secondary" href="${chapterRoute(grade.id, chapter.id)}">Try ${e(grade.label)} ${e(chapter.title)}</a></article>`).join('')}</div>
       <p><a href="${COLLECTION}">Choose another grade</a></p>
     </section>
     <section class="growth-section"><div class="sa-guide-campaign"><div class="sa-guide-craft">${renderCraft(grade.id, craft.parts.map(part => part.id), 'coral')}</div><div><h2>Build a ${e(craft.noun)}</h2><p>${e(campaign.activity)}</p><p>Play missions, fit your craft and explore ${campaign.stages.length} expedition stops.</p><div class="growth-actions"><a class="growth-button" href="${e(gameLink({ grade: grade.id, mode: 'mixed' }))}">Mixed mission</a>${grade.year > 0 ? `<a class="growth-button growth-button--secondary" href="${e(gameLink({ grade: grade.id, mode: 'paper', level: 2 }))}">Practice paper</a>` : ''}</div></div></div></section>
@@ -199,18 +202,18 @@ function collectionPage(origin) {
   return page({
     route: COLLECTION, title: 'Maths Olympiad Practice for Class 1-5: IMO-Style Questions',
     description: 'Original maths olympiad practice for Class 1-5 plus PP1-PP2: IMO-style questions by chapter, untimed practice papers, worked answers and a space game. No sign-up.',
-    heading: 'Seven grades. Seven space adventures.',
-    intro: 'Solve a puzzle. Build your craft. Choose a grade to start exploring.',
+    heading: 'Maths Olympiad Practice for Classes 1-5',
+    intro: 'Original questions, worked answers and seven space adventures, including PP1 and PP2 picture-led practice. Solve a puzzle, build your craft and choose a grade to start exploring.',
     breadcrumbs: [{ label: 'Space Academy', route: COLLECTION }],
     actions: `<a class="growth-button" href="/play/space-academy.html">Play Space Academy</a><a class="growth-button growth-button--secondary" href="#grades">Choose a grade</a>`,
     content: `<section id="grades" class="growth-section" aria-labelledby="grades-heading"><h2 id="grades-heading">Pick your adventure</h2><p>Start where you feel comfortable. You can change grades at any time.</p>
       <div class="growth-grid">${GRADES.map(grade => {
         const craft = craftFor(grade.id);
-        return `<article class="growth-card al-grade-card"><div class="al-grade-art">${renderCraft(grade.id, craft.parts.map(part => part.id), 'coral')}</div><div><p class="growth-eyebrow">${grade.chapters.length} CHAPTERS &middot; NO TIMER</p><h3><a href="${gradeRoute(grade)}">${e(grade.label)}: ${e(getCampaign(grade.id).title)}</a></h3><p>${e(getCampaign(grade.id).activity)}</p><a class="growth-button growth-button--secondary" href="${gradeRoute(grade)}">Try ${e(grade.label)}</a></div></article>`;
+        return `<article class="growth-card al-grade-card"><div class="al-grade-art">${renderCraft(grade.id, craft.parts.map(part => part.id), 'coral')}</div><div><p class="growth-eyebrow">${grade.chapters.length} CHAPTERS &middot; NO TIMER</p><h3><a href="${gradeRoute(grade)}">${e(grade.label)} ${grade.year > 0 ? 'Maths Olympiad Practice' : 'Maths &amp; Picture Reasoning'}</a></h3><p>${e(getCampaign(grade.id).title)}. ${e(getCampaign(grade.id).activity)}</p><a class="growth-button growth-button--secondary" href="${gradeRoute(grade)}">Try ${e(grade.label)} maths practice</a></div></article>`;
       }).join('')}</div>
     </section>
     <section class="growth-section"><div class="growth-grid"><article class="growth-card"><h2>Try, then play</h2><p>Every chapter has quick questions, picture choices, hints and worked answers. Pick Explore, Reason or Stretch.</p></article><article class="growth-card"><h2>Build and discover</h2><p>In the game, different chapters unlock different craft systems. Play your grade&rsquo;s space activity and fill a shared Universe Passport.</p></article></div></section>
-    <section class="growth-section"><h2>Olympiad guides for parents</h2><div class="growth-grid"><article class="growth-card"><h3><a href="/learn/imo-preparation.html">IMO preparation, Class 1-5</a></h3><p>What the topics are, how to start and how to use practice well.</p></article><article class="growth-card"><h3><a href="/learn/olympiad-mock-test.html">Olympiad mock test and practice paper</a></h3><p>Original untimed practice papers, and how to run a timed one at home.</p></article></div></section>
+    <section class="growth-section"><h2>Olympiad guides for parents</h2><div class="growth-grid"><article class="growth-card"><h3><a href="/learn/imo-preparation.html">IMO preparation, Class 1-5</a></h3><p>What the topics are, how to start and how to use practice well.</p></article><article class="growth-card"><h3><a href="/learn/olympiad-mock-test.html">Olympiad mock test and practice paper</a></h3><p>Original untimed practice papers, and how to run a timed one at home.</p></article><article class="growth-card"><h3><a href="/blog/maths-olympiad-practice-at-home-classes-1-5.html">Maths Olympiad practice at home</a></h3><p>A short routine, a worked picture problem and ways to move from game practice to paper.</p></article></div></section>
     <details id="content" class="al-parent-notes"><summary id="content-title">For grown-ups</summary><div class="al-notes-body">
       <section class="growth-section"><h2>Original practice, not an official paper</h2><p>All questions, diagrams, picture choices, hints and explanations are original Otterly work. There are no copied provider questions, paper screenshots or live AI-generated questions. No Olympiad provider is affiliated with or endorses Space Academy.</p><p>SOF&rsquo;s topic syllabi are the primary Class 1&ndash;5 grade reference. Other providers differ in scope. PP1 and PP2 are Otterly readiness activities, not official SOF IMO levels.</p>
         <details class="al-reference-notes"><summary>Reference papers by grade</summary><ul>${GRADES.map(grade => `<li><strong>${e(grade.label)}</strong>${grade.reference ? `<p><a href="${e(grade.reference.url)}" target="_blank" rel="noopener noreferrer">${e(grade.reference.title)}</a></p>` : ''}${paperReferences(grade)}</li>`).join('')}</ul><p>Additional Class 5 reference: <a href="https://www.unifiedcouncil.com/sample-questions-uimo.html" target="_blank" rel="noopener noreferrer">Unified Council UIMO official sample index</a> (sample, not a past paper).</p></details>
@@ -255,7 +258,7 @@ export function buildAcademy({ root = resolve(dirname(fileURLToPath(import.meta.
     const before = existsSync(target) ? readFileSync(target, 'utf8') : null;
     if (before !== null && !before.includes(GENERATED)) throw new Error(`Refusing to overwrite an unrecognised Academy page: ${target}`);
     const after = transformPublicPage(page.html, { route: page.route }, { templates, origin: inventory.origin }).html;
-    if (before !== after) changes.push({ target, after });
+    if (before?.replaceAll('\r\n', '\n') !== after.replaceAll('\r\n', '\n')) changes.push({ target, after });
   }
   if (write) {
     for (const change of changes) {

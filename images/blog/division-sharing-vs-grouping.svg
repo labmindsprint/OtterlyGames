@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" width="900" height="470" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif">
+<title id="t">Two meanings of 12 divided by 3 and 12 divided by 4</title><desc id="d">Sharing 12 among 3 friends gives 4 each. Grouping 12 into bags of 4 gives 3 bags. Both come from the same fact family.</desc>
+<rect width="900" height="470" rx="24" fill="#1d1946"/>
+<text x="450" y="44" font-size="26" fill="#f6f3ff" font-weight="700" text-anchor="middle">Two questions, one fact family</text>
+<rect x="24" y="66" width="424" height="330" rx="20" fill="#2c2766" stroke="#ffc94d" stroke-width="3"/>
+<text x="236" y="104" font-size="24" fill="#ffc94d" font-weight="800" text-anchor="middle">Sharing</text>
+<text x="236" y="134" font-size="19" fill="#f6f3ff" font-weight="600" text-anchor="middle">12 shared among 3 friends</text>
+<rect x="40" y="160" width="124" height="100" rx="16" fill="#1d1946" stroke="#ffc94d" stroke-width="2"/>
+<circle cx="74" cy="190" r="9" fill="#ffc94d"/>
+<circle cx="104" cy="190" r="9" fill="#ffc94d"/>
+<circle cx="74" cy="220" r="9" fill="#ffc94d"/>
+<circle cx="104" cy="220" r="9" fill="#ffc94d"/>
+<text x="102" y="284" font-size="15" fill="#c9c2ee" font-weight="400" text-anchor="middle">Friend 1</text>
+<rect x="176" y="160" width="124" height="100" rx="16" fill="#1d1946" stroke="#ffc94d" stroke-width="2"/>
+<circle cx="210" cy="190" r="9" fill="#ffc94d"/>
+<circle cx="240" cy="190" r="9" fill="#ffc94d"/>
+<circle cx="210" cy="220" r="9" fill="#ffc94d"/>
+<circle cx="240" cy="220" r="9" fill="#ffc94d"/>
+<text x="238" y="284" font-size="15" fill="#c9c2ee" font-weight="400" text-anchor="middle">Friend 2</text>
+<rect x="312" y="160" width="124" height="100" rx="16" fill="#1d1946" stroke="#ffc94d" stroke-width="2"/>
+<circle cx="346" cy="190" r="9" fill="#ffc94d"/>
+<circle cx="376" cy="190" r="9" fill="#ffc94d"/>
+<circle cx="346" cy="220" r="9" fill="#ffc94d"/>
+<circle cx="376" cy="220" r="9" fill="#ffc94d"/>
+<text x="374" y="284" font-size="15" fill="#c9c2ee" font-weight="400" text-anchor="middle">Friend 3</text>
+<text x="236" y="322" font-size="18" fill="#f6f3ff" font-weight="400" text-anchor="middle"><tspan x="236" dy="0">Known: 3 shares. Unknown: how many in</tspan><tspan x="236" dy="24">each share?</tspan></text>
+<text x="236" y="378" font-size="24" fill="#ffc94d" font-weight="800" text-anchor="middle">12 ÷ 3 = 4 each</text>
+<rect x="452" y="66" width="424" height="330" rx="20" fill="#2c2766" stroke="#5fe0c0" stroke-width="3"/>
+<text x="664" y="104" font-size="24" fill="#5fe0c0" font-weight="800" text-anchor="middle">Grouping</text>
+<text x="664" y="134" font-size="19" fill="#f6f3ff" font-weight="600" text-anchor="middle">12 put into bags of 4</text>
+<rect x="468" y="160" width="124" height="100" rx="16" fill="#1d1946" stroke="#5fe0c0" stroke-width="2"/>
+<circle cx="490" cy="197" r="9" fill="#5fe0c0"/>
+<circle cx="516" cy="197" r="9" fill="#5fe0c0"/>
+<circle cx="542" cy="197" r="9" fill="#5fe0c0"/>
+<circle cx="568" cy="197" r="9" fill="#5fe0c0"/>
+<text x="530" y="284" font-size="15" fill="#c9c2ee" font-weight="400" text-anchor="middle">Bag 1</text>
+<rect x="604" y="160" width="124" height="100" rx="16" fill="#1d1946" stroke="#5fe0c0" stroke-width="2"/>
+<circle cx="626" cy="197" r="9" fill="#5fe0c0"/>
+<circle cx="652" cy="197" r="9" fill="#5fe0c0"/>
+<circle cx="678" cy="197" r="9" fill="#5fe0c0"/>
+<circle cx="704" cy="197" r="9" fill="#5fe0c0"/>
+<text x="666" y="284" font-size="15" fill="#c9c2ee" font-weight="400" text-anchor="middle">Bag 2</text>
+<rect x="740" y="160" width="124" height="100" rx="16" fill="#1d1946" stroke="#5fe0c0" stroke-width="2"/>
+<circle cx="762" cy="197" r="9" fill="#5fe0c0"/>
+<circle cx="788" cy="197" r="9" fill="#5fe0c0"/>
+<circle cx="814" cy="197" r="9" fill="#5fe0c0"/>
+<circle cx="840" cy="197" r="9" fill="#5fe0c0"/>
+<text x="802" y="284" font-size="15" fill="#c9c2ee" font-weight="400" text-anchor="middle">Bag 3</text>
+<text x="664" y="322" font-size="18" fill="#f6f3ff" font-weight="400" text-anchor="middle"><tspan x="664" dy="0">Known: 4 in each bag. Unknown: how many</tspan><tspan x="664" dy="24">bags?</tspan></text>
+<text x="664" y="378" font-size="24" fill="#5fe0c0" font-weight="800" text-anchor="middle">12 ÷ 4 = 3 bags</text>
+<text x="450" y="432" font-size="17" fill="#c9c2ee" font-weight="400" text-anchor="middle"><tspan x="450" dy="0">Math Tank’s division lesson uses the sharing picture. Grouping is a second way to read the</tspan><tspan x="450" dy="23">same sum.</tspan></text>
+</svg>

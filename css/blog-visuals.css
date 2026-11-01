@@ -1,0 +1,13 @@
+.article-page .article-figure { margin: var(--s-6, 1.75rem) auto; max-width: 720px; text-align: center; }
+.article-page .article-figure img { display: block; width: 100%; max-width: 100%; height: auto; margin: 0 auto; border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--surface-2); }
+.article-page .article-figure--phone img { max-width: 340px; }
+.article-page .article-figure--svg img { background: transparent; }
+.article-page .article-figure figcaption { margin-top: 0.6rem; font-size: 0.9rem; line-height: 1.5; color: var(--text-dim, #c9c2ee); text-align: left; }
+.article-page .article-figure-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1.75rem 0; }
+.article-page .article-figure-pair .article-figure { margin: 0; }
+.article-page .article-figure-pair .article-figure img { max-width: 340px; }
+.article-page .article-inline-cta { margin: 1.25rem 0; }
+.article-page .article-inline-cta .btn { max-width: 100%; white-space: normal; }
+@media (max-width: 640px) {
+  .article-page .article-figure-pair { grid-template-columns: 1fr; }
+}

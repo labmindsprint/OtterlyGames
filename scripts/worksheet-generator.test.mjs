@@ -136,3 +136,70 @@ test('counts beyond the fixed fact bank are capped with an explanation, not repe
   }
   assert.equal(normalizeSettings({ activity: 'clock', clock: 'five-minutes', count: 20 }).settings.count, 20);
 });
+
+test('old multiplication and clock links keep their original questions', () => {
+  const old = generateWorksheet({ activity: 'multiplication', table: 6, count: 10, seed: 'otterly-1' });
+  assert.equal(settingsToSearch(old.settings), 'activity=multiplication&table=6&count=10&seed=otterly-1');
+  assert.equal(new Set(old.questions.map(question => question.id)).size, 10);
+  const same = generateWorksheet(parseSettings('?activity=multiplication&table=6&count=10&seed=otterly-1').settings);
+  assert.deepEqual(same.questions, old.questions);
+});
+
+test('addition and subtraction are correct, unique, in range and mix regrouping', () => {
+  const limits = { 1: [2, 10, 20], 2: [10, 50, 100], 3: [100, 500, 1000] };
+  for (const activity of ['addition', 'subtraction']) {
+    for (const level of [1, 2, 3]) {
+      const sheet = generateWorksheet({ activity, level, count: 20, seed: `a-${level}` });
+      const [low, high, cap] = limits[level];
+      assert.equal(new Set(sheet.questions.map(question => question.prompt)).size, 20);
+      for (const question of sheet.questions) {
+        const [a, b] = question.prompt.match(/\d+/g).map(Number);
+        assert.ok(a >= low && b >= low && Math.max(a, b) <= cap);
+        assert.equal(Number(question.answer), activity === 'addition' ? a + b : a - b);
+        assert.ok(Number(question.answer) >= 0 && (activity === 'subtraction' || Number(question.answer) <= cap));
+      }
+    }
+  }
+});
+
+test('picture sheets draw exactly the counters their answers need', () => {
+  const groups = generateWorksheet({ activity: 'multiplication-array', seed: 'g' });
+  for (const { visual, answer } of groups.questions) assert.equal(visual.groups * visual.each, Number(answer));
+  const sharing = generateWorksheet({ activity: 'division-groups', seed: 's' });
+  for (const { visual, answer } of sharing.questions) {
+    assert.ok(visual.total <= 20 && visual.friends >= 2 && visual.friends <= 5);
+    assert.equal(visual.total / visual.friends, Number(answer));
+  }
+});
+
+test('new link fields normalise to canonical, reproducible URLs with visible warnings', () => {
+  const sheet = parseSettings('?activity=academy&grade=class-2&chapter=paper&level=all&count=5&seed=x');
+  assert.equal(sheet.settings.level, 1);
+  assert.equal(sheet.settings.count, 35);
+  assert.ok(sheet.warnings.length >= 1);
+  assert.equal(settingsToSearch(sheet.settings), 'activity=academy&grade=class-2&chapter=paper&level=1&seed=x');
+  const pre = normalizeSettings({ activity: 'academy', grade: 'pp1', chapter: 'paper' });
+  assert.equal(pre.settings.chapter, 'mixed');
+  assert.throws(() => generateWorksheet({ activity: 'academy' }), RangeError);
+});
+
+test('Space Academy sheets are deterministic, complete papers, and keep answers off the question page', async () => {
+  const { generateAcademyWorksheet, questionMarkup, answerMarkup, academyCatalog } = await import('../js/worksheet-academy.mjs');
+  const input = { activity: 'academy', grade: 'class-3', chapter: 'paper', level: 2, seed: 'paper-1' };
+  const first = generateAcademyWorksheet(input);
+  assert.deepEqual(first.questions.map(question => question.id), generateAcademyWorksheet(input).questions.map(question => question.id));
+  assert.equal(first.questions.length, 35);
+  assert.equal(generateAcademyWorksheet({ ...input, grade: 'class-5' }).questions.length, 50);
+  for (const question of first.questions) {
+    assert.ok(!questionMarkup(question, 1).includes(question.explanation));
+  }
+  for (const grade of academyCatalog()) {
+    for (const chapter of ['mixed', ...grade.chapters.map(item => item.id)]) {
+      const sheet = generateAcademyWorksheet({ activity: 'academy', grade: grade.id, chapter, level: 'all', count: 5, seed: 'sweep' });
+      assert.ok(sheet.questions.length >= 1);
+      for (const [index, question] of sheet.questions.entries()) {
+        assert.ok(questionMarkup(question, index + 1).length > 0 && answerMarkup(question).length > 0);
+      }
+    }
+  }
+});

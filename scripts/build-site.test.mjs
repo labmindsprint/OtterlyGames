@@ -9,6 +9,7 @@ import {
   ARCHIVE_ROUTES, buildSite, htmlTokens, normalizeRoute, renderSitemap, rewriteKnownAssets,
   stripPublicPolicy, transformArchive, transformPublicPage, validateInventory, validateTemplates,
 } from './build-site.mjs';
+import { academyPages, buildAcademy } from './build-space-academy.mjs';
 
 const origin = 'https://otterlygames.com';
 const templates = {
@@ -386,6 +387,46 @@ test('generates matching tools/blog fallback links, text, static counts and Item
   const stale = buildSite({ root: f.root });
   assert.deepEqual(stale.errors, []);
   assert.ok(stale.changes.some((c) => c.file === join('tools', 'index.html')));
+});
+
+test('website checks ignore checkout line endings without hiding shared-content drift or rewriting files', (t) => {
+  const f = fixture(t, { files: { 'index-v3.html': html('<h1>Archive</h1>', { attrs: '' }) } });
+  assert.deepEqual(buildSite({ root: f.root, write: true }).errors, []);
+  for (const file of ['index.html', 'index-v3.html', 'sitemap.xml']) {
+    f.write(file, f.read(file).replaceAll('\n', '\r\n'));
+  }
+  const before = f.read('index.html');
+  for (const newline of ['\n', '\r\n']) {
+    f.write(join('_includes', 'nav.html'), templates.nav.replaceAll('\n', newline));
+    const result = buildSite({ root: f.root, write: true });
+    assert.deepEqual(result.errors, []);
+    assert.equal(result.changes.length, 0);
+    assert.equal(result.written, 0);
+    assert.equal(f.read('index.html'), before);
+  }
+  f.write(join('_includes', 'nav.html'), templates.nav.replace('Home', 'Updated home'));
+  const stale = buildSite({ root: f.root });
+  assert.deepEqual(stale.errors, []);
+  assert.ok(stale.changes.some(change => change.file === 'index.html'));
+  assert.equal(f.read('index.html'), before);
+});
+
+test('Academy checks ignore mixed checkout line endings but still detect stale lesson content', (t) => {
+  const pages = academyPages();
+  const f = fixture(t, { pages: pages.map(page => page.route) });
+  assert.equal(buildAcademy({ root: f.root, write: true }).changed, pages.length);
+  const files = pages.map(page => join(...page.route.slice(1).split('/'), ...(page.route.endsWith('/') ? ['index.html'] : [])));
+  for (const file of files) f.write(file, f.read(file).replaceAll('\n', '\r\n'));
+  const before = f.read(files[0]);
+  for (const newline of ['\n', '\r\n']) {
+    f.write(join('_includes', 'nav.html'), templates.nav.replaceAll('\n', newline));
+    assert.equal(buildAcademy({ root: f.root, write: true }).changed, 0);
+    assert.equal(f.read(files[0]), before);
+  }
+  f.write(files[0], before.replace('<h1>', '<h1>Stale heading: '));
+  const stale = buildAcademy({ root: f.root });
+  assert.deepEqual(stale.files, [join(f.root, files[0])]);
+  assert.ok(f.read(files[0]).includes('Stale heading: '));
 });
 
 test('read-only check detects drift; write touches only scoped pages, archives and sitemap; second check is clean', (t) => {

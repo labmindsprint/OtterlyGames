@@ -23,7 +23,7 @@
     'long-division': 'bracket division with remainders',
     'math-quiz': 'a short, optional timed warm-up',
     'calculator': 'checking homework answers',
-    'worksheet-builder': 'paper practice away from the screen',
+    'worksheet-builder': 'maths, picture practice and Olympiad-style papers',
     'spelling-bee': 'hearing a word and typing it'
   };
 
@@ -39,7 +39,7 @@
       intro: 'Hear a word, read the hint and type it.',
       ids: ['spelling-bee'] },
     { id: 'printables', title: 'Printables', accent: 'green', icon: 'i-printer', duo: true,
-      intro: 'Make a clean sheet for pencil-and-paper practice.',
+      intro: 'Print maths, clock pictures and Space Academy practice, with optional worked answers.',
       ids: ['worksheet-builder'] }
   ];
 

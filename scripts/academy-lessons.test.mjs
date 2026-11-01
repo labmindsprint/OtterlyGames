@@ -7,6 +7,7 @@ import { createMission } from '../js/space-academy/questions.mjs';
 import { answerChoice, diagram, escapeHTML as e } from '../js/space-academy/art.mjs';
 import { choiceDescription } from '../js/space-academy/question-display.mjs';
 import { coachingHint } from '../js/space-academy/coaching.mjs';
+import { parseSettings } from '../js/worksheet-generator.mjs';
 
 const pages = academyPages();
 const pageAt = route => {
@@ -107,4 +108,41 @@ test('all 175 interactive examples preserve their actual prompt, figures, constr
   }
   assert.equal(checked, 175);
   assert.ok(pictureChoices > 20, 'Exercise actual SVG choices, not only text answers');
+});
+
+test('search-facing headings and chapter links describe the practice without presenting PP grades as Olympiad levels', () => {
+  assert.match(pageAt('/learn/olympiad/'), /<h1>Maths Olympiad Practice for Classes 1-5<\/h1>/);
+  for (const grade of GRADES) {
+    const gradeHTML = pageAt(`/learn/olympiad/${grade.id}/`);
+    const practice = grade.year > 0 ? 'Maths Olympiad Practice' : 'Maths &amp; Picture Reasoning Practice';
+    assert.ok(gradeHTML.includes(`<h1>${e(grade.label)} ${practice}</h1>`));
+    for (const chapter of grade.chapters) {
+      assert.ok(gradeHTML.includes(`href="${chapterRoute(grade.id, chapter.id)}">${e(grade.label)} ${e(chapter.title)}</a>`));
+      const chapterHTML = pageAt(chapterRoute(grade.id, chapter.id));
+      const chapterPractice = grade.year > 0 ? 'Maths Olympiad Practice' : 'Maths &amp; Reasoning Practice';
+      assert.ok(chapterHTML.includes(`<h1>${e(grade.label)} ${e(chapter.title)}: ${chapterPractice}</h1>`));
+    }
+  }
+});
+
+test('grade and chapter worksheet links preserve the chosen curriculum and readiness limits', () => {
+  const worksheetSettings = html => {
+    const match = html.match(/href="(\/tools\/worksheet-builder\.html\?[^"]+)"/);
+    assert.ok(match, 'Offer a worksheet alongside the playable mission');
+    const url = new URL(match[1].replaceAll('&amp;', '&'), 'https://otterlygames.com');
+    const parsed = parseSettings(url.search);
+    assert.deepEqual(parsed.warnings, []);
+    return parsed.settings;
+  };
+  for (const grade of GRADES) {
+    const gradeSettings = worksheetSettings(pageAt(`/learn/olympiad/${grade.id}/`));
+    assert.equal(gradeSettings.activity, 'academy');
+    assert.equal(gradeSettings.grade, grade.id);
+    assert.equal(gradeSettings.chapter, grade.year > 0 ? 'paper' : 'mixed');
+    for (const chapter of grade.chapters) {
+      const settings = worksheetSettings(pageAt(chapterRoute(grade.id, chapter.id)));
+      assert.equal(settings.grade, grade.id);
+      assert.equal(settings.chapter, chapter.id);
+    }
+  }
 });

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif">
+<title id="t">Atom, element and molecule compared</title><desc id="d">An atom is a single particle such as one hydrogen atom. An element is a kind of atom with a set number of protons. A molecule is atoms joined together, such as water, H2O.</desc>
+<rect width="900" height="460" rx="24" fill="#1d1946"/>
+<text x="450" y="44" font-size="26" fill="#f6f3ff" font-weight="700" text-anchor="middle">Three different ideas</text>
+<rect x="24" y="66" width="276" height="280" rx="20" fill="#2c2766" stroke="#ffc94d" stroke-width="3"/>
+<text x="162" y="102" font-size="26" fill="#ffc94d" font-weight="800" text-anchor="middle">Atom</text>
+<rect x="316" y="66" width="276" height="280" rx="20" fill="#2c2766" stroke="#b79cff" stroke-width="3"/>
+<text x="454" y="102" font-size="26" fill="#b79cff" font-weight="800" text-anchor="middle">Element</text>
+<rect x="608" y="66" width="276" height="280" rx="20" fill="#2c2766" stroke="#5fe0c0" stroke-width="3"/>
+<text x="746" y="102" font-size="26" fill="#5fe0c0" font-weight="800" text-anchor="middle">Molecule</text>
+<circle cx="162" cy="205" r="62" fill="none" stroke="#9aa0b8" stroke-width="2"/>
+<circle cx="162" cy="205" r="11" fill="#ffc94d" stroke="#1d1946" stroke-width="2"/>
+<text x="162" y="210" font-size="15" fill="#2b2100" font-weight="800" text-anchor="middle">+</text>
+<circle cx="205.84062043356596" cy="161.15937956643404" r="9" fill="#5fe0c0" stroke="#1d1946" stroke-width="2"/>
+<text x="162" y="296" font-size="22" fill="#f6f3ff" font-weight="700" text-anchor="middle">H</text>
+<text x="162" y="320" font-size="16" fill="#c9c2ee" font-weight="400" text-anchor="middle">one hydrogen atom</text>
+<circle cx="410" cy="168" r="20" fill="#b79cff"/>
+<text x="410" y="175" font-size="18" fill="#1d1346" font-weight="800" text-anchor="middle">H</text>
+<circle cx="462" cy="168" r="20" fill="#b79cff"/>
+<text x="462" y="175" font-size="18" fill="#1d1346" font-weight="800" text-anchor="middle">H</text>
+<circle cx="514" cy="168" r="20" fill="#b79cff"/>
+<text x="514" y="175" font-size="18" fill="#1d1346" font-weight="800" text-anchor="middle">H</text>
+<circle cx="436" cy="224" r="20" fill="#b79cff"/>
+<text x="436" y="231" font-size="18" fill="#1d1346" font-weight="800" text-anchor="middle">H</text>
+<circle cx="488" cy="224" r="20" fill="#b79cff"/>
+<text x="488" y="231" font-size="18" fill="#1d1346" font-weight="800" text-anchor="middle">H</text>
+<text x="454" y="282" font-size="16" fill="#f6f3ff" font-weight="600" text-anchor="middle">All have 1 proton</text>
+<text x="454" y="306" font-size="16" fill="#c9c2ee" font-weight="400" text-anchor="middle">= the element hydrogen</text>
+<text x="454" y="330" font-size="16" fill="#c9c2ee" font-weight="400" text-anchor="middle">(He has 2 protons)</text>
+<line x1="748" y1="214" x2="702" y2="252" stroke="#c9c2ee" stroke-width="8" stroke-linecap="round"/>
+<line x1="748" y1="214" x2="794" y2="252" stroke="#c9c2ee" stroke-width="8" stroke-linecap="round"/>
+<circle cx="748" cy="210" r="32" fill="#ff8fb3"/>
+<text x="748" y="218" font-size="24" fill="#43101f" font-weight="800" text-anchor="middle">O</text>
+<circle cx="700" cy="258" r="22" fill="#ffc94d"/>
+<text x="700" y="266" font-size="18" fill="#2b2100" font-weight="800" text-anchor="middle">H</text>
+<circle cx="796" cy="258" r="22" fill="#ffc94d"/>
+<text x="796" y="266" font-size="18" fill="#2b2100" font-weight="800" text-anchor="middle">H</text>
+<text x="748" y="306" font-size="20" fill="#f6f3ff" font-weight="700" text-anchor="middle">H₂O (water)</text>
+<text x="748" y="330" font-size="16" fill="#c9c2ee" font-weight="400" text-anchor="middle">atoms joined by bonds</text>
+<rect x="24" y="366" width="852" height="72" rx="14" fill="#1d1946" stroke="#9aa0b8" stroke-width="2" stroke-dasharray="6 6"/>
+<text x="450" y="396" font-size="19" fill="#f6f3ff" font-weight="600" text-anchor="middle"><tspan x="450" dy="0">Atom = one particle. Element = a kind of atom, named by its protons. Molecule = atoms</tspan><tspan x="450" dy="26">bonded together.</tspan></text>
+</svg>

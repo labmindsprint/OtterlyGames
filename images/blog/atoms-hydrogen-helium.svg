@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="900" height="440" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif">
+<title id="t">Hydrogen and helium atoms in the simple shell picture</title><desc id="d">Hydrogen has one proton and one electron. Helium has two protons, two neutrons and two electrons in its first shell, which is full.</desc>
+<rect width="900" height="440" rx="24" fill="#1d1946"/>
+<text x="450" y="44" font-size="26" fill="#f6f3ff" font-weight="700" text-anchor="middle">Hydrogen and helium: the simple shell picture</text>
+<rect x="24" y="66" width="420" height="290" rx="20" fill="#2c2766" stroke="#ffc94d" stroke-width="3"/>
+<text x="234" y="104" font-size="24" fill="#f6f3ff" font-weight="800" text-anchor="middle">Hydrogen (H)</text>
+<circle cx="234" cy="200" r="64" fill="none" stroke="#9aa0b8" stroke-width="2"/>
+<circle cx="234" cy="200" r="11" fill="#ffc94d" stroke="#1d1946" stroke-width="2"/>
+<text x="234" y="205" font-size="15" fill="#2b2100" font-weight="800" text-anchor="middle">+</text>
+<circle cx="279.25483399593907" cy="154.74516600406096" r="9" fill="#5fe0c0" stroke="#1d1946" stroke-width="2"/>
+<text x="234" y="300" font-size="18" fill="#ffc94d" font-weight="700" text-anchor="middle">Atomic number 1</text>
+<text x="234" y="328" font-size="16" fill="#c9c2ee" font-weight="400" text-anchor="middle">1 proton · 0 neutrons · 1 electron</text>
+<rect x="456" y="66" width="420" height="290" rx="20" fill="#2c2766" stroke="#b79cff" stroke-width="3"/>
+<text x="666" y="104" font-size="24" fill="#f6f3ff" font-weight="800" text-anchor="middle">Helium (He)</text>
+<circle cx="666" cy="200" r="64" fill="none" stroke="#9aa0b8" stroke-width="2"/>
+<circle cx="657" cy="191" r="11" fill="#ffc94d" stroke="#1d1946" stroke-width="2"/>
+<text x="657" y="196" font-size="15" fill="#2b2100" font-weight="800" text-anchor="middle">+</text>
+<circle cx="675" cy="209" r="11" fill="#ffc94d" stroke="#1d1946" stroke-width="2"/>
+<text x="675" y="214" font-size="15" fill="#2b2100" font-weight="800" text-anchor="middle">+</text>
+<circle cx="675" cy="191" r="11" fill="#9aa0b8" stroke="#1d1946" stroke-width="2"/>
+<text x="675" y="196" font-size="15" fill="#2b2100" font-weight="800" text-anchor="middle"></text>
+<circle cx="657" cy="209" r="11" fill="#9aa0b8" stroke="#1d1946" stroke-width="2"/>
+<text x="657" y="214" font-size="15" fill="#2b2100" font-weight="800" text-anchor="middle"></text>
+<circle cx="711.2548339959391" cy="154.74516600406096" r="9" fill="#5fe0c0" stroke="#1d1946" stroke-width="2"/>
+<circle cx="620.7451660040609" cy="245.25483399593904" r="9" fill="#5fe0c0" stroke="#1d1946" stroke-width="2"/>
+<text x="666" y="300" font-size="18" fill="#b79cff" font-weight="700" text-anchor="middle">Atomic number 2</text>
+<text x="666" y="328" font-size="16" fill="#c9c2ee" font-weight="400" text-anchor="middle">2 protons · 2 neutrons · 2 electrons</text>
+<circle cx="60" cy="396" r="9" fill="#ffc94d"/>
+<text x="76" y="402" font-size="16" fill="#f6f3ff" font-weight="400" text-anchor="start">proton (+)</text>
+<circle cx="210" cy="396" r="9" fill="#9aa0b8"/>
+<text x="226" y="402" font-size="16" fill="#f6f3ff" font-weight="400" text-anchor="start">neutron</text>
+<circle cx="340" cy="396" r="9" fill="#5fe0c0"/>
+<text x="356" y="402" font-size="16" fill="#f6f3ff" font-weight="400" text-anchor="start">electron (−)</text>
+<text x="500" y="392" font-size="15" fill="#c9c2ee" font-weight="400" text-anchor="start"><tspan x="500" dy="0">Simplified: real electrons behave more like clouds than</tspan><tspan x="500" dy="20">planets.</tspan></text>
+</svg>

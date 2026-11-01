@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif">
+<title id="t">A suggested weekly Space Academy practice routine</title><desc id="d">Four steps: a short chapter mission on most days, talking through one answer, one mock test a week, then choosing what to revisit or resting.</desc>
+<rect width="900" height="400" rx="24" fill="#1d1946"/>
+<text x="450" y="46" font-size="26" fill="#f6f3ff" font-weight="700" text-anchor="middle">A calm weekly rhythm (a suggestion, not a rule)</text>
+<rect x="30" y="80" width="200" height="290" rx="18" fill="#2c2766" stroke="#ffc94d" stroke-width="3"/>
+<circle cx="64" cy="122" r="22" fill="#ffc94d"/>
+<text x="64" y="131" font-size="24" fill="#20143b" font-weight="800" text-anchor="middle">1</text>
+<text x="96" y="128" font-size="17" fill="#ffc94d" font-weight="700" text-anchor="start">Most days</text>
+<text x="48" y="190" font-size="22" fill="#f6f3ff" font-weight="700" text-anchor="start"><tspan x="48" dy="0">One chapter</tspan><tspan x="48" dy="30">mission</tspan></text>
+<text x="48" y="262" font-size="17" fill="#c9c2ee" font-weight="400" text-anchor="start"><tspan x="48" dy="0">About 10 minutes.</tspan><tspan x="48" dy="23">Stop while it is</tspan><tspan x="48" dy="23">still fun.</tspan></text>
+<rect x="245" y="80" width="200" height="290" rx="18" fill="#2c2766" stroke="#b79cff" stroke-width="3"/>
+<circle cx="279" cy="122" r="22" fill="#b79cff"/>
+<text x="279" y="131" font-size="24" fill="#20143b" font-weight="800" text-anchor="middle">2</text>
+<text x="311" y="128" font-size="17" fill="#b79cff" font-weight="700" text-anchor="start">Every mission</text>
+<text x="263" y="190" font-size="22" fill="#f6f3ff" font-weight="700" text-anchor="start"><tspan x="263" dy="0">Talk one answer</tspan><tspan x="263" dy="30">through</tspan></text>
+<text x="263" y="262" font-size="17" fill="#c9c2ee" font-weight="400" text-anchor="start"><tspan x="263" dy="0">Ask “How did you</tspan><tspan x="263" dy="23">know?” Read the hint</tspan><tspan x="263" dy="23">and explanation</tspan><tspan x="263" dy="23">together.</tspan></text>
+<rect x="460" y="80" width="200" height="290" rx="18" fill="#2c2766" stroke="#5fe0c0" stroke-width="3"/>
+<circle cx="494" cy="122" r="22" fill="#5fe0c0"/>
+<text x="494" y="131" font-size="24" fill="#20143b" font-weight="800" text-anchor="middle">3</text>
+<text x="526" y="128" font-size="17" fill="#5fe0c0" font-weight="700" text-anchor="start">Once a week</text>
+<text x="478" y="190" font-size="22" fill="#f6f3ff" font-weight="700" text-anchor="start"><tspan x="478" dy="0">One mock test</tspan></text>
+<text x="478" y="262" font-size="17" fill="#c9c2ee" font-weight="400" text-anchor="start"><tspan x="478" dy="0">35 untimed questions</tspan><tspan x="478" dy="23">in Classes 1–5. Costs</tspan><tspan x="478" dy="23">1 fuel; the first is</tspan><tspan x="478" dy="23">free.</tspan></text>
+<rect x="675" y="80" width="200" height="290" rx="18" fill="#2c2766" stroke="#ff8fb3" stroke-width="3"/>
+<circle cx="709" cy="122" r="22" fill="#ff8fb3"/>
+<text x="709" y="131" font-size="24" fill="#20143b" font-weight="800" text-anchor="middle">4</text>
+<text x="741" y="128" font-size="17" fill="#ff8fb3" font-weight="700" text-anchor="start">After the test</text>
+<text x="693" y="190" font-size="22" fill="#f6f3ff" font-weight="700" text-anchor="start"><tspan x="693" dy="0">Choose one</tspan><tspan x="693" dy="30">thing</tspan></text>
+<text x="693" y="262" font-size="17" fill="#c9c2ee" font-weight="400" text-anchor="start"><tspan x="693" dy="0">Revisit one chapter</tspan><tspan x="693" dy="23">next week, or simply</tspan><tspan x="693" dy="23">rest.</tspan></text>
+</svg>

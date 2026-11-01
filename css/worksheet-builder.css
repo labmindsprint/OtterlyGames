@@ -147,6 +147,49 @@
   font-size: 1.05rem;
 }
 .worksheet-key-list li { margin-bottom: .75rem; padding-left: .25rem; break-inside: avoid; }
+.worksheet-source { margin-block: 1rem; }
+.worksheet-source p { margin: 0; }
+.worksheet-picture-body { display: grid; gap: .3rem; justify-items: start; min-width: 0; }
+.worksheet-picture-caption { color: #475569; font-size: .8rem; }
+.worksheet-picture-art { display: block; max-width: 100%; height: auto; }
+.picture-counter { fill: #f59e0b; stroke: #92400e; stroke-width: 1; }
+.picture-group { fill: #fffbeb; stroke: #94a3b8; stroke-width: 1; }
+.picture-plate { fill: #fff; stroke: #475569; stroke-width: 1.5; }
+.worksheet-sheet[data-activity="multiplication-array"] .worksheet-questions,
+.worksheet-sheet[data-activity="division-groups"] .worksheet-questions,
+.worksheet-sheet[data-activity="addition"] .worksheet-questions,
+.worksheet-sheet[data-activity="subtraction"] .worksheet-questions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.worksheet-sheet[data-activity="multiplication-array"] .worksheet-question,
+.worksheet-sheet[data-activity="division-groups"] .worksheet-question { align-items: flex-start; min-height: 110px; }
+.worksheet-sheet[data-activity="academy"] .worksheet-questions { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+.worksheet-section-heading {
+  grid-column: 1 / -1;
+  margin-top: .5rem;
+  padding-bottom: .25rem;
+  border-bottom: 1px solid #c7ced8;
+  color: #1d2634;
+  font-weight: 700;
+  break-after: avoid;
+}
+.worksheet-mcq { align-items: flex-start; flex-wrap: nowrap; }
+.worksheet-mcq-body { flex: 1; min-width: 0; }
+.worksheet-mcq-prompt { margin: 0 0 .4rem; font-size: 1.05rem; font-weight: 600; overflow-wrap: anywhere; }
+.worksheet-mcq .sa-diagram, .worksheet-mcq svg { max-width: 100%; height: auto; }
+.worksheet-options { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; margin: .5rem 0 0; padding: 0; list-style: none; }
+.worksheet-option { display: inline-flex; align-items: center; gap: .4rem; min-width: 0; overflow-wrap: anywhere; }
+.worksheet-option-letter {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 1.5px solid #475569;
+  border-radius: 50%;
+  font-size: .85rem;
+  font-weight: 700;
+}
+.worksheet-sheet[data-activity="academy"] .worksheet-key-list { columns: 1; }
+.worksheet-key-number { margin-right: .35rem; color: #475569; }
+.worksheet-key-explanation { display: block; margin-top: .15rem; color: #334155; font-size: .9rem; overflow-wrap: anywhere; }
 @media (max-width: 600px) {
   .worksheet-fields { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
   .worksheet-sheet { padding: 1rem; }
@@ -205,6 +248,20 @@
   .worksheet-sheet[data-count="20"] .worksheet-question { padding: 0; }
   .worksheet-sheet[data-count="20"] .clock-number { font-size: 20px; }
   .worksheet-sheet .worksheet-sheet-footer { margin-top: 2mm; padding-top: 2mm; font-size: 7pt; }
+  .worksheet-builder .worksheet-sheet[data-activity="academy"] .worksheet-questions {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2mm;
+  }
+  .worksheet-mcq { break-inside: avoid; min-height: 0; }
+  .worksheet-mcq-prompt { font-size: 10.5pt; }
+  .worksheet-options { font-size: 10pt; gap: 1mm 6mm; }
+  .worksheet-option-letter { width: 5.5mm; height: 5.5mm; font-size: 8pt; }
+  .worksheet-mcq svg { max-height: 32mm; }
+  .worksheet-picture-art { max-width: 100%; }
+  .worksheet-sheet[data-activity="multiplication-array"] .worksheet-question,
+  .worksheet-sheet[data-activity="division-groups"] .worksheet-question { min-height: 0; }
   .worksheet-answer-key { break-before: page; }
   .worksheet-key-list { font-size: 12pt; }
+  .worksheet-sheet[data-activity="academy"] .worksheet-key-list { font-size: 9.5pt; }
+  .worksheet-key-explanation { font-size: 8.5pt; }
 }

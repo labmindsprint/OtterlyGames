@@ -14,6 +14,8 @@ parser.add_argument("--url", default="http://127.0.0.1:4196")
 parser.add_argument("--output", type=Path, required=True)
 parser.add_argument("--only-fresh-seed-failure", action="store_true",
                     help="Run only the random-seed failure regression, without the responsive matrix.")
+parser.add_argument("--only-academy-loading", action="store_true",
+                    help="Run only the Space Academy delayed/failed loading regressions.")
 args = parser.parse_args()
 args.output.mkdir(parents=True, exist_ok=True)
 
@@ -124,10 +126,75 @@ def check_fresh_seed_failure(browser):
     report["checks"].append("Thrown getRandomValues explicitly reported; existing questions, answers, seed, URL and ready/dirty print/share states preserved; manual seed Build recovers without randomness")
 
 
+def check_academy_loading(browser):
+    ready = "document.querySelector('#builder-feedback').textContent.includes('ready')"
+    sheet = "document.querySelector('#worksheet').dataset.activity"
+    styles = "document.querySelectorAll('link[href*=\"space-academy.css\"]').length"
+    start = "?activity=multiplication&table=6&count=10&seed=keep"
+
+    # Editing while the Academy module is still loading must not let the old build override the edit.
+    context = browser.new_context(viewport={"width": 1100, "height": 900})
+    page = context.new_page()
+    page.route("**/js/worksheet-academy.mjs", lambda route: (page.wait_for_timeout(1500), route.continue_()))
+    page.goto(args.url + BUILDER + start, wait_until="networkidle")
+    page.wait_for_function(ready)
+    page.select_option("#activity", "academy")
+    page.get_by_role("button", name="Build this sheet", exact=True).click()
+    page.select_option("#activity", "addition")
+    page.fill("#sheet-seed", "edited")
+    page.wait_for_timeout(3500)
+    assert page.evaluate(sheet) == "multiplication"
+    assert "activity=academy" not in page.evaluate("location.search")
+    expect(page.locator("#builder-feedback")).to_contain_text("Settings changed")
+    page.get_by_role("button", name="Build this sheet", exact=True).click()
+    page.wait_for_function(sheet + "==='addition'")
+    context.close()
+
+    # A failed stylesheet is reported, keeps the sheet, leaves no failed links and can be retried.
+    context = browser.new_context(viewport={"width": 1100, "height": 900})
+    page = context.new_page()
+    blocked = {"on": True}
+    page.route("**/css/space-academy.css", lambda route: route.abort() if blocked["on"] else route.continue_())
+    page.goto(args.url + BUILDER + start, wait_until="networkidle")
+    page.wait_for_function(ready)
+    page.select_option("#activity", "academy")
+    for _ in range(2):
+        page.get_by_role("button", name="Build this sheet", exact=True).click()
+        expect(page.locator("#builder-feedback")).to_contain_text("could not be")
+        assert page.evaluate(sheet) == "multiplication"
+        assert page.evaluate(styles) == 0
+    blocked["on"] = False
+    page.get_by_role("button", name="Build this sheet", exact=True).click()
+    page.wait_for_function(sheet + "==='academy'")
+    assert page.evaluate(styles) == 1
+    context.close()
+
+    # A failed module is reported when the Academy option is chosen, and a retry recovers.
+    context = browser.new_context(viewport={"width": 1100, "height": 900})
+    page = context.new_page()
+    blocked = {"on": True}
+    page.route("**/js/worksheet-academy.mjs", lambda route: route.abort() if blocked["on"] else route.continue_())
+    page.goto(args.url + BUILDER + start, wait_until="networkidle")
+    page.wait_for_function(ready)
+    page.select_option("#activity", "academy")
+    expect(page.locator("#builder-feedback")).to_contain_text("could not be loaded")
+    assert page.evaluate(sheet) == "multiplication"
+    blocked["on"] = False
+    page.get_by_role("button", name="Build this sheet", exact=True).click()
+    page.wait_for_function(sheet + "==='academy'")
+    context.close()
+    report["checks"].append("Academy loading: editing during a delayed import is not overridden; stylesheet and module failures are reported, keep the sheet, leave no failed links and recover on retry")
+
+
 with sync_playwright() as playwright:
     browser = playwright.chromium.launch()
     try:
         assert playwright.request.new_context().get(args.url + BUILDER).status == 200
+        if args.only_academy_loading:
+            check_academy_loading(browser)
+            report["passed"] = True
+            print(json.dumps({"passed": True, "checks": report["checks"]}, indent=2))
+            raise SystemExit(0)
         if args.only_fresh_seed_failure:
             check_fresh_seed_failure(browser)
             assert not report["errors"], report["errors"]

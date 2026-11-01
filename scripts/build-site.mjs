@@ -647,7 +647,7 @@ export function buildSite({ root = resolve(dirname(fileURLToPath(import.meta.url
     const seenTitles = new Map();
     const seenDescriptions = new Map();
     const stage = (file, before, after, removals = []) => {
-      if (before !== after) result.changes.push({ file, before, after, removals });
+      if (before.replaceAll('\r\n', '\n') !== after.replaceAll('\r\n', '\n')) result.changes.push({ file, before, after, removals });
     };
     const safeRead = (file) => {
       const target = join(root, file);

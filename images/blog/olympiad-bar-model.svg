@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif">
+<title id="t">Bar model for a Class 3 style word problem</title><desc id="d">Pip has one bar of 12 stickers. Roo has three bars of 12 stickers. Together there are four bars of 12, which is 48.</desc>
+<rect width="900" height="400" rx="24" fill="#1d1946"/>
+<text x="450" y="50" font-size="26" fill="#f6f3ff" font-weight="700" text-anchor="middle">Pip has 12 star stickers. Roo has 3 times as many.</text>
+<text x="450" y="82" font-size="22" fill="#c9c2ee" font-weight="400" text-anchor="middle">How many stickers do they have altogether?</text>
+<text x="40" y="150" font-size="24" fill="#ffc94d" font-weight="700" text-anchor="start">Pip</text>
+<rect x="130" y="116" width="160" height="56" rx="8" fill="#ffc94d"/>
+<text x="210" y="153" font-size="28" fill="#2b2100" font-weight="800" text-anchor="middle">12</text>
+<text x="40" y="230" font-size="24" fill="#b79cff" font-weight="700" text-anchor="start">Roo</text>
+<rect x="130" y="196" width="160" height="56" rx="8" fill="#b79cff" stroke="#1d1946" stroke-width="4"/>
+<text x="210" y="233" font-size="28" fill="#1d1346" font-weight="800" text-anchor="middle">12</text>
+<rect x="290" y="196" width="160" height="56" rx="8" fill="#b79cff" stroke="#1d1946" stroke-width="4"/>
+<text x="370" y="233" font-size="28" fill="#1d1346" font-weight="800" text-anchor="middle">12</text>
+<rect x="450" y="196" width="160" height="56" rx="8" fill="#b79cff" stroke="#1d1946" stroke-width="4"/>
+<text x="530" y="233" font-size="28" fill="#1d1346" font-weight="800" text-anchor="middle">12</text>
+<path d="M620 116 Q646 116 646 142 L646 226 Q646 252 620 252" fill="none" stroke="#5fe0c0" stroke-width="4" stroke-linecap="round"/>
+<text x="670" y="176" font-size="24" fill="#5fe0c0" font-weight="700" text-anchor="start">Altogether</text>
+<text x="670" y="210" font-size="28" fill="#5fe0c0" font-weight="800" text-anchor="start">= ?</text>
+<rect x="40" y="290" width="820" height="86" rx="14" fill="#2c2766"/>
+<text x="64" y="328" font-size="24" fill="#f6f3ff" font-weight="600" text-anchor="start">Roo: 3 × 12 = 36</text>
+<text x="64" y="360" font-size="24" fill="#f6f3ff" font-weight="600" text-anchor="start">Together: 12 + 36 = 48   (or 4 equal bars: 4 × 12 = 48)</text>
+</svg>

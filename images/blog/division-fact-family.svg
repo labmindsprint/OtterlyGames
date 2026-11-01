@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="900" height="440" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif">
+<title id="t">Fact family triangle for 3, 4 and 12</title><desc id="d">A triangle with 12 at the top and 3 and 4 at the bottom corners. It gives 3 times 4 equals 12, 4 times 3 equals 12, 12 divided by 3 equals 4 and 12 divided by 4 equals 3.</desc>
+<rect width="900" height="440" rx="24" fill="#1d1946"/>
+<text x="450" y="46" font-size="26" fill="#f6f3ff" font-weight="700" text-anchor="middle">One triangle, four facts</text>
+<polygon points="230,100 80,370 380,370" fill="#2c2766" stroke="#b79cff" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="230" cy="100" r="46" fill="#ffc94d"/>
+<text x="230" y="112" font-size="34" fill="#2b2100" font-weight="800" text-anchor="middle">12</text>
+<circle cx="80" cy="370" r="46" fill="#5fe0c0"/>
+<text x="80" y="382" font-size="34" fill="#06352b" font-weight="800" text-anchor="middle">3</text>
+<circle cx="380" cy="370" r="46" fill="#ff8fb3"/>
+<text x="380" y="382" font-size="34" fill="#43101f" font-weight="800" text-anchor="middle">4</text>
+<text x="230" y="296" font-size="17" fill="#c9c2ee" font-weight="400" text-anchor="middle">the product</text>
+<text x="230" y="270" font-size="15" fill="#c9c2ee" font-weight="400" text-anchor="middle">(top)</text>
+<rect x="500" y="90" width="360" height="290" rx="18" fill="#2c2766"/>
+<text x="530" y="145" font-size="32" fill="#f6f3ff" font-weight="700" text-anchor="start">3 × 4 = 12</text>
+<text x="530" y="195" font-size="32" fill="#f6f3ff" font-weight="700" text-anchor="start">4 × 3 = 12</text>
+<text x="530" y="259" font-size="32" fill="#ffc94d" font-weight="700" text-anchor="start">12 ÷ 3 = 4</text>
+<text x="530" y="309" font-size="32" fill="#ffc94d" font-weight="700" text-anchor="start">12 ÷ 4 = 3</text>
+<line x1="530" y1="208" x2="830" y2="208" stroke="#9aa0b8" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6"/>
+<text x="530" y="346" font-size="16" fill="#c9c2ee" font-weight="400" text-anchor="start"><tspan x="530" dy="0">Multiply the two factors to get 12. Divide</tspan><tspan x="530" dy="22">12 by one factor to get the other.</tspan></text>
+</svg>

@@ -112,8 +112,15 @@ print styles (`css\style.css`, `css\worksheet-builder.css`) still apply. The
 Parents page uses Theme B via `css\parents.css` and `js\parents.js`: a contents
 list plus `<details>` accordions, all opened when printing.
 
-`tools\worksheet-builder.html` generates multiplication, exact-division and
-analogue-clock sheets in the browser. Shared URLs contain settings and a seed,
+`tools\worksheet-builder.html` generates addition, subtraction, multiplication,
+exact division, visual equal-groups/sharing and analogue-clock sheets in the
+browser. Space Academy sheets load its production question generator and picture
+renderer on demand via `js\worksheet-academy.mjs`: choose PP1 through Class 5,
+a chapter or mixed practice, and Explore, Reason or Stretch. Classes 1-4 also
+offer original 35-question practice papers; Class 5 papers have 50 questions.
+Pre-primary sheets are readiness practice, not exam papers. The optional
+separate answer key includes worked explanations for Academy questions.
+Shared URLs contain settings and a seed,
 not answers, saved progress or student information. Questions are reproducible;
 fixed-table activities cap at their unique fact bank rather than repeat items.
 Printing supports A4 or Letter and an optional separate answer key.
@@ -121,6 +128,7 @@ Printing supports A4 or Letter and an optional separate answer key.
 ```powershell
 node --test .\scripts\worksheet-generator.test.mjs
 python .\scripts\check-growth-learning.py --url http://127.0.0.1:4195 --output <outside-repo-folder>
+python .\scripts\check-growth-learning.py --url http://127.0.0.1:4195 --output <outside-repo-folder> --only-academy-loading
 python .\scripts\check-site-growth.py --url http://127.0.0.1:4195 --output <outside-repo-folder> --lab
 ```
 
