@@ -53,6 +53,9 @@ it does **not** run this script automatically. Keep the root `.nojekyll` so
 - Add tools/posts to `_data\tools.json` or `_data\blogs.json` as well. The build
   regenerates the hub noscript fallbacks, tool counts and tools `ItemList`, and
   fails if the registries and public detail routes disagree.
+- New blog routes also belong in `_data\web-ads.json` under
+  `placements.blogArticleEnd.paths`. Its disabled placement registry must match
+  the blog registry; adding a route does not enable ads or change approval gates.
 - Re-run the build after changing any shared include or registry. A page's
   content outside generated blocks remains ordinary editable HTML.
 
