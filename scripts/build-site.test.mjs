@@ -7,7 +7,7 @@ import { randomUUID } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import {
   ARCHIVE_ROUTES, buildSite, htmlTokens, normalizeRoute, renderSitemap, rewriteKnownAssets,
-  stripPublicPolicy, transformArchive, transformPublicPage, validateInventory, validateTemplates,
+  stripPublicPolicy, transformArchive, transformPublicPage, validateInventory, validateRobots, validateTemplates,
 } from './build-site.mjs';
 import { academyPages, buildAcademy } from './build-space-academy.mjs';
 
@@ -49,6 +49,7 @@ function fixture(t, { pages = [{ route: '/', adsenseVerification: true }], files
     [join('_includes', 'editorial-ad.html')]: editorialTemplate,
     'index.html': html(),
     'sitemap.xml': 'old sitemap',
+    'robots.txt': `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`,
     ...files,
   })) write(file, contents);
   t.after(() => {
@@ -348,6 +349,56 @@ test('noindexes only the explicit archive allowlist without stripping its code/a
     head: '<meta name="robots" content="noindex, nofollow">',
   });
   assert.equal(transformArchive(privatePage, '/sangram.html'), privatePage);
+});
+
+test('public metadata rejects Googlebot-specific noindex without silently removing authored directives', () => {
+  for (const name of ['robots', 'googlebot', 'Googlebot']) {
+    for (const content of ['noindex,follow', 'none']) {
+      const source = html('<main><h1>Guide</h1></main>', { head: `<meta name="${name}" content="${content}">` });
+      assert.throws(() => transform(source), /public inventory route cannot be noindex/);
+    }
+  }
+  const source = html('<main><h1>Guide</h1></main>', { head: '<meta name="googlebot" content="max-image-preview:large">' });
+  assert.match(transform(source).html, /name="googlebot" content="max-image-preview:large"/);
+});
+
+test('robots guards require the current sitemap and allow public routes, not every runtime or query variant', () => {
+  const inventory = { origin, pages: ['/', '/blog/guide.html', '/tools/'] };
+  const sitemap = `Sitemap: ${origin}/sitemap.xml`;
+  assert.doesNotThrow(() => validateRobots(`User-agent: *\nAllow: /\n${sitemap}`, inventory));
+  assert.throws(() => validateRobots('User-agent: *\nAllow: /', inventory), /Missing Sitemap/);
+  assert.throws(() => validateRobots(`Sitemap: ${origin}/Arcade`, inventory), /Missing Sitemap/);
+  assert.throws(() => validateRobots(`User-agent: *\nDisallow: /blog/\n${sitemap}`, inventory),
+    /googlebot is blocked.*\/blog\/guide\.html/);
+  assert.throws(() => validateRobots(`User-agent: Googlebot\nDisallow: /*.html$\n${sitemap}`, inventory),
+    /googlebot is blocked/);
+  assert.throws(() => validateRobots(`User-agent: Mediapartners-Google\nDisallow: /\n${sitemap}`, inventory),
+    /mediapartners-google is blocked/);
+  assert.doesNotThrow(() => validateRobots(`User-agent: *\nDisallow: /games/\nDisallow: /*?mode=*\n${sitemap}`, inventory));
+});
+
+test('robots respects specific crawler groups, merged groups, longest matches and allow ties', () => {
+  const inventory = { origin, pages: ['/', '/blog/guide.html'] };
+  const sitemap = `Sitemap: ${origin}/sitemap.xml`;
+  assert.doesNotThrow(() => validateRobots(`User-agent: *\nDisallow: /blog/\nAllow: /blog/guide.html\n${sitemap}`, inventory));
+  assert.doesNotThrow(() => validateRobots(`User-agent: *\nDisallow: /blog/\nAllow: /blog/\n${sitemap}`, inventory));
+  assert.doesNotThrow(() => validateRobots(`User-agent: Otherbot\nDisallow: /\nUser-agent: *\nAllow: /\n${sitemap}`, inventory));
+  assert.doesNotThrow(() => validateRobots(`User-agent: *\nDisallow: /\nUser-agent: Googlebot\nUser-agent: Mediapartners-Google\nDisallow:\n${sitemap}`, inventory));
+  assert.doesNotThrow(() => validateRobots(`User-agent: Googlebot\nDisallow: /blog/\nUser-agent: Googlebot\nAllow: /blog/guide.html # a real exception\n${sitemap}`, inventory));
+  assert.throws(() => validateRobots(`User-agent: *\nAllow: /\nUser-agent: Googlebot\nDisallow: /blog/\n${sitemap}`, inventory),
+    /googlebot is blocked/);
+});
+
+test('robots discovery failures stop every build write without rewriting crawler policy', (t) => {
+  const blocked = `User-agent: *\nDisallow: /\nSitemap: ${origin}/sitemap.xml\n`;
+  const f = fixture(t, { files: { 'robots.txt': blocked } });
+  const source = f.read('index.html');
+  const result = buildSite({ root: f.root, write: true });
+  assert.match(result.errors.join('\n'), /googlebot is blocked/);
+  assert.equal(result.wrote, false);
+  assert.equal(f.read('index.html'), source);
+  assert.equal(f.read('sitemap.xml'), 'old sitemap');
+  assert.equal(f.read('robots.txt'), blocked);
 });
 
 test('generates matching tools/blog fallback links, text, static counts and ItemList schema', (t) => {

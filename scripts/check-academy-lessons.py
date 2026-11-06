@@ -73,12 +73,28 @@ def geometry(page):
         return {left:r.left, right:r.right, width:r.width, height:r.height};
       };
       const visible = node => node.getClientRects().length && bounds(node).height > 0;
+      const luminance = color => {
+        const channels = color.match(/[\\d.]+/g).slice(0, 3).map(Number).map(value => {
+          value /= 255;
+          return value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4;
+        });
+        return channels[0] * .2126 + channels[1] * .7152 + channels[2] * .0722;
+      };
+      const reasoningContrast = [...main.querySelectorAll('.al-path > li')].filter(visible).map(node => {
+        const background = luminance(getComputedStyle(node.closest('.al-sample')).backgroundColor);
+        const colors = [getComputedStyle(node).color, getComputedStyle(node, '::marker').color];
+        return {text:node.textContent.trim(), colors, ratios:colors.map(color => {
+          const foreground = luminance(color);
+          return (Math.max(foreground, background) + .05) / (Math.min(foreground, background) + .05);
+        })};
+      });
       const nodes = [...main.querySelectorAll(
         '.al-sample,.al-practice,.al-problem,.al-answers,.al-answer,.al-static-answer,.al-help,.growth-card,.al-notes-body'
       )].filter(visible);
       const controls = [...main.querySelectorAll('button,summary,.growth-button')].filter(visible);
       return {
         width:innerWidth, documentWidth:document.documentElement.scrollWidth,
+        reasoningContrast,
         main:bounds(main), textSize:getComputedStyle(main).fontSize,
         outside:nodes.filter(node => bounds(node).left < -1 || bounds(node).right > innerWidth + 1)
           .map(node => ({class:node.className,...bounds(node)})),
@@ -100,6 +116,7 @@ def geometry(page):
     assert not result["overflow"], result
     assert not result["small"], result
     assert not result["broken"], result
+    assert all(ratio >= 4.5 for step in result["reasoningContrast"] for ratio in step["ratios"]), result
     assert all(picture["description"] and picture["width"] > 0 and picture["height"] > 0
                for picture in result["pictures"]), result
     return result
@@ -195,6 +212,7 @@ def run(args, report, save):
             storage_before = page.evaluate("window.__lessonStorageCalls")
             if row["examples"]:
                 choose(page.locator("[data-lesson-sample]").first, row["examples"][0])
+                metrics = geometry(page)
             assert page.evaluate("window.__lessonStorageCalls") == storage_before
             report["routes"].append({"route": row["route"], "examples": len(row["examples"]),
                                      "geometry": metrics})
@@ -316,9 +334,18 @@ def run(args, report, save):
         page.wait_for_load_state("networkidle")
         assert urlparse(page.url).path == "/play/space-academy.html", page.url
         assert parse_qs(urlparse(page.url).query) == parse_qs(urlparse(expected_link).query), page.url
-        expect(page.locator("#academy")).to_have_attribute("data-screen", "welcome")
-        report["game_link"] = {"settings_preserved": True, "deliberate_play_required": True,
-                               "url": page.url}
+        frame = page.locator("#universe-frame")
+        assert frame.get_attribute("src") is None, "The game must wait for deliberate play."
+        expect(page.locator("#game-placeholder")).to_be_visible()
+        page.get_by_role("button", name="Play Space Academy", exact=True).click()
+        expect(frame).to_have_attribute("src", "/play/pit-stop.html")
+        game = page.frame_locator("#universe-frame")
+        expect(game.locator("body")).to_have_attribute("data-screen", "guide", timeout=15000)
+        expect(game.get_by_role("heading", name="Welcome to Otterly Space Academy!", exact=True)).to_be_visible()
+        screenshot(page, args.output, "game-link-onboarding.png")
+        report["game_link"] = {"url_parameters_preserved": True, "deliberate_play_required": True,
+                               "game_loaded": True, "entry_screen": "guide", "url": page.url,
+                               "limitation": "The current game opens onboarding; lesson chapter/seed parameters are not applied automatically."}
         assert not report["page_errors"], report["page_errors"]
         assert not report["console_errors"], report["console_errors"]
         assert not report["http_errors"], report["http_errors"]

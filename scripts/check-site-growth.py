@@ -78,7 +78,7 @@ def run():
             raise RuntimeError(f"Static preview is not responsive: {response.status}")
         probe.close()
 
-        def page_check(route, size, javascript=True, lab=False, keyboard=False):
+        def page_check(route, size, javascript=True, lab=False, keyboard=False, text_percent=100):
             context = browser.new_context(
                 viewport={"width": size[0], "height": size[1]},
                 java_script_enabled=javascript, reduced_motion="reduce",
@@ -107,6 +107,8 @@ def run():
             try:
                 response = page.goto(base + route, wait_until="load", timeout=45000)
                 assert response.status == 200, response.status
+                if text_percent != 100:
+                    page.add_style_tag(content=f"html {{ font-size:{text_percent}% !important; }}")
                 if route in STANDALONE:
                     expect(page.locator(".game-topbar")).to_be_visible()
                 else:
@@ -226,12 +228,14 @@ def run():
                         links.add(parsed.path)
                 assert not issues, issues
                 assert not external, external
-                if size == (390, 844) or route in ART and size == (1366, 768) or lab:
+                if size == (390, 844) or route in ART and size == (1366, 768) or route == "/learn/" or lab:
                     page.evaluate("scrollTo({top:0,behavior:'instant'})")
                     name = (route.strip("/").replace("/", "-").replace(".html", "") or "home")
                     suffix = "-nojs" if not javascript else "-lab" if lab else ""
+                    if text_percent != 100:
+                        suffix += f"-text{text_percent}"
                     page.screenshot(path=str(output / f"{name}-{size[0]}x{size[1]}{suffix}.png"))
-                    if route == "/" and javascript:
+                    if route in {"/", "/learn/"} and javascript:
                         page.screenshot(path=str(output / f"{name}-{size[0]}x{size[1]}{suffix}-full.png"), full_page=True)
                 return {"route": route, "size": size, "javascript": javascript,
                         "metrics": metrics, "externalRequests": external}
@@ -250,10 +254,13 @@ def run():
                 record(f"page-{route}-{size[0]}x{size[1]}", lambda r=route, s=size: page_check(r, s))
         for route in ["/", "/tools/", "/blog/", "/play/", "/learn/", "/parents/", "/apps/clock-master.html", "/apps/math-tank.html", "/apps/space-academy.html", "/apps/otter-element.html"] + [game["url"] for game in GAME_ENTRIES]:
             record(f"nojs-{route}", lambda r=route: page_check(r, (390, 844), False))
-        for route in ["/", "/play/", "/play/clock-master.html", "/play/ninja-shuriken.html", "/tools/clock-lessons.html", "/tools/multiplication-practice.html", "/blog/"]:
+        for route in ["/", "/play/", "/play/clock-master.html", "/play/ninja-shuriken.html", "/tools/clock-lessons.html", "/tools/multiplication-practice.html", "/blog/", "/learn/"]:
             for size in [(1366, 768), (390, 844)]:
                 record(f"keyboard-{route}-{size[0]}x{size[1]}",
                        lambda r=route, s=size: page_check(r, s, keyboard=True))
+        for size in [(1366, 768), (390, 844)]:
+            record(f"text200-/learn/-{size[0]}x{size[1]}",
+                   lambda s=size: page_check("/learn/", s, text_percent=200))
 
         @contextmanager
         def feature_page(size=(390, 844), motion="reduce", touch=False):
@@ -277,6 +284,57 @@ def run():
                 assert not external, external
             finally:
                 context.close()
+
+        def learn_hub_journey(size):
+            with feature_page(size) as page:
+                entries = [
+                    ("/learn/telling-time.html", 3), ("/learn/times-tables.html", 3),
+                    ("/learn/division.html", 3), ("/learn/spelling.html", 3),
+                    ("/learn/olympiad/", 2),
+                ]
+                reached = []
+                for destination, screens in entries:
+                    page.goto(base + "/learn/", wait_until="networkidle")
+                    page.evaluate("scrollTo({top:0,behavior:'instant'})")
+                    links = page.locator(f'main a[href="{destination}"]')
+                    candidates = links.evaluate_all("""elements => elements.map((element,index) => {
+                      const r = element.getBoundingClientRect();
+                      return {index,top:r.top,width:r.width,height:r.height};
+                    }).filter(r => r.width >= 44 && r.height >= 44)""")
+                    assert candidates, f"No touch-sized primary entry for {destination}"
+                    entry = min(candidates, key=lambda candidate: candidate["top"])
+                    assert 0 <= entry["top"] < size[1] * screens, (
+                        f"{destination} is buried beyond {screens} screens", entry)
+                    link = links.nth(entry["index"])
+                    link.focus()
+                    link.press("Enter")
+                    page.wait_for_url(base + destination)
+                    expect(page.locator("main h1")).to_be_visible()
+                    reached.append({"destination": destination, "entry": entry, "keyboard": True})
+
+                page.goto(base + "/learn/", wait_until="networkidle")
+                anchors = page.locator('main a[href^="#"]').evaluate_all(
+                    "elements => [...new Set(elements.map(element => element.getAttribute('href')))]")
+                for href in anchors:
+                    if href == "#":
+                        continue
+                    page.locator(f'main a[href="{href}"]').first.click()
+                    page.wait_for_function("""id => {
+                      const target = document.getElementById(id).getBoundingClientRect();
+                      const nav = document.querySelector('nav.nav').getBoundingClientRect();
+                      return target.top >= nav.bottom - 2 && target.top < innerHeight;
+                    }""", arg=urllib.parse.unquote(href[1:]))
+                for summary in page.locator("main details > summary").all():
+                    summary.focus()
+                    was_open = summary.locator("..").get_attribute("open") is not None
+                    summary.press("Space")
+                    assert (summary.locator("..").get_attribute("open") is not None) != was_open
+                page.evaluate("scrollTo({top:0,behavior:'instant'})")
+                page.screenshot(path=str(output / f"learn-journey-{size[0]}x{size[1]}.png"), full_page=True)
+                return {"entries": reached, "anchors": anchors}
+
+        for size in [(1366, 768), (390, 844)]:
+            record(f"learn-hub-journey-{size[0]}x{size[1]}", lambda s=size: learn_hub_journey(s))
 
         def catalogue_filters(route, size):
             with feature_page(size) as page:

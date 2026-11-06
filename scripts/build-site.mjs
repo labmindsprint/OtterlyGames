@@ -208,6 +208,59 @@ export function renderSitemap(inventory) {
       (p.lastmod ? `    <lastmod>${p.lastmod}</lastmod>\n` : '') + '  </url>').join('\n') + '\n</urlset>\n';
 }
 
+export function validateRobots(text, inventory) {
+  const { origin, pages } = validateInventory(inventory);
+  const groups = [];
+  const sitemaps = [];
+  let group;
+  for (const line of text.split(/\r?\n/)) {
+    const directive = /^\s*([^:#]+)\s*:\s*([^#]*)/.exec(line);
+    if (!directive) continue;
+    const name = directive[1].trim().toLowerCase();
+    const value = directive[2].trim();
+    if (name === 'sitemap') {
+      sitemaps.push(value);
+    } else if (name === 'user-agent') {
+      if (!group || group.hasRules) {
+        group = { agents: [], rules: [], hasRules: false };
+        groups.push(group);
+      }
+      group.agents.push(value.toLowerCase());
+    } else if (group && ['allow', 'disallow'].includes(name)) {
+      group.hasRules = true;
+      if (value) {
+        const anchored = value.endsWith('$');
+        const path = anchored ? value.slice(0, -1) : value;
+        const pattern = path.split('*').map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('.*');
+        group.rules.push({
+          allow: name === 'allow', specificity: path.replaceAll('*', '').length,
+          pattern: new RegExp(`^${pattern}${anchored ? '$' : ''}`),
+        });
+      }
+    }
+  }
+  if (!sitemaps.includes(`${origin}/sitemap.xml`)) {
+    throw new Error(`robots.txt: Missing Sitemap: ${origin}/sitemap.xml`);
+  }
+  // Check search and AdSense crawlers without treating runtime/query variants as public pages.
+  for (const crawler of ['googlebot', 'mediapartners-google']) {
+    const matching = groups.map((entry) => ({
+      ...entry,
+      match: Math.max(-1, ...entry.agents.map((agent) => agent === '*' ? 0 :
+        agent && crawler.startsWith(agent) ? agent.length : -1)),
+    })).filter((entry) => entry.match >= 0);
+    const specificity = Math.max(-1, ...matching.map((entry) => entry.match));
+    const rules = matching.filter((entry) => entry.match === specificity).flatMap((entry) => entry.rules);
+    for (const page of pages) {
+      const matches = rules.filter((rule) => rule.pattern.test(page.route))
+        .sort((a, b) => b.specificity - a.specificity || Number(b.allow) - Number(a.allow));
+      if (matches.length && !matches[0].allow) {
+        throw new Error(`robots.txt: ${crawler} is blocked from public inventory route ${page.route}`);
+      }
+    }
+  }
+}
+
 export function rewriteKnownAssets(html) {
   for (const [before, after] of Object.entries(ASSET_URLS)) {
     const path = before.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -503,7 +556,8 @@ function metadata(html, file) {
   if (titles.length !== 1 || !titles[0].content.trim() || descriptions.length !== 1 || !attr(descriptions[0], 'content')?.trim()) {
     throw new Error(`${file}: Public pages need one nonempty title and meta description`);
   }
-  for (const token of tokens.filter((t) => isElement(t) && t.name === 'meta' && (attr(t, 'name') ?? '').toLowerCase() === 'robots')) {
+  for (const token of tokens.filter((t) => isElement(t) && t.name === 'meta' &&
+    ['robots', 'googlebot'].includes((attr(t, 'name') ?? '').toLowerCase()))) {
     if (/\b(?:noindex|none)\b/i.test(attr(token, 'content') ?? '')) throw problem(file, html, token.start, 'A public inventory route cannot be noindex');
   }
   return { title: titles[0].content.trim(), description: attr(descriptions[0], 'content').trim() };
@@ -658,6 +712,7 @@ export function buildSite({ root = resolve(dirname(fileURLToPath(import.meta.url
       }
       return readFileSync(target, 'utf8');
     };
+    validateRobots(safeRead('robots.txt'), inventory);
     for (const page of inventory.pages) {
       const file = fileForRoute(page.route).split('/').join(sep);
       try {
@@ -700,7 +755,7 @@ function cli(args) {
   let root;
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--help') {
-      console.log('node .\\scripts\\build-site.mjs --write | --check [--root <fixture-root>]\nDefault: read-only --check. Writes only inventoried public HTML, known archive robots metadata, and sitemap.xml.');
+      console.log('node .\\scripts\\build-site.mjs --write | --check [--root <fixture-root>]\nDefault: read-only --check. Checks robots.txt sitemap discovery and public-route crawlability. Writes only inventoried public HTML, known archive robots metadata, and sitemap.xml; never rewrites robots.txt.');
       return 0;
     }
     if (args[i] === '--write' || args[i] === '--check') {

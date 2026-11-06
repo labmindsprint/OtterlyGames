@@ -209,3 +209,8 @@
   .academy-lessons .al-sample-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .academy-lessons .al-sample:has(.al-answers .sa-choice--picture) .al-sample-layout { grid-template-columns: minmax(0, 1fr); }
 }
+.academy-lessons .al-help > .al-path { margin: .25rem .25rem 1rem; padding-left: 1.5rem; color: #3d4d63; font-size: 1rem; }
+.academy-lessons .al-help > .al-path li { color: #3d4d63; }
+.academy-lessons .al-help > .al-path li::marker { color: #3d4d63; font-weight: 800; }
+.academy-lessons .al-help > .al-path-title { margin-bottom: 0; }
+.academy-lessons .al-lesson ol { padding-left: 1.4rem; }

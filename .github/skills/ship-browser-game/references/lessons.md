@@ -146,6 +146,11 @@ Make the full browser game the primary route, not a phone-sized preview or an
 Android upsell. Explain local saves consistently on every entry point. Shared
 navigation must work with a keyboard, Escape and no JavaScript; an iframe's
 correct geometry does not establish the accessibility of its surrounding page.
+Inspect the affected discovery hub itself, not only its destination pages.
+Review the full mobile page for buried primary choices, follow its real skill
+and class links, and test enlarged text with the site header still present.
+No-overflow checks alone miss poor hierarchy, excessive scrolling and clipped
+navigation at larger text sizes.
 Use website-sized artwork and self-host licensed fonts where appropriate;
 reusing a megabyte source illustration as a tiny logo can dominate page loading.
 

@@ -87,6 +87,7 @@
             <option value="bug">Bug Report</option>
             <option value="feature">Feature Request</option>
             <option value="question">Question</option>
+            <option value="editorial-correction">Editorial correction or feedback</option>
             <option value="otter-element-privacy">Otter Element privacy or data deletion</option>
             <option value="partnership">Partnership / Business</option>
             <option value="other">Other</option>
@@ -112,7 +113,7 @@
         <p>Thanks for reaching out! We'll get back to you soon.</p>
       </div>
 
-      <p class="form-note">We aim to reply within five business days. No child account or game-save details are needed to send a message.</p>
+        <p class="form-note">We aim to reply within five business days. No child account or game-save details are needed to send a message. To report a mistake in a guide, choose "Editorial correction or feedback"; see our <a href="/editorial-policy.html">editorial policy</a>.</p>
     </div>
   </section>
 
@@ -142,7 +143,7 @@
           throw new Error('Form submission failed');
         }
       } catch (error) {
-        alert('Oops! Something went wrong. Please try again or email us directly.');
+        alert('Oops! Something went wrong. Please try again later.');
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
       }
@@ -169,6 +170,7 @@
   <div class="footer-links footer-links--small">
     <a href="/contact.html">Contact &amp; support</a>
     <a href="/support.html">Support &amp; partnerships</a>
+    <a href="/editorial-policy.html">Editorial policy</a>
     <a href="/privacy.html">Privacy</a>
     <a href="/terms.html">Terms</a>
   </div>

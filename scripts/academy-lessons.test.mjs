@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { academyPages } from './build-space-academy.mjs';
+import { FAMILY_GUIDES, academyPages } from './build-space-academy.mjs';
+import { CHAPTER_GUIDES } from './academy-guides/chapters.mjs';
 import { CONTENT_VERSION, GRADES, LEVELS, chapterRoute, gameLink } from '../js/space-academy/curriculum.mjs';
 import { createMission } from '../js/space-academy/questions.mjs';
 import { answerChoice, diagram, escapeHTML as e } from '../js/space-academy/art.mjs';
@@ -145,4 +146,29 @@ test('grade and chapter worksheet links preserve the chosen curriculum and readi
       assert.equal(settings.chapter, chapter.id);
     }
   }
+});
+
+test('every chapter, grade and rendered example family carries authored teaching, not boilerplate', () => {
+  const methodSteps = new Set();
+  for (const grade of GRADES) {
+    const gradeHTML = pageAt('/learn/olympiad/' + grade.id + '/');
+    assert.match(gradeHTML, /id="grade-routine"/);
+    assert.ok(gradeHTML.indexOf('data-lesson-sample') < gradeHTML.indexOf('id="grade-routine"'));
+    for (const chapter of grade.chapters) {
+      const html = pageAt(chapterRoute(grade.id, chapter.id));
+      const guide = CHAPTER_GUIDES[grade.id + '/' + chapter.id];
+      assert.ok(guide, 'Missing chapter guide ' + grade.id + '/' + chapter.id);
+      for (const text of [guide.idea, guide.slip, guide.tryAtHome.title, ...guide.tryAtHome.steps]) assert.ok(html.includes(e(text)));
+      assert.ok(html.indexOf('data-lesson-sample') < html.indexOf('id="chapter-lesson"'));
+      assert.equal((html.match(/class="al-path"/g) ?? []).length, LEVELS.length);
+      for (const level of LEVELS) {
+        const { question } = original(grade, chapter, level.id);
+        const family = FAMILY_GUIDES[question.family];
+        assert.ok(family && family.steps.length >= 3 && family.slip, 'Missing worked reasoning for ' + question.family);
+        for (const step of family.steps) assert.ok(html.includes(e(step)));
+        methodSteps.add(family.steps.join('|'));
+      }
+    }
+  }
+  assert.ok(methodSteps.size >= 150, 'Worked reasoning must be family-specific');
 });

@@ -2,8 +2,8 @@
    OTTERLY GAMES — Learn hub + skill pages (Theme B "Playful Dark, Evolved")
    Requires /css/tokens.css (body.learn-page.theme-b). Everything is scoped under
    .learn-page and prefixed learn-, so it cannot leak to other pages.
-   Sections: shared (crumbs, hero, jump panel, buttons) · hub (skill cards,
-   route, disclosure, routine, formats, Space Academy card) · skill pages
+   Sections: shared (crumbs, hero, jump panel, buttons) · disclosure · hub
+   (body.learn-hub-page: lh- skill rows and class grid) · skill pages
    (sections, worked example, steps, cards, notes, path nav) · reduced motion.
    The four skills carry a tone class (learn-tone-time|mult|div|spell) that only
    sets --accent / --accent-soft.
@@ -91,60 +91,92 @@
 .learn-page .learn-more-body strong { color: var(--text); }
 
 /* ==========================================================================
-   HUB (learn/index.html)
+   HUB (learn/index.html, body.learn-hub-page): two entry panels, skill rows
+   with one primary lesson link and optional tool/game pills, class grid.
    ========================================================================== */
-.learn-page .learn-hub { display: grid; gap: var(--s-5); }
-.learn-page .learn-skill-card {
-  position: relative; display: flex; flex-direction: column; overflow: hidden; isolation: isolate;
-  border-radius: var(--r-xl); border: 1px solid var(--line); box-shadow: var(--edge-light), var(--elev-2);
-  background: linear-gradient(180deg, var(--surface-2), var(--surface-1));
-  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
-}
-.learn-page .learn-skill-card:hover { transform: translateY(-3px); box-shadow: var(--edge-light), var(--elev-3); }
-.learn-page .learn-skill-art {
-  position: relative; display: grid; place-items: center; min-height: 220px; padding: 56px var(--s-5) var(--s-4);
-  background:
-    radial-gradient(20rem 12rem at 50% 70%, color-mix(in srgb, var(--accent) 42%, transparent), transparent 70%),
-    linear-gradient(180deg, color-mix(in srgb, var(--accent) 14%, var(--surface-2)), var(--surface-2));
-  border-bottom: 1px solid var(--line);
-}
-.learn-page .learn-skill-art svg { width: min(100%, 300px); height: auto; filter: drop-shadow(0 14px 22px rgba(5, 3, 14, 0.45)); }
-.learn-page .learn-skill-art .chip { position: absolute; top: var(--s-4); left: var(--s-4); }
-.learn-page .learn-skill-body { display: grid; gap: var(--s-4); align-content: start; flex: 1; padding: var(--s-5); }
-.learn-page .learn-skill-body h3 { font-size: clamp(1.4rem, 3vw, 1.75rem); }
-.learn-page .learn-skill-body h3 a { display: inline-flex; align-items: center; min-height: var(--tap); color: var(--text); text-decoration: none; }
-.learn-page .learn-skill-body h3 a::after { content: ""; position: absolute; inset: 0; z-index: 0; }
-.learn-page .learn-skill-body p { color: var(--text-2); }
-.learn-page .learn-skill-body p strong { color: var(--accent-soft); font-family: var(--font-head); }
-.learn-page .learn-skill-body .learn-more > .learn-more-body strong { color: var(--text); font-family: inherit; }
-.learn-page .learn-skill-body .learn-more, .learn-page .learn-skill-body .learn-route { position: relative; z-index: 1; }
-@media (min-width: 720px) { .learn-page .learn-hub { grid-template-columns: 1fr 1fr; } }
+.learn-hub-page .lh-hero { padding-block: var(--s-6) 0; }
+.learn-hub-page .lh-hero h1 { margin-top: var(--s-3); font-size: clamp(2.1rem, 6vw, 3.4rem); letter-spacing: -0.02em; text-wrap: balance; }
+.learn-hub-page .lh-hero h1 em { font-style: normal; background: linear-gradient(95deg, var(--amber-soft), var(--pink-soft) 60%, var(--purple-soft)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.learn-hub-page .lh-lead { margin-top: var(--s-3); max-width: 38rem; color: var(--text-2); font-size: var(--fs-base); }
+.learn-hub-page .lh-doors { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-5); }
+.learn-hub-page .lh-doors .btn { max-width: 100%; white-space: normal; text-align: center; }
 
-/* Learn -> Try -> Play route */
-.learn-page .learn-route { display: grid; gap: var(--s-2); margin-top: auto; }
-.learn-page .learn-route li { display: flex; }
-.learn-page .learn-route a, .learn-page .learn-route-none {
-  display: flex; align-items: center; gap: var(--s-3); width: 100%; min-height: 52px; padding: var(--s-2) var(--s-3) var(--s-2) var(--s-2);
-  border-radius: var(--r-md); text-decoration: none; color: var(--text); line-height: 1.3;
-  background: rgba(255, 255, 255, 0.045); border: 1px solid var(--line);
-  transition: background 0.2s, border-color 0.2s, transform 0.2s var(--ease);
+.learn-hub-page .lh-board { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-5); margin-top: var(--s-6); align-items: start; }
+.learn-hub-page .lh-panel {
+  min-width: 0; padding: var(--s-5); border-radius: var(--r-xl); border: 1px solid var(--line);
+  box-shadow: var(--edge-light), var(--elev-2); background: linear-gradient(180deg, var(--surface-2), var(--surface-1));
 }
-.learn-page .learn-route a:hover { background: var(--surface-3); border-color: color-mix(in srgb, var(--accent) 60%, transparent); color: var(--text); }
-.learn-page .learn-route-tag {
-  flex: none; min-width: 3.75rem; padding: 7px var(--s-3); text-align: center; border-radius: var(--r-pill);
-  font: 800 var(--fs-xs)/1 var(--font-head); letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--accent-soft); background: color-mix(in srgb, var(--accent) 20%, transparent);
+.learn-hub-page .lh-panel--classes { --accent: var(--blue); --accent-soft: var(--blue-soft); }
+.learn-hub-page .lh-panel h2 { margin-top: var(--s-2); font-size: clamp(1.5rem, 3.4vw, 2rem); }
+.learn-hub-page .lh-panel-sub { margin-top: var(--s-2); max-width: 46ch; color: var(--text-2); font-size: var(--fs-sm); }
+
+.learn-hub-page .lh-skills { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-3); margin-top: var(--s-4); }
+.learn-hub-page .lh-skill { min-width: 0; border-radius: var(--r-lg); border: 1px solid var(--line); background: rgba(255, 255, 255, 0.035); }
+.learn-hub-page .lh-skill-main {
+  display: flex; align-items: center; gap: var(--s-3); min-height: 64px; padding: var(--s-3);
+  color: var(--text); text-decoration: none; border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--accent) 14%, transparent); transition: background 0.2s;
 }
-.learn-page .learn-route-text { flex: 1; min-width: 0; font-weight: 600; font-size: var(--fs-sm); }
-.learn-page .learn-route-text small { display: block; margin-top: 1px; font-weight: 400; font-size: var(--fs-xs); color: var(--text-2); }
-.learn-page .learn-route a > .icon { flex: none; width: 1em; height: 1em; color: var(--text-3); }
-.learn-page .learn-route li:first-child a { background: var(--accent-soft); border-color: transparent; color: var(--text-on-accent); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35); }
-.learn-page .learn-route li:first-child a:hover { filter: brightness(1.06); color: var(--text-on-accent); }
-.learn-page .learn-route li:first-child .learn-route-tag { color: var(--text-on-accent); background: rgba(26, 18, 48, 0.16); }
-.learn-page .learn-route li:first-child .learn-route-text { font-weight: 800; font-family: var(--font-head); }
-.learn-page .learn-route li:first-child a > .icon { color: var(--text-on-accent); }
-.learn-page .learn-route-none { border-style: dashed; background: transparent; color: var(--text-2); }
-.learn-page .learn-route-none .learn-route-tag { color: var(--text-3); background: rgba(255, 255, 255, 0.06); }
+.learn-hub-page .lh-skill-main:hover { background: color-mix(in srgb, var(--accent) 26%, transparent); color: var(--text); }
+.learn-hub-page .lh-skill-text { flex: 1; min-width: 0; }
+.learn-hub-page .lh-skill-text strong { display: block; font: 800 1.15rem/1.2 var(--font-head); }
+.learn-hub-page .lh-skill-text small { display: block; margin-top: 2px; font-size: var(--fs-xs); line-height: 1.4; color: var(--text-2); }
+.learn-hub-page .lh-go { flex: none; width: 1.1em; height: 1.1em; color: var(--accent-soft); }
+.learn-hub-page .lh-skill-extras { display: flex; flex-wrap: wrap; gap: var(--s-2); padding: var(--s-2) var(--s-3) var(--s-3); }
+.learn-hub-page .lh-skill-extras a {
+  display: inline-flex; align-items: center; gap: var(--s-1); min-height: var(--tap); padding: 0 var(--s-3);
+  color: var(--text-2); font: 600 var(--fs-sm)/1.2 var(--font-head); text-decoration: none;
+  border-radius: var(--r-pill); border: 1px solid var(--line-strong); transition: background 0.2s, color 0.2s;
+}
+.learn-hub-page .lh-skill-extras a:hover { color: var(--text); background: var(--surface-3); }
+.learn-hub-page .lh-skill-extras .icon { width: 0.9em; height: 0.9em; }
+
+.learn-hub-page .lh-classes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 8.5rem), 1fr)); gap: var(--s-2); margin-top: var(--s-4); }
+.learn-hub-page .lh-classes a {
+  display: flex; flex-direction: column; justify-content: center; min-height: 60px; padding: var(--s-2) var(--s-3);
+  color: var(--text); text-decoration: none; border-radius: var(--r-md);
+  background: rgba(255, 255, 255, 0.045); border: 1px solid var(--line); transition: background 0.2s, border-color 0.2s;
+}
+.learn-hub-page .lh-classes a:hover { background: var(--surface-3); border-color: color-mix(in srgb, var(--accent) 60%, transparent); color: var(--text); }
+.learn-hub-page .lh-classes strong { font: 800 1.05rem/1.2 var(--font-head); }
+.learn-hub-page .lh-classes small { font-size: var(--fs-xs); color: var(--text-2); }
+.learn-hub-page .lh-classes .lh-classes-all a { background: color-mix(in srgb, var(--accent) 16%, transparent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.learn-hub-page .lh-play {
+  display: flex; align-items: center; gap: var(--s-3); min-height: 64px; margin-block: var(--s-4); padding: var(--s-2) var(--s-3);
+  color: var(--text); text-decoration: none; border-radius: var(--r-md); border: 1px solid var(--line-strong); transition: background 0.2s;
+}
+.learn-hub-page .lh-play:hover { background: var(--surface-3); color: var(--text); }
+.learn-hub-page .lh-play img { flex: none; width: 48px; height: 48px; border-radius: 50%; box-shadow: 0 0 24px rgba(59, 130, 246, 0.5); }
+.learn-hub-page .lh-play span { flex: 1; min-width: 0; }
+.learn-hub-page .lh-play strong { display: block; font: 800 1.05rem/1.2 var(--font-head); }
+.learn-hub-page .lh-play small { display: block; font-size: var(--fs-xs); color: var(--text-2); }
+.learn-hub-page .lh-play .icon { flex: none; width: 1.1em; height: 1.1em; color: var(--accent-soft); }
+
+.learn-hub-page .lh-extras { margin-top: var(--s-7); }
+.learn-hub-page .lh-extras h2 { font-size: 1.25rem; }
+.learn-hub-page .lh-extras ul { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-2); margin-top: var(--s-3); }
+.learn-hub-page .lh-extras li a {
+  display: block; min-height: var(--tap); padding: var(--s-3) var(--s-4); color: var(--text); font: 700 var(--fs-base)/1.3 var(--font-head);
+  text-decoration: none; border-radius: var(--r-md); border: 1px solid var(--line); background: rgba(255, 255, 255, 0.035);
+}
+.learn-hub-page .lh-extras li a:hover { background: var(--surface-3); color: var(--text); }
+.learn-hub-page .lh-extras small { display: block; margin-top: 2px; font: 400 var(--fs-xs)/1.4 var(--font-body); color: var(--text-2); }
+.learn-hub-page .lh-foot { max-width: 60ch; margin-top: var(--s-4); color: var(--text-2); font-size: var(--fs-sm); }
+@media (min-width: 560px) { .learn-hub-page .lh-skills { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 720px) { .learn-hub-page .lh-extras ul { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1000px) {
+  .learn-hub-page .lh-board { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); }
+  .learn-hub-page .lh-panel { padding: var(--s-6); }
+}
+@media (max-width: 400px) { .learn-hub-page .lh-panel { padding: var(--s-4); } }
+
+/* Header at enlarged text: let the shared nav wrap instead of running off the viewport */
+.learn-hub-page .nav-inner { flex-wrap: wrap; align-items: center; row-gap: var(--s-1); padding-block: var(--s-1); }
+.learn-hub-page .nav-brand { min-width: 0; max-width: 100%; }
+.learn-hub-page .nav-brand .brand-text { white-space: normal; overflow-wrap: anywhere; }
+.learn-hub-page .nav-links { flex-wrap: wrap; min-width: 0; }
+.learn-hub-page .nav-links a { white-space: normal; }
+.learn-hub-page [id] { scroll-margin-top: max(84px, 6.5rem); }
 
 .learn-page .learn-note {
   max-width: 52rem; margin-top: var(--s-5); padding: var(--s-4) var(--s-5);
@@ -153,33 +185,6 @@
 }
 .learn-page .learn-note strong { color: var(--text); }
 .learn-page .learn-note a:not([class]) { color: var(--text); font-weight: 600; }
-
-/* Routine stepper */
-.learn-page .learn-stepper { display: grid; gap: var(--s-4); counter-reset: step; position: relative; }
-.learn-page .learn-step { position: relative; padding: var(--s-5) var(--s-5) var(--s-5) 84px; border-radius: var(--r-lg); }
-.learn-page .learn-step::before {
-  counter-increment: step; content: counter(step);
-  position: absolute; left: var(--s-5); top: var(--s-5); width: 44px; height: 44px; display: grid; place-items: center;
-  font: 900 1.35rem var(--font-head); color: var(--text-on-accent); border-radius: 50%;
-  background: var(--accent-soft); box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 24%, transparent);
-}
-.learn-page .learn-step h3 { margin-bottom: var(--s-2); }
-.learn-page .learn-step p { color: var(--text-2); }
-.learn-page .learn-step:nth-child(1) { --accent: var(--green); --accent-soft: var(--green-soft); }
-.learn-page .learn-step:nth-child(2) { --accent: var(--purple); --accent-soft: var(--purple-soft); }
-.learn-page .learn-step:nth-child(3) { --accent: var(--orange); --accent-soft: var(--orange-soft); }
-.learn-page .learn-step:not(:last-child)::after {
-  content: ""; position: absolute; left: calc(var(--s-5) + 21px); top: calc(var(--s-5) + 52px); bottom: calc(var(--s-4) * -1 - 8px);
-  width: 2px; background: repeating-linear-gradient(180deg, var(--line-strong) 0 6px, transparent 6px 12px);
-}
-@media (min-width: 900px) {
-  .learn-page .learn-stepper { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); }
-  .learn-page .learn-step { padding: 92px var(--s-5) var(--s-5); }
-  .learn-page .learn-step:not(:last-child)::after {
-    left: calc(var(--s-5) + 60px); right: calc(var(--s-5) * -1 - 4px); top: calc(var(--s-5) + 21px); bottom: auto; width: auto; height: 2px;
-    background: repeating-linear-gradient(90deg, var(--line-strong) 0 6px, transparent 6px 12px);
-  }
-}
 
 /* ---- Cards (formats, skill-page cards) ---- */
 .learn-page .learn-cards { display: grid; gap: var(--s-4); }
@@ -195,28 +200,6 @@
 @media (min-width: 720px) { .learn-page .learn-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 900px) { .learn-page .learn-cards--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (min-width: 720px) and (max-width: 899px) { .learn-page .learn-cards--3 > :last-child:nth-child(odd) { grid-column: 1 / -1; } }
-.learn-page .learn-after { margin-top: var(--s-5); max-width: 52rem; color: var(--text-2); }
-.learn-page .learn-after a:not([class]) { font-weight: 600; }
-
-/* ---- Space Academy compact card ---- */
-.learn-page .learn-academy {
-  position: relative; overflow: hidden; isolation: isolate; display: grid; gap: var(--s-5); padding: var(--s-5);
-  --accent: var(--blue); --accent-soft: var(--blue-soft);
-  border-radius: var(--r-xl); border: 1px solid var(--line); box-shadow: var(--edge-light), var(--elev-2);
-  background:
-    radial-gradient(28rem 18rem at 0% 50%, rgba(59, 130, 246, 0.28), transparent 65%),
-    radial-gradient(22rem 16rem at 100% 0%, rgba(139, 92, 246, 0.2), transparent 65%),
-    linear-gradient(180deg, var(--surface-2), var(--surface-1));
-}
-.learn-page .learn-academy-planet { display: grid; place-items: center; }
-.learn-page .learn-academy-planet img { width: 132px; height: 132px; border-radius: 50%; box-shadow: 0 0 60px rgba(59, 130, 246, 0.55); }
-.learn-page .learn-academy-copy { display: grid; gap: var(--s-3); justify-items: start; min-width: 0; }
-.learn-page .learn-academy-copy h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); }
-.learn-page .learn-academy-copy p { color: var(--text-2); }
-.learn-page .learn-academy-copy a:not([class]) { color: var(--text); font-weight: 600; }
-.learn-page .learn-academy .learn-more { width: 100%; }
-.learn-page .learn-academy .learn-actions { margin-top: var(--s-2); }
-@media (min-width: 760px) { .learn-page .learn-academy { grid-template-columns: 180px minmax(0, 1fr); align-items: center; padding: var(--s-6); } }
 
 /* ==========================================================================
    SKILL PAGES (telling-time, times-tables, division, spelling)
@@ -315,5 +298,5 @@
 
 /* ---- Motion ---- */
 @media (prefers-reduced-motion: reduce) {
-  .learn-page .learn-skill-card:hover, .learn-page .learn-pick a:hover, .learn-page .learn-route a:hover { transform: none; }
+  .learn-page .learn-pick a:hover { transform: none; }
 }
