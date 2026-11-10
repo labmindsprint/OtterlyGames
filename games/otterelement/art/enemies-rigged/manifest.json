@@ -1,0 +1,601 @@
+{
+  "version": 1,
+  "forward": "+Z",
+  "up": "+Y",
+  "units": "m",
+  "fps": 30,
+  "ground": 0.0,
+  "models": {
+    "skitter": {
+      "file": "skitter.glb",
+      "role": "runner",
+      "family": "scout",
+      "flying": false,
+      "attackKind": "lunge-stab",
+      "notes": "six-legged scuttler: rears front blades, lunges and stabs/clamps",
+      "height": 1.08,
+      "groundOffset": 0.0,
+      "hoverHeight": 0.0,
+      "footprintRadius": 1.0,
+      "bounds": {
+        "min": [
+          -0.94,
+          0.0,
+          -0.62
+        ],
+        "max": [
+          0.94,
+          1.08,
+          1.0
+        ]
+      },
+      "walkSpeed": 1.409,
+      "triangles": 726,
+      "bones": 18,
+      "materials": 4,
+      "bytes": 184060,
+      "clips": {
+        "Idle": {
+          "duration": 1.6,
+          "loop": true
+        },
+        "Walk": {
+          "duration": 0.8,
+          "loop": true
+        },
+        "Attack": {
+          "duration": 0.9,
+          "loop": false,
+          "contact": 0.4
+        },
+        "Hit": {
+          "duration": 0.3,
+          "loop": false
+        },
+        "Death": {
+          "duration": 1.2,
+          "loop": false
+        }
+      },
+      "measured": {
+        "idleTop": 1.091,
+        "walkTop": 1.178,
+        "maxTopAnyClip": 1.287,
+        "minYByClip": {
+          "Idle": -0.0,
+          "Walk": -0.0,
+          "Attack": -0.008,
+          "Hit": -0.0,
+          "Death": -0.029
+        },
+        "bodyHeightAboveHover": 1.08
+      },
+      "heightSemantics": "rest-pose top above the y=0 ground plane, hover included; measured.* are animated extents"
+    },
+    "charger": {
+      "file": "charger.glb",
+      "role": "runner",
+      "family": "brute",
+      "flying": false,
+      "attackKind": "horn-lunge",
+      "notes": "quadruped tusked brute: rears back, scrapes, then lunges and hooks with tusks",
+      "height": 1.38,
+      "groundOffset": 0.0,
+      "hoverHeight": 0.0,
+      "footprintRadius": 1.45,
+      "bounds": {
+        "min": [
+          -0.453,
+          -0.02,
+          -1.45
+        ],
+        "max": [
+          0.453,
+          1.36,
+          1.34
+        ]
+      },
+      "walkSpeed": 0.984,
+      "triangles": 832,
+      "bones": 19,
+      "materials": 4,
+      "bytes": 204264,
+      "clips": {
+        "Idle": {
+          "duration": 1.6,
+          "loop": true
+        },
+        "Walk": {
+          "duration": 0.9,
+          "loop": true
+        },
+        "Attack": {
+          "duration": 1.2,
+          "loop": false,
+          "contact": 0.5667
+        },
+        "Hit": {
+          "duration": 0.3,
+          "loop": false
+        },
+        "Death": {
+          "duration": 1.2,
+          "loop": false
+        }
+      },
+      "measured": {
+        "idleTop": 1.389,
+        "walkTop": 1.42,
+        "maxTopAnyClip": 1.43,
+        "minYByClip": {
+          "Idle": -0.02,
+          "Walk": -0.02,
+          "Attack": -0.02,
+          "Hit": -0.02,
+          "Death": -0.02
+        },
+        "bodyHeightAboveHover": 1.38
+      },
+      "heightSemantics": "rest-pose top above the y=0 ground plane, hover included; measured.* are animated extents"
+    },
+    "beetle": {
+      "file": "beetle.glb",
+      "role": "armor",
+      "family": "walker",
+      "flying": false,
+      "attackKind": "mandible-slam",
+      "notes": "heavy domed six-legged beetle: rears, lifts shell plates, slams and clamps with mandibles",
+      "height": 1.532,
+      "groundOffset": 0.0,
+      "hoverHeight": 0.0,
+      "footprintRadius": 1.16,
+      "bounds": {
+        "min": [
+          -1.012,
+          -0.012,
+          -0.686
+        ],
+        "max": [
+          1.012,
+          1.52,
+          1.16
+        ]
+      },
+      "walkSpeed": 0.645,
+      "triangles": 954,
+      "bones": 19,
+      "materials": 4,
+      "bytes": 217432,
+      "clips": {
+        "Idle": {
+          "duration": 1.6,
+          "loop": true
+        },
+        "Walk": {
+          "duration": 1.0,
+          "loop": true
+        },
+        "Attack": {
+          "duration": 1.1,
+          "loop": false,
+          "contact": 0.6
+        },
+        "Hit": {
+          "duration": 0.3,
+          "loop": false
+        },
+        "Death": {
+          "duration": 1.2,
+          "loop": false
+        }
+      },
+      "measured": {
+        "idleTop": 1.536,
+        "walkTop": 1.546,
+        "maxTopAnyClip": 1.546,
+        "minYByClip": {
+          "Idle": -0.015,
+          "Walk": -0.02,
+          "Attack": -0.027,
+          "Hit": -0.017,
+          "Death": -0.016
+        },
+        "bodyHeightAboveHover": 1.532
+      },
+      "heightSemantics": "rest-pose top above the y=0 ground plane, hover included; measured.* are animated extents"
+    },
+    "moth": {
+      "file": "moth.glb",
+      "role": "wisp",
+      "family": "drone",
+      "flying": true,
+      "attackKind": "dive-sting",
+      "notes": "hovering moth: wingbeat flight, dives and stabs with abdominal stinger",
+      "height": 1.22,
+      "groundOffset": 0.0,
+      "hoverHeight": 0.8,
+      "footprintRadius": 1.62,
+      "bounds": {
+        "min": [
+          -1.62,
+          0.32,
+          -1.12
+        ],
+        "max": [
+          1.62,
+          1.22,
+          0.725
+        ]
+      },
+      "walkSpeed": 1.4,
+      "triangles": 456,
+      "bones": 15,
+      "materials": 4,
+      "bytes": 142484,
+      "clips": {
+        "Idle": {
+          "duration": 1.6,
+          "loop": true
+        },
+        "Walk": {
+          "duration": 1.0,
+          "loop": true
+        },
+        "Attack": {
+          "duration": 0.9,
+          "loop": false,
+          "contact": 0.4333
+        },
+        "Hit": {
+          "duration": 0.3,
+          "loop": false
+        },
+        "Death": {
+          "duration": 1.2,
+          "loop": false
+        }
+      },
+      "measured": {
+        "idleTop": 2.116,
+        "walkTop": 2.273,
+        "maxTopAnyClip": 2.332,
+        "minYByClip": {
+          "Idle": 0.183,
+          "Walk": 0.087,
+          "Attack": -0.039,
+          "Hit": 0.271,
+          "Death": -0.024
+        },
+        "bodyHeightAboveHover": 0.42
+      },
+      "heightSemantics": "rest-pose top above the y=0 ground plane, hover included; measured.* are animated extents"
+    },
+    "stalker": {
+      "file": "stalker.glb",
+      "role": "runner",
+      "family": "void",
+      "flying": false,
+      "attackKind": "scythe-slash",
+      "notes": "lean hunched biped: Attack = cocked cross-slash, Attack2 = double overhead chop",
+      "height": 1.98,
+      "groundOffset": 0.0,
+      "hoverHeight": 0.0,
+      "footprintRadius": 1.1,
+      "bounds": {
+        "min": [
+          -0.494,
+          0.0,
+          -0.16
+        ],
+        "max": [
+          0.494,
+          1.98,
+          1.1
+        ]
+      },
+      "walkSpeed": 1.2,
+      "triangles": 678,
+      "bones": 16,
+      "materials": 4,
+      "bytes": 185176,
+      "clips": {
+        "Idle": {
+          "duration": 1.6,
+          "loop": true
+        },
+        "Walk": {
+          "duration": 1.0,
+          "loop": true
+        },
+        "Attack": {
+          "duration": 1.0,
+          "loop": false,
+          "contact": 0.4
+        },
+        "Attack2": {
+          "duration": 1.2,
+          "loop": false,
+          "contact": 0.5333
+        },
+        "Hit": {
+          "duration": 0.3,
+          "loop": false
+        },
+        "Death": {
+          "duration": 1.2,
+          "loop": false
+        }
+      },
+      "measured": {
+        "idleTop": 2.007,
+        "walkTop": 2.016,
+        "maxTopAnyClip": 2.425,
+        "minYByClip": {
+          "Idle": 0.0,
+          "Walk": 0.0,
+          "Attack": 0.0,
+          "Attack2": 0.0,
+          "Hit": -0.006,
+          "Death": 0.0
+        },
+        "bodyHeightAboveHover": 1.98
+      },
+      "heightSemantics": "rest-pose top above the y=0 ground plane, hover included; measured.* are animated extents"
+    },
+    "bulwark": {
+      "file": "bulwark.glb",
+      "role": "armor",
+      "family": "forge",
+      "flying": false,
+      "attackKind": "overhead-slam",
+      "notes": "armoured guardian: Attack = two-fist ground slam, Attack2 = tower-shield bash",
+      "height": 2.4,
+      "groundOffset": 0.0,
+      "hoverHeight": 0.0,
+      "footprintRadius": 1.16,
+      "bounds": {
+        "min": [
+          -0.992,
+          0.0,
+          -0.389
+        ],
+        "max": [
+          1.16,
+          2.4,
+          0.78
+        ]
+      },
+      "walkSpeed": 0.806,
+      "triangles": 746,
+      "bones": 14,
+      "materials": 4,
+      "bytes": 184148,
+      "clips": {
+        "Idle": {
+          "duration": 1.8,
+          "loop": true
+        },
+        "Walk": {
+          "duration": 1.2,
+          "loop": true
+        },
+        "Attack": {
+          "duration": 1.4,
+          "loop": false,
+          "contact": 0.7333
+        },
+        "Attack2": {
+          "duration": 1.2,
+          "loop": false,
+          "contact": 0.5667
+        },
+        "Hit": {
+          "duration": 0.3,
+          "loop": false
+        },
+        "Death": {
+          "duration": 1.3,
+          "loop": false
+        }
+      },
+      "measured": {
+        "idleTop": 2.421,
+        "walkTop": 2.426,
+        "maxTopAnyClip": 2.768,
+        "minYByClip": {
+          "Idle": 0.0,
+          "Walk": 0.0,
+          "Attack": -0.003,
+          "Attack2": 0.0,
+          "Hit": 0.0,
+          "Death": -0.008
+        },
+        "bodyHeightAboveHover": 2.4
+      },
+      "heightSemantics": "rest-pose top above the y=0 ground plane, hover included; measured.* are animated extents"
+    },
+    "harbinger": {
+      "file": "harbinger.glb",
+      "role": "wisp",
+      "family": "crystal",
+      "flying": true,
+      "attackKind": "charge-cast",
+      "notes": "hovering crystal spire: Attack = charging ring cast (release at contact), Attack2 = tendril lash slam",
+      "height": 2.5,
+      "groundOffset": 0.0,
+      "hoverHeight": 1.0,
+      "footprintRadius": 1.22,
+      "bounds": {
+        "min": [
+          -1.22,
+          0.38,
+          -1.057
+        ],
+        "max": [
+          0.849,
+          2.5,
+          1.057
+        ]
+      },
+      "walkSpeed": 1.0,
+      "triangles": 828,
+      "bones": 21,
+      "materials": 4,
+      "bytes": 235748,
+      "clips": {
+        "Idle": {
+          "duration": 1.6,
+          "loop": true
+        },
+        "Walk": {
+          "duration": 1.0,
+          "loop": true
+        },
+        "Attack": {
+          "duration": 1.5,
+          "loop": false,
+          "contact": 0.9
+        },
+        "Attack2": {
+          "duration": 1.4,
+          "loop": false,
+          "contact": 0.8
+        },
+        "Hit": {
+          "duration": 0.3,
+          "loop": false
+        },
+        "Death": {
+          "duration": 1.4,
+          "loop": false
+        }
+      },
+      "measured": {
+        "idleTop": 2.56,
+        "walkTop": 2.57,
+        "maxTopAnyClip": 3.033,
+        "minYByClip": {
+          "Idle": 0.319,
+          "Walk": 0.357,
+          "Attack": 0.284,
+          "Attack2": 0.07,
+          "Hit": 0.376,
+          "Death": -0.036
+        },
+        "bodyHeightAboveHover": 1.5
+      },
+      "heightSemantics": "rest-pose top above the y=0 ground plane, hover included; measured.* are animated extents"
+    },
+    "matriarch": {
+      "file": "matriarch.glb",
+      "role": "boss",
+      "family": "void",
+      "flying": false,
+      "attackKind": "foreleg-stab",
+      "notes": "low broodmother: long bulbous abdomen, amber eye cluster; Attack = foreleg impale + bite, Attack2 = rear-up four-leg slam",
+      "height": 2.4,
+      "groundOffset": 0.0,
+      "hoverHeight": 0.0,
+      "footprintRadius": 2.5,
+      "bounds": {
+        "min": [
+          -2.0,
+          0.0,
+          -2.5
+        ],
+        "max": [
+          2.0,
+          2.4,
+          1.9
+        ]
+      },
+      "walkSpeed": 1.212,
+      "triangles": 944,
+      "bones": 21,
+      "materials": 4,
+      "bytes": 263496,
+      "clips": {
+        "Idle": {
+          "duration": 2.0,
+          "loop": true
+        },
+        "Walk": {
+          "duration": 1.2,
+          "loop": true
+        },
+        "Attack": {
+          "duration": 1.1,
+          "loop": false,
+          "contact": 0.5667
+        },
+        "Attack2": {
+          "duration": 1.4,
+          "loop": false,
+          "contact": 0.8333
+        },
+        "Hit": {
+          "duration": 0.3,
+          "loop": false
+        },
+        "Death": {
+          "duration": 1.4,
+          "loop": false
+        }
+      },
+      "measured": {
+        "idleTop": 2.442,
+        "walkTop": 2.469,
+        "maxTopAnyClip": 2.773,
+        "minYByClip": {
+          "Idle": -0.0,
+          "Walk": -0.0,
+          "Attack": -0.0,
+          "Attack2": -0.0,
+          "Hit": -0.0,
+          "Death": 0.0
+        },
+        "bodyHeightAboveHover": 2.4
+      },
+      "heightSemantics": "rest-pose top above the y=0 ground plane, hover included; measured.* are animated extents"
+    }
+  },
+  "byRoleFamily": {
+    "runner/scout": "skitter",
+    "runner/brute": "charger",
+    "armor/walker": "beetle",
+    "wisp/drone": "moth",
+    "runner/void": "stalker",
+    "armor/forge": "bulwark",
+    "wisp/crystal": "harbinger",
+    "boss/void": "matriarch"
+  },
+  "byRole": {
+    "runner": [
+      "skitter",
+      "charger",
+      "stalker"
+    ],
+    "armor": [
+      "beetle",
+      "bulwark"
+    ],
+    "wisp": [
+      "moth",
+      "harbinger"
+    ],
+    "boss": [
+      "matriarch"
+    ]
+  },
+  "roleFallback": {
+    "runner": "skitter",
+    "armor": "beetle",
+    "wisp": "moth",
+    "boss": "matriarch"
+  },
+  "guardians": [
+    "bulwark",
+    "harbinger",
+    "matriarch"
+  ]
+}

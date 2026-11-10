@@ -1,0 +1,11 @@
+Otter Element rigged alien enemy roster
+=======================================
+
+All models in this folder (skitter, charger, beetle, moth, stalker, bulwark,
+harbinger, matriarch) are original work created for the Otter Element project.
+They were generated procedurally with Blender 5.2 Python scripts
+(tools/rigged-enemies/*.py); sources are in art/rigged-enemies/source/*.blend.
+No third-party meshes, textures or animations are included.
+Silhouettes were guided by the project's own concept images
+(art/lowpoly-space/poly2/*.png). Licensed as project assets (same terms as the
+Otter Element repository).

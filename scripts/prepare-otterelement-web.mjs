@@ -121,6 +121,10 @@ function patches() {
       replaceExact(s, "export const APP_ACTIVE_EVENT = 'oe:app-active';", "export const APP_ACTIVE_EVENT = 'oe:app-active';", 1, w);
       return s;
     },
+    // The Lab opens at Helium (LAB_OPENS_AT is 2), the last element of the preview; the game's locked-Lab text still names Lithium.
+    'src/components/lab/LabScreen.tsx': (s, w) => replaceExact(s,
+      '<p aria-label="Complete Lithium (Li), element 3, to unlock the Lab"><Lock size={16} aria-hidden="true" /> Complete Lithium (Li) to unlock</p>',
+      '<p aria-label="Complete Helium (He), element 2, to unlock the Lab"><Lock size={16} aria-hidden="true" /> Complete Helium (He) to unlock</p>', 1, w),
     'src/game/guide.ts': (s, w) => replaceExact(s, "line: 'Your goal: find all 118. Each discovery lights up a tile.'", "line: 'The full game hides 118. This preview opens the first two. Each discovery lights up a tile.'", 1, w),
     // The backup notice and its refusal text speak about the preview's own save; they do not mention the event the preview leaves out.
     'src/game/saveEnvelope.ts': (s, w) => {

@@ -48,7 +48,7 @@ export function PreviewEnd({ game, hold }: { game: GameState; hold: boolean }) {
         <p>You have reached the end of the website preview: the first two elements, Hydrogen and Helium.</p>
         <p>The full Otter Element game goes on from element 3 through all 118 elements, with the full Lab and Turret.</p>
         <a className="button gold full" href={PREVIEW_STORE_URL} target="_blank" rel="noopener noreferrer">Continue in the full game on Google Play <ExternalLink size={16} aria-hidden="true" /></a>
-        <p className="oe-preview-fine">The Google Play release is in closed testing for invited testers, so the listing may not be open to everyone yet.</p>
+        <p className="oe-preview-fine">The full game is free on Google Play for Android. Its progress is separate from this browser preview.</p>
         <button type="button" className="button full" onClick={dismiss}>Keep playing the preview</button>
         <p className="oe-preview-fine">This preview keeps your progress only in this browser and sends nothing anywhere. <a href={PREVIEW_ABOUT_URL} target="_blank" rel="noopener noreferrer">About the preview and privacy</a></p>
       </div>

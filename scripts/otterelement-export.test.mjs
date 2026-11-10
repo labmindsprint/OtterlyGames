@@ -72,7 +72,20 @@ test('the full-game link is the official Google Play listing and the preview kee
   assert.ok(body.includes('https://play.google.com/store/apps/details?id=com.otterlygames.otterelement'));
   assert.ok(body.includes('otter-element-web-preview'));
   assert.ok(body.includes('oe-web-preview:'));
-  assert.ok(body.includes('closed testing for invited testers'));
+  assert.ok(!body.includes('closed testing'));
+});
+
+test('the landing hero and homepage cards each carry an explicit Google Play button for released games', () => {
+  const play = (id) => `https://play.google.com/store/apps/details?id=${id}`;
+  const landing = readFileSync(join(site, 'apps', 'otter-element.html'), 'utf8');
+  const hero = landing.slice(landing.indexOf('<div class="web-game-actions">'), landing.indexOf('class="oe-note"'));
+  assert.match(hero, /<a href="#preview" class="web-game-primary">Play Hydrogen and Helium free<\/a>/);
+  assert.match(hero, new RegExp(`<a class="web-game-store" href="${play('com.otterlygames.otterelement').replace(/[?.]/g, '\\$&')}" target="_blank" rel="noopener noreferrer"[^>]*>\\s*<img src="/images/google-play-badge.png" alt="Get it on Google Play"`));
+  const home = readFileSync(join(site, 'index.html'), 'utf8');
+  for (const id of ['com.clockmaster.timeforjuniors', 'com.namasya.mathtank', 'com.otterlygames.otterelement']) {
+    assert.ok(home.includes(`href="${play(id)}" target="_blank" rel="noopener noreferrer" class="btn btn--lg btn--ghost" data-store-cta`), id);
+  }
+  assert.equal(home.match(/data-store-cta/g).length, 3);
 });
 
 test('the landing page teaches schema-first fusing and keeps "pick two atoms" inside the labelled practice bench', () => {

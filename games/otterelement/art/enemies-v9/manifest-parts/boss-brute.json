@@ -1,0 +1,59 @@
+{
+ "boss-brute": {
+  "key": "boss-brute",
+  "file": "boss-brute.webp",
+  "shadowFile": "boss-brute-shadow.webp",
+  "frameW": 512,
+  "frameH": 512,
+  "cols": 8,
+  "rows": 6,
+  "frames": 42,
+  "shadowFrameW": 256,
+  "shadowFrameH": 256,
+  "anchor": [
+   0.5,
+   0.7
+  ],
+  "ppu": 65.64,
+  "ember": "#ff7f23",
+  "clips": {
+   "intro": {
+    "start": 0,
+    "count": 6,
+    "fps": 12,
+    "loop": false
+   },
+   "walk": {
+    "start": 6,
+    "count": 8,
+    "fps": 12,
+    "loop": true
+   },
+   "attack": {
+    "start": 14,
+    "count": 8,
+    "fps": 16,
+    "loop": false
+   },
+   "attack2": {
+    "start": 22,
+    "count": 8,
+    "fps": 16,
+    "loop": false
+   },
+   "death": {
+    "start": 30,
+    "count": 12,
+    "fps": 18,
+    "loop": false
+   }
+  },
+  "facing": "right",
+  "view": "low-poly sentinel, faces screen right (mirrored for left); puppet-warped single image",
+  "role": "boss-brute",
+  "attacks": {
+   "attack": "strike",
+   "attack2": "slam"
+  }
+ }
+}

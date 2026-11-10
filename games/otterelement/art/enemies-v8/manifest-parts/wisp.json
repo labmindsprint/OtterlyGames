@@ -1,0 +1,44 @@
+{
+ "wisp": {
+  "key": "wisp",
+  "file": "wisp.webp",
+  "shadowFile": "wisp-shadow.webp",
+  "frameW": 320,
+  "frameH": 320,
+  "cols": 8,
+  "rows": 4,
+  "frames": 26,
+  "shadowFrameW": 160,
+  "shadowFrameH": 160,
+  "anchor": [
+   0.5,
+   0.7
+  ],
+  "ppu": 76.19,
+  "ember": "#ff8c28",
+  "clips": {
+   "walk": {
+    "start": 0,
+    "count": 8,
+    "fps": 12,
+    "loop": true
+   },
+   "attack": {
+    "start": 8,
+    "count": 8,
+    "fps": 16,
+    "loop": false
+   },
+   "death": {
+    "start": 16,
+    "count": 10,
+    "fps": 18,
+    "loop": false
+   }
+  },
+  "facing": "right",
+  "view": "painted obsidian stalker, front/high 3-quarter, leaning/striding to screen right (mirrored for the left); single painting puppet-warped (skinned mesh + IK) with emissive pulses and a shard death; no AI frames",
+  "role": "wisp",
+  "style": "obsidian-space-lab"
+ }
+}

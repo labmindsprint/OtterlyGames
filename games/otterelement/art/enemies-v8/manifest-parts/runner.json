@@ -1,0 +1,43 @@
+{
+ "runner": {
+  "key": "runner",
+  "file": "runner.webp",
+  "shadowFile": "runner-shadow.webp",
+  "frameW": 320,
+  "frameH": 320,
+  "cols": 8,
+  "rows": 4,
+  "frames": 26,
+  "shadowFrameW": 160,
+  "shadowFrameH": 160,
+  "anchor": [
+   0.5,
+   0.7
+  ],
+  "ppu": 82.05,
+  "ember": "#ff7f23",
+  "clips": {
+   "walk": {
+    "start": 0,
+    "count": 8,
+    "fps": 12,
+    "loop": true
+   },
+   "attack": {
+    "start": 8,
+    "count": 8,
+    "fps": 16,
+    "loop": false
+   },
+   "death": {
+    "start": 16,
+    "count": 10,
+    "fps": 18,
+    "loop": false
+   }
+  },
+  "facing": "right",
+  "view": "painted 3/4 top-down obsidian crystal spider-drone, faces screen right (mirrored for left); puppet-warped single painting (skinned mesh + shard death), 320px cells = 2x texel density",
+  "role": "runner"
+ }
+}

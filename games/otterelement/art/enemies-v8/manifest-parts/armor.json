@@ -1,0 +1,43 @@
+{
+ "armor": {
+  "key": "armor",
+  "file": "armor.webp",
+  "shadowFile": "armor-shadow.webp",
+  "frameW": 384,
+  "frameH": 384,
+  "cols": 8,
+  "rows": 4,
+  "frames": 26,
+  "shadowFrameW": 192,
+  "shadowFrameH": 192,
+  "anchor": [
+   0.5,
+   0.7
+  ],
+  "ppu": 81.7,
+  "ember": "#ff7f23",
+  "clips": {
+   "walk": {
+    "start": 0,
+    "count": 8,
+    "fps": 12,
+    "loop": true
+   },
+   "attack": {
+    "start": 8,
+    "count": 8,
+    "fps": 16,
+    "loop": false
+   },
+   "death": {
+    "start": 16,
+    "count": 10,
+    "fps": 18,
+    "loop": false
+   }
+  },
+  "view": "warped painted obsidian beetle, front/high 3/4, art flipped to face screen-right (engine mirrors for left); puppet-warp rig tools/lp/warp_beetle.py, no generation; sized so bbox_h*190/384 matches v4 armor",
+  "role": "armor",
+  "facing": "right"
+ }
+}

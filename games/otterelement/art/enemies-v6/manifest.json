@@ -1,0 +1,63 @@
+{
+ "version": 2,
+ "style": "element-creatures",
+ "enemies": {
+  "boss": {
+   "key": "boss",
+   "file": "boss.webp",
+   "shadowFile": "boss-shadow.webp",
+   "frameW": 512,
+   "frameH": 448,
+   "cols": 8,
+   "rows": 6,
+   "frames": 42,
+   "shadowFrameW": 256,
+   "shadowFrameH": 224,
+   "anchor": [
+    0.5,
+    0.7
+   ],
+   "ppu": 69.19,
+   "ember": "#ff751e",
+   "clips": {
+    "intro": {
+     "start": 0,
+     "count": 6,
+     "fps": 12,
+     "loop": false
+    },
+    "walk": {
+     "start": 6,
+     "count": 8,
+     "fps": 12,
+     "loop": true
+    },
+    "attack": {
+     "start": 14,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "attack2": {
+     "start": 22,
+     "count": 8,
+     "fps": 16,
+     "loop": false
+    },
+    "death": {
+     "start": 30,
+     "count": 12,
+     "fps": 18,
+     "loop": false
+    }
+   },
+   "facing": "right",
+   "view": "painted side three-quarter view, facing screen right (mirrored for the left); Azure gpt-image-2 frame-by-frame sheets",
+   "role": "boss",
+   "attacks": {
+    "attack": "slam",
+    "attack2": "emp"
+   }
+  }
+ }
+}

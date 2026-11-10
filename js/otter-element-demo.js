@@ -26,6 +26,7 @@
     tools.hidden = false;
     frame.addEventListener('load', () => { sync(); frame.focus(); }, { once: true });
     frame.src = GAME;
+    stage.scrollIntoView({ block: 'start' });
   }
 
   function toggleFull() {

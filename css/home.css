@@ -68,6 +68,7 @@
 .home-page .home-flag--space { --accent: #3b82f6; --accent-soft: var(--blue-soft); --accent2: #f97316; }
 .home-page .home-flag--elem { --accent: #16a34a; --accent-soft: var(--green-soft); --accent2: #38bdf8; }
 .home-page .home-flag-copy { position: relative; z-index: 2; padding: var(--s-6) var(--s-5) var(--s-5); display: grid; gap: var(--s-4); justify-items: start; align-content: start; }
+.home-page .home-flag-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); }
 .home-page .home-flag-name { display: inline-flex; align-items: center; gap: var(--s-2); font: 800 var(--fs-sm)/1 var(--font-head); color: var(--accent-soft); letter-spacing: 0.04em; text-transform: uppercase; }
 .home-page .home-flag-name .icon { width: 1.1em; height: 1.1em; box-sizing: content-box; padding: 6px; border-radius: 10px; background: color-mix(in srgb, var(--accent) 28%, transparent); }
 .home-page .home-flag h3 { font-size: clamp(2.1rem, 5.4vw, 3.4rem); font-weight: 900; line-height: 1.02; }

@@ -1,0 +1,59 @@
+{
+ "boss-forge": {
+  "key": "boss-forge",
+  "file": "boss-forge.webp",
+  "shadowFile": "boss-forge-shadow.webp",
+  "frameW": 512,
+  "frameH": 512,
+  "cols": 8,
+  "rows": 6,
+  "frames": 42,
+  "shadowFrameW": 256,
+  "shadowFrameH": 256,
+  "anchor": [
+   0.5,
+   0.7
+  ],
+  "ppu": 64.0,
+  "ember": "#ff721e",
+  "clips": {
+   "intro": {
+    "start": 0,
+    "count": 6,
+    "fps": 12,
+    "loop": false
+   },
+   "walk": {
+    "start": 6,
+    "count": 8,
+    "fps": 12,
+    "loop": true
+   },
+   "attack": {
+    "start": 14,
+    "count": 8,
+    "fps": 16,
+    "loop": false
+   },
+   "attack2": {
+    "start": 22,
+    "count": 8,
+    "fps": 16,
+    "loop": false
+   },
+   "death": {
+    "start": 30,
+    "count": 12,
+    "fps": 18,
+    "loop": false
+   }
+  },
+  "facing": "right",
+  "view": "painted 3/4 side view of the Dreadnought Crawler, cannon facing screen right (engine mirrors for left); 2D puppet-warp of a single painting",
+  "role": "boss-forge",
+  "attacks": {
+   "attack": "hammer",
+   "attack2": "vent"
+  }
+ }
+}
