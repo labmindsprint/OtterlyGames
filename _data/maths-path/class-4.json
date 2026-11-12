@@ -1,0 +1,1990 @@
+{
+  "id": "class-4",
+  "label": "Class 4",
+  "name": "Class 4",
+  "ages": "Ages 8 to 9",
+  "blurb": "Bigger numbers, area, symmetry and budgets.",
+  "chapters": [
+    {
+      "id": "numbers",
+      "title": "Bigger numbers, factors and Roman numerals",
+      "tagline": "Use place value beyond four digits and investigate exact groups.",
+      "outcomes": [
+        "I can build and compare larger numbers.",
+        "I can find factors and multiples.",
+        "I can read and use Roman numerals."
+      ],
+      "source": "class-4/numbers",
+      "vocab": [
+        {
+          "term": "place value",
+          "meaning": "What a digit is worth because of where it sits. The 4 in 40,327 is worth 40,000."
+        },
+        {
+          "term": "factor",
+          "meaning": "A number that divides another number exactly. 3 is a factor of 12."
+        },
+        {
+          "term": "multiple",
+          "meaning": "A number you reach by skip counting. 12, 16 and 20 are multiples of 4."
+        },
+        {
+          "term": "Roman numeral",
+          "meaning": "A number written with letters such as I, V, X, L and C."
+        }
+      ],
+      "see": [
+        {
+          "title": "Five digits, five places",
+          "art": "/images/maths-path/class-4/numbers.webp",
+          "text": [
+            "In 40,327 the digits sit in ten-thousands, thousands, hundreds, tens and ones.",
+            "The 4 is worth 40,000. The 3 is worth 300.",
+            "Say it: forty thousand, three hundred twenty-seven."
+          ],
+          "widget": {
+            "w": "patternBuilder",
+            "c": {
+              "palette": [
+                {
+                  "id": "t0",
+                  "label": "4",
+                  "color": "#ef6b5b",
+                  "icon": "4"
+                },
+                {
+                  "id": "t1",
+                  "label": "0",
+                  "color": "#4aa8ff",
+                  "icon": "0"
+                },
+                {
+                  "id": "t2",
+                  "label": "3",
+                  "color": "#f4c542",
+                  "icon": "3"
+                },
+                {
+                  "id": "t3",
+                  "label": "2",
+                  "color": "#34d399",
+                  "icon": "2"
+                },
+                {
+                  "id": "t4",
+                  "label": "7",
+                  "color": "#a78bfa",
+                  "icon": "7"
+                }
+              ],
+              "sequence": [
+                "t0",
+                "t1",
+                "t2",
+                "t3",
+                "t4"
+              ],
+              "answer": [],
+              "caption": "Ten-thousands, thousands, hundreds, tens, ones"
+            }
+          }
+        },
+        {
+          "title": "Compare from the left",
+          "art": "think",
+          "text": [
+            "Compare the biggest places first.",
+            "40,327 and 40,972 start the same. Their hundreds are 3 and 9.",
+            "3 hundreds is less than 9 hundreds, so 40,327 is smaller."
+          ],
+          "widget": {
+            "w": "balance",
+            "c": {
+              "left": 3,
+              "right": 9,
+              "caption": "Hundreds digits 3 and 9: the right side is bigger."
+            }
+          }
+        },
+        {
+          "title": "Factors come in pairs",
+          "art": "/images/maths-path/class-4/numbers.webp",
+          "text": [
+            "12 = 3 × 4, so 3 and 4 are factors of 12.",
+            "The factors of 12 are 1, 2, 3, 4, 6 and 12.",
+            "Every factor pair is one array."
+          ],
+          "widget": {
+            "w": "array",
+            "c": {
+              "rows": 3,
+              "cols": 4,
+              "word": "groups"
+            }
+          }
+        },
+        {
+          "title": "Multiples are skip counts",
+          "art": "happy",
+          "text": [
+            "Count in 4s from 0: 4, 8, 12, 16, 20.",
+            "Each number you land on is a multiple of 4.",
+            "A multiple of 4 can always be shared into groups of 4."
+          ],
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 0,
+              "max": 20,
+              "labelEvery": 4,
+              "marker": 12,
+              "hops": [
+                [
+                  0,
+                  4
+                ],
+                [
+                  4,
+                  8
+                ],
+                [
+                  8,
+                  12
+                ]
+              ],
+              "caption": "Hops of 4 from 0."
+            }
+          }
+        },
+        {
+          "title": "Roman numerals",
+          "art": "cheer",
+          "text": [
+            "I is 1, V is 5, X is 10, L is 50 and C is 100.",
+            "A small letter before a big one is taken away. IV is 4 and IX is 9.",
+            "XXIX is 20 + 9, which is 29."
+          ],
+          "widget": {
+            "w": "patternBuilder",
+            "c": {
+              "palette": [
+                {
+                  "id": "t0",
+                  "label": "X",
+                  "color": "#ef6b5b",
+                  "icon": "X"
+                },
+                {
+                  "id": "t1",
+                  "label": "I",
+                  "color": "#4aa8ff",
+                  "icon": "I"
+                }
+              ],
+              "sequence": [
+                "t0",
+                "t0",
+                "t1",
+                "t0"
+              ],
+              "answer": [],
+              "caption": "XXIX = 10 + 10 + (10 − 1) = 29"
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Build 40,605: 4 ten thousands, 0 thousands, 6 hundreds, 0 tens and 5 ones.",
+          "widget": {
+            "w": "placeValueBig",
+            "c": {
+              "cols": 5,
+              "value": 0,
+              "goal": 40605
+            }
+          },
+          "target": {
+            "value": 40605
+          },
+          "success": "A zero holds a place. 40,605 has no thousands and no tens.",
+          "hint": "Leave the Thousands and Tens columns at 0."
+        },
+        {
+          "prompt": "Make an array with exactly 18 dots. Its rows and columns are a factor pair of 18.",
+          "widget": {
+            "w": "array",
+            "c": {
+              "rows": 1,
+              "cols": 1,
+              "editable": true,
+              "max": 9
+            }
+          },
+          "target": {
+            "total": 18
+          },
+          "success": "Yes. 3 × 6 and 2 × 9 are both factor pairs of 18.",
+          "hint": "Try 3 rows of 6 or 2 rows of 9."
+        },
+        {
+          "prompt": "Hop in 6s from 0. Land on the 4th multiple of 6.",
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 0,
+              "max": 30,
+              "labelEvery": 6,
+              "start": 0,
+              "step": 6
+            }
+          },
+          "target": {
+            "position": 24
+          },
+          "success": "6, 12, 18, 24. The 4th multiple of 6 is 24.",
+          "hint": "Press the hop button four times."
+        },
+        {
+          "prompt": "Write 14 in Roman numerals. Tap each gap, then a tile.",
+          "widget": {
+            "w": "patternBuilder",
+            "c": {
+              "palette": [
+                {
+                  "id": "t0",
+                  "label": "X",
+                  "color": "#ef6b5b",
+                  "icon": "X"
+                },
+                {
+                  "id": "t1",
+                  "label": "I",
+                  "color": "#4aa8ff",
+                  "icon": "I"
+                },
+                {
+                  "id": "t2",
+                  "label": "V",
+                  "color": "#f4c542",
+                  "icon": "V"
+                }
+              ],
+              "sequence": [
+                null,
+                null,
+                null
+              ],
+              "answer": [
+                "t0",
+                "t1",
+                "t2"
+              ],
+              "caption": "Ten, then one before five."
+            }
+          },
+          "target": {},
+          "success": "X is 10 and IV is 4, so XIV is 14.",
+          "hint": "Start with X for ten. Then IV for four."
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": [
+        "/tools/multiplication-table.html"
+      ]
+    },
+    {
+      "id": "operations",
+      "title": "Calculate and solve step by step",
+      "tagline": "Choose operations, use written methods and check missing information.",
+      "outcomes": [
+        "I can multiply and divide using models.",
+        "I can interpret a remainder.",
+        "I can solve a linked story or missing digit."
+      ],
+      "source": "class-4/operations",
+      "vocab": [
+        {
+          "term": "product",
+          "meaning": "The answer when you multiply. The product of 6 and 7 is 42."
+        },
+        {
+          "term": "quotient",
+          "meaning": "The whole-number answer when you divide."
+        },
+        {
+          "term": "remainder",
+          "meaning": "What is left over when a division is not exact."
+        },
+        {
+          "term": "divisor",
+          "meaning": "The number you divide by."
+        }
+      ],
+      "see": [
+        {
+          "title": "Split to multiply",
+          "art": "/images/maths-path/class-4/operations.webp",
+          "text": [
+            "To find 23 × 4, split 23 into 20 and 3.",
+            "20 × 4 = 80 and 3 × 4 = 12.",
+            "Add the two parts: 80 + 12 = 92."
+          ],
+          "widget": {
+            "w": "barModel",
+            "c": {
+              "parts": [
+                80,
+                12
+              ],
+              "caption": "23 × 4 = 80 + 12 = 92"
+            }
+          }
+        },
+        {
+          "title": "Equal groups",
+          "art": "think",
+          "text": [
+            "5 groups of 6 make 30 in all.",
+            "That is 5 × 6 = 30.",
+            "The same array shows 30 ÷ 6 = 5."
+          ],
+          "widget": {
+            "w": "array",
+            "c": {
+              "rows": 5,
+              "cols": 6,
+              "word": "groups"
+            }
+          }
+        },
+        {
+          "title": "Divide into equal parts",
+          "art": "/images/maths-path/class-4/operations.webp",
+          "text": [
+            "28 ÷ 4 asks how many 4s fit in 28.",
+            "4 × 7 = 28, so the answer is 7.",
+            "Multiplying and dividing undo each other."
+          ],
+          "widget": {
+            "w": "array",
+            "c": {
+              "rows": 4,
+              "cols": 7,
+              "word": "groups"
+            }
+          }
+        },
+        {
+          "title": "Remainders",
+          "art": "happy",
+          "text": [
+            "47 sweets go into bags of 5. That makes 9 full bags with 2 left over.",
+            "Check it: 9 × 5 + 2 = 47.",
+            "Read the story. It may ask for full bags or for bags needed."
+          ],
+          "widget": {
+            "w": "barModel",
+            "c": {
+              "parts": [
+                45,
+                2
+              ],
+              "caption": "47 = 9 × 5 + 2"
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Show 6 groups of 7.",
+          "widget": {
+            "w": "array",
+            "c": {
+              "rows": 1,
+              "cols": 1,
+              "editable": true,
+              "max": 9,
+              "word": "groups"
+            }
+          },
+          "target": {
+            "rows": 6,
+            "cols": 7
+          },
+          "success": "6 groups of 7 make 42.",
+          "hint": "Add 6 groups and 7 in each group."
+        },
+        {
+          "prompt": "47 sweets, 6 in a bag. 7 full bags hold 42. Add the left-over sweets to level the balance.",
+          "widget": {
+            "w": "balance",
+            "c": {
+              "left": 42,
+              "right": 47,
+              "max": 8
+            }
+          },
+          "target": {
+            "added": 5
+          },
+          "success": "47 = 7 × 6 + 5. The remainder is 5.",
+          "hint": "How many more than 42 is 47?"
+        }
+      ],
+      "play": {
+        "game": "math-tank"
+      },
+      "tools": [
+        "/tools/multiplication-practice.html",
+        "/tools/column-multiplication.html",
+        "/tools/division-practice.html",
+        "/tools/long-division.html"
+      ]
+    },
+    {
+      "id": "fractions",
+      "title": "Compare and use fractions",
+      "tagline": "Keep track of the whole while matching parts and solving changes.",
+      "outcomes": [
+        "I can show equal fractions.",
+        "I can find a fraction of an amount.",
+        "I can find what is left after fraction changes."
+      ],
+      "source": "class-4/fractions",
+      "vocab": [
+        {
+          "term": "numerator",
+          "meaning": "The top number. It counts the parts you have."
+        },
+        {
+          "term": "denominator",
+          "meaning": "The bottom number. It tells how many equal parts make the whole."
+        },
+        {
+          "term": "equivalent fractions",
+          "meaning": "Different fractions that show the same amount, like 1/2 and 4/8."
+        }
+      ],
+      "see": [
+        {
+          "title": "Equal parts of a whole",
+          "art": "/images/maths-path/class-4/fractions.webp",
+          "text": [
+            "The bottom number says how many equal parts the whole has.",
+            "The top number says how many parts are shaded.",
+            "Here 3 of 8 equal parts are shaded: 3/8."
+          ],
+          "widget": {
+            "w": "fractionBars",
+            "c": {
+              "bars": [
+                {
+                  "label": "3/8",
+                  "parts": 8,
+                  "shaded": 3
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Same amount, different cuts",
+          "art": "think",
+          "text": [
+            "Cut the whole into more parts and the shaded amount stays the same.",
+            "1/2 = 2/4 = 4/8.",
+            "Always keep the whole the same size."
+          ],
+          "widget": {
+            "w": "fractionBars",
+            "c": {
+              "bars": [
+                {
+                  "label": "1/2",
+                  "parts": 2,
+                  "shaded": 1
+                },
+                {
+                  "label": "2/4",
+                  "parts": 4,
+                  "shaded": 2
+                },
+                {
+                  "label": "4/8",
+                  "parts": 8,
+                  "shaded": 4
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "A fraction of an amount",
+          "art": "/images/maths-path/class-4/fractions.webp",
+          "text": [
+            "To find 3/4 of 20, share 20 into 4 equal groups.",
+            "Each group is 5, so 1/4 of 20 is 5.",
+            "3 groups of 5 make 15, so 3/4 of 20 is 15."
+          ],
+          "widget": {
+            "w": "array",
+            "c": {
+              "rows": 4,
+              "cols": 5,
+              "word": "groups"
+            }
+          }
+        },
+        {
+          "title": "What is left?",
+          "art": "happy",
+          "text": [
+            "Use 1/3 of 12 sweets. That is 4 sweets, so 8 are left.",
+            "The 8 left is 2/3 of the 12.",
+            "Follow each change to the new amount, then work out the next step."
+          ],
+          "widget": {
+            "w": "fractionBars",
+            "c": {
+              "bars": [
+                {
+                  "label": "Used: 1/3",
+                  "parts": 3,
+                  "shaded": 1
+                },
+                {
+                  "label": "Left: 2/3",
+                  "parts": 3,
+                  "shaded": 2
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Shade the bottom bar so it shows the same amount as one half.",
+          "widget": {
+            "w": "fractionBars",
+            "c": {
+              "bars": [
+                {
+                  "label": "1/2",
+                  "parts": 2,
+                  "shaded": 1
+                },
+                {
+                  "label": "Your bar",
+                  "parts": 8,
+                  "shaded": 0,
+                  "editable": true
+                }
+              ]
+            }
+          },
+          "target": {
+            "sameAs": true
+          },
+          "success": "4/8 is the same amount as 1/2.",
+          "hint": "Half of 8 parts is 4 parts."
+        },
+        {
+          "prompt": "Shade 5/6 of the bar.",
+          "widget": {
+            "w": "fractionBars",
+            "c": {
+              "bars": [
+                {
+                  "label": "Your bar",
+                  "parts": 6,
+                  "shaded": 0,
+                  "editable": true
+                }
+              ]
+            }
+          },
+          "target": {
+            "shaded": 5
+          },
+          "success": "5 of 6 equal parts is 5/6.",
+          "hint": "Shade 5 of the 6 parts."
+        },
+        {
+          "prompt": "Share 20 sweets into 4 equal groups. Show 4 groups of 5.",
+          "widget": {
+            "w": "array",
+            "c": {
+              "rows": 1,
+              "cols": 1,
+              "editable": true,
+              "max": 8,
+              "word": "groups"
+            }
+          },
+          "target": {
+            "rows": 4,
+            "cols": 5
+          },
+          "success": "1/4 of 20 is 5, so 3/4 of 20 is 15.",
+          "hint": "You need 4 groups with 5 in each."
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": []
+    },
+    {
+      "id": "geometry",
+      "title": "Perimeter, area and symmetry",
+      "tagline": "Separate the outside boundary from the space inside a shape.",
+      "outcomes": [
+        "I can find a perimeter or missing side.",
+        "I can find area using square units.",
+        "I can complete a reflection or folded solid."
+      ],
+      "source": "class-4/geometry",
+      "vocab": [
+        {
+          "term": "perimeter",
+          "meaning": "The distance all the way round the outside of a shape."
+        },
+        {
+          "term": "area",
+          "meaning": "The number of square units that cover the inside of a shape."
+        },
+        {
+          "term": "line of symmetry",
+          "meaning": "A fold line that makes two halves that match exactly."
+        },
+        {
+          "term": "square unit",
+          "meaning": "A square with sides of 1 unit, used to measure area."
+        }
+      ],
+      "see": [
+        {
+          "title": "Perimeter is the way round",
+          "art": "/images/maths-path/class-4/geometry.webp",
+          "text": [
+            "Walk round the outside edge and add every side.",
+            "A 5 by 3 rectangle has 5 + 3 + 5 + 3 = 16 units all round.",
+            "Perimeter is measured in cm, m or other lengths."
+          ],
+          "widget": {
+            "w": "grid",
+            "c": {
+              "rows": 3,
+              "cols": 5,
+              "filled": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  2,
+                  2
+                ],
+                [
+                  2,
+                  3
+                ],
+                [
+                  2,
+                  4
+                ]
+              ],
+              "showMeasures": true
+            }
+          }
+        },
+        {
+          "title": "Area counts squares",
+          "art": "think",
+          "text": [
+            "Count the squares inside the shape.",
+            "This L-shape covers 10 squares, so its area is 10 square units.",
+            "Area is measured in square cm or square m."
+          ],
+          "widget": {
+            "w": "grid",
+            "c": {
+              "rows": 4,
+              "cols": 4,
+              "filled": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ]
+              ],
+              "showMeasures": true
+            }
+          }
+        },
+        {
+          "title": "Find a missing side",
+          "art": "/images/maths-path/class-4/geometry.webp",
+          "text": [
+            "Opposite sides of a rectangle are equal.",
+            "Add the sides you know. Then take that from the perimeter.",
+            "Share what is left between the sides you still need."
+          ],
+          "widget": {
+            "w": "grid",
+            "c": {
+              "rows": 3,
+              "cols": 4,
+              "filled": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  2,
+                  2
+                ],
+                [
+                  2,
+                  3
+                ]
+              ],
+              "showMeasures": true
+            }
+          }
+        },
+        {
+          "title": "Mirror, mirror",
+          "art": "happy",
+          "text": [
+            "A line of symmetry works like a mirror.",
+            "Each square has a twin the same distance on the other side.",
+            "Reflect a pattern by painting the twins."
+          ],
+          "widget": {
+            "w": "grid",
+            "c": {
+              "rows": 4,
+              "cols": 4,
+              "filled": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  2,
+                  2
+                ]
+              ],
+              "mirror": "vertical"
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Shade a rectangle with area 12 and perimeter 14.",
+          "widget": {
+            "w": "grid",
+            "c": {
+              "rows": 5,
+              "cols": 6,
+              "filled": [],
+              "editable": true,
+              "showMeasures": true
+            }
+          },
+          "target": {
+            "area": 12,
+            "perimeter": 14
+          },
+          "success": "3 by 4 has area 12 and perimeter 14.",
+          "hint": "Try a rectangle 3 squares by 4 squares."
+        },
+        {
+          "prompt": "Shade 4 squares on the left. The mirror shades their twins. Make 8 shaded squares.",
+          "widget": {
+            "w": "grid",
+            "c": {
+              "rows": 4,
+              "cols": 4,
+              "filled": [],
+              "editable": true,
+              "mirror": "vertical"
+            }
+          },
+          "target": {
+            "count": 8
+          },
+          "success": "Each square plus its twin makes 8.",
+          "hint": "Tap 4 different squares on the left."
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": []
+    },
+    {
+      "id": "measurement",
+      "title": "Measure and convert units",
+      "tagline": "Read the scale and convert length, mass or capacity before calculating.",
+      "outcomes": [
+        "I can measure from a non-zero mark.",
+        "I can combine or share mixed units.",
+        "I can use balances and temperature scales."
+      ],
+      "source": "class-4/measurement",
+      "vocab": [
+        {
+          "term": "convert",
+          "meaning": "Change a measurement into a different unit, like metres to centimetres."
+        },
+        {
+          "term": "mass",
+          "meaning": "How heavy something is. We use grams and kilograms."
+        },
+        {
+          "term": "capacity",
+          "meaning": "How much a container holds. We use millilitres and litres."
+        }
+      ],
+      "see": [
+        {
+          "title": "Measure from the right mark",
+          "art": "/images/maths-path/class-4/measurement.webp",
+          "text": [
+            "A ribbon may not start at 0. Look at where it begins.",
+            "It starts at 3 and ends at 9. The length is 9 − 3 = 6 cm.",
+            "Subtract the start from the end."
+          ],
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 0,
+              "max": 12,
+              "labelEvery": 1,
+              "hops": [
+                [
+                  3,
+                  9
+                ]
+              ],
+              "marker": 9,
+              "caption": "Ribbon from 3 to 9: 6 cm."
+            }
+          }
+        },
+        {
+          "title": "Convert, then combine",
+          "art": "think",
+          "text": [
+            "1 m = 100 cm. 1 kg = 1000 g. 1 l = 1000 ml.",
+            "Add 2 m 60 cm and 1 m 45 cm.",
+            "That is 3 m 105 cm, so 4 m 5 cm."
+          ],
+          "widget": {
+            "w": "balance",
+            "c": {
+              "left": 10,
+              "right": 10,
+              "caption": "1 kg balances ten 100 g blocks."
+            }
+          }
+        },
+        {
+          "title": "Read the scale",
+          "art": "/images/maths-path/class-4/measurement.webp",
+          "text": [
+            "Look at how much each small mark is worth.",
+            "Here every tick is 1 degree.",
+            "The thermometer reads 23 degrees."
+          ],
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 20,
+              "max": 30,
+              "labelEvery": 5,
+              "marker": 23,
+              "caption": "Temperature scale, 20 to 30 degrees."
+            }
+          }
+        },
+        {
+          "title": "Balance the crates",
+          "art": "happy",
+          "text": [
+            "Three identical crates weigh 1200 g.",
+            "Share 1200 g into 3 equal parts.",
+            "One crate weighs 400 g."
+          ],
+          "widget": {
+            "w": "balance",
+            "c": {
+              "left": 3,
+              "right": 3,
+              "caption": "3 equal crates balance 1200 g."
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "A ribbon starts at 4 and is 7 cm long. Move the marker to where it ends.",
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 0,
+              "max": 15,
+              "labelEvery": 1,
+              "start": 4
+            }
+          },
+          "target": {
+            "position": 11
+          },
+          "success": "4 + 7 = 11, so it ends at 11.",
+          "hint": "Count 7 steps on from 4."
+        },
+        {
+          "prompt": "The right pan has 10 blocks of 100 g, which is 1 kg. Add to the left until it is level.",
+          "widget": {
+            "w": "balance",
+            "c": {
+              "left": 6,
+              "right": 10,
+              "max": 10
+            }
+          },
+          "target": {
+            "added": 4
+          },
+          "success": "600 g + 400 g = 1000 g = 1 kg.",
+          "hint": "How many more than 6 make 10?"
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": []
+    },
+    {
+      "id": "time",
+      "title": "Timetables, dates and clock errors",
+      "tagline": "Use intervals and distinguish the clock reading from the true time.",
+      "outcomes": [
+        "I can find a missing time interval.",
+        "I can use a timetable or calendar.",
+        "I can correct a fast or slow clock."
+      ],
+      "source": "class-4/time",
+      "vocab": [
+        {
+          "term": "interval",
+          "meaning": "The time that passes between a start and an end."
+        },
+        {
+          "term": "timetable",
+          "meaning": "A list that shows when things start, stop or leave."
+        },
+        {
+          "term": "fast clock",
+          "meaning": "A clock that shows a later time than the true time."
+        }
+      ],
+      "see": [
+        {
+          "title": "How long did it last?",
+          "art": "/images/maths-path/class-4/time.webp",
+          "text": [
+            "A show starts at 8:45 and ends at 10:30.",
+            "8:45 to 9:00 is 15 minutes. 9:00 to 10:00 is 1 hour. 10:00 to 10:30 is 30 minutes.",
+            "Add them: 1 hour 45 minutes."
+          ],
+          "widget": {
+            "w": "clock",
+            "c": {
+              "hour": 8,
+              "minute": 45
+            }
+          }
+        },
+        {
+          "title": "Read a timetable",
+          "art": "think",
+          "text": [
+            "A bus leaves at 9:40 and you are ready at 9:25.",
+            "Count on from 9:25 to 9:40.",
+            "You wait 15 minutes."
+          ],
+          "widget": {
+            "w": "clock",
+            "c": {
+              "hour": 9,
+              "minute": 40
+            }
+          }
+        },
+        {
+          "title": "Use a calendar",
+          "art": "/images/maths-path/class-4/time.webp",
+          "text": [
+            "Count days on a calendar. From 29 March to 8 April: 2 days to 31 March, then 8 more.",
+            "That is 10 days.",
+            "In March 2026 the 1st is a Sunday, so the 29th is a Sunday too."
+          ],
+          "widget": {
+            "w": "calendar",
+            "c": {
+              "month": "March",
+              "year": 2026,
+              "days": 31,
+              "startDay": 6,
+              "highlights": [
+                29
+              ]
+            }
+          }
+        },
+        {
+          "title": "Fast and slow clocks",
+          "art": "happy",
+          "text": [
+            "A fast clock shows too much time, so take the gap away.",
+            "This clock shows 4:20 and is 15 minutes fast.",
+            "The true time is 4:05."
+          ],
+          "widget": {
+            "w": "clock",
+            "c": {
+              "hour": 4,
+              "minute": 20,
+              "caption": "Shows 4:20, but it is 15 minutes fast."
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "This clock shows 4:20 but is 15 minutes fast. Set the true time.",
+          "widget": {
+            "w": "clock",
+            "c": {
+              "hour": 4,
+              "minute": 20,
+              "snap": 5
+            }
+          },
+          "target": {
+            "hour": 4,
+            "minute": 5
+          },
+          "success": "4:20 take away 15 minutes is 4:05.",
+          "hint": "Go back 15 minutes from 4:20."
+        },
+        {
+          "prompt": "A film starts at 8:45 and lasts 1 hour 45 minutes. Show when it ends.",
+          "widget": {
+            "w": "clock",
+            "c": {
+              "hour": 8,
+              "minute": 45,
+              "snap": 5
+            }
+          },
+          "target": {
+            "hour": 10,
+            "minute": 30
+          },
+          "success": "8:45 + 1 h 45 min = 10:30.",
+          "hint": "Add the hour first. Then add 45 minutes."
+        },
+        {
+          "prompt": "March 2026 starts on a Sunday. Tap the first Friday.",
+          "widget": {
+            "w": "calendar",
+            "c": {
+              "month": "March",
+              "year": 2026,
+              "days": 31,
+              "startDay": 6,
+              "editable": true
+            }
+          },
+          "target": {
+            "date": 6
+          },
+          "success": "Sunday is the 1st, so the first Friday is the 6th.",
+          "hint": "Count on from Sunday 1: Mon, Tue, Wed, Thu, Fri."
+        }
+      ],
+      "play": {
+        "game": "clock-master"
+      },
+      "tools": [
+        "/tools/clock-lessons.html",
+        "/tools/minute-hand.html",
+        "/tools/am-pm.html"
+      ]
+    },
+    {
+      "id": "money",
+      "title": "Bills, budgets and rupees with paise",
+      "tagline": "Keep rupees and paise lined up while comparing real shopping choices.",
+      "outcomes": [
+        "I can total a bill and find change.",
+        "I can compare equal amounts in packs.",
+        "I can choose within a budget."
+      ],
+      "source": "class-4/money",
+      "vocab": [
+        {
+          "term": "bill",
+          "meaning": "The list of what you bought and the total you owe."
+        },
+        {
+          "term": "change",
+          "meaning": "The money you get back when you pay more than the bill."
+        },
+        {
+          "term": "budget",
+          "meaning": "The most money you plan to spend."
+        },
+        {
+          "term": "paise",
+          "meaning": "100 paise make 1 rupee."
+        }
+      ],
+      "see": [
+        {
+          "title": "Add up the bill",
+          "art": "/images/maths-path/class-4/money.webp",
+          "text": [
+            "Add the prices one at a time.",
+            "Rs 50 + Rs 20 + Rs 5 = Rs 75.",
+            "Keep rupees under rupees when you write them in a column."
+          ],
+          "widget": {
+            "w": "coinTray",
+            "c": {
+              "show": [
+                [
+                  "note",
+                  50
+                ],
+                [
+                  "note",
+                  20
+                ],
+                [
+                  "coin",
+                  5
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "title": "Find the change",
+          "art": "think",
+          "text": [
+            "Pay Rs 200 for a Rs 130 bill.",
+            "Count on: 130 to 150 is 20. 150 to 200 is 50.",
+            "The change is Rs 70."
+          ],
+          "widget": {
+            "w": "coinTray",
+            "c": {
+              "show": [
+                [
+                  "note",
+                  50
+                ],
+                [
+                  "note",
+                  20
+                ]
+              ],
+              "caption": "Change: Rs 70"
+            }
+          }
+        },
+        {
+          "title": "Compare packs",
+          "art": "/images/maths-path/class-4/money.webp",
+          "text": [
+            "Pack A has 6 pens for Rs 30. That is Rs 5 each.",
+            "Pack B has 4 pens for Rs 24. That is Rs 6 each.",
+            "Pack A is the better buy."
+          ],
+          "widget": {
+            "w": "chart",
+            "c": {
+              "kind": "bar",
+              "title": "Cost of one pen (Rs)",
+              "categories": [
+                {
+                  "id": "a",
+                  "label": "Pack A",
+                  "value": 5
+                },
+                {
+                  "id": "b",
+                  "label": "Pack B",
+                  "value": 6
+                }
+              ],
+              "max": 6
+            }
+          }
+        },
+        {
+          "title": "Rupees and paise",
+          "art": "happy",
+          "text": [
+            "100 paise make Rs 1.",
+            "Rs 2.50 means 2 rupees and 50 paise.",
+            "Line up the point before you add."
+          ],
+          "widget": {
+            "w": "patternBuilder",
+            "c": {
+              "palette": [
+                {
+                  "id": "t0",
+                  "label": "Rs",
+                  "color": "#ef6b5b",
+                  "icon": "Rs"
+                },
+                {
+                  "id": "t1",
+                  "label": "2",
+                  "color": "#4aa8ff",
+                  "icon": "2"
+                },
+                {
+                  "id": "t2",
+                  "label": ".",
+                  "color": "#f4c542",
+                  "icon": "."
+                },
+                {
+                  "id": "t3",
+                  "label": "50",
+                  "color": "#34d399",
+                  "icon": "50"
+                }
+              ],
+              "sequence": [
+                "t0",
+                "t1",
+                "t2",
+                "t3"
+              ],
+              "answer": [],
+              "caption": "Rupees, point, paise"
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Pay exactly Rs 75 using exactly 3 coins or notes.",
+          "widget": {
+            "w": "coinTray",
+            "c": {
+              "coins": [
+                5,
+                10
+              ],
+              "notes": [
+                10,
+                20,
+                50
+              ]
+            }
+          },
+          "target": {
+            "total": 75,
+            "count": 3
+          },
+          "success": "50 + 20 + 5 makes Rs 75.",
+          "hint": "Start with the Rs 50 note."
+        },
+        {
+          "prompt": "Change for a Rs 130 bill paid with Rs 200 is Rs 70. Make Rs 70 using exactly 2 notes.",
+          "widget": {
+            "w": "coinTray",
+            "c": {
+              "coins": [
+                5,
+                10
+              ],
+              "notes": [
+                10,
+                20,
+                50
+              ]
+            }
+          },
+          "target": {
+            "total": 70,
+            "count": 2
+          },
+          "success": "50 + 20 = Rs 70.",
+          "hint": "Try the biggest note first."
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": [
+        "/tools/calculator.html"
+      ]
+    },
+    {
+      "id": "data",
+      "title": "Read scaled charts and compare results",
+      "tagline": "Use axes, half-symbol keys and totals across displays.",
+      "outcomes": [
+        "I can use a non-unit chart scale.",
+        "I can read half a pictograph symbol.",
+        "I can compare and update survey data."
+      ],
+      "source": "class-4/data",
+      "vocab": [
+        {
+          "term": "scale",
+          "meaning": "How much one step or one symbol on a chart stands for."
+        },
+        {
+          "term": "pictograph",
+          "meaning": "A chart that uses symbols to show counts."
+        },
+        {
+          "term": "key",
+          "meaning": "The note that tells you what each symbol is worth."
+        },
+        {
+          "term": "survey",
+          "meaning": "Asking a group the same question and recording the answers."
+        }
+      ],
+      "see": [
+        {
+          "title": "Read the key first",
+          "art": "/images/maths-path/class-4/data.webp",
+          "text": [
+            "This key says each ● is 2 children.",
+            "Count the symbols, then multiply by 2.",
+            "Three symbols mean 6 children."
+          ],
+          "widget": {
+            "w": "chart",
+            "c": {
+              "kind": "picture",
+              "title": "Fruit votes (each ● = 2 children)",
+              "max": 6,
+              "categories": [
+                {
+                  "id": "a",
+                  "label": "Apple",
+                  "value": 3
+                },
+                {
+                  "id": "b",
+                  "label": "Mango",
+                  "value": 5
+                },
+                {
+                  "id": "c",
+                  "label": "Pear",
+                  "value": 2
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Half a symbol is half the value",
+          "art": "think",
+          "text": [
+            "If a star is worth 10 stickers, half a star is worth 5.",
+            "Add the whole stars and the half star.",
+            "Two and a half stars is 25 stickers."
+          ],
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 0,
+              "max": 10,
+              "labelEvery": 5,
+              "marker": 5,
+              "caption": "Half of 10 is 5."
+            }
+          }
+        },
+        {
+          "title": "Compare the bars",
+          "art": "/images/maths-path/class-4/data.webp",
+          "text": [
+            "Find the tallest and shortest bars.",
+            "Subtract to find how many more.",
+            "Read the scale on the side before you subtract."
+          ],
+          "widget": {
+            "w": "chart",
+            "c": {
+              "kind": "bar",
+              "title": "Specimens tested",
+              "categories": [
+                {
+                  "id": "a",
+                  "label": "Aster",
+                  "value": 12
+                },
+                {
+                  "id": "b",
+                  "label": "Lyra",
+                  "value": 18
+                },
+                {
+                  "id": "c",
+                  "label": "Nova",
+                  "value": 9
+                }
+              ],
+              "max": 20
+            }
+          }
+        },
+        {
+          "title": "Update the data",
+          "art": "happy",
+          "text": [
+            "If 6 samples move from Lyra to Aster, take 6 off Lyra and add 6 to Aster.",
+            "The total stays the same.",
+            "Check that the two changes match."
+          ],
+          "widget": {
+            "w": "chart",
+            "c": {
+              "kind": "bar",
+              "title": "After the move",
+              "categories": [
+                {
+                  "id": "a",
+                  "label": "Aster",
+                  "value": 18
+                },
+                {
+                  "id": "b",
+                  "label": "Lyra",
+                  "value": 12
+                }
+              ],
+              "max": 20
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Each ● is 2 children. Show 14 children for Mango.",
+          "widget": {
+            "w": "chart",
+            "c": {
+              "kind": "picture",
+              "title": "Votes (each ● = 2 children)",
+              "max": 8,
+              "editable": true,
+              "categories": [
+                {
+                  "id": "a",
+                  "label": "Apple",
+                  "value": 3
+                },
+                {
+                  "id": "m",
+                  "label": "Mango",
+                  "value": 0
+                },
+                {
+                  "id": "p",
+                  "label": "Pear",
+                  "value": 4
+                }
+              ]
+            }
+          },
+          "target": {
+            "values": {
+              "a": 3,
+              "m": 7,
+              "p": 4
+            }
+          },
+          "success": "7 symbols × 2 = 14 children.",
+          "hint": "Half of 14 is how many symbols?"
+        },
+        {
+          "prompt": "Aster has 12 and Lyra has 18. Move samples so both have the same.",
+          "widget": {
+            "w": "chart",
+            "c": {
+              "kind": "bar",
+              "title": "Samples",
+              "categories": [
+                {
+                  "id": "a",
+                  "label": "Aster",
+                  "value": 12
+                },
+                {
+                  "id": "l",
+                  "label": "Lyra",
+                  "value": 18
+                }
+              ],
+              "max": 20,
+              "editable": true
+            }
+          },
+          "target": {
+            "values": {
+              "a": 15,
+              "l": 15
+            }
+          },
+          "success": "Move 3 from Lyra to Aster. 15 and 15.",
+          "hint": "The total is 30. Half of 30 is 15."
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": []
+    },
+    {
+      "id": "reasoning",
+      "title": "Codes, turns and hidden pictures",
+      "tagline": "Explain each code, picture or ordering rule before selecting an answer.",
+      "outcomes": [
+        "I can use codes and alphabet order.",
+        "I can follow turns and ranking clues.",
+        "I can find a hidden figure or picture rule.",
+        "I can list possible pairs without missing any."
+      ],
+      "source": "class-4/reasoning",
+      "vocab": [
+        {
+          "term": "code",
+          "meaning": "A rule that changes letters or numbers into new ones."
+        },
+        {
+          "term": "dictionary order",
+          "meaning": "Ordering words by their first letter, then second letter and so on."
+        },
+        {
+          "term": "combination",
+          "meaning": "One choice from each group, like a shirt and a cap."
+        }
+      ],
+      "see": [
+        {
+          "title": "Crack a letter code",
+          "art": "/images/maths-path/class-4/reasoning.webp",
+          "text": [
+            "Look for the rule first. In this code each letter moves 1 step forward.",
+            "R becomes S, O becomes P, A becomes B and D becomes E.",
+            "ROAD is written SPBE."
+          ],
+          "widget": {
+            "w": "patternBuilder",
+            "c": {
+              "palette": [
+                {
+                  "id": "t0",
+                  "label": "R",
+                  "color": "#ef6b5b",
+                  "icon": "R"
+                },
+                {
+                  "id": "t1",
+                  "label": "O",
+                  "color": "#4aa8ff",
+                  "icon": "O"
+                },
+                {
+                  "id": "t2",
+                  "label": "A",
+                  "color": "#f4c542",
+                  "icon": "A"
+                },
+                {
+                  "id": "t3",
+                  "label": "D",
+                  "color": "#34d399",
+                  "icon": "D"
+                }
+              ],
+              "sequence": [
+                "t0",
+                "t1",
+                "t2",
+                "t3"
+              ],
+              "answer": [],
+              "caption": "ROAD"
+            }
+          }
+        },
+        {
+          "title": "Dictionary order",
+          "art": "think",
+          "text": [
+            "Compare the first letters. If they match, compare the next letters.",
+            "INK, KITE, LAMP, PIN, SUN is in dictionary order.",
+            "Say the alphabet in your head to check."
+          ],
+          "widget": {
+            "w": "patternBuilder",
+            "c": {
+              "palette": [
+                {
+                  "id": "t0",
+                  "label": "INK",
+                  "color": "#ef6b5b",
+                  "icon": "INK"
+                },
+                {
+                  "id": "t1",
+                  "label": "KITE",
+                  "color": "#4aa8ff",
+                  "icon": "KITE"
+                },
+                {
+                  "id": "t2",
+                  "label": "LAMP",
+                  "color": "#f4c542",
+                  "icon": "LAMP"
+                },
+                {
+                  "id": "t3",
+                  "label": "PIN",
+                  "color": "#34d399",
+                  "icon": "PIN"
+                },
+                {
+                  "id": "t4",
+                  "label": "SUN",
+                  "color": "#a78bfa",
+                  "icon": "SUN"
+                }
+              ],
+              "sequence": [
+                "t0",
+                "t1",
+                "t2",
+                "t3",
+                "t4"
+              ],
+              "answer": [],
+              "caption": "In dictionary order"
+            }
+          }
+        },
+        {
+          "title": "Follow the moves",
+          "art": "/images/maths-path/class-4/reasoning.webp",
+          "text": [
+            "Read each command and move one square.",
+            "Walls block the way.",
+            "Plan the whole route before you run it."
+          ],
+          "widget": {
+            "w": "logicBoard",
+            "c": {
+              "rows": 3,
+              "cols": 3,
+              "start": {
+                "r": 2,
+                "c": 0,
+                "dir": "E"
+              },
+              "goal": {
+                "r": 0,
+                "c": 2
+              },
+              "walls": [
+                [
+                  1,
+                  1
+                ]
+              ],
+              "commands": "compass",
+              "maxCommands": 6
+            }
+          }
+        },
+        {
+          "title": "List every pair",
+          "art": "happy",
+          "text": [
+            "3 shirts and 2 caps make 3 × 2 = 6 outfits.",
+            "List the outfits in order so none are missed or repeated.",
+            "An array can help you count them."
+          ],
+          "widget": {
+            "w": "array",
+            "c": {
+              "rows": 3,
+              "cols": 2,
+              "word": "rows"
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Guide the rover to the flag with the compass commands.",
+          "widget": {
+            "w": "logicBoard",
+            "c": {
+              "rows": 4,
+              "cols": 4,
+              "start": {
+                "r": 3,
+                "c": 0,
+                "dir": "E"
+              },
+              "goal": {
+                "r": 0,
+                "c": 3
+              },
+              "walls": [
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  2
+                ]
+              ],
+              "commands": "compass",
+              "maxCommands": 6
+            }
+          },
+          "target": {
+            "reach": true
+          },
+          "success": "North three times, then east three times.",
+          "hint": "Go up the left side, then along the top."
+        },
+        {
+          "prompt": "Put the words in dictionary order. Tap a gap, then a word.",
+          "widget": {
+            "w": "patternBuilder",
+            "c": {
+              "palette": [
+                {
+                  "id": "t0",
+                  "label": "INK",
+                  "color": "#ef6b5b",
+                  "icon": "INK"
+                },
+                {
+                  "id": "t1",
+                  "label": "KITE",
+                  "color": "#4aa8ff",
+                  "icon": "KITE"
+                },
+                {
+                  "id": "t2",
+                  "label": "SUN",
+                  "color": "#f4c542",
+                  "icon": "SUN"
+                }
+              ],
+              "sequence": [
+                null,
+                null,
+                null
+              ],
+              "answer": [
+                "t0",
+                "t1",
+                "t2"
+              ],
+              "caption": "First to last"
+            }
+          },
+          "target": {},
+          "success": "I, K, S: INK, KITE, SUN.",
+          "hint": "Which first letter comes earliest in the alphabet?"
+        },
+        {
+          "prompt": "3 shirts and 2 caps. Build the array of all outfits.",
+          "widget": {
+            "w": "array",
+            "c": {
+              "rows": 1,
+              "cols": 1,
+              "editable": true,
+              "max": 6
+            }
+          },
+          "target": {
+            "rows": 3,
+            "cols": 2
+          },
+          "success": "3 × 2 = 6 outfits.",
+          "hint": "Make 3 rows of 2."
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": []
+    }
+  ],
+  "live": true,
+  "grade": "class-4"
+}

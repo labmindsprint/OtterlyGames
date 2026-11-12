@@ -234,6 +234,67 @@ curriculum rather than generic difficulty or number-range claims. Regenerate
 with `node .\scripts\build-space-academy.mjs --write` before the main site build,
 only after concurrent content edits have finished; `--check` verifies freshness.
 
+### Maths Path (`/learn/maths/`)
+
+The Otterly Maths Path is a PP1 to Class 5 course. Each chapter has five steps:
+See it, Try it, Practise it, Print it, Check it. All seven classes (pp1, pp2,
+class-1 to class-5) are live. A class without `"live": true` would render an
+honest "Lesson coming" plan instead of chapter pages.
+
+- **Data.** `_data\maths-path.json` is only the ordered index of class ids.
+  Each class lives in `_data\maths-path\<id>.json` (chapters, outcomes,
+  vocabulary, See-it screens, Try-it activities, parent guide, linked game).
+  `scripts\maths-path-routes.mjs` loads and joins them and owns the route rules.
+- **Validator.** `scripts\maths-path-schema.mjs` (`dataProblems`) rejects bad
+  data before any page is written: text lengths, "I can ..." outcomes, 3-5
+  See-it screens, known widgets that render without `undefined`/`NaN`, raster-only
+  art, existing tool pages, a valid `play.game`, a valid Space Academy source
+  chapter, and the words IMO or SOF.
+- **Generator.** `scripts\build-maths-path.mjs` writes the hub, one page per
+  class and one page per chapter of live classes, the redirect stubs, and the
+  generated class picker in `learn\index.html` (between the `mp:pick` markers).
+  It refuses to overwrite pages that lack a generated-file marker. Flags:
+  `--check` (default, read-only, exits nonzero when stale), `--write`, and
+  `--sync-inventory` (rewrites the `/learn/maths/` block of
+  `_data\public-pages.json` first; use with `--write`). Run it before
+  `build-site.mjs`.
+- **Browser code.** `js\maths-path\app.mjs` boots each page. `widgets.mjs`
+  registers the manipulatives (ten frame, place value, number line, clock,
+  coin tray, array, balance, bar model, calendar, chart, fraction bars, grid,
+  logic board, pattern builder, sorter). Each exports `render(config)` (also run
+  by the Node generator, so lessons are static HTML without JavaScript) and
+  `mount()` for the interactive version. `practice.mjs` and `check.mjs` draw
+  questions from the Space Academy generator; `check.mjs` is a 5-question check
+  with a 4/5 pass mark. `print.mjs` is the in-page printable worksheet: it uses
+  `js\worksheet-academy.mjs`, offers level, size and an optional answer-key
+  page, and opens the browser print window (A4). `progress.mjs` stores progress.
+  Styles are in `css\maths-path.css`; art in `images\maths-path\` is
+  Blender-rendered raster (`scripts\maths-path-art\`).
+- **Redirects.** For live classes the generator emits noindex stubs for
+  `/learn/olympiad/`, `/learn/olympiad/<grade>/` and each
+  `/learn/olympiad/<grade>/<chapter>.html`, pointing to the chapter that teaches
+  it (or the class map), plus `/learn/imo-preparation.html` to
+  `/learn/olympiad-style-maths-preparation.html`. The stubs are in
+  `ARCHIVE_ROUTES` and excluded from the sitemap.
+- **Question banks.** Each chapter's `source` (default `<class>/<chapter>`) is a
+  Space Academy chapter, so Practise, Print and Check reuse the production
+  banks and their level/plan rows. The Maths Path does not hold questions. Gaps
+  found against the syllabus are filled in the Space Academy bank3 modules
+  (`js\space-academy\bank3-class-N-gaps.mjs`, built with `bank3-gap-kit.mjs`).
+- **Privacy.** Progress (passes, best score, printed sheets) is kept only in
+  `localStorage` under `otterly.mathsPath.v1`. There are no accounts, cookies,
+  analytics, ads or third-party requests; a test enforces this. Storage
+  failures are reported on the page.
+- **SEO.** Every page has a canonical URL, Open Graph and Twitter tags (image
+  `images\maths-path\og-maths-path.png`, 1200x630) and BreadcrumbList JSON-LD;
+  hub and classes add CollectionPage/ItemList, chapters add LearningResource.
+  Ratings and reviews are not allowed. `scripts\maths-path-seo.mjs` runs inside
+  both builds. Indexable routes are listed in `_data\public-pages.json` and
+  `sitemap.xml`; redirect stubs are not.
+- **Naming rule.** Public copy says "Olympiad-style" and the course is "not an
+  official exam". It must not name IMO or SOF; the validator, the SEO check and
+  tests enforce this.
+
 The October 2026 content rebuild compared SOF's official 2026-27 Class 1-5
 samples, CREST's 2023-24 Set A Class 1-5 previous-year papers, Junior/Senior KG
 samples and a Unified Council UIMO Class 5 sample. The review covered 13

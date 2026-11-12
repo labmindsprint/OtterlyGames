@@ -19,7 +19,7 @@ ALL_PAGE_SIZES = [(1366, 768), (800, 1000), (390, 844), (320, 740)]
 CORE = [
     "/", "/play/", "/learn/", "/parents/", "/tools/", "/blog/",
     "/learn/telling-time.html", "/learn/times-tables.html",
-    "/learn/division.html", "/learn/spelling.html", "/learn/imo-preparation.html", "/learn/olympiad-mock-test.html",
+    "/learn/division.html", "/learn/spelling.html", "/learn/olympiad-style-maths-preparation.html", "/learn/olympiad-mock-test.html",
     "/tools/worksheet-builder.html", "/play/clock-master.html",
     "/play/math-tank.html", "/about.html", "/contact.html", "/support.html",
     "/apps/clock-master.html", "/apps/math-tank.html", "/apps/space-academy.html", "/apps/otter-element.html",

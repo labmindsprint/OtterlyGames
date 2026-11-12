@@ -131,7 +131,7 @@ export const GRADES = [
 ].map(grade => ({
   ...grade,
   reference: grade.year > 0 ? {
-    title: `SOF IMO Class ${grade.year} published topic syllabus`,
+    title: `Class ${grade.year} published topic list (external source)`,
     url: `https://sofworld.org/imo/class-${grade.year}/imo-syllabus/imo-syllabus-class-${grade.year}`,
   } : null,
 }));

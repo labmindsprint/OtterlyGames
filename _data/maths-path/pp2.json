@@ -1,0 +1,614 @@
+{
+  "id": "pp2",
+  "label": "PP2",
+  "name": "Pre-primary 2",
+  "ages": "Ages 4 to 5",
+  "blurb": "Numbers to 20, shapes and patterns.",
+  "live": true,
+  "grade": "pp2",
+  "chapters": [
+    {
+      "id": "numbers",
+      "title": "Numbers up to 20",
+      "tagline": "Build a ten, count the loose ones and find neighbours.",
+      "outcomes": [
+        "I can show numbers up to 20.",
+        "I can find before, after and between.",
+        "I can compare numbers and skip-count."
+      ],
+      "source": "pp2/numbers",
+      "vocab": [
+        { "term": "ten", "meaning": "A full ten frame. 10 counters." },
+        { "term": "before and after", "meaning": "Before is one less. After is one more." },
+        { "term": "between", "meaning": "In the middle of two numbers." },
+        { "term": "skip count", "meaning": "Count in jumps, like 2, 4, 6, 8." }
+      ],
+      "see": [
+        {
+          "title": "A full ten",
+          "art": "happy",
+          "text": ["10 counters fill the frame.", "A full frame is one ten.", "Count them: 1, 2, 3 up to 10."],
+          "widget": { "w": "tenFrame", "c": { "frames": 2, "count": 10, "caption": "One full ten." } }
+        },
+        {
+          "title": "Ten and some more",
+          "art": "cheer",
+          "text": ["Fill the first frame with 10.", "Put the rest in the next frame.", "10 and 4 more is 14."],
+          "widget": { "w": "tenFrame", "c": { "frames": 2, "count": 14, "caption": "14 is 10 and 4 more." } }
+        },
+        {
+          "title": "Before, after, between",
+          "art": "think",
+          "text": ["Before 15 is 14.", "After 15 is 16.", "15 is between 14 and 16."],
+          "widget": { "w": "numberLine", "c": { "min": 10, "max": 20, "marker": 15, "labelEvery": 1, "caption": "14, 15, 16." } }
+        },
+        {
+          "title": "Count in twos",
+          "art": "happy",
+          "text": ["Hop two steps each time.", "2, 4, 6, 8, 10.", "Keep going to 20."],
+          "widget": { "w": "numberLine", "c": { "min": 0, "max": 20, "hops": [[0, 2], [2, 4], [4, 6], [6, 8], [8, 10]], "labelEvery": 2, "caption": "Hops of 2." } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Show 13. Fill a ten, then add 3 more.",
+          "widget": { "w": "tenFrame", "c": { "frames": 2, "start": 0 } },
+          "target": { "count": 13 },
+          "success": "Yes! 10 and 3 more is 13.",
+          "hint": "Fill the first frame to 10. Then add 3 more in the next frame."
+        },
+        {
+          "prompt": "Which number comes after 16? Tap it.",
+          "widget": { "w": "numberLine", "c": { "min": 10, "max": 20, "start": 10, "labelEvery": 1 } },
+          "target": { "position": 17 },
+          "success": "Yes! After 16 comes 17.",
+          "hint": "Find 16. The number after is one step to the right."
+        },
+        {
+          "prompt": "Which number is between 11 and 13? Tap it.",
+          "widget": { "w": "numberLine", "c": { "min": 10, "max": 20, "start": 10, "labelEvery": 1 } },
+          "target": { "position": 12 },
+          "success": "Yes! 12 is between 11 and 13.",
+          "hint": "Say the numbers in order: 11, then ?, then 13."
+        }
+      ],
+      "play": { "game": "space-academy" },
+      "tools": [],
+      "parents": {
+        "idea": "Your child builds numbers to 20 as a ten and some ones, and learns what comes before, after and between. Skip counting by 2s is the start of times tables.",
+        "slip": "Counting teen numbers as one big group and losing count. Fill a ten first, then count only the extra ones.",
+        "tryAtHome": {
+          "title": "Egg-box teens",
+          "steps": ["Use an egg box or two rows of 5 for a ten frame.", "Ask your child to fill a ten with buttons.", "Add 4 more on the next row. Say, \"10 and 4 is 14\".", "Ask which number comes before 14 and which comes after."]
+        }
+      }
+    },
+    {
+      "id": "operations",
+      "title": "Add and take away",
+      "tagline": "Join groups, remove objects and find a hidden part.",
+      "outcomes": [
+        "I can add two small groups.",
+        "I can find what is left.",
+        "I can find a missing part."
+      ],
+      "source": "pp2/operations",
+      "vocab": [
+        { "term": "add", "meaning": "Put groups together to find how many in all." },
+        { "term": "take away", "meaning": "Remove some. Count what is left." },
+        { "term": "missing part", "meaning": "The part you cannot see yet." }
+      ],
+      "see": [
+        {
+          "title": "Join two groups",
+          "art": "happy",
+          "text": ["Here are 4 orange and 3 blue.", "Put them together.", "4 and 3 make 7."],
+          "widget": { "w": "tenFrame", "c": { "count": 4, "second": 3, "caption": "4 and 3 make 7." } }
+        },
+        {
+          "title": "Take away",
+          "art": "think",
+          "text": ["There were 7. Blue ones are taken away.", "4 are taken away.", "3 are left."],
+          "widget": { "w": "tenFrame", "c": { "count": 3, "second": 4, "caption": "Orange 3 left. Blue 4 taken away." } }
+        },
+        {
+          "title": "Find the missing part",
+          "art": "cheer",
+          "text": ["The whole bar is 9.", "One part is 4.", "The missing part is 5."],
+          "widget": { "w": "barModel", "c": { "parts": [4, 5], "unknown": "b", "caption": "4 and ? make 9." } }
+        },
+        {
+          "title": "Hop to add",
+          "art": "happy",
+          "text": ["Start at 3.", "Hop 2 more.", "You land on 5. So 3 and 2 make 5."],
+          "widget": { "w": "numberLine", "c": { "min": 0, "max": 10, "hops": [[3, 5]], "marker": 5, "labelEvery": 1, "caption": "3 and 2 make 5." } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Join 4 and 3. Show how many in all.",
+          "widget": { "w": "tenFrame", "c": { "start": 0 } },
+          "target": { "count": 7 },
+          "success": "Yes! 4 and 3 make 7.",
+          "hint": "Count 4, then keep counting 3 more: 5, 6, 7."
+        },
+        {
+          "prompt": "Make 8 with two parts. Use the plus buttons.",
+          "widget": { "w": "barModel", "c": { "a": 0, "b": 0, "max": 10 } },
+          "target": { "total": 8 },
+          "success": "Yes! The two parts make 8.",
+          "hint": "Try 5 in one part and 3 in the other."
+        },
+        {
+          "prompt": "The right side has 9. Add to the left side to make it level.",
+          "widget": { "w": "balance", "c": { "left": 4, "right": 9, "max": 10 } },
+          "target": { "added": 5 },
+          "success": "Yes! 4 and 5 make 9. The missing part is 5.",
+          "hint": "Add one at a time. Stop when both sides match."
+        }
+      ],
+      "play": { "game": "space-academy" },
+      "tools": [],
+      "parents": {
+        "idea": "Your child joins two groups, takes some away, and finds a missing part. They use objects first. Numbers up to 10 are enough.",
+        "slip": "Counting all again instead of counting on. Say the bigger number, then count on: 4 ... 5, 6, 7.",
+        "tryAtHome": {
+          "title": "Snack sums",
+          "steps": ["Put 4 crackers on a plate and 3 on another.", "Join them. Ask, \"How many altogether?\"", "Eat 2. Ask how many are left.", "Hide some under a cup. Ask how many are hidden."]
+        }
+      }
+    },
+    {
+      "id": "shapes",
+      "title": "Flat shapes and solid things",
+      "tagline": "Connect shapes to real objects and simple position clues.",
+      "outcomes": [
+        "I can count sides and corners.",
+        "I can recognise a solid by how it moves.",
+        "I can join shapes to make a picture."
+      ],
+      "source": "pp2/shapes",
+      "vocab": [
+        { "term": "side", "meaning": "A straight edge of a flat shape." },
+        { "term": "corner", "meaning": "A pointy place where two sides meet." },
+        { "term": "solid", "meaning": "A shape you can hold, like a ball or a box." },
+        { "term": "roll", "meaning": "To turn over and over, like a ball." }
+      ],
+      "see": [
+        {
+          "title": "Count sides and corners",
+          "art": "happy",
+          "text": ["A triangle has 3 sides and 3 corners.", "A square and a rectangle have 4.", "A circle has no sides and no corners."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "3 sides", "img": "/images/maths-path/pp1/shape-triangle.webp", "size": 76 },
+            { "id": "b", "label": "4 sides", "img": "/images/maths-path/pp1/shape-square.webp", "size": 76 },
+            { "id": "c", "label": "4 sides", "img": "/images/maths-path/pp1/shape-rectangle.webp", "size": 76 },
+            { "id": "d", "label": "no sides", "img": "/images/maths-path/pp1/shape-circle.webp", "size": 76 }
+          ], "bins": [], "caption": "Count the sides." } }
+        },
+        {
+          "title": "Solid things",
+          "art": "cheer",
+          "text": ["Solids are shapes you can hold.", "A ball is a sphere. A box is a cube or a cuboid.", "A tin is a cylinder."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "sphere", "img": "/images/maths-path/solid-sphere.webp", "size": 70 },
+            { "id": "b", "label": "cube", "img": "/images/maths-path/solid-cube.webp", "size": 70 },
+            { "id": "c", "label": "cuboid", "img": "/images/maths-path/solid-cuboid.webp", "size": 70 },
+            { "id": "d", "label": "cylinder", "img": "/images/maths-path/solid-cylinder.webp", "size": 70 }
+          ], "bins": [], "caption": "Four solids." } }
+        },
+        {
+          "title": "Rolls or slides?",
+          "art": "think",
+          "text": ["A sphere rolls and rolls.", "A cube has flat faces. It slides, it does not roll."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "rolls", "img": "/images/maths-path/solid-sphere.webp", "size": 80 },
+            { "id": "b", "label": "slides", "img": "/images/maths-path/solid-cube.webp", "size": 80 }
+          ], "bins": [], "caption": "Rolls or slides?" } }
+        },
+        {
+          "title": "Shapes make a picture",
+          "art": "happy",
+          "text": ["A square, a triangle, a rectangle and a circle.", "Put them together and they make a house."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "a house made of shapes", "img": "/images/maths-path/pp2/house.webp", "size": 150 }
+          ], "bins": [], "caption": "A house from 4 shapes." } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Sort the shapes by corners.",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "triangle", "img": "/images/maths-path/pp1/shape-triangle.webp", "size": 68, "bin": "three" },
+            { "id": "b", "label": "square", "img": "/images/maths-path/pp1/shape-square.webp", "size": 68, "bin": "four" },
+            { "id": "c", "label": "rectangle", "img": "/images/maths-path/pp1/shape-rectangle.webp", "size": 68, "bin": "four" },
+            { "id": "d", "label": "circle", "img": "/images/maths-path/pp1/shape-circle.webp", "size": 68, "bin": "none" },
+            { "id": "e", "label": "oval", "img": "/images/maths-path/pp1/shape-oval.webp", "size": 68, "bin": "none" }
+          ], "bins": [{ "id": "three", "label": "3 corners" }, { "id": "four", "label": "4 corners" }, { "id": "none", "label": "No corners" }] } },
+          "target": {},
+          "success": "Yes! Triangle 3, square and rectangle 4, circle and oval none.",
+          "hint": "Touch each corner with a finger and count."
+        },
+        {
+          "prompt": "Which solids can roll? Which cannot?",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "sphere", "img": "/images/maths-path/solid-sphere.webp", "size": 66, "bin": "roll" },
+            { "id": "b", "label": "cube", "img": "/images/maths-path/solid-cube.webp", "size": 66, "bin": "flat" },
+            { "id": "c", "label": "cylinder", "img": "/images/maths-path/solid-cylinder.webp", "size": 66, "bin": "roll" },
+            { "id": "d", "label": "cuboid", "img": "/images/maths-path/solid-cuboid.webp", "size": 66, "bin": "flat" }
+          ], "bins": [{ "id": "roll", "label": "Can roll" }, { "id": "flat", "label": "Cannot roll" }] } },
+          "target": {},
+          "success": "Yes! A sphere and a cylinder roll. A cube and a cuboid do not.",
+          "hint": "Think of a ball and a tin of beans. Do they roll?"
+        }
+      ],
+      "play": { "game": "space-academy" },
+      "tools": [],
+      "parents": {
+        "idea": "Your child counts the sides and corners of flat shapes, names solids by how they move, and builds pictures from shapes.",
+        "slip": "Mixing up a flat shape with a solid, like circle and sphere. A circle is flat. A sphere is a ball you can hold.",
+        "tryAtHome": {
+          "title": "Roll or slide",
+          "steps": ["Find a ball, a tin, a box and a dice.", "Ask your child to guess which will roll.", "Push each one gently across the floor.", "Name each solid together."]
+        }
+      }
+    },
+    {
+      "id": "measurement",
+      "title": "Long, heavy and full",
+      "tagline": "Compare objects with common units and informal balances.",
+      "outcomes": [
+        "I can compare lengths and sizes.",
+        "I can measure with equal blocks.",
+        "I can compare weight and capacity."
+      ],
+      "source": "pp2/measurement",
+      "vocab": [
+        { "term": "long and short", "meaning": "Long goes further. Short is not so far." },
+        { "term": "heavy and light", "meaning": "Heavy is hard to lift. Light is easy." },
+        { "term": "full and empty", "meaning": "Full holds all it can. Empty holds nothing." }
+      ],
+      "see": [
+        {
+          "title": "Longer and shorter",
+          "art": "happy",
+          "text": ["Line the pencils up at one end.", "This pencil is longer.", "This pencil is shorter."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "longer", "img": "/images/maths-path/pp2/pencil-long.webp", "size": 150 },
+            { "id": "b", "label": "shorter", "img": "/images/maths-path/pp2/pencil-short.webp", "size": 75 }
+          ], "bins": [], "caption": "Longer and shorter." } }
+        },
+        {
+          "title": "Measure with equal blocks",
+          "art": "cheer",
+          "text": ["Use blocks that are all the same size.", "Put them end to end.", "Count them. This row is 5 blocks long."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "5 blocks long", "img": "/images/maths-path/pp2/blocks-row-5.webp", "size": 170 }
+          ], "bins": [], "caption": "5 equal blocks." } }
+        },
+        {
+          "title": "Heavy and light",
+          "art": "think",
+          "text": ["A rock is heavy.", "A balloon is light.", "The heavy side of a balance goes down."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "heavy", "img": "/images/maths-path/pp1/rock.webp", "size": 90 },
+            { "id": "b", "label": "light", "img": "/images/maths-path/pp1/balloon.webp", "size": 90 }
+          ], "bins": [], "caption": "Heavy and light." } }
+        },
+        {
+          "title": "Full and empty",
+          "art": "happy",
+          "text": ["A jar can hold water.", "Full means it is up to the top.", "Empty means there is no water."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "empty", "img": "/images/maths-path/pp1/jar-empty.webp", "size": 84 },
+            { "id": "b", "label": "half", "img": "/images/maths-path/pp1/jar-half.webp", "size": 84 },
+            { "id": "c", "label": "full", "img": "/images/maths-path/pp1/jar-full.webp", "size": 84 }
+          ], "bins": [], "caption": "Empty, half, full." } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Sort: which are long or tall? Which are short?",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "pencil", "img": "/images/maths-path/pp2/pencil-long.webp", "size": 140, "bin": "long" },
+            { "id": "b", "label": "tower", "img": "/images/maths-path/pp1/tower-tall.webp", "size": 100, "bin": "long" },
+            { "id": "c", "label": "pencil", "img": "/images/maths-path/pp2/pencil-short.webp", "size": 70, "bin": "short" },
+            { "id": "d", "label": "tower", "img": "/images/maths-path/pp1/tower-short.webp", "size": 40, "bin": "short" }
+          ], "bins": [{ "id": "long", "label": "Long or tall" }, { "id": "short", "label": "Short" }] } },
+          "target": {},
+          "success": "Yes! You compared lengths and heights.",
+          "hint": "Which one reaches further, or goes higher?"
+        },
+        {
+          "prompt": "A rope is 6 blocks long. Hop 6 blocks from 0. Tap where it ends.",
+          "widget": { "w": "numberLine", "c": { "min": 0, "max": 10, "start": 0, "labelEvery": 1 } },
+          "target": { "position": 6 },
+          "success": "Yes! 6 equal blocks long.",
+          "hint": "Start at 0. Count one hop for each block."
+        },
+        {
+          "prompt": "Make the balance level. The right side is heavier.",
+          "widget": { "w": "balance", "c": { "left": 3, "right": 7, "max": 10 } },
+          "target": { "added": 4 },
+          "success": "Yes! Now both sides are the same weight.",
+          "hint": "Add one at a time to the left until it is level."
+        },
+        {
+          "prompt": "Which is heavy? Which is light?",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "rock", "img": "/images/maths-path/pp1/rock.webp", "size": 80, "bin": "heavy" },
+            { "id": "b", "label": "balloon", "img": "/images/maths-path/pp1/balloon.webp", "size": 80, "bin": "light" }
+          ], "bins": [{ "id": "heavy", "label": "Heavy" }, { "id": "light", "label": "Light" }] } },
+          "target": {},
+          "success": "Yes! A rock is heavy. A balloon is light.",
+          "hint": "Which would be harder to lift?"
+        }
+      ],
+      "play": { "game": "space-academy" },
+      "tools": [],
+      "parents": {
+        "idea": "Your child compares length, weight and how full things are. Then they measure with equal blocks, a first step to rulers and scales.",
+        "slip": "Measuring with unequal things, like different-sized blocks, or not starting at the same end. Use the same block and line up the start.",
+        "tryAtHome": {
+          "title": "Measure the teddy",
+          "steps": ["Use 10 equal blocks or spoons.", "Lay them end to end beside a teddy.", "Count how many blocks long the teddy is.", "Measure a shoe. Which is longer?"]
+        }
+      }
+    },
+    {
+      "id": "patterns",
+      "title": "Find the pattern",
+      "tagline": "Repeat a group, fill a gap and predict a growing picture.",
+      "outcomes": [
+        "I can continue a repeating group.",
+        "I can fill a gap in a pattern.",
+        "I can spot a broken rule."
+      ],
+      "source": "pp2/patterns",
+      "vocab": [
+        { "term": "pattern", "meaning": "A group of pictures that repeats." },
+        { "term": "gap", "meaning": "A missing spot in a pattern." },
+        { "term": "rule", "meaning": "What the pattern does each time." }
+      ],
+      "see": [
+        {
+          "title": "Repeat the group",
+          "art": "happy",
+          "text": ["Star, star, heart.", "The same group again and again.", "Say it as you point."],
+          "widget": { "w": "patternBuilder", "c": { "palette": [
+            { "id": "s", "label": "star", "img": "/images/maths-path/pp1/shape-star.webp", "size": 52 },
+            { "id": "h", "label": "heart", "img": "/images/maths-path/pp1/shape-heart.webp", "size": 52 }
+          ], "sequence": ["s", "s", "h", "s", "s", "h"], "caption": "Star, star, heart." } }
+        },
+        {
+          "title": "Fill the gap",
+          "art": "think",
+          "text": ["Ball, apple, ball, apple.", "One picture is missing.", "It is a ball."],
+          "widget": { "w": "patternBuilder", "c": { "palette": [
+            { "id": "b", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 52 },
+            { "id": "a", "label": "apple", "img": "/images/maths-path/pp1/apple.webp", "size": 52 }
+          ], "sequence": ["b", "a", "b", null, "b", "a"], "caption": "What is missing?" } }
+        },
+        {
+          "title": "A broken rule",
+          "art": "cheer",
+          "text": ["Star, heart, star, heart.", "Then a ball. That breaks the rule.", "A heart should be there."],
+          "widget": { "w": "patternBuilder", "c": { "palette": [
+            { "id": "s", "label": "star", "img": "/images/maths-path/pp1/shape-star.webp", "size": 52 },
+            { "id": "h", "label": "heart", "img": "/images/maths-path/pp1/shape-heart.webp", "size": 52 },
+            { "id": "b", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 52 }
+          ], "sequence": ["s", "h", "s", "h", "b", "h"], "caption": "The ball breaks the pattern." } }
+        },
+        {
+          "title": "A picture that grows",
+          "art": "happy",
+          "text": ["Row 1 has 2. Row 2 has 2 more.", "Now there are 4. Row 3 makes 6.", "It grows by 2 each time."],
+          "widget": { "w": "array", "c": { "rows": 3, "cols": 2, "word": "rows", "caption": "3 rows of 2 make 6." } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Star, star, heart. Pick what comes next.",
+          "widget": { "w": "patternBuilder", "c": { "palette": [
+            { "id": "s", "label": "star", "img": "/images/maths-path/pp1/shape-star.webp", "size": 52 },
+            { "id": "h", "label": "heart", "img": "/images/maths-path/pp1/shape-heart.webp", "size": 52 }
+          ], "sequence": ["s", "s", "h", "s", "s", null], "answer": ["h"] } },
+          "target": {},
+          "success": "Yes! Star, star, heart. Again!",
+          "hint": "The group is star, star, heart. Which one finishes it?"
+        },
+        {
+          "prompt": "Fill both gaps in the pattern.",
+          "widget": { "w": "patternBuilder", "c": { "palette": [
+            { "id": "b", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 52 },
+            { "id": "a", "label": "apple", "img": "/images/maths-path/pp1/apple.webp", "size": 52 }
+          ], "sequence": ["b", "a", null, "a", "b", null], "answer": ["b", "a"] } },
+          "target": {},
+          "success": "Yes! Ball, apple, ball, apple, ball, apple.",
+          "hint": "Say it from the start. The pattern is ball, apple."
+        },
+        {
+          "prompt": "The pattern is broken. Put the right picture in the gap.",
+          "widget": { "w": "patternBuilder", "c": { "palette": [
+            { "id": "f", "label": "fish", "img": "/images/maths-path/pp1/fish.webp", "size": 52 },
+            { "id": "b", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 52 }
+          ], "sequence": ["f", "b", "f", "b", "f", "b", null, "b"], "answer": ["f"] } },
+          "target": {},
+          "success": "Yes! Fish, ball, fish, ball. The gap is a fish.",
+          "hint": "A fish goes before every ball."
+        }
+      ],
+      "play": { "game": "space-academy" },
+      "tools": [],
+      "parents": {
+        "idea": "Your child continues a repeating pattern, fills a gap, and spots a picture that breaks the rule. Growing patterns lead to number rules later.",
+        "slip": "Guessing a gap without saying the whole group. Say the pattern from the start every time.",
+        "tryAtHome": {
+          "title": "Clap and stamp",
+          "steps": ["Clap, clap, stamp. Clap, clap, stamp.", "Ask your child to carry on.", "Make a mistake on purpose. Ask, \"What went wrong?\"", "Draw a colour pattern and cover one part."]
+        }
+      }
+    },
+    {
+      "id": "reasoning",
+      "title": "Follow the picture clues",
+      "tagline": "Use positions, arrows and two visible clues.",
+      "outcomes": [
+        "I can find a place in a row.",
+        "I can choose a picture using two clues.",
+        "I can follow arrows on a map."
+      ],
+      "source": "pp2/reasoning",
+      "vocab": [
+        { "term": "clue", "meaning": "A small hint that helps you find the answer." },
+        { "term": "first, last", "meaning": "First is at the start. Last is at the end." },
+        { "term": "arrow", "meaning": "It points which way to go." }
+      ],
+      "see": [
+        {
+          "title": "Places in a row",
+          "art": "happy",
+          "text": ["The ball is 1st. The apple is 2nd.", "The star is 3rd. The heart is 4th.", "The fish is 5th and last."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "1st", "img": "/images/maths-path/pp1/ball.webp", "size": 58 },
+            { "id": "b", "label": "2nd", "img": "/images/maths-path/pp1/apple.webp", "size": 58 },
+            { "id": "c", "label": "3rd", "img": "/images/maths-path/pp1/shape-star.webp", "size": 58 },
+            { "id": "d", "label": "4th", "img": "/images/maths-path/pp1/shape-heart.webp", "size": 58 },
+            { "id": "e", "label": "5th", "img": "/images/maths-path/pp1/fish.webp", "size": 62 }
+          ], "bins": [], "caption": "Count from the left." } }
+        },
+        {
+          "title": "Use two clues",
+          "art": "think",
+          "text": ["Clue 1: it is red.", "Clue 2: it is round.", "Only the apple is red and round."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "red and round", "img": "/images/maths-path/pp1/apple.webp", "size": 72 },
+            { "id": "b", "label": "red, not round", "img": "/images/maths-path/pp1/block-red.webp", "size": 72 },
+            { "id": "c", "label": "round, not red", "img": "/images/maths-path/pp1/ball.webp", "size": 72 }
+          ], "bins": [], "caption": "Red and round." } }
+        },
+        {
+          "title": "Follow the arrows",
+          "art": "cheer",
+          "text": ["Arrows tell the robot where to go.", "North is up. East is right.", "Go up, up, then right, right to reach the goal."],
+          "widget": { "w": "logicBoard", "c": { "rows": 3, "cols": 3, "start": { "r": 2, "c": 0, "dir": "N" }, "goal": { "r": 0, "c": 2 }, "commands": "compass", "caption": "The robot starts bottom left." } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Put the picture that is red and round in the first box.",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "apple", "img": "/images/maths-path/pp1/apple.webp", "size": 72, "bin": "both" },
+            { "id": "b", "label": "block", "img": "/images/maths-path/pp1/block-red.webp", "size": 72, "bin": "no" },
+            { "id": "c", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 72, "bin": "no" },
+            { "id": "d", "label": "block", "img": "/images/maths-path/pp1/block-blue.webp", "size": 72, "bin": "no" }
+          ], "bins": [{ "id": "both", "label": "Red and round" }, { "id": "no", "label": "Not both" }] } },
+          "target": {},
+          "success": "Yes! Only the apple is red and round.",
+          "hint": "Check clue 1 (red). Then check clue 2 (round)."
+        },
+        {
+          "prompt": "Make the robot reach the goal. Add arrows, then press Run.",
+          "widget": { "w": "logicBoard", "c": { "rows": 3, "cols": 3, "start": { "r": 2, "c": 0, "dir": "N" }, "goal": { "r": 0, "c": 2 }, "walls": [[1, 1]], "commands": "compass", "maxCommands": 6 } },
+          "target": { "reach": true },
+          "success": "Yes! The robot reached the goal.",
+          "hint": "There is a wall in the middle. Go up, up, then right, right."
+        },
+        {
+          "prompt": "The row is ball, apple, star, heart, fish. Tap the place of the fish.",
+          "widget": { "w": "numberLine", "c": { "min": 1, "max": 5, "start": 1, "labelEvery": 1 } },
+          "target": { "position": 5 },
+          "success": "Yes! The fish is 5th. It is last.",
+          "hint": "Count from the left: 1, 2, 3, 4, and then the fish."
+        }
+      ],
+      "play": { "game": "space-academy" },
+      "tools": [],
+      "parents": {
+        "idea": "Your child finds a place in a row, picks a picture using two clues, and follows arrows. These are the first steps of logic and coding.",
+        "slip": "Using only one clue. Say each clue aloud and cross out pictures that do not match.",
+        "tryAtHome": {
+          "title": "Treasure hunt",
+          "steps": ["Hide a toy in the room.", "Give two clues: \"It is soft. It is on the sofa.\"", "Then give arrow steps: two steps forward, one step left.", "Swap and let your child give the clues."]
+        }
+      }
+    },
+    {
+      "id": "time",
+      "title": "Days, months and clocks",
+      "tagline": "Talk about daily routines, weekday order and whole hours together.",
+      "outcomes": [
+        "I can say the day before or after.",
+        "I can put familiar months in order.",
+        "I can recognise a whole hour on a clock."
+      ],
+      "vocab": [
+        { "term": "week", "meaning": "7 days. Monday to Sunday, then it starts again." },
+        { "term": "month", "meaning": "There are 12 months in a year." },
+        { "term": "o'clock", "meaning": "The long hand points up to 12. The short hand shows the hour." }
+      ],
+      "see": [
+        {
+          "title": "Day and night",
+          "art": "happy",
+          "text": ["The sun is out in the day.", "The moon is out at night.", "Each day has a day time and a night time."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "day", "img": "/images/maths-path/pp2/sun.webp", "size": 110 },
+            { "id": "b", "label": "night", "img": "/images/maths-path/pp2/moon.webp", "size": 110 }
+          ], "bins": [], "caption": "Day and night." } }
+        },
+        {
+          "title": "Seven days make a week",
+          "art": "cheer",
+          "text": ["Monday, Tuesday, Wednesday, Thursday.", "Friday, Saturday, Sunday.", "After Sunday a new week starts."],
+          "widget": { "w": "calendar", "c": { "month": "One week", "days": 7, "startDay": 0, "highlights": [3], "caption": "Wednesday is the 3rd day." } }
+        },
+        {
+          "title": "Twelve months make a year",
+          "art": "think",
+          "text": ["There are 12 months in a year.", "January is first. December is last.", "After March comes April."],
+          "widget": { "w": "numberLine", "c": { "min": 1, "max": 12, "marker": 4, "labelEvery": 1, "caption": "Month 4 is April." } }
+        },
+        {
+          "title": "Whole hours",
+          "art": "happy",
+          "text": ["The short hand points to 3.", "The long hand points to 12.", "It is 3 o'clock."],
+          "widget": { "w": "clock", "c": { "hour": 3, "minute": 0 } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Today is Tuesday. Tap tomorrow.",
+          "widget": { "w": "calendar", "c": { "month": "One week", "days": 7, "startDay": 0, "highlights": [2], "editable": true } },
+          "target": { "date": 3 },
+          "success": "Yes! After Tuesday comes Wednesday.",
+          "hint": "The days go in order: Monday, Tuesday, then the next one."
+        },
+        {
+          "prompt": "Show 4 o'clock. Move the hands or use the buttons.",
+          "widget": { "w": "clock", "c": { "hour": 12, "minute": 0, "snap": 30 } },
+          "target": { "hour": 4, "minute": 0 },
+          "success": "4 o'clock: the long hand is on 12 and the short hand is on 4.",
+          "hint": "Keep the long hand on 12. Move the short hand to 4."
+        },
+        {
+          "prompt": "Which month comes after March? Tap its number.",
+          "widget": { "w": "numberLine", "c": { "min": 1, "max": 12, "start": 1, "labelEvery": 1 } },
+          "target": { "position": 4 },
+          "success": "Yes! April is the 4th month, after March.",
+          "hint": "January 1, February 2, March 3. What is next?"
+        }
+      ],
+      "play": { "game": "clock-master" },
+      "tools": ["/tools/hour-hand.html"],
+      "parents": {
+        "idea": "Your child talks about day and night, puts days and months in order, and reads a whole hour on a clock. Practise and Check use the Class 1 time questions at level 1, so sit alongside your child.",
+        "slip": "Mixing up the order of months or days. Sing the days in order. Use a wall calendar and tick off each day.",
+        "tryAtHome": {
+          "title": "Daily routine clock",
+          "steps": ["At breakfast, say \"It is 7 o'clock\" and show the clock.", "Ask, \"What day is it? What day comes next?\"", "Point to today on a wall calendar.", "Match one routine to an hour, like bedtime at 8 o'clock."]
+        }
+      }
+    }
+  ]
+}

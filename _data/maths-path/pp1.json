@@ -1,0 +1,552 @@
+{
+  "id": "pp1",
+  "label": "PP1",
+  "name": "Pre-primary 1",
+  "ages": "Ages 3 to 4",
+  "blurb": "Counting, shapes and sorting.",
+  "live": true,
+  "grade": "pp1",
+  "chapters": [
+    {
+      "id": "counting",
+      "title": "Count with me",
+      "tagline": "Touch each object once, then connect a small group to its number.",
+      "outcomes": [
+        "I can count a small group.",
+        "I can match a group to a number.",
+        "I can find the next number."
+      ],
+      "source": "pp1/counting",
+      "vocab": [
+        { "term": "count", "meaning": "Say one number for each thing you touch." },
+        { "term": "how many", "meaning": "The last number you say tells how many." },
+        { "term": "next", "meaning": "The number that comes after." }
+      ],
+      "see": [
+        {
+          "title": "Touch and count",
+          "art": "happy",
+          "text": ["Touch each apple once.", "Say a number for each touch.", "1, 2, 3. There are 3 apples."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "1", "img": "/images/maths-path/pp1/apple.webp", "size": 84 },
+            { "id": "b", "label": "2", "img": "/images/maths-path/pp1/apple.webp", "size": 84 },
+            { "id": "c", "label": "3", "img": "/images/maths-path/pp1/apple.webp", "size": 84 }
+          ], "bins": [], "caption": "Count the apples: 1, 2, 3." } }
+        },
+        {
+          "title": "The last number says how many",
+          "art": "cheer",
+          "text": ["Count the balls: 1, 2, 3, 4.", "The last number you say is how many.", "There are 4 balls."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "1", "img": "/images/maths-path/pp1/ball.webp", "size": 76 },
+            { "id": "b", "label": "2", "img": "/images/maths-path/pp1/ball.webp", "size": 76 },
+            { "id": "c", "label": "3", "img": "/images/maths-path/pp1/ball.webp", "size": 76 },
+            { "id": "d", "label": "4", "img": "/images/maths-path/pp1/ball.webp", "size": 76 }
+          ], "bins": [], "caption": "4 balls." } }
+        },
+        {
+          "title": "Match the group to its number",
+          "art": "think",
+          "text": ["Here are 5 counters.", "Count them. Say 5.", "The number 5 matches this group."],
+          "widget": { "w": "tenFrame", "c": { "count": 5, "caption": "5 counters make the number 5." } }
+        },
+        {
+          "title": "What comes next?",
+          "art": "happy",
+          "text": ["Numbers go in order.", "After 4 comes 5.", "Hop one step to find the next number."],
+          "widget": { "w": "numberLine", "c": { "min": 1, "max": 10, "marker": 4, "hops": [[4, 5]], "labelEvery": 1, "caption": "After 4 comes 5." } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Show 3 counters. Tap the boxes and count.",
+          "widget": { "w": "tenFrame", "c": { "start": 0 } },
+          "target": { "count": 3 },
+          "success": "Yes! 1, 2, 3. That is 3 counters.",
+          "hint": "Tap one box at a time. Say the number each time. Stop at 3."
+        },
+        {
+          "prompt": "Show 5 counters.",
+          "widget": { "w": "tenFrame", "c": { "start": 0 } },
+          "target": { "count": 5 },
+          "success": "Yes! 5 counters. You counted well.",
+          "hint": "Count out loud as you tap. Stop when you say 5."
+        },
+        {
+          "prompt": "Which number comes after 6? Tap it.",
+          "widget": { "w": "numberLine", "c": { "min": 1, "max": 10, "start": 1, "labelEvery": 1 } },
+          "target": { "position": 7 },
+          "success": "Yes! After 6 comes 7.",
+          "hint": "Find 6 first. The next number is one step on."
+        }
+      ],
+      "play": { "game": "space-academy" },
+      "tools": [],
+      "parents": {
+        "idea": "Your child learns to touch each thing once and say one number for each. The last number said tells how many. This is the base of all later number work.",
+        "slip": "Counting a thing twice or skipping one. Slide each object across as it is counted, so every one gets exactly one number.",
+        "tryAtHome": {
+          "title": "Count the snack",
+          "steps": ["Put up to 5 raisins or grapes on a plate.", "Let your child touch and move each one while counting aloud.", "Ask, \"How many are there?\" and listen for the last number.", "Add one more. Ask what number comes next."]
+        }
+      }
+    },
+    {
+      "id": "comparing",
+      "title": "More, less and the same",
+      "tagline": "Compare groups and everyday sizes without racing.",
+      "outcomes": [
+        "I can find more or fewer objects.",
+        "I can compare big, tall and thick things.",
+        "I can compare weight and how full a jar is."
+      ],
+      "source": "pp1/comparing",
+      "vocab": [
+        { "term": "more", "meaning": "A bigger group. It has extra things." },
+        { "term": "fewer", "meaning": "A smaller group. It has less things." },
+        { "term": "same", "meaning": "Equal. Nothing is extra." },
+        { "term": "heavy", "meaning": "Hard to lift. The heavy side goes down." }
+      ],
+      "see": [
+        {
+          "title": "More or fewer?",
+          "art": "think",
+          "text": ["Orange has 6. Blue has 3.", "Orange has more.", "Blue has fewer."],
+          "widget": { "w": "tenFrame", "c": { "count": 6, "second": 3, "caption": "Orange 6. Blue 3." } }
+        },
+        {
+          "title": "Tall, short, thick, thin",
+          "art": "happy",
+          "text": ["This tower is tall. This one is short.", "This book is thick. This one is thin."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "tall", "img": "/images/maths-path/pp1/tower-tall.webp", "size": 110 },
+            { "id": "b", "label": "short", "img": "/images/maths-path/pp1/tower-short.webp", "size": 44 },
+            { "id": "c", "label": "thick", "img": "/images/maths-path/pp1/book-thick.webp", "size": 80 },
+            { "id": "d", "label": "thin", "img": "/images/maths-path/pp1/book-thin.webp", "size": 80 }
+          ], "bins": [], "caption": "Tall and short. Thick and thin." } }
+        },
+        {
+          "title": "Heavy and light",
+          "art": "cheer",
+          "text": ["The heavy side goes down.", "The light side goes up.", "When both are the same, the balance is level."],
+          "widget": { "w": "balance", "c": { "left": 6, "right": 2 } }
+        },
+        {
+          "title": "Full and empty",
+          "art": "happy",
+          "text": ["This jar is empty.", "This jar is half full.", "This jar is full."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "empty", "img": "/images/maths-path/pp1/jar-empty.webp", "size": 90 },
+            { "id": "b", "label": "half", "img": "/images/maths-path/pp1/jar-half.webp", "size": 90 },
+            { "id": "c", "label": "full", "img": "/images/maths-path/pp1/jar-full.webp", "size": 90 }
+          ], "bins": [], "caption": "Empty, half, full." } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Make both sides the same. Add to the left side.",
+          "widget": { "w": "balance", "c": { "left": 2, "right": 5, "max": 8 } },
+          "target": { "added": 3 },
+          "success": "Yes! 2 and 3 more is 5. Both sides are the same.",
+          "hint": "The right side has more. Add one at a time to the left until it is level."
+        },
+        {
+          "prompt": "Which are tall? Which are short? Sort them.",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "tower", "img": "/images/maths-path/pp1/tower-tall.webp", "size": 100, "bin": "tall" },
+            { "id": "b", "label": "balloon", "img": "/images/maths-path/pp1/balloon.webp", "size": 90, "bin": "tall" },
+            { "id": "c", "label": "tower", "img": "/images/maths-path/pp1/tower-short.webp", "size": 40, "bin": "short" },
+            { "id": "d", "label": "block", "img": "/images/maths-path/pp1/block-red.webp", "size": 44, "bin": "short" }
+          ], "bins": [{ "id": "tall", "label": "Tall" }, { "id": "short", "label": "Short" }] } },
+          "target": {},
+          "success": "Yes! Tall things reach up. Short things stay low.",
+          "hint": "Look at how high each one goes."
+        },
+        {
+          "prompt": "Which jar is full? Which is empty?",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "jar", "img": "/images/maths-path/pp1/jar-full.webp", "size": 90, "bin": "full" },
+            { "id": "b", "label": "jar", "img": "/images/maths-path/pp1/jar-empty.webp", "size": 90, "bin": "empty" }
+          ], "bins": [{ "id": "full", "label": "Full" }, { "id": "empty", "label": "Empty" }] } },
+          "target": {},
+          "success": "Yes! A full jar has no space left.",
+          "hint": "Look for the jar with blue up to the top."
+        }
+      ],
+      "play": { "game": "space-academy" },
+      "tools": [],
+      "parents": {
+        "idea": "Your child compares groups by matching one to one, and compares size, weight and how full things are. The words more, fewer, tall and heavy come first.",
+        "slip": "Thinking the bigger-looking group has more. Line the objects up in two rows, one to one, so the extra ones show.",
+        "tryAtHome": {
+          "title": "Bath-time compare",
+          "steps": ["Fill two cups, one full and one nearly empty.", "Ask, \"Which is fuller? Which is empty?\"", "Line up 4 toys and 2 toys. Ask which row has more.", "Pick two toys. Ask which one is heavier and why."]
+        }
+      }
+    },
+    {
+      "id": "shapes",
+      "title": "Meet the shapes",
+      "tagline": "Name familiar outlines and notice corners and matching shapes.",
+      "outcomes": [
+        "I can match a shape.",
+        "I can notice sides and corners.",
+        "I can find a shape in a picture."
+      ],
+      "source": "pp1/shapes",
+      "vocab": [
+        { "term": "circle", "meaning": "A round shape with no corners." },
+        { "term": "square", "meaning": "4 straight sides the same. 4 corners." },
+        { "term": "triangle", "meaning": "3 straight sides. 3 corners." },
+        { "term": "corner", "meaning": "A pointy place where two sides meet." }
+      ],
+      "see": [
+        {
+          "title": "Circle, square, triangle",
+          "art": "happy",
+          "text": ["This is a circle. It is round.", "This is a square. This is a triangle."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "circle", "img": "/images/maths-path/pp1/shape-circle.webp", "size": 80 },
+            { "id": "b", "label": "square", "img": "/images/maths-path/pp1/shape-square.webp", "size": 80 },
+            { "id": "c", "label": "triangle", "img": "/images/maths-path/pp1/shape-triangle.webp", "size": 80 }
+          ], "bins": [], "caption": "Circle, square, triangle." } }
+        },
+        {
+          "title": "More shapes",
+          "art": "cheer",
+          "text": ["A rectangle is a long square.", "An oval is a long circle.", "Here are a heart and a star too."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "rectangle", "img": "/images/maths-path/pp1/shape-rectangle.webp", "size": 80 },
+            { "id": "b", "label": "oval", "img": "/images/maths-path/pp1/shape-oval.webp", "size": 80 },
+            { "id": "c", "label": "heart", "img": "/images/maths-path/pp1/shape-heart.webp", "size": 80 },
+            { "id": "d", "label": "star", "img": "/images/maths-path/pp1/shape-star.webp", "size": 80 }
+          ], "bins": [], "caption": "Rectangle, oval, heart, star." } }
+        },
+        {
+          "title": "Count the corners",
+          "art": "think",
+          "text": ["A triangle has 3 corners.", "A square has 4 corners.", "A circle has no corners."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "3 corners", "img": "/images/maths-path/pp1/shape-triangle.webp", "size": 80 },
+            { "id": "b", "label": "4 corners", "img": "/images/maths-path/pp1/shape-square.webp", "size": 80 },
+            { "id": "c", "label": "no corners", "img": "/images/maths-path/pp1/shape-circle.webp", "size": 80 }
+          ], "bins": [], "caption": "Touch each corner as you count." } }
+        },
+        {
+          "title": "Shapes in a picture",
+          "art": "happy",
+          "text": ["Look at the house.", "The roof is a triangle.", "The door is a rectangle. The window is a circle."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "a house made of shapes", "img": "/images/maths-path/pp2/house.webp", "size": 150 }
+          ], "bins": [], "caption": "Find the triangle, the rectangle and the circle." } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Which shapes have corners? Which have none?",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "square", "img": "/images/maths-path/pp1/shape-square.webp", "size": 72, "bin": "corners" },
+            { "id": "b", "label": "circle", "img": "/images/maths-path/pp1/shape-circle.webp", "size": 72, "bin": "none" },
+            { "id": "c", "label": "triangle", "img": "/images/maths-path/pp1/shape-triangle.webp", "size": 72, "bin": "corners" },
+            { "id": "d", "label": "oval", "img": "/images/maths-path/pp1/shape-oval.webp", "size": 72, "bin": "none" },
+            { "id": "e", "label": "rectangle", "img": "/images/maths-path/pp1/shape-rectangle.webp", "size": 72, "bin": "corners" }
+          ], "bins": [{ "id": "corners", "label": "Has corners" }, { "id": "none", "label": "No corners" }] } },
+          "target": {},
+          "success": "Yes! Square, triangle and rectangle have corners. Circle and oval do not.",
+          "hint": "Run a finger around the edge. Do you feel a pointy corner?"
+        },
+        {
+          "prompt": "Find the stars. Put the stars in the star box.",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "star", "img": "/images/maths-path/pp1/shape-star.webp", "size": 72, "bin": "star" },
+            { "id": "b", "label": "heart", "img": "/images/maths-path/pp1/shape-heart.webp", "size": 72, "bin": "other" },
+            { "id": "c", "label": "star", "img": "/images/maths-path/pp1/shape-star.webp", "size": 72, "bin": "star" },
+            { "id": "d", "label": "circle", "img": "/images/maths-path/pp1/shape-circle.webp", "size": 72, "bin": "other" }
+          ], "bins": [{ "id": "star", "label": "Stars" }, { "id": "other", "label": "Not stars" }] } },
+          "target": {},
+          "success": "Yes! You matched the stars.",
+          "hint": "A star has points. It looks like the star at the top of the box."
+        }
+      ],
+      "play": { "game": "space-academy" },
+      "tools": [],
+      "parents": {
+        "idea": "Your child learns to name the common shapes, match the same shape, and notice corners. Shapes are found everywhere in the home.",
+        "slip": "Calling a rectangle a square, or an oval a circle. Say that a rectangle is long and an oval is long and round.",
+        "tryAtHome": {
+          "title": "Shape hunt",
+          "steps": ["Walk around a room with your child.", "Find something round (a plate), a square (a tile), a rectangle (a door).", "Trace each shape with a finger. Count the corners.", "Ask your child to point out one new shape."]
+        }
+      }
+    },
+    {
+      "id": "sorting",
+      "title": "Which ones belong?",
+      "tagline": "Sort familiar things by one visible rule before combining clues.",
+      "outcomes": [
+        "I can find things that belong together.",
+        "I can find the one that is different.",
+        "I can count just one group."
+      ],
+      "source": "pp1/sorting",
+      "vocab": [
+        { "term": "sort", "meaning": "Put things that are alike in the same place." },
+        { "term": "same", "meaning": "Alike in one way, like colour." },
+        { "term": "different", "meaning": "Not like the others. The odd one out." }
+      ],
+      "see": [
+        {
+          "title": "Sort by colour",
+          "art": "happy",
+          "text": ["The apple and the red block are red.", "The ball and the blue block are blue.", "We put red with red, blue with blue."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "red", "img": "/images/maths-path/pp1/apple.webp", "size": 72 },
+            { "id": "b", "label": "red", "img": "/images/maths-path/pp1/block-red.webp", "size": 72 },
+            { "id": "c", "label": "blue", "img": "/images/maths-path/pp1/ball.webp", "size": 72 },
+            { "id": "d", "label": "blue", "img": "/images/maths-path/pp1/block-blue.webp", "size": 72 }
+          ], "bins": [], "caption": "Red things and blue things." } }
+        },
+        {
+          "title": "The odd one out",
+          "art": "think",
+          "text": ["Three of these are balls.", "One is a star.", "The star is different. It is the odd one out."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 72 },
+            { "id": "b", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 72 },
+            { "id": "c", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 72 },
+            { "id": "d", "label": "star", "img": "/images/maths-path/pp1/shape-star.webp", "size": 72 }
+          ], "bins": [], "caption": "Which one is different?" } }
+        },
+        {
+          "title": "Count one group",
+          "art": "cheer",
+          "text": ["Some counters are orange. Some are blue.", "Count only the orange ones.", "There are 4 orange counters."],
+          "widget": { "w": "tenFrame", "c": { "count": 4, "second": 3, "caption": "Orange: 4. Blue: 3." } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Put the red things in the red box. Put the blue things in the blue box.",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "apple", "img": "/images/maths-path/pp1/apple.webp", "size": 72, "bin": "red" },
+            { "id": "b", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 72, "bin": "blue" },
+            { "id": "c", "label": "block", "img": "/images/maths-path/pp1/block-red.webp", "size": 72, "bin": "red" },
+            { "id": "d", "label": "block", "img": "/images/maths-path/pp1/block-blue.webp", "size": 72, "bin": "blue" }
+          ], "bins": [{ "id": "red", "label": "Red" }, { "id": "blue", "label": "Blue" }] } },
+          "target": {},
+          "success": "Yes! Red with red and blue with blue.",
+          "hint": "Look at the colour of each picture first."
+        },
+        {
+          "prompt": "Find the odd one out. Which one is different?",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "apple", "img": "/images/maths-path/pp1/apple.webp", "size": 72, "bin": "same" },
+            { "id": "b", "label": "apple", "img": "/images/maths-path/pp1/apple.webp", "size": 72, "bin": "same" },
+            { "id": "c", "label": "fish", "img": "/images/maths-path/pp1/fish.webp", "size": 80, "bin": "odd" },
+            { "id": "d", "label": "apple", "img": "/images/maths-path/pp1/apple.webp", "size": 72, "bin": "same" }
+          ], "bins": [{ "id": "same", "label": "Like the others" }, { "id": "odd", "label": "Odd one out" }] } },
+          "target": {},
+          "success": "Yes! The fish is different from the apples.",
+          "hint": "Three are the same. Which one is not?"
+        }
+      ],
+      "play": { "game": "space-academy" },
+      "tools": [],
+      "parents": {
+        "idea": "Your child sorts things by one clear rule, such as colour, and finds the one that is different. Sorting is the start of data and logic.",
+        "slip": "Mixing two rules at once, like colour and shape. Pick one rule, say it aloud, then sort.",
+        "tryAtHome": {
+          "title": "Sock and toy sort",
+          "steps": ["Pile a few socks or toys on the floor.", "Say one rule, like \"Sort by colour\".", "Let your child make the groups. Ask, \"Which group has more?\"", "Hide one odd item in a group. Ask your child to find it."]
+        }
+      }
+    },
+    {
+      "id": "position",
+      "title": "Where is it?",
+      "tagline": "Use position words with toys, pictures and simple rows.",
+      "outcomes": [
+        "I can find what is inside or outside.",
+        "I can find what is above or below.",
+        "I can find a place in a row."
+      ],
+      "source": "pp1/position",
+      "vocab": [
+        { "term": "in", "meaning": "Inside something, like a ball in a bowl." },
+        { "term": "out", "meaning": "Outside something, not inside it." },
+        { "term": "above", "meaning": "Higher up. Over something." },
+        { "term": "below", "meaning": "Lower down. Under something." }
+      ],
+      "see": [
+        {
+          "title": "In and out",
+          "art": "happy",
+          "text": ["The ball is in the bowl.", "The ball is out of the bowl."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "in the bowl", "img": "/images/maths-path/pp1/bowl-in.webp", "size": 110 },
+            { "id": "b", "label": "out of the bowl", "img": "/images/maths-path/pp1/bowl-out.webp", "size": 130 }
+          ], "bins": [], "caption": "In and out." } }
+        },
+        {
+          "title": "Above and below",
+          "art": "cheer",
+          "text": ["The ball is above the box.", "The ball is below the table."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "above the box", "img": "/images/maths-path/pp1/on-box.webp", "size": 110 },
+            { "id": "b", "label": "below the table", "img": "/images/maths-path/pp1/under-table.webp", "size": 130 }
+          ], "bins": [], "caption": "Above and below." } }
+        },
+        {
+          "title": "A place in a row",
+          "art": "think",
+          "text": ["Count the toys from the left.", "Ball is 1st. Apple is 2nd. Star is 3rd.", "Heart is 4th. Fish is 5th."],
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "1", "img": "/images/maths-path/pp1/ball.webp", "size": 60 },
+            { "id": "b", "label": "2", "img": "/images/maths-path/pp1/apple.webp", "size": 60 },
+            { "id": "c", "label": "3", "img": "/images/maths-path/pp1/shape-star.webp", "size": 60 },
+            { "id": "d", "label": "4", "img": "/images/maths-path/pp1/shape-heart.webp", "size": 60 },
+            { "id": "e", "label": "5", "img": "/images/maths-path/pp1/fish.webp", "size": 64 }
+          ], "bins": [], "caption": "A row of 5 toys." } }
+        },
+        {
+          "title": "Third in the row",
+          "art": "happy",
+          "text": ["The star is 3rd in the row.", "Count 1, 2, 3 from the left.", "Find the number 3."],
+          "widget": { "w": "numberLine", "c": { "min": 1, "max": 5, "marker": 3, "labelEvery": 1, "caption": "3rd place." } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Which ball is in the bowl? Which is out?",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "ball and bowl", "img": "/images/maths-path/pp1/bowl-in.webp", "size": 110, "bin": "in" },
+            { "id": "b", "label": "ball and bowl", "img": "/images/maths-path/pp1/bowl-out.webp", "size": 130, "bin": "out" }
+          ], "bins": [{ "id": "in", "label": "In the bowl" }, { "id": "out", "label": "Out of the bowl" }] } },
+          "target": {},
+          "success": "Yes! One ball is in. One ball is out.",
+          "hint": "Look at where the ball is. Is the bowl around it?"
+        },
+        {
+          "prompt": "Which ball is above? Which ball is below?",
+          "widget": { "w": "sorter", "c": { "items": [
+            { "id": "a", "label": "ball and box", "img": "/images/maths-path/pp1/on-box.webp", "size": 110, "bin": "above" },
+            { "id": "b", "label": "ball and table", "img": "/images/maths-path/pp1/under-table.webp", "size": 130, "bin": "below" }
+          ], "bins": [{ "id": "above", "label": "Above" }, { "id": "below", "label": "Below" }] } },
+          "target": {},
+          "success": "Yes! Above is up high. Below is down low.",
+          "hint": "Is the ball up high or down low?"
+        },
+        {
+          "prompt": "The row is ball, apple, star, heart, fish. Tap the place of the heart.",
+          "widget": { "w": "numberLine", "c": { "min": 1, "max": 5, "start": 1, "labelEvery": 1 } },
+          "target": { "position": 4 },
+          "success": "Yes! The heart is 4th.",
+          "hint": "Count from the left: ball 1, apple 2, star 3, then the heart."
+        }
+      ],
+      "play": { "game": "space-academy" },
+      "tools": [],
+      "parents": {
+        "idea": "Your child uses words like in, out, above, below, first and last. These words build the base for maps, graphs and later geometry.",
+        "slip": "Mixing up above and below, or in and on. Use real objects: put a toy in a box, on a box, under a box.",
+        "tryAtHome": {
+          "title": "Teddy says",
+          "steps": ["Sit with a teddy and a box.", "Say, \"Put teddy in the box.\" Then \"on\", \"under\", \"next to\".", "Line up 4 toys. Ask who is first and who is last.", "Swap: let your child give the instructions to you."]
+        }
+      }
+    },
+    {
+      "id": "patterns",
+      "title": "What comes next?",
+      "tagline": "Say the repeating group aloud and continue a picture pattern.",
+      "outcomes": [
+        "I can continue a picture pattern.",
+        "I can find a missing picture.",
+        "I can notice how a pattern grows."
+      ],
+      "source": "pp1/patterns",
+      "vocab": [
+        { "term": "pattern", "meaning": "Pictures that repeat again and again." },
+        { "term": "next", "meaning": "The one that comes after." },
+        { "term": "missing", "meaning": "The one that is not there. Find it." }
+      ],
+      "see": [
+        {
+          "title": "Say it and repeat",
+          "art": "happy",
+          "text": ["Star, heart, star, heart.", "The group repeats.", "Say it out loud as you point."],
+          "widget": { "w": "patternBuilder", "c": { "palette": [
+            { "id": "s", "label": "star", "img": "/images/maths-path/pp1/shape-star.webp", "size": 56 },
+            { "id": "h", "label": "heart", "img": "/images/maths-path/pp1/shape-heart.webp", "size": 56 }
+          ], "sequence": ["s", "h", "s", "h", "s", "h"], "caption": "Star, heart, star, heart." } }
+        },
+        {
+          "title": "What comes next?",
+          "art": "think",
+          "text": ["Ball, apple, ball, apple, ball.", "What comes next?", "The apple comes next."],
+          "widget": { "w": "patternBuilder", "c": { "palette": [
+            { "id": "b", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 56 },
+            { "id": "a", "label": "apple", "img": "/images/maths-path/pp1/apple.webp", "size": 56 }
+          ], "sequence": ["b", "a", "b", "a", "b", null], "caption": "The apple is next." } }
+        },
+        {
+          "title": "Find the missing picture",
+          "art": "cheer",
+          "text": ["One picture is hidden.", "Say the pattern: fish, ball, fish, ball.", "The hidden one is a ball."],
+          "widget": { "w": "patternBuilder", "c": { "palette": [
+            { "id": "f", "label": "fish", "img": "/images/maths-path/pp1/fish.webp", "size": 56 },
+            { "id": "b", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 56 }
+          ], "sequence": ["f", "b", "f", null, "f", "b"], "caption": "What is missing?" } }
+        },
+        {
+          "title": "A pattern that grows",
+          "art": "happy",
+          "text": ["Some patterns grow.", "1, 2, 3, 4. Each step adds one more.", "The next number is 5."],
+          "widget": { "w": "numberLine", "c": { "min": 1, "max": 6, "hops": [[1, 2], [2, 3], [3, 4]], "labelEvery": 1, "caption": "Each step adds 1." } }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Say the pattern. Pick the picture that comes next.",
+          "widget": { "w": "patternBuilder", "c": { "palette": [
+            { "id": "s", "label": "star", "img": "/images/maths-path/pp1/shape-star.webp", "size": 56 },
+            { "id": "h", "label": "heart", "img": "/images/maths-path/pp1/shape-heart.webp", "size": 56 }
+          ], "sequence": ["s", "h", "s", "h", "s", null], "answer": ["h"] } },
+          "target": {},
+          "success": "Yes! Star, heart, star, heart, star, heart.",
+          "hint": "Say it from the start: star, heart, star, heart, star, ..."
+        },
+        {
+          "prompt": "Two balls, then an apple. What comes next?",
+          "widget": { "w": "patternBuilder", "c": { "palette": [
+            { "id": "b", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 56 },
+            { "id": "a", "label": "apple", "img": "/images/maths-path/pp1/apple.webp", "size": 56 }
+          ], "sequence": ["b", "b", "a", "b", "b", null], "answer": ["a"] } },
+          "target": {},
+          "success": "Yes! Ball, ball, apple. Again!",
+          "hint": "The group is ball, ball, apple. We have ball, ball. Which one finishes it?"
+        },
+        {
+          "prompt": "Find the missing picture in the middle.",
+          "widget": { "w": "patternBuilder", "c": { "palette": [
+            { "id": "f", "label": "fish", "img": "/images/maths-path/pp1/fish.webp", "size": 56 },
+            { "id": "b", "label": "ball", "img": "/images/maths-path/pp1/ball.webp", "size": 56 }
+          ], "sequence": ["f", "b", "f", "b", null, "b", "f", "b"], "answer": ["f"] } },
+          "target": {},
+          "success": "Yes! Fish, ball, fish, ball, fish, ball.",
+          "hint": "Say it again from the start. What comes before the ball?"
+        }
+      ],
+      "play": { "game": "space-academy" },
+      "tools": [],
+      "parents": {
+        "idea": "Your child sees that some things repeat in a group, says the group aloud, and finds what comes next. Patterns are the first step to algebra.",
+        "slip": "Guessing without saying the whole group. Always say the pattern from the start, then point at each picture.",
+        "tryAtHome": {
+          "title": "Beads and blocks",
+          "steps": ["Line up red and blue blocks: red, blue, red, blue.", "Ask your child to say it and add the next block.", "Try a new group like red, red, blue.", "Hide one block and ask which colour is missing."]
+        }
+      }
+    }
+  ]
+}

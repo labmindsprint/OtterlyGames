@@ -312,7 +312,9 @@ function draftSkip(grade, level, r) {
   const words = values.map(value => value ?? '?').join(' ');
   const lead = step > 0 ? `Count by ${step}s` : `Count back by ${-step}s`;
   return build({
-    family: 'pp1-num-skip', prompt: say(r, [`${lead}: ${words}. What is missing?`, `${lead}. Find the gap: ${words}`, `${words}. What number fits the gap?`]), answer,
+    family: 'pp1-num-skip', prompt: say(r, [`${lead}: ${words}. What is missing?`, `${lead}. Find the gap: ${words}`, `${words}. What number fits the gap?`,
+      `${lead}. ${words}. Which is hiding?`, `${words}. What goes in the gap?`, `${lead}: ${words}. Which fits?`,
+      `Fill the gap. ${lead}: ${words}`]), answer,
     hint: step > 0 ? 'Find how far one number jumps up. Jump that far again.' : 'Find how far one number jumps down. Jump that far again.',
     explanation: `The numbers go ${step > 0 ? 'up' : 'down'} by ${base}: ${full.join(', ')}. So the gap is ${answer}.`,
     givens: { step }, visual: numberRow(values, `5 number circles in a row: ${rowText(values)}.`),

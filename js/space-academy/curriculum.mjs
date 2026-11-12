@@ -201,29 +201,29 @@ const DESCRIPTIONS = {
   reasoning: 'Use visual rules, codes, order or routes, with every stated condition applied.',
 };
 
-function buildGrades(plans, families, extra = () => ({})) {
+function buildGrades(plans, families, extra = () => ({}), added = {}) {
   return ORIGINAL_GRADES.map(grade => ({
     ...grade,
     ...extra(grade),
     description: grade.year < 1 ? grade.description : `${grade.label} foundations, paper-style reasoning and higher-order challenges, with original diagrams and picture choices.`,
-    chapters: grade.chapters.map(chapter => {
+    chapters: [...grade.chapters, ...(added[grade.id] ?? [])].map(chapter => {
       const levels = plans[grade.id][chapter.id].map(row => row.split(' '));
       for (const id of levels.flat()) if (!families[id]) throw new Error(`Unknown Academy question family: ${id}`);
       return {
-        ...chapter, description: DESCRIPTIONS[chapter.id],
+        ...chapter, description: DESCRIPTIONS[chapter.id] ?? chapter.description,
         skills: [...new Set(levels.flat().map(id => families[id].skill))], families: levels,
       };
     }),
     paperReferences: grade.year < 1 ? [{
-      title: `CREST ${grade.id === 'pp1' ? 'Junior' : 'Senior'} KG sample (readiness reference, not a SOF level)`,
+      title: `${grade.id === 'pp1' ? 'Junior' : 'Senior'} KG readiness sample (external source)`,
       kind: 'sample',
       url: `https://www.crestolympiads.com/maths-olympiad-cmo-sample-papers-${grade.id === 'pp1' ? 'junior' : 'senior'}-kg`,
     }] : [{
-      title: `SOF IMO Class ${grade.year} sample, 2026-27`,
+      title: `Class ${grade.year} sample formats, 2026-27 (external source)`,
       kind: 'sample',
       url: `https://sofworld.org/imo/class-${grade.year}/sample-model-test-papers/imo-sample-papers-class-${grade.year}`,
     }, {
-      title: `CREST CMO Class ${grade.year} previous-year paper, 2023-24 Set A`,
+      title: `Class ${grade.year} previous-year paper, 2023-24 (external source)`,
       kind: 'past-paper',
       url: `https://www.crestolympiads.com/maths-olympiad-cmo-previous-year-class-${grade.year}`,
     }],
@@ -240,6 +240,7 @@ export function assembleBank3(modules = BANK3_MODULES) {
   const families = { ...FAMILIES_V2 };
   const misconceptions = { ...MISCONCEPTIONS };
   const plans = { ...PLANS };
+  const added = {};
   for (const [gradeId, module] of Object.entries(modules)) {
     const original = ORIGINAL_GRADES.find(grade => grade.id === gradeId);
     if (!original) throw new Error(`Question bank 3 has no grade ${gradeId}.`);
@@ -257,8 +258,11 @@ export function assembleBank3(modules = BANK3_MODULES) {
       misconceptions[code] = { title: entry.title, message: entry.message };
     }
     const plan = module.PLAN;
-    if (!plan || Object.keys(plan).length !== original.chapters.length) throw new Error(`Bank 3 ${gradeId} must plan exactly the grade's chapters.`);
-    for (const chapter of original.chapters) {
+    const extraChapters = module.ADDED_CHAPTERS ?? [];
+    for (const chapter of extraChapters) if (original.chapters.some(item => item.id === chapter.id)) throw new Error(`Bank 3 ${gradeId} repeats chapter ${chapter.id}.`);
+    if (extraChapters.length) added[gradeId] = extraChapters;
+    if (!plan || Object.keys(plan).length !== original.chapters.length + extraChapters.length) throw new Error(`Bank 3 ${gradeId} must plan exactly the grade's chapters.`);
+    for (const chapter of [...original.chapters, ...extraChapters]) {
       const rows = plan[chapter.id];
       if (!Array.isArray(rows) || rows.length !== 3 || !rows.every(filled)) throw new Error(`Bank 3 ${gradeId}/${chapter.id} needs Explore, Reason and Stretch rows.`);
       for (const row of rows) {
@@ -271,7 +275,7 @@ export function assembleBank3(modules = BANK3_MODULES) {
     }
     plans[gradeId] = plan;
   }
-  const grades = buildGrades(plans, families, grade => modules[grade.id] && grade.year < 0 ? { choices: 3 } : {});
+  const grades = buildGrades(plans, families, grade => modules[grade.id] && grade.year < 0 ? { choices: 3 } : {}, added);
   return { families, misconceptions, plans, grades, modules };
 }
 

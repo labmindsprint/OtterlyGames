@@ -32,7 +32,7 @@ const specifications = [
     destinations: ['sun', 'mercury', 'venus'],
     systems: {
       engine: ['operations'], body: ['shapes'], cockpit: ['numbers'],
-      nose: ['measurement'], 'left-fin': ['patterns'], 'right-fin': ['reasoning'],
+      nose: ['measurement', 'time'], 'left-fin': ['patterns'], 'right-fin': ['reasoning'],
     },
   },
   {

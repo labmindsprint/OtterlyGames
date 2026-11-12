@@ -12,7 +12,7 @@ import { CHAPTER_GUIDES } from './academy-guides/chapters.mjs';
 import { GRADE_GUIDES } from './academy-guides/grades.mjs';
 import { FAMILY_GUIDES_A } from './academy-guides/families-a.mjs';
 import { FAMILY_GUIDES_B } from './academy-guides/families-b.mjs';
-import { transformPublicPage, validateInventory, validateTemplates } from './build-site.mjs';
+import { ARCHIVE_ROUTES, transformPublicPage, validateInventory, validateTemplates } from './build-site.mjs';
 
 export const FAMILY_GUIDES = { ...FAMILY_GUIDES_A, ...FAMILY_GUIDES_B };
 
@@ -34,8 +34,8 @@ function paperReferences(grade) {
 
 function sourceNote(grade) {
   const grounding = grade.reference
-    ? `<p>The grade topics use <a href="${e(grade.reference.url)}" target="_blank" rel="noopener noreferrer">${e(grade.reference.title)}</a> as their primary reference. The SOF sample and CREST previous-year paper below informed representations and reasoning demands. Providers have different topic boundaries; their syllabi are not interchangeable.</p>`
-    : '<p>PP1 and PP2 are Otterly pre-primary readiness activities, not official SOF IMO levels or formal Olympiad papers. The CREST KG sample informed picture-led activities; it does not establish an equivalent school level.</p>';
+    ? `<p>The grade topics were informed by <a href="${e(grade.reference.url)}" target="_blank" rel="noopener noreferrer">${e(grade.reference.title)}</a>. The public sample papers below informed representations and reasoning demands; not affiliated. Organisers have different topic boundaries; their syllabi are not interchangeable.</p>`
+    : '<p>PP1 and PP2 are Otterly pre-primary readiness activities, not formal Olympiad levels or papers. A public KG sample informed picture-led activities; it does not establish an equivalent school level.</p>';
   return `${grounding}${paperReferences(grade)}<p>Questions, diagrams, picture choices, hints and explanations are original Otterly work, not copied paper questions or publisher artwork. No Olympiad provider is affiliated with or endorses Space Academy. This is not complete exam preparation; follow classroom teaching and check the current official syllabus too. Independent educator review is still needed for difficulty and breadth.</p>`;
 }
 
@@ -192,9 +192,9 @@ function gradePage(grade, origin) {
   }).questions[0];
   return page({
     route: gradeRoute(grade),
-    title: grade.year > 0 ? `${grade.label} Maths Olympiad Practice: IMO-Style Questions & Practice Paper` : `${grade.label} Maths & Picture Reasoning Practice`,
+    title: grade.year > 0 ? `${grade.label} Olympiad-Style Maths Practice & Practice Paper` : `${grade.label} Maths & Picture Reasoning Practice`,
     description: grade.year > 0
-      ? `${grade.label} maths olympiad practice: ${grade.chapters.length} chapters of original IMO-style questions, worked answers, reasoning and an untimed practice paper. No sign-up.`
+      ? `${grade.label} maths olympiad practice: ${grade.chapters.length} chapters of original Olympiad-style questions, worked answers, reasoning and an untimed practice paper. No sign-up.`
       : `${grade.label} original practice across ${grade.chapters.length} chapters: ${grade.description} Read examples, play untimed missions and keep local progress.`,
     heading: `${grade.label} ${grade.year > 0 ? 'Maths Olympiad Practice' : 'Maths & Picture Reasoning Practice'}`,
     intro: `${campaign.title}. ${grade.description}`,
@@ -222,8 +222,8 @@ function gradePage(grade, origin) {
 
 function collectionPage(origin) {
   return page({
-    route: COLLECTION, title: 'Maths Olympiad Practice for Class 1-5: IMO-Style Questions',
-    description: 'Original maths olympiad practice for Class 1-5 plus PP1-PP2: IMO-style questions by chapter, untimed practice papers, worked answers and a space game. No sign-up.',
+    route: COLLECTION, title: 'Olympiad-Style Maths Practice for Class 1-5',
+    description: 'Original maths olympiad practice for Class 1-5 plus PP1-PP2: Olympiad-style questions by chapter, untimed practice papers, worked answers and a space game. No sign-up.',
     heading: 'Maths Olympiad Practice for Classes 1-5',
     intro: 'Original questions, worked answers and seven space adventures, including PP1 and PP2 picture-led practice. Solve a puzzle, build your craft and choose a grade to start exploring.',
     breadcrumbs: [{ label: 'Space Academy', route: COLLECTION }],
@@ -235,11 +235,11 @@ function collectionPage(origin) {
       }).join('')}</div>
     </section>
     <section class="growth-section"><div class="growth-grid"><article class="growth-card"><h2>Try, then play</h2><p>Every chapter has quick questions, picture choices, hints and worked answers. Pick Explore, Reason or Stretch.</p></article><article class="growth-card"><h2>Build and discover</h2><p>In the game, different chapters unlock different craft systems. Play your grade&rsquo;s space activity and fill a shared Universe Passport.</p></article></div></section>
-    <section class="growth-section"><h2>Olympiad guides for parents</h2><div class="growth-grid"><article class="growth-card"><h3><a href="/learn/imo-preparation.html">IMO preparation, Class 1-5</a></h3><p>What the topics are, how to start and how to use practice well.</p></article><article class="growth-card"><h3><a href="/learn/olympiad-mock-test.html">Olympiad mock test and practice paper</a></h3><p>Original untimed practice papers, and how to run a timed one at home.</p></article><article class="growth-card"><h3><a href="/blog/maths-olympiad-practice-at-home-classes-1-5.html">Maths Olympiad practice at home</a></h3><p>A short routine, a worked picture problem and ways to move from game practice to paper.</p></article></div></section>
+    <section class="growth-section"><h2>Olympiad guides for parents</h2><div class="growth-grid"><article class="growth-card"><h3><a href="/learn/olympiad-style-maths-preparation.html">Olympiad-style maths preparation, Class 1-5</a></h3><p>What the topics are, how to start and how to use practice well.</p></article><article class="growth-card"><h3><a href="/learn/olympiad-mock-test.html">Olympiad mock test and practice paper</a></h3><p>Original untimed practice papers, and how to run a timed one at home.</p></article><article class="growth-card"><h3><a href="/blog/maths-olympiad-practice-at-home-classes-1-5.html">Maths Olympiad practice at home</a></h3><p>A short routine, a worked picture problem and ways to move from game practice to paper.</p></article></div></section>
     <details id="content" class="al-parent-notes"><summary id="content-title">For grown-ups</summary><div class="al-notes-body">
-      <section class="growth-section"><h2>Original practice, not an official paper</h2><p>All questions, diagrams, picture choices, hints and explanations are original Otterly work. There are no copied provider questions, paper screenshots or live AI-generated questions. No Olympiad provider is affiliated with or endorses Space Academy.</p><p>SOF&rsquo;s topic syllabi are the primary Class 1&ndash;5 grade reference. Other providers differ in scope. PP1 and PP2 are Otterly readiness activities, not official SOF IMO levels.</p>
-        <details class="al-reference-notes"><summary>Reference papers by grade</summary><ul>${GRADES.map(grade => `<li><strong>${e(grade.label)}</strong>${grade.reference ? `<p><a href="${e(grade.reference.url)}" target="_blank" rel="noopener noreferrer">${e(grade.reference.title)}</a></p>` : ''}${paperReferences(grade)}</li>`).join('')}</ul><p>Additional Class 5 reference: <a href="https://www.unifiedcouncil.com/sample-questions-uimo.html" target="_blank" rel="noopener noreferrer">Unified Council UIMO official sample index</a> (sample, not a past paper).</p></details>
-        <details class="al-reference-notes"><summary>How content is checked</summary><p>The October 2026 rebuild compared five official SOF IMO Class 1&ndash;5 samples for 2026&ndash;27, five CREST CMO Class 1&ndash;5 previous-year papers from 2023&ndash;24 Set A, the CREST Junior and Senior KG samples, and a Unified Council UIMO Class 5 sample. These 13 documents total 63 pages; 18 representative rendered pages were visually inspected. SOF, KG and UIMO samples are not administered past examinations; the CREST previous-year papers supplied that comparison.</p><p>Answer checks and paper comparison are not independent pedagogical review. Independent educator calibration is still needed for difficulty and breadth. Explore, Reason and Stretch describe foundations, connected reasoning and linked conditions, not validated equivalence to an exam.</p></details>
+      <section class="growth-section"><h2>Original practice, not an official paper</h2><p>All questions, diagrams, picture choices, hints and explanations are original Otterly work. There are no copied provider questions, paper screenshots or live AI-generated questions. Original Otterly Olympiad-style practice. Independently created; not affiliated with or endorsed by any competition organiser. Topic coverage and difficulty have not been independently certified.</p><p><strong>Sources, not affiliation.</strong> We reviewed independently published topic lists and sample formats to understand common primary maths skills. These links describe external sources, not a claim of complete syllabus coverage. PP1 and PP2 are Otterly readiness activities, not formal Olympiad levels.</p>
+        <details class="al-reference-notes"><summary>Public sample papers we reviewed; not affiliated</summary><ul>${GRADES.map(grade => `<li><strong>${e(grade.label)}</strong>${grade.reference ? `<p><a href="${e(grade.reference.url)}" target="_blank" rel="noopener noreferrer">${e(grade.reference.title)}</a></p>` : ''}${paperReferences(grade)}</li>`).join('')}</ul><p>Additional Class 5 reference: <a href="https://www.unifiedcouncil.com/sample-questions-uimo.html" target="_blank" rel="noopener noreferrer">Additional independent sample source (external source; sample, not a past paper)</a>.</p></details>
+        <details class="al-reference-notes"><summary>How content is checked</summary><p>The October 2026 rebuild compared 13 publicly available sample and previous-year documents (63 pages) for Classes 1&ndash;5 and KG; 18 representative rendered pages were visually inspected. Samples are not administered past examinations.</p><p>Answer checks and paper comparison are not independent pedagogical review. Independent educator calibration is still needed for difficulty and breadth. Explore, Reason and Stretch describe foundations, connected reasoning and linked conditions, not validated equivalence to an exam.</p></details>
         <p><strong>Not complete exam preparation.</strong> Each chapter lists its actual formats by level. Not every published topic or reasoning format is covered. Follow classroom teaching and check the current official syllabus too.</p>
       </section>
       <section class="growth-section"><h2>Understanding reports</h2>${reportNote()}</section>
@@ -265,7 +265,7 @@ export function buildAcademy({ root = resolve(dirname(fileURLToPath(import.meta.
     footer: readFileSync(join(root, '_includes', 'footer.html'), 'utf8').trim(),
   };
   validateTemplates(templates);
-  const pages = academyPages(inventory.origin);
+  const pages = academyPages(inventory.origin).filter(page => !ARCHIVE_ROUTES.includes(page.route));
   const routes = new Set(pages.map(page => page.route));
   const inventoried = new Set(inventory.pages.map(page => page.route));
   for (const route of routes) {

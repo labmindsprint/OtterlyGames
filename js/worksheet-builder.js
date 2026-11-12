@@ -339,7 +339,7 @@ function academyInstructions(sheet) {
     return 'Look carefully at each picture and circle the letter of the best answer. This is readiness practice, not an exam.';
   }
   return sheet.heading.paper
-    ? 'Choose the best answer for every question and circle its letter. Original Otterly practice in an Olympiad style; it is not an official SOF or CREST paper.'
+    ? 'Choose the best answer for every question and circle its letter. Original Otterly practice in an Olympiad style; it is not an official paper from any competition organiser.'
     : 'Circle the letter of the best answer. The questions are original Space Academy practice.';
 }
 
@@ -369,7 +369,7 @@ function renderSource(sheet) {
   if (settings.activity === 'academy') {
     note.append(sheet.heading.readiness
       ? 'Picture readiness practice from Space Academy. It is not an exam and not an official paper. '
-      : 'Original Space Academy practice with diagrams and picture choices. It is not an official SOF or CREST paper and not complete exam preparation. ',
+      : 'Original Space Academy practice with diagrams and picture choices. It is not an official paper from any competition organiser and not complete exam preparation. ',
     link('Open Space Academy', '/play/space-academy.html'), `. Choose ${sheet.heading.grade} and the matching topic in the game.`);
   } else if (['multiplication-array', 'division-groups'].includes(settings.activity)) {
     note.append('These pictures follow the equal-groups and sharing pictures in ', link('Math Tank', '/play/math-tank.html'), '.');

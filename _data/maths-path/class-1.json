@@ -1,0 +1,1273 @@
+{
+  "id": "class-1",
+  "label": "Class 1",
+  "name": "Class 1",
+  "ages": "Ages 5 to 6",
+  "blurb": "Numbers to 100, adding, shapes, time and money.",
+  "live": true,
+  "grade": "class-1",
+  "chapters": [
+    {
+      "id": "numbers",
+      "title": "Tens, ones and number names",
+      "tagline": "Build any number up to 100 from tens and ones.",
+      "outcomes": [
+        "I can build a number with tens and ones.",
+        "I can match a number to its name.",
+        "I can compare and order two-digit numbers."
+      ],
+      "vocab": [
+        {
+          "term": "ones",
+          "meaning": "Single small cubes. Ten ones make one ten."
+        },
+        {
+          "term": "tens",
+          "meaning": "A stick of ten cubes joined together."
+        },
+        {
+          "term": "digit",
+          "meaning": "One of the symbols 0 to 9 used to write numbers."
+        }
+      ],
+      "see": [
+        {
+          "title": "Ten ones make one ten",
+          "art": "think",
+          "text": [
+            "One small cube is one 'one'.",
+            "Ten ones stuck together make a long stick. We call it one 'ten'."
+          ],
+          "widget": {
+            "w": "placeValue",
+            "c": {
+              "tens": 1,
+              "ones": 0
+            }
+          }
+        },
+        {
+          "title": "Read a two-digit number",
+          "art": "happy",
+          "text": [
+            "The number 34 has two digits.",
+            "The first digit, 3, tells us the tens. The second digit, 4, tells us the ones.",
+            "So 34 is 3 tens and 4 ones."
+          ],
+          "widget": {
+            "w": "placeValue",
+            "c": {
+              "tens": 3,
+              "ones": 4
+            }
+          }
+        },
+        {
+          "title": "Say the number name",
+          "art": "think",
+          "text": [
+            "Tens have special names: ten, twenty, thirty, forty, fifty.",
+            "34 is said 'thirty-four'. Say the tens name, then the ones name."
+          ],
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 30,
+              "max": 40,
+              "marker": 34,
+              "labelEvery": 1
+            }
+          }
+        },
+        {
+          "title": "Which number is bigger?",
+          "art": "cheer",
+          "text": [
+            "Look at the tens first. More tens means a bigger number.",
+            "If the tens are the same, look at the ones.",
+            "47 is bigger than 38 because 4 tens is more than 3 tens."
+          ],
+          "widget": {
+            "w": "placeValue",
+            "c": {
+              "tens": 4,
+              "ones": 7
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Build the number 34. Use the buttons to add tens and ones.",
+          "widget": {
+            "w": "placeValue",
+            "c": {
+              "tens": 0,
+              "ones": 0
+            }
+          },
+          "target": {
+            "tens": 3,
+            "ones": 4
+          },
+          "success": "34 is 3 tens and 4 ones.",
+          "hint": "Add 3 tens first. Then add 4 ones."
+        },
+        {
+          "prompt": "Move the marker to 27 on the number line.",
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 20,
+              "max": 30,
+              "start": 20,
+              "labelEvery": 1
+            }
+          },
+          "target": {
+            "position": 27
+          },
+          "success": "27 is between 20 and 30, closer to 30.",
+          "hint": "27 is 7 steps after 20."
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": []
+    },
+    {
+      "id": "operations",
+      "title": "Add, subtract and find the missing part",
+      "tagline": "Join groups, take some away and find a part that is hiding.",
+      "outcomes": [
+        "I can solve an add or take-away story.",
+        "I can find a missing part.",
+        "I can check related number facts."
+      ],
+      "vocab": [
+        {
+          "term": "add",
+          "meaning": "Put groups together to find how many altogether."
+        },
+        {
+          "term": "take away",
+          "meaning": "Remove some to find how many are left."
+        },
+        {
+          "term": "part and whole",
+          "meaning": "The small groups are the parts. All of them together is the whole."
+        }
+      ],
+      "see": [
+        {
+          "title": "Adding means joining",
+          "art": "think",
+          "text": [
+            "You have 6 counters. A friend gives you 3 more.",
+            "Count them all: 9 counters. We write 6 + 3 = 9."
+          ],
+          "widget": {
+            "w": "tenFrame",
+            "c": {
+              "count": 6,
+              "second": 3
+            }
+          }
+        },
+        {
+          "title": "Taking away means fewer",
+          "art": "happy",
+          "text": [
+            "There are 9 counters. 4 go away.",
+            "Count what is left: 5. We write 9 − 4 = 5."
+          ],
+          "widget": {
+            "w": "tenFrame",
+            "c": {
+              "count": 5
+            }
+          }
+        },
+        {
+          "title": "Parts and a whole",
+          "art": "think",
+          "text": [
+            "A bar shows the whole on top and the parts below.",
+            "The parts 7 and 5 make a whole of 12."
+          ],
+          "widget": {
+            "w": "barModel",
+            "c": {
+              "parts": [
+                7,
+                5
+              ]
+            }
+          }
+        },
+        {
+          "title": "Find the hidden part",
+          "art": "cheer",
+          "text": [
+            "The whole is 12. One part is 7. The other part is hiding.",
+            "Take away to find it: 12 − 7 = 5. The hidden part is 5."
+          ],
+          "widget": {
+            "w": "barModel",
+            "c": {
+              "parts": [
+                7,
+                5
+              ],
+              "unknown": "b"
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Show 6 + 3. Tap the boxes until the frame holds all 9 counters.",
+          "widget": {
+            "w": "tenFrame",
+            "c": {
+              "start": 0
+            }
+          },
+          "target": {
+            "count": 9
+          },
+          "success": "6 and 3 make 9.",
+          "hint": "Start with 6 counters, then add 3 more."
+        },
+        {
+          "prompt": "Make two parts that make 12. Use the plus and minus buttons.",
+          "widget": {
+            "w": "barModel",
+            "c": {
+              "a": 0,
+              "b": 0,
+              "max": 12
+            }
+          },
+          "target": {
+            "total": 12
+          },
+          "success": "Two parts can make 12 in many ways.",
+          "hint": "Try 6 and 6, or 7 and 5."
+        },
+        {
+          "prompt": "The left side has 5. Add to the left side until the balance is level with 9 on the right.",
+          "widget": {
+            "w": "balance",
+            "c": {
+              "left": 5,
+              "right": 9,
+              "max": 12
+            }
+          },
+          "target": {
+            "added": 4
+          },
+          "success": "5 + 4 = 9. Both sides are equal.",
+          "hint": "How many more does 5 need to reach 9?"
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": []
+    },
+    {
+      "id": "patterns",
+      "title": "Picture and number patterns",
+      "tagline": "Spot what repeats and what comes next.",
+      "outcomes": [
+        "I can fill a missing picture.",
+        "I can continue a growing pattern.",
+        "I can find a missing number or letter."
+      ],
+      "vocab": [
+        {
+          "term": "pattern",
+          "meaning": "Something that repeats in the same order."
+        },
+        {
+          "term": "repeat unit",
+          "meaning": "The small piece that comes round again and again."
+        },
+        {
+          "term": "skip counting",
+          "meaning": "Counting in jumps, like 2, 4, 6, 8."
+        }
+      ],
+      "see": [
+        {
+          "title": "A pattern repeats",
+          "art": "think",
+          "text": [
+            "Red, blue, red, blue, red, blue.",
+            "The piece 'red, blue' keeps coming round. That piece is the repeat unit."
+          ],
+          "widget": {
+            "w": "patternBuilder",
+            "c": {
+              "palette": [
+                {
+                  "id": "r",
+                  "label": "red",
+                  "color": "#ef6b5b",
+                  "icon": "●"
+                },
+                {
+                  "id": "b",
+                  "label": "blue",
+                  "color": "#4aa8ff",
+                  "icon": "●"
+                }
+              ],
+              "sequence": [
+                "r",
+                "b",
+                "r",
+                "b",
+                "r",
+                "b"
+              ]
+            }
+          }
+        },
+        {
+          "title": "Find the missing piece",
+          "art": "happy",
+          "text": [
+            "Say the pattern from the start. Listen for where it repeats.",
+            "Red, blue, red, ... The next one must be blue."
+          ],
+          "widget": {
+            "w": "patternBuilder",
+            "c": {
+              "palette": [
+                {
+                  "id": "r",
+                  "label": "red",
+                  "color": "#ef6b5b",
+                  "icon": "●"
+                },
+                {
+                  "id": "b",
+                  "label": "blue",
+                  "color": "#4aa8ff",
+                  "icon": "●"
+                }
+              ],
+              "sequence": [
+                "r",
+                "b",
+                "r",
+                null,
+                "r",
+                "b"
+              ],
+              "caption": "The gap is blue."
+            }
+          }
+        },
+        {
+          "title": "Number patterns jump",
+          "art": "think",
+          "text": [
+            "2, 4, 6, 8 ... Each number is 2 more than the one before.",
+            "That is skip counting by twos. The next number is 10."
+          ],
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 0,
+              "max": 10,
+              "hops": [
+                [
+                  0,
+                  2
+                ],
+                [
+                  2,
+                  4
+                ],
+                [
+                  4,
+                  6
+                ],
+                [
+                  6,
+                  8
+                ],
+                [
+                  8,
+                  10
+                ]
+              ],
+              "labelEvery": 2
+            }
+          }
+        },
+        {
+          "title": "Patterns that grow",
+          "art": "cheer",
+          "text": [
+            "A growing pattern gets bigger each time.",
+            "1 counter, then 2, then 3, then 4. Each step adds one more."
+          ],
+          "widget": {
+            "w": "tenFrame",
+            "c": {
+              "count": 4
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Finish the pattern. Tap the gap, then tap a tile.",
+          "widget": {
+            "w": "patternBuilder",
+            "c": {
+              "palette": [
+                {
+                  "id": "r",
+                  "label": "red",
+                  "color": "#ef6b5b",
+                  "icon": "●"
+                },
+                {
+                  "id": "b",
+                  "label": "blue",
+                  "color": "#4aa8ff",
+                  "icon": "●"
+                },
+                {
+                  "id": "y",
+                  "label": "yellow",
+                  "color": "#f4c542",
+                  "icon": "●"
+                }
+              ],
+              "sequence": [
+                "r",
+                "b",
+                "y",
+                "r",
+                null,
+                "y",
+                "r",
+                null
+              ],
+              "answer": [
+                "b",
+                "b"
+              ]
+            }
+          },
+          "target": {},
+          "success": "The repeat unit is red, blue, yellow.",
+          "hint": "Say it: red, blue, yellow, red, ... again."
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": []
+    },
+    {
+      "id": "geometry",
+      "title": "Shapes and solid objects",
+      "tagline": "Name flat shapes and solid things and say what they can do.",
+      "outcomes": [
+        "I can count shapes and corners.",
+        "I can choose a solid by what it does.",
+        "I can complete a simple mirror picture."
+      ],
+      "vocab": [
+        {
+          "term": "corner",
+          "meaning": "The pointy place where two sides meet."
+        },
+        {
+          "term": "side",
+          "meaning": "A straight edge of a flat shape."
+        },
+        {
+          "term": "solid",
+          "meaning": "A shape you can hold, like a ball or a box."
+        }
+      ],
+      "see": [
+        {
+          "title": "Flat shapes have sides and corners",
+          "art": "think",
+          "text": [
+            "A triangle has 3 sides and 3 corners.",
+            "A square has 4 sides and 4 corners. A circle has none."
+          ],
+          "widget": {
+            "w": "sorter",
+            "c": {
+              "items": [
+                {
+                  "id": "t",
+                  "label": "triangle: 3 corners",
+                  "icon": "▲"
+                },
+                {
+                  "id": "s",
+                  "label": "square: 4 corners",
+                  "icon": "■"
+                },
+                {
+                  "id": "c",
+                  "label": "circle: no corners",
+                  "icon": "●"
+                }
+              ],
+              "bins": [],
+              "caption": "Count the corners of each shape."
+            }
+          }
+        },
+        {
+          "title": "Solids are things you can hold",
+          "art": "happy",
+          "text": [
+            "A ball is a sphere. A dice is a cube. A tin is a cylinder.",
+            "A party hat is a cone. A brick is a cuboid."
+          ],
+          "widget": {
+            "w": "sorter",
+            "c": {
+              "items": [
+                {
+                  "id": "a",
+                  "label": "sphere",
+                  "img": "/images/maths-path/solid-sphere.webp"
+                },
+                {
+                  "id": "b",
+                  "label": "cube",
+                  "img": "/images/maths-path/solid-cube.webp"
+                },
+                {
+                  "id": "c",
+                  "label": "cylinder",
+                  "img": "/images/maths-path/solid-cylinder.webp"
+                },
+                {
+                  "id": "d",
+                  "label": "cone",
+                  "img": "/images/maths-path/solid-cone.webp"
+                },
+                {
+                  "id": "e",
+                  "label": "cuboid",
+                  "img": "/images/maths-path/solid-cuboid.webp"
+                }
+              ],
+              "bins": [],
+              "caption": "Five solids."
+            }
+          }
+        },
+        {
+          "title": "Some solids roll",
+          "art": "cheer",
+          "text": [
+            "A ball rolls because it is round all over.",
+            "A cube has flat faces and corners. It slides but does not roll."
+          ],
+          "widget": {
+            "w": "sorter",
+            "c": {
+              "items": [
+                {
+                  "id": "a",
+                  "label": "sphere rolls",
+                  "img": "/images/maths-path/solid-sphere.webp"
+                },
+                {
+                  "id": "b",
+                  "label": "cube slides",
+                  "img": "/images/maths-path/solid-cube.webp"
+                }
+              ],
+              "bins": [],
+              "caption": "Rolls or slides?"
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Sort the solids. Tap a solid, then tap the box where it belongs.",
+          "widget": {
+            "w": "sorter",
+            "c": {
+              "items": [
+                {
+                  "id": "a",
+                  "label": "sphere",
+                  "img": "/images/maths-path/solid-sphere.webp",
+                  "bin": "roll"
+                },
+                {
+                  "id": "b",
+                  "label": "cube",
+                  "img": "/images/maths-path/solid-cube.webp",
+                  "bin": "flat"
+                },
+                {
+                  "id": "c",
+                  "label": "cylinder",
+                  "img": "/images/maths-path/solid-cylinder.webp",
+                  "bin": "roll"
+                },
+                {
+                  "id": "d",
+                  "label": "cone",
+                  "img": "/images/maths-path/solid-cone.webp",
+                  "bin": "roll"
+                },
+                {
+                  "id": "e",
+                  "label": "cuboid",
+                  "img": "/images/maths-path/solid-cuboid.webp",
+                  "bin": "flat"
+                }
+              ],
+              "bins": [
+                {
+                  "id": "roll",
+                  "label": "Can roll"
+                },
+                {
+                  "id": "flat",
+                  "label": "Cannot roll"
+                }
+              ]
+            }
+          },
+          "target": {},
+          "success": "Round parts roll. Flat faces everywhere do not.",
+          "hint": "Does it have a round part? Think of a ball and a dice."
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": []
+    },
+    {
+      "id": "measurement",
+      "title": "Measure length and weight",
+      "tagline": "Compare fairly and measure with equal units.",
+      "outcomes": [
+        "I can measure with equal units.",
+        "I can compare weights.",
+        "I can choose a sensible unit."
+      ],
+      "vocab": [
+        {
+          "term": "unit",
+          "meaning": "A fixed size we count with, like a paper clip or a cube."
+        },
+        {
+          "term": "length",
+          "meaning": "How long something is from end to end."
+        },
+        {
+          "term": "heavier",
+          "meaning": "Pushes down harder on a balance."
+        }
+      ],
+      "see": [
+        {
+          "title": "Start at zero",
+          "art": "think",
+          "text": [
+            "To measure length, put one end at zero.",
+            "Read the number at the other end. This pencil is 6 units long."
+          ],
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 0,
+              "max": 10,
+              "hops": [
+                [
+                  0,
+                  6
+                ]
+              ],
+              "marker": 6
+            }
+          }
+        },
+        {
+          "title": "Units must be equal",
+          "art": "happy",
+          "text": [
+            "Count with units that are all the same size.",
+            "If the units are different sizes, the answer is not fair."
+          ],
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 0,
+              "max": 8,
+              "hops": [
+                [
+                  0,
+                  8
+                ]
+              ],
+              "caption": "8 equal cubes."
+            }
+          }
+        },
+        {
+          "title": "Weigh on a balance",
+          "art": "cheer",
+          "text": [
+            "The heavier side goes down.",
+            "When both sides weigh the same, the balance is level."
+          ],
+          "widget": {
+            "w": "balance",
+            "c": {
+              "left": 3,
+              "right": 6
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "The book is 6 cubes long. Move the marker to the end of the book.",
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 0,
+              "max": 10,
+              "start": 0
+            }
+          },
+          "target": {
+            "position": 6
+          },
+          "success": "The book is 6 cubes long.",
+          "hint": "Start from 0 and count 6 steps."
+        },
+        {
+          "prompt": "The right side has 7 cubes. Add cubes to the left until it is level.",
+          "widget": {
+            "w": "balance",
+            "c": {
+              "left": 3,
+              "right": 7,
+              "max": 10
+            }
+          },
+          "target": {
+            "added": 4
+          },
+          "success": "3 + 4 = 7. The two sides weigh the same.",
+          "hint": "The left needs more. Add until the beam is flat."
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": []
+    },
+    {
+      "id": "time",
+      "title": "Read clocks and calendars",
+      "tagline": "Read the hands, then talk about days and months.",
+      "outcomes": [
+        "I can read a clock.",
+        "I can find a later time.",
+        "I can find a day or month."
+      ],
+      "vocab": [
+        {
+          "term": "hour hand",
+          "meaning": "The short hand. It tells the hour."
+        },
+        {
+          "term": "minute hand",
+          "meaning": "The long hand. It tells the minutes."
+        },
+        {
+          "term": "o'clock",
+          "meaning": "The minute hand points straight up at 12."
+        }
+      ],
+      "see": [
+        {
+          "title": "Two hands, two jobs",
+          "art": "think",
+          "text": [
+            "The short hand is the hour hand.",
+            "The long hand is the minute hand.",
+            "Look at the short hand first."
+          ],
+          "widget": {
+            "w": "clock",
+            "c": {
+              "hour": 3,
+              "minute": 0
+            }
+          }
+        },
+        {
+          "title": "O'clock",
+          "art": "happy",
+          "text": [
+            "When the long hand points to 12, it is an o'clock time.",
+            "The short hand points to 3. So it is 3 o'clock."
+          ],
+          "widget": {
+            "w": "clock",
+            "c": {
+              "hour": 3,
+              "minute": 0
+            }
+          }
+        },
+        {
+          "title": "Half past",
+          "art": "cheer",
+          "text": [
+            "When the long hand points to 6, half an hour has passed.",
+            "The short hand is between 7 and 8. We say half past 7."
+          ],
+          "widget": {
+            "w": "clock",
+            "c": {
+              "hour": 7,
+              "minute": 30
+            }
+          }
+        },
+        {
+          "title": "Days and months",
+          "art": "think",
+          "text": [
+            "A week has 7 days. A year has 12 months.",
+            "After Saturday comes Sunday, and a new week starts."
+          ],
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 1,
+              "max": 7,
+              "labelEvery": 1,
+              "caption": "Days of the week, 1 to 7."
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Show 3 o'clock. Drag the hands or use the buttons.",
+          "widget": {
+            "w": "clock",
+            "c": {
+              "hour": 12,
+              "minute": 0,
+              "snap": 30
+            }
+          },
+          "target": {
+            "hour": 3,
+            "minute": 0
+          },
+          "success": "3 o'clock: the long hand is on 12 and the short hand is on 3.",
+          "hint": "Move the short hand to 3 and keep the long hand on 12."
+        },
+        {
+          "prompt": "Show half past 7.",
+          "widget": {
+            "w": "clock",
+            "c": {
+              "hour": 12,
+              "minute": 0,
+              "snap": 30
+            }
+          },
+          "target": {
+            "hour": 7,
+            "minute": 30
+          },
+          "success": "Half past 7 has the long hand on 6.",
+          "hint": "The long hand points to 6. The short hand sits between 7 and 8."
+        }
+      ],
+      "play": {
+        "game": "clock-master"
+      },
+      "tools": [
+        "/tools/hour-hand.html",
+        "/tools/minute-hand.html",
+        "/tools/clock-lessons.html"
+      ]
+    },
+    {
+      "id": "money",
+      "title": "Coins, prices and change",
+      "tagline": "Count coins and notes and work out what you need.",
+      "outcomes": [
+        "I can add coin values.",
+        "I can total two prices.",
+        "I can work out my change."
+      ],
+      "vocab": [
+        {
+          "term": "coin",
+          "meaning": "A small round piece of money."
+        },
+        {
+          "term": "note",
+          "meaning": "A paper piece of money."
+        },
+        {
+          "term": "change",
+          "meaning": "The money you get back when you pay more than the price."
+        }
+      ],
+      "see": [
+        {
+          "title": "Every coin has a value",
+          "art": "think",
+          "text": [
+            "Our coins are worth Rs 1, Rs 2, Rs 5 and Rs 10.",
+            "Big number on the coin, big value."
+          ],
+          "widget": {
+            "w": "coinTray",
+            "c": {
+              "show": [
+                [
+                  "coin",
+                  1
+                ],
+                [
+                  "coin",
+                  2
+                ],
+                [
+                  "coin",
+                  5
+                ],
+                [
+                  "coin",
+                  10
+                ]
+              ],
+              "caption": "Rs 1, Rs 2, Rs 5, Rs 10"
+            }
+          }
+        },
+        {
+          "title": "Add them up",
+          "art": "happy",
+          "text": [
+            "A Rs 10 coin and a Rs 5 coin.",
+            "10 and 5 make 15. Altogether it is Rs 15."
+          ],
+          "widget": {
+            "w": "coinTray",
+            "c": {
+              "show": [
+                [
+                  "coin",
+                  10
+                ],
+                [
+                  "coin",
+                  5
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "title": "Notes are worth more",
+          "art": "cheer",
+          "text": [
+            "Notes are worth Rs 10, Rs 20 and Rs 50 here.",
+            "A Rs 20 note and a Rs 5 coin make Rs 25."
+          ],
+          "widget": {
+            "w": "coinTray",
+            "c": {
+              "show": [
+                [
+                  "note",
+                  20
+                ],
+                [
+                  "coin",
+                  5
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "title": "Change",
+          "art": "think",
+          "text": [
+            "A pencil costs Rs 7. You pay with Rs 10.",
+            "Change is what comes back: 10 − 7 = 3. You get Rs 3."
+          ],
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 7,
+              "max": 10,
+              "hops": [
+                [
+                  7,
+                  10
+                ]
+              ],
+              "labelEvery": 1
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Pay exactly Rs 12 using exactly 3 coins.",
+          "widget": {
+            "w": "coinTray",
+            "c": {
+              "coins": [
+                1,
+                2,
+                5,
+                10
+              ],
+              "notes": []
+            }
+          },
+          "target": {
+            "total": 12,
+            "count": 3
+          },
+          "success": "5 + 5 + 2 makes Rs 12 with 3 coins.",
+          "hint": "Try two Rs 5 coins and one more."
+        },
+        {
+          "prompt": "Make Rs 35 using exactly 3 coins or notes.",
+          "widget": {
+            "w": "coinTray",
+            "c": {
+              "coins": [
+                5,
+                10
+              ],
+              "notes": [
+                10,
+                20,
+                50
+              ]
+            }
+          },
+          "target": {
+            "total": 35,
+            "count": 3
+          },
+          "success": "20 + 10 + 5 makes Rs 35.",
+          "hint": "Start with the Rs 20 note."
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": []
+    },
+    {
+      "id": "reasoning",
+      "title": "Sort, order and solve picture clues",
+      "tagline": "Use every clue to sort, order and decide.",
+      "outcomes": [
+        "I can find what does not belong.",
+        "I can find someone's place in a row.",
+        "I can follow a picture change or route."
+      ],
+      "vocab": [
+        {
+          "term": "clue",
+          "meaning": "A small fact that helps you work out the answer."
+        },
+        {
+          "term": "odd one out",
+          "meaning": "The one that is different from the others."
+        },
+        {
+          "term": "order",
+          "meaning": "First, second, third. Where each one stands in a row."
+        }
+      ],
+      "see": [
+        {
+          "title": "Use every clue",
+          "art": "think",
+          "text": [
+            "Read all the clues before you answer.",
+            "Each clue rules something out."
+          ],
+          "widget": {
+            "w": "patternBuilder",
+            "c": {
+              "palette": [
+                {
+                  "id": "s",
+                  "label": "small",
+                  "color": "#4aa8ff",
+                  "icon": "●",
+                  "scale": 0.8
+                },
+                {
+                  "id": "m",
+                  "label": "medium",
+                  "color": "#4aa8ff",
+                  "icon": "●",
+                  "scale": 1.2
+                },
+                {
+                  "id": "l",
+                  "label": "large",
+                  "color": "#4aa8ff",
+                  "icon": "●",
+                  "scale": 1.7
+                }
+              ],
+              "sequence": [
+                "s",
+                "m",
+                "l"
+              ],
+              "caption": "Small, medium, large."
+            }
+          }
+        },
+        {
+          "title": "Find the odd one out",
+          "art": "happy",
+          "text": [
+            "Look at what the things have in common.",
+            "Three can roll. One cannot. The one that cannot is the odd one out."
+          ],
+          "widget": {
+            "w": "sorter",
+            "c": {
+              "items": [
+                {
+                  "id": "a",
+                  "label": "ball",
+                  "img": "/images/maths-path/solid-sphere.webp"
+                },
+                {
+                  "id": "b",
+                  "label": "tin",
+                  "img": "/images/maths-path/solid-cylinder.webp"
+                },
+                {
+                  "id": "c",
+                  "label": "hat",
+                  "img": "/images/maths-path/solid-cone.webp"
+                },
+                {
+                  "id": "d",
+                  "label": "box: odd one out",
+                  "img": "/images/maths-path/solid-cuboid.webp"
+                }
+              ],
+              "bins": [],
+              "caption": "Which one is different?"
+            }
+          }
+        },
+        {
+          "title": "Where is it in the row?",
+          "art": "cheer",
+          "text": [
+            "First, second, third, fourth.",
+            "Count from the start of the row, not from your own place."
+          ],
+          "widget": {
+            "w": "numberLine",
+            "c": {
+              "min": 1,
+              "max": 5,
+              "marker": 3,
+              "labelEvery": 1,
+              "caption": "Third in the row."
+            }
+          }
+        }
+      ],
+      "try": [
+        {
+          "prompt": "Put the circles in order from smallest to largest.",
+          "widget": {
+            "w": "patternBuilder",
+            "c": {
+              "palette": [
+                {
+                  "id": "l",
+                  "label": "large",
+                  "color": "#4aa8ff",
+                  "icon": "●",
+                  "scale": 1.7
+                },
+                {
+                  "id": "s",
+                  "label": "small",
+                  "color": "#4aa8ff",
+                  "icon": "●",
+                  "scale": 0.8
+                },
+                {
+                  "id": "m",
+                  "label": "medium",
+                  "color": "#4aa8ff",
+                  "icon": "●",
+                  "scale": 1.2
+                }
+              ],
+              "sequence": [
+                null,
+                null,
+                null
+              ],
+              "answer": [
+                "s",
+                "m",
+                "l"
+              ]
+            }
+          },
+          "target": {},
+          "success": "Small, medium, large. Well ordered.",
+          "hint": "Start with the smallest."
+        }
+      ],
+      "play": {
+        "game": "space-academy"
+      },
+      "tools": []
+    }
+  ]
+}

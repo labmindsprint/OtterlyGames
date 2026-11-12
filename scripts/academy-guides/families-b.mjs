@@ -593,6 +593,96 @@ export const FAMILY_GUIDES_B = {
     ],
     slip: 'Picking the one you like least. Find what three of them share, then pick the one that is not like that.',
   },
+  'class-2-code-key': {
+    steps: [
+      'Look at the key. Each picture has its own code.',
+      'To write a code, find each picture in the key and write its code in the same order.',
+      'To read a code, find each code in the key and say its picture.',
+      'If the question adds codes, add only the two codes asked for.',
+    ],
+    slip: 'Changing the order of the pictures, or using a code from the wrong row of the key.',
+  },
+  'class-2-cardinal-ordinal': {
+    steps: [
+      'Read what the number tells you.',
+      'A cardinal number tells how many, like 3 children.',
+      'An ordinal number tells the place in order, like 3rd in the line.',
+      'Pick the choice that uses the right kind of number.',
+    ],
+    slip: 'Mixing how many with which place. Ask: is it a count, or a place in a line?',
+  },
+  'class-3-embed-shape': {
+    steps: [
+      'Look at the small shape and note its sides and corners.',
+      'Trace it in the big figure with your finger, along the lines that are there.',
+      'Check that every side of the small shape is a line in the big figure.',
+      'Pick the figure that matches all the sides, not just some.',
+    ],
+    slip: 'Choosing a shape that needs a line the big figure does not have, or turning the shape without checking.',
+  },
+  'class-4-pair-list': {
+    steps: [
+      'Write the pairs in an order, starting with the smallest first number.',
+      'Check each pair against the rule in the question.',
+      'Do not count the same pair twice if the order does not matter.',
+      'Count the pairs on your list.',
+    ],
+    slip: 'Missing a pair, or counting the same two numbers twice in a different order.',
+  },
+  'pp2-oclock': {
+    steps: [
+      'Look at the short hand. It tells the hour.',
+      'The long hand on 12 means o\'clock.',
+      'If the question says later or earlier, count on or back that many hours.',
+      'Pick the time that fits.',
+    ],
+    slip: 'Looking at the long hand for the hour. The short hand shows the hour; later means a bigger number and earlier a smaller one.',
+  },
+  'pp2-half-past': {
+    steps: [
+      'Find the long hand. At half past it points to 6.',
+      'Look at the short hand. It has just passed an hour number.',
+      'Say half past and that hour.',
+      'Check that the long hand is on 6, not on 12.',
+    ],
+    slip: 'Calling it o\'clock, or using the next hour. At half past the short hand has only just passed the hour.',
+  },
+  'pp2-clock-match': {
+    steps: [
+      'Read the time in the question.',
+      'For o\'clock look for the long hand on 12. For half past look for it on 6.',
+      'Find the clock whose short hand is on, or just past, the right hour.',
+      'Check the other clocks show a different hour or the other kind of time.',
+    ],
+    slip: 'Matching only the hour. A clock with the right hour but the long hand on the wrong number shows a different time.',
+  },
+  'pp2-day-part': {
+    steps: [
+      'Think about the sky at that time.',
+      'Morning has the sunrise, afternoon is after lunch, evening has the sunset and night is dark.',
+      'Match the thing to the part of the day.',
+      'Check the other parts do not fit.',
+    ],
+    slip: 'Mixing evening and night. Evening is when the sun sets; night is when it is dark and we sleep.',
+  },
+  'pp2-time-order': {
+    steps: [
+      'Say the days, or the parts of the day, in order.',
+      'Before means one step back, after or tomorrow means one step on, and between means the one in the middle.',
+      'Say the one you find.',
+      'Check by stepping from it to the one in the question.',
+    ],
+    slip: 'Choosing the day after when the question asks for before, or the day named in the question.',
+  },
+  'pp2-time-sense': {
+    steps: [
+      'Picture each thing happening.',
+      'Decide which is over in a moment and which takes a lot of time.',
+      'Pick the quickest or the longest as the question asks.',
+      'Check it against the others.',
+    ],
+    slip: 'Picking the longest when the question asks for the quickest. Read the question word again.',
+  },
   'pp2-pattern-hole': {
     steps: [
       'Look at the tiles before and after the empty place.',

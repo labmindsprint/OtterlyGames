@@ -22,6 +22,7 @@ import { REAL_MISCONCEPTIONS } from './bank3-class-5-real-kit.mjs';
 import { REASONING_FAMILIES, DRAFT as REASONING_DRAFT, SOLVE as REASONING_SOLVE, renderReasoning } from './bank3-class-5-real.mjs';
 import { MIXED_FAMILIES, DRAFT as MIXED_DRAFT, SOLVE as MIXED_SOLVE } from './bank3-class-5-real2.mjs';
 import { REAL3_CODES, REAL3_FAMILIES, DRAFT as REAL3_DRAFT, SOLVE as REAL3_SOLVE, renderReal3 } from './bank3-class-5-real3.mjs';
+import { DRAFT as GAP_DRAFT, GAP5_CODES, GAP5_FAMILIES, SOLVE as GAP_SOLVE, renderGaps } from './bank3-class-5-gaps.mjs';
 
 // ---------------------------------------------------------------------------
 // FAMILIES -- one entry per question family, grouped by chapter.
@@ -107,6 +108,7 @@ export const FAMILIES = {
   ...REASONING_FAMILIES,
   ...MIXED_FAMILIES,
   ...REAL3_FAMILIES,
+  ...GAP5_FAMILIES,
 };
 
 // ---------------------------------------------------------------------------
@@ -116,6 +118,7 @@ export const FAMILIES = {
 export const MISCONCEPTIONS = {
   ...REAL_MISCONCEPTIONS,
   ...REAL3_CODES,
+  ...GAP5_CODES,
   // numbers
   'class-5-extreme-confuse': { title: 'Greatest or smallest', message: 'Re-read whether the question asks for the greatest or the smallest number.' },
   'class-5-round-direction': { title: 'Rounding direction', message: 'Compare the value to both neighbouring multiples and round to the one it is closer to.' },
@@ -183,9 +186,9 @@ const KNOWN = { ...SHARED, ...MISCONCEPTIONS };
 // ---------------------------------------------------------------------------
 export const PLAN = {
   numbers: [
-    'class-5-digit-card-extreme class-5-number-line-round class-5-place-value-expand class-5-compare-order-grid class-5-roman-numeral-mix class-5-pqr-number-facts',
-    'class-5-digit-card-extreme class-5-roman-numeral-mix class-5-digit-riddle class-5-place-value-expand class-5-compare-order-grid class-5-pqr-number-facts class-5-big-number-story class-5-statement-pair',
-    'class-5-digit-riddle class-5-roman-numeral-mix class-5-number-line-round class-5-compare-order-grid class-5-digit-card-extreme class-5-pqr-number-facts class-5-hcf-lcm-mix class-5-greatest-of-four',
+    'class-5-digit-card-extreme class-5-number-line-round class-5-place-value-expand class-5-compare-order-grid class-5-roman-numeral-mix class-5-crore-places',
+    'class-5-digit-card-extreme class-5-roman-numeral-mix class-5-digit-riddle class-5-place-value-expand class-5-compare-order-grid class-5-crore-places class-5-big-number-story class-5-statement-pair',
+    'class-5-digit-riddle class-5-roman-numeral-mix class-5-number-line-round class-5-compare-order-grid class-5-digit-card-extreme class-5-crore-places class-5-hcf-lcm-mix class-5-greatest-of-four',
   ],
   operations: [
     'class-5-bar-model-multistep class-5-missing-digit-column class-5-equal-share-remainder class-5-symbol-equation-chain class-5-big-number-story class-5-hcf-lcm-mix',
@@ -203,9 +206,9 @@ export const PLAN = {
     'class-5-decimal-compare-order class-5-decimal-number-line class-5-decimal-place-value class-5-decimal-money-measure class-5-decimal-fraction-link class-5-pqr-number-facts class-5-statement-pair',
   ],
   geometry: [
-    'class-5-composite-area class-5-perimeter-missing-side class-5-angle-chase class-5-cube-net-fold class-5-pqr-shape-measure',
-    'class-5-composite-area class-5-perimeter-missing-side class-5-angle-chase class-5-symmetry-count class-5-count-rectangles-grid class-5-pqr-shape-measure class-5-field-rounds-area',
-    'class-5-composite-area class-5-angle-chase class-5-symmetry-count class-5-count-rectangles-grid class-5-cube-net-fold class-5-pqr-shape-measure class-5-field-rounds-area',
+    'class-5-composite-area class-5-perimeter-missing-side class-5-angle-chase class-5-angle-sense class-5-hidden-count',
+    'class-5-composite-area class-5-perimeter-missing-side class-5-angle-chase class-5-angle-sense class-5-count-rectangles-grid class-5-hidden-figure class-5-field-rounds-area',
+    'class-5-composite-area class-5-angle-chase class-5-symmetry-count class-5-count-rectangles-grid class-5-cube-net-fold class-5-hidden-figure class-5-hidden-count',
   ],
   measurement: [
     'class-5-dial-read-convert class-5-thermometer-change class-5-unit-conversion-compare class-5-sensible-unit-estimate class-5-pqr-shape-measure',
@@ -229,7 +232,7 @@ export const PLAN = {
   ],
   // reasoning carries 15 of the 50 questions in a real Class 5 paper, so its rows are as wide as the sampling battery allows.
   reasoning: [
-    'class-5-order-middle class-5-walk-distance class-5-blood-relation class-5-mirror-clock class-5-letter-code class-5-alpha-series class-5-figure-matrix-analogy class-5-rank-queue-twoends class-5-mirror-water-word class-5-combinations-count',
+    'class-5-order-middle class-5-walk-distance class-5-blood-relation class-5-rank-queue-twoends class-5-letter-code class-5-alpha-series class-5-figure-matrix-analogy class-5-word-order class-5-mirror-water-word class-5-combinations-count',
     'class-5-order-people class-5-compass-map class-5-letter-code class-5-mirror-clock class-5-number-series class-5-fold-cut-count class-5-venn-survey class-5-odd-one-out class-5-day-sequence class-5-grid-route-turns',
     'class-5-row-swap-rank class-5-walk-distance class-5-count-grid class-5-venn-survey class-5-truth-teller class-5-combinations-count class-5-figure-matrix-analogy class-5-path-count-grid class-5-grid-route-turns class-5-rank-queue-twoends',
   ],
@@ -628,6 +631,7 @@ function countGridPaths(cols, rows, blocked) {
 // draft -- one branch per family, grouped by chapter.
 // ---------------------------------------------------------------------------
 export function draft(family, grade, level, r) {
+  if (GAP_DRAFT[family]) return GAP_DRAFT[family](family, grade, level, r);
   if (REASONING_DRAFT[family]) return REASONING_DRAFT[family](family, grade, level, r);
   if (MIXED_DRAFT[family]) {
     const drafted = MIXED_DRAFT[family](family, grade, level, r);
@@ -4193,6 +4197,7 @@ export function draft(family, grade, level, r) {
 // solve -- recomputes the answer only from proof.givens / visual.
 // ---------------------------------------------------------------------------
 export function solve(question) {
+  if (GAP_SOLVE[question.family]) return GAP_SOLVE[question.family](question);
   if (REASONING_SOLVE[question.family]) return REASONING_SOLVE[question.family](question);
   if (MIXED_SOLVE[question.family]) return MIXED_SOLVE[question.family](question);
   if (REAL3_SOLVE[question.family]) return REAL3_SOLVE[question.family](question);
@@ -4691,6 +4696,8 @@ export function solve(question) {
 // render -- one branch per visual.kind.
 // ---------------------------------------------------------------------------
 export function render(visual) {
+  const gapArt = renderGaps(visual);
+  if (gapArt) return gapArt;
   const reasoningArt = renderReasoning(visual);
   if (reasoningArt) return reasoningArt;
   const real3Art = renderReal3(visual);

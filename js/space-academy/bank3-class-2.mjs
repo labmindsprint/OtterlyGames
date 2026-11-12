@@ -3,9 +3,11 @@ import { DRAFT_MAP, SOLVE_MAP } from './bank3-class-2-engines.mjs';
 import { renderVisual } from './bank3-class-2-art.mjs';
 import { DRAFT as REAL_DRAFT, REASONING_FAMILIES, REAL_CODES, SOLVE as REAL_SOLVE, renderReasoning } from './bank3-class-2-real.mjs';
 import { DRAFT as MIXED_DRAFT, MIXED_FAMILIES, SOLVE as MIXED_SOLVE, renderMixed } from './bank3-class-2-real2.mjs';
+import { DRAFT as GAP_DRAFT, GAP2_CODES, GAP2_FAMILIES, SOLVE as GAP_SOLVE, renderGaps } from './bank3-class-2-gaps.mjs';
 import { DRAFT as REAL3_DRAFT, REAL3_CODES, REAL3_FAMILIES, SOLVE as REAL3_SOLVE, renderReal3 } from './bank3-class-2-real3.mjs';
 
 export const FAMILIES = {
+  ...GAP2_FAMILIES,
   ...REASONING_FAMILIES,
   ...MIXED_FAMILIES,
   ...REAL3_FAMILIES,
@@ -67,6 +69,7 @@ export const FAMILIES = {
 };
 
 export const MISCONCEPTIONS = {
+  ...GAP2_CODES,
   'class-2-block-count': { title: 'Counting blocks not values', message: 'A flat is 100, a rod is 10, and a cube is 1. Use each block value.' },
   'class-2-tick-step': { title: 'Number-line step', message: 'Find how much each tick mark adds before reading the arrow.' },
   'class-2-order-rank': { title: 'Order and position', message: 'Sort all four numbers from smallest to greatest, then check the asked position.' },
@@ -96,9 +99,9 @@ export const PLAN = {
     'symbol-equations two-stage class-2-add-story-real class-2-symbol-digits class-2-missing-digit class-2-equalize-trays class-2-jump-line',
   ],
   patterns: [
-    'class-2-place-words class-2-row-position class-2-shape-lines class-2-roll-slide class-2-bead-rule class-2-day-after class-2-number-series class-2-odd-text class-2-boat-position class-2-circle-seats',
-    'class-2-growing-tiles class-2-row-position class-2-shape-lines class-2-roll-slide class-2-analogy class-2-clue-number class-2-make-numbers class-2-odd-text class-2-function-machine class-2-cardinal-ordinal',
-    'class-2-story-step class-2-row-position class-2-shape-lines class-2-letter-gap class-2-analogy class-2-clue-number class-2-make-numbers class-2-tree-interval class-2-matrix-cell class-2-function-machine',
+    'class-2-place-words class-2-row-position class-2-shape-lines class-2-roll-slide class-2-bead-rule class-2-code-key class-2-code-shift class-2-grid-find class-2-boat-position class-2-circle-seats class-2-day-after class-2-number-series',
+    'class-2-growing-tiles class-2-row-position class-2-shape-lines class-2-roll-slide class-2-analogy class-2-code-key class-2-code-shift class-2-grid-find class-2-function-machine class-2-cardinal-ordinal class-2-clue-number class-2-odd-text',
+    'class-2-story-step class-2-row-position class-2-shape-lines class-2-letter-gap class-2-analogy class-2-code-key class-2-grid-find class-2-make-numbers class-2-tree-interval class-2-matrix-cell class-2-function-machine',
   ],
   geometry: [
     'mirror-grid class-2-picture-facts class-2-hidden-shapes class-2-shape-riddle class-2-cube-stack class-2-grid-perimeter',
@@ -128,17 +131,17 @@ export const PLAN = {
 };
 
 export function draft(family, grade, level, r) {
-  const fn = REAL_DRAFT[family] ?? MIXED_DRAFT[family] ?? REAL3_DRAFT[family] ?? DRAFT_MAP[family];
+  const fn = GAP_DRAFT[family] ?? REAL_DRAFT[family] ?? MIXED_DRAFT[family] ?? REAL3_DRAFT[family] ?? DRAFT_MAP[family];
   if (!fn) throw new Error(`Unknown class-2 family: ${family}`);
   return fn(family, grade, level, r);
 }
 
 export function solve(question) {
-  const fn = REAL_SOLVE[question.family] ?? MIXED_SOLVE[question.family] ?? REAL3_SOLVE[question.family] ?? SOLVE_MAP[question.family];
+  const fn = GAP_SOLVE[question.family] ?? REAL_SOLVE[question.family] ?? MIXED_SOLVE[question.family] ?? REAL3_SOLVE[question.family] ?? SOLVE_MAP[question.family];
   if (!fn) throw new Error(`Unknown class-2 family: ${question.family}`);
   return fn(question);
 }
 
 export function render(visual) {
-  return renderReasoning(visual) ?? renderMixed(visual) ?? renderReal3(visual) ?? renderVisual(visual);
+  return renderGaps(visual) ?? renderReasoning(visual) ?? renderMixed(visual) ?? renderReal3(visual) ?? renderVisual(visual);
 }

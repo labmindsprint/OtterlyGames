@@ -1,5 +1,6 @@
 import { MISCONCEPTIONS as SHARED, QuestionRetry, answerChoices, wrong } from './bank-shared.mjs';
 import { renderPP2 } from './bank3-pp2-art.mjs';
+import { TIME_CHAPTER, TIME_CODES, TIME_DRAFT, TIME_FAMILIES, TIME_PLAN, TIME_SOLVE, renderTime } from './bank3-pp2-time.mjs';
 
 // Real SOF papers always give four options, so PP2 does too instead of the three the grade settings suggest.
 const OPTIONS = 4;
@@ -9,7 +10,10 @@ const ORDINALS = ['', '1st', '2nd', '3rd'];
 const nth = n => n < 4 ? ORDINALS[n] : `${n}th`;
 const MARK_PHRASE = { dots: 'dots', stripe: 'a stripe', ring: 'a ring', cross: 'a cross' };
 
+export const ADDED_CHAPTERS = [TIME_CHAPTER];
+
 export const FAMILIES = {
+  ...TIME_FAMILIES,
   'pp2-trail-gap': { skill: 'sequence', title: 'Find a hidden neighbour on a number trail' },
   'pp2-ten-frame': { skill: 'count', title: 'Read filled and empty ten-frames' },
   'pp2-bundle-pods': { skill: 'place', title: 'Build a number from a ten and loose cubes' },
@@ -48,6 +52,7 @@ export const FAMILIES = {
 };
 
 export const MISCONCEPTIONS = {
+  ...TIME_CODES,
   'pp2-neighbour': { title: 'A number next door', message: 'Step to the very next stone, not two stones away.' },
   'pp2-frame': { title: 'Reading both ten-frames', message: 'Look through every row of both frames before you count.' },
   'pp2-bundle': { title: 'One ten and loose ones', message: 'The tied bundle is ten; then count the loose cubes.' },
@@ -98,6 +103,7 @@ export const PLAN = {
   shapes: [without(SHAPES, 'pp2-mirror-tiles'), without(SHAPES, 'pp2-build-sign'), SHAPES],
   measurement: [without(MEASUREMENT, 'pp2-three-rods'), without(MEASUREMENT, 'pp2-balance-box'), MEASUREMENT],
   reasoning: [without(REASONING, 'pp2-grid-analogy'), without(REASONING, 'pp2-rover-map'), REASONING],
+  time: TIME_PLAN,
 };
 
 // Names stay only where they label something the child must find (aliens in a queue, planets on a map).
@@ -106,9 +112,10 @@ const PLANETS = ['Mars', 'Venus', 'Saturn', 'Jupiter', 'Neptune', 'Mercury', 'Ur
 const STORY_ITEMS = [['star', 'stars'], ['crystal', 'crystals'], ['rock', 'rocks'], ['seed', 'seeds'],
   ['coin', 'coins'], ['sticker', 'stickers'], ['shell', 'shells'], ['balloon', 'balloons']];
 const SCALES = {
-  weight: { words: ['heaviest', 'lightest'], things: ['feather', 'apple', 'book', 'dog', 'car', 'bus'] },
-  length: { words: ['longest', 'shortest'], things: ['ant', 'pencil', 'broom', 'car', 'bus', 'train'] },
-  height: { words: ['tallest', 'shortest'], things: ['ant', 'cup', 'chair', 'door', 'tree'] },
+  weight: { words: ['heaviest', 'lightest'], how: 'heavy', things: ['feather', 'mouse', 'apple', 'book', 'dog', 'car', 'elephant', 'bus'] },
+  length: { words: ['longest', 'shortest'], how: 'long', things: ['ant', 'pencil', 'broom', 'bed', 'car', 'bus', 'train'] },
+  height: { words: ['tallest', 'shortest'], how: 'tall', things: ['ant', 'cup', 'chair', 'door', 'giraffe', 'tree'] },
+  speed: { words: ['fastest', 'slowest'], how: 'fast', things: ['snail', 'turtle', 'bike', 'car', 'plane'] },
 };
 const GROUPS = {
   fruits: ['apple', 'banana', 'grape', 'orange', 'pear'],
@@ -188,6 +195,7 @@ const alienImage = (shape, mark) => ({ kind: 'v3-pp2-alien-choice', shape, mark,
   description: `An alien-shaped ${shape} marked with ${mark === 'dots' ? 'a pair of dots' : MARK_PHRASE[mark]}.` });
 
 export function draft(family, grade, level, r) {
+  if (TIME_DRAFT[family]) return TIME_DRAFT[family](family, grade, level, r);
   if (family === 'pp2-trail-gap') {
     const count = level === 1 ? 4 : 5;
     const start = r.int(level === 3 ? 8 : 1, MAX(level) - count + 1);
@@ -220,9 +228,14 @@ export function draft(family, grade, level, r) {
     return make(family, grade, {
       prompt: ask === 'filled'
         ? r.pick([`How many spots are filled in ${frameWords}?`, `Count the stars in ${frameWords}.`,
-          `How many filled spots can you count?`])
+          `How many filled spots can you count?`, `Count the filled spots in ${frameWords}.`,
+          `How many stars are shining in ${frameWords}?`, `Look at ${frameWords}. How many spots have a star?`,
+          `Count only the full spots. How many are there?`])
         : r.pick([`How many spots are empty in ${frameWords}?`, `Count the empty spots in ${frameWords}.`,
-          `How many more stars fill ${frames === 1 ? 'the frame' : 'both frames'}?`]),
+          `How many more stars fill ${frames === 1 ? 'the frame' : 'both frames'}?`,
+          `How many spots have no star in ${frameWords}?`, `Count the blank spots. How many are there?`,
+          `How many stars are still needed to fill ${frames === 1 ? 'the frame' : 'both frames'}?`,
+          `Look at ${frameWords}. How many spots are free?`]),
       answer, hint: `Count only the ${ask} spots, row by row.`,
       explanation: `${total} spots in all: ${filled} filled and ${total - filled} empty. The ${ask} count is ${answer}.`,
       givens: { frames, filled, ask }, visual, wrongs: [
@@ -240,13 +253,21 @@ export function draft(family, grade, level, r) {
       description: `One bundle of ten cubes and ${cubes(loose)} on their own. ${change ? `${cubes(Math.abs(change))} ${change > 0 ? 'join them' : 'roll away'}.` : 'Nothing changes.'}` };
     return make(family, grade, {
       prompt: change < 0 ? r.pick([`One ten and ${loose} loose cubes. ${cubes(-change)} ${noun(-change, 'rolls', 'roll')} away. How many are left?`,
-        `Ten cubes in a bundle, ${loose} loose. Take away ${-change}. How many are left?`])
+        `Ten cubes in a bundle, ${loose} loose. Take away ${-change}. How many are left?`,
+        `Ten in a bundle, ${loose} loose. ${-change} ${noun(-change, 'is', 'are')} taken away. How many remain?`,
+        `One ten and ${loose} ones. ${cubes(-change)} ${noun(-change, 'drops', 'drop')} out. How many now?`])
         : change > 0 ? r.pick([`One ten and ${loose} loose cubes. ${cubes(change)} ${noun(change, 'joins', 'join')}. How many now?`,
-          `Ten cubes in a bundle, ${loose} loose. Add ${change}. How many cubes now?`])
+          `Ten cubes in a bundle, ${loose} loose. Add ${change}. How many cubes now?`,
+          `Ten in a bundle, ${loose} loose. ${change} more ${noun(change, 'is', 'are')} added. How many now?`,
+          `One ten and ${loose} ones. ${cubes(change)} ${noun(change, 'is', 'are')} added. How many now?`])
           : r.pick([`One bundle of ten and ${loose} loose cubes. What number is it?`,
             `Ten cubes in a bundle and ${loose} loose cubes make what number?`,
             `How many cubes are in one bundle of ten and ${loose} loose ones?`,
-            `What number is one ten and ${loose} ones?`]),
+            `What number is one ten and ${loose} ones?`,
+            `Count the bundle as ten, then the loose cubes. How many cubes?`,
+            `The bundle holds ten. With ${loose} loose cubes, how many cubes are there?`,
+            `Which number is made of ten and ${loose}?`,
+            `Count the bundle and the ${loose} loose ones. How many cubes?`]),
       answer, hint: 'Start with the bundle of ten, then count loose cubes.',
       explanation: change ? `Ten and ${loose} make ${10 + loose}. ${10 + loose} ${change > 0 ? '+' : '-'} ${Math.abs(change)} = ${answer}.`
         : `Ten and ${loose} make ${answer}.`,
@@ -298,7 +319,7 @@ export function draft(family, grade, level, r) {
     });
   }
   if (family === 'pp2-join-gardens') {
-    const first = r.int(2, level === 3 ? 8 : 6);
+    const first = r.int(2, level === 3 ? 8 : 7);
     const second = r.int(1, level === 3 ? 7 : 10 - first);
     const parts = level === 3 ? [first, second, r.int(1, Math.min(5, 20 - first - second))] : [first, second];
     const answer = parts.reduce((total, value) => total + value, 0);
@@ -309,7 +330,13 @@ export function draft(family, grade, level, r) {
       prompt: r.pick([`How many pods are in these ${parts.length} beds altogether?`,
         `Count all the pods in the ${parts.length} garden beds.`,
         `Add up the pods from every bed. How many?`,
-        `${parts.length} beds hold pods. How many pods in all?`]),
+        `${parts.length} beds hold pods. How many pods in all?`,
+        `The crew picks every pod from all ${parts.length} beds. How many do they pick?`,
+        `Put all the pods together. How many are there?`,
+        `How many pods grow in the ${parts.length} beds when you count them all?`,
+        `Join the beds. How many pods is that?`,
+        `Count the pods in each bed, then find the total.`,
+        `How many seed pods are there in all the beds?`]),
       answer, hint: 'Count the pods from every bed, not only one.',
       explanation: `${parts.join(' + ')} = ${answer}, so there are ${answer} pods altogether.`,
       givens: { parts }, visual, wrongs: [
@@ -328,7 +355,13 @@ export function draft(family, grade, level, r) {
       prompt: r.pick([`${total} pods. ${removed} ${noun(removed, 'pod goes', 'pods go')} away. How many stay?`,
         `${total} pods. ${removed} ${noun(removed, 'pod rolls', 'pods roll')} away. How many remain?`,
         `${total} pods grow here. ${removed} ${noun(removed, 'is', 'are')} crossed out. How many are left?`,
-        `Count the pods that stay. ${removed} of ${total} ${noun(removed, 'has', 'have')} gone.`]),
+        `Count the pods that stay. ${removed} of ${total} ${noun(removed, 'has', 'have')} gone.`,
+        `${total} pods start in the bed. ${removed} ${noun(removed, 'is', 'are')} picked. How many are still there?`,
+        `${total} pods, ${removed} crossed out. How many are not crossed out?`,
+        `How many pods have not gone? ${removed} of the ${total} ${noun(removed, 'is', 'are')} crossed out.`,
+        `${removed} ${noun(removed, 'pod flies', 'pods fly')} off the ${total}. How many stay behind?`,
+        `Take away the crossed-out pods. How many pods are left?`,
+        `Some pods have gone. How many of the ${total} pods are left?`]),
       answer, hint: 'Crossed-out pods have gone; count the rest.',
       explanation: `${total} - ${removed} = ${answer}, so ${answer} pods stay.`,
       givens: { total, removed }, visual, wrongs: [
@@ -347,7 +380,12 @@ export function draft(family, grade, level, r) {
       prompt: r.pick([`The whole bar is ${whole}. How many are hiding?`,
         `${whole} pods in all. How many are under the cover?`,
         `The parts make ${whole}. What is the hidden part?`,
-        `Part of the bar is covered. The whole is ${whole}. How many are hidden?`]),
+        `Part of the bar is covered. The whole is ${whole}. How many are hidden?`,
+        `The bar shows ${whole} pods in all. How many pods are behind the cover?`,
+        `One part is hiding. What number fills the gap to make ${whole}?`,
+        `${known.join(' and ')} ${known.length > 1 ? 'are' : 'is'} showing. The whole is ${whole}. What is covered?`,
+        `The whole bar is ${whole}. Find the part we cannot see.`,
+        `How many pods are missing from the shown parts to make ${whole}?`]),
       answer: missing, hint: 'The shown parts and the hidden part make the whole.',
       explanation: `${known.join(' + ')} + ? = ${whole}, and ${whole} - ${whole - missing} = ${missing}. The hidden part is ${missing}.`,
       givens: { whole, known }, visual, wrongs: [
@@ -359,7 +397,7 @@ export function draft(family, grade, level, r) {
   if (family === 'pp2-hop-count') {
     const start = level === 3 ? r.int(6, 12) : level === 2 ? r.int(3, 6) : r.int(1, 6);
     const steps = level === 1 ? [r.int(1, 10 - start)]
-      : level === 2 ? [r.int(1, 2), r.int(1, 2)]
+      : level === 2 ? r.pick([[r.int(1, 2), r.int(1, 2)], [r.int(2, 3), -r.int(1, 2)]])
         : [r.int(2, 5), -r.int(1, 4)];
     const answer = start + steps.reduce((sum, value) => sum + value, 0);
     if (answer === start) throw new QuestionRetry('The hops cancel out, so the answer would repeat the start.');
@@ -369,7 +407,13 @@ export function draft(family, grade, level, r) {
       prompt: r.pick([`Start on ${start} and follow the hops. Where do you land?`,
         `A rover starts at ${start}. What is the last stop?`,
         `From ${start}, follow the arrows. What number is last?`,
-        `Hop along the number line from ${start}. Where do you stop?`]),
+        `Hop along the number line from ${start}. Where do you stop?`,
+        `The rover begins on ${start}. Follow every hop. Which number does it end on?`,
+        `Put a finger on ${start}. Do each hop in order. Where is it now?`,
+        `What number does the last hop reach, starting from ${start}?`,
+        `Start at ${start} and hop as shown. What is the stop number?`,
+        `The hops begin at ${start}. Which number is the finish?`,
+        `Follow the arrows from ${start}. Where does the rover finish?`]),
       answer, hint: 'Move right to add, left to take away.',
       explanation: `${start}${steps.map(step => ` ${step > 0 ? '+' : '-'} ${Math.abs(step)}`).join('')} = ${answer}.`,
       givens: { start, steps }, visual, wrongs: [
@@ -388,11 +432,19 @@ export function draft(family, grade, level, r) {
     const visual = { kind: 'v3-pp2-pairs', top, bottom, gain,
       description: `Top row has ${pods(top)}; bottom row has ${pods(bottom)}. ${gain ? `${pods(gain)} ${noun(gain, 'joins', 'join')} the bottom row later.` : 'Match the rows one by one.'}` };
     return make(family, grade, {
-      prompt: gain ? `${gain} more ${noun(gain, 'pod joins', 'pods join')} the bottom row. How many more are on top now?`
+      prompt: gain ? r.pick([`${gain} more ${noun(gain, 'pod joins', 'pods join')} the bottom row. How many more are on top now?`,
+        `The bottom row gets ${gain} more. How many more pods are on top now?`,
+        `After ${gain} ${noun(gain, 'pod joins', 'pods join')} the bottom row, how many top pods have no pair?`,
+        `${gain} new ${noun(gain, 'pod sits', 'pods sit')} below. How many extra pods are on top now?`])
         : r.pick([`How many more pods are in the top row?`,
           `Match the rows one to one. How many top pods have no pair?`,
           `Pair these two rows. How many extra pods sit on top?`,
-          `How many more pods does the top row have than the bottom row?`]),
+          `How many more pods does the top row have than the bottom row?`,
+          `Link each top pod to a bottom pod. How many are left over?`,
+          `The bottom row has fewer pods. How many fewer?`,
+          `Pair the pods up. How many pods on top have no partner?`,
+          `How many pods must join the bottom row to match the top row?`,
+          `How many more pods are in the top row than in the bottom row?`]),
       answer, hint: 'Match one top pod to one bottom pod; count extras.',
       explanation: gain ? `The bottom row now has ${bottom} + ${gain} = ${bottom + gain}. ${top} - ${bottom + gain} = ${answer}.`
         : `${top} - ${bottom} = ${answer}, so ${answer} top pods have no pair.`,
@@ -421,11 +473,15 @@ export function draft(family, grade, level, r) {
         ? r.pick([`What comes next in this chain?`,
           `Which tile continues the pattern?`,
           `Which shape goes at the end of this chain?`,
-          `Follow the pattern. What shape comes next?`])
+          `Follow the pattern. What shape comes next?`,
+          `The chain keeps going. Which tile is next?`,
+          `Which shape would the next tile be?`])
         : r.pick([`What is missing inside this chain?`,
           `One tile is hidden in the middle. Which shape is it?`,
           `Which shape fills the blank in this chain?`,
-          `The pattern has a blank. Which shape belongs there?`]),
+          `The pattern has a blank. Which shape belongs there?`,
+          `A tile fell out of the chain. Which shape was it?`,
+          `Which tile completes the pattern?`]),
       answer, hint: family === 'pp2-pattern-tail'
         ? 'Find the whole repeating group, then start it again.'
         : 'Count each place, including the blank, as you repeat.',
@@ -436,7 +492,7 @@ export function draft(family, grade, level, r) {
   if (family === 'pp2-growing-tiles') {
     const base = r.int(1, level === 3 ? 4 : 5);
     const grow = r.int(1, level === 3 ? 3 : 2);
-    const target = level === 1 ? 4 : r.int(4, 5);
+    const target = r.int(4, 5);
     const rows = [base, base + grow, base + 2 * grow];
     const answer = base + (target - 1) * grow;
     if (answer === target || rows[2] > 8) throw new QuestionRetry('The answer would repeat the row number, or the picture would be too wide.');
@@ -446,7 +502,12 @@ export function draft(family, grade, level, r) {
       prompt: r.pick([`How many tiles will row ${target} hold?`,
         `The rows keep growing. How many tiles go in row ${target}?`,
         `The tile rows grow. Count the tiles in row ${target}.`,
-        `Count ahead to row ${target}. How many tiles are there?`]),
+        `Count ahead to row ${target}. How many tiles are there?`,
+        `Each row has more tiles than the last. How many are in row ${target}?`,
+        `Keep the pattern going. How many tiles will row ${target} need?`,
+        `The builder adds the same tiles each time. How many are in row ${target}?`,
+        `Row ${target} is not drawn yet. How many tiles will it have?`,
+        `Look at rows 1, 2 and 3. How many tiles go in row ${target}?`]),
       answer, hint: 'Compare two rows; the same number of tiles is added.',
       explanation: `Rows go ${rows.join(', ')}: ${grow} more each time. Row ${target} has ${answer}.`,
       givens: { base, grow, target }, visual, wrongs: [
@@ -496,7 +557,11 @@ export function draft(family, grade, level, r) {
     return make(family, grade, {
       prompt: r.pick([`Repeat ${unit.join(', ')}. Which chain has a mistake?`,
         `The pattern repeats ${unit.join(', ')}. Which row breaks it?`,
-        `Which chain does not follow ${unit.join(', ')}?`]),
+        `Which chain does not follow ${unit.join(', ')}?`,
+        `Each chain should repeat ${unit.join(', ')}. Which one has a wrong tile?`,
+        `Find the chain that goes wrong. The group is ${unit.join(', ')}.`,
+        `One chain is broken. It should repeat ${unit.join(', ')}. Which is it?`,
+        `Which row has a tile in the wrong place? Pattern: ${unit.join(', ')}.`]),
       answer, hint: 'Check each tile against the repeating group.',
       explanation: `The group is ${unit.join(', ')}. In ${answer}, tile ${breakAt + 1} should be ${goodLong[breakAt]}.`,
       givens: { unit }, wrongs: [
@@ -550,7 +615,13 @@ export function draft(family, grade, level, r) {
       prompt: r.pick([`Which shape has ${count}?`,
         `Count the ${ask}. Which shape has ${count}?`,
         `Which of these shapes has ${count}?`,
-        `Find the shape with ${count}.`]),
+        `Find the shape with ${count}.`,
+        `Look at the four shapes. Which has ${count}?`,
+        `Which picture shows a shape with ${count}?`,
+        `Pick the shape that has ${count}.`,
+        `Which shape on the screen has ${count}?`,
+        `A shape has ${count}. Which one is it?`,
+        `Which one of these has ${count}?`]),
       answer, hint: ask === 'corners' ? 'Touch each point where two straight sides meet.' : 'Run a finger along each straight side.',
       explanation: wanted ? `The ${answer} has ${wanted} ${ask}.` : `The ${answer} is round, so it has no corners.`,
       givens: { wanted, candidates: choices.map(([shape]) => shape).sort() },
@@ -587,8 +658,20 @@ export function draft(family, grade, level, r) {
         `Which solid is shaped like a rocket nose?`, `Which solid has one tip and one flat face?`],
     };
     const otherSolids = r.shuffle(['ball', 'can', 'box', 'cone'].filter(solid => solid !== answer));
+    const THINGS = {
+      roll: ['football', 'marble', 'globe', 'bubble', 'orange', 'snowball', 'beach ball', 'moon', 'pearl', 'bauble'],
+      stand: ['soup tin', 'drink can', 'drum', 'tin of beans', 'paper roll', 'battery', 'log', 'jam jar', 'paint tin', 'pipe'],
+      slide: ['dice', 'gift box', 'cereal box', 'brick', 'shoe box', 'toy block', 'tissue box', 'lunch box', 'matchbox', 'fridge'],
+      point: ['party hat', 'ice cream cone', 'traffic cone', 'rocket nose', 'witch hat', 'wizard hat', 'clown hat', 'carrot', 'pointed roof', 'tent top'],
+    };
+    const thing = r.pick(THINGS[clue]);
+    const article = /^[aeiou]/.test(thing) ? 'an' : 'a';
+    const frames = [`Which solid looks like ${article} ${thing}?`, `${article === 'an' ? 'An' : 'A'} ${thing}: which solid is it like?`,
+      `Which solid has the shape of ${article} ${thing}?`, `Which solid matches ${article} ${thing}?`,
+      `Which of these is the shape of ${article} ${thing}?`, `${article === 'an' ? 'An' : 'A'} ${thing} is like which solid?`,
+      `Pick the solid that is like ${article} ${thing}.`, `Find the solid that looks like ${article} ${thing}.`];
     return make(family, grade, {
-      prompt: r.pick(prompts[clue]), answer, hint: 'Check the curved parts and the flat ends.',
+      prompt: r.int(0, 9) < 7 ? r.pick(frames) : r.pick(prompts[clue]), answer, hint: 'Check the curved parts and the flat ends.',
       explanation: `${answer === 'ball' ? 'A ball is round all over' : answer === 'can' ? 'A can rolls on its side and stacks on its flat end' : answer === 'box' ? 'A box has only flat sides' : 'A cone has one flat base and one tip'}.`,
       givens: { clue, candidates: [answer, ...otherSolids].sort() }, wrongs: otherSolids
         .map(solid => [solid, 'pp2-solid', image(solid)]),
@@ -653,7 +736,13 @@ export function draft(family, grade, level, r) {
     return make(family, grade, {
       prompt: r.pick([`How many ${unit} long is this rod?`,
         `Count the ${unit} under this rod. How long is it?`,
-        `The rod covers how many whole ${unit}?`]),
+        `The rod covers how many whole ${unit}?`,
+        `Use the ${unit} to measure the rod. What is its length?`,
+        `How many ${unit} fit along the rod from end to end?`,
+        `This rod is as long as how many ${unit}?`,
+        `Count the equal ${unit}. How long is the rod?`,
+        `Line up the ${unit} with the rod. How many are there?`,
+        `The space crew measure a rod with ${unit}. How many do they use?`]),
       answer: units, hint: 'Start at one end and count each equal piece.',
       explanation: `Counting the ${unit} one by one from end to end gives ${units}.`,
       givens: { units, unit }, visual, wrongs: numberWrongs(units, r, 'pp2-blocks', MAX(level)),
@@ -715,7 +804,12 @@ export function draft(family, grade, level, r) {
     return make(family, grade, {
       prompt: r.pick([`The balance is level. How heavy is the hidden weight?`,
         `What weight is hidden under the question mark?`,
-        `Both pans weigh the same. What is missing?`]),
+        `Both pans weigh the same. What is missing?`,
+        `The two pans are level. What number is the hidden weight?`,
+        `Which weight is hiding on the right pan?`,
+        `The pans do not tip. How heavy is the weight we cannot see?`,
+        `Make both sides equal. What weight is under the question mark?`,
+        `The pans are level. What must the hidden weight be?`]),
       answer, hint: 'The weight on each side must be equal.',
       explanation: `Left weighs ${left.length > 1 ? `${left.join(' + ')} = ` : ''}${total}. Right shows ${right.length > 1 ? `${right.join(' + ')} = ` : ''}${shown}, so ${total} - ${shown} = ${answer}.`,
       givens: { left, right }, visual, wrongs: [
@@ -733,10 +827,18 @@ export function draft(family, grade, level, r) {
     const visual = { kind: 'v3-pp2-jug', capacity, filled, add,
       description: `A jug has room for ${capacity} cups; ${filled} ${noun(filled, 'space is', 'spaces are')} filled. ${add ? `${add} more ${noun(add, 'cup', 'cups')} will be poured in.` : 'Nothing else is added.'}` };
     return make(family, grade, {
-      prompt: add ? `Pour ${add} more ${noun(add, 'cup', 'cups')} into this jug. How many spaces stay empty?`
+      prompt: add ? r.pick([`Pour ${add} more ${noun(add, 'cup', 'cups')} into this jug. How many spaces stay empty?`,
+        `${add} more ${noun(add, 'cup goes', 'cups go')} in. How many empty spaces are left in the jug?`,
+        `The jug gets ${add} more ${noun(add, 'cup', 'cups')}. How many spaces are still empty?`,
+        `After ${add} more ${noun(add, 'cup', 'cups')} go in, how many cups could still fit?`])
         : r.pick([`This jug holds ${capacity} cups. How many more fit?`,
           `Count the empty cup spaces in this ${capacity}-cup jug.`,
-          `How many more cups can fill this jug?`]),
+          `How many more cups can fill this jug?`,
+          `The jug is not full. How many more cups fit in it?`,
+          `${filled} ${noun(filled, 'cup is', 'cups are')} in the jug. How many more make it full?`,
+          `How many empty spaces are in the jug?`,
+          `The jug fits ${capacity} cups. How many spaces are still free?`,
+          `How many more cups until this jug is full?`]),
       answer, hint: 'Count only spaces that are still empty.',
       explanation: `${capacity} - ${filled} = ${capacity - filled} ${noun(capacity - filled, 'space is', 'spaces are')} empty${add ? `; after ${add} ${noun(add, 'cup', 'cups')}, ${capacity - filled} - ${add} = ${answer} stay empty` : ''}.`,
       givens: { capacity, filled, add }, visual, wrongs: [
@@ -873,12 +975,22 @@ export function draft(family, grade, level, r) {
     const answer = { after: n + 1, before: n - 1, between: n + 1, after2: n + 2, before2: n - 2 }[ask];
     const prompt = {
       after: r.pick([`What number comes just after ${n}?`, `Count on from ${n}. What number is next?`,
-        `Which number comes right after ${n}?`]),
+        `Which number comes right after ${n}?`, `Say the number that follows ${n}.`,
+        `${n}, ? What number comes next?`, `Which number is one more than ${n}?`,
+        `You are on ${n}. Hop one step forward. Which number is it?`]),
       before: r.pick([`What number comes just before ${n}?`, `Count back from ${n}. What number is next?`,
-        `Which number comes right before ${n}?`]),
-      between: r.pick([`Which number sits between ${n} and ${n + 2}?`, `${n}, ?, ${n + 2}. What is the missing number?`]),
-      after2: r.pick([`What number comes 2 after ${n}?`, `Count on 2 from ${n}. Where do you land?`]),
-      before2: r.pick([`What number comes 2 before ${n}?`, `Count back 2 from ${n}. Where do you land?`]),
+        `Which number comes right before ${n}?`, `Which number comes straight before ${n}?`,
+        `Count up: ?, ${n}. What is the missing number?`, `Which number is one less than ${n}?`,
+        `You are on ${n}. Hop one step back. Which number is it?`]),
+      between: r.pick([`Which number sits between ${n} and ${n + 2}?`, `${n}, ?, ${n + 2}. What is the missing number?`,
+        `Which number lives in the gap between ${n} and ${n + 2}?`, `Count from ${n} to ${n + 2}. Which number is in the middle?`,
+        `Put one number in the middle of ${n} and ${n + 2}. Which number is it?`]),
+      after2: r.pick([`What number comes 2 after ${n}?`, `Count on 2 from ${n}. Where do you land?`,
+        `Skip one number after ${n}. Where do you land?`, `Hop 2 steps forward from ${n}. Which number is it?`,
+        `Which number is 2 more than ${n}?`]),
+      before2: r.pick([`What number comes 2 before ${n}?`, `Count back 2 from ${n}. Where do you land?`,
+        `Skip one number back from ${n}. Where do you land?`, `Hop 2 steps back from ${n}. Which number is it?`,
+        `Which number is 2 less than ${n}?`]),
     }[ask];
     return make(family, grade, {
       prompt, answer, hint: ask === 'between' ? 'Say the numbers in order and find the one in the gap.'
@@ -934,10 +1046,14 @@ export function draft(family, grade, level, r) {
     const ranked = [...things].sort((x, y) => SCALES[scale].things.indexOf(x) - SCALES[scale].things.indexOf(y));
     const answer = ask === 'most' ? ranked[3] : ranked[0];
     const [most, least] = SCALES[scale].words;
+    const how = SCALES[scale].how;
     return make(family, grade, {
       prompt: r.pick([`Which of these is the ${words}?`, `Which real thing is the ${words}?`,
-        `Pick the ${words} thing.`]),
-      answer, hint: `Think how ${scale === 'weight' ? 'heavy' : scale === 'length' ? 'long' : 'tall'} each real thing is.`,
+        `Pick the ${words} thing.`, `Look at the four things. Which one is the ${words}?`,
+        `Which one would be the ${words} in real life?`, `Which of the four is ${words} of all?`,
+        `Think about real things. Which is the ${words}?`,
+        `Choose the ${words} one.`]),
+      answer, hint: `Think how ${how} each real thing is.`,
       explanation: `From ${least} to ${most}: ${ranked.join(', ')}. So the ${words} is the ${answer}.`,
       givens: { scale, ask, things: [...things].sort() },
       wrongs: things.filter(thing => thing !== answer).map(thing => [thing, 'pp2-size']),
@@ -958,26 +1074,50 @@ export function draft(family, grade, level, r) {
     });
   }
   if (family === 'pp2-sides-count') {
-    const shape = r.pick(Object.keys(SIDES).slice(0, level === 1 ? 3 : level === 2 ? 4 : 5));
+    const shapes = Object.keys(SIDES).slice(0, level === 1 ? 4 : 5);
+    const shape = r.pick(shapes);
     const ask = level === 1 ? r.pick(['sides', 'corners']) : r.pick(['sides', 'corners', 'both']);
-    const times = level === 3 ? r.int(1, 3) : level === 2 ? r.int(1, 2) : 1;
-    const answer = SIDES[shape] * (ask === 'both' ? 2 : 1) * times;
+    const times = level === 1 ? r.pick([1, 1, 2]) : r.int(1, 3);
+    const other = level > 1 && ask !== 'both' && times === 1 && r.int(0, 2) === 0 ? r.pick(shapes.filter(item => item !== shape)) : null;
+    const answer = (SIDES[shape] + (other ? SIDES[other] : 0)) * (ask === 'both' ? 2 : 1) * times;
     if (answer > 20) throw new QuestionRetry('Keep the total within 20.');
     const what = ask === 'both' ? 'sides and corners' : ask;
-    const prompt = times > 1 ? `How many ${what} do ${times} ${shape}s have in all?`
-      : ask === 'both' ? r.pick([`How many sides and corners does a ${shape} have together?`,
-        `Count the sides and the corners of a ${shape}. How many?`])
-        : r.pick([`How many ${what} does a ${shape} have?`, `Count the ${what} of a ${shape}. How many?`,
-          `A ${shape} has how many ${what}?`,
-          ask === 'sides' ? `How many straight sides make a ${shape}?` : `How many corners are on a ${shape}?`,
-          ask === 'sides' ? `Trace round a ${shape}. How many sides are there?` : `Point to each corner of a ${shape}. How many?`]);
+    const prompt = other ? r.pick([`A ${shape} and a ${other} are side by side. How many ${what} in all?`,
+      `Count the ${what} of a ${shape} and a ${other} together.`,
+      `A ${shape} tile and a ${other} tile join. How many ${what} in all?`,
+      `One ${shape} and one ${other}. How many ${what} in all?`])
+      : times > 1 ? r.pick([`How many ${what} do ${times} ${shape}s have in all?`,
+        `${times} ${shape}s on the wall. How many ${what} in all?`,
+        `Count the ${what} on ${times} ${shape} tiles together.`,
+        `There are ${times} ${shape}s. How many ${what} together?`,
+        `${times} ${shape} ${r.pick(['signs', 'windows', 'tiles', 'badges', 'doors', 'stickers'])} are on the ship. How many ${what} in all?`,
+        `The crew has ${times} ${shape}s. How many ${what} do they count?`,
+        `Add up the ${what} of ${times} ${shape}s.`,
+        `${times} ${shape}s sit in a row. How many ${what} are there?`])
+        : ask === 'both' ? r.pick([`How many sides and corners does a ${shape} have together?`,
+          `Count the sides and the corners of a ${shape}. How many?`,
+          `A ${shape} has sides and corners. How many are there in all?`,
+          `Add the sides and the corners of a ${shape}. What is the total?`])
+          : r.pick([`How many ${what} does a ${shape} have?`, `Count the ${what} of a ${shape}. How many?`,
+            `A ${shape} has how many ${what}?`,
+            `How many straight ${ask === 'sides' ? 'sides make' : 'corners are on'} a ${shape}?`,
+            ask === 'sides' ? `Trace round a ${shape}. How many sides are there?` : `Point to each corner of a ${shape}. How many?`,
+            `A ${shape} ${r.pick(['sign', 'window', 'tile', 'badge', 'door', 'sticker'])} is on the ship. How many ${what} does it have?`,
+            `A ${shape} ${r.pick(['sign', 'window', 'tile', 'badge', 'door', 'sticker'])} hangs in the lab. How many ${what} can you count?`,
+            `Picture a ${shape}. How many ${what} does it have?`,
+            `The shape is a ${shape}. How many ${what}?`,
+            `Draw a ${shape} in the air. How many ${what} do you draw?`,
+            `How many ${what} are on one ${shape}?`]);
+    const per = SIDES[shape] * (ask === 'both' ? 2 : 1);
     return make(family, grade, {
       prompt, answer, hint: 'Picture the shape and count one side or corner at a time.',
-      explanation: times > 1 ? `One ${shape} has ${SIDES[shape] * (ask === 'both' ? 2 : 1)} ${what}; ${times} of them have ${answer}.`
-        : ask === 'both' ? `A ${shape} has ${SIDES[shape]} sides and ${SIDES[shape]} corners: ${SIDES[shape]} + ${SIDES[shape]} = ${answer}.`
-          : `A ${shape} has ${answer} ${what}.`,
-      givens: { shape, ask, times }, wrongs: [
+      explanation: other ? `A ${shape} has ${per} ${what} and a ${other} has ${SIDES[other] * (ask === 'both' ? 2 : 1)}; together ${answer}.`
+        : times > 1 ? `One ${shape} has ${per} ${what}; ${times} of them have ${answer}.`
+          : ask === 'both' ? `A ${shape} has ${SIDES[shape]} sides and ${SIDES[shape]} corners: ${SIDES[shape]} + ${SIDES[shape]} = ${answer}.`
+            : `A ${shape} has ${answer} ${what}.`,
+      givens: { shape, ask, times, other }, wrongs: [
         [SIDES[shape], 'pp2-corners'], [SIDES[shape] + 1, 'pp2-corners'], [SIDES[shape] - 1, 'pp2-corners'],
+        ...(other ? [[SIDES[other], 'pp2-corners']] : []),
         ...numberWrongs(answer, r, 'pp2-corners', 20, 1),
       ],
     });
@@ -986,6 +1126,7 @@ export function draft(family, grade, level, r) {
 }
 
 export function solve(question) {
+  if (TIME_SOLVE[question.family]) return TIME_SOLVE[question.family](question);
   switch (question.family) {
     case 'pp2-before-after': {
       const { ask, n } = question.proof.givens;
@@ -1011,8 +1152,8 @@ export function solve(question) {
       return odd[0];
     }
     case 'pp2-sides-count': {
-      const { shape, ask, times } = question.proof.givens;
-      return String(SIDES[shape] * (ask === 'both' ? 2 : 1) * times);
+      const { shape, ask, times, other } = question.proof.givens;
+      return String((SIDES[shape] + (other ? SIDES[other] : 0)) * (ask === 'both' ? 2 : 1) * times);
     }
   }
   return solveDrawn(question);
@@ -1184,4 +1325,4 @@ function solveDrawn(question) {
   }
 }
 
-export const render = renderPP2;
+export const render = visual => renderTime(visual) ?? renderPP2(visual);

@@ -10,6 +10,7 @@ import { applyAction as legacyAction, newSave as legacySave } from '../js/space-
 import { DESTINATIONS, PARTS } from '../js/space-academy/destinations.mjs';
 import { ActiveClock, escapeHTML } from '../js/space-academy/art.mjs';
 import { academyPages, buildAcademy } from './build-space-academy.mjs';
+import { ARCHIVE_ROUTES } from './build-site.mjs';
 
 const mission = (seed = 'test-1', extra = {}) => createMission({ grade: 'class-1', chapter: 'operations', seed, ...extra });
 function finish(save, set, wrong = false, hinted = false, reduce = applyAction) {
@@ -225,8 +226,9 @@ test('active flight time excludes paused gaps and resumes the remaining duration
   assert.equal(clock.tick(10200, true), 450);
 });
 
-test('discovery generation keeps worked samples reproducible and refuses unowned pages before any write', () => {
-  const pages = academyPages();
+test('discovery generation keeps worked samples reproducible and refuses unowned pages before any write', (t) => {
+  const pages = academyPages().filter(page => !ARCHIVE_ROUTES.includes(page.route));
+  if (!pages.length) return t.skip('every Academy discovery page is now an archived Maths Path redirect');
   const fixtureBase = fileURLToPath(new URL('../build/academy-test-fixtures/', import.meta.url));
   mkdirSync(fixtureBase, { recursive: true });
   const fixture = mkdtempSync(join(fixtureBase, 'lessons-'));
@@ -246,6 +248,7 @@ test('discovery generation keeps worked samples reproducible and refuses unowned
     assert.equal(buildAcademy({ root: fixture }).changed, 0);
     for (const grade of GRADES) {
       for (const chapter of grade.chapters) {
+        if (ARCHIVE_ROUTES.includes(`/learn/olympiad/${grade.id}/${chapter.id}.html`)) continue;
         const html = readFileSync(join(fixture, 'learn', 'olympiad', grade.id, `${chapter.id}.html`), 'utf8');
         assert.match(html, /Answer &amp; method/);
         assert.match(html, /Independent educator review/);
@@ -257,16 +260,14 @@ test('discovery generation keeps worked samples reproducible and refuses unowned
         assert.equal((html.match(/<nav class="nav"/g) ?? []).length, 1);
       }
     }
-    const unowned = join(fixture, 'learn', 'olympiad', 'pp1', 'counting.html');
-    const guarded = join(fixture, 'learn', 'olympiad', 'index.html');
-    const previous = readFileSync(guarded, 'utf8');
-    writeFileSync(guarded, previous + '\n<!-- deliberate stale fixture -->');
-    writeFileSync(unowned, '<!DOCTYPE html><title>Do not replace me</title>');
+    const unowned = join(fixture, 'learn', 'olympiad', 'index.html');
+    const previous = '<!DOCTYPE html><title>Do not replace me</title>';
+    writeFileSync(unowned, previous);
     assert.throws(() => buildAcademy({ root: fixture, write: true }), /Refusing to overwrite/);
-    assert.equal(readFileSync(guarded, 'utf8'), previous + '\n<!-- deliberate stale fixture -->');
+    assert.equal(readFileSync(unowned, 'utf8'), previous);
     inventory.pages.pop();
     writeFileSync(inventoryPath, JSON.stringify(inventory));
-    assert.throws(() => buildAcademy({ root: fixture, write: true }), /explicitly/);
+    assert.throws(() => buildAcademy({ root: fixture, write: true }), /explicitly|nonempty pages/);
   } finally {
     rmSync(fixture, { recursive: true });
   }

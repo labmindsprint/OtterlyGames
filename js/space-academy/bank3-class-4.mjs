@@ -1,5 +1,6 @@
 import { MISCONCEPTIONS as SHARED, QuestionRetry, answerChoices, choiceCount, numberArticle, numberText, wrong } from './bank-shared.mjs';
 import { render as renderOld } from './bank3-class-4-art.mjs';
+import { DRAFT as GAP_DRAFT, GAP4_CODES, GAP4_FAMILIES, SOLVE as GAP_SOLVE } from './bank3-class-4-gaps.mjs';
 import { REAL_FAMILIES, draftReal, isReal, renderReal, solveReal } from './bank3-class-4-real.mjs';
 const pl = (count, one, many = `${one}s`) => `${count} ${Number(count) === 1 ? one : many}`;
 const ordinalSuffix = n => (n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th');
@@ -8,6 +9,7 @@ export const render = visual => renderReal(visual) ?? renderOld(visual);
 
 const entry = (skill, title) => ({ skill, title });
 export const FAMILIES = {
+  ...GAP4_FAMILIES,
   ...REAL_FAMILIES,
   'class-4-digit-lock': entry('place', 'Arrange digit cards under a lock rule'),
   'class-4-roman-tablets': entry('expand', 'Calculate with Roman specimen codes'),
@@ -49,6 +51,7 @@ export const FAMILIES = {
 };
 
 export const MISCONCEPTIONS = {
+  ...GAP4_CODES,
   'class-4-column-carry': { title: 'A carry belongs to one column', message: 'Use the carry from the column on the right, not the digit above the blank.' },
   'class-4-equivalent-scale': { title: 'Equivalent parts', message: 'Multiply or divide both the numerator and denominator by the same number.' },
   'class-4-half-symbol': { title: 'A half symbol', message: 'A half symbol represents half the value of the complete symbol in the key.' },
@@ -61,9 +64,9 @@ const KNOWN = { ...SHARED, ...MISCONCEPTIONS };
 const levels = (...rows) => rows.map(ids => ids.split(/\s+/).map(id => `class-4-${id}`).join(' '));
 export const PLAN = {
   numbers: levels(
-    'place-value-gap order-numbers compare-statements words-place factor-facts rounding-line     digit-lock roman-tablets odd-one-out letter-shift',
-    'place-value-gap number-clues compare-statements order-numbers factor-facts multiple-facts words-place roman-tablets digit-lock rounding-line',
-    'number-clues compare-statements factor-facts multiple-facts words-place roman-tablets digit-lock factor-trays place-value-gap alternating-lock rounding-line',
+    'place-value-gap order-numbers number-name words-place pair-list rounding-line digit-lock roman-tablets odd-one-out letter-shift',
+    'place-value-gap number-clues number-name order-numbers pair-list multiple-facts words-place roman-tablets digit-lock rounding-line',
+    'number-clues compare-statements factor-facts pair-list number-name roman-tablets digit-lock factor-trays place-value-gap alternating-lock rounding-line',
   ),
   operations: levels(
     'multiply-story divide-pack story-total long-division split-product division-manifest column-repair',
@@ -187,6 +190,7 @@ function question(family, grade, prompt, givens, visual, answer, alternatives, h
 }
 
 export function draft(family, grade, level, r) {
+  if (GAP_DRAFT[family]) return GAP_DRAFT[family](family, grade, level, r);
   if (isReal(family)) return draftReal(KNOWN, family, grade, level, r);
   const who = name(r);
   if (family === 'class-4-digit-lock') {
@@ -958,6 +962,7 @@ function checkPictures(question, kind, key) {
 }
 
 export function solve(question) {
+  if (GAP_SOLVE[question.family]) return GAP_SOLVE[question.family](question);
   if (isReal(question.family)) return solveReal(question);
   const g = question.proof.givens;
   const v = question.visual;

@@ -59,6 +59,11 @@ export const CHAPTER_GUIDES = {
     slip: "Children often use only one clue and stop. Cover the choices, find the rule, then check each choice against all the clues one at a time.",
     tryAtHome: { title: "Treasure map", steps: ["Draw a simple map with 4 places on paper.", "Draw arrows between them.", "Ask your child to follow an arrow and name the place.", "Draw four faces or shapes with one different and ask which is odd."] }
   },
+  'pp2/time': {
+    idea: "On a clock the short hand shows the hour and the long hand shows the minutes. At o'clock the long hand is on 12. At half past it is on 6. A day has four parts: morning, afternoon, evening and night. The days of the week go round in the same order.",
+    slip: "Children often look at the long hand for the hour, or call half past o'clock. Find the short hand first, then check where the long hand points.",
+    tryAtHome: { title: "Our day", steps: ["Say what you do in the morning, afternoon, evening and night.", "Set a toy clock to 3 o'clock, then to half past 3.", "Say today's day, then the day before and the day after.", "Say which is quicker: a clap or washing hands."] }
+  },
   'class-1/numbers': {
     idea: "Our numbers use place value. In 92, the 9 means 9 tens and the 2 means 2 ones. A ten is a bundle of 10 ones. To compare, look at tens first, then ones.",
     slip: "Children often read the digits as separate ones, for example 92 as 9 and 2. Build the number with ten-bundles and single ones. Compare tens first.",

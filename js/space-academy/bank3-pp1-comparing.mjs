@@ -206,8 +206,10 @@ function draftExtreme(grade, level, r) {
   const opposite = ask === 'high' ? fewest : most;
   const noun = mode === 'size' ? name(fewest.thing) : mode === 'count' ? many(fewest.token) : mode;
   const stems = mode === 'count'
-    ? [`Which card has the ${word} ${noun}?`, `Find the card with the ${word} ${noun}.`, `Which card shows the ${word} ${noun}?`]
-    : [`Which ${noun} is the ${word}?`, `Find the ${word} ${noun}.`, `Touch the ${word} ${noun}.`];
+    ? [`Which card has the ${word} ${noun}?`, `Find the card with the ${word} ${noun}.`, `Which card shows the ${word} ${noun}?`,
+      `Look at the cards. Which has the ${word} ${noun}?`, `Pick the card with the ${word} ${noun}.`, `Touch the card with the ${word} ${noun}.`]
+    : [`Which ${noun} is the ${word}?`, `Find the ${word} ${noun}.`, `Touch the ${word} ${noun}.`,
+      `Look at them all. Which ${noun} is the ${word}?`, `Pick the ${word} ${noun}.`, `Which of these ${noun}s is the ${word}?`];
   const hints = {
     count: ['Count each card. Pick the biggest number.', 'Count each card. Pick the smallest number.'],
     tower: ['Look at how high each tower goes.', 'Look for the tower that is the lowest.'],
@@ -274,7 +276,9 @@ function draftSeesaw(grade, level, r) {
   const wrongs = flat
     ? things.map(thing => wrong(thingLabel(thing), 'pp1-seesaw-level'))
     : [wrong(thingLabel(pick === lower ? upper : lower), trap ? 'pp1-seesaw-big' : 'pp1-seesaw-high'), wrong(WEIGHT, 'pp1-seesaw-same')];
-  const stems = [`Which is ${ask}, the ${A} or the ${B}?`, `Is the ${A} or the ${B} ${ask}?`, `Which is ${ask} on the see-saw, ${A} or ${B}?`];
+  const stems = [`Which is ${ask}, the ${A} or the ${B}?`, `Is the ${A} or the ${B} ${ask}?`, `Which is ${ask} on the see-saw, ${A} or ${B}?`,
+    `See-saw: ${A} and ${B}. Which is ${ask}?`, `Look at the see-saw. Which is ${ask}?`,
+    `Pick the ${ask} one, ${A} or ${B}.`, `${cap(A)} or ${B}: which one is ${ask}?`];
   return build({
     family: 'pp1-cmp-seesaw', prompt: say(r, stems), answer,
     hint: flat ? 'Look at the see-saw. Is one side lower?' : ask === 'heavier' ? 'The heavy side goes down. Which side is low?' : 'The light side goes up. Which side is high?',

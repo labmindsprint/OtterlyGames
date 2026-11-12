@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { FAMILY_GUIDES, academyPages } from './build-space-academy.mjs';
+import { ARCHIVE_ROUTES } from './build-site.mjs';
 import { CHAPTER_GUIDES } from './academy-guides/chapters.mjs';
 import { CONTENT_VERSION, GRADES, LEVELS, chapterRoute, gameLink } from '../js/space-academy/curriculum.mjs';
 import { createMission } from '../js/space-academy/questions.mjs';
@@ -49,11 +50,12 @@ function checkExample(html, { question, link }) {
   assert.match(html, />Try more in game /);
 }
 
-test('all 64 lesson routes keep SEO, progressive enhancement and non-technical public copy', () => {
+test('all 65 lesson routes keep SEO, progressive enhancement and non-technical public copy', () => {
   const inventory = JSON.parse(readFileSync(new URL('../_data/public-pages.json', import.meta.url)));
   const routes = inventory.pages.map(page => typeof page === 'string' ? page : page.route)
-    .filter(route => route.startsWith('/learn/olympiad/'));
-  assert.equal(pages.length, 64);
+    .filter(route => route.startsWith('/learn/olympiad/'))
+    .concat(ARCHIVE_ROUTES.filter(route => route.startsWith('/learn/olympiad/'))); // Class 1 now redirects to the Maths Path
+  assert.equal(pages.length, 65);
   assert.deepEqual(new Set(pages.map(page => page.route)), new Set(routes));
   for (const { route, html } of pages) {
     assert.match(html, /<main id="main-content"[^>]+tabindex="-1">/);
@@ -76,7 +78,7 @@ test('all 64 lesson routes keep SEO, progressive enhancement and non-technical p
   assert.match(pageAt('/learn/olympiad/'), /<details id="content" class="al-parent-notes">/);
 });
 
-test('all 175 interactive examples preserve their actual prompt, figures, constraints and worked answer', () => {
+test('all 178 interactive examples preserve their actual prompt, figures, constraints and worked answer', () => {
   let checked = 0;
   let pictureChoices = 0;
   for (const grade of GRADES) {
@@ -107,7 +109,7 @@ test('all 175 interactive examples preserve their actual prompt, figures, constr
     if (grade.year > 0) assert.ok(gradeHTML.includes(e(gameLink({ grade: grade.id, mode: 'paper', level: 2 }))));
     checked++;
   }
-  assert.equal(checked, 175);
+  assert.equal(checked, 178);
   assert.ok(pictureChoices > 20, 'Exercise actual SVG choices, not only text answers');
 });
 

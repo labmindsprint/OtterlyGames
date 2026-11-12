@@ -1,6 +1,7 @@
 // Class 3 question bank 3: Star Navigator. Each chapter is its own set of tasks.
 import { QuestionRetry } from './bank-shared.mjs';
-import { MISCONCEPTIONS } from './bank3-class-3-helpers.mjs';
+import { MISCONCEPTIONS as BASE_MISCONCEPTIONS } from './bank3-class-3-helpers.mjs';
+import { DRAFT as GAP_DRAFT, GAP3_CODES, GAP3_FAMILIES, SOLVE as GAP_SOLVE, renderGaps } from './bank3-class-3-gaps.mjs';
 import { DRAFT as MATH_DRAFT, SOLVE as MATH_SOLVE } from './bank3-class-3-math.mjs';
 import { DRAFT as WORLD_DRAFT, SOLVE as WORLD_SOLVE } from './bank3-class-3-world.mjs';
 import { renderClass3 } from './bank3-class-3-art.mjs';
@@ -12,9 +13,10 @@ import { DRAFT as SHAPE_DRAFT, SOLVE as SHAPE_SOLVE, FAMILIES as SHAPE_FAMILIES 
 import { DRAFT as LOGIC_DRAFT, SOLVE as LOGIC_SOLVE, FAMILIES as LOGIC_FAMILIES } from './bank3-class-3-logic.mjs';
 import { DRAFT as PUZZLE_DRAFT, SOLVE as PUZZLE_SOLVE, FAMILIES as PUZZLE_FAMILIES, PUZZLE_RENDERERS } from './bank3-class-3-puzzles.mjs';
 
-export { MISCONCEPTIONS };
+export const MISCONCEPTIONS = { ...BASE_MISCONCEPTIONS, ...GAP3_CODES };
 
 export const FAMILIES = {
+  ...GAP3_FAMILIES,
   ...FRAC_FAMILIES,
   ...SKILL_FAMILIES,
   ...LIFE_FAMILIES,
@@ -116,14 +118,14 @@ export const PLAN = {
     ids('bars-transfer bars-pair table-read split-chart bars-sum chart-move picto-key bag-chance'),
   ],
   reasoning: [
-    ids('notebook-position word-jumble alpha-step number-series figure-pattern odd-out order-clues pick-ways mirror-sign queue-rank figure-analogy figure-places'),
-    ids('notebook-position word-form number-series figure-pattern odd-out ways-menu word-code order-clues pick-ways signal-code embedded-letter figure-analogy'),
-    ids('word-form triangle-rule number-series pair-rule compass-walk order-clues pick-ways truth-line path-count odd-out embedded-letter figure-places'),
+    ids('notebook-position word-jumble alpha-step number-series figure-pattern way-finder order-clues pick-ways mirror-sign queue-rank figure-analogy embed-shape'),
+    ids('notebook-position word-form way-finder figure-pattern odd-out ways-menu word-code order-clues pick-ways signal-code embedded-letter embed-shape'),
+    ids('word-form triangle-rule way-finder pair-rule compass-walk order-clues pick-ways truth-line path-count odd-out embed-shape figure-places'),
   ],
 };
 
-const DRAFT = { ...MATH_DRAFT, ...WORLD_DRAFT, ...FRAC_DRAFT, ...SKILL_DRAFT, ...LIFE_DRAFT, ...SHAPE_DRAFT, ...LOGIC_DRAFT, ...PUZZLE_DRAFT };
-const SOLVE = { ...MATH_SOLVE, ...WORLD_SOLVE, ...FRAC_SOLVE, ...SKILL_SOLVE, ...LIFE_SOLVE, ...SHAPE_SOLVE, ...LOGIC_SOLVE, ...PUZZLE_SOLVE };
+const DRAFT = { ...MATH_DRAFT, ...WORLD_DRAFT, ...FRAC_DRAFT, ...SKILL_DRAFT, ...LIFE_DRAFT, ...SHAPE_DRAFT, ...LOGIC_DRAFT, ...PUZZLE_DRAFT, ...GAP_DRAFT };
+const SOLVE = { ...MATH_SOLVE, ...WORLD_SOLVE, ...FRAC_SOLVE, ...SKILL_SOLVE, ...LIFE_SOLVE, ...SHAPE_SOLVE, ...LOGIC_SOLVE, ...PUZZLE_SOLVE, ...GAP_SOLVE };
 
 export function draft(family, grade, level, r) {
   const fn = DRAFT[family];
@@ -144,6 +146,6 @@ export function solve(question) {
 }
 
 export function render(visual) {
-  const draw = IMO_RENDERERS[visual.kind] ?? PUZZLE_RENDERERS[visual.kind];
+  const draw = renderGaps(visual) ? () => renderGaps(visual) : IMO_RENDERERS[visual.kind] ?? PUZZLE_RENDERERS[visual.kind];
   return draw ? draw(visual) : renderClass3(visual);
 }

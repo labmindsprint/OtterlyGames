@@ -463,7 +463,8 @@ test('website checks ignore checkout line endings without hiding shared-content 
 });
 
 test('Academy checks ignore mixed checkout line endings but still detect stale lesson content', (t) => {
-  const pages = academyPages();
+  const pages = academyPages().filter(page => !ARCHIVE_ROUTES.includes(page.route));
+  if (!pages.length) return t.skip('every Academy discovery page is now an archived Maths Path redirect');
   const f = fixture(t, { pages: pages.map(page => page.route) });
   assert.equal(buildAcademy({ root: f.root, write: true }).changed, pages.length);
   const files = pages.map(page => join(...page.route.slice(1).split('/'), ...(page.route.endsWith('/') ? ['index.html'] : [])));

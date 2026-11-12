@@ -18,10 +18,12 @@ newer; no `npm install` is needed for this build.
 
 ```powershell
 node .\scripts\build-space-academy.mjs --write
+node .\scripts\build-maths-path.mjs --write
 node .\scripts\build-site.mjs --write
 node .\scripts\build-space-academy.mjs --check
+node .\scripts\build-maths-path.mjs --check
 node .\scripts\build-site.mjs --check
-node --test .\scripts\build-site.test.mjs
+node --test .\scripts\build-site.test.mjs .\scripts\maths-path.test.mjs
 python -m http.server 4195 --bind 127.0.0.1
 ```
 
@@ -139,6 +141,35 @@ The site checker covers every sitemap page on laptop and phone, core pages at
 the seven game viewports, keyboard navigation, no-JavaScript discovery, local
 links and full-game entry journeys. Its optional throttled result is a local
 lab sample, not field Core Web Vitals or a ranking/revenue forecast.
+
+## Maths Path (`/learn/maths/`)
+
+A free PP1 to Class 5 course in "Olympiad-style" maths (not an official exam; the
+public copy never names IMO or SOF). Every chapter has five steps: See it, Try
+it, Practise it, Print it (in-page worksheet with optional answer key), Check it
+(5 questions, pass at 4/5). Lessons are static HTML that works without
+JavaScript; manipulatives and practice are added by `js\maths-path\`.
+
+- Content: `_data\maths-path.json` lists class ids; each class is
+  `_data\maths-path\<id>.json`. `scripts\maths-path-schema.mjs` validates it.
+- Questions are not duplicated: each chapter's `source` is a Space Academy
+  chapter, so practice, worksheets and checks use its question banks.
+- Progress is saved only in `localStorage` (`otterly.mathsPath.v1`): no
+  accounts, cookies, analytics or ads.
+- The old `/learn/olympiad/...` pages are generated noindex redirects to the
+  matching Maths Path chapter or class map.
+- Pages carry canonical, Open Graph/Twitter (`images\maths-path\og-maths-path.png`)
+  and JSON-LD; they are in `_data\public-pages.json` and the sitemap.
+
+```powershell
+node .\scripts\build-maths-path.mjs --sync-inventory --write   # regenerate pages and the /learn/maths/ inventory block
+node .\scripts\build-maths-path.mjs --check                    # read-only freshness and validation
+node .\scripts\build-site.mjs --check
+node --test .\scripts\maths-path.test.mjs
+```
+
+Blender art and the social image are rendered by `scripts\maths-path-art\`
+(`render-og.py` for the Open Graph image). See `ARCHITECTURE.md` for details.
 
 ## Games-first discovery and game introductions
 
