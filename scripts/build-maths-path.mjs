@@ -320,7 +320,8 @@ export function syncInventoryText(text, routes) {
   if (!lines.length) throw new Error('_data/public-pages.json needs at least one /learn/maths/ entry to anchor the Maths Path block.');
   const start = lines[0].index;
   const end = lines.at(-1).index + lines.at(-1)[0].length;
-  const block = routes.map((route) => `    { "route": "${route}" },\n`).join('');
+  const eol = text.includes('\r\n') ? '\r\n' : '\n';
+  const block = routes.map((route) => `    { "route": "${route}" },${eol}`).join('');
   return text.slice(0, start) + block + text.slice(end);
 }
 
@@ -368,7 +369,8 @@ export function buildMathsPath({ root = resolve(dirname(fileURLToPath(import.met
   const learnFile = join(root, 'learn', 'index.html');
   const learnBefore = readFileSync(learnFile, 'utf8');
   if (!PICK.test(learnBefore)) throw new Error('learn/index.html needs the <!-- mp:pick:start --> ... <!-- mp:pick:end --> markers around the class picker.');
-  const learnAfter = learnBefore.replace(PICK, () => pickList(data));
+  const eol = learnBefore.includes('\r\n') ? '\r\n' : '\n';
+  const learnAfter = learnBefore.replace(PICK, (block) => (block.replaceAll('\r\n', '\n') === pickList(data) ? block : pickList(data).replaceAll('\n', eol)));
   if (learnAfter !== learnBefore) changes.push({ target: learnFile, after: learnAfter });
   if (write) {
     for (const change of changes) {

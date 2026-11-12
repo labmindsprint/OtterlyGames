@@ -222,7 +222,7 @@ test('the inventory sync keeps the committed block and the learn class picker is
   const text = readFileSync(join(root, '_data', 'public-pages.json'), 'utf8');
   assert.equal(syncInventoryText(text, mathsPages(data).map((p) => p.route)), text);
   assert.ok(syncInventoryText(text, ['/learn/maths/', '/learn/maths/x/']).includes('"/learn/maths/x/"'));
-  assert.ok(readFileSync(join(root, 'learn', 'index.html'), 'utf8').includes(pickList(data)));
+  assert.ok(readFileSync(join(root, 'learn', 'index.html'), 'utf8').replaceAll('\r\n', '\n').includes(pickList(data)));
 });
 
 test('every widget renders without undefined values and the new manipulatives ship a working sample', () => {
