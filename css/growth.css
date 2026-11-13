@@ -1,5 +1,5 @@
 .growth-main {
-  width: min(100% - 3rem, 1120px);
+  width: min(100% - 3rem, 1200px);
   margin: 0 auto;
   padding: 7.5rem 0 4rem;
 }
@@ -115,7 +115,7 @@ a.growth-card:hover { border-color: var(--pastel-purple); }
   .play-learning-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
-  .growth-main { width: min(100% - 2rem, 1120px); padding-top: 6rem; }
+  .growth-main { width: min(100% - 2rem, 1200px); padding-top: 6rem; }
   .growth-grid { grid-template-columns: minmax(0, 1fr); }
   .growth-hero { margin-bottom: 2rem; }
   .growth-card { padding: 1.25rem; }

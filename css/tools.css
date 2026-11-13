@@ -243,7 +243,7 @@ body.tools-page {
 .tools-hub .tool-card--full .tool-cta { margin-top: auto; color: var(--accent-soft); font-weight: 800; }
 
 /* 7. Worksheet builder (shares growth.css + worksheet-builder.css) --------- */
-.tools-page > main.growth-main { width: min(100% - 2 * var(--gutter), 1120px); margin-inline: auto; padding-bottom: var(--s-7); }
+.tools-page > main.growth-main { width: min(100% - 2 * var(--gutter), 1200px); margin-inline: auto; padding-bottom: var(--s-7); }
 .tools-page .growth-main.worksheet-builder { padding-top: var(--s-5); }
 .tools-page .growth-hero .growth-eyebrow { color: var(--amber-soft); }
 .tools-page .growth-hero h1 { font-size: clamp(2rem, 6vw, 3.4rem); }

@@ -226,7 +226,7 @@
 .play-pigeon { --accent: var(--blue); --accent-soft: var(--blue-soft); }
 .play-shepherd { --accent: var(--orange); --accent-soft: var(--orange-soft); }
 
-.play-game-page .game-intro-page { max-width: 1200px; padding: var(--s-4) clamp(20px, 4vw, 28px) var(--s-7); }
+.play-game-page .game-intro-page { max-width: 1256px; padding: var(--s-4) clamp(20px, 4vw, 28px) var(--s-7); }
 .play-game-page .game-back {
   display: inline-flex; align-items: center; min-height: var(--tap); margin-bottom: var(--s-2); padding-right: var(--s-3);
   color: var(--text-2); font-size: var(--fs-sm); font-weight: 600; text-decoration: none;

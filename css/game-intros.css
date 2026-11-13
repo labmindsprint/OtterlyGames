@@ -1,4 +1,4 @@
-.game-intro-page { max-width: 1200px; margin: auto; padding: 108px 28px 56px; }
+.game-intro-page { max-width: 1256px; margin: auto; padding: 108px 28px 56px; }
 .game-back { display: inline-block; color: var(--text-secondary); font-size: .8rem; margin-bottom: 22px; }
 .game-noscript { margin-bottom: 24px; padding: 16px; border: 1px solid #8c7446; border-radius: 12px; color: var(--pastel-amber); font-size: .9rem; }
 .game-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .8fr); gap: 48px; align-items: center; margin-bottom: 32px; }

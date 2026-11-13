@@ -63,6 +63,9 @@ it does **not** run this script automatically. Keep the root `.nojekyll` so
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for the marker contract, strict transform
 rules, archive/runtime exclusions and remaining deployment checks.
+For page styling, follow the [public-page width contract](ARCHITECTURE.md#public-page-width-contract):
+use the shared content width, constrain prose separately, and check responsive
+layouts before merging.
 
 ## Site Structure
 

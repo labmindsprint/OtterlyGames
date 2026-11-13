@@ -83,6 +83,12 @@ and still prove that game state, active-time clocks and held inputs really stop.
 
 ## Embedded pages are a distinct layout
 
+Audit the surrounding public-page shell against the header too. A catalogue
+can have no overflow while an inherited article-width cap leaves large empty
+gutters and strands one card on a second row. Follow the public-page width
+contract in `ARCHITECTURE.md`: shared usable content width, separate prose
+measure, and actual inner-container measurements rather than just `<main>`.
+
 Real fullscreen tests do not cover a normal iframe below a fixed website nav.
 Native dialogs may be centred in the iframe but outside the visible page.
 Browser focus scrolling can expose one button while clipping the rest.

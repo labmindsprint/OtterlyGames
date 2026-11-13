@@ -1,6 +1,7 @@
 /* Otterly Maths Path. Scoped to .mp-page; relies on tokens.css (.theme-b). */
 .mp-page { background: var(--surface-0); color: var(--text); }
 .mp-main { max-width: 1040px; margin: 0 auto; padding: var(--s-5) var(--gutter) var(--s-8); display: block; }
+[data-mp="learn"] .mp-main, [data-mp="hub"] .mp-main, [data-mp="class"] .mp-main { max-width: calc(var(--wrap) + 2 * var(--gutter)); }
 .mp-main:focus { outline: none; }
 .mp-main > * + * { margin-top: var(--s-5); }
 .mp-main a { color: var(--blue-soft); text-underline-offset: 3px; }

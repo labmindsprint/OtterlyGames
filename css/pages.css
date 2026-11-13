@@ -137,7 +137,7 @@
 }
 
 /* ============================== SUPPORT ================================= */
-.page-support .growth-main { width: min(100% - 2 * var(--gutter), 1120px); padding: var(--s-7) 0 var(--s-8); }
+.page-support .growth-main { width: min(100% - 2 * var(--gutter), 1200px); padding: var(--s-7) 0 var(--s-8); }
 .page-support .growth-eyebrow { color: var(--amber-soft); font: 800 var(--fs-xs)/1 var(--font-head); letter-spacing: 0.14em; }
 .page-support .growth-hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); }
 .page-support .growth-hero > p:not(.growth-eyebrow) { color: var(--text-2); font-size: 1.1rem; }

@@ -25,7 +25,7 @@
 .par-actions .btn { white-space: normal; text-align: center; }
 
 /* 2. Layout + contents ------------------------------------------------------ */
-.par-layout { width: 100%; max-width: 62rem; margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-5); align-items: start; }
+.par-layout { width: 100%; max-width: var(--wrap); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-5); align-items: start; }
 .par-content { min-width: 0; }
 .par-toc-title { font: 800 var(--fs-xs)/1 var(--font-head); letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: var(--s-3); }
 .par-toc ol { display: flex; flex-wrap: wrap; gap: var(--s-2); }

@@ -109,6 +109,51 @@ as Arcade's `main#games` remain intact, with a focusable alias before the main.
 Pages without a main get a safe focusable anchor before their first content
 section/article/heading. No tool, game pointer region or script is wrapped.
 
+### Public-page width contract
+
+`css\tokens.css` owns the shared layout tokens: `--wrap: 1200px` is the
+usable desktop content width, and `--gutter` supplies responsive side padding.
+Hub, catalogue and landing-page content should align with `.nav-inner`, not
+use an independently chosen narrower shell. Prefer the existing `.wrap`
+primitive. Its outer maximum is `calc(var(--wrap) + 2 * var(--gutter))` because
+the border-box includes both gutters; 1200px including padding is not 1200px
+of usable content.
+
+Keep the outer page width separate from the reading measure. Constrain prose
+inside the shared shell, not the entire hub or card grid. Existing intentional
+exceptions include blog article columns, legal text, contact forms, focused
+practice widgets, and Maths Path chapter/lesson reading layouts. Fullscreen
+games have their own geometry. Do not remove these caps globally.
+
+Width ownership:
+
+| Surface | Authoritative stylesheet / selector |
+| --- | --- |
+| Shared shell and width tokens | `css\tokens.css`: `.wrap`, `.nav-inner` |
+| Lessons, Maths hub and class catalogues | `css\maths-path.css`: `[data-mp="learn"\|"hub"\|"class"] .mp-main` |
+| Parents contents/sidebar and content grid | `css\parents.css`: `.par-layout`; `.par-prose` retains its text measure |
+| Growth/support and worksheet builder | `css\growth.css`: `.growth-main`; overrides in `css\pages.css` and `css\tools.css` |
+| Game landing shells | `css\game-intros.css` and `css\play-hub.css`: `.game-intro-page`; gameplay frame rules remain separate |
+
+Before merging a public-page layout change:
+
+1. Compare the rendered **inner content edges** with the shared header and a
+   sibling page. Measuring only a full-width `<main>` misses narrow children.
+2. Audit later stylesheet overrides and all routes using the changed selector.
+   Use `_data\public-pages.json` for route coverage. Change the source template
+   when generated HTML owns the layout; never patch only a generated copy.
+3. Check 1366x768, 1440x900, 1920x1080, 820x1100, 390x844 and 844x390.
+   Confirm no horizontal overflow, clipped controls or accidental orphan card
+   caused by a narrow shell. Inspect actual laptop and phone screenshots;
+   absence of overflow alone does not establish a good layout.
+4. Preserve readable prose, keyboard focus, touch targets, printing and game
+   iframe/fullscreen behavior. Record any intentional width exception and its
+   reason here rather than introducing another unexplained page-level cap.
+
+The site build and source tests do not enforce this visual contract. Run them
+as applicable, but keep rendered width measurements and screenshot review as
+explicit release checks.
+
 ### Standalone Arcade exceptions
 
 `Arcade\game.html`, `pigeon.html`, `shepherd.html` and `zombie.html` are
