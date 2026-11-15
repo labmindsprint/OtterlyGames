@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { LEVELS, gameLink, getChapter } from '../js/space-academy/curriculum.mjs';
+import { LEVELS, getChapter } from '../js/space-academy/curriculum.mjs';
 import { renderWidget } from '../js/maths-path/widgets.mjs';
 import { CHAPTER_GUIDES } from './academy-guides/chapters.mjs';
 import { seoProblems } from './maths-path-seo.mjs';
@@ -103,7 +103,8 @@ function paperLink(cls) {
   return `<section class="mp-card mp-paper" aria-labelledby="paper-${cls.id}"><h2 id="paper-${cls.id}">Olympiad-style paper</h2>` +
     `<p>When the chapters feel easy, try a mixed paper written in the style of Olympiad papers. The questions are original to Otterly, and this is not an official exam.</p>` +
     `<p class="mp-actions"><a class="mp-btn mp-btn--primary" href="${e(builder(cls.id, 'paper', 2))}">Print a ${e(cls.label)} paper</a> ` +
-    `<a class="mp-btn" href="${e(gameLink({ grade: cls.id, mode: 'paper', level: 2 }))}">Play the paper</a></p></section>`;
+    `<a class="mp-btn" href="${GAMES['space-academy'].url}">Open Space Academy</a></p>` +
+    `<p class="mp-fine">Space Academy opens at its own start screen where you choose a class. It does not load this paper, so use Print for the ${e(cls.label)} paper.</p></section>`;
 }
 
 function hubPage(data, origin) {
@@ -130,7 +131,7 @@ function hubPage(data, origin) {
     </header>
     <section class="mp-card" aria-labelledby="how"><h2 id="how">How a chapter works</h2>
       <ol class="mp-stepsdemo">${STEPS.map(([, label]) => `<li>${label}</li>`).join('')}</ol>
-      <p>Class 1 is ready now. The other classes are planned below and will be added one at a time. We only show a lesson when it is finished.</p></section>
+      <p>${readiness(data).summary} We only link a lesson when it is finished.</p></section>
     <section class="mp-card" aria-labelledby="saved"><h2 id="saved">How progress is saved</h2>
       <p>Your passes and printed sheets are saved on this device only, in your browser's local storage. There are no accounts, no cookies, no ads and no tracking. If you clear your browser data, your progress is removed. A different browser or device starts fresh.</p></section>
     <h2 class="mp-h2">All ${data.classes.length} classes, ${total} chapters</h2>
@@ -139,7 +140,7 @@ function hubPage(data, origin) {
     </div>`;
   return shell({
     title: 'Otterly Maths Path: free maths lessons from PP1 to Class 5',
-    description: 'A free step-by-step maths path from PP1 to Class 5. Each chapter has short lessons, hands-on practice, a printable worksheet and a 5-question check. Class 1 is ready now.',
+    description: `A free step-by-step maths path from PP1 to Class 5. Each chapter has short lessons, hands-on practice, a printable worksheet and a 5-question check. ${readiness(data).short}`,
     route: HUB, origin, kind: 'hub', trail: [{ label: 'Home', route: '/' }, { label: 'Learn', route: '/learn/' }, { label: 'Maths Path', route: HUB }], inner,
     ld: [{
       '@type': 'CollectionPage', name: 'Otterly Maths Path', url: origin + HUB, inLanguage: 'en', isAccessibleForFree: true,
@@ -208,12 +209,11 @@ function chapterPage(data, cls, chapter, origin) {
   const tryBlocks = chapter.try.map((a, i) => `<div class="mp-try" data-try="${i}"><h3>Activity ${i + 1}</h3><p class="mp-prompt">${e(a.prompt)}</p>
           <div class="mp-stage" data-try-stage>${renderWidget(a.widget)}<p class="mp-fine">Turn on JavaScript to move the pieces.</p></div>
           <p class="mp-result" data-try-result role="status" aria-live="polite"></p></div>`).join('\n        ');
-  const levelLinks = LEVELS.map((level) => `<li><a href="${e(gameLink({ grade: src.grade, chapter: src.chapterId, level: level.id, mode: 'chapter' }))}">Level ${level.id}: ${e(level.name)}</a> <span class="mp-fine">${e(level.description)}</span></li>`).join('');
+  const levelLinks = LEVELS.map((level) => `<li><strong>Level ${level.id}: ${e(level.name)}</strong> <span class="mp-fine">${e(level.description)}</span></li>`).join('');
   const toolLinks = chapter.tools.map((t) => `<li><a href="${e(t)}">${e(t.replace('/tools/', '').replace('.html', '').replaceAll('-', ' '))}</a></li>`).join('');
-  const academy = e(gameLink({ grade: src.grade, chapter: src.chapterId, level: 1, mode: 'chapter' }));
   const playLink = chapter.play.game !== 'space-academy'
-    ? `<a class="mp-btn mp-btn--primary" href="${game.url}">Play ${game.label}</a> <a class="mp-btn" href="${academy}">Play this chapter in Space Academy</a>`
-    : `<a class="mp-btn mp-btn--primary" href="${academy}">Play this chapter in ${game.label}</a>`;
+    ? `<a class="mp-btn mp-btn--primary" href="${game.url}">Play ${game.label}</a> <a class="mp-btn" href="${GAMES['space-academy'].url}">Open Space Academy</a>`
+    : `<a class="mp-btn mp-btn--primary" href="${game.url}">Open ${game.label}</a>`;
   const inner = `    <header class="mp-hero">
       ${ringo('happy', 112)}
       <div><p class="mp-eyebrow">${e(cls.label)} &middot; Chapter ${index + 1} of ${cls.chapters.length}</p><h1>${e(chapter.title)}</h1>
@@ -235,10 +235,11 @@ function chapterPage(data, cls, chapter, origin) {
       </section>
       <section class="mp-step" id="practise-it" aria-labelledby="prac-h"><h2 id="prac-h" tabindex="-1"><span class="mp-stepno">3</span> Practise it</h2>
         <p>Answer real practice questions right here. Pick a level, ask for a hint if you are stuck, and read why each answer is right.</p>
-        <div class="mp-practice" data-mp-practice data-grade="${src.grade}" data-source="${src.chapterId}"><p class="mp-note">Practice on this page needs JavaScript. Use the Space Academy links below instead.</p></div>
-        <h3>More practice in Space Academy</h3>
+        <div class="mp-practice" data-mp-practice data-grade="${src.grade}" data-source="${src.chapterId}"><p class="mp-note">Practice on this page needs JavaScript. Turn it on to answer the questions here.</p></div>
+        <h3>The three levels</h3>
         <ul class="mp-links">${levelLinks}</ul>
         <h3>Play it</h3><p class="mp-actions">${playLink}</p>
+        <p class="mp-fine">${e(GAMES['space-academy'].label)} opens at its own start screen, where you choose a class. It does not load this chapter or level, so the practice above is the chapter-specific part.</p>
         ${toolLinks ? `<h3>Tools to explore</h3><ul class="mp-links">${toolLinks}</ul>` : ''}
       </section>
       <section class="mp-step" id="print-it" aria-labelledby="print-h"><h2 id="print-h" tabindex="-1"><span class="mp-stepno">4</span> Print it <span class="mp-status" data-state="done" data-mp-printed hidden>Printed</span></h2>
@@ -326,9 +327,21 @@ export function syncInventoryText(text, routes) {
 }
 
 const PICK = /<!-- mp:pick:start -->[\s\S]*?<!-- mp:pick:end -->/;
+export function readiness(data) {
+  const live = data.classes.filter((cls) => cls.live);
+  const chapters = live.reduce((n, cls) => n + cls.chapters.length, 0);
+  const first = data.classes[0].label;
+  const last = data.classes[data.classes.length - 1].label;
+  const all = live.length === data.classes.length;
+  const summary = all
+    ? `All ${data.classes.length} classes, ${first} to ${last}, are ready with ${chapters} chapters.`
+    : `${live.length} of ${data.classes.length} classes are ready with ${chapters} chapters. The other classes show their plan and will open one at a time.`;
+  return { all, classes: live.length, chapters, summary, short: all ? `All ${data.classes.length} classes are ready.` : `${live.length} of ${data.classes.length} classes ready.` };
+}
+
 export function pickList(data) {
   const items = data.classes.map((cls) => `        <li${cls.live ? ' class="is-live"' : ''}><a href="${classRoute(cls)}"><strong>${e(cls.label)}</strong><small>${cls.live ? `${cls.chapters.length} lessons ready` : `Plan: ${cls.chapters.length} chapters`}</small></a></li>`).join('\n');
-  return `<!-- mp:pick:start -->\n      <ul class="mp-pick">\n${items}\n      </ul>\n      <!-- mp:pick:end -->`;
+  return `<!-- mp:pick:start -->\n      <p>${readiness(data).summary}</p>\n      <ul class="mp-pick">\n${items}\n      </ul>\n      <!-- mp:pick:end -->`;
 }
 
 export function buildMathsPath({ root = resolve(dirname(fileURLToPath(import.meta.url)), '..'), write = false, syncInventory = false } = {}) {

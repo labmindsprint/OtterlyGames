@@ -202,7 +202,32 @@ def run():
                 assert not metrics["widgetOverflow"], metrics["widgetOverflow"]
                 assert not metrics["broken"], metrics["broken"]
                 if route not in STANDALONE:
-                    assert metrics["brandLines"] == 1, "The navigation brand must not wrap"
+                    assert metrics["brandLines"] == 1 or text_percent > 100, "The navigation brand must not wrap"
+                    header = page.evaluate("""() => {
+                      const nav = document.querySelector('nav.nav');
+                      const visible = e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0; };
+                      const controls = [...nav.querySelectorAll('a[href], button')].filter(visible);
+                      const toggle = document.getElementById('navToggle');
+                      return {
+                        outside: controls.filter(e => { const r = e.getBoundingClientRect(); return r.left < -1 || r.right > innerWidth + 1; })
+                          .map(e => e.textContent.trim() || e.id),
+                        toggleVisible: !!toggle && visible(toggle),
+                        links: [...nav.querySelectorAll('.nav-links a')].filter(visible).length
+                      };
+                    }""")
+                    assert not header["outside"], ("Navigation controls leave the viewport", header)
+                    if javascript:
+                        assert header["toggleVisible"] or header["links"] >= 5, ("Navigation has no usable controls", header)
+                        if header["toggleVisible"]:
+                            toggle = page.locator("#navToggle")
+                            toggle.focus()
+                            page.keyboard.press("Enter")
+                            expect(toggle).to_have_attribute("aria-expanded", "true")
+                            assert page.evaluate("""() => [...document.querySelectorAll('#navLinks a')].every(a => {
+                              const r = a.getBoundingClientRect(); return r.width > 0 && r.left >= -1 && r.right <= innerWidth + 1; })"""), "Open menu links leave the viewport"
+                            page.keyboard.press("Escape")
+                            expect(toggle).to_have_attribute("aria-expanded", "false")
+                            expect(toggle).to_be_focused()
                 if route == "/":
                     expect(page.locator('[data-home-game="math-tank"]')).to_be_visible()
                     expect(page.locator('[data-home-game="clock-master"]')).to_be_visible()

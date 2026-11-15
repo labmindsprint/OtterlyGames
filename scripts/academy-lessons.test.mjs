@@ -46,8 +46,8 @@ function checkExample(html, { question, link }) {
   assert.match(html, /<button[^>]+type="button" data-lesson-retry hidden>Try again/);
   assert.match(html, /<details[^>]+data-lesson-hint><summary>Need a hint\?/);
   assert.match(html, /<details[^>]+data-lesson-method><summary>Answer &amp; method/);
-  assert.ok(html.includes(`href="${e(link)}"`), 'Keep the full versioned, seeded mission link internally');
-  assert.match(html, />Try more in game /);
+  assert.ok(html.includes('href="/play/space-academy.html">Open Space Academy'), 'Space Academy links must be plain launcher links');
+  assert.doesNotMatch(html, /space-academy\.html\?|Play mission|Play Level|Try more in game/);
 }
 
 test('all 65 lesson routes keep SEO, progressive enhancement and non-technical public copy', () => {
@@ -105,8 +105,8 @@ test('all 178 interactive examples preserve their actual prompt, figures, constr
     const examples = examplesIn(gradeHTML);
     assert.equal(examples.length, 1);
     checkExample(examples[0], original(grade, chapter, 2));
-    assert.ok(gradeHTML.includes(e(gameLink({ grade: grade.id, mode: 'mixed' }))));
-    if (grade.year > 0) assert.ok(gradeHTML.includes(e(gameLink({ grade: grade.id, mode: 'paper', level: 2 }))));
+    assert.ok(!gradeHTML.includes('space-academy.html?'));
+    assert.ok(gradeHTML.includes('href="/play/space-academy.html">Open Space Academy'));
     checked++;
   }
   assert.equal(checked, 178);

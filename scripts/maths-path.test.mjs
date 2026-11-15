@@ -63,6 +63,21 @@ test('chapter pages keep the five steps, a no-JS lesson and a parents box', () =
   assert.match(html, /class="mp-screen"/);
 });
 
+test('readiness copy follows the data and game links make no chapter or level promise', () => {
+  const hub = mathsPages(data).find((p) => p.route === '/learn/maths/').html;
+  const learn = readFileSync(join(root, 'learn', 'index.html'), 'utf8');
+  for (const text of [hub, learn]) assert.doesNotMatch(text, /Class 1 is ready now|will open one at a time|added one at a time/);
+  assert.match(hub, new RegExp(`All ${data.classes.length} classes, PP1 to Class 5, are ready with 59 chapters`));
+  assert.match(learn, /All 7 classes, PP1 to Class 5, are ready with 59 chapters/);
+  const chapters = mathsPages(data).filter((p) => /^\/learn\/maths\/[^/]+\/[^/]+\/$/.test(p.route));
+  assert.equal(chapters.length, 59);
+  for (const { html } of chapters) {
+    assert.doesNotMatch(html, /Play this chapter in|Level \d: [^<]*<\/a>/);
+    assert.doesNotMatch(html, /space-academy\.html\?/);
+    assert.match(html, /does not load this chapter or level/);
+  }
+});
+
 test('old Class 1 Olympiad-style pages redirect to inventoried new pages and are archive routes', () => {
   const list = redirects(data);
   // Redirects cover the old Space Academy pages, the old hub and the renamed preparation guide; a Maths Path chapter without an old page (PP2 time) has none.

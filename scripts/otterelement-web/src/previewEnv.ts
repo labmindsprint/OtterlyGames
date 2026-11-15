@@ -1,5 +1,6 @@
 // The website preview's environment. main.tsx imports this module first, so everything below is in place before any
 // game module reads storage.
+import { publishAppActive } from './native/appState';
 
 /** The preview opens exactly two nodes: 1 Hydrogen and 2 Helium. */
 export const PREVIEW_NODE_CAP = 2;
@@ -64,7 +65,7 @@ installScopedStorage();
 
 // The website page tells the embedded preview when it is scrolled out of view or the tab is hidden. It is passed on as
 // the game's own "app is not active" event, which pauses the fight and the audio the same way the Android app does.
-// The name must match APP_ACTIVE_EVENT in the game's native/android.ts (prepare-otterelement-web.mjs checks it).
+// Publish through appState so its cached state and event subscribers agree, including after lifecycle refreshes.
 function listenForPageVisibility(): void {
   if (window.parent === window) return;
   window.addEventListener('message', (event: MessageEvent) => {
@@ -73,7 +74,7 @@ function listenForPageVisibility(): void {
     if (typeof data !== 'object' || data === null) return;
     const { type, active } = data as { type?: unknown; active?: unknown };
     if (type !== 'oe-preview-active' || typeof active !== 'boolean') return;
-    window.dispatchEvent(new CustomEvent<boolean>('oe:app-active', { detail: active }));
+    publishAppActive(active);
   });
 }
 

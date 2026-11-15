@@ -116,10 +116,15 @@ function patches() {
       }
       return s;
     },
-    // Not changed: the preview page pauses the game through this event name (see previewEnv.ts), so a rename must fail here.
+    // Keep the native re-export and its defining module in sync with the preview's visibility bridge.
     'src/native/android.ts': (s, w) => {
-      replaceExact(s, "export const APP_ACTIVE_EVENT = 'oe:app-active';", "export const APP_ACTIVE_EVENT = 'oe:app-active';", 1, w);
+      replaceExact(s, "export { APP_ACTIVE_EVENT } from './appState';", "export { APP_ACTIVE_EVENT } from './appState';", 1, w);
       return s;
+    },
+    'src/native/appState.ts': (s, w) => {
+      replaceExact(s, "export const APP_ACTIVE_EVENT = 'oe:app-active';", "export const APP_ACTIVE_EVENT = 'oe:app-active';", 1, w);
+      s = replaceExact(s, "  return Capacitor.getPlatform() === 'android' ? active : null;", '  return active;', 1, w);
+      return replaceExact(s, '  if (nativeAppActive() === null) return;', "  if (Capacitor.getPlatform() !== 'android') return;", 1, w);
     },
     // The Lab opens at Helium (LAB_OPENS_AT is 2), the last element of the preview; the game's locked-Lab text still names Lithium.
     'src/components/lab/LabScreen.tsx': (s, w) => replaceExact(s,
@@ -136,7 +141,7 @@ function patches() {
     'src/components/HeliumGuide.tsx': (s, w) => replaceExact(s, 'art/siege/otter/${view.pose}.png', 'art/guide-otter/${view.pose}.png', 1, w),
     'src/App.tsx': (s, w) => {
       s = replaceExact(s, "import type { ShopTabId } from './components/shop/v2';", "import type { ShopTabId } from './components/shop/v2/shopV2Model';\nimport { PreviewEnd, usePreviewEndOpen } from './components/PreviewEnd';\nimport { PREVIEW_NODE_CAP } from './previewEnv';", 1, w);
-      s = replaceExact(s, '  const paused = saveBlocked ||', '  const previewEndOpen = usePreviewEndOpen();\n  const paused = previewEndOpen || saveBlocked ||', 1, w);
+      s = replaceExact(s, '  const paused = reviewBusy || saveBlocked ||', '  const previewEndOpen = usePreviewEndOpen();\n  const paused = previewEndOpen || reviewBusy || saveBlocked ||', 1, w);
       s = replaceExact(s, 'Math.min(current.cleared + 1, PLAYABLE_ELEMENTS)', 'Math.min(current.cleared + 1, PREVIEW_NODE_CAP)', 1, w);
       s = replaceExact(s, 'String(Math.min(game.cleared + 1, PLAYABLE_ELEMENTS))', 'String(Math.min(game.cleared + 1, PREVIEW_NODE_CAP))', 1, w);
       s = replaceExact(s, 'mode && telemetry ? telemetry.stage : Math.min(game.cleared + 1, PLAYABLE_ELEMENTS);', 'mode && telemetry ? telemetry.stage : Math.min(game.cleared + 1, PREVIEW_NODE_CAP);', 1, w);

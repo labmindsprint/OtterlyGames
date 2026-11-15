@@ -10,6 +10,7 @@
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(10,10,15,0.85); backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255,255,255,0.06); height: 64px;
+  container: site-nav / inline-size;
 }
 .nav-inner {
   max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
@@ -50,9 +51,11 @@
   display: block; width: 22px; height: 2px;
   background: var(--text-secondary); border-radius: 2px;
 }
-@media (max-width: 960px) {
-  .nav-inner { gap: 8px; padding-inline: 16px; }
-  .nav-brand { margin-right: auto; font-size: 1rem; gap: 6px; }
+/* The menu collapses at 60rem of header width, not 960px, so enlarged root text
+   switches to the compact header before the full-width links stop fitting. */
+@container site-nav (max-width: 60rem) {
+  .nav-inner { gap: 8px; padding-inline: 16px; flex-wrap: wrap; }
+  .nav-brand { margin-right: auto; font-size: 1rem; gap: 6px; min-width: 0; flex-shrink: 1; white-space: normal; }
   .nav-brand img { width: 32px; height: 32px; }
   .nav-play { margin-left: 0; padding: 9px 12px; font-size: .76rem; }
   .nav-play > span { display: none; }
@@ -66,11 +69,13 @@
   }
   .nav-links a { padding: 0.7rem 1rem; width: 100%; text-align: center; }
   .nav-links.open { display: flex; }
-  html:not([data-nav-ready]) .nav { position: static; height: auto; }
   html:not([data-nav-ready]) .nav-inner { flex-wrap: wrap; padding-top: 0.6rem; }
   html:not([data-nav-ready]) .nav-links {
     display: flex; position: static; width: 100%; max-height: none; order: 4;
   }
+}
+@media (max-width: 960px) {
+  html:not([data-nav-ready]) .nav { position: static; height: auto; }
 }
 @media (max-width: 360px) {
   .nav-brand { font-size: .9rem; }

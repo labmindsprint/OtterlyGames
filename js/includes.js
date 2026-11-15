@@ -87,7 +87,14 @@
     document.addEventListener('click', function (event) {
       if (!event.target.closest('.nav')) setOpen(false);
     });
-    matchMedia('(min-width: 961px)').addEventListener('change', function () { setOpen(false); });
+    var nav = toggle.closest('.nav');
+    if (nav && 'ResizeObserver' in window) {
+      // Matches the 60rem header container query, which follows root text size.
+      new ResizeObserver(function () {
+        var rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+        if (nav.clientWidth > rem * 60) setOpen(false);
+      }).observe(nav);
+    }
   }
 
   /**

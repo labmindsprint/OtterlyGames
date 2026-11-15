@@ -82,10 +82,12 @@ test('the landing hero and homepage cards each carry an explicit Google Play but
   assert.match(hero, /<a href="#preview" class="web-game-primary">Play Hydrogen and Helium free<\/a>/);
   assert.match(hero, new RegExp(`<a class="web-game-store" href="${play('com.otterlygames.otterelement').replace(/[?.]/g, '\\$&')}" target="_blank" rel="noopener noreferrer"[^>]*>\\s*<img src="/images/google-play-badge.png" alt="Get it on Google Play"`));
   const home = readFileSync(join(site, 'index.html'), 'utf8');
-  for (const id of ['com.clockmaster.timeforjuniors', 'com.namasya.mathtank', 'com.otterlygames.otterelement']) {
+  const released = ['com.clockmaster.timeforjuniors', 'com.namasya.mathtank', 'com.otterlygames.spaceacademy', 'com.otterlygames.otterelement'];
+  for (const id of released) {
     assert.ok(home.includes(`href="${play(id)}" target="_blank" rel="noopener noreferrer" class="btn btn--lg btn--ghost" data-store-cta`), id);
   }
-  assert.equal(home.match(/data-store-cta/g).length, 3);
+  const storeLinks = [...home.matchAll(/<a\b[^>]*\bdata-store-cta\b[^>]*>/g)].map(([tag]) => tag.match(/\bhref="([^"]+)"/)?.[1]);
+  assert.deepEqual(storeLinks.sort(), released.map(play).sort(), 'one store button per released game, with no duplicates or foreign destinations');
 });
 
 test('the landing page teaches schema-first fusing and keeps "pick two atoms" inside the labelled practice bench', () => {

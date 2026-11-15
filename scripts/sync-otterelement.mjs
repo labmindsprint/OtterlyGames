@@ -64,12 +64,13 @@ try {
   // Environment files stay behind on purpose: the live service address and key are not part of the preview.
   cpSync(join(source, 'src'), join(workspace, 'src'), { recursive: true, filter: srcFilter });
   cpSync(join(source, 'public'), join(workspace, 'public'), { recursive: true, filter: publicFilter });
-  for (const file of ['index.html', 'package.json', 'tsconfig.json', 'vite.config.ts']) cpSync(join(source, file), join(workspace, file));
-  const copied = [...files(join(workspace, 'src')).map((file) => `src/${file}`), ...files(join(workspace, 'public')).map((file) => `public/${file}`), 'index.html', 'package.json', 'tsconfig.json', 'vite.config.ts'];
+  for (const file of ['index.html', 'package.json', 'tsconfig.json']) cpSync(join(source, file), join(workspace, file));
+  const copied = [...files(join(workspace, 'src')).map((file) => `src/${file}`), ...files(join(workspace, 'public')).map((file) => `public/${file}`), 'index.html', 'package.json', 'tsconfig.json'];
   const sourceFingerprint = fingerprint(workspace, copied);
   symlinkSync(bin(), join(workspace, 'node_modules'), process.platform === 'win32' ? 'junction' : 'dir');
 
   prepareOtterelementWeb(workspace, source);
+  cpSync(join(here, 'otterelement-web', 'vite.config.mjs'), join(workspace, 'vite.config.mjs'));
   cpSync(join(source, 'public', 'art', 'siege', 'otter'), join(workspace, 'public', 'art', 'guide-otter'), { recursive: true });
   writeFileSync(join(workspace, 'tsconfig.preview.json'), JSON.stringify({
     extends: './tsconfig.json',
@@ -92,7 +93,7 @@ try {
     if (hit) throw new Error(`The build references ${hit} (${file}); the preview must not reach it`);
   }
 
-  const status = git('status', '--porcelain', '--', 'src', 'public', 'index.html', 'package.json', 'tsconfig.json', 'vite.config.ts');
+  const status = git('status', '--porcelain', '--', 'src', 'public', 'index.html', 'package.json', 'tsconfig.json');
   const overlayFiles = files(join(here, 'otterelement-web', 'src'));
   const version = JSON.parse(readFileSync(join(source, 'package.json'), 'utf8')).version;
   const staged = join(workspace, 'website');
@@ -104,7 +105,7 @@ try {
     storage: 'local-browser',
     syncedAt: new Date().toISOString(),
     source: { commit: git('rev-parse', 'HEAD'), uncommittedChanges: status === null ? null : status.length > 0, fingerprint: sourceFingerprint },
-    overlay: fingerprint(here, [...overlayFiles.map((file) => `otterelement-web/src/${file}`), 'prepare-otterelement-web.mjs']),
+    overlay: fingerprint(here, [...overlayFiles.map((file) => `otterelement-web/src/${file}`), 'otterelement-web/vite.config.mjs', 'prepare-otterelement-web.mjs', 'sync-otterelement.mjs']),
   }, null, 2) + '\n');
 
   const target = join(site, 'games', 'otterelement');

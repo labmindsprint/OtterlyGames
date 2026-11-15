@@ -1,7 +1,7 @@
 # Otter Element website preview
 
 `games/otterelement/` is a browser preview of the current Otter Element game, limited to the first two nodes (Hydrogen 1 and Helium 2).
-It is built from the game's own source, not from a copy that is kept in step by hand.
+It is a standalone, pinned trailer built from the game's own source. It does not need to stay in step with later Android changes.
 
 ## How it is built
 
@@ -10,7 +10,7 @@ It is built from the game's own source, not from a copy that is kept in step by 
 1. Copies the game's `src`, `public` and root build files into an isolated workspace. Environment files, tests, the developer pages, the game's privacy page and all Siege and tower-defence art are left behind. The game's working tree is only read.
 2. `prepare-otterelement-web.mjs` patches that copy in memory with exact-match replacements. A replacement that no longer matches throws, so a game change that moves the code fails the sync instead of shipping unreviewed.
 3. `otterelement-web/src/**` is copied over the workspace: a few whole-file stubs (Siege, shop, developer settings, ultimate sheet, network and settlement hosts) and the preview-only files.
-4. The workspace is type-checked and built with Vite, with every `VITE_*` variable removed.
+4. The workspace is type-checked and built with the website-owned `otterelement-web/vite.config.mjs`, with every `VITE_*` variable removed. The native release configuration and Android-only release hooks are not copied; the website's exclusion checks and provenance below remain enforced.
 5. The build is refused if it contains a left-out folder or a reference to the live service, ads or Play billing.
 6. The result is exported to `games/otterelement/` with a `version.json` that records the game commit, whether it had uncommitted changes, a fingerprint of the exact source files, and a hash of this overlay.
 
@@ -36,11 +36,19 @@ Cloudflare adds its Web Analytics script to the HTML pages this site serves; the
 
 ## Staying in step with the game
 
-Run the sync again after the game's source changes, review the diff of `games/otterelement/`, and commit it. `version.json` shows what a published build came from.
-If a patch no longer matches, update `prepare-otterelement-web.mjs` for the new code.
+Rebuild only when intentionally updating the trailer. Ordinary website checks validate the committed trailer, not its freshness against an adjacent game checkout. `version.json` records its provenance; an older source revision is not a failure.
+Before a deliberate rebuild, opt into the source-compatibility check below. If a patch no longer matches, update `prepare-otterelement-web.mjs` for the selected source. Exact-match guards still protect an intentional rebuild from a partial patch.
+The host visibility bridge publishes through `native/appState.ts`, so the cached foreground state and its event subscribers agree. Browser refreshes never call the native app-state API; the defining event and Android re-export are both guarded against source drift.
 
 ## Tests
 
 - `scripts/otterelement-export.test.mjs` checks the committed export (needed files, node cap, no service address, no Siege files).
-- `scripts/otterelement-web.test.mjs` checks that the patches still match the sibling game checkout (it skips when the checkout is absent) and that the overlay refuses to write into the game or the website.
-- `node --test scripts/*.test.mjs` runs both.
+- `scripts/otterelement-web.test.mjs` always checks the patch helpers and refusal to write into the game or website. Compatibility with current game source is opt-in, not a website-release dependency.
+- `node --test scripts/*.test.mjs` checks the committed trailer without requiring a game checkout or installed game dependencies.
+- For an intentional rebuild, run the optional source check in PowerShell:
+
+  ```powershell
+  $env:OTTERELEMENT_SOURCE = 'C:\Namasya Development\Otter Element'
+  node --test scripts\otterelement-web.test.mjs
+  Remove-Item Env:\OTTERELEMENT_SOURCE
+  ```

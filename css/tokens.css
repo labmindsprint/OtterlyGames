@@ -221,6 +221,7 @@ body.theme-b::before {
   background: rgba(14, 12, 23, 0.78);
   -webkit-backdrop-filter: blur(16px) saturate(1.3); backdrop-filter: blur(16px) saturate(1.3);
   border-bottom: 1px solid var(--line);
+  container: site-nav / inline-size;
 }
 :is(.theme-b, .shell-b) .nav-inner {
   max-width: calc(var(--wrap) + 2 * var(--gutter)); padding: 0 var(--gutter);
@@ -260,13 +261,13 @@ body.theme-b::before {
 :is(.theme-b, .shell-b) .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 :is(.theme-b, .shell-b) .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-@media (max-width: 960px) {
+@container site-nav (max-width: 60rem) {
   :is(.theme-b, .shell-b) .nav-inner { gap: var(--s-2); padding-inline: var(--gutter); }
-  :is(.theme-b, .shell-b) .nav-brand { font-size: 1.1rem; gap: var(--s-2); }
+  :is(.theme-b, .shell-b) .nav-brand { font-size: 1.1rem; gap: var(--s-2); min-width: 0; }
   :is(.theme-b, .shell-b) .nav-brand img { width: 36px; height: 36px; }
   :is(.theme-b, .shell-b) .nav-cta { padding: 0 var(--s-4); }
   :is(.theme-b, .shell-b) .nav-links {
-    top: 100%; max-height: calc(100dvh - 68px);
+    top: 100%; max-height: calc(100dvh - 100%);
     padding: var(--s-3) var(--gutter) var(--s-4); gap: 2px;
     background: var(--surface-1); border-bottom: 1px solid var(--line); box-shadow: var(--elev-2);
   }
