@@ -505,6 +505,30 @@ test('read-only check detects drift; write touches only scoped pages, archives a
   assert.ok(buildSite({ root: f.root }).changes.some((c) => c.file === 'index.html'));
 });
 
+test('preserves the Search Console verification document verbatim without indexing it', (t) => {
+  const file = 'google848fb441fe59be13.html';
+  const verification = `google-site-verification: ${file}\r\n`;
+  const f = fixture(t, { files: { [file]: verification } });
+  const result = buildSite({ root: f.root, write: true });
+  assert.deepEqual(result.errors, []);
+  assert.equal(result.wrote, true);
+  assert.ok(!result.changes.some((change) => change.file === file));
+  assert.deepEqual(readFileSync(join(f.root, file)), Buffer.from(verification));
+  assert.doesNotMatch(f.read('sitemap.xml'), /google848fb441fe59be13/);
+  assert.deepEqual(buildSite({ root: f.root }).errors, []);
+  assert.equal(buildSite({ root: f.root }).changes.length, 0);
+});
+
+test('does not exempt similarly named or nested verification HTML from the public inventory', (t) => {
+  for (const file of ['google-unregistered.html', join('tools', 'google848fb441fe59be13.html')]) {
+    const f = fixture(t, { files: { [file]: html() } });
+    const result = buildSite({ root: f.root, write: true });
+    assert.ok(result.errors.some((error) => error.includes(file) && error.includes('absent from')));
+    assert.equal(result.wrote, false);
+    assert.equal(f.read('sitemap.xml'), 'old sitemap');
+  }
+});
+
 test('unknown public HTML and unsafe mixed scripts prevent every write, with no success fallback', (t) => {
   const badSource = html('<main><h1>Game</h1></main>', { head: `<script>${ga} startRound();</script>` });
   const f = fixture(t, { files: { 'index.html': badSource, [join('tools', 'unlisted.html')]: html() } });

@@ -13,6 +13,8 @@ export const ARCHIVE_ROUTES = [
   ...redirects().map((r) => r.from),
 ];
 const PUBLIC_DIRECTORIES = ['apps', 'play', 'tools', 'blog', 'learn', 'parents', 'Arcade'];
+// Search Console challenges are served verbatim, not transformed or indexed as site pages.
+const ROOT_VERIFICATION_DOCUMENTS = ['google848fb441fe59be13.html'];
 // Noindex game documents that are embedded by a catalogued page (and shipped by the Android wrapper); they are not site pages.
 const GAME_DOCUMENTS = ['play/pit-stop.html'];
 const CUSTOM_SHELL_ROUTES = [
@@ -652,7 +654,8 @@ function readJson(path) {
   catch (error) { throw new Error(`${path}: ${error.message}`); }
 }
 function publicFiles(root) {
-  const files = readdirSync(root, { withFileTypes: true }).filter((e) => e.isFile() && e.name.endsWith('.html')).map((e) => e.name);
+  const files = readdirSync(root, { withFileTypes: true })
+    .filter((e) => e.isFile() && e.name.endsWith('.html') && !ROOT_VERIFICATION_DOCUMENTS.includes(e.name)).map((e) => e.name);
   const visit = (dir) => {
     if (!existsSync(join(root, dir))) return;
     if (lstatSync(join(root, dir)).isSymbolicLink()) throw new Error(`${dir}: Symlinks are not public build inputs`);
