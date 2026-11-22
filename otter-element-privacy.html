@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Otter Element Privacy Notice — Otterly Games</title>
-  <meta name="description" content="Privacy notice for the Otter Element Android game from Otterly Games: on-device saves, online rankings and Lab Siege, rewarded ads, Google Play purchases, retention and deleting online data.">
+  <meta name="description"   content="Privacy notice for the Otter Element Android game from Otterly Games: saves and Google account recovery, online rankings and Lab Siege, rewarded ads, Google Play purchases, retention and deleting online data.">
   <link rel="canonical" href="https://otterlygames.com/otter-element-privacy.html">
   <meta property="og:title" content="Otter Element Privacy Notice — Otterly Games">
   <meta property="og:description" content="What the Otter Element game stores on your device, what its ranking service receives, how ads and Google Play purchases work, and how to ask for online data to be deleted.">
@@ -51,7 +51,7 @@
 <section class="legal-page">
     <div class="container">
       <h1>Otter Element Privacy Notice</h1>
-      <p><strong>Effective date:</strong> <time datetime="2026-10-26">October 26, 2026</time> · <strong>Last updated:</strong> <time datetime="2026-10-26">October 26, 2026</time></p>
+      <p><strong>Effective date:</strong> <time datetime="2026-10-26">October 26, 2026</time> · <strong>Last updated:</strong>       <time datetime="2026-11-21">November 21, 2026</time></p>
       <p>This notice describes what the Otter Element game does with data. It is written from how the game and its ranking service actually work, not from a general template.</p>
 
       <nav aria-label="Sections of this notice">
@@ -59,6 +59,7 @@
           <li><a href="#scope">About this notice</a></li>
           <li><a href="#summary">The short version</a></li>
           <li><a href="#device">What stays on your device</a></li>
+          <li><a href="#account">Google account and cloud recovery</a></li>
           <li><a href="#online">Rankings and Lab Siege (online)</a></li>
           <li><a href="#ads">Ads and your choices</a></li>
           <li><a href="#payments">Purchases</a></li>
@@ -79,7 +80,7 @@
 
       <h2 id="summary">The short version</h2>
       <ul>
-        <li>Otter Element has no account, email or password. Your campaign is saved on your device.</li>
+        <li>From version 1.0.2, you can connect a Google account to back up and recover your game. Local-only progress is not protected against uninstalling the app or clearing its storage. The game does not store your Google password.</li>
         <li><strong>You can delete your online records yourself.</strong> In the app, go to Settings → Your data → Delete my data. For an install with a secure online identity this deletes your online records, then erases your campaign and settings from the device. You do not need to contact anyone. Older installs, and installs whose secret is missing, cannot delete online records from the app; see <a href="#delete">Deleting your data</a>.</li>
         <li>Online rankings and Lab Siege use a random install ID, not your name. You may choose a public name; if you do not, the game generates one. These belong to the game: they are not your Google account, your email or your Android advertising ID.</li>
         <li>The only ads are rewarded ads that you choose to watch. Google’s ad SDK handles them and Google’s consent form asks for your choices where it is required.</li>
@@ -100,11 +101,18 @@
       <p>Export save writes a file with your campaign only. It does not include the secret above, and it does not include Lab Siege plans, progress, checkpoints, uploads waiting to be sent or paid supplies. Saves from older versions of the app may still hold purchase or recovery data that the app cannot confirm is safe to transfer. Export is then blocked; the app says so and changes nothing. Import and Undo change only the campaign. They do not carry Lab Siege data with them, and Lab Siege data left on the device is not guaranteed to be the data the imported or restored campaign was using.</p>
       <p>Lab Siege data from older versions of the app that is not marked for the install it is running under is kept once on this device only, in a private area that is not tied to any install ID. Your Lab Siege progress and supplies stay across reloads and changes of install ID. While Lab Siege is in that mode, the game does not upload scores, including any waiting to be sent, does not move campaign potions or rewards, and does not start new purchases. Lab Siege data that is marked for the current install works as normal.</p>
 
+      <h2 id="account">Google account and cloud recovery</h2>
+      <p>The Google account, cloud backup and account-required purchase behavior described in this notice apply from Otter Element version 1.0.2 onward. Earlier versions, including 1.0.1, do not offer them.</p>
+      <p>Connecting an account uses Google's sign-in screen. Google sends a short-lived sign-in credential to the game, which sends it to the Otter Element service over HTTPS. The service verifies Google's signature and the intended app before allowing account access. It uses a pseudonymous account identifier for recovery, not your email address or public player name. Google sign-in and the account selected in Google Play's payment screen are separate; use the Google account you connected to the game when recovering a backup.</p>
+      <p>When connected, the game sends a cloud copy of your campaign, settings, discoveries, inventory, Lab Siege plans and progress, pending recovery information, and purchase-delivery markers to the service on Microsoft Azure. These markers stop the same benefit being granted twice. Cloud saves are private, not leaderboard entries. Google passwords, raw purchase tokens and device sign-in secrets are not included in the cloud-save document or campaign export.</p>
+      <p>Settings shows whether a cloud save succeeded or still needs attention. Offline progress remains on this device until a later successful upload. Reinstalling can recover only what was already saved online; it cannot recreate changes that never reached the service. An existing cloud copy is checked before a new installation can upload, and conflicting copies require a choice rather than silently replacing each other.</p>
+      <p>Cloud recovery is separate from Export save, which remains campaign-only, and from Google Play's owned-purchase query. Purchases already consumed by Google Play require the game's saved purchase and inventory history; Play cannot return their remaining balance. Progress deleted before account backup was available cannot be reconstructed automatically.</p>
+
       <h2 id="online">Rankings and Lab Siege (online)</h2>
       <p>If you play an event, Lab Siege or rankings, the app talks to the Otter Element ranking service, which runs on Microsoft Azure. Two kinds of install exist:</p>
       <ul>
-        <li><strong>Secure identity.</strong> When a campaign starts from nothing (for example the first launch, or after the device has been erased) and the service can be reached, the service issues a new random install ID and a secret. The secret stays on your device in its own storage, outside your save and its export. The service keeps only a one-way hash of it.</li>
-        <li><strong>Older install.</strong> An install that already existed keeps the random ID the device made for itself. That ID is not secret. These installs are never converted to a secure identity, and a new campaign that starts while the service cannot be reached also gets a device-made ID.</li>
+        <li><strong>Secure identity.</strong> When a campaign starts from nothing and the service can be reached, the service issues a random install ID and a secret. Connecting an account allows its linked identity to be recovered on another installation with a new device credential. Credentials stay outside campaign exports; the service keeps one-way hashes rather than the device secrets.</li>
+        <li><strong>Older or local-only install.</strong> Without a linked account, the game keeps its device-made ID. Connecting Google can preserve the local campaign and recovery records under an account-backed identity, but does not prove ownership of the old public ID or turn historical private Siege play into a verified competitive run. Original paid Siege records are retained; a playable private copy does not start new billing or upload competitive scores.</li>
       </ul>
       <p>The app sends:</p>
       <ul>
@@ -119,7 +127,7 @@
       <h2 id="ads">Ads and your choices</h2>
       <p>Otter Element shows only <strong>rewarded ads</strong>, and only after you tap to watch one. There are no banners or pop-ups. Ads come from Google AdMob through the Google Mobile Ads SDK in the Android app.</p>
       <h3>What Google may collect</h3>
-      <p>To request and show an ad, the SDK sends data to Google. Google’s published disclosure for the Google Mobile Ads SDK lists the IP address, interactions with ads (such as taps and video views), diagnostic information, and device and account identifiers: the Android advertising ID (the app declares that permission), the app set ID and, where they apply, other identifiers related to accounts signed in on the device. The SDK may also use cookies or similar technologies. Google’s own privacy policy governs what it does with that data. These identifiers are Google’s and your device’s; they are separate from the install ID and public name used by rankings. The game does not ask for your Google account or email, and does not add your name, install ID or progress to ad requests.</p>
+      <p>To request and show an ad, the SDK sends data to Google. Google’s published disclosure for the Google Mobile Ads SDK lists the IP address, interactions with ads (such as taps and video views), diagnostic information, and device and account identifiers: the Android advertising ID (the app declares that permission), the app set ID and, where they apply, other identifiers related to accounts signed in on the device. The SDK may also use cookies or similar technologies. Google’s own privacy policy governs what it does with that data. These identifiers are Google’s and your device’s; they are separate from the install ID and public name used by rankings. The game does not add your sign-in credential, name, install ID or progress to ad requests.</p>
       <h3>Your choices</h3>
       <ul>
         <li>Where required, Google’s consent form (User Messaging Platform) asks for your choices before any ad is requested. If consent is not obtained, the game does not request ads.</li>
@@ -134,11 +142,12 @@
       <p>Paid Lab Siege supplies are bought through Google Play Billing. Google handles payment and your payment details; the game never receives them.</p>
       <p>To keep rankings fair, the ranking service checks paid play against Google Play. When a build talks to the ranking service, a real purchase works like this:</p>
       <ul>
-        <li>Before the Google Play screen opens, the app asks the service whether it is ready to check purchases, sending the app ID and your session. If the service is not ready or cannot be reached, the real purchase screen does not open.</li>
+        <li>Before a new Google Play purchase opens, account recovery must be connected and the app asks the service whether purchase verification is ready, sending the app ID and your session. If the required service is not ready or cannot be reached, the real purchase screen does not open.</li>
         <li>The app attaches a one-way code derived from the app ID and your install ID to the Google Play purchase.</li>
         <li>After the purchase, the app sends the order details and the purchase’s store token to the service. The token is a credential for that purchase. The service passes it to Google Play to confirm the purchase. The service does not keep the raw token in its records or write it to its own logs; it keeps a one-way fingerprint so the same receipt cannot be reused. The token still travels in the request to Google, and the hosting platform’s own diagnostics are outside what the app controls (see <a href="#limits">What this notice does not cover</a>).</li>
       </ul>
-      <p>This applies to both secure and older installs. For an older install, checking a new purchase does not turn it into a secure identity and does not give it the right to delete online records.</p>
+      <p>After a paid benefit has been delivered locally, the game must save its delivery and resulting progress to the connected account before completing the order with Google Play. If saving fails, the order remains available for recovery instead of being marked complete with only a device-local copy.</p>
+      <p>From version 1.0.2, new purchases require a connected recoverable account. An older install can keep playing locally and link its current progress without claiming ownership of a public ID. A historical receipt whose original ownership cannot be proven is not silently assigned to whoever submits it.</p>
       <p>Purchases made before this check existed, or without the one-way code, cannot be matched to Google Play automatically. They are not treated as verified and stay pending, and the developer has no automatic way to assign them to an install. Your progress and supplies are kept.</p>
       <p>A paid score that has not been confirmed with Google yet stays private and does not appear on public boards. Your progress and supplies are kept either way. When Google confirms the purchase, the score is published automatically.</p>
       <p>Deleting your data does not erase your Google account, your Google Play purchases or Google’s records of them. Use Restore purchases after a device is erased.</p>
@@ -150,6 +159,8 @@
       <p>A profile that has been inactive for 90 days is removed by the ranking service, along with its ranking and Lab Siege copies. Reading your profile, changing your name and accepted scores count as activity. This is the service’s default setting.</p>
       <h3>Event scores</h3>
       <p>Event records, including scores waiting for purchase confirmation, are kept for the event retention period, currently 8 weeks. This is not the same as the 90-day profile setting, and not all data expires after 90 days.</p>
+      <h3>Account recovery</h3>
+      <p>Private account backups are managed separately from public profiles and event records. Account deletion removes the linked cloud backup and recovery access. Signing out or uninstalling alone is not an account-deletion request.</p>
       <h3>Security records</h3>
       <p>Records that stop a deleted install or a used store receipt from being used again are kept without an automatic expiry. They are not public and do not hold your name. See <a href="#delete">Deleting your data</a>.</p>
 
@@ -157,7 +168,7 @@
       <p>The normal way to delete your online data is to do it yourself in the app, without writing to the developer. Contacting the developer is only for installs that cannot do this in the app, and for privacy questions.</p>
       <h3>In the app: installs with a secure online identity</h3>
       <p><strong>Settings → Your data → Delete my data</strong> asks the ranking service to delete your online records. Nothing on your device is erased until the service confirms. When it does, the app erases your campaign, settings and plans from the device and restarts. If you are offline or the service is busy, nothing is erased and you can try again. Trying again is safe even if an earlier attempt reached the service but the app never heard back.</p>
-      <p>The service deletes your chosen name, player and score records, leaderboard entries, Lab Siege state and purchase grants for this app. It keeps:</p>
+      <p>The service deletes your chosen name, player and score records, leaderboard entries, Lab Siege state, linked cloud backup, account-recovery link and purchase grants for this app. It keeps:</p>
       <ul>
         <li>a one-way fingerprint of each used store receipt, so it cannot be redeemed again;</li>
         <li>a record that this install was deleted, with its ID, the time, and a hash of its secret.</li>
